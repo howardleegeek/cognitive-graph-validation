@@ -112,6 +112,24 @@ hypotheses:
     evidence: "+6.3% improvement over joint training"
     parent: null
     priority: medium
+  - id: H7
+    statement: "Unified architecture improves temporal reasoning (object permanence tracking)"
+    status: pending
+    evidence: null
+    parent: H1
+    priority: high
+  - id: H8
+    statement: "22% physical allocation optimal across different action spaces"
+    status: pending
+    evidence: null
+    parent: H4
+    priority: medium
+  - id: H1.4
+    statement: "Unified architecture transfers better to tasks with different dynamics"
+    status: pending
+    evidence: null
+    parent: H1
+    priority: high
 
 experiments:
   proxy_metric: "success_rate_at_10_hours"
@@ -121,9 +139,9 @@ experiments:
   trajectory: []
 
 outer_loop:
-  cycle: 6
-  last_direction: "H2.1 (+1.7% @ scale), H6 (+18.8%, +23%@5k) completed"
-  last_reflection: "H1-H6 COMPLETE: 9 SUPPORTED, 1 INCONCLUSIVE, 2 REFUTED. Core research done."
+  cycle: 7
+  last_direction: "H1-H6 COMPLETE: 9 SUPPORTED, 1 INCONCLUSIVE, 2 REFUTED"
+  last_reflection: "Core hypotheses done. New: H7 (temporal), H8 (dimension across actions), H1.4 (transfer)"
 
 workspace:
   findings: "findings.md"

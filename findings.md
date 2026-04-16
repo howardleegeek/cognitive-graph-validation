@@ -212,6 +212,14 @@ T-stat=2.04, p≈0.15 — Graph is marginally better but NOT statistically signi
 
 **Total: 9 SUPPORTED, 1 INCONCLUSIVE, 2 REFUTED, 0 PENDING**
 
+### New Hypotheses (Generated April 15, 2026)
+
+| ID | Statement | Priority | Status |
+|----|----------|----------|---------|
+| H7 | Unified architecture improves temporal reasoning (object permanence) | High | PENDING |
+| H8 | 22% physical allocation optimal across different action spaces | Medium | PENDING |
+| H1.4 | Unified architecture transfers better to tasks with different dynamics | High | PENDING |
+
 ### New Experiments (April 15, 2026)
 
 #### H2.1 Results (Compositional Reasoning): SUPPORTED
