@@ -138,8 +138,8 @@ hypotheses:
   priority: high
 - id: H1.8
   statement: "Invariant representation learning (bisimulation) enables cross-dynamics transfer"
-  status: pending
-  evidence: "DreamTIP approach - learn dynamics-invariant features"
+  status: supported
+  evidence: "+5.4% avg improvement on transfer across different dynamics"
   parent: H1
   priority: high
 - id: H1.9
@@ -165,9 +165,9 @@ experiments:
   trajectory: []
 
 outer_loop:
-  cycle: 11
-  last_direction: "H1.7 REFUTED - exploring invariant learning (H1.8, H1.9)"
-  last_reflection: "Need novel approaches for cross-dynamics transfer. Literature suggests: bisimulation, multi-task dynamics, particle-based GNN"
+  cycle: 12
+  last_direction: "H1.8 SUPPORTED - invariant learning improves transfer (+5.4%)"
+  last_reflection: "Bisimulation approach shows promise. Now test H1.9 multi-task dynamics or H2.2 cross-embodiment"
 
 workspace:
   findings: "findings.md"

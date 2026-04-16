@@ -363,3 +363,25 @@ After testing H1.4-H1.7, we've confirmed:
 1. Keep unified architecture FOR SAME DYNAMICS only
 2. Use separate dynamics encoder that's swappable
 3. Explore invariant learning to extract dynamics-agnostic features
+
+### H1.8: Invariant Representation Learning (SUPPORTED)
+
+| Target Domain | Baseline MSE | Invariant MSE | Delta |
+|--------------|--------------|---------------|-------|
+| high_friction | 0.1113 | 0.1058 | **+4.9%** |
+| low_friction | 0.0910 | 0.0853 | **+6.2%** |
+| heavy_mass | 0.1289 | 0.1236 | **+4.2%** |
+| light_mass | 0.0893 | 0.0836 | **+6.4%** |
+
+**Average: +5.4%** — Invariant representation learning shows modest but consistent improvement on cross-dynamics transfer!
+
+### CRITICAL FINDING
+
+After testing H1.4-H1.8:
+- **H1.4**: Unified loses transfer (-56.7%)
+- **H1.5**: Modular makes worse (-151.6%)
+- **H1.6**: Few-shot fine-tuning (~95% both)
+- **H1.7**: Meta-learning doesn't fix it (-7.9%)
+- **H1.8**: **Invariant learning IMPROVES (+5.4%)** ← First positive result!
+
+**Key Insight**: Bisimulation-inspired approaches show promise for cross-dynamics transfer. Need to refine this with proper bisimulation loss in PyTorch.
