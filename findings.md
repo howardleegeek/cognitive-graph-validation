@@ -335,3 +335,10 @@ Key finding: Unified architecture encodes dynamics-specific features that don't 
 1. Dynamics-agnostic representations (invariant learning)
 2. Meta-learning for rapid adaptation
 3. Separate physical branch that's swappable
+
+### H1.7: Meta-Learning for Dynamics Adaptation (PENDING GPU)
+
+- **Location**: `experiments/H1.7-meta-learning/code/train.py`
+- **Purpose**: Test meta-learning (dynamics conditioning) enables adaptation to novel dynamics
+- **Approach**: Add dynamics parameters as learnable conditioning, pre-train on multiple dynamics
+- **Status**: Code ready, needs GPU for execution

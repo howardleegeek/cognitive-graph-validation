@@ -124,10 +124,16 @@ hypotheses:
     evidence: "23% avg optimal, 25% preferred at lower action dims"
     parent: H4
     priority: medium
-  - id: H1.4
+- id: H1.4
     statement: "Unified architecture transfers better to tasks with different dynamics"
     status: refuted
     evidence: "-56.7% - transfers WORSE to different dynamics"
+    parent: H1
+    priority: high
+  - id: H1.7
+    statement: "Meta-learning (dynamics conditioning) enables fast adaptation to novel dynamics"
+    status: pending
+    evidence: "Code ready, needs GPU"
     parent: H1
     priority: high
 
