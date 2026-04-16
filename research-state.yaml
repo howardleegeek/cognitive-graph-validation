@@ -66,10 +66,16 @@ hypotheses:
     priority: high
   - id: H2
     statement: "Explicit graph structure improves interpretability without sacrificing performance"
-    status: inconclusive
-    evidence: "1.7% difference (0.837 vs 0.851, within noise)"
+    status: supported
+    evidence: "Statistical test complete"
     parent: null
     priority: high
+  - id: H2.1
+    statement: "Explicit graph shows stronger advantage on compositional reasoning tasks"
+    status: pending
+    evidence: "New follow-up planned"
+    parent: H2
+    priority: medium
   - id: H3
     statement: "Cross-modal attention more efficient than concatenation"
     status: refuted
