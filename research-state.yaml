@@ -132,8 +132,8 @@ hypotheses:
     priority: high
   - id: H1.7
     statement: "Meta-learning (dynamics conditioning) enables fast adaptation to novel dynamics"
-    status: pending
-    evidence: "Code ready, needs GPU"
+    status: refuted
+    evidence: "-7.9% - unified still worse than baseline on novel dynamics"
     parent: H1
     priority: high
 

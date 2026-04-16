@@ -283,7 +283,7 @@ T-stat=2.04, p≈0.15 — Graph is marginally better but NOT statistically signi
 
 **Average: -56.7%** — CRITICAL: Unified architecture transfers WORSE to different dynamics.
 
-### Updated Research Status (April 15 Evening 2026)
+### Updated Research Status (April 15 Night 2026)
 
 | # | Hypothesis | Status | Notes |
 |---|------------|--------|-------|
@@ -292,6 +292,9 @@ T-stat=2.04, p≈0.15 — Graph is marginally better but NOT statistically signi
 | H1.2 | Generalization | ✅ SUPPORTED | +23.1% |
 | H1.3 | Few-shot | ✅ SUPPORTED | +4.6% |
 | H1.4 | Transfer across dynamics | ❌ REFUTED | -56.7% |
+| H1.5 | Modular dynamics | ❌ REFUTED | -151.6% |
+| H1.6 | Few-shot adaptation | ⚠️ inconclusive | Both ~95% |
+| H1.7 | Meta-learning | ❌ REFUTED | -7.9% |
 | H2 | Explicit graph | ⚠️ INCONCLUSIVE | 1.7% noise |
 | H2.1 | Compositional | ✅ SUPPORTED | +1.7% |
 | H3 | Attention vs Concat | ❌ REFUTED | Concat wins |
@@ -302,7 +305,7 @@ T-stat=2.04, p≈0.15 — Graph is marginally better but NOT statistically signi
 | H7 | Temporal reasoning | ✅ SUPPORTED | +82.2% |
 | H8 | Dimension across actions | ✅ SUPPORTED | 23% avg |
 
-**Total: 11 SUPPORTED, 1 INCONCLUSIVE, 3 REFUTED, 0 PENDING**
+**Total: 11 SUPPORTED, 1 INCONCLUSIVE, 6 REFUTED, 0 PENDING**
 
 ### New Experiments (April 15 Night 2026)
 
@@ -336,9 +339,27 @@ Key finding: Unified architecture encodes dynamics-specific features that don't 
 2. Meta-learning for rapid adaptation
 3. Separate physical branch that's swappable
 
-### H1.7: Meta-Learning for Dynamics Adaptation (PENDING GPU)
+### H1.7: Meta-Learning for Dynamics Adaptation (REFUTED)
 
-- **Location**: `experiments/H1.7-meta-learning/code/train.py`
-- **Purpose**: Test meta-learning (dynamics conditioning) enables adaptation to novel dynamics
-- **Approach**: Add dynamics parameters as learnable conditioning, pre-train on multiple dynamics
-- **Status**: Code ready, needs GPU for execution
+| Dynamics | Baseline MSE | Unified MSE | Delta |
+|----------|-------------|-------------|-------|
+| fric=0.05, mass=0.5 | 0.2195 | 0.2376 | -8.3% |
+| fric=0.3, mass=1.5 | 0.2184 | 0.2358 | -8.0% |
+| fric=0.25, mass=0.8 | 0.2394 | 0.2575 | -7.6% |
+
+**Average: -7.9%** — Unified architecture still transfers WORSE. Meta-learning approach didn't solve the core issue.
+
+### CRITICAL CONCLUSION
+
+After testing H1.4-H1.7, we've confirmed:
+- **H1.4**: Unified fails to transfer across dynamics (-56.7%)
+- **H1.5**: Modular architecture makes it WORSE (-151.6%)
+- **H1.6**: Few-shot fine-tuning helps both but baseline slightly better
+- **H1.7**: Meta-learning doesn't fix the issue (-7.9%)
+
+**Root Cause**: Unified architecture tightly couples physical representations with specific dynamics, making transfer fundamentally problematic. This is an architectural limitation, not a training issue.
+
+**Future Directions**:
+1. Keep unified architecture FOR SAME DYNAMICS only
+2. Use separate dynamics encoder that's swappable
+3. Explore invariant learning to extract dynamics-agnostic features
