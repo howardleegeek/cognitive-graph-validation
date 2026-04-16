@@ -108,12 +108,17 @@
 
 ---
 
+## Updates (April 15)
+
+- Created `experiments/H1.3-few-shot/code/train.py`
+- Added H1.3 (few-shot), H5 (curriculum) to research-state.yaml
+- Updated findings.md with remaining questions
+
 ## Next Steps
 
-1. **Run H2/H4 follow-up** — Need GPU environment
-2. **H1.3**: Test unified on few-shot learning (k < 10)
-3. **H5**: Pre-train physical, then add semantic
-4. **Literature search**: Find V-JEPA 2 comparison data
+1. **Run H1.3** — Few-shot learning experiment (GPU needed)
+2. **Run H5** — Curriculum learning experiment
+3. **Execute H2/H4** follow-ups when GPU available
 
 ---
 

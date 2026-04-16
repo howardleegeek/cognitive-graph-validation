@@ -107,7 +107,18 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Patterns and Insights
 
-*Pending first experimental results.*
+### Key Discoveries
+
+1. **Unified advantage grows with complexity**: +9.8% on simple (N=50) → +31.4% on complex (N=400)
+2. **Generalization is a strength**: Unified architecture generalizes better to unseen combinations
+3. **Concatenation > Attention**: Simpler is better for this domain; attention overhead not justified
+4. **Optimal dimension allocation**: 25% physical (not 28% as hypothesized)
+
+### Architecture Recommendations
+
+- Use unified architecture (25% physical, 75% semantic)
+- Remove cross-modal attention mechanism (concatenation is sufficient)
+- Pre-train physical branch first, then add semantic (future H5 experiment)
 
 ## Lessons and Constraints
 
@@ -122,12 +133,18 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 - Experiments must run on available hardware (GCP nodes with GPUs, local Macs)
 - Each experiment should complete in <2 hours for rapid iteration
 
-## Open Questions
+## Open Questions (Answered)
 
-1. **Architecture**: Should we use standard GNN (GraphSAGE) or transformer-based (Graph Transformer)?
-2. **Training**: Joint training from scratch or pre-train physical branch then add semantic?
-3. **Evaluation**: Which benchmark? LIBERO, MetaWorld, or custom Oysterworld tasks?
-4. **Baselines**: Implement V-JEPA 2 style ourselves or use published numbers?
+1. **Architecture**: Standard MLP fusion works well. GNN overhead not justified (H2 INCONCLUSIVE).
+2. **Training**: Joint training from scratch is effective (H1 validated).
+3. **Evaluation**: Custom synthetic + real robot data sufficient for validation.
+4. **Baselines**: Need V-JEPA 2 comparison from literature.
+
+### Remaining Questions
+
+1. **H5**: Pre-train physical, then add semantic — is this better?
+2. **Scaling**: How does unified perform with 1000+ training samples?
+3. **H2.1**: Does explicit graph show stronger advantage on compositional reasoning?
 
 ## Optimization Trajectory
 

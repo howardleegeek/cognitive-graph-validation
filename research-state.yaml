@@ -64,6 +64,12 @@ hypotheses:
     evidence: "+23.1% avg improvement on held-out combinations"
     parent: H1
     priority: high
+  - id: H1.3
+    statement: "Unified architecture achieves few-shot learning (k < 10)"
+    status: pending
+    evidence: "Code created, awaiting GPU execution"
+    parent: H1
+    priority: medium
   - id: H2
     statement: "Explicit graph structure improves interpretability without sacrificing performance"
     status: supported
@@ -92,6 +98,12 @@ hypotheses:
     statement: "Optimal dimension allocation is 28% physical"
     status: close
     evidence: "25% optimal (0.809 vs 0.881 at 28%)"
+    parent: null
+    priority: medium
+  - id: H5
+    statement: "Curriculum learning: pre-train physical, then add semantic outperforms joint training"
+    status: pending
+    evidence: "Experiment design in progress"
     parent: null
     priority: medium
 
