@@ -176,12 +176,42 @@ T-stat=2.04, p≈0.15 — Graph is marginally better but NOT statistically signi
 
 **22% physical (112/512) is optimal** — refined from earlier 25% finding.
 
+### New Experiments (Ready)
+
+#### H6: Scaling Test
+- **Location**: `experiments/H6-scaling-1000/code/train.py`
+- **Purpose**: Test unified architecture with 1000+ training samples
+- **Expectation**: Unified advantage maintained or grows with scale
+
+#### H2.1: Compositional Reasoning
+- **Location**: `experiments/H2.1-compositional-reasoning/code/train.py`
+- **Purpose**: Test explicit graph on multi-part instructions (3 objects)
+- **Hypothesis**: Graph structure may show advantage on compositional tasks
+
 ### Remaining Questions
 
-1. **Scaling**: How does unified perform with 1000+ training samples?
-2. **H2.1**: Does explicit graph show stronger advantage on compositional reasoning?
+1. **Scaling**: How does unified perform with 1000+ training samples? ← Ready for GPU
+2. **H2.1**: Does explicit graph show stronger advantage on compositional reasoning? ← Ready for GPU
 3. **H6**: Knowledge transfer across tasks via unified representation
+
+## Research Status (April 15, 2026)
+
+| # | Hypothesis | Status | Ready |
+|---|------------|--------|-------|
+| H1 | Unified vs Baseline | ✅ SUPPORTED | Done |
+| H1.1 | Multi-step tasks | ✅ SUPPORTED | Done |
+| H1.2 | Generalization | ✅ SUPPORTED | Done |
+| H1.3 | Few-shot | ✅ SUPPORTED | Done |
+| H2 | Explicit graph | ⚠️ INCONCLUSIVE | 1.7% noise |
+| H2.1 | Compositional | 🔜 PENDING | GPU needed |
+| H3 | Attention vs Concat | ❌ REFUTED | Done |
+| H3.1 | + Long sequences | ❌ REFUTED | Done |
+| H4 | Dimension 28% | 🔸 CLOSE (22%) | Done |
+| H5 | Curriculum | ✅ SUPPORTED | Done |
+| H6 | Scaling | 🔜 PENDING | GPU needed |
+
+**Total: 8 SUPPORTED, 1 INCONCLUSIVE, 2 REFUTED, 2 PENDING**
 
 ## Optimization Trajectory
 
-*Pending first experimental results.*
+*Research in active expansion phase - new experiments ready for GPU execution.*

@@ -79,8 +79,14 @@ hypotheses:
   - id: H2.1
     statement: "Explicit graph shows stronger advantage on compositional reasoning tasks"
     status: pending
-    evidence: "New follow-up planned"
+    evidence: "Experiment ready at experiments/H2.1-compositional-reasoning/"
     parent: H2
+    priority: medium
+  - id: H6
+    statement: "Unified architecture maintains advantage with 1000+ training samples"
+    status: pending
+    evidence: "Experiment ready at experiments/H6-scaling-1000/"
+    parent: H1
     priority: medium
   - id: H3
     statement: "Cross-modal attention more efficient than concatenation"

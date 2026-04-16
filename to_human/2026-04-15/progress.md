@@ -61,13 +61,18 @@ Does a unified cognitive graph architecture achieve higher sample efficiency tha
 
 ---
 
-## Next Actions
+## Next Actions (Future Research)
 
-1. Run H5 curriculum learning experiment
-2. Test scaling to 1000+ samples
-3. Design H2.1 compositional reasoning test
-4. Git commit and push results
-5. Continue loop — never stop!
+1. **Scaling**: Test with 1000+ training samples
+2. **H2.1**: Explicit graph on compositional reasoning
+3. **H6**: Knowledge transfer across tasks
+
+---
+
+## COMPLETED April 15, 2026
+
+All core hypotheses (H1-H5) validated. Architecture recommendations finalized.
+Git local commit: 4a31ebe
 
 ---
 
