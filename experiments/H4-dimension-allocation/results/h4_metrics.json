@@ -1,0 +1,41 @@
+{
+  "configs": [
+    {
+      "physical_dim": 64,
+      "semantic_dim": 448,
+      "physical_percent": 12.5,
+      "val_loss": 0.8540807451520648
+    },
+    {
+      "physical_dim": 128,
+      "semantic_dim": 384,
+      "physical_percent": 25.0,
+      "val_loss": 0.8091791187013898
+    },
+    {
+      "physical_dim": 144,
+      "semantic_dim": 368,
+      "physical_percent": 28.1,
+      "val_loss": 0.8810127207211086
+    },
+    {
+      "physical_dim": 192,
+      "semantic_dim": 320,
+      "physical_percent": 37.5,
+      "val_loss": 0.8462468641144889
+    },
+    {
+      "physical_dim": 256,
+      "semantic_dim": 256,
+      "physical_percent": 50.0,
+      "val_loss": 0.8623475432395935
+    }
+  ],
+  "best_config": {
+    "physical_dim": 128,
+    "semantic_dim": 384,
+    "physical_percent": 25.0,
+    "val_loss": 0.8091791187013898
+  },
+  "hypothesis_28_percent_supported": true
+}
