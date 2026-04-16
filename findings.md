@@ -375,6 +375,17 @@ After testing H1.4-H1.7, we've confirmed:
 
 **Average: +5.4%** — Invariant representation learning shows modest but consistent improvement on cross-dynamics transfer!
 
+### H1.9: Multi-Task Dynamics Training (REFUTED)
+
+| Target Domain | Single MSE | Multi-Task MSE | Delta |
+|--------------|------------|----------------|-------|
+| high_friction | 0.1058 | 0.1090 | **-3.0%** |
+| low_friction | 0.0853 | 0.0888 | **-4.1%** |
+| heavy_mass | 0.1236 | 0.1266 | **-2.4%** |
+| light_mass | 0.0836 | 0.0872 | **-4.3%** |
+
+**Average: -3.5%** — Multi-task training actually makes transfer WORSE. H1.8 remains the only successful approach!
+
 ### CRITICAL FINDING
 
 After testing H1.4-H1.8:

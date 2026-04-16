@@ -144,8 +144,8 @@ hypotheses:
   priority: high
 - id: H1.9
   statement: "Multi-task training with diverse dynamics improves transfer"
-  status: pending
-  evidence: "EZ-M approach - task diversity as dynamics regularizer"
+  status: refuted
+  evidence: "-3.5% - multi-task makes transfer WORSE"
   parent: H1
   priority: high
 - id: H2.2
