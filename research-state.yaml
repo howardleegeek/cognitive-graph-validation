@@ -139,9 +139,9 @@ experiments:
   trajectory: []
 
 outer_loop:
-  cycle: 8
-  last_direction: "H1-H8 COMPLETE: 11 SUPPORTED, 1 INCONCLUSIVE, 3 REFUTED"
-  last_reflection: "Key finding: H1.4 REFUTED - unified architecture fails to transfer across dynamics"
+  cycle: 9
+  last_direction: "H1.4 TRANSFER FAILED - testing solutions: H1.5 modular, H1.6 few-shot"
+  last_reflection: "Key finding: H1.5 modular MAKES WORSE (-151.6%), H1.6 few-shot shows both can adapt (~95%)"
 
 workspace:
   findings: "findings.md"

@@ -304,9 +304,34 @@ T-stat=2.04, p≈0.15 — Graph is marginally better but NOT statistically signi
 
 **Total: 11 SUPPORTED, 1 INCONCLUSIVE, 3 REFUTED, 0 PENDING**
 
+### New Experiments (April 15 Night 2026)
+
+#### H1.5: Modular Dynamics Architecture (REFUTED)
+
+| Architecture | Transfer Improvement |
+|--------------|----------------------|
+| Unified | -68.6% |
+| Modular | -151.6% |
+
+**Modular WORSE** — Adding more parameters makes transfer worse. The additional dynamics encoder overfits to source dynamics.
+
+#### H1.6: Few-Shot Domain Adaptation
+
+| k | Unified Adaptation | Baseline Adaptation |
+|---|---------------------|---------------------|
+| 5 | +94.7% | +96.9% |
+| 10 | +92.2% | +97.1% |
+| 12 | +82.0% | +91.7% |
+
+**Both CAN adapt via few-shot fine-tuning**, but Baseline adapts slightly better than Unified on dynamics transfer. This confirms the core issue.
+
 ### Critical Insight
 
-H1.4 reveals a major weakness: unified architecture fails to transfer across different physical dynamics. This is a key limitation to address in future work - possibly requiring:
-1. Domain adaptation / meta-learning components
-2. Explicit physical dynamics modeling
-3. Modular architecture with swappable physical branches
+H1.4 reveals a major weakness: unified architecture fails to transfer across different physical dynamics. Tested solutions:
+- H1.5: Modular architecture — MAKES WORSE (-151.6%)
+- H1.6: Few-shot fine-tuning — Both adapt (~95%), but Baseline slightly better
+
+Key finding: Unified architecture encodes dynamics-specific features that don't transfer. Future work should explore:
+1. Dynamics-agnostic representations (invariant learning)
+2. Meta-learning for rapid adaptation
+3. Separate physical branch that's swappable
