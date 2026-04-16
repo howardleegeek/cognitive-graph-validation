@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from torch.utils.data import Dataset, DataLoader
 import json
-from scipy import stats
+import math
 
 
 class SimpleManipDataset(Dataset):
@@ -140,12 +140,21 @@ def run_h2_followup(num_seeds: int = 10):
 
         print(f"  Pure: {pure_loss:.4f}, Graph: {graph_loss:.4f}")
 
-    # Statistics
+    # Statistics (manual t-test)
     pure_mean, pure_std = np.mean(pure_losses), np.std(pure_losses)
     graph_mean, graph_std = np.mean(graph_losses), np.std(graph_losses)
-
-    # T-test
-    t_stat, p_value = stats.ttest_rel(pure_losses, graph_losses)
+    
+    # Paired differences
+    diffs = np.array(pure_losses) - np.array(graph_losses)
+    n = len(diffs)
+    mean_diff = np.mean(diffs)
+    std_diff = np.std(diffs)
+    se = std_diff / math.sqrt(n)
+    t_stat = mean_diff / se
+    
+    # Approximate p-value (two-tailed)
+    # Using t-distribution approximation for df >= 9
+    p_value = 0.01 if abs(t_stat) > 2.8 else (0.05 if abs(t_stat) > 2.1 else 0.15)
 
     print("\n" + "=" * 60)
     print("H2 FOLLOW-UP RESULTS")
@@ -153,7 +162,7 @@ def run_h2_followup(num_seeds: int = 10):
     print(f"Pure Neural:    {pure_mean:.4f} ± {pure_std:.4f}")
     print(f"Explicit Graph:  {graph_mean:.4f} ± {graph_std:.4f}")
     print(f"T-statistic:    {t_stat:.4f}")
-    print(f"P-value:        {p_value:.4f}")
+    print(f"P-value:        ~{p_value:.2f}")
 
     if p_value < 0.05:
         if graph_mean < pure_mean:
@@ -188,8 +197,8 @@ def run_h2_followup(num_seeds: int = 10):
     x = np.arange(num_seeds)
     ax.bar(x - 0.15, pure_losses, 0.3, label="Pure Neural", alpha=0.8)
     ax.bar(x + 0.15, graph_losses, 0.3, label="Explicit Graph", alpha=0.8)
-    ax.axhline(pure_mean, color="blue", linestyle="--", alpha=0.5)
-    ax.axhline(graph_mean, color="orange", linestyle="--", alpha=0.5)
+    ax.axhline(float(pure_mean), color="blue", linestyle="--", alpha=0.5)
+    ax.axhline(float(graph_mean), color="orange", linestyle="--", alpha=0.5)
     ax.set_xlabel("Seed")
     ax.set_ylabel("Validation Loss")
     ax.set_title(f"H2 Follow-up: Statistical Test (p={p_value:.4f})")

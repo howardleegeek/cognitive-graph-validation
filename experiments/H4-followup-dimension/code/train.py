@@ -127,7 +127,7 @@ def run_h4_followup():
     print("=" * 60)
     print("Physical% | Val Loss")
     print("-" * 25)
-    for pct, loss in sorted(results.items(), key=lambda x: int(x[0])):
+    for pct, loss in sorted(results.items(), key=lambda x: int(x[0].strip('%'))):
         marker = " <- BEST" if pct == best_pct else ""
         print(f"{pct:>8} | {loss:.4f}{marker}")
 

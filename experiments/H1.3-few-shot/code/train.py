@@ -194,7 +194,7 @@ def run_fewshot_experiment(k_shots=[2, 5, 10, 20], n_eval=100):
         criterion = nn.MSELoss()
         
         # Test on held-out task
-        eval_data = AdaptationDataset(n_demos=n_eval, task_id=99)
+        eval_data = AdaptationDataset(n_demos=n_eval, task_id=25)
         eval_loader = DataLoader(eval_data, batch_size=16)
         
         # Phase 1: Pre-train on diverse tasks (simulates having seen many tasks)
@@ -210,7 +210,7 @@ def run_fewshot_experiment(k_shots=[2, 5, 10, 20], n_eval=100):
             train_epoch(baseline, pretrain_loader, opt_base, criterion)
         
         # Now adapt with k examples
-        adapt_data = AdaptationDataset(n_demos=k, task_id=99, seed=99)
+        adapt_data = AdaptationDataset(n_demos=k, task_id=25, seed=99)
         adapt_loader = DataLoader(adapt_data, batch_size=k, shuffle=True)
         
         # Fast adaptation (few gradient steps)

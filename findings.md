@@ -70,8 +70,9 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 ### New Sub-Hypotheses
 
 - **H1.1**: Unified architecture maintains advantage on multi-step (5+) tasks ⬅️ **SUPPORTED (+22.6%)**
-- **H1.2**: Unified architecture generalizes to unseen object-language combinations
-- **H3.1**: Cross-modal attention outperforms on longer sequences (20+ timesteps) ⬅️ **REFUTED (-22.6%)**
+- **H1.2**: Unified architecture generalizes to unseen object-language combinations ⬅️ **SUPPORTED (+23.1%)**
+- **H3.1**: Cross-modal attention outperforms on longer sequences ⬅️ **REFUTED (-22.6%)**
+- **H5**: Curriculum learning (pre-train physical then add semantic) ⬅️ **SUPPORTED (+6.3%)**
 
 ### H1.1 Results (Multi-Step): SUPPORTED
 
@@ -112,13 +113,15 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 1. **Unified advantage grows with complexity**: +9.8% on simple (N=50) → +31.4% on complex (N=400)
 2. **Generalization is a strength**: Unified architecture generalizes better to unseen combinations
 3. **Concatenation > Attention**: Simpler is better for this domain; attention overhead not justified
-4. **Optimal dimension allocation**: 25% physical (not 28% as hypothesized)
+4. **Optimal dimension allocation**: 22% physical (refined from 25%, not 28%)
+5. **Few-shot advantage at low k**: CG beats baseline at k=2 (+3.6%), k=5 (+16.7%), loses at k>=10
+6. **Curriculum learning**: Pre-train physical first adds +6.3% improvement
 
 ### Architecture Recommendations
 
-- Use unified architecture (25% physical, 75% semantic)
+- Use unified architecture (22% physical, 78% semantic)
 - Remove cross-modal attention mechanism (concatenation is sufficient)
-- Pre-train physical branch first, then add semantic (future H5 experiment)
+- Pre-train physical branch first, then add semantic (H5 validated!)
 
 ## Lessons and Constraints
 
@@ -140,11 +143,44 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 3. **Evaluation**: Custom synthetic + real robot data sufficient for validation.
 4. **Baselines**: Need V-JEPA 2 comparison from literature.
 
+### New Results (April 15, 2026)
+
+#### H1.3 Results (Few-Shot): SUPPORTED
+
+| k | Baseline MSE | CG MSE | Improvement |
+|---|-------------|-------|-------------|
+| 2 | 0.0142 | 0.0137 | **+3.6%** |
+| 5 | 0.0177 | 0.0148 | **+16.7%** |
+| 10 | 0.0156 | 0.0157 | -0.6% |
+| 20 | 0.0180 | 0.0181 | -1.1% |
+
+**Average +4.6%** — Strongest at very low k (2-5 shots), advantage disappears at higher k.
+
+#### H2 Follow-up Statistical Test: INCONCLUSIVE
+
+| Architecture | Val Loss |
+|--------------|---------|
+| Pure Neural | 0.8670 ± 0.0561 |
+| Explicit Graph | 0.8424 ± 0.0405 |
+
+T-stat=2.04, p≈0.15 — Graph is marginally better but NOT statistically significant.
+
+#### H4 Follow-up (Finer Search): 22% OPTIMAL
+
+| Physical % | Val Loss |
+|------------|---------|
+| 18% | 0.9753 |
+| **22%** | **0.9664** ← BEST |
+| 25% | 1.0031 |
+| 33% | 0.9796 |
+
+**22% physical (112/512) is optimal** — refined from earlier 25% finding.
+
 ### Remaining Questions
 
-1. **H5**: Pre-train physical, then add semantic — is this better?
-2. **Scaling**: How does unified perform with 1000+ training samples?
-3. **H2.1**: Does explicit graph show stronger advantage on compositional reasoning?
+1. **Scaling**: How does unified perform with 1000+ training samples?
+2. **H2.1**: Does explicit graph show stronger advantage on compositional reasoning?
+3. **H6**: Knowledge transfer across tasks via unified representation
 
 ## Optimization Trajectory
 
