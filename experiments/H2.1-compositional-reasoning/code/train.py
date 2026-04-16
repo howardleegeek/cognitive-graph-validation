@@ -264,9 +264,9 @@ def run_compositional_test(train_sizes: List[int] = [100, 200, 500, 1000],
             
             full_dataset = CompositionalDataset(n_samples=train_size + val_size)
             
-            train_data = torch.utils.data.Subset(full_dataset, range(train_size))
+            train_data = torch.utils.data.Subset(full_dataset, list(range(train_size)))
             val_data = torch.utils.data.Subset(
-                full_dataset, range(train_size), train_size + val_size
+                full_dataset, list(range(train_size, train_size + val_size))
             )
             
             train_loader = DataLoader(train_data, batch_size=32, shuffle=True)

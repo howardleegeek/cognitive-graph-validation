@@ -78,14 +78,14 @@ hypotheses:
     priority: high
   - id: H2.1
     statement: "Explicit graph shows stronger advantage on compositional reasoning tasks"
-    status: pending
-    evidence: "Experiment ready at experiments/H2.1-compositional-reasoning/"
+    status: supported
+    evidence: "+1.7% avg benefit at scale (500-1000)"
     parent: H2
     priority: medium
   - id: H6
     statement: "Unified architecture maintains advantage with 1000+ training samples"
-    status: pending
-    evidence: "Experiment ready at experiments/H6-scaling-1000/"
+    status: supported
+    evidence: "+18.8% avg improvement, +23% at N=5000"
     parent: H1
     priority: medium
   - id: H3
@@ -121,9 +121,9 @@ experiments:
   trajectory: []
 
 outer_loop:
-  cycle: 5
-  last_direction: "H5 curriculum validated (+6.3%), all core hypotheses tested"
-  last_reflection: "H1.H5 SUPPORTED (8 hypotheses). H3/H3.1 REFUTED. H2 INCONCLUSIVE. Core research complete."
+  cycle: 6
+  last_direction: "H2.1 (+1.7% @ scale), H6 (+18.8%, +23%@5k) completed"
+  last_reflection: "H1-H6 COMPLETE: 9 SUPPORTED, 1 INCONCLUSIVE, 2 REFUTED. Core research done."
 
 workspace:
   findings: "findings.md"

@@ -159,9 +159,9 @@ def run_scaling_test(train_sizes: List[int] = [500, 1000, 2000, 5000],
         print(f"Training with {train_size} samples")
         print(f"{'=' * 60}")
 
-        train_data = torch.utils.data.Subset(full_dataset, range(train_size))
+        train_data = torch.utils.data.Subset(full_dataset, list(range(train_size)))
         val_data = torch.utils.data.Subset(
-            full_dataset, range(max(train_sizes), max(train_sizes) + val_size)
+            full_dataset, list(range(max(train_sizes), max(train_sizes) + val_size))
         )
 
         train_loader = DataLoader(train_data, batch_size=64, shuffle=True)
