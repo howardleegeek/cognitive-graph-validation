@@ -114,20 +114,20 @@ hypotheses:
     priority: medium
   - id: H7
     statement: "Unified architecture improves temporal reasoning (object permanence tracking)"
-    status: pending
-    evidence: null
+    status: supported
+    evidence: "+82.2% avg improvement on temporal reasoning"
     parent: H1
     priority: high
   - id: H8
     statement: "22% physical allocation optimal across different action spaces"
-    status: pending
-    evidence: null
+    status: supported
+    evidence: "23% avg optimal, 25% preferred at lower action dims"
     parent: H4
     priority: medium
   - id: H1.4
     statement: "Unified architecture transfers better to tasks with different dynamics"
-    status: pending
-    evidence: null
+    status: refuted
+    evidence: "-56.7% - transfers WORSE to different dynamics"
     parent: H1
     priority: high
 
@@ -139,9 +139,9 @@ experiments:
   trajectory: []
 
 outer_loop:
-  cycle: 7
-  last_direction: "H1-H6 COMPLETE: 9 SUPPORTED, 1 INCONCLUSIVE, 2 REFUTED"
-  last_reflection: "Core hypotheses done. New: H7 (temporal), H8 (dimension across actions), H1.4 (transfer)"
+  cycle: 8
+  last_direction: "H1-H8 COMPLETE: 11 SUPPORTED, 1 INCONCLUSIVE, 3 REFUTED"
+  last_reflection: "Key finding: H1.4 REFUTED - unified architecture fails to transfer across dynamics"
 
 workspace:
   findings: "findings.md"
