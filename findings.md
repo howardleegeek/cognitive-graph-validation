@@ -84,6 +84,16 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 **Average +22.6%** — Unified advantage grows with task complexity!
 
+### H1.2 Results (Generalization): SUPPORTED
+
+| N | Baseline MSE | CG MSE | Improvement |
+|---|-------------|-------|-------------|
+| 50 | 0.0173 | 0.0158 | **+8.4%** |
+| 100 | 0.0204 | 0.0145 | **+28.9%** |
+| 200 | 0.0200 | 0.0136 | **+31.9%** |
+
+**Average +23.1%** — Unified architecture generalizes better to unseen combinations!
+
 ### H3.1 Results (Long Sequences): REFUTED
 
 | N | Concat MSE | Attn MSE | Delta |

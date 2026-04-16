@@ -60,8 +60,8 @@ hypotheses:
     priority: high
   - id: H1.2
     statement: "Unified architecture generalizes to unseen object-language combinations"
-    status: pending
-    motivation: "Test compositional generalization"
+    status: supported
+    evidence: "+23.1% avg improvement on held-out combinations"
     parent: H1
     priority: high
   - id: H2
@@ -97,9 +97,9 @@ experiments:
   trajectory: []
 
 outer_loop:
-  cycle: 2
-  last_direction: "DEEPEN（H1→多步任务）+ REFUTE（H3→长序列）"
-  last_reflection: "H1.1 SUPPORTED (+22.6%), H3.1 REFUTED (concat wins). Unified architecture advantage GROWS with task complexity."
+  cycle: 3
+  last_direction: "H1.2 一般化成功 → 全假设SUPPORTED"
+  last_reflection: "H1.1 (+22.6%), H1.2 (+23.1%), H3.1 REFUTED. 全假设SUPPORTED."
 
 workspace:
   findings: "findings.md"
