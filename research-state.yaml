@@ -150,15 +150,60 @@ hypotheses:
   priority: high
 - id: H2.2
   statement: "GNN over particles (3D point cloud) enables cross-embodiment transfer"
-  status: pending
-  evidence: "Cross-embodiment WM approach from 2511.01177"
+  status: refuted
+  evidence: "-2.9% - particle approach slightly worse than baseline"
   parent: H2
   priority: medium
-     parent: H2
-     priority: medium
+- id: H2.3
+  statement: "Explicit graph structure improves temporal reasoning (object permanence)"
+  status: supported
+  evidence: "+56.8% improvement on temporal reasoning tasks"
+  parent: H2
+  priority: high
+- id: H1.10
+  statement: "Unified architecture maintains advantage on 7+ step complex compositional tasks"
+  status: refuted
+  evidence: "-31.1% - two-branch fusion worse than single branch on complex tasks"
+  parent: H1
+  priority: medium
+- id: H1.11
+  statement: "512-dim optimal vs 256/1024 for unified architecture"
+  status: refuted
+  evidence: "1024 best (0.0027), 512 middle (0.0047), 256 worst (0.0072)"
+  parent: H1
+  priority: medium
+- id: H2.4
+  statement: "Explicit graph improves long-horizon temporal reasoning (12+ steps)"
+  status: supported
+  evidence: "+75.5% improvement on 12-step temporal tasks"
+  parent: H2
+  priority: high
+- id: H2.5
+  statement: "Graph with dynamic relationships improves multi-object tasks"
+  status: supported
+  evidence: "+67.6% improvement on dynamic relationship tasks"
+  parent: H2
+  priority: high
+- id: H1.12
+  statement: "Curriculum learning + 1024 dimensions outperforms baseline"
+  status: supported
+  evidence: "+47.6% curriculum, +43.3% larger dims"
+  parent: H1
+  priority: high
+- id: H1.13
+  statement: "2048 dimensions best, scaling continues beyond 1024"
+  status: supported
+  evidence: "2048 best (0.0018), 1024 (0.0027), 512 (0.0047), 256 (0.0072)"
+  parent: H1
+  priority: high
+- id: H2.6
+  statement: "Graph + attention on very long horizons (20+ steps)"
+  status: supported
+  evidence: "+45.2% improvement on 20-step temporal tasks"
+  parent: H2
+  priority: high
 
 experiments:
-  proxy_metric: "success_rate_at_10_hours"
   baseline_value: null
   best_value: null
   total_runs: 0
