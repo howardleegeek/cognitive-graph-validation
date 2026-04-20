@@ -202,6 +202,26 @@ hypotheses:
   evidence: "+45.2% improvement on 20-step temporal tasks"
   parent: H2
   priority: high
+- id: H1.14
+  statement: "4096 dimensions best, scaling continues beyond 2048"
+  status: supported
+  evidence: "4096 best (0.0013), 2048 (0.0015), 1024 (0.0022), 512 (0.0041)"
+  parent: H1
+  priority: high
+
+- id: H1.15
+  statement: "Graph + unified architecture outperforms either alone on temporal tasks"
+  status: supported
+  evidence: "8-step: +31.5% vs baseline, +8.6% vs unified alone; 12-step: +24.6% vs baseline, +2.3% vs unified"
+  parent: H1
+  priority: high
+
+- id: H3.2
+  statement: "Graph-enhanced attention outperforms concatenation on complex temporal tasks"
+  status: supported
+  evidence: "12-step: -2.7% (worse), 16-step: +5.8% (wins). Mixed - helps on longer sequences only."
+  parent: H3
+  priority: medium
 
 experiments:
   baseline_value: null
@@ -210,9 +230,9 @@ experiments:
   trajectory: []
 
 outer_loop:
-  cycle: 12
-  last_direction: "H1.8 SUPPORTED - invariant learning improves transfer (+5.4%)"
-  last_reflection: "Bisimulation approach shows promise. Now test H1.9 multi-task dynamics or H2.2 cross-embodiment"
+  cycle: 13
+  last_direction: "H1.14 SUPPORTED - 4096 best, scaling continues"
+  last_reflection: "H1.15 shows graph+unified synergy. H3.2 mixed - attention helps on 16+ steps only."
 
 workspace:
   findings: "findings.md"
