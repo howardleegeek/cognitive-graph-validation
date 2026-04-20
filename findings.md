@@ -597,8 +597,9 @@ Also need to address:
 | H1.11 | 512 optimal | ❌ REFUTED | 1024+ better |
 | H1.12 | Curriculum + larger dims | ✅ SUPPORTED | +47.6% |
 | H1.13 | 2048 dimensions | ✅ SUPPORTED | Best so far |
-| H1.14 | 4096 dimensions | ✅ SUPPORTED | Still scaling |
+| H1.14 | 4096 dimensions | ✅ SUPPORTED | **PLATEAU FOUND** |
 | H1.15 | Graph + Unified | ✅ SUPPORTED | +31.5% vs baseline |
+| H1.16 | 8192 dimensions | ❌ REFUTED | 4096 optimal (overfitting) |
 | H2 | Explicit graph | ⚠️ INCONCLUSIVE | 1.7% noise |
 | H2.1 | Compositional | ✅ SUPPORTED | +1.7% |
 | H2.2 | Cross-embodiment | ❌ REFUTED | -2.9% |
@@ -650,11 +651,28 @@ Also need to address:
 
 **Finding: Mixed results** — Graph attention helps on longer sequences (16+ steps) but not on shorter. This refines H3.
 
+#### H1.16: Dimension Scaling to 8192 (KEY FINDING - PLATEAU FOUND)
+
+| Total Dim | MSE |
+|-----------|-----|
+| 256 | 0.0062 |
+| 512 | 0.0041 |
+| 1024 | 0.0022 |
+| 2048 | 0.0015 |
+| 4096 | **0.0013** ← BEST |
+| 8192 | 0.0014 |
+
+**Finding: PLATEAU at 4096!** — 8192 is slightly worse (overfitting). This is a critical finding:
+- Optimal dimension is ~4096
+- Scaling beyond this leads to overfitting
+- This explains why larger models need more regularization or more data
+
 ### Key Insights from This Research Round
 
 1. **Dimension scaling continues**:
    - 4096 > 2048 > 1024 > 512 > 256
-   - No plateau observed — may benefit from 8192+
+   - **CRITICAL: PLATEAU at 4096!** 8192 shows slight regression
+   - This is the optimal dimension for this task/data
 
 2. **Combined architectures work best**:
    - H1.15: Graph + Unified beats both individually

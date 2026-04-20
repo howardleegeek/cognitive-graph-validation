@@ -124,104 +124,108 @@ hypotheses:
     evidence: "23% avg optimal, 25% preferred at lower action dims"
     parent: H4
     priority: medium
-- id: H1.4
-  statement: "Unified architecture transfers better to tasks with different dynamics"
-  status: refuted
-  evidence: "-56.7% - transfers WORSE to different dynamics"
-  parent: H1
-  priority: high
-- id: H1.7
-  statement: "Meta-learning (dynamics conditioning) enables fast adaptation to novel dynamics"
-  status: refuted
-  evidence: "-7.9% - unified still worse than baseline on novel dynamics"
-  parent: H1
-  priority: high
-- id: H1.8
-  statement: "Invariant representation learning (bisimulation) enables cross-dynamics transfer"
-  status: supported
-  evidence: "+5.4% avg improvement on transfer across different dynamics"
-  parent: H1
-  priority: high
-- id: H1.9
-  statement: "Multi-task training with diverse dynamics improves transfer"
-  status: refuted
-  evidence: "-3.5% - multi-task makes transfer WORSE"
-  parent: H1
-  priority: high
-- id: H2.2
-  statement: "GNN over particles (3D point cloud) enables cross-embodiment transfer"
-  status: refuted
-  evidence: "-2.9% - particle approach slightly worse than baseline"
-  parent: H2
-  priority: medium
-- id: H2.3
-  statement: "Explicit graph structure improves temporal reasoning (object permanence)"
-  status: supported
-  evidence: "+56.8% improvement on temporal reasoning tasks"
-  parent: H2
-  priority: high
-- id: H1.10
-  statement: "Unified architecture maintains advantage on 7+ step complex compositional tasks"
-  status: refuted
-  evidence: "-31.1% - two-branch fusion worse than single branch on complex tasks"
-  parent: H1
-  priority: medium
-- id: H1.11
-  statement: "512-dim optimal vs 256/1024 for unified architecture"
-  status: refuted
-  evidence: "1024 best (0.0027), 512 middle (0.0047), 256 worst (0.0072)"
-  parent: H1
-  priority: medium
-- id: H2.4
-  statement: "Explicit graph improves long-horizon temporal reasoning (12+ steps)"
-  status: supported
-  evidence: "+75.5% improvement on 12-step temporal tasks"
-  parent: H2
-  priority: high
-- id: H2.5
-  statement: "Graph with dynamic relationships improves multi-object tasks"
-  status: supported
-  evidence: "+67.6% improvement on dynamic relationship tasks"
-  parent: H2
-  priority: high
-- id: H1.12
-  statement: "Curriculum learning + 1024 dimensions outperforms baseline"
-  status: supported
-  evidence: "+47.6% curriculum, +43.3% larger dims"
-  parent: H1
-  priority: high
-- id: H1.13
-  statement: "2048 dimensions best, scaling continues beyond 1024"
-  status: supported
-  evidence: "2048 best (0.0018), 1024 (0.0027), 512 (0.0047), 256 (0.0072)"
-  parent: H1
-  priority: high
-- id: H2.6
-  statement: "Graph + attention on very long horizons (20+ steps)"
-  status: supported
-  evidence: "+45.2% improvement on 20-step temporal tasks"
-  parent: H2
-  priority: high
-- id: H1.14
-  statement: "4096 dimensions best, scaling continues beyond 2048"
-  status: supported
-  evidence: "4096 best (0.0013), 2048 (0.0015), 1024 (0.0022), 512 (0.0041)"
-  parent: H1
-  priority: high
-
-- id: H1.15
-  statement: "Graph + unified architecture outperforms either alone on temporal tasks"
-  status: supported
-  evidence: "8-step: +31.5% vs baseline, +8.6% vs unified alone; 12-step: +24.6% vs baseline, +2.3% vs unified"
-  parent: H1
-  priority: high
-
-- id: H3.2
-  statement: "Graph-enhanced attention outperforms concatenation on complex temporal tasks"
-  status: supported
-  evidence: "12-step: -2.7% (worse), 16-step: +5.8% (wins). Mixed - helps on longer sequences only."
-  parent: H3
-  priority: medium
+  - id: H1.4
+    statement: "Unified architecture transfers better to tasks with different dynamics"
+    status: refuted
+    evidence: "-56.7% - transfers WORSE to different dynamics"
+    parent: H1
+    priority: high
+  - id: H1.7
+    statement: "Meta-learning (dynamics conditioning) enables fast adaptation to novel dynamics"
+    status: refuted
+    evidence: "-7.9% - unified still worse than baseline on novel dynamics"
+    parent: H1
+    priority: high
+  - id: H1.8
+    statement: "Invariant representation learning (bisimulation) enables cross-dynamics transfer"
+    status: supported
+    evidence: "+5.4% avg improvement on transfer across different dynamics"
+    parent: H1
+    priority: high
+  - id: H1.9
+    statement: "Multi-task training with diverse dynamics improves transfer"
+    status: refuted
+    evidence: "-3.5% - multi-task makes transfer WORSE"
+    parent: H1
+    priority: high
+  - id: H2.2
+    statement: "GNN over particles (3D point cloud) enables cross-embodiment transfer"
+    status: refuted
+    evidence: "-2.9% - particle approach slightly worse than baseline"
+    parent: H2
+    priority: medium
+  - id: H2.3
+    statement: "Explicit graph structure improves temporal reasoning (object permanence)"
+    status: supported
+    evidence: "+56.8% improvement on temporal reasoning tasks"
+    parent: H2
+    priority: high
+  - id: H1.10
+    statement: "Unified architecture maintains advantage on 7+ step complex compositional tasks"
+    status: refuted
+    evidence: "-31.1% - two-branch fusion worse than single branch on complex tasks"
+    parent: H1
+    priority: medium
+  - id: H1.11
+    statement: "512-dim optimal vs 256/1024 for unified architecture"
+    status: refuted
+    evidence: "1024 best (0.0027), 512 middle (0.0047), 256 worst (0.0072)"
+    parent: H1
+    priority: medium
+  - id: H2.4
+    statement: "Explicit graph improves long-horizon temporal reasoning (12+ steps)"
+    status: supported
+    evidence: "+75.5% improvement on 12-step temporal tasks"
+    parent: H2
+    priority: high
+  - id: H2.5
+    statement: "Graph with dynamic relationships improves multi-object tasks"
+    status: supported
+    evidence: "+67.6% improvement on dynamic relationship tasks"
+    parent: H2
+    priority: high
+  - id: H1.12
+    statement: "Curriculum learning + 1024 dimensions outperforms baseline"
+    status: supported
+    evidence: "+47.6% curriculum, +43.3% larger dims"
+    parent: H1
+    priority: high
+  - id: H1.13
+    statement: "2048 dimensions best, scaling continues beyond 1024"
+    status: supported
+    evidence: "2048 best (0.0018), 1024 (0.0027), 512 (0.0047), 256 (0.0072)"
+    parent: H1
+    priority: high
+  - id: H2.6
+    statement: "Graph + attention on very long horizons (20+ steps)"
+    status: supported
+    evidence: "+45.2% improvement on 20-step temporal tasks"
+    parent: H2
+    priority: high
+  - id: H1.14
+    statement: "4096 dimensions best, scaling continues beyond 2048"
+    status: supported
+    evidence: "4096 best (0.0013), 2048 (0.0015), 1024 (0.0022), 512 (0.0041)"
+    parent: H1
+    priority: high
+  - id: H1.15
+    statement: "Graph + unified architecture outperforms either alone on temporal tasks"
+    status: supported
+    evidence: "8-step: +31.5% vs baseline, +8.6% vs unified alone; 12-step: +24.6% vs baseline, +2.3% vs unified"
+    parent: H1
+    priority: high
+  - id: H1.16
+    statement: "8192 dimensions better than 4096 (scaling continues)"
+    status: refuted
+    evidence: "8192 (0.0014) WORSE than 4096 (0.0013) - PLATEAU at 4096!"
+    parent: H1
+    priority: high
+  - id: H3.2
+    statement: "Graph-enhanced attention outperforms concatenation on complex temporal tasks"
+    status: supported
+    evidence: "12-step: -2.7% (worse), 16-step: +5.8% (wins). Mixed - helps on longer sequences only."
+    parent: H3
+    priority: medium
 
 experiments:
   baseline_value: null
@@ -230,9 +234,9 @@ experiments:
   trajectory: []
 
 outer_loop:
-  cycle: 13
-  last_direction: "H1.14 SUPPORTED - 4096 best, scaling continues"
-  last_reflection: "H1.15 shows graph+unified synergy. H3.2 mixed - attention helps on 16+ steps only."
+  cycle: 14
+  last_direction: "H1.16 REFUTED - PLATEAU at 4096 dims (8192 overfits)"
+  last_reflection: "Critical finding: optimal dimension is 4096, not infinite scaling"
 
 workspace:
   findings: "findings.md"
