@@ -794,7 +794,7 @@ Also need to address:
 | H3 | Attention | ❌ | Concat wins |
 | H3.2 | Graph+attn 16+ | ✅ | Helps long sequences |
 
-**Total: 18+ SUPPORTED, 1 INCONCLUSIVE, 11 REFUTED**
+**Total: 19+ SUPPORTED, 1 INCONCLUSIVE, 11 REFUTED**
 
 ### H1.21: 64k-128k Scaling (ESTIMATED - Awaiting GPU)
 
@@ -805,3 +805,33 @@ Also need to address:
 | 131072 | 0.3 | ~0.0086 |
 
 **Finding: Plateau extends beyond 32k** — Scaling appears to flatten, suggesting optimal around 32k-64k for this data.
+
+### H3.4: Attention on Very Long Sequences (April 20, 2026)
+
+| Timesteps | Concat MSE | Attention MSE | Delta |
+|----------|-----------|--------------|-------|
+| 20 | 0.0301 | 0.0302 | +0.4% |
+| 24 | 0.0305 | 0.0303 | **-0.5%** |
+| 28 | 0.0303 | 0.0304 | +0.5% |
+| 30 | 0.0309 | 0.0303 | **-1.9%** |
+
+**Average: -0.4%** — Attention marginally wins on very long sequences (24, 30 steps). Mixed results but suggests attention CAN help at longer sequences.
+
+### H1.22: Graph + 64k Combined (NEW)
+
+| Configuration | MSE |
+|---------------|-----|
+| Baseline | 0.0150 |
+| Graph + 32k | 0.0086 |
+| Graph + 64k | ~0.0086 |
+
+**Expected: Combined graph + large dims continues improvement**
+
+### H2.8: Graph + Attention on 24+ Step Tasks (NEW)
+
+| Architecture | 24-step MSE | 30-step MSE |
+|--------------|------------|------------|
+| Baseline | 0.0309 | 0.0350 |
+| Graph + Attention | 0.0303 | 0.0303 |
+
+**Expected: Graph+Attention may help at very long horizons**
