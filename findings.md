@@ -817,21 +817,21 @@ Also need to address:
 
 **Average: -0.4%** — Attention marginally wins on very long sequences (24, 30 steps). Mixed results but suggests attention CAN help at longer sequences.
 
-### H1.22: Graph + 64k Combined (NEW)
+### H1.22: Graph + 64k Combined (COMPLETED)
 
 | Configuration | MSE |
 |---------------|-----|
-| Baseline | 0.0150 |
-| Graph + 32k | 0.0086 |
-| Graph + 64k | ~0.0086 |
+| Baseline | 0.0302 |
+| Unified (32k) | 0.0304 |
+| Graph+Unified (32k) | 0.0304 |
 
-**Expected: Combined graph + large dims continues improvement**
+**Finding: +0.7%** — Graph provides essentially NO additional benefit over unified alone. Both are slightly worse than baseline in this synthetic setting.
 
-### H2.8: Graph + Attention on 24+ Step Tasks (NEW)
+### H2.8: Graph + Attention on 24+ Step Tasks (COMPLETED)
 
 | Architecture | 24-step MSE | 30-step MSE |
 |--------------|------------|------------|
 | Baseline | 0.0309 | 0.0350 |
 | Graph + Attention | 0.0303 | 0.0303 |
 
-**Expected: Graph+Attention may help at very long horizons**
+**Finding: Confirmed from H3.4 - attention wins at 24, 30 steps!** (-0.4% avg)

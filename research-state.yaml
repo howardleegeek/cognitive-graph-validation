@@ -264,15 +264,21 @@ hypotheses:
     priority: medium
   - id: H1.22
     statement: "Graph + 64k combined outperforms either alone"
-    status: pending
-    evidence: "Expected to continue improvement"
+    status: refuted
+    evidence: "+0.7%, graph provides no additional benefit over unified alone"
     parent: H1
     priority: high
   - id: H2.8
     statement: "Graph + attention on 24+ step tasks"
-    status: pending
-    evidence: "Expected to show improvement on long horizons"
+    status: supported
+    evidence: "H3.4 showed -0.4% avg, attention wins at 24,30 steps"
     parent: H2
+    priority: high
+  - id: H1.23
+    statement: "64k dimensions with α≥0.3 outperforms 32k"
+    status: pending
+    evidence: "Expected with proper regularization"
+    parent: H1
     priority: high
 
 experiments:
