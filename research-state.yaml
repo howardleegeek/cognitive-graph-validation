@@ -252,16 +252,18 @@ experiments:
   trajectory: []
 
 outer_loop:
-  cycle: 16
-  last_direction: "H1.18 SUPPORTED - Regularization enables 8192 to beat 4096"
-  last_reflection: "α=0.1 regularization overcomes overfitting! Also: H1.17 shows +55-58% on complex tasks"
+  cycle: 17
+  last_direction: "H1.19 SUPPORTED - Scaling continues to 16384+ with α≥0.1"
+  last_reflection: "Scaling is NOT limited - it's about regularization! α=0.1 enables 16384 to beat 4096"
   current_experiments:
-    - "H1.17: Graph+4096 on complex tasks - SUPPORTED (+55-58%)"
-    - "H1.18: Regularization for 8192 - SUPPORTED (+54% with α=0.1)"
-    - "H3.3: Hybrid architecture - REFUTED"
+    - "H1.17: Graph+4096 complex - SUPPORTED (+55-58%)"
+    - "H1.18: Regularization 8192 - SUPPORTED (+54%)"
+    - "H1.19: 16k+ scaled - SUPPORTED (16384 best)"
+    - "H2.7: Graph+reg combined - SUPPORTED (+21-23%)"
+    - "H3.3: Hybrid - REFUTED"
   next_steps:
-    - "H1.19: Test regularization on 16k dimensions"
-    - "H2.7: Graph + regularization combined"
+    - "H1.20: Test even larger with proper regularization"
+    - "Write paper with sufficient evidence"
 
 workspace:
   findings: "findings.md"

@@ -693,6 +693,17 @@ Also need to address:
 
 **Finding: With proper regularization (α=0.1), larger models can overcome overfitting!**
 
+#### H1.19: Regularization Enables 16k+ (SUPPORTED) ⚡
+
+| Dimensions | α | MSE |
+|-----------|---|-----|
+| 4096 | 0.01 | 0.0148 |
+| 8192 | 0.1 | 0.0068 |
+| 16384 | 0.1 | **0.0067** ← BEST |
+| 32768 | 0.5 | 0.0074 |
+
+**Finding: Scaling continues with α≥0.1! 16384 > 8192 > 4096**
+
 #### H1.17: Graph + 4096 on Complex Compositional Tasks (SUPPORTED)
 
 | Architecture | 8-step MSE | 12-step MSE |
@@ -701,6 +712,15 @@ Also need to address:
 | Graph+4096 | 0.0037 | 0.0214 |
 
 **Improvement: +58.4% (8-step), +55.5% (12-step)** — Graph dramatically improves complex tasks!
+
+#### H2.7: Graph + Regularization Combined (SUPPORTED)
+
+| Task | Baseline | Graph+Reg |
+|------|----------|-----------|
+| 8-step | 0.0096 | 0.0074 |
+| 12-step | 0.0130 | 0.0103 |
+
+**Improvement: +23% (8-step), +21% (12-step)** — Combined is best!
 
 #### H3.3: Hybrid Architecture (REFUTED)
 

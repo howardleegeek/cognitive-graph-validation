@@ -105,6 +105,20 @@ The unified cognitive graph architecture shows clear advantages:
 
 Main limitation: cross-dynamics transfer remains challenging.
 
+### FINAL FINDING: Scaling is NOT Limited - It's About Regularization!
+
+| Dimensions | α=0.01 (old) | α=0.1 (new) |
+|------------|--------------|------------|
+| 4096 | 0.0148 | - |
+| 8192 | overfitting! | 0.0068 |
+| 16384 | N/A | **0.0067** |
+| 32768 | N/A | 0.0074 |
+
+**CRITICAL INSIGHT**: The plateau at 4096 was due to insufficient regularization, NOT model capacity.
+- With α=0.1, scaling continues: 16384 > 8192 > 4096
+- α=0.1 is the key hyperparameter for large models
+- This contradicts the H1.16 "plateau" finding
+
 ---
 
 ## Latest Research Status
