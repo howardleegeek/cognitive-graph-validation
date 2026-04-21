@@ -1,14 +1,48 @@
-# Progress Report - April 20, 2026
+# Progress Report - April 20, 2026 (Evening)
 
 ## Research Status
 
-**Total Hypotheses Tested: 35**
-- ✅ SUPPORTED: 21
+**Total Hypotheses Tested: 37**
+- ✅ SUPPORTED: 23
 - ⚠️ INCONCLUSIVE: 1
 - ❌ REFUTED: 13
 - ⏳ PENDING: 0
 
-**Research Cycle: 18**
+**Research Cycle: 20**
+
+---
+
+## Today's New Results
+
+### H3.4: Attention on Very Long Sequences (24-30 steps)
+- 20 steps: +0.4% CONCAT wins
+- 24 steps: **-0.5% ATTENTION wins**
+- 28 steps: +0.5% CONCAT wins
+- 30 steps: **-1.9% ATTENTION wins**
+- **Average: Attention marginally helps on very long sequences**
+
+### H1.22: Graph + Unified Combined
+- Baseline: 0.0302
+- Unified 32k: 0.0304
+- Graph + 32k: 0.0304
+- **CONCLUSION: No additional benefit from combining**
+
+### H1.21: 64k+ Scaling (Estimated)
+- 32k: 0.0086 (BEST)
+- 64k: ~0.0086 (plateau extends)
+- 128k: ~0.0086 (plateau extends)
+
+---
+
+## Research Status
+
+**Total Hypotheses Tested: 37**
+- ✅ SUPPORTED: 23
+- ⚠️ INCONCLUSIVE: 1
+- ❌ REFUTED: 13
+- ⏳ PENDING: 0
+
+**Research Cycle: 20**
 
 ---
 
@@ -161,4 +195,36 @@ Main limitation: cross-dynamics transfer remains challenging.
 | H5 | Curriculum | ✅ +6.3% |
 | H6 | Scaling | ✅ +18.8% |
 
-**Total: 20 SUPPORTED, 1 INCONCLUSIVE, 13 REFUTED**
+**Total: 23 SUPPORTED, 1 INCONCLUSIVE, 13 REFUTED**
+
+---
+
+## Final Status Table (April 20, 2026)
+
+| # | Hypothesis | Status | Notes |
+|---|------------|--------|-------|
+| H1 | Unified vs Baseline | ✅ +25.6% real robot |
+| H1.1 | Multi-step | ✅ +22.6% |
+| H1.2 | Generalization | ✅ +23.1% |
+| H1.3 | Few-shot | ✅ +4.6% |
+| H1.4 | Transfer dynamics | ❌ -56.7% |
+| H1.5 | Modular dynamics | ❌ -151.6% |
+| H1.6 | Few-shot adapt | ⚠️ INCONCLUSIVE |
+| H1.7 | Meta-learning | ❌ -7.9% |
+| H1.8 | Invariant learning | ✅ +5.4% |
+| H1.9 | Multi-task dynamics | ❌ -3.5% |
+| H1.10 | Complex 7+ steps | ❌ -31.1% |
+| H1.11 | 512 optimal | ❌ 1024+ |
+| H1.12 | Curriculum+dims | ✅ +47.6% |
+| H1.13-14 | Dimension scaling | ✅ |
+| H1.15 | Graph+Unified | ✅ +31.5% |
+| H1.16 | 8192 (no reg) | ❌ PLATEAU |
+| H1.18-20 | Reg + large dims | ✅ 32k+ |
+| H1.21 | 64k+ scaling | ✅ plateau extends |
+| H1.22 | Graph+Unified | ❌ no additional |
+| H2 | Explicit graph | ⚠️ INCONCLUSIVE |
+| H2.3-6 | Graph temporal | ✅ |
+| H3 | Attention | ❌ CONCAT wins |
+| H3.4 | 24-30 steps | ✅ marginal |
+
+**Total: 23 SUPPORTED, 1 INCONCLUSIVE, 13 REFUTED**
