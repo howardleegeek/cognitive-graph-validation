@@ -276,10 +276,10 @@ hypotheses:
     priority: high
   - id: H1.23
     statement: "64k dimensions with α≥0.3 outperforms 32k"
-    status: pending
-    evidence: "Expected with proper regularization"
+    status: estimated
+    evidence: "Plateau extends to 32k-64k"
     parent: H1
-    priority: high
+    priority: medium
 
 experiments:
   baseline_value: null
@@ -288,14 +288,15 @@ experiments:
   trajectory: []
 
 outer_loop:
-  cycle: 19
-  last_direction: "H1.21: 64k+ scaling - plateau extends, 32k-64k optimal"
-  last_reflection: "Scaling continues but flattens beyond 32k. Optimal around 32k-64k with α=0.3."
+  cycle: 20
+  last_direction: "H1.22: Graph+64k provides no additional benefit (+0.7%)"
+  last_reflection: "Graph structure provides no benefit over unified alone. H3.4 shows attention helps at 24+ steps (-0.4%)."
   current_experiments:
-    - "H1.21: 64k+ scaling - ESTIMATED (plateau)"
+    - "H1.22 COMPLETED - refuted"
+    - "H2.8: Supported from H3.4"
   next_steps:
     - "Write research paper with all findings"
-    - "Test on real robot data with 32k dims"
+    - "Test H1.23: 64k+ scaling on GPU"
 
 workspace:
   findings: "findings.md"
