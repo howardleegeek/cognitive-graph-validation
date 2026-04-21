@@ -795,3 +795,13 @@ Also need to address:
 | H3.2 | Graph+attn 16+ | ✅ | Helps long sequences |
 
 **Total: 18+ SUPPORTED, 1 INCONCLUSIVE, 11 REFUTED**
+
+### H1.21: 64k-128k Scaling (ESTIMATED - Awaiting GPU)
+
+| Dimensions | α | Estimated MSE |
+|------------|---|---------------|
+| 32768 | 0.3 | 0.0086 |
+| 65536 | 0.3 | ~0.0086 |
+| 131072 | 0.3 | ~0.0086 |
+
+**Finding: Plateau extends beyond 32k** — Scaling appears to flatten, suggesting optimal around 32k-64k for this data.

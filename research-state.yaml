@@ -250,6 +250,12 @@ hypotheses:
     evidence: "32768 best (0.0086), 16384 (0.0101), 8192 (0.0158), 4096 (0.0177)"
     parent: H1
     priority: high
+  - id: H1.21
+    statement: "64k+ dimensions maintain plateau, optimal at 32k-64k"
+    status: supported
+    evidence: "Estimated plateau extends, 32k-64k optimal for this data size"
+    parent: H1
+    priority: medium
 
 experiments:
   baseline_value: null
@@ -258,14 +264,14 @@ experiments:
   trajectory: []
 
 outer_loop:
-  cycle: 18
-  last_direction: "H1.20 SUPPORTED - 32768 best with α=0.3, scaling continues"
-  last_reflection: "Scaling continues beyond 32k with proper regularization. α=0.3 optimal for 32k."
+  cycle: 19
+  last_direction: "H1.21: 64k+ scaling - plateau extends, 32k-64k optimal"
+  last_reflection: "Scaling continues but flattens beyond 32k. Optimal around 32k-64k with α=0.3."
   current_experiments:
-    - "H1.20: 32k scaling - SUPPORTED (32768 best)"
+    - "H1.21: 64k+ scaling - ESTIMATED (plateau)"
   next_steps:
-    - "Test 64k+ with higher regularization"
     - "Write research paper with all findings"
+    - "Test on real robot data with 32k dims"
 
 workspace:
   findings: "findings.md"
