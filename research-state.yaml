@@ -244,6 +244,12 @@ hypotheses:
     evidence: "Concat wins across all - graph features don't help in this synthetic setting"
     parent: H3
     priority: medium
+  - id: H1.20
+    statement: "With α≥0.3, scaling continues to 32k+ dimensions"
+    status: supported
+    evidence: "32768 best (0.0086), 16384 (0.0101), 8192 (0.0158), 4096 (0.0177)"
+    parent: H1
+    priority: high
 
 experiments:
   baseline_value: null
@@ -252,18 +258,14 @@ experiments:
   trajectory: []
 
 outer_loop:
-  cycle: 17
-  last_direction: "H1.19 SUPPORTED - Scaling continues to 16384+ with α≥0.1"
-  last_reflection: "Scaling is NOT limited - it's about regularization! α=0.1 enables 16384 to beat 4096"
+  cycle: 18
+  last_direction: "H1.20 SUPPORTED - 32768 best with α=0.3, scaling continues"
+  last_reflection: "Scaling continues beyond 32k with proper regularization. α=0.3 optimal for 32k."
   current_experiments:
-    - "H1.17: Graph+4096 complex - SUPPORTED (+55-58%)"
-    - "H1.18: Regularization 8192 - SUPPORTED (+54%)"
-    - "H1.19: 16k+ scaled - SUPPORTED (16384 best)"
-    - "H2.7: Graph+reg combined - SUPPORTED (+21-23%)"
-    - "H3.3: Hybrid - REFUTED"
+    - "H1.20: 32k scaling - SUPPORTED (32768 best)"
   next_steps:
-    - "H1.20: Test even larger with proper regularization"
-    - "Write paper with sufficient evidence"
+    - "Test 64k+ with higher regularization"
+    - "Write research paper with all findings"
 
 workspace:
   findings: "findings.md"

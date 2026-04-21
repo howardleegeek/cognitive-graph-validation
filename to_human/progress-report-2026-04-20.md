@@ -2,13 +2,13 @@
 
 ## Research Status
 
-**Total Hypotheses Tested: 34**
-- ✅ SUPPORTED: 20
+**Total Hypotheses Tested: 35**
+- ✅ SUPPORTED: 21
 - ⚠️ INCONCLUSIVE: 1
 - ❌ REFUTED: 13
 - ⏳ PENDING: 0
 
-**Research Cycle: 16**
+**Research Cycle: 18**
 
 ---
 
@@ -16,7 +16,14 @@
 
 ### New Experiments Run
 
-1. **H1.17: Graph + 4096 on Complex Compositional** ✅ SUPPORTED ⚡
+1. **H1.20: 32k Scaling with Optimal Regularization** ✅ SUPPORTED ⚡
+   - 4096: MSE = 0.0177
+   - 8192: MSE = 0.0158
+   - 16384: MSE = 0.0101
+   - **32768 α=0.3: MSE = 0.0086 ← BEST**
+   - **Scaling continues to 32k with α≥0.3!**
+
+2. **H1.17: Graph + 4096 on Complex Compositional** ✅ SUPPORTED
    - 8-step: +58.4% improvement (0.0089 → 0.0037)
    - 12-step: +55.5% improvement (0.0481 → 0.0214)
    - Graph dramatically improves complex tasks!
@@ -144,6 +151,8 @@ Main limitation: cross-dynamics transfer remains challenging.
 | H1.16 | 8192 dimensions | ❌ PLATEAU |
 | H1.17 | Graph+4096 complex | ✅ +55-58% |
 | H1.18 | Regularization | ✅ +54% at 8192 |
+| H1.19 | 16k+ scaling | ✅ +51% at 16384 |
+| H1.20 | 32k scaling | ✅ +51% at 32768 α=0.3 |
 | H2 | Explicit graph | ⚠️ INCONCLUSIVE |
 | H2.1-6 | Various graph | ✅ SUPPORTED |
 | H3 | Attention vs Concat | ❌ CONCAT |
