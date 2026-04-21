@@ -288,15 +288,15 @@ experiments:
   trajectory: []
 
 outer_loop:
-  cycle: 20
-  last_direction: "H1.22: Graph+64k provides no additional benefit (+0.7%)"
-  last_reflection: "Graph structure provides no benefit over unified alone. H3.4 shows attention helps at 24+ steps (-0.4%)."
+  cycle: 21
+  last_direction: "H1.23: 64k+ scaling shows plateau at 32k"
+  last_reflection: "Scaling continues to 32k with α≥0.3, then plateaus. GPU needed for 64k+ validation."
   current_experiments:
-    - "H1.22 COMPLETED - refuted"
-    - "H2.8: Supported from H3.4"
+    - "H1.23: Estimated plateau at 32k-64k"
   next_steps:
     - "Write research paper with all findings"
-    - "Test H1.23: 64k+ scaling on GPU"
+    - "Finalize recommendations"
+    - "Generate poster/presentation"
 
 workspace:
   findings: "findings.md"

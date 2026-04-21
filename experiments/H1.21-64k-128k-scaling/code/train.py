@@ -26,12 +26,13 @@ def set_seed(seed):
         torch.cuda.manual_seed_all(seed)
 
 class UnifiedModel(nn.Module):
-    def __init__(self, total_dim: int, physical_pct: float = 0.22, alpha: float = 0.3):
+    def __init__(self, total_dim: int, physical_pct: float = 0.22, alpha: float = 0.3, action_dim: int = 4):
         super().__init__()
         self.total_dim = total_dim
         self.physical_dim = int(total_dim * physical_pct)
         self.semantic_dim = total_dim - self.physical_dim
         self.alpha = alpha
+        self.action_dim = action_dim
         
         self.physical_encoder = nn.Sequential(
             nn.Linear(self.physical_dim, total_dim),
@@ -122,7 +123,7 @@ def test_config(dim: int, alpha: float, n_samples: int = 500, n_runs: int = 3) -
         
         X_phys, X_sem, y = generate_data(n_samples, 8, 3, 4, seed)
         
-        model = UnifiedModel(dim, alpha=alpha).to(device)
+        model = UnifiedModel(dim, alpha=alpha, action_dim=4).to(device)
         loss = train_model(model, X_phys, X_sem, y)
         results.append(loss)
     
