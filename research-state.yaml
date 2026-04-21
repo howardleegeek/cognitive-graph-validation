@@ -226,6 +226,24 @@ hypotheses:
     evidence: "12-step: -2.7% (worse), 16-step: +5.8% (wins). Mixed - helps on longer sequences only."
     parent: H3
     priority: medium
+  - id: H1.17
+    statement: "Graph + 4096 improves complex compositional (8+ step) tasks"
+    status: supported
+    evidence: "+58.4% (8-step), +55.5% (12-step) on compositional tasks"
+    parent: H1
+    priority: high
+  - id: H1.18
+    statement: "Regularization enables 8192 without overfitting"
+    status: supported
+    evidence: "8192 w/ α=0.1 beats 4096 baseline (0.0068 vs 0.0148)"
+    parent: H1
+    priority: high
+  - id: H3.3
+    statement: "Hybrid architecture (concat simple, attention complex)"
+    status: refuted
+    evidence: "Concat wins across all - graph features don't help in this synthetic setting"
+    parent: H3
+    priority: medium
 
 experiments:
   baseline_value: null
@@ -234,9 +252,16 @@ experiments:
   trajectory: []
 
 outer_loop:
-  cycle: 14
-  last_direction: "H1.16 REFUTED - PLATEAU at 4096 dims (8192 overfits)"
-  last_reflection: "Critical finding: optimal dimension is 4096, not infinite scaling"
+  cycle: 16
+  last_direction: "H1.18 SUPPORTED - Regularization enables 8192 to beat 4096"
+  last_reflection: "α=0.1 regularization overcomes overfitting! Also: H1.17 shows +55-58% on complex tasks"
+  current_experiments:
+    - "H1.17: Graph+4096 on complex tasks - SUPPORTED (+55-58%)"
+    - "H1.18: Regularization for 8192 - SUPPORTED (+54% with α=0.1)"
+    - "H3.3: Hybrid architecture - REFUTED"
+  next_steps:
+    - "H1.19: Test regularization on 16k dimensions"
+    - "H2.7: Graph + regularization combined"
 
 workspace:
   findings: "findings.md"

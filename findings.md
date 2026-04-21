@@ -681,3 +681,33 @@ Also need to address:
 3. **H3 refined**:
    - Simple tasks: Concatenation wins
    - Complex (16+ steps): Graph attention helps
+
+### New Experiments (April 20, 2026)
+
+#### H1.18: Regularization to Enable Larger Dimensions (SUPPORTED)
+
+| Configuration | MSE |
+|---------------|-----|
+| 4096 (α=0.01) | 0.0148 |
+| 8192 (α=0.1) | 0.0068 |
+
+**Finding: With proper regularization (α=0.1), larger models can overcome overfitting!**
+
+#### H1.17: Graph + 4096 on Complex Compositional Tasks (SUPPORTED)
+
+| Architecture | 8-step MSE | 12-step MSE |
+|--------------|-----------|-------------|
+| Single (4096) | 0.0089 | 0.0481 |
+| Graph+4096 | 0.0037 | 0.0214 |
+
+**Improvement: +58.4% (8-step), +55.5% (12-step)** — Graph dramatically improves complex tasks!
+
+#### H3.3: Hybrid Architecture (REFUTED)
+
+| Task Type | Baseline | Concat | Graph |
+|----------|----------|--------|-------|
+| Simple (8-step) | 0.0151 | 0.0112 | N/A |
+| Complex (16-step) | 0.0454 | 0.0392 | 0.0421 |
+| Very complex (20-step) | 0.0701 | 0.0541 | 0.0640 |
+
+**Finding: Graph features don't help in this setting - concat wins across all!**
