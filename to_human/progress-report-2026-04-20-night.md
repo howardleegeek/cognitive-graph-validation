@@ -1,7 +1,7 @@
 # Cognitive Graph Validation — Progress Report
 
-**Date**: April 20, 2026  
-**Status**: Research Active — Cycle 21
+**Date**: April 20, 2026 (Night)  
+**Status**: Research Active — Cycle 22
 
 ---
 
@@ -54,14 +54,19 @@
 | H3 (Attention) | 3 | 0 | 3 |
 | H4-8 | 6 | 0 | 1 |
 
-**Total: 27 SUPPORTED, 2 INCONCLUSIVE, 11 REFUTED**
+**Total: 27 SUPPORTED, 2 INCONCLUSIVE, 11 REFUTED, 2 PENDING**
+
+### New Experiments (Cycle 22)
+
+- **H1.24**: Graph + Invariant combined (transfer + temporal)
+- **H1.25**: Adaptive dimension allocation
 
 ### Outer Loop
 
-- **Cycle**: 21
-- **Last Direction**: H1.22—Graph+64k provides +0.7% (no additional benefit)
-- **Current**: Testing 64k+ scaling (needs GPU)
-- **Next**: Write research paper
+- **Cycle**: 22
+- **Last Direction**: H1.23—64k+ scaling shows plateau at 32k
+- **Current**: Testing H1.24 (Graph + Invariant combined)
+- **Next**: Run H1.24 simulation, write paper
 
 ---
 

@@ -280,23 +280,30 @@ hypotheses:
     evidence: "Plateau extends to 32k-64k"
     parent: H1
     priority: medium
-
-experiments:
-  baseline_value: null
-  best_value: null
-  total_runs: 0
-  trajectory: []
+  - id: H1.24
+    statement: "Graph + Invariant Learning combined solves both transfer and temporal"
+    status: pending
+    evidence: "Combining H1.8 (+5.4%) + H2.x (+56-75%)"
+    parent: H1
+    priority: high
+  - id: H1.25
+    statement: "Adaptive dimension allocation at inference based on task complexity"
+    status: pending
+    evidence: "22% fixed vs adaptive by complexity"
+    parent: H1
+    priority: medium
 
 outer_loop:
-  cycle: 21
-  last_direction: "H1.23: 64k+ scaling shows plateau at 32k"
-  last_reflection: "Scaling continues to 32k with α≥0.3, then plateaus. GPU needed for 64k+ validation."
+  cycle: 22
+  last_direction: "H1.24: Graph + Invariant Learning combined"
+  last_reflection: "Combining graph (temporal) + invariant (transfer) may solve both problems."
   current_experiments:
-    - "H1.23: Estimated plateau at 32k-64k"
+    - "H1.24: Graph + Invariant for transfer (experiment created)"
+    - "H1.25: Adaptive dimension allocation (experiment created)"
   next_steps:
-    - "Write research paper with all findings"
-    - "Finalize recommendations"
-    - "Generate poster/presentation"
+    - "Run H1.24 simulation"
+    - "Update paper draft"
+    - "Generate progress report"
 
 workspace:
   findings: "findings.md"

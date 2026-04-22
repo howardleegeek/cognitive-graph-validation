@@ -862,4 +862,47 @@ Also need to address:
 | H3 | Attention | ❌ | Concat wins simple |
 | H3.2, H3.4 | Graph+attn | ✅ | Helps long sequences |
 
-**Total: 19+ SUPPORTED, 1 INCONCLUSIVE, 11 REFUTED**
+**Total: 19+ SUPPORTED, 1 INCONCLUSIVE, 11 REFUTED, 2 PENDING**
+
+### New Hypotheses (April 20 Night - Cycle 22)
+
+#### H1.24: Graph + Invariant Combined for Transfer and Temporal
+
+| Configuration | MSE |
+|---------------|-----|
+| Baseline (H1.4) | 0.20 (transfer fails) |
+| Invariant (H1.8) | 0.189 (+5.4%) |
+| Graph (H2.x) | 0.004 (+56-75% on temporal) |
+| **Combined** | **ESTIMATED** |
+
+**Status**: ⏳ PENDING — Combining H1.8 (transfer) + H2.x (temporal) may solve both.
+
+#### H1.25: Adaptive Dimension Allocation
+
+| Complexity | Fixed 22% | Adaptive |
+|-----------|----------|---------|
+| Low | ~0.01 | TBD |
+| Medium | ~0.01 | TBD |
+| High | ~0.01 | TBD |
+
+**Status**: ⏳ PENDING — Does task complexity affect optimal allocation?
+
+---
+
+## Research Summary (April 20 Night - Cycle 22)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
+| H1.1-1.3 | Multi-step, Gen, Few-shot | ✅ | Established |
+| H1.4 | Transfer dynamics | ❌ -56.7% | Fails to transfer |
+| H1.8 | Invariant learning | ✅ +5.4% | Solves transfer |
+| H1.11-14 | Dimension scaling | ✅ | 4096 optimal w/o reg |
+| H1.18-20 | Reg + large dims | ✅ | 32k+ with α≥0.1 |
+| H2.x | Graph structure | ✅ | +56-75% on temporal |
+| H3 | Attention | ❌ | Concat wins simple |
+| H3.2, H3.4 | Graph+attn | ✅ | Helps long sequences |
+| H1.24 | Graph + Invariant | ⏳ PENDING | Combining H1.8 + H2.x |
+| H1.25 | Adaptive dimension | ⏳ PENDING | By task complexity |
+
+**Total: 19+ SUPPORTED, 1 INCONCLUSIVE, 11 REFUTED, 2 PENDING**
