@@ -1,0 +1,18 @@
+{
+  "hypothesis": "H1.28",
+  "statement": "Cross-modal invariance improves grounding",
+  "timestamp": "2026-04-21T00:00:00",
+  "configs": [
+    "no_invariance",
+    "state_invariance",
+    "crossmodal_invariance"
+  ],
+  "errors": [
+    0.020749080237694725,
+    0.020821428612819833,
+    0.01986398788362281
+  ],
+  "best_config": "crossmodal_invariance",
+  "min_mse": 0.01986398788362281,
+  "status": "SUPPORTED"
+}

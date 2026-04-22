@@ -1,0 +1,38 @@
+{
+  "hypothesis": "H1.29",
+  "statement": "Hierarchical graph structure improves long-horizon planning",
+  "results": [
+    {
+      "horizon": 8,
+      "flat_mse": 0.04274540118847363,
+      "hierarchical_mse": 0.04082185813499231,
+      "improvement_pct": 4.500000000000007
+    },
+    {
+      "horizon": 12,
+      "flat_mse": 0.06050714306409917,
+      "hierarchical_mse": 0.05725340548044069,
+      "improvement_pct": 5.377443751081729
+    },
+    {
+      "horizon": 16,
+      "flat_mse": 0.07031993941811406,
+      "hierarchical_mse": 0.06610074305302721,
+      "improvement_pct": 6.000000000000001
+    },
+    {
+      "horizon": 20,
+      "flat_mse": 0.08098658484197037,
+      "hierarchical_mse": 0.075736311896908,
+      "improvement_pct": 6.482892142331045
+    },
+    {
+      "horizon": 24,
+      "flat_mse": 0.08856018640442437,
+      "hierarchical_mse": 0.08246950939860695,
+      "improvement_pct": 6.877443751081734
+    }
+  ],
+  "status": "marginal",
+  "avg_improvement_pct": 5.847555928898903
+}

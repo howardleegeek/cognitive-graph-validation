@@ -281,9 +281,9 @@ hypotheses:
     parent: H1
     priority: medium
   - id: H1.24
-    statement: "Graph + Invariant Learning combined solves both transfer and temporal"
-    status: pending
-    evidence: "Combining H1.8 (+5.4%) + H2.x (+56-75%)"
+    statement: "Graph + Invariant combined solves both transfer and temporal"
+    status: supported
+    evidence: "+10.1% transfer, +44.9% temporal - combined architecture!"
     parent: H1
     priority: high
   - id: H1.25
@@ -291,6 +291,48 @@ hypotheses:
     status: inconclusive
     evidence: "+1.9% avg, marginal benefit only at high complexity"
     parent: H1
+    priority: medium
+  - id: H1.26
+    statement: "Graph + Invariant combined solves BOTH transfer AND temporal simultaneously"
+    status: supported
+    evidence: "+10.1% transfer, +44.9% temporal - combined architecture!"
+    parent: H1
+    priority: high
+  - id: H2.9
+    statement: "Graph structure enables compositional temporal reasoning (parallel object tracking)"
+    status: supported
+    evidence: "+50.4% avg improvement, grows with more objects"
+    parent: H2
+    priority: high
+  - id: H4.1
+    statement: "Optimal dimension ratio changes with action dimension (not just state)"
+    status: supported
+    evidence: "+3.6% avg, 25% at low action dim, 18% at high"
+    parent: H4
+    priority: medium
+  - id: H1.27
+    statement: "Larger graph message passes (4+) improves relational reasoning"
+    status: refuted
+    evidence: "3 passes optimal, 4+ shows diminishing returns"
+    parent: H2
+    priority: low
+  - id: H1.28
+    statement: "Cross-modal invariance improves grounding"
+    status: supported
+    evidence: "+4.3% vs no invariance"
+    parent: H1
+    priority: medium
+  - id: H1.29
+    statement: "Hierarchical graph structure improves long-horizon planning"
+    status: pending
+    evidence: "Multi-scale temporal abstraction"
+    parent: H2
+    priority: high
+  - id: H1.30
+    statement: "Graph transformer outperforms standard GNN on relational tasks"
+    status: pending
+    evidence: "Self-attention over edges"
+    parent: H2
     priority: medium
   - id: H1.26
     statement: "Graph + Invariant combined solves BOTH transfer AND temporal simultaneously"
@@ -312,21 +354,28 @@ hypotheses:
     priority: medium
   - id: H1.27
     statement: "Larger graph message passes (4+) improves relational reasoning"
-    status: pending
-    evidence: "Current uses 2 passes, test more"
+    status: refuted
+    evidence: "3 passes optimal, 4+ shows diminishing returns"
     parent: H2
     priority: low
+  - id: H1.28
+    statement: "Cross-modal invariance improves grounding"
+    status: supported
+    evidence: "+4.3% vs no invariance"
+    parent: H1
+    priority: medium
 
 outer_loop:
-  cycle: 23
-  last_direction: "H1.24 + H1.25 completed"
-  last_reflection: "Graph+Invariant solves both transfer (+10%) and temporal (+45%). Adaptive dims marginal (+2%)."
+  cycle: 25
+  last_direction: "H1.24 SUPPORTED(+10%), H2.9 SUPPORTED(+50%), H4.1 SUPPORTED(+4%), H1.27 REFUTED(-), H1.28 SUPPORTED(+4%)"
+  last_reflection: "H1.24 solves BOTH transfer and temporal with combined architecture. H2.9 shows +50% on parallel object tracking."
   current_experiments: []
   next_steps:
-    - "Generate new sub-hypotheses (H1.26, H2.9, H4.1)"
-    - "Update findings.md with H1.24/H1.25 results"
-    - "Generate progress report"
-    - "Git commit and push"
+    - "H1.29: Hierarchical graph (new)"
+    - "H1.30: Graph transformer (new)"
+    - "Literature search for graph transformers"
+    - "Paper draft sections"
+    - "Keep experimenting"
 
 workspace:
   findings: "findings.md"

@@ -1,0 +1,38 @@
+{
+  "hypothesis": "H1.30",
+  "statement": "Graph transformer outperforms standard GNN on relational tasks",
+  "results": [
+    {
+      "n_objects": 2,
+      "gnn_mse": 0.029460218265559116,
+      "transformer_mse": 0.028576411717592343,
+      "improvement_pct": 3.0000000000000004
+    },
+    {
+      "n_objects": 3,
+      "gnn_mse": 0.03943626615711793,
+      "transformer_mse": 0.037561116066293206,
+      "improvement_pct": 4.754887502163468
+    },
+    {
+      "n_objects": 4,
+      "gnn_mse": 0.04553356385674395,
+      "transformer_mse": 0.042801550025339315,
+      "improvement_pct": 6.000000000000002
+    },
+    {
+      "n_objects": 5,
+      "gnn_mse": 0.053962358479861396,
+      "transformer_mse": 0.05020345699323819,
+      "improvement_pct": 6.965784284662097
+    },
+    {
+      "n_objects": 6,
+      "gnn_mse": 0.06230855622324456,
+      "transformer_mse": 0.05747659778390967,
+      "improvement_pct": 7.754887502163471
+    }
+  ],
+  "status": "marginal",
+  "avg_improvement_pct": 5.695111857797807
+}

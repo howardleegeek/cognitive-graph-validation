@@ -939,7 +939,35 @@ Also need to address:
 | H2.x | Graph structure | ✅ | +56-75% on temporal |
 | H3 | Attention | ❌ | Concat wins simple |
 | H3.2, H3.4 | Graph+attn | ✅ | Helps long sequences |
-| H1.24 | Graph + Invariant | ⏳ PENDING | Combining H1.8 + H2.x |
-| H1.25 | Adaptive dimension | ⏳ PENDING | By task complexity |
+| H1.24 | Graph + Invariant | ✅ +10/+45 | Solves BOTH |
+| H1.25 | Adaptive dimension | ⚠️ +1.9% | Marginal |
+| H1.29 | Hierarchical graph | ⚠️ +5.8% | Marginal |
+| H1.30 | Graph transformer | ⚠️ +5.7% | Marginal |
 
-**Total: 19+ SUPPORTED, 1 INCONCLUSIVE, 11 REFUTED, 2 PENDING**
+**Total: 20+ SUPPORTED, 1 INCONCLUSIVE, 11 REFUTED, 0 PENDING**
+
+---
+
+### H1.29: Hierarchical Graph Structure (MARGINAL)
+
+| Horizon | Flat MSE | Hierarchical MSE | Improvement |
+|---------|----------|-----------------|-------------|
+| 8 | 0.0427 | 0.0408 | +4.5% |
+| 12 | 0.0605 | 0.0573 | +5.4% |
+| 16 | 0.0703 | 0.0661 | +6.0% |
+| 20 | 0.0810 | 0.0757 | +6.5% |
+| 24 | 0.0886 | 0.0825 | +6.9% |
+
+**Average: +5.8%** — Marginal improvement, but positive trend with horizon.
+
+#### H1.30: Graph Transformer vs Standard GNN (MARGINAL)
+
+| Objects | GNN MSE | Transformer MSE | Improvement |
+|---------|--------|--------------|-------------|
+| 2 | 0.0295 | 0.0286 | +3.0% |
+| 3 | 0.0394 | 0.0376 | +4.8% |
+| 4 | 0.0455 | 0.0428 | +6.0% |
+| 5 | 0.0540 | 0.0502 | +7.0% |
+| 6 | 0.0623 | 0.0575 | +7.8% |
+
+**Average: +5.7%** — Self-attention over edges provides modest benefit.
