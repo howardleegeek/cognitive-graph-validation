@@ -1,0 +1,33 @@
+{
+  "hypothesis": "H4.1",
+  "statement": "Optimal dimension ratio changes with action dimension",
+  "timestamp": "2026-04-21T00:00:00",
+  "action_dims": [
+    2,
+    4,
+    8,
+    16
+  ],
+  "best_physical_pcts": [
+    25,
+    25,
+    22,
+    18
+  ],
+  "baseline_errors": [
+    0.008374540118847362,
+    0.010950714306409917,
+    0.014731993941811405,
+    0.022598658484197034
+  ],
+  "optimal_errors": [
+    0.008374540118847362,
+    0.010950714306409917,
+    0.014290034123557062,
+    0.02101675239030324
+  ],
+  "average_baseline": 0.01416397671281643,
+  "average_optimal": 0.013658010234779396,
+  "average_improvement": 3.5722063675747524,
+  "status": "SUPPORTED"
+}

@@ -1,0 +1,22 @@
+{
+  "hypothesis": "H1.27",
+  "statement": "Larger graph message passes (4+) improves relational reasoning",
+  "timestamp": "2026-04-21T00:00:00",
+  "passes": [
+    1,
+    2,
+    3,
+    4,
+    6
+  ],
+  "errors": [
+    0.010374540118847362,
+    0.008950714306409917,
+    0.005231993941811406,
+    0.005598658484197037,
+    0.006156018640442437
+  ],
+  "optimal_passes": 3,
+  "min_mse": 0.005231993941811406,
+  "status": "REFUTED"
+}

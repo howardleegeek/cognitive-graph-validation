@@ -1,0 +1,29 @@
+{
+  "hypothesis": "H1.25",
+  "statement": "Adaptive Dimension Allocation by Task Complexity",
+  "timestamp": "2026-04-21T00:00:00",
+  "fixed_results": [
+    0.008375514329589022,
+    0.007258787396773265,
+    0.009196019992934193
+  ],
+  "adaptive_results": [
+    0.008375514329589022,
+    0.007258787396773265,
+    0.00873104954585359
+  ],
+  "complexities": [
+    0.2,
+    0.5,
+    0.8
+  ],
+  "best_allocations": [
+    "22%",
+    "22%",
+    "32%"
+  ],
+  "average_fixed": 0.00827677390643216,
+  "average_adaptive": 0.008121783757405292,
+  "average_improvement": 1.8725913112888084,
+  "status": "SUPPORTED"
+}

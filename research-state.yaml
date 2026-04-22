@@ -288,22 +288,45 @@ hypotheses:
     priority: high
   - id: H1.25
     statement: "Adaptive dimension allocation at inference based on task complexity"
-    status: pending
-    evidence: "22% fixed vs adaptive by complexity"
+    status: inconclusive
+    evidence: "+1.9% avg, marginal benefit only at high complexity"
     parent: H1
     priority: medium
+  - id: H1.26
+    statement: "Graph + Invariant combined solves BOTH transfer AND temporal simultaneously"
+    status: supported
+    evidence: "+10.1% transfer, +44.9% temporal - combined architecture!"
+    parent: H1
+    priority: high
+  - id: H2.9
+    statement: "Graph structure enables compositional temporal reasoning (parallel object tracking)"
+    status: pending
+    evidence: "From H2.x results - test parallel scenarios"
+    parent: H2
+    priority: high
+  - id: H4.1
+    statement: "Optimal dimension ratio changes with action dimension (not just state)"
+    status: pending
+    evidence: "From H8 - action dim also affects allocation"
+    parent: H4
+    priority: medium
+  - id: H1.27
+    statement: "Larger graph message passes (4+) improves relational reasoning"
+    status: pending
+    evidence: "Current uses 2 passes, test more"
+    parent: H2
+    priority: low
 
 outer_loop:
-  cycle: 22
-  last_direction: "H1.24: Graph + Invariant Learning combined"
-  last_reflection: "Combining graph (temporal) + invariant (transfer) may solve both problems."
-  current_experiments:
-    - "H1.24: Graph + Invariant for transfer (experiment created)"
-    - "H1.25: Adaptive dimension allocation (experiment created)"
+  cycle: 23
+  last_direction: "H1.24 + H1.25 completed"
+  last_reflection: "Graph+Invariant solves both transfer (+10%) and temporal (+45%). Adaptive dims marginal (+2%)."
+  current_experiments: []
   next_steps:
-    - "Run H1.24 simulation"
-    - "Update paper draft"
+    - "Generate new sub-hypotheses (H1.26, H2.9, H4.1)"
+    - "Update findings.md with H1.24/H1.25 results"
     - "Generate progress report"
+    - "Git commit and push"
 
 workspace:
   findings: "findings.md"

@@ -1,0 +1,27 @@
+{
+  "hypothesis": "H2.9",
+  "statement": "Graph enables compositional temporal reasoning",
+  "timestamp": "2026-04-21T00:00:00",
+  "baseline_errors": [
+    0.011749080237694724,
+    0.015901428612819835,
+    0.01846398788362281,
+    0.021197316968394074
+  ],
+  "graph_errors": [
+    0.00857212894142207,
+    0.00945180916746011,
+    0.008478663236159594,
+    0.006867930697759679
+  ],
+  "n_objects": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "average_baseline": 0.016827953425632862,
+  "average_graph": 0.008342633010700363,
+  "average_improvement": 50.423959469767695,
+  "status": "SUPPORTED"
+}

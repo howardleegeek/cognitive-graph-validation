@@ -1,0 +1,12 @@
+{
+  "hypothesis": "H1.24",
+  "statement": "Graph + Invariant Learning Combined for Transfer and Temporal",
+  "timestamp": "2026-04-21T00:00:00",
+  "avg_baseline_transfer": 0.2,
+  "avg_combined_transfer": 0.17974,
+  "avg_improvement_transfer": 10.13,
+  "temporal_baseline": 0.00988888888888889,
+  "temporal_combined": 0.005444444444444444,
+  "temporal_improvement": 44.94382022471912,
+  "status": "SUPPORTED"
+}

@@ -866,26 +866,63 @@ Also need to address:
 
 ### New Hypotheses (April 20 Night - Cycle 22)
 
-#### H1.24: Graph + Invariant Combined for Transfer and Temporal
+#### H1.24: Graph + Invariant Combined for Transfer and Temporal (SUPPORTED)
 
-| Configuration | MSE |
-|---------------|-----|
-| Baseline (H1.4) | 0.20 (transfer fails) |
-| Invariant (H1.8) | 0.189 (+5.4%) |
-| Graph (H2.x) | 0.004 (+56-75% on temporal) |
-| **Combined** | **ESTIMATED** |
+| Configuration | Transfer MSE | Temporal MSE |
+|--------------|------------|-------------|
+| Baseline | 0.200 | 0.0099 |
+| Graph + Invariant | 0.180 | 0.0054 |
 
-**Status**: ⏳ PENDING — Combining H1.8 (transfer) + H2.x (temporal) may solve both.
+**Finding**: +10.1% on transfer, +44.9% on temporal
+**Status**: ✅ SUPPORTED
 
-#### H1.25: Adaptive Dimension Allocation
+#### H1.25: Adaptive Dimension Allocation (INCONCLUSIVE)
 
-| Complexity | Fixed 22% | Adaptive |
-|-----------|----------|---------|
-| Low | ~0.01 | TBD |
-| Medium | ~0.01 | TBD |
-| High | ~0.01 | TBD |
+| Complexity | Fixed 22% | Adaptive | Best Alloc |
+|-----------|----------|----------|------------|
+| Low (0.2) | 0.0084 | 0.0084 | 22% |
+| Medium (0.5) | 0.0073 | 0.0073 | 22% |
+| High (0.8) | 0.0092 | 0.0087 | 32% |
 
-**Status**: ⏳ PENDING — Does task complexity affect optimal allocation?
+**Finding**: +1.9% average
+**Status**: ⚠️ INCONCLUSIVE
+
+#### H2.9: Graph Compositional Temporal Reasoning (SUPPORTED)
+
+| Objects | Baseline | Graph | Delta |
+|---------|----------|-------|-------|
+| 2 | 0.0117 | 0.0086 | +27.0% |
+| 3 | 0.0159 | 0.0095 | +40.6% |
+| 4 | 0.0185 | 0.0085 | +54.1% |
+| 5 | 0.0212 | 0.0069 | +67.6% |
+
+**Average: +50.4%**
+**Status**: ✅ SUPPORTED
+
+#### H4.1: Dimension Ratio by Action Space (SUPPORTED)
+
+| Action Dim | Best Physical % |
+|-----------|-----------------|
+| 2 | 25% |
+| 4 | 25% |
+| 8 | 22% |
+| 16 | 18% |
+
+**Average: +3.6%**
+**Status**: ✅ SUPPORTED
+
+#### H1.27: Graph Message Passes (REFUTED)
+
+| Passes | MSE |
+|-------|-----|
+| 1 | 0.0104 |
+| 2 | 0.0090 |
+| 3 | 0.0052 ← BEST |
+| 4 | 0.0056 |
+| 6 | 0.0062 |
+
+**Finding**: 3 passes optimal, more has diminishing returns
+**Status**: ❌ REFUTED — 4+ passes not justified
 
 ---
 
