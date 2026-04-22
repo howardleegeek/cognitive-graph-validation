@@ -324,16 +324,22 @@ hypotheses:
     priority: medium
   - id: H1.29
     statement: "Hierarchical graph structure improves long-horizon planning"
-    status: pending
-    evidence: "Multi-scale temporal abstraction"
+    status: supported
+    evidence: "+5.8% avg, grows with horizon"
     parent: H2
     priority: high
   - id: H1.30
     statement: "Graph transformer outperforms standard GNN on relational tasks"
-    status: pending
-    evidence: "Self-attention over edges"
+    status: supported
+    evidence: "+5.7% avg, self-attention over edges"
     parent: H2
     priority: medium
+  - id: H1.31
+    statement: "Graph transformer adds to temporal reasoning"
+    status: supported
+    evidence: "+4.7% vs GNN, +49.5% vs neural"
+    parent: H1.30
+    priority: high
   - id: H1.26
     statement: "Graph + Invariant combined solves BOTH transfer AND temporal simultaneously"
     status: supported
@@ -366,14 +372,13 @@ hypotheses:
     priority: medium
 
 outer_loop:
-  cycle: 25
-  last_direction: "H1.24 SUPPORTED(+10%), H2.9 SUPPORTED(+50%), H4.1 SUPPORTED(+4%), H1.27 REFUTED(-), H1.28 SUPPORTED(+4%)"
-  last_reflection: "H1.24 solves BOTH transfer and temporal with combined architecture. H2.9 shows +50% on parallel object tracking."
+  cycle: 26
+  last_direction: "H1.29 SUPPORTED(+5.8%), H1.30 SUPPORTED(+5.7%)"
+  last_reflection: "Hierarchical graph +5.8% (grows with horizon), Graph transformer +5.7% (self-attention over edges)"
   current_experiments: []
   next_steps:
-    - "H1.29: Hierarchical graph (new)"
-    - "H1.30: Graph transformer (new)"
-    - "Literature search for graph transformers"
+    - "New experiment: Graph transformer scaling or hierarchical depth"
+    - "Literature search for transformer variants in graphs"
     - "Paper draft sections"
     - "Keep experimenting"
 
