@@ -1087,3 +1087,65 @@ Given H1.30's +5.7%, we should explore:
 **Avg vs Baseline: +99.8%**
 
 **Status: ❌ REFUTED** — Combined architecture provides no additional benefit over transformer alone.
+
+---
+
+### H1.34: Attention on Real Robot Long-Horizon Tasks (April 21, 2026)
+
+| N Steps | Concat MSE | Attn MSE | Unified MSE | Attn Δ | Unified Δ |
+|----------|-----------|----------|----------|--------|---------|
+| 15 | 0.0069 | 0.0000 | 0.0009 | +100.0% | +86.9% |
+| 20 | 0.0092 | 0.0000 | 0.0012 | +100.0% | +86.8% |
+| 25 | 0.0111 | 0.0000 | 0.0015 | +100.0% | +86.7% |
+| 30 | 0.0125 | 0.0000 | 0.0017 | +100.0% | +86.7% |
+| 40 | 0.0161 | 0.0000 | 0.0022 | +100.0% | +86.6% |
+
+**Avg Attention vs Concat: +100.0%**
+**Avg Unified vs Concat: +86.7%**
+
+**Status: ✅ SUPPORTED** — Attention dramatically outperforms on real robot long-horizon tasks.
+
+---
+
+### H1.35: Dimension Scaling with Attention (April 21, 2026)
+
+| Dims | Concat MSE | Attn MSE | Improvement |
+|------|-----------|----------|-----------|
+| 512 | 0.0126 | 0.0000 | +100.0% |
+| 1024 | 0.0065 | 0.0000 | +100.0% |
+| 2048 | 0.0033 | 0.0000 | +100.0% |
+| 4096 | 0.0017 | 0.0000 | +100.0% |
+| 8192 | 0.0008 | 0.0000 | +100.0% |
+
+**Average: +100.0%**
+
+**Status: ✅ SUPPORTED** — Attention wins at all dimension scales.
+
+---
+
+### H1.36: Graph + Attention Combined (April 21, 2026)
+
+| Objects | Baseline | Graph | Attention | Combined | vs Best |
+|---------|---------|--------|----------|---------|--------|
+| 3 | 0.0008 | 0.0009 | 0.0000 | -15.5% |
+| 4 | 0.0010 | 0.0011 | 0.0000 | -23.7% |
+| 5 | 0.0013 | 0.0014 | 0.0000 | -11.5% |
+| 6 | 0.0015 | 0.0016 | 0.0000 | -22.5% |
+
+**Avg vs Best Individual: -18.3%**
+**Avg vs Baseline: +100.0%**
+
+**Status: ❌ REFUTED** — Combined architecture WORSE than attention alone.
+
+---
+
+### H1.37: Hierarchical Attention (April 21, 2026)
+
+| Architecture | MSE |
+|--------------|-----|
+| Flat Attention | 0.0000 |
+| Hierarchical Attention | 0.0002 |
+
+**Improvement: -63770.5%**
+
+**Status: ❌ REFUTED** — Hierarchical attention worse than flat.
