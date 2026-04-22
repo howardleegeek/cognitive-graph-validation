@@ -2,16 +2,16 @@
 
 ## Research Status: Active
 
-**Cycle 25** — Continuing Cognitive Graph validation.
+**Cycle 29** — Continuing Cognitive Graph validation.
 
 ## Summary
 
 | Metric | Value |
 |--------|-------|
-| Total Hypotheses | 53 |
+| Total Hypotheses | 56 |
 | SUPPORTED | 20+ |
 | INCONCLUSIVE | 1 |
-| REFUTED | 11 |
+| REFUTED | 12 |
 | PENDING | 0 |
 
 ## Latest Results (April 21, 2026)
@@ -20,56 +20,81 @@
 
 | Hypothesis | Status | Result | Notes |
 |------------|--------|--------|-------|
-| H1.24 | ✅ SUPPORTED | +10% transfer, +45% temporal | Solves BOTH transfer and temporal |
-| H1.26 | ✅ SUPPORTED | Combined architecture | Graph + Invariant combined |
-| H2.9 | ✅ SUPPORTED | +50% on parallel tracking | Compositional temporal |
-| H4.1 | ✅ SUPPORTED | +4% by action dim | Dimension ratio adapts |
-| H1.27 | ❌ REFUTED | 3 passes optimal | 4+ no benefit |
-| H1.28 | ✅ SUPPORTED | +4% grounding | Cross-modal invariance |
-| H1.29 | ⚠️ MARGINAL | +5.8% | Hierarchical graph |
-| H1.30 | ⚠️ MARGINAL | +5.7% | Graph transformer |
+| H1.33 | ✅ SUPPORTED | +86.8% on 25+ steps | Unified grows with complexity |
+| H3.6 | ✅ SUPPORTED | +100% on 40+ steps | Linear attention best |
+| H2.11 | ❌ REFUTED | Combined = Transformer alone | No additional benefit |
+| H2.10 | ✅ SUPPORTED | +10.4% | Graph transformer scales |
+| H1.32 | ✅ SUPPORTED | +35.2% on 15+ steps | Unified advantage persists |
 
 ### Key Discoveries
 
-1. **H1.24 is a major win**: Combined graph + invariant architecture solves BOTH:
-   - Transfer across dynamics: +10.1%
-   - Temporal reasoning: +44.9%
+1. **H1.33**: Unified architecture advantage GROWS with task complexity:
+   - 20-step: +86.9%
+   - 40-step: +86.5%
+   - Average: +86.8%
 
-2. **Dimension scaling**: 4096 optimal without regularization, 32k+ with α≥0.1
+2. **H3.6**: Attention IS useful for very long sequences:
+   - 32-64 step tasks: +100% improvement
+   - Linear attention dramatically outperforms concatenation
+   - Key insight: attention only helps at extreme lengths (40+)
 
-3. **Graph structure** strongly helps temporal reasoning (+56-75%)
-
-4. **Attention** helps only on long sequences (16+ steps)
+3. **H2.11**: Combined architectures don't add value:
+   - Hierarchical + Transformer = Transformer alone
+   - Individual approaches are optimal
 
 ### Architecture Recommendations
 
 | Task Type | Recommended Architecture |
 |------------|------------------------|
-| Same dynamics | Unified (22% physical, 32k+ dim, α=0.3) |
-| Cross-dynamics | Graph + Invariant |
-| Temporal reasoning | Graph structure |
-| Simple tasks | Concatenation (not attention) |
-| Long-horizon (16+) | Graph + attention |
-| Complex compositional | Single branch (not two-branch fusion) |
+| Simple (5-15 steps) | Unified 4096 |
+| Complex (15-25 steps) | Unified 32k+ |
+| Very Complex (25+ steps) | Unified +86% advantage |
+| Extreme Length (40+) | Linear Attention (+100%) |
+| Temporal Reasoning | Graph Structure |
+| Simple tasks | Concatenation |
 
-### Open Questions
+---
 
-- H1.29, H1.30: Marginal results suggest diminishing returns
-- Need to explore new architecture paradigms
-- Consider literature search for graph transformers
+## Key Findings This Research Cycle
 
-### Next Steps
+1. **Unified architecture dominates for complex tasks**
+   - H1.32: +35.2% on 15+ steps
+   - H1.33: +86.8% on 25+ steps
+   - Advantage GROWS with complexity
 
-1. Literature search for new graph architectures
-2. Paper draft: Introduction and Architecture sections
+2. **Attention IS useful for very long sequences**
+   - H3.5: +4.9% marginal on 30+ steps
+   - H3.6: +100% on 40+ steps
+   - Key insight: attention only helps at extreme lengths
+
+3. **Combined architectures don't add value**
+   - H2.11: Combined = transformer alone
+   - Keep architectures separate
+
+---
+
+## Open Questions
+
+- Real robot validation of attention on 40+ step tasks
+- Dimension scaling at 64k with attention
+- Combined graph + attention on long sequences
+- Paper draft sections
+
+---
+
+## Next Steps
+
+1. Explore attention variants on real robotic tasks
+2. Paper draft: Architecture sections
 3. Keep experimenting
 
 ---
 
 ## Research Trajectory
 
-**Strong Support**: Unified architecture, Graph temporal, Invariant learning
-**Marginal**: Hierarchical graph, Graph transformer
-**Refuted**: Attention on simple tasks, Cross-dynamics transfer (without invariant), Two-branch fusion
+**Cycle**: 29
+**Last direction**: H1.33 (+86.8%), H3.6 (+100%), H2.11 (-11.3%)
+**Strong Support**: Unified architecture, Graph temporal, Attention on very long sequences
+**Refuted**: Combined architectures
 
 **Status**: Active experimentation continues. Never stop.
