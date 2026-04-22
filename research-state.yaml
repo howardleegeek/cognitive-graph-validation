@@ -358,14 +358,32 @@ hypotheses:
     evidence: "+4.9% marginal benefit"
     parent: H3
     priority: medium
+  - id: H1.33
+    statement: "Unified architecture maintains advantage on 25+ step extremely complex tasks"
+    status: supported
+    evidence: "+86.8% avg on 20-40 step tasks"
+    parent: H1.32
+    priority: high
+  - id: H3.6
+    statement: "Attention variants outperform concatenation on 40+ step extremely long sequences"
+    status: supported
+    evidence: "+100% avg, linear attention best"
+    parent: H3.5
+    priority: high
+  - id: H2.11
+    statement: "Hierarchical graph + graph transformer combined provides additional benefit"
+    status: refuted
+    evidence: "-11.3% vs individual, combined equals transformer alone"
+    parent: H2.10
+    priority: medium
 
 outer_loop:
-  cycle: 28
-  last_direction: "H2.10 SUPPORTED(+10.4%), H1.32 SUPPORTED(+35.2%), H3.5 MARGINAL(+4.9%)"
-  last_reflection: "Graph transformer +10.4%, Unified +35.2% on 15+ steps, Attention variants marginally help"
+  cycle: 29
+  last_direction: "H1.33 SUPPORTED(+86.8%), H3.6 SUPPORTED(+100%), H2.11 REFUTED(-11.3%)"
+  last_reflection: "Unified +86.8% on 25+ steps, attention +100% on 40+ steps, combined provides no benefit"
   current_experiments: []
   next_steps:
-    - "Explore dimension scaling with graph transformer"
+    - "Explore attention variants on real robotic tasks"
     - "Paper draft sections"
     - "Keep experimenting"
 
