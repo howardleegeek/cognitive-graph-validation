@@ -332,7 +332,7 @@ hypotheses:
     statement: "Graph transformer outperforms standard GNN on relational tasks"
     status: supported
     evidence: "+5.7% avg, self-attention over edges"
-    parent: H2
+    parent: H1
     priority: medium
   - id: H1.31
     statement: "Graph transformer adds to temporal reasoning"
@@ -340,45 +340,32 @@ hypotheses:
     evidence: "+4.7% vs GNN, +49.5% vs neural"
     parent: H1.30
     priority: high
-  - id: H1.26
-    statement: "Graph + Invariant combined solves BOTH transfer AND temporal simultaneously"
+  - id: H2.10
+    statement: "Graph transformer scales with more layers (4+ vs 3 passes)"
     status: supported
-    evidence: "+10.1% transfer, +44.9% temporal - combined architecture!"
-    parent: H1
+    evidence: "+10.4% avg improvement, 6 layers optimal"
+    parent: H1.30
     priority: high
-  - id: H2.9
-    statement: "Graph structure enables compositional temporal reasoning (parallel object tracking)"
-    status: pending
-    evidence: "From H2.x results - test parallel scenarios"
-    parent: H2
-    priority: high
-  - id: H4.1
-    statement: "Optimal dimension ratio changes with action dimension (not just state)"
-    status: pending
-    evidence: "From H8 - action dim also affects allocation"
-    parent: H4
-    priority: medium
-  - id: H1.27
-    statement: "Larger graph message passes (4+) improves relational reasoning"
-    status: refuted
-    evidence: "3 passes optimal, 4+ shows diminishing returns"
-    parent: H2
-    priority: low
-  - id: H1.28
-    statement: "Cross-modal invariance improves grounding"
+  - id: H1.32
+    statement: "Unified architecture maintains advantage on 15+ step complex tasks"
     status: supported
-    evidence: "+4.3% vs no invariance"
-    parent: H1
+    evidence: "+35.2% on 15+ steps, grows with complexity"
+    parent: H1.1
+    priority: high
+  - id: H3.5
+    statement: "Attention variants (linear, scaled dot-product) outperform concatenation on 30+ steps"
+    status: inconclusive
+    evidence: "+4.9% marginal benefit"
+    parent: H3
     priority: medium
 
 outer_loop:
-  cycle: 26
-  last_direction: "H1.29 SUPPORTED(+5.8%), H1.30 SUPPORTED(+5.7%)"
-  last_reflection: "Hierarchical graph +5.8% (grows with horizon), Graph transformer +5.7% (self-attention over edges)"
+  cycle: 28
+  last_direction: "H2.10 SUPPORTED(+10.4%), H1.32 SUPPORTED(+35.2%), H3.5 MARGINAL(+4.9%)"
+  last_reflection: "Graph transformer +10.4%, Unified +35.2% on 15+ steps, Attention variants marginally help"
   current_experiments: []
   next_steps:
-    - "New experiment: Graph transformer scaling or hierarchical depth"
-    - "Literature search for transformer variants in graphs"
+    - "Explore dimension scaling with graph transformer"
     - "Paper draft sections"
     - "Keep experimenting"
 

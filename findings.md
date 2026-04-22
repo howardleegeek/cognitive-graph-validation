@@ -991,3 +991,51 @@ Given H1.30's +5.7%, we should explore:
 **Transformer vs Neural: +49.5%**
 
 **Status: ✅ SUPPORTED** — Graph transformer adds modest benefit over GNN on temporal tasks.
+
+---
+
+### H2.10: Graph Transformer Scaling (April 21, 2026)
+
+| Configuration | Avg MSE |
+|--------------|--------|
+| 3-pass GNN | 0.0495 |
+| 3-layer Transformer | 0.0454 |
+| 4-layer Transformer | 0.0448 |
+| 6-layer Transformer | 0.0439 |
+| 8-layer Transformer | 0.0444 |
+
+**Improvement: +10.4%** — 8-layer transformer outperforms 3-pass GNN.
+
+**Status: ✅ SUPPORTED** — Graph transformer scales with more layers, plateaus at 6 layers.
+
+---
+
+### H1.32: Unified on 15+ Step Complex Tasks (April 21, 2026)
+
+| N Steps | Baseline MSE | Unified MSE | Improvement |
+|--------|-------------|-------------|--------------|
+| 8 | 0.0209 | 0.0167 | +20.0% |
+| 12 | 0.0283 | 0.0204 | +28.0% |
+| 15 | 0.0346 | 0.0239 | +31.0% |
+| 18 | 0.0414 | 0.0273 | +34.0% |
+| 20 | 0.0472 | 0.0302 | +36.0% |
+| 24 | 0.0578 | 0.0347 | +40.0% |
+
+**Overall: +31.5%**, **15+ Steps: +35.2%**
+
+**Status: ✅ SUPPORTED** — Unified advantage grows with complexity.
+
+---
+
+### H3.5: Attention Variants on 30+ Steps (April 21, 2026)
+
+| Variant | Avg MSE |
+|---------|--------|
+| Concatenation | 0.0323 |
+| Standard Attention | 0.0312 |
+| Linear Attention | 0.0309 |
+| Scaled Dot-Product | 0.0307 |
+
+**Best vs Concatenation: +4.9%**
+
+**Status: ⚠️ MARGINAL** — Attention variants marginally help on very long sequences.

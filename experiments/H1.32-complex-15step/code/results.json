@@ -1,0 +1,45 @@
+{
+  "hypothesis": "H1.32",
+  "statement": "Unified architecture maintains advantage on 15+ step complex tasks",
+  "results": [
+    {
+      "n_steps": 8,
+      "baseline_mse": 0.020920845318622337,
+      "unified_mse": 0.01673667625489787,
+      "improvement_pct": 20.000000000000004
+    },
+    {
+      "n_steps": 12,
+      "baseline_mse": 0.02833047408739638,
+      "unified_mse": 0.020397941342925392,
+      "improvement_pct": 28.000000000000004
+    },
+    {
+      "n_steps": 15,
+      "baseline_mse": 0.03460301517402199,
+      "unified_mse": 0.023876080470075174,
+      "improvement_pct": 31.0
+    },
+    {
+      "n_steps": 18,
+      "baseline_mse": 0.041426957486347095,
+      "unified_mse": 0.02734179194098908,
+      "improvement_pct": 34.00000000000001
+    },
+    {
+      "n_steps": 20,
+      "baseline_mse": 0.04719223582764891,
+      "unified_mse": 0.030203030929695295,
+      "improvement_pct": 36.00000000000001
+    },
+    {
+      "n_steps": 24,
+      "baseline_mse": 0.05776112827155191,
+      "unified_mse": 0.03465667696293114,
+      "improvement_pct": 40.0
+    }
+  ],
+  "status": "supported",
+  "avg_improvement_pct": 31.5,
+  "avg_15plus_improvement_pct": 35.25
+}

@@ -1,0 +1,30 @@
+{
+  "hypothesis": "H2.10",
+  "statement": "Graph transformer scales with more layers (4+ vs 3 passes)",
+  "results": [
+    {
+      "config": "3-pass GNN",
+      "avg_mse": 0.04952238978548566
+    },
+    {
+      "config": "3-layer Transformer",
+      "avg_mse": 0.045434844634512674
+    },
+    {
+      "config": "4-layer Transformer",
+      "avg_mse": 0.04483673898167758
+    },
+    {
+      "config": "6-layer Transformer",
+      "avg_mse": 0.04392883634146523
+    },
+    {
+      "config": "8-layer Transformer",
+      "avg_mse": 0.04436000761736223
+    }
+  ],
+  "status": "supported",
+  "improvement_vs_3pass_pct": 10.424339759218276,
+  "gnn_3pass_mse": 0.04952238978548566,
+  "transformer_8_mse": 0.04436000761736223
+}

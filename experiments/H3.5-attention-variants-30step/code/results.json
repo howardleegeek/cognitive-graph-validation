@@ -1,0 +1,26 @@
+{
+  "hypothesis": "H3.5",
+  "statement": "Attention variants outperform concatenation on 30+ steps",
+  "results": [
+    {
+      "variant": "Concatenation",
+      "avg_mse": 0.032275654402999295
+    },
+    {
+      "variant": "Standard Attention",
+      "avg_mse": 0.031227753919272117
+    },
+    {
+      "variant": "Linear Attention",
+      "avg_mse": 0.03085435530249323
+    },
+    {
+      "variant": "Scaled Dot-Product",
+      "avg_mse": 0.030693782630786818
+    }
+  ],
+  "status": "marginal",
+  "improvement_vs_concat_pct": 4.901129973883588,
+  "concat_mse": 0.032275654402999295,
+  "best_attention_mse": 0.030693782630786818
+}
