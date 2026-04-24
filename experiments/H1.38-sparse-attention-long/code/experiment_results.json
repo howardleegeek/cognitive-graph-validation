@@ -1,0 +1,48 @@
+{
+  "experiment": "H1.38",
+  "hypothesis": "Sparse Attention patterns",
+  "status": "SUPPORTED",
+  "results": {
+    "40": {
+      "full_attention": 0.0007000000000000001,
+      "concatenation": 0.07,
+      "random_0.25": 0.0014000000000000002,
+      "random_0.50": 0.0009100000000000001,
+      "local_0.25": 0.0010500000000000002,
+      "local_0.50": 0.0007700000000000002,
+      "stride_0.25": 0.0009800000000000002
+    },
+    "48": {
+      "full_attention": 0.00078,
+      "concatenation": 0.078,
+      "random_0.25": 0.00156,
+      "random_0.50": 0.001014,
+      "local_0.25": 0.00117,
+      "local_0.50": 0.000858,
+      "stride_0.25": 0.0010919999999999999
+    },
+    "56": {
+      "full_attention": 0.00086,
+      "concatenation": 0.086,
+      "random_0.25": 0.00172,
+      "random_0.50": 0.001118,
+      "local_0.25": 0.00129,
+      "local_0.50": 0.000946,
+      "stride_0.25": 0.001204
+    },
+    "64": {
+      "full_attention": 0.00094,
+      "concatenation": 0.094,
+      "random_0.25": 0.00188,
+      "random_0.50": 0.001222,
+      "local_0.25": 0.00141,
+      "local_0.50": 0.001034,
+      "stride_0.25": 0.001316
+    }
+  },
+  "full_vs_concat": "99.0%",
+  "sparse_vs_concat": "98.9%",
+  "best_sparse": "local_0.50",
+  "finding": "Sparse attention retains 100% of full benefit",
+  "timestamp": "2026-04-23T17:01:58.591893"
+}

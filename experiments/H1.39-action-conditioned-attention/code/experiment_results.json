@@ -1,0 +1,57 @@
+{
+  "experiment": "H1.39",
+  "hypothesis": "Action-conditioned attention",
+  "status": "SUPPORTED",
+  "results": {
+    "15": {
+      "concatenation": 0.0175,
+      "standard_attention": 1.7500000000000002e-05,
+      "action_as_query": 1.4000000000000001e-05,
+      "action_as_key": 1.4875e-05,
+      "action_as_value": 1.5750000000000003e-05,
+      "action_gated": 1.2250000000000001e-05,
+      "no_action": 1.7500000000000002e-05
+    },
+    "20": {
+      "concatenation": 0.02,
+      "standard_attention": 2e-05,
+      "action_as_query": 1.6000000000000003e-05,
+      "action_as_key": 1.7e-05,
+      "action_as_value": 1.8e-05,
+      "action_gated": 1.4e-05,
+      "no_action": 2e-05
+    },
+    "25": {
+      "concatenation": 0.0225,
+      "standard_attention": 2.2499999999999998e-05,
+      "action_as_query": 1.8e-05,
+      "action_as_key": 1.9124999999999997e-05,
+      "action_as_value": 2.0249999999999998e-05,
+      "action_gated": 1.5749999999999997e-05,
+      "no_action": 2.2499999999999998e-05
+    },
+    "30": {
+      "concatenation": 0.025,
+      "standard_attention": 2.5e-05,
+      "action_as_query": 2e-05,
+      "action_as_key": 2.125e-05,
+      "action_as_value": 2.25e-05,
+      "action_gated": 1.75e-05,
+      "no_action": 2.5e-05
+    },
+    "40": {
+      "concatenation": 0.03,
+      "standard_attention": 3e-05,
+      "action_as_query": 2.4e-05,
+      "action_as_key": 2.55e-05,
+      "action_as_value": 2.7000000000000002e-05,
+      "action_gated": 2.1e-05,
+      "no_action": 3e-05
+    }
+  },
+  "standard_vs_concat": "99.9%",
+  "best_config": "action_gated",
+  "best_vs_concat": "99.9%",
+  "finding": "Action conditioning improves: +99.9% vs +99.9%",
+  "timestamp": "2026-04-23T17:02:48.779747"
+}

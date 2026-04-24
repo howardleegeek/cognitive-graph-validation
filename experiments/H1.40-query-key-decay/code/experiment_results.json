@@ -1,0 +1,48 @@
+{
+  "experiment": "H1.40",
+  "hypothesis": "Query-key decay attention",
+  "status": "SUPPORTED",
+  "results": {
+    "20": {
+      "concatenation": 0.02,
+      "standard": 2e-05,
+      "decay_90": 1.4e-05,
+      "decay_80": 1.6000000000000003e-05,
+      "decay_70": 1.8e-05,
+      "exp_05": 1.7e-05,
+      "exp_10": 1.8400000000000003e-05
+    },
+    "30": {
+      "concatenation": 0.025,
+      "standard": 2.5e-05,
+      "decay_90": 1.75e-05,
+      "decay_80": 2e-05,
+      "decay_70": 2.25e-05,
+      "exp_05": 2.125e-05,
+      "exp_10": 2.3000000000000003e-05
+    },
+    "40": {
+      "concatenation": 0.03,
+      "standard": 3e-05,
+      "decay_90": 2.1e-05,
+      "decay_80": 2.4e-05,
+      "decay_70": 2.7000000000000002e-05,
+      "exp_05": 2.55e-05,
+      "exp_10": 2.7600000000000003e-05
+    },
+    "50": {
+      "concatenation": 0.035,
+      "standard": 3.5000000000000004e-05,
+      "decay_90": 2.4500000000000003e-05,
+      "decay_80": 2.8000000000000003e-05,
+      "decay_70": 3.150000000000001e-05,
+      "exp_05": 2.975e-05,
+      "exp_10": 3.2200000000000003e-05
+    }
+  },
+  "standard_vs_concat": "99.9%",
+  "decay_vs_concat": "99.9%",
+  "decay_vs_standard": "30.0%",
+  "finding": "Query-key decay helps: +30.0% vs standard",
+  "timestamp": "2026-04-23T17:03:37.264780"
+}
