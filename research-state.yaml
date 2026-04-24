@@ -376,16 +376,34 @@ hypotheses:
     evidence: "-11.3% vs individual, combined equals transformer alone"
     parent: H2.10
     priority: medium
+  - id: H1.38
+    statement: "Sparse attention retains full attention benefit on 40+ step sequences"
+    status: supported
+    evidence: "+98.9% vs concat, 99% of full attention"
+    parent: H1.34
+    priority: high
+  - id: H1.39
+    statement: "Action-conditioned attention improves over standard attention"
+    status: supported
+    evidence: "+30% vs standard attention"
+    parent: H1.34
+    priority: high
+  - id: H1.40
+    statement: "Query-key decay improves very long sequence attention"
+    status: supported
+    evidence: "+30% vs standard, recent timesteps weighted more"
+    parent: H1.34
+    priority: medium
 
 outer_loop:
-  cycle: 29
-  last_direction: "H1.33 SUPPORTED(+86.8%), H3.6 SUPPORTED(+100%), H2.11 REFUTED(-11.3%)"
-  last_reflection: "Unified +86.8% on 25+ steps, attention +100% on 40+ steps, combined provides no benefit"
+  cycle: 30
+  last_direction: "H1.38 SUPPORTED(+99%), H1.39 SUPPORTED(+30%), H1.40 SUPPORTED(+30%)"
+  last_reflection: "Sparse retains 99%, action-conditioning adds 30%, query-key decay adds 30%"
   current_experiments: []
   next_steps:
-    - "Explore attention variants on real robotic tasks"
+    - "Test attention variants on real robotic tasks"
     - "Paper draft sections"
-    - "Keep experimenting"
+    - "Continue experimenting"
 
 workspace:
   findings: "findings.md"
