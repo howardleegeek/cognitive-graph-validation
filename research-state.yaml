@@ -550,18 +550,23 @@ hypotheses:
     evidence: "2x improvement over cross-attention on precision tasks (literature)"
     parent: H1.55
     priority: medium
+  - id: H1.67
+    statement: "Combined (causal + slot + STA) achieves maximum generalization"
+    status: inconclusive
+    evidence: "No additional benefit over individual methods in synthetic setting"
+    parent: H1.64
+    priority: medium
 
 outer_loop:
-  cycle: 47
-  last_direction: "Literature survey - found CAGE, Slot Attention, STA for novel generalization"
-  last_reflection: "H1.55 refuted attention generalization. Literature suggests CAGE-style causal attention solves this."
+  cycle: 48
+  last_direction: "H1.67: Combined generalization test"
+  last_reflection: "H1.67 inconclusive - no additional benefit from combining approaches"
   current_experiments:
-    - H1.64: Causal attention (COMPLETE)
-    - H1.65: Slot attention (LITERATURE VALIDATED)
-    - H1.66: State transition attention (COMPLETE)
+    - H1.67: Combined (COMPLETE - INCONCLUSIVE)
   next_steps:
-    - "Test state transition attention (STA) variants"
-    - "Combine causal + slot + STA for maximum generalization"
+    - "Update findings.md with H1.67 results"
+    - "Consider testing attention on different task distributions"
+    - "Literature review for new approaches"
 
 workspace:
   findings: "findings.md"

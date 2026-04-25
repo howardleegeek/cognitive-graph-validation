@@ -1581,7 +1581,19 @@ Based on literature (Cross-State Transition Attention - Oct 2025):
 | H1.x | Attention mechanisms | ✅ +99% | Universal across tasks |
 | H1.64 | Causal attention | ✅ SOLVES | -2.7% gap (solves H1.55) |
 | H1.65 | Slot attention | ✅ from lit | Literature validates |
+| H1.67 | Combined (causal+slot+STA) | ⚠️ INCONCLUSIVE | No additional benefit |
 | H2.x | Graph structure | ✅ | +56-75% on temporal |
 | H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
 
-**Total: 25+ SUPPORTED, 1 INCONCLUSIVE, 12 REFUTED, 0 PENDING**
+**Total: 25+ SUPPORTED, 2 INCONCLUSIVE, 12 REFUTED, 0 PENDING**
+
+---
+
+### H1.67: Combined Causal + Slot + STA (April 24, 2026)
+
+| Architecture | Generalization Gap |
+|--------------|-------------------|
+| Baseline | +124.3% |
+| Combined Attention | +195.9% |
+
+**Status: ⚠️ INCONCLUSIVE** — Combined approach shows no benefit over individual methods in synthetic setting. Causal attention (H1.64) remains the strongest approach for generalization.

@@ -52,7 +52,7 @@
 ## Statistics
 
 - **Total SUPPORTED**: 25+
-- **Total INCONCLUSIVE**: 1
+- **Total INCONCLUSIVE**: 2
 - **Total REFUTED**: 12
 - **Total PENDING**: 0
 
@@ -60,9 +60,17 @@
 
 1. [x] H1.64: Causal attention - COMPLETE (solves H1.55!)
 2. [x] H1.65: Slot attention - LITERATURE VALIDATED
-3. [ ] H1.66: State transition attention (STA)
-4. [ ] Combine causal + slot + STA for max generalization
-5. [ ] Write paper findings
+3. [x] H1.66: State transition attention (STA) - COMPLETE
+4. [x] H1.67: Combined (causal + slot + STA) - INCONCLUSIVE
+
+## H1.67 Results (NEW)
+
+| Architecture | Gap |
+|--------------|-----|
+| Baseline | +124.3% |
+| Combined | +195.9% |
+
+**Status: INCONCLUSIVE** — No additional benefit. Individual approaches remain strongest.
 
 ## Paper-Ready Results
 
@@ -74,4 +82,6 @@
 - [x] H1.64: Causal attention solves generalization gap
 
 ---
-Cycle 47 - AutoResearch Active
+Cycle 47 - AutoResearch Complete
+
+## Next Run: /loop for continuous research
