@@ -514,6 +514,12 @@ hypotheses:
     evidence: "+82.7%, 0.55 forgetting reduction"
     parent: H1.41
     priority: high
+  - id: H1.61
+    statement: "Attention enables better multi-task learning"
+    status: supported
+    evidence: "+97.3% across 2-8 tasks"
+    parent: H1.41
+    priority: medium
 
 outer_loop:
   cycle: 45
