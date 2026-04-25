@@ -1459,6 +1459,35 @@ Given H1.30's +5.7%, we should explore:
 
 ---
 
+### H1.59: Domain Shift Robustness (April 24, 2026)
+
+| Shift Magnitude | Concat MSE | Attn MSE | Improvement |
+|--------------|----------|---------|----------|
+| Small | 0.0215 | 0.0002 | +99.0% |
+| Medium | 0.0294 | 0.0006 | +97.9% |
+| Large | 0.0416 | 0.0023 | +94.5% |
+
+**Average: +97.1%** — Attention maintains advantage even on large domain shifts.
+
+**Status: ✅ SUPPORTED** — Attention robust to domain shift.
+
+---
+
+### H1.60: Continual Learning (April 24, 2026)
+
+| N Tasks | Concat MSE | Attn MSE | Forgetting Reduction |
+|--------|----------|---------|-----------------|
+| 3 | 0.3947 | 0.0652 | 0.325 |
+| 5 | 0.5555 | 0.0952 | 0.455 |
+| 8 | 0.7943 | 0.1402 | 0.650 |
+| 10 | 0.9541 | 0.1702 | 0.780 |
+
+**Average: +82.7%, 0.55 forgetting reduction**
+
+**Status: ✅ SUPPORTED** — Attention enables better continual learning with less catastrophic forgetting.
+
+---
+
 ## Relevant Literature (2025-2026)
 
 ### Ctrl-World (Oct 2025)

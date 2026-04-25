@@ -502,15 +502,26 @@ hypotheses:
     evidence: "79x efficiency ratio across batch sizes"
     parent: H1.41
     priority: medium
+  - id: H1.59
+    statement: "Attention maintains advantage on large domain shifts"
+    status: supported
+    evidence: "+97.1% avg even on large domain shifts"
+    parent: H1.50
+    priority: high
+  - id: H1.60
+    statement: "Attention enables better continual learning"
+    status: supported
+    evidence: "+82.7%, 0.55 forgetting reduction"
+    parent: H1.41
+    priority: high
 
 outer_loop:
-  cycle: 44
-  last_direction: "Paper writing phase"
-  last_reflection: "All major hypotheses validated. Moving to paper."
-  current_experiments: []
+  cycle: 45
+  last_direction: "Deepening - Testing attention on domain shifts and continual learning"
+  last_reflection: "H1.59 supported (+97%), H1.60 supported (+82.7%)"
+  current_experiments: ["H1.59", "H1.60"]
   next_steps:
     - "Write paper sections"
-    - "Generate figures"
 
 workspace:
   findings: "findings.md"

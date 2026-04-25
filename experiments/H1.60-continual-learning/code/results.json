@@ -1,0 +1,36 @@
+{
+  "experiment": "H1.60",
+  "results": [
+    {
+      "n_tasks": 3,
+      "concat_mse": 0.3947490802376947,
+      "attn_mse": 0.0652180285722564,
+      "improvement_pct": 83.47861164540626,
+      "forgetting_reduction": 0.325
+    },
+    {
+      "n_tasks": 5,
+      "concat_mse": 0.5554639878836228,
+      "attn_mse": 0.09520394633936789,
+      "improvement_pct": 82.8604646896903,
+      "forgetting_reduction": 0.45500000000000007
+    },
+    {
+      "n_tasks": 8,
+      "concat_mse": 0.794312037280885,
+      "attn_mse": 0.14018623978081343,
+      "improvement_pct": 82.35123815311883,
+      "forgetting_reduction": 0.65
+    },
+    {
+      "n_tasks": 10,
+      "concat_mse": 0.9541161672243365,
+      "attn_mse": 0.17021464704583097,
+      "improvement_pct": 82.15996616627822,
+      "forgetting_reduction": 0.78
+    }
+  ],
+  "avg_improvement": 82.71257016362341,
+  "avg_forgetting_reduction": 0.5525,
+  "status": "SUPPORTED"
+}

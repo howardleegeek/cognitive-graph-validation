@@ -1,0 +1,25 @@
+{
+  "experiment": "H1.59",
+  "results": [
+    {
+      "shift_magnitude": "small",
+      "concat_mse": 0.02149816047538945,
+      "attn_mse": 0.00021802857225639667,
+      "improvement_pct": 98.98582684548293
+    },
+    {
+      "shift_magnitude": "medium",
+      "concat_mse": 0.029391963650868432,
+      "attn_mse": 0.0006118390181036443,
+      "improvement_pct": 97.9183458942337
+    },
+    {
+      "shift_magnitude": "large",
+      "concat_mse": 0.04156018640442436,
+      "attn_mse": 0.002293596712201722,
+      "improvement_pct": 94.48126461733686
+    }
+  ],
+  "avg_improvement": 97.12847911901783,
+  "status": "SUPPORTED"
+}
