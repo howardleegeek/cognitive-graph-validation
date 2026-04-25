@@ -1597,3 +1597,57 @@ Based on literature (Cross-State Transition Attention - Oct 2025):
 | Combined Attention | +195.9% |
 
 **Status: ⚠️ INCONCLUSIVE** — Combined approach shows no benefit over individual methods in synthetic setting. Causal attention (H1.64) remains the strongest approach for generalization.
+
+---
+
+## New Hypotheses (April 24, 2026)
+
+Based on research trajectory and latest literature, the following hypotheses are ready for exploration:
+
+| ID | Statement | Priority | Parent | Status |
+|----|----------|----------|--------|--------|
+| H1.68 | 128k+ dimensions with α≥0.5 maintains scaling | High | H1.21 | PENDING |
+| H1.69 | Attention parameter efficiency exceeds 10x | Medium | H1.41 | PENDING |
+| H1.70 | Real-robot validation on 50+ hour dataset | High | H1.50 | PENDING |
+
+---
+
+## Literature Insights (April 2026)
+
+### CAGE: Causal Attention Enables Data-Efficient Generalizable Robotic Manipulation
+- Novel policy integrating **causal attention mechanism** with DINOv2 backbone
+- Achieves 43% completion in unseen environments vs 0% for baselines
+- With ~50 demonstrations achieves robust generalization
+- **Validates our H1.64 (causal attention) findings**
+
+### PEEK: VLM-Guided Policy Modulation
+- Offloads high-level reasoning to VLMs for semantic generalization
+- Provides path (what) and masks (where) to low-level policy
+- Zero-shot generalization to novel objects/spatial layouts
+
+### CroSTAta: Cross-State Transition Attention
+- **State Transition Attention (STA)** modulates attention based on learned state evolution
+- 2× improvement over cross-attention on precision-critical tasks
+- Temporal masking during training for temporal reasoning
+
+### InternVLA-A1: Unified Vision-Language-Action
+- Blockwise attention mask over token streams
+- Cumulative segment mask: understanding → generation → action
+- Strong robustness in dynamic scenarios
+
+---
+
+## Research Trajectory Summary (April 24, 2026)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion |
+| H1.x | Attention mechanisms | ✅ +99% | Universal |
+| H1.64 | Causal attention | ✅ SOLVES | -2.7% gap |
+| H1.68 | 128k+ scaling | 🔲 PENDING | - |
+| H1.69 | Parameter efficiency | 🔲 PENDING | - |
+| H1.70 | Real-robot validation | 🔲 PENDING | - |
+| H2.x | Graph structure | ✅ | +56-75% |
+| H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
+
+**Total: 25+ SUPPORTED, 2 INCONCLUSIVE, 12 REFUTED, 3 PENDING**

@@ -557,16 +557,37 @@ hypotheses:
     parent: H1.64
     priority: medium
 
+  - id: H1.68
+    statement: "128k+ dimensions with α≥0.5 maintains scaling advantage"
+    status: estimated
+    evidence: "Plateau extends to 32k-64k"
+    parent: H1.21
+    priority: high
+
+  - id: H1.69
+    statement: "Attention parameter efficiency exceeds baseline 10x"
+    status: estimated
+    evidence: "Attention converges 79x faster"
+    parent: H1.41
+    priority: medium
+
+  - id: H1.70
+    statement: "Real-robot validation on 50+ hour dataset maintains +95%"
+    status: estimated
+    evidence: "H1.50 shows +99% on smaller dataset"
+    parent: H1.50
+    priority: high
+
 outer_loop:
-  cycle: 48
-  last_direction: "H1.67: Combined generalization test"
-  last_reflection: "H1.67 inconclusive - no additional benefit from combining approaches"
+  cycle: 49
+  last_direction: "H1.67: Combined generalization (INCONCLUSIVE)"
+  last_reflection: "Need to explore scaling and parameter efficiency"
   current_experiments:
-    - H1.67: Combined (COMPLETE - INCONCLUSIVE)
+    - "H1.68: 128k+ scaling (PENDING)"
   next_steps:
-    - "Update findings.md with H1.67 results"
-    - "Consider testing attention on different task distributions"
-    - "Literature review for new approaches"
+    - "Run H1.68: 128k+ dimension scaling"
+    - "Update findings.md"
+    - "Git commit and push"
 
 workspace:
   findings: "findings.md"
