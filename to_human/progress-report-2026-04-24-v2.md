@@ -100,8 +100,6 @@
 |-------------|--------|-------------|
 | H1.57 Long Horizons | ✅ +99% | Maintained on 100 steps |
 | H1.58 Batch Efficiency | ✅ 79x | 79x faster convergence |
-| H1.59 Domain Shift | ✅ +97.1% | Robust to large shifts |
-| H1.60 Continual Learning | ✅ +82.7% | Less forgetting (0.55)
 
 ---
 
