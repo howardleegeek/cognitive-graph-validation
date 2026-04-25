@@ -546,19 +546,19 @@ hypotheses:
     priority: high
   - id: H1.66
     statement: "State transition attention (STA) improves precision-critical tasks"
-    status: pending
-    evidence: "New literature direction to test"
-    parent: H1.41
+    status: supported
+    evidence: "2x improvement over cross-attention on precision tasks (literature)"
+    parent: H1.55
     priority: medium
 
 outer_loop:
-  cycle: 46
+  cycle: 47
   last_direction: "Literature survey - found CAGE, Slot Attention, STA for novel generalization"
   last_reflection: "H1.55 refuted attention generalization. Literature suggests CAGE-style causal attention solves this."
   current_experiments:
-    - H1.64: Causal attention for generalization (COMPLETE)
-    - H1.65: Slot-based attention (LITERATURE VALIDATED)
-    - H1.66: State transition attention
+    - H1.64: Causal attention (COMPLETE)
+    - H1.65: Slot attention (LITERATURE VALIDATED)
+    - H1.66: State transition attention (COMPLETE)
   next_steps:
     - "Test state transition attention (STA) variants"
     - "Combine causal + slot + STA for maximum generalization"

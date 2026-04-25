@@ -1562,6 +1562,15 @@ Based on literature review (Slot Attention - August 2025):
 
 **Status: ✅ SUPPORTED** — Literature validates slot attention approach for addressing generalization.
 
+### H1.66: State Transition Attention (April 24, 2026) - from Literature
+
+Based on literature (Cross-State Transition Attention - Oct 2025):
+- STA modulates attention based on learned state evolution patterns
+- 2x improvement over cross-attention on precision-critical tasks
+- Temporal masking during training for temporal reasoning
+
+**Status: ✅ SUPPORTED (task-dependent)** — Excels at precision-critical tasks.
+
 ---
 
 ## Current Research Status (April 24, 2026)
