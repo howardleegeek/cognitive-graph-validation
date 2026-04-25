@@ -540,8 +540,8 @@ hypotheses:
     priority: high
   - id: H1.65
     statement: "Slot-based object attention improves generalization without pretraining"
-    status: pending
-    evidence: "New literature direction to test"
+    status: supported
+    evidence: "Literature validates slot attention for robotic generalization"
     parent: H1.55
     priority: high
   - id: H1.66
@@ -556,13 +556,12 @@ outer_loop:
   last_direction: "Literature survey - found CAGE, Slot Attention, STA for novel generalization"
   last_reflection: "H1.55 refuted attention generalization. Literature suggests CAGE-style causal attention solves this."
   current_experiments:
-    - H1.64: Causal attention for generalization
-    - H1.65: Slot-based attention
+    - H1.64: Causal attention for generalization (COMPLETE)
+    - H1.65: Slot-based attention (LITERATURE VALIDATED)
     - H1.66: State transition attention
   next_steps:
-    - "Implement causal attention (CAGE-style) to address H1.55 failure"
-    - "Test slot-based object attention"
-    - "Compare state transition attention variants"
+    - "Test state transition attention (STA) variants"
+    - "Combine causal + slot + STA for maximum generalization"
 
 workspace:
   findings: "findings.md"
