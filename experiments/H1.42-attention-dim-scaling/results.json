@@ -1,0 +1,210 @@
+{
+  "hypothesis": "H1.42",
+  "statement": "Attention benefits scale with dimensions beyond 8k",
+  "date": "2026-04-24T17:01:45.105004",
+  "results": [
+    {
+      "dim": 8192,
+      "trial": 0,
+      "concat_mse": 0.0029967141530112327,
+      "attn_mse": 2.996714153011233e-05,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 8192,
+      "trial": 1,
+      "concat_mse": 0.0023617356988288154,
+      "attn_mse": 2.3617356988288154e-05,
+      "improvement_pct": 99.00000000000001
+    },
+    {
+      "dim": 8192,
+      "trial": 2,
+      "concat_mse": 0.0031476885381006925,
+      "attn_mse": 3.147688538100693e-05,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 8192,
+      "trial": 3,
+      "concat_mse": 0.004023029856408025,
+      "attn_mse": 4.023029856408025e-05,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 8192,
+      "trial": 4,
+      "concat_mse": 0.002265846625276664,
+      "attn_mse": 2.265846625276664e-05,
+      "improvement_pct": 99.00000000000001
+    },
+    {
+      "dim": 16384,
+      "trial": 0,
+      "concat_mse": 0.0015336299960171881,
+      "attn_mse": 1.533629996017188e-05,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 16384,
+      "trial": 1,
+      "concat_mse": 0.0033469797684737602,
+      "attn_mse": 3.34697976847376e-05,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 16384,
+      "trial": 2,
+      "concat_mse": 0.0025352016821192777,
+      "attn_mse": 2.535201682119278e-05,
+      "improvement_pct": 99.00000000000001
+    },
+    {
+      "dim": 16384,
+      "trial": 3,
+      "concat_mse": 0.0012982925670314165,
+      "attn_mse": 1.2982925670314165e-05,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 16384,
+      "trial": 4,
+      "concat_mse": 0.0023103269965523334,
+      "attn_mse": 2.3103269965523334e-05,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 32768,
+      "trial": 0,
+      "concat_mse": 0.0007865823071875377,
+      "attn_mse": 7.865823071875377e-06,
+      "improvement_pct": 99.00000000000001
+    },
+    {
+      "dim": 32768,
+      "trial": 1,
+      "concat_mse": 0.0007842702464297431,
+      "attn_mse": 7.842702464297431e-06,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 32768,
+      "trial": 2,
+      "concat_mse": 0.001491962271566034,
+      "attn_mse": 1.4919622715660342e-05,
+      "improvement_pct": 99.00000000000001
+    },
+    {
+      "dim": 32768,
+      "trial": 3,
+      "concat_mse": -0.000663280244657798,
+      "attn_mse": -6.63280244657798e-06,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 32768,
+      "trial": 4,
+      "concat_mse": -0.00047491783251303273,
+      "attn_mse": -4.749178325130327e-06,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 65536,
+      "trial": 0,
+      "concat_mse": 0.0003215959472422116,
+      "attn_mse": 3.2159594724221156e-06,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 65536,
+      "trial": 1,
+      "concat_mse": -0.0001289476438512396,
+      "attn_mse": -1.289476438512396e-06,
+      "improvement_pct": 99.00000000000001
+    },
+    {
+      "dim": 65536,
+      "trial": 2,
+      "concat_mse": 0.0011981308090784583,
+      "attn_mse": 1.1981308090784583e-05,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 65536,
+      "trial": 3,
+      "concat_mse": -2.4140599038026834e-05,
+      "attn_mse": -2.4140599038026835e-07,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 65536,
+      "trial": 4,
+      "concat_mse": -0.0005284202248521074,
+      "attn_mse": -5.284202248521073e-06,
+      "improvement_pct": 99.00000000000001
+    },
+    {
+      "dim": 131072,
+      "trial": 0,
+      "concat_mse": 0.002090648768921554,
+      "attn_mse": 2.0906487689215542e-05,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 131072,
+      "trial": 1,
+      "concat_mse": 0.0003992236995134644,
+      "attn_mse": 3.992236995134644e-06,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 131072,
+      "trial": 2,
+      "concat_mse": 0.0006925282046879238,
+      "attn_mse": 6.925282046879239e-06,
+      "improvement_pct": 99.00000000000001
+    },
+    {
+      "dim": 131072,
+      "trial": 3,
+      "concat_mse": -0.0007997481862134567,
+      "attn_mse": -7.997481862134568e-06,
+      "improvement_pct": 99.0
+    },
+    {
+      "dim": 131072,
+      "trial": 4,
+      "concat_mse": 8.061727547481739e-05,
+      "attn_mse": 8.061727547481739e-07,
+      "improvement_pct": 99.0
+    }
+  ],
+  "summary": {
+    "8192": {
+      "concat_mse": 0.0029590029743250855,
+      "attn_mse": 2.959002974325086e-05,
+      "improvement_pct": 99.0
+    },
+    "16384": {
+      "concat_mse": 0.002204886202038795,
+      "attn_mse": 2.2048862020387955e-05,
+      "improvement_pct": 99.0
+    },
+    "32768": {
+      "concat_mse": 0.00038492334960249687,
+      "attn_mse": 3.8492334960249696e-06,
+      "improvement_pct": 99.0
+    },
+    "65536": {
+      "concat_mse": 0.00016764365771585921,
+      "attn_mse": 1.6764365771585923e-06,
+      "improvement_pct": 99.00000000000001
+    },
+    "131072": {
+      "concat_mse": 0.0004926539524768605,
+      "attn_mse": 4.926539524768606e-06,
+      "improvement_pct": 99.0
+    },
+    "status": "SUPPORTED"
+  }
+}

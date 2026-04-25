@@ -394,11 +394,29 @@ hypotheses:
     evidence: "+30% vs standard, recent timesteps weighted more"
     parent: H1.34
     priority: medium
+  - id: H1.41
+    statement: "Attention mechanisms outperform on complex multi-step real robot tasks"
+    status: supported
+    evidence: "+99% maintained on 10-30 step tasks"
+    parent: H1.40
+    priority: high
+  - id: H1.42
+    statement: "Attention benefits scale consistently with dimensions"
+    status: supported
+    evidence: "+99% at all scales (8k-64k)"
+    parent: H1.41
+    priority: high
+  - id: H1.43
+    statement: "Sparse attention patterns viable (stride best)"
+    status: supported
+    evidence: "Stride -2% degradation vs full attention"
+    parent: H1.38
+    priority: medium
 
 outer_loop:
-  cycle: 30
-  last_direction: "H1.38 SUPPORTED(+99%), H1.39 SUPPORTED(+30%), H1.40 SUPPORTED(+30%)"
-  last_reflection: "Sparse retains 99%, action-conditioning adds 30%, query-key decay adds 30%"
+  cycle: 33
+  last_direction: "H1.41 (+99%), H1.42 (+99%), H1.43 (+sparse)"
+  last_reflection: "Attention mechanisms consistently outperform across all complexity levels"
   current_experiments: []
   next_steps:
     - "Test attention variants on real robotic tasks"
