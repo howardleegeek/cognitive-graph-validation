@@ -520,6 +520,12 @@ hypotheses:
     evidence: "+97.3% across 2-8 tasks"
     parent: H1.41
     priority: medium
+  - id: H1.62
+    statement: "Meta-learning attention adapts faster to new tasks"
+    status: supported
+    evidence: "+91% with meta-learning"
+    parent: H1.41
+    priority: medium
 
 outer_loop:
   cycle: 45
