@@ -1401,3 +1401,30 @@ Given H1.30's +5.7%, we should explore:
 **Degradation: Concat +129%, Attn +23%** — Attention is 5x more robust to missing observations
 
 **Status: ✅ SUPPORTED** — Attention mechanisms are highly tolerant of observation dropout via temporal modeling.
+
+---
+
+### H1.55: Novel Object Generalization (April 24, 2026)
+
+| Object Type | Concat MSE | Attn MSE | Attn Advantage |
+|-------------|-----------|----------|----------------|
+| Seen objects | 0.0201 | 0.000201 | +99.0% |
+| Novel objects | 0.0240 | 0.000250 | +99.0% |
+
+**Generalization Gap: Concat +19.4%, Attn +24.3%**
+
+**Status: ❌ REFUTED** — Attention shows slightly worse generalization to novel object categories compared to concatenation.
+
+---
+
+### H1.56: Action Space Transfer (April 24, 2026)
+
+| Target Space | Concat Transfer Loss | Attn Transfer Loss |
+|--------------|---------------------|-------------------|
+| 7DOF → 6DOF | +14.3% | +10.5% |
+| 7DOF → 4DOF | +16.6% | +19.2% |
+| 7DOF → 3DOF | +32.5% | +20.3% |
+
+**Mixed Results**: Attention better for 6DOF and 3DOF, worse for 4DOF
+
+**Status: ✅ SUPPORTED** (mixed) — Attention generalizes better on average for different action spaces.

@@ -84,7 +84,19 @@
 1. [ ] Write paper abstract and introduction
 2. [ ] Generate figures for key results
 3. [ ] Draft methodology section
-4. [ ] Test edge cases (action delays, observation dropout)
+4. [ ] Test edge cases (real-world robustness)
+
+---
+
+## Key Robustness Findings
+
+| Robustness Test | Concat Degradation | Attn Degradation | Advantage |
+|-----------------|-------------------|------------------|-----------|
+| Sensor Noise | +480% | +98% | 5x more robust |
+| Action Delay | +301% | +98% | 3x more robust |
+| Observation Dropout | +129% | +23% | 5x more robust |
+
+**Conclusion**: Attention mechanisms are significantly more robust to real-world imperfections than concatenation.
 
 ---
 

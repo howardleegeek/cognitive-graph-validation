@@ -1,0 +1,1465 @@
+{
+  "hypothesis": "H1.55",
+  "results": [
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 0,
+      "concat": 0.01350507554146402,
+      "attn": 0.0001979643213545849,
+      "action": 0.00011466292462387636
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 1,
+      "concat": 0.02105061536120668,
+      "attn": 0.00020519905355841233,
+      "action": 0.00013466479063911881
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 2,
+      "concat": 0.01999084054871093,
+      "attn": 0.00020683230359657597,
+      "action": 0.00015256601143996993
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 3,
+      "concat": 0.018555599542976756,
+      "attn": 0.00023312890758636244,
+      "action": 0.0001233538711442857
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 4,
+      "concat": 0.0266657141156919,
+      "attn": 0.0001599312148502893,
+      "action": 0.00013330978199597142
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 5,
+      "concat": 0.02547519427808088,
+      "attn": 0.00020516337025713833,
+      "action": 0.0001498329265992091
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 6,
+      "concat": 0.02355352737718984,
+      "attn": 0.00021444439613793975,
+      "action": 0.000120650561729645
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 7,
+      "concat": 0.016026181454112658,
+      "attn": 0.0001966106821956587,
+      "action": 0.00014403171781093258
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 8,
+      "concat": 0.021188233496591234,
+      "attn": 0.00019624846055530534,
+      "action": 0.00013484667642378725
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 9,
+      "concat": 0.025803117631369665,
+      "attn": 0.00020438377934448888,
+      "action": 0.0001462317145053257
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 10,
+      "concat": 0.019157578207432135,
+      "attn": 0.00018986193170933725,
+      "action": 0.00014560087098095748
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 11,
+      "concat": 0.024070050707364708,
+      "attn": 0.0002242191193342476,
+      "action": 0.00014634466460545427
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 12,
+      "concat": 0.014577655833173121,
+      "attn": 0.00021590451665825527,
+      "action": 0.00011800328174087663
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 13,
+      "concat": 0.015360852893324346,
+      "attn": 0.00018714722448010592,
+      "action": 0.00012875531847995775
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 14,
+      "concat": 0.0235943566851219,
+      "attn": 0.000208909547279997,
+      "action": 0.00014879798685950597
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 15,
+      "concat": 0.017244393402506643,
+      "attn": 0.000202997976284408,
+      "action": 0.0001576997303393952
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 16,
+      "concat": 0.015142324128531906,
+      "attn": 0.0001895637711859565,
+      "action": 0.00013205413830737116
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 17,
+      "concat": 0.01598123916234913,
+      "attn": 0.00020394276417857733,
+      "action": 0.0001501745847982815
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 18,
+      "concat": 0.02110253898328745,
+      "attn": 0.00020283596475441072,
+      "action": 0.00016173605038122415
+    },
+    {
+      "category": "bowl_seen",
+      "type": "seen",
+      "trial": 19,
+      "concat": 0.017087826628324955,
+      "attn": 0.0001982532059303161,
+      "action": 0.00015817786057809917
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 0,
+      "concat": 0.022714511390959403,
+      "attn": 0.00016838812106327494,
+      "action": 0.0001739775557889509
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 1,
+      "concat": 0.023955749885022994,
+      "attn": 0.00021472280928905372,
+      "action": 0.00012849801224858824
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 2,
+      "concat": 0.017268416649040896,
+      "attn": 0.00022478913092120143,
+      "action": 0.00014420110526247864
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 3,
+      "concat": 0.020237637233299462,
+      "attn": 0.00021732806101245453,
+      "action": 0.00011965153848889621
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 4,
+      "concat": 0.022106558632460284,
+      "attn": 0.00019549609565364101,
+      "action": 0.00015583071447662945
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 5,
+      "concat": 0.019558863950299443,
+      "attn": 0.00018846656576839018,
+      "action": 0.00012812392500048127
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 6,
+      "concat": 0.02232494537462738,
+      "attn": 0.00016683950390948064,
+      "action": 0.00016295014579263142
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 7,
+      "concat": 0.01976855989194342,
+      "attn": 0.00020812171143183542,
+      "action": 0.0001151690324257641
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 8,
+      "concat": 0.016359607475910663,
+      "attn": 0.0002651681786305241,
+      "action": 0.00014177417594618327
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 9,
+      "concat": 0.02208953156757286,
+      "attn": 0.00016997631562836447,
+      "action": 0.0001119159387705886
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 10,
+      "concat": 0.016701777805490214,
+      "attn": 0.00022002840556262405,
+      "action": 0.00015436720197317962
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 11,
+      "concat": 0.016188669788093135,
+      "attn": 0.00018841799443577415,
+      "action": 0.00014007763490236206
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 12,
+      "concat": 0.010599016554542585,
+      "attn": 0.00020386624154611788,
+      "action": 0.00015170988410957248
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 13,
+      "concat": 0.023820058209640043,
+      "attn": 0.00020351918667382374,
+      "action": 0.00013319084242553156
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 14,
+      "concat": 0.020746844042643268,
+      "attn": 0.00019191514426235886,
+      "action": 0.00012287286785019028
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 15,
+      "concat": 0.0179124171184024,
+      "attn": 0.00019188999952124368,
+      "action": 0.00017381763867272698
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 16,
+      "concat": 0.017236745428426806,
+      "attn": 0.0002000886793684394,
+      "action": 0.0001366299411223355
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 17,
+      "concat": 0.016336031747415453,
+      "attn": 0.00020696370148069791,
+      "action": 0.00012063611671698486
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 18,
+      "concat": 0.017562175476624756,
+      "attn": 0.00020123609598546023,
+      "action": 0.00014454115348394253
+    },
+    {
+      "category": "mug_seen",
+      "type": "seen",
+      "trial": 19,
+      "concat": 0.024266899136859595,
+      "attn": 0.00021807217402474317,
+      "action": 0.00011451205599941052
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 0,
+      "concat": 0.027563187438958928,
+      "attn": 0.00019277246883209846,
+      "action": 0.00020702311365520097
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 1,
+      "concat": 0.02721925652265682,
+      "attn": 0.00018486528747270752,
+      "action": 0.0001373941502193579
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 2,
+      "concat": 0.02176208747055708,
+      "attn": 0.00024388050585862802,
+      "action": 0.00014871365637694525
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 3,
+      "concat": 0.018015842453982463,
+      "attn": 0.0002030868567954338,
+      "action": 0.00013853897158113296
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 4,
+      "concat": 0.019917107187487536,
+      "attn": 0.00021389594998391914,
+      "action": 0.0001540229498109849
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 5,
+      "concat": 0.022376910131447273,
+      "attn": 0.00017677672918931347,
+      "action": 0.00012805307317298358
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 6,
+      "concat": 0.019321123614606302,
+      "attn": 0.00020139124893906395,
+      "action": 0.00013105899396485262
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 7,
+      "concat": 0.02308680059107025,
+      "attn": 0.00018758634519305595,
+      "action": 0.00013132581708247623
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 8,
+      "concat": 0.016435646112395,
+      "attn": 0.0002034015168988507,
+      "action": 0.0001271854687158329
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 9,
+      "concat": 0.022171890440051842,
+      "attn": 0.0002027693039824888,
+      "action": 0.00014713036124040966
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 10,
+      "concat": 0.019345862460282425,
+      "attn": 0.00019178022297062952,
+      "action": 0.00012883051290844613
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 11,
+      "concat": 0.021531173438782997,
+      "attn": 0.00022074990370797766,
+      "action": 0.00016152678556016618
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 12,
+      "concat": 0.019995858705147532,
+      "attn": 0.0001749954495927414,
+      "action": 0.0001255473547804125
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 13,
+      "concat": 0.022994429598992606,
+      "attn": 0.00020396779357210364,
+      "action": 0.00012527762782426244
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 14,
+      "concat": 0.0227885141838986,
+      "attn": 0.0002456045890694222,
+      "action": 0.00011809264342916721
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 15,
+      "concat": 0.021757198306467666,
+      "attn": 0.00019586965556807773,
+      "action": 0.0001352053399086408
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 16,
+      "concat": 0.016268356177899967,
+      "attn": 0.0001376718408111559,
+      "action": 0.00011739774051449472
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 17,
+      "concat": 0.019440155528882414,
+      "attn": 0.00017317236501946374,
+      "action": 0.00012073990755900146
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 18,
+      "concat": 0.029903531160859184,
+      "attn": 0.0001782209344659094,
+      "action": 0.00016712543667794457
+    },
+    {
+      "category": "plate_seen",
+      "type": "seen",
+      "trial": 19,
+      "concat": 0.015648609987203254,
+      "attn": 0.00018447380650084443,
+      "action": 0.00013970642821540787
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 0,
+      "concat": 0.02471801861403332,
+      "attn": 0.0002120081222640669,
+      "action": 0.0001373240303739956
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 1,
+      "concat": 0.022674031901226327,
+      "attn": 0.00023491242036145874,
+      "action": 0.00014364240129570593
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 2,
+      "concat": 0.02192463143721426,
+      "attn": 0.0001676727931496106,
+      "action": 0.00012844503252881618
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 3,
+      "concat": 0.022236513076570756,
+      "attn": 0.00023465864325445247,
+      "action": 0.00011412258676049527
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 4,
+      "concat": 0.020990155848956745,
+      "attn": 0.0002129155419971952,
+      "action": 0.00015572165887229927
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 5,
+      "concat": 0.014055380658053316,
+      "attn": 0.00018048460975085418,
+      "action": 0.00014735081324123318
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 6,
+      "concat": 0.015116046139584212,
+      "attn": 0.00019879693519774032,
+      "action": 0.00013911443629987196
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 7,
+      "concat": 0.02186663987087318,
+      "attn": 0.0001920672305996232,
+      "action": 0.0001479821935578765
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 8,
+      "concat": 0.020331586724849093,
+      "attn": 0.00022038305312005652,
+      "action": 0.00014036808877268545
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 9,
+      "concat": 0.016870446686407012,
+      "attn": 0.00020676904788176405,
+      "action": 0.00014186177544552842
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 10,
+      "concat": 0.019414527998139853,
+      "attn": 0.00023088427040961432,
+      "action": 0.00014025588672132467
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 11,
+      "concat": 0.018457455082095318,
+      "attn": 0.0001836943798430105,
+      "action": 0.00011097023259680907
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 12,
+      "concat": 0.018662546237323867,
+      "attn": 0.00019547013415907355,
+      "action": 0.00014781721059117686
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 13,
+      "concat": 0.019249476920940464,
+      "attn": 0.000177621875703955,
+      "action": 0.00014402991355475477
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 14,
+      "concat": 0.019212086499651428,
+      "attn": 0.0001931698115104208,
+      "action": 0.00015852137127433664
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 15,
+      "concat": 0.021934092486663812,
+      "attn": 0.00021154450963193898,
+      "action": 0.00013198043791542044
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 16,
+      "concat": 0.015216909294107446,
+      "attn": 0.00019253311880209083,
+      "action": 0.00013437115465307335
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 17,
+      "concat": 0.019796506222220785,
+      "attn": 0.00021596352678455422,
+      "action": 0.00015057810854026335
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 18,
+      "concat": 0.021881380767955066,
+      "attn": 0.00021253975369623108,
+      "action": 0.00012625739262543952
+    },
+    {
+      "category": "cup_seen",
+      "type": "seen",
+      "trial": 19,
+      "concat": 0.02497190800963095,
+      "attn": 0.0002006823473127374,
+      "action": 0.0001456100498473766
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 0,
+      "concat": 0.02911784312621974,
+      "attn": 0.0002491553462060371,
+      "action": 0.00014539355428138935
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 1,
+      "concat": 0.020397445421747585,
+      "attn": 0.0002628594900703647,
+      "action": 0.00016070978001254827
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 2,
+      "concat": 0.015242032668678086,
+      "attn": 0.0002480617879672655,
+      "action": 0.00014567978051329992
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 3,
+      "concat": 0.02561616107504552,
+      "attn": 0.000236517696579585,
+      "action": 0.00019352864578898234
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 4,
+      "concat": 0.019485164323363443,
+      "attn": 0.0002201957780268283,
+      "action": 0.00019331462770721437
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 5,
+      "concat": 0.018724432194402375,
+      "attn": 0.0002682651469470089,
+      "action": 0.0001847500872256216
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 6,
+      "concat": 0.04136467997600468,
+      "attn": 0.00022459895690440343,
+      "action": 0.0001840513909098065
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 7,
+      "concat": 0.01688774540440569,
+      "attn": 0.0002639406477027027,
+      "action": 0.0001493493852335669
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 8,
+      "concat": 0.025063457760274372,
+      "attn": 0.0002516414256929868,
+      "action": 0.00019158403924588875
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 9,
+      "concat": 0.024167836926990368,
+      "attn": 0.0002550149335348973,
+      "action": 0.00017624982984899346
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 10,
+      "concat": 0.025320558137988464,
+      "attn": 0.0002296367680972491,
+      "action": 0.0001849723093871718
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 11,
+      "concat": 0.02317785449951795,
+      "attn": 0.00025836951149115514,
+      "action": 0.00015749563184526422
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 12,
+      "concat": 0.024608405078611603,
+      "attn": 0.00026101542723811047,
+      "action": 0.00017082350035548622
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 13,
+      "concat": 0.021582740983985424,
+      "attn": 0.00021971604983136777,
+      "action": 0.00016907750343822363
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 14,
+      "concat": 0.02391400389627131,
+      "attn": 0.00025207130498737545,
+      "action": 0.00016374688714431088
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 15,
+      "concat": 0.02896292274982288,
+      "attn": 0.0002664519101816438,
+      "action": 0.0001805458674470947
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 16,
+      "concat": 0.024345537611333914,
+      "attn": 0.00024180719861628333,
+      "action": 0.00017311610725969878
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 17,
+      "concat": 0.02497242484865043,
+      "attn": 0.00021221024149710433,
+      "action": 0.00016868115206845736
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 18,
+      "concat": 0.024399920396820728,
+      "attn": 0.0002172524576828176,
+      "action": 0.00015074448612369812
+    },
+    {
+      "category": "bowl_novel",
+      "type": "novel",
+      "trial": 19,
+      "concat": 0.021551433085653535,
+      "attn": 0.0003023269214490469,
+      "action": 0.0001968502492615816
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 0,
+      "concat": 0.02715318638142339,
+      "attn": 0.00022507572674336878,
+      "action": 0.00018575873021158703
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 1,
+      "concat": 0.026249405829935443,
+      "attn": 0.00023055130346882457,
+      "action": 0.00017249343890208066
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 2,
+      "concat": 0.02659896638637876,
+      "attn": 0.0002490621060647918,
+      "action": 0.00020061621568386883
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 3,
+      "concat": 0.025119479778679052,
+      "attn": 0.00026327183571839724,
+      "action": 0.00016747088881956032
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 4,
+      "concat": 0.019391954971970972,
+      "attn": 0.00023691352981022466,
+      "action": 0.00018380433182331397
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 5,
+      "concat": 0.023739922363515506,
+      "attn": 0.0002651830994572917,
+      "action": 0.00018436232917086145
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 6,
+      "concat": 0.025433741845849418,
+      "attn": 0.00021615377730016682,
+      "action": 0.00016820056520126388
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 7,
+      "concat": 0.02323851057376264,
+      "attn": 0.0002508495997655371,
+      "action": 0.00015670974042026158
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 8,
+      "concat": 0.027313252387104865,
+      "attn": 0.0002897081185287532,
+      "action": 0.00018166403005372467
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 9,
+      "concat": 0.02692542366574536,
+      "attn": 0.0002020025886774977,
+      "action": 0.00016256446325576255
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 10,
+      "concat": 0.024545271130444447,
+      "attn": 0.00022488523364333005,
+      "action": 0.0001873835610979344
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 11,
+      "concat": 0.026203990833352588,
+      "attn": 0.0002635435179712245,
+      "action": 0.00014709716163057964
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 12,
+      "concat": 0.018737095317996177,
+      "attn": 0.0002783529954112088,
+      "action": 0.00015095028994644571
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 13,
+      "concat": 0.026012693898850095,
+      "attn": 0.0002460474479805312,
+      "action": 0.0002136502895098951
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 14,
+      "concat": 0.019405268953128413,
+      "attn": 0.00021747918963948494,
+      "action": 0.0001778158374556339
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 15,
+      "concat": 0.029764539189423563,
+      "attn": 0.0002798265218007364,
+      "action": 0.0001578106818233318
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 16,
+      "concat": 0.028375935418215027,
+      "attn": 0.0002027346822500807,
+      "action": 0.00020061740669355936
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 17,
+      "concat": 0.026821289870961107,
+      "attn": 0.0001869455214280154,
+      "action": 0.00017496072491774673
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 18,
+      "concat": 0.020239752674995694,
+      "attn": 0.0002288731268267631,
+      "action": 0.00019767157623945672
+    },
+    {
+      "category": "mug_novel",
+      "type": "novel",
+      "trial": 19,
+      "concat": 0.020579631315013225,
+      "attn": 0.00022101488490294842,
+      "action": 0.00019571329367021038
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 0,
+      "concat": 0.02914711139048236,
+      "attn": 0.00023051219134647866,
+      "action": 0.0001561690618543615
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 1,
+      "concat": 0.024265609047552043,
+      "attn": 0.0002791832981167951,
+      "action": 0.00018114304846500876
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 2,
+      "concat": 0.028146227593712794,
+      "attn": 0.00024664204002126927,
+      "action": 0.00016351150587620272
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 3,
+      "concat": 0.020592115592090055,
+      "attn": 0.00024058222436835677,
+      "action": 0.0001519612625490845
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 4,
+      "concat": 0.022645546922228393,
+      "attn": 0.0002422277643696244,
+      "action": 0.000152624310650772
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 5,
+      "concat": 0.022275049382953688,
+      "attn": 0.00024321923412350935,
+      "action": 0.0001939994607966289
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 6,
+      "concat": 0.03363127310615111,
+      "attn": 0.00024320542170310882,
+      "action": 0.00017325827212672664
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 7,
+      "concat": 0.018663358984916608,
+      "attn": 0.0002731397000593431,
+      "action": 0.0002076634082644552
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 8,
+      "concat": 0.020859261188235712,
+      "attn": 0.0002512085106527256,
+      "action": 0.00017753910325160363
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 9,
+      "concat": 0.030898633411594878,
+      "attn": 0.00025006623982074395,
+      "action": 0.00018181949390886308
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 10,
+      "concat": 0.03195443350415353,
+      "attn": 0.00024824286686353075,
+      "action": 0.0001759438623811959
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 11,
+      "concat": 0.027519327946943475,
+      "attn": 0.0002706110421937717,
+      "action": 0.00019573190240997974
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 12,
+      "concat": 0.025577785268540473,
+      "attn": 0.00031357829810829864,
+      "action": 0.00018741301984520246
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 13,
+      "concat": 0.02732483162026852,
+      "attn": 0.00028798273508512146,
+      "action": 0.00021172550934445803
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 14,
+      "concat": 0.017417134742104674,
+      "attn": 0.0002840939881278983,
+      "action": 0.00018683221297801834
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 15,
+      "concat": 0.01822139070456919,
+      "attn": 0.0002599757453553752,
+      "action": 0.00016137829599753047
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 16,
+      "concat": 0.025897963705309085,
+      "attn": 0.0002510242865679587,
+      "action": 0.0001532722046002226
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 17,
+      "concat": 0.027427602382342594,
+      "attn": 0.00021978667303948238,
+      "action": 0.00021580450923756766
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 18,
+      "concat": 0.017429612800386855,
+      "attn": 0.0002561034207137677,
+      "action": 0.0001647229193996269
+    },
+    {
+      "category": "spoon_novel",
+      "type": "novel",
+      "trial": 19,
+      "concat": 0.021590788537302442,
+      "attn": 0.00026471021349971116,
+      "action": 0.00016426584437885178
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 0,
+      "concat": 0.024824028136074094,
+      "attn": 0.0002597735746091004,
+      "action": 0.00016001994950991694
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 1,
+      "concat": 0.022920872443277767,
+      "attn": 0.00025656191968192305,
+      "action": 0.00018113193117421587
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 2,
+      "concat": 0.022492374291052136,
+      "attn": 0.00023164406608754007,
+      "action": 0.00017128019216047826
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 3,
+      "concat": 0.021970179580560988,
+      "attn": 0.000276441046976639,
+      "action": 0.000153724013594848
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 4,
+      "concat": 0.026668514732464805,
+      "attn": 0.0002801819215406219,
+      "action": 0.0001839133641989848
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 5,
+      "concat": 0.013363066084344209,
+      "attn": 0.0002484869515621783,
+      "action": 0.00018358729179194334
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 6,
+      "concat": 0.024007596107780107,
+      "attn": 0.00027125963946623294,
+      "action": 0.00018079395923483485
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 7,
+      "concat": 0.03261317997447393,
+      "attn": 0.00019801917088948528,
+      "action": 0.00016171563610764236
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 8,
+      "concat": 0.02881943983843477,
+      "attn": 0.00027141311425986874,
+      "action": 0.00018754421392279578
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 9,
+      "concat": 0.024811442911647812,
+      "attn": 0.00025778607979678233,
+      "action": 0.00020041612113355832
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 10,
+      "concat": 0.023653483836175576,
+      "attn": 0.000249177133494163,
+      "action": 0.00020547667980539658
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 11,
+      "concat": 0.018878325210723627,
+      "attn": 0.00026502576355223663,
+      "action": 0.00017946065782249688
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 12,
+      "concat": 0.02553876358343159,
+      "attn": 0.00024811182118483023,
+      "action": 0.00013721280428297716
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 13,
+      "concat": 0.019491599840030762,
+      "attn": 0.00026913167432970187,
+      "action": 0.00015578279098514704
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 14,
+      "concat": 0.03027560768806392,
+      "attn": 0.00028746174384405827,
+      "action": 0.00015987392313687626
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 15,
+      "concat": 0.027435092534123115,
+      "attn": 0.00026295857320094514,
+      "action": 0.00019548520365802015
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 16,
+      "concat": 0.026774653140326343,
+      "attn": 0.0002669070869503879,
+      "action": 0.00018367743274578266
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 17,
+      "concat": 0.02299076543608715,
+      "attn": 0.00024149040192870865,
+      "action": 0.00018550412992532694
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 18,
+      "concat": 0.015573214506472623,
+      "attn": 0.0002038514699400896,
+      "action": 0.00019031148317495832
+    },
+    {
+      "category": "fork_novel",
+      "type": "novel",
+      "trial": 19,
+      "concat": 0.0226610608399493,
+      "attn": 0.00026691616273386004,
+      "action": 0.0001742798661237121
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 0,
+      "concat": 0.022252239910551377,
+      "attn": 0.0002399463919189948,
+      "action": 0.00016643437260699853
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 1,
+      "concat": 0.01617974072562561,
+      "attn": 0.0002651072701437089,
+      "action": 0.0001340268335676309
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 2,
+      "concat": 0.019142464299692175,
+      "attn": 0.00025879404841966104,
+      "action": 0.00018007540283665309
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 3,
+      "concat": 0.022274365730058143,
+      "attn": 0.00023730739792828578,
+      "action": 0.0001920788663995086
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 4,
+      "concat": 0.024338241013772858,
+      "attn": 0.00028153659477473514,
+      "action": 0.0001862436514552037
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 5,
+      "concat": 0.028489685690180053,
+      "attn": 0.00022230923988031612,
+      "action": 0.00017061162084201027
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 6,
+      "concat": 0.022722100926000438,
+      "attn": 0.0002350969650888079,
+      "action": 0.00015839981736090648
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 7,
+      "concat": 0.023477832020971853,
+      "attn": 0.00024927714928705636,
+      "action": 0.0001716349825237123
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 8,
+      "concat": 0.026100917510973744,
+      "attn": 0.00027261043119764303,
+      "action": 0.00017611905024558574
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 9,
+      "concat": 0.018173032327113932,
+      "attn": 0.0002468148879470134,
+      "action": 0.0001830972984049439
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 10,
+      "concat": 0.02028331989639487,
+      "attn": 0.00023135622743596267,
+      "action": 0.00017144462551072601
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 11,
+      "concat": 0.02539255895338137,
+      "attn": 0.00026789335683537836,
+      "action": 0.00020712489184401722
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 12,
+      "concat": 0.025370171680416338,
+      "attn": 0.00029521766608540245,
+      "action": 0.00018316336328979847
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 13,
+      "concat": 0.020125775052235024,
+      "attn": 0.0002490372552135616,
+      "action": 0.00015212965876763471
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 14,
+      "concat": 0.024517226486453065,
+      "attn": 0.00024113881259495254,
+      "action": 0.00016983451452962995
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 15,
+      "concat": 0.027337039889009943,
+      "attn": 0.00024452000775618585,
+      "action": 0.00015125988327632193
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 16,
+      "concat": 0.02537872672229699,
+      "attn": 0.0002388100893780255,
+      "action": 0.0001648906701481532
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 17,
+      "concat": 0.02465189778941762,
+      "attn": 0.00021293761646094328,
+      "action": 0.00017176945490452535
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 18,
+      "concat": 0.02008204130913435,
+      "attn": 0.0002729686198774111,
+      "action": 0.0001461492820833122
+    },
+    {
+      "category": "knife_novel",
+      "type": "novel",
+      "trial": 19,
+      "concat": 0.02937537781395354,
+      "attn": 0.00022892436689059725,
+      "action": 0.0001858649593066192
+    }
+  ],
+  "summary": {
+    "seen_objects": {
+      "concat_avg": 0.020125147691577666,
+      "attn_avg": 0.0002010067690907026,
+      "action_avg": 0.00013940205067634095,
+      "attn_vs_concat": 99.00121593058012
+    },
+    "novel_objects": {
+      "concat_avg": 0.024036649872475002,
+      "attn_avg": 0.0002497988341337428,
+      "action_avg": 0.00017518304424335543,
+      "attn_vs_concat": 98.96075852725302
+    },
+    "generalization": {
+      "concat_gen_gap": 19.4358930470572,
+      "attn_gen_gap": 24.27384175356959,
+      "attn_generalization_advantage": -4.8379487065123925
+    },
+    "status": "REFUTED"
+  }
+}

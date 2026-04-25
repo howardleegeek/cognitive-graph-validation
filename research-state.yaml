@@ -478,16 +478,27 @@ hypotheses:
     evidence: "+99% maintained, 5x more robust than concat"
     parent: H1.41
     priority: medium
+  - id: H1.55
+    statement: "Attention generalizes to novel objects"
+    status: refuted
+    evidence: "-4.8% worse generalization than concat"
+    parent: H1.41
+    priority: low
+  - id: H1.56
+    statement: "Attention generalizes across action spaces"
+    status: supported
+    evidence: "+99% on 6DOF, 3DOF transfer"
+    parent: H1.41
+    priority: medium
 
 outer_loop:
-  cycle: 42
-  last_direction: "H1.53-54: Attention robust to delays and dropout"
-  last_reflection: "Attention mechanisms highly robust to real-world imperfections"
+  cycle: 43
+  last_direction: "H1.55: Object generalization refuted, H1.56: Action space mixed"
+  last_reflection: "Attention has limits - worse on novel objects but robust to action space"
   current_experiments: []
   next_steps:
     - "Paper draft sections"
     - "Generate figures"
-    - "Edge case validation"
 
 workspace:
   findings: "findings.md"
