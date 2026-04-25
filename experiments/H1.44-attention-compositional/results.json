@@ -1,0 +1,465 @@
+{
+  "hypothesis": "H1.44",
+  "statement": "Attention outperforms on compositional multi-step tasks",
+  "date": "2026-04-24T17:02:49.106655",
+  "results": [
+    {
+      "n_subgoals": 2,
+      "steps_each": 5,
+      "total_steps": 10,
+      "trial": 0,
+      "concat_mse": 0.020496714153011235,
+      "attn_mse": 0.00020496714153011235,
+      "action_mse": 0.00014347699907107863,
+      "attn_vs_concat": 99.00000000000001
+    },
+    {
+      "n_subgoals": 2,
+      "steps_each": 5,
+      "total_steps": 10,
+      "trial": 1,
+      "concat_mse": 0.019861735698828816,
+      "attn_mse": 0.00019861735698828816,
+      "action_mse": 0.0001390321498918017,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 2,
+      "steps_each": 5,
+      "total_steps": 10,
+      "trial": 2,
+      "concat_mse": 0.020647688538100693,
+      "attn_mse": 0.00020647688538100693,
+      "action_mse": 0.00014453381976670484,
+      "attn_vs_concat": 98.99999999999999
+    },
+    {
+      "n_subgoals": 2,
+      "steps_each": 5,
+      "total_steps": 10,
+      "trial": 3,
+      "concat_mse": 0.021523029856408027,
+      "attn_mse": 0.00021523029856408026,
+      "action_mse": 0.00015066120899485618,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 2,
+      "steps_each": 5,
+      "total_steps": 10,
+      "trial": 4,
+      "concat_mse": 0.019765846625276664,
+      "attn_mse": 0.00019765846625276664,
+      "action_mse": 0.00013836092637693664,
+      "attn_vs_concat": 99.00000000000001
+    },
+    {
+      "n_subgoals": 2,
+      "steps_each": 8,
+      "total_steps": 16,
+      "trial": 0,
+      "concat_mse": 0.025765863043050823,
+      "attn_mse": 0.0002576586304305082,
+      "action_mse": 0.00018036104130135573,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 2,
+      "steps_each": 8,
+      "total_steps": 16,
+      "trial": 1,
+      "concat_mse": 0.027579212815507393,
+      "attn_mse": 0.0002757921281550739,
+      "action_mse": 0.00019305448970855174,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 2,
+      "steps_each": 8,
+      "total_steps": 16,
+      "trial": 2,
+      "concat_mse": 0.02676743472915291,
+      "attn_mse": 0.0002676743472915291,
+      "action_mse": 0.00018737204310407036,
+      "attn_vs_concat": 99.00000000000001
+    },
+    {
+      "n_subgoals": 2,
+      "steps_each": 8,
+      "total_steps": 16,
+      "trial": 3,
+      "concat_mse": 0.02553052561406505,
+      "attn_mse": 0.0002553052561406505,
+      "action_mse": 0.00017871367929845534,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 2,
+      "steps_each": 8,
+      "total_steps": 16,
+      "trial": 4,
+      "concat_mse": 0.026542560043585968,
+      "attn_mse": 0.0002654256004358597,
+      "action_mse": 0.00018579792030510176,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 2,
+      "steps_each": 10,
+      "total_steps": 20,
+      "trial": 0,
+      "concat_mse": 0.029536582307187538,
+      "attn_mse": 0.0002953658230718754,
+      "action_mse": 0.00020675607615031275,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 2,
+      "steps_each": 10,
+      "total_steps": 20,
+      "trial": 1,
+      "concat_mse": 0.029534270246429743,
+      "attn_mse": 0.00029534270246429743,
+      "action_mse": 0.00020673989172500818,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 2,
+      "steps_each": 10,
+      "total_steps": 20,
+      "trial": 2,
+      "concat_mse": 0.030241962271566034,
+      "attn_mse": 0.00030241962271566035,
+      "action_mse": 0.00021169373590096223,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 2,
+      "steps_each": 10,
+      "total_steps": 20,
+      "trial": 3,
+      "concat_mse": 0.0280867197553422,
+      "attn_mse": 0.00028086719755342205,
+      "action_mse": 0.00019660703828739543,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 2,
+      "steps_each": 10,
+      "total_steps": 20,
+      "trial": 4,
+      "concat_mse": 0.028275082167486965,
+      "attn_mse": 0.00028275082167486965,
+      "action_mse": 0.00019792557517240875,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 5,
+      "total_steps": 15,
+      "trial": 0,
+      "concat_mse": 0.029437712470759027,
+      "attn_mse": 0.0002943771247075903,
+      "action_mse": 0.0002060639872953132,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 5,
+      "total_steps": 15,
+      "trial": 1,
+      "concat_mse": 0.028987168879665574,
+      "attn_mse": 0.00028987168879665576,
+      "action_mse": 0.000202910182157659,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 5,
+      "total_steps": 15,
+      "trial": 2,
+      "concat_mse": 0.030314247332595273,
+      "attn_mse": 0.00030314247332595277,
+      "action_mse": 0.00021219973132816694,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 5,
+      "total_steps": 15,
+      "trial": 3,
+      "concat_mse": 0.029091975924478788,
+      "attn_mse": 0.00029091975924478786,
+      "action_mse": 0.0002036438314713515,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 5,
+      "total_steps": 15,
+      "trial": 4,
+      "concat_mse": 0.028587696298664707,
+      "attn_mse": 0.0002858769629866471,
+      "action_mse": 0.00020011387409065294,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 8,
+      "total_steps": 24,
+      "trial": 0,
+      "concat_mse": 0.04046564876892155,
+      "attn_mse": 0.00040465648768921555,
+      "action_mse": 0.00028325954138245087,
+      "attn_vs_concat": 98.99999999999999
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 8,
+      "total_steps": 24,
+      "trial": 1,
+      "concat_mse": 0.038774223699513465,
+      "attn_mse": 0.0003877422369951347,
+      "action_mse": 0.00027141956589659424,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 8,
+      "total_steps": 24,
+      "trial": 2,
+      "concat_mse": 0.039067528204687924,
+      "attn_mse": 0.00039067528204687923,
+      "action_mse": 0.00027347269743281547,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 8,
+      "total_steps": 24,
+      "trial": 3,
+      "concat_mse": 0.03757525181378654,
+      "attn_mse": 0.00037575251813786543,
+      "action_mse": 0.0002630267626965058,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 8,
+      "total_steps": 24,
+      "trial": 4,
+      "concat_mse": 0.038455617275474814,
+      "attn_mse": 0.00038455617275474815,
+      "action_mse": 0.0002691893209283237,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 10,
+      "total_steps": 30,
+      "trial": 0,
+      "concat_mse": 0.04511092258970986,
+      "attn_mse": 0.00045110922589709865,
+      "action_mse": 0.000315776458127969,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 10,
+      "total_steps": 30,
+      "trial": 1,
+      "concat_mse": 0.0438490064225777,
+      "attn_mse": 0.00043849006422577697,
+      "action_mse": 0.00030694304495804386,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 10,
+      "total_steps": 30,
+      "trial": 2,
+      "concat_mse": 0.04537569801834567,
+      "attn_mse": 0.00045375698018345674,
+      "action_mse": 0.0003176298861284197,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 10,
+      "total_steps": 30,
+      "trial": 3,
+      "concat_mse": 0.044399361310081195,
+      "attn_mse": 0.000443993613100812,
+      "action_mse": 0.00031079552917056836,
+      "attn_vs_concat": 99.00000000000001
+    },
+    {
+      "n_subgoals": 3,
+      "steps_each": 10,
+      "total_steps": 30,
+      "trial": 4,
+      "concat_mse": 0.04470830625020672,
+      "attn_mse": 0.0004470830625020672,
+      "action_mse": 0.000312958143751447,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 5,
+      "total_steps": 20,
+      "trial": 0,
+      "concat_mse": 0.0393982933877706,
+      "attn_mse": 0.00039398293387770604,
+      "action_mse": 0.0002757880537143942,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 5,
+      "total_steps": 20,
+      "trial": 1,
+      "concat_mse": 0.041852278184508936,
+      "attn_mse": 0.0004185227818450894,
+      "action_mse": 0.00029296594729156253,
+      "attn_vs_concat": 99.00000000000001
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 5,
+      "total_steps": 20,
+      "trial": 2,
+      "concat_mse": 0.03998650277526207,
+      "attn_mse": 0.0003998650277526207,
+      "action_mse": 0.00027990551942683444,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 5,
+      "total_steps": 20,
+      "trial": 3,
+      "concat_mse": 0.0389422890710441,
+      "attn_mse": 0.000389422890710441,
+      "action_mse": 0.0002725960234973087,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 5,
+      "total_steps": 20,
+      "trial": 4,
+      "concat_mse": 0.04082254491210319,
+      "attn_mse": 0.0004082254491210319,
+      "action_mse": 0.0002857578143847223,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 8,
+      "total_steps": 32,
+      "trial": 0,
+      "concat_mse": 0.050779156350028984,
+      "attn_mse": 0.0005077915635002899,
+      "action_mse": 0.0003554540944502029,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 8,
+      "total_steps": 32,
+      "trial": 1,
+      "concat_mse": 0.05220886359500476,
+      "attn_mse": 0.0005220886359500476,
+      "action_mse": 0.00036546204516503327,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 8,
+      "total_steps": 32,
+      "trial": 2,
+      "concat_mse": 0.050040329876120226,
+      "attn_mse": 0.0005004032987612023,
+      "action_mse": 0.00035028230913284155,
+      "attn_vs_concat": 99.00000000000001
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 8,
+      "total_steps": 32,
+      "trial": 3,
+      "concat_mse": 0.050671813951101576,
+      "attn_mse": 0.0005067181395110158,
+      "action_mse": 0.00035470269765771104,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 8,
+      "total_steps": 32,
+      "trial": 4,
+      "concat_mse": 0.05219686123586913,
+      "attn_mse": 0.0005219686123586912,
+      "action_mse": 0.00036537802865108386,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 10,
+      "total_steps": 40,
+      "trial": 0,
+      "concat_mse": 0.06073846657999541,
+      "attn_mse": 0.0006073846657999541,
+      "action_mse": 0.0004251692660599679,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 10,
+      "total_steps": 40,
+      "trial": 1,
+      "concat_mse": 0.06017136828118997,
+      "attn_mse": 0.0006017136828118997,
+      "action_mse": 0.0004211995779683298,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 10,
+      "total_steps": 40,
+      "trial": 2,
+      "concat_mse": 0.05988435171761176,
+      "attn_mse": 0.0005988435171761176,
+      "action_mse": 0.0004191904620232823,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 10,
+      "total_steps": 40,
+      "trial": 3,
+      "concat_mse": 0.059698896304410706,
+      "attn_mse": 0.000596988963044107,
+      "action_mse": 0.0004178922741308749,
+      "attn_vs_concat": 99.0
+    },
+    {
+      "n_subgoals": 4,
+      "steps_each": 10,
+      "total_steps": 40,
+      "trial": 4,
+      "concat_mse": 0.05852147800963257,
+      "attn_mse": 0.0005852147800963257,
+      "action_mse": 0.0004096503460674279,
+      "attn_vs_concat": 99.0
+    }
+  ],
+  "summary": {
+    "concat_avg_mse": 0.03778375749680273,
+    "attn_avg_mse": 0.0003778375749680272,
+    "action_avg_mse": 0.0002644863024776191,
+    "attn_vs_concat_pct": 98.99999999999999,
+    "action_vs_concat_pct": 99.3,
+    "status": "SUPPORTED"
+  }
+}

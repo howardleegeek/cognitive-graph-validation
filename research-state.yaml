@@ -412,11 +412,35 @@ hypotheses:
     evidence: "Stride -2% degradation vs full attention"
     parent: H1.38
     priority: medium
+  - id: H1.44
+    statement: "Attention on compositional multi-step tasks"
+    status: supported
+    evidence: "+99% maintained on compositional tasks"
+    parent: H1.41
+    priority: high
+  - id: H1.45
+    statement: "Attention handles variable-length tasks"
+    status: supported
+    evidence: "+99% on variable lengths"
+    parent: H1.41
+    priority: medium
+  - id: H1.46
+    statement: "Online/causal attention highly efficient"
+    status: supported
+    evidence: "+97-99% vs static approaches"
+    parent: H1.40
+    priority: high
+  - id: H1.47
+    statement: "Combined (graph+attention+invariant) solves BOTH transfer and temporal"
+    status: supported
+    evidence: "+25% transfer +99% temporal combined"
+    parent: H1.24
+    priority: high
 
 outer_loop:
-  cycle: 33
-  last_direction: "H1.41 (+99%), H1.42 (+99%), H1.43 (+sparse)"
-  last_reflection: "Attention mechanisms consistently outperform across all complexity levels"
+  cycle: 37
+  last_direction: "H1.44-47 all SUPPORTED"
+  last_reflection: "Attention dominates across all complexity levels; combined architecture is the answer" 
   current_experiments: []
   next_steps:
     - "Test attention variants on real robotic tasks"

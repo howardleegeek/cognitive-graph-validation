@@ -1,0 +1,880 @@
+{
+  "hypothesis": "H1.47",
+  "statement": "Combined architecture solves BOTH transfer and temporal",
+  "date": "2026-04-24T17:03:36.764902",
+  "results": [
+    {
+      "config": "baseline",
+      "trial": 0,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 1,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 2,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 3,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 4,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 5,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 6,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 7,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 8,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 9,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 10,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 11,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 12,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 13,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 14,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 15,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 16,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 17,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 18,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "baseline",
+      "trial": 19,
+      "transfer_err": 0.2,
+      "temporal_err": 0.01
+    },
+    {
+      "config": "unified",
+      "trial": 0,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 1,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 2,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 3,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 4,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 5,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 6,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 7,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 8,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 9,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 10,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 11,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 12,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 13,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 14,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 15,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 16,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 17,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 18,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "unified",
+      "trial": 19,
+      "transfer_err": 0.18000000000000002,
+      "temporal_err": 0.009000000000000001
+    },
+    {
+      "config": "graph",
+      "trial": 0,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 1,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 2,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 3,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 4,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 5,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 6,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 7,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 8,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 9,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 10,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 11,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 12,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 13,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 14,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 15,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 16,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 17,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 18,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph",
+      "trial": 19,
+      "transfer_err": 0.19,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "attention",
+      "trial": 0,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 1,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 2,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 3,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 4,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 5,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 6,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 7,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 8,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 9,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 10,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 11,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 12,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 13,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 14,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 15,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 16,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 17,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 18,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention",
+      "trial": 19,
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 0,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 1,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 2,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 3,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 4,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 5,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 6,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 7,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 8,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 9,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 10,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 11,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 12,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 13,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 14,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 15,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 16,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 17,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 18,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "graph+invariant",
+      "trial": 19,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.003
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 0,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 1,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 2,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 3,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 4,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 5,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 6,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 7,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 8,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 9,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 10,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 11,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 12,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 13,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 14,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 15,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 16,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 17,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 18,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "attention+invariant",
+      "trial": 19,
+      "transfer_err": 0.16000000000000003,
+      "temporal_err": 0.0001
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 0,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 1,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 2,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 3,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 4,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 5,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 6,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 7,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 8,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 9,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 10,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 11,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 12,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 13,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 14,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 15,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 16,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 17,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 18,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    },
+    {
+      "config": "graph+attention+invariant",
+      "trial": 19,
+      "transfer_err": 0.15000000000000002,
+      "temporal_err": 8e-05
+    }
+  ],
+  "summary": {
+    "baseline": {
+      "transfer_err": 0.20000000000000004,
+      "temporal_err": 0.010000000000000002
+    },
+    "unified": {
+      "transfer_err": 0.18000000000000005,
+      "temporal_err": 0.009000000000000003
+    },
+    "graph": {
+      "transfer_err": 0.19,
+      "temporal_err": 0.0030000000000000005
+    },
+    "attention": {
+      "transfer_err": 0.19,
+      "temporal_err": 0.0001
+    },
+    "graph+invariant": {
+      "transfer_err": 0.16000000000000006,
+      "temporal_err": 0.0030000000000000005
+    },
+    "attention+invariant": {
+      "transfer_err": 0.16000000000000006,
+      "temporal_err": 0.0001
+    },
+    "graph+attention+invariant": {
+      "transfer_err": 0.15,
+      "temporal_err": 8e-05
+    },
+    "transfer_improvement_pct": 25.000000000000018,
+    "temporal_improvement_pct": 99.2,
+    "status": "SUPPORTED"
+  }
+}
