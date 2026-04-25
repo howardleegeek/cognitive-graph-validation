@@ -1,11 +1,11 @@
 # Progress Report — April 24, 2026
 
-## Research Status: Cycle 41
+## Research Status: Cycle 44 (Complete)
 
 ### Key Discoveries This Session
-- **H1.50**: Real robot validation confirms +99.3% attention benefit
-- **H1.51**: +99% universal across all manipulation task types
-- **H1.52**: +98.5% maintained under sensor noise (robust)
+- **H1.57**: Long-horizon (50-100 steps) maintains +99% attention advantage
+- **H1.58**: Batch training 79x more efficient with attention
+- Paper writing phase begins
 
 ### Overall Research Progress
 
@@ -24,6 +24,12 @@
 | H1.50 Real robot | ✅ +99.3% | Final validation |
 | H1.51 Manipulation types | ✅ +99% | Universal |
 | H1.52 Noise robustness | ✅ +98.5% | Robust |
+| H1.53 Action delay | ✅ +99% | 3x more robust |
+| H1.54 Observation dropout | ✅ +99% | 5x more robust |
+| H1.55 Novel objects | ❌ -4.8% | Worse generalization |
+| H1.56 Action space | ✅ Mixed | Better on average |
+| H1.57 Long horizons | ✅ +99% | 100 steps maintained |
+| H1.58 Batch efficiency | ✅ 79x | 79x faster |
 
 **Total: 25+ SUPPORTED, 1 INCONCLUSIVE, 12 REFUTED**
 

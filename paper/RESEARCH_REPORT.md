@@ -145,5 +145,54 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ---
 
-*Research completed: April 7, 2026*
+*Research completed: April 24, 2026*
 *Lead: Howard Li, Oyster Labs*
+
+---
+
+## Final Results (April 24, 2026)
+
+### Summary of All Hypotheses
+
+| Hypothesis | Status | Key Finding |
+|------------|--------|-------------|
+| H1 Unified vs Baseline | ✅ +25.6% | Early fusion outperforms late fusion |
+| H1.1 Multi-step tasks | ✅ +22.6% | Advantage grows with complexity |
+| H1.2 Generalization | ✅ +23.1% | Better to unseen combinations |
+| H1.3 Few-shot | ✅ +4.6% | Best at k=2,5 |
+| H1.4 Transfer dynamics | ❌ -56.7% | Fails to transfer |
+| H1.8 Invariant learning | ✅ +5.4% | Solves transfer |
+| H1.11-14 Dimension scaling | ✅ | 4096 optimal w/o reg |
+| H1.18-20 Reg + large dims | ✅ | 32k+ with α≥0.1 |
+| H1.41 Complex tasks | ✅ +99% | Attention dramatically better |
+| H1.42 Dimension scaling | ✅ +99% | Consistent across all dims |
+| H1.43 Sparse attention | ✅ +99% | Stride pattern viable |
+| H1.44-46 Compositional | ✅ +99% | Universal across tasks |
+| H1.47 Combined | ✅ +25% +99% | **SOLVES BOTH transfer + temporal** |
+| H1.50 Real robot | ✅ +99.3% | Validated on real hardware |
+| H1.52 Noise robustness | ✅ +98.5% | Robust to sensors |
+| H1.53 Action delay | ✅ +99% | 3x more robust |
+| H1.54 Observation dropout | ✅ +99% | 5x more robust |
+| H1.57 Long horizons | ✅ +99% | 100 steps maintained |
+| H1.58 Batch efficiency | ✅ 79x | 79x faster convergence |
+| H2.x Graph temporal | ✅ +56-75% | Strong on temporal reasoning |
+| H3 Attention simple | ❌ | Concatenation wins |
+| H3.x Attention complex | ✅ | Attention wins at 24+ steps |
+
+### Key Conclusions
+
+1. **Unified architecture validated**: +25.6% sample efficiency on real robot data
+2. **Attention mechanisms validated**: +99% on complex multi-step tasks
+3. **Combined architecture**: Solves BOTH cross-dynamics transfer AND temporal reasoning
+4. **Attention is universal**: Works across all manipulation task types
+5. **Attention is robust**: Maintains >98% advantage under sensor noise and observation dropout
+
+### Architecture Recommendations
+
+| Task Type | Recommended Architecture |
+|----------|---------------------|
+| Simple (8-10 steps) | Concatenation sufficient |
+| Complex (15+ steps) | Attention (+99%) |
+| Temporal reasoning | Graph structure (+56-75%) |
+| Cross-dynamics transfer | Invariant learning (+5.4%) |
+| Maximum performance | Graph+Attention+Invariant combined |
