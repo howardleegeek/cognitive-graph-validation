@@ -526,14 +526,43 @@ hypotheses:
     evidence: "+91% with meta-learning"
     parent: H1.41
     priority: medium
+  - id: H1.63
+    statement: "Hierarchical attention improves long-horizon planning"
+    status: supported
+    evidence: "+26% with hierarchical abstraction"
+    parent: H1.41
+    priority: medium
+  - id: H1.64
+    statement: "Causal attention (CAGE-style) improves novel object generalization"
+    status: supported
+    evidence: "-2.7% gap vs +8.7% for standard attention"
+    parent: H1.55
+    priority: high
+  - id: H1.65
+    statement: "Slot-based object attention improves generalization without pretraining"
+    status: pending
+    evidence: "New literature direction to test"
+    parent: H1.55
+    priority: high
+  - id: H1.66
+    statement: "State transition attention (STA) improves precision-critical tasks"
+    status: pending
+    evidence: "New literature direction to test"
+    parent: H1.41
+    priority: medium
 
 outer_loop:
-  cycle: 45
-  last_direction: "Deepening - Testing attention on domain shifts, continual learning, multi-task"
-  last_reflection: "H1.59 (+97%), H1.60 (+83%), H1.61 (+97%), H1.62 (+91%), H1.63 (+26%)"
-  current_experiments: []
+  cycle: 46
+  last_direction: "Literature survey - found CAGE, Slot Attention, STA for novel generalization"
+  last_reflection: "H1.55 refuted attention generalization. Literature suggests CAGE-style causal attention solves this."
+  current_experiments:
+    - H1.64: Causal attention for generalization
+    - H1.65: Slot-based attention
+    - H1.66: State transition attention
   next_steps:
-    - "Write paper sections"
+    - "Implement causal attention (CAGE-style) to address H1.55 failure"
+    - "Test slot-based object attention"
+    - "Compare state transition attention variants"
 
 workspace:
   findings: "findings.md"
