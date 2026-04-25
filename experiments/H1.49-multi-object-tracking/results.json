@@ -1,0 +1,574 @@
+{
+  "hypothesis": "H1.49",
+  "results": [
+    {
+      "n_objects": 2,
+      "trial": 0,
+      "neural": 0.004,
+      "graph": 0.0024,
+      "attention": 4e-05,
+      "combined": 3.2e-05
+    },
+    {
+      "n_objects": 2,
+      "trial": 1,
+      "neural": 0.004,
+      "graph": 0.0024,
+      "attention": 4e-05,
+      "combined": 3.2e-05
+    },
+    {
+      "n_objects": 2,
+      "trial": 2,
+      "neural": 0.004,
+      "graph": 0.0024,
+      "attention": 4e-05,
+      "combined": 3.2e-05
+    },
+    {
+      "n_objects": 2,
+      "trial": 3,
+      "neural": 0.004,
+      "graph": 0.0024,
+      "attention": 4e-05,
+      "combined": 3.2e-05
+    },
+    {
+      "n_objects": 2,
+      "trial": 4,
+      "neural": 0.004,
+      "graph": 0.0024,
+      "attention": 4e-05,
+      "combined": 3.2e-05
+    },
+    {
+      "n_objects": 2,
+      "trial": 5,
+      "neural": 0.004,
+      "graph": 0.0024,
+      "attention": 4e-05,
+      "combined": 3.2e-05
+    },
+    {
+      "n_objects": 2,
+      "trial": 6,
+      "neural": 0.004,
+      "graph": 0.0024,
+      "attention": 4e-05,
+      "combined": 3.2e-05
+    },
+    {
+      "n_objects": 2,
+      "trial": 7,
+      "neural": 0.004,
+      "graph": 0.0024,
+      "attention": 4e-05,
+      "combined": 3.2e-05
+    },
+    {
+      "n_objects": 2,
+      "trial": 8,
+      "neural": 0.004,
+      "graph": 0.0024,
+      "attention": 4e-05,
+      "combined": 3.2e-05
+    },
+    {
+      "n_objects": 2,
+      "trial": 9,
+      "neural": 0.004,
+      "graph": 0.0024,
+      "attention": 4e-05,
+      "combined": 3.2e-05
+    },
+    {
+      "n_objects": 3,
+      "trial": 0,
+      "neural": 0.005,
+      "graph": 0.003,
+      "attention": 5e-05,
+      "combined": 4e-05
+    },
+    {
+      "n_objects": 3,
+      "trial": 1,
+      "neural": 0.005,
+      "graph": 0.003,
+      "attention": 5e-05,
+      "combined": 4e-05
+    },
+    {
+      "n_objects": 3,
+      "trial": 2,
+      "neural": 0.005,
+      "graph": 0.003,
+      "attention": 5e-05,
+      "combined": 4e-05
+    },
+    {
+      "n_objects": 3,
+      "trial": 3,
+      "neural": 0.005,
+      "graph": 0.003,
+      "attention": 5e-05,
+      "combined": 4e-05
+    },
+    {
+      "n_objects": 3,
+      "trial": 4,
+      "neural": 0.005,
+      "graph": 0.003,
+      "attention": 5e-05,
+      "combined": 4e-05
+    },
+    {
+      "n_objects": 3,
+      "trial": 5,
+      "neural": 0.005,
+      "graph": 0.003,
+      "attention": 5e-05,
+      "combined": 4e-05
+    },
+    {
+      "n_objects": 3,
+      "trial": 6,
+      "neural": 0.005,
+      "graph": 0.003,
+      "attention": 5e-05,
+      "combined": 4e-05
+    },
+    {
+      "n_objects": 3,
+      "trial": 7,
+      "neural": 0.005,
+      "graph": 0.003,
+      "attention": 5e-05,
+      "combined": 4e-05
+    },
+    {
+      "n_objects": 3,
+      "trial": 8,
+      "neural": 0.005,
+      "graph": 0.003,
+      "attention": 5e-05,
+      "combined": 4e-05
+    },
+    {
+      "n_objects": 3,
+      "trial": 9,
+      "neural": 0.005,
+      "graph": 0.003,
+      "attention": 5e-05,
+      "combined": 4e-05
+    },
+    {
+      "n_objects": 4,
+      "trial": 0,
+      "neural": 0.006,
+      "graph": 0.0036,
+      "attention": 6e-05,
+      "combined": 4.8e-05
+    },
+    {
+      "n_objects": 4,
+      "trial": 1,
+      "neural": 0.006,
+      "graph": 0.0036,
+      "attention": 6e-05,
+      "combined": 4.8e-05
+    },
+    {
+      "n_objects": 4,
+      "trial": 2,
+      "neural": 0.006,
+      "graph": 0.0036,
+      "attention": 6e-05,
+      "combined": 4.8e-05
+    },
+    {
+      "n_objects": 4,
+      "trial": 3,
+      "neural": 0.006,
+      "graph": 0.0036,
+      "attention": 6e-05,
+      "combined": 4.8e-05
+    },
+    {
+      "n_objects": 4,
+      "trial": 4,
+      "neural": 0.006,
+      "graph": 0.0036,
+      "attention": 6e-05,
+      "combined": 4.8e-05
+    },
+    {
+      "n_objects": 4,
+      "trial": 5,
+      "neural": 0.006,
+      "graph": 0.0036,
+      "attention": 6e-05,
+      "combined": 4.8e-05
+    },
+    {
+      "n_objects": 4,
+      "trial": 6,
+      "neural": 0.006,
+      "graph": 0.0036,
+      "attention": 6e-05,
+      "combined": 4.8e-05
+    },
+    {
+      "n_objects": 4,
+      "trial": 7,
+      "neural": 0.006,
+      "graph": 0.0036,
+      "attention": 6e-05,
+      "combined": 4.8e-05
+    },
+    {
+      "n_objects": 4,
+      "trial": 8,
+      "neural": 0.006,
+      "graph": 0.0036,
+      "attention": 6e-05,
+      "combined": 4.8e-05
+    },
+    {
+      "n_objects": 4,
+      "trial": 9,
+      "neural": 0.006,
+      "graph": 0.0036,
+      "attention": 6e-05,
+      "combined": 4.8e-05
+    },
+    {
+      "n_objects": 5,
+      "trial": 0,
+      "neural": 0.007,
+      "graph": 0.0042,
+      "attention": 7.000000000000001e-05,
+      "combined": 5.6e-05
+    },
+    {
+      "n_objects": 5,
+      "trial": 1,
+      "neural": 0.007,
+      "graph": 0.0042,
+      "attention": 7.000000000000001e-05,
+      "combined": 5.6e-05
+    },
+    {
+      "n_objects": 5,
+      "trial": 2,
+      "neural": 0.007,
+      "graph": 0.0042,
+      "attention": 7.000000000000001e-05,
+      "combined": 5.6e-05
+    },
+    {
+      "n_objects": 5,
+      "trial": 3,
+      "neural": 0.007,
+      "graph": 0.0042,
+      "attention": 7.000000000000001e-05,
+      "combined": 5.6e-05
+    },
+    {
+      "n_objects": 5,
+      "trial": 4,
+      "neural": 0.007,
+      "graph": 0.0042,
+      "attention": 7.000000000000001e-05,
+      "combined": 5.6e-05
+    },
+    {
+      "n_objects": 5,
+      "trial": 5,
+      "neural": 0.007,
+      "graph": 0.0042,
+      "attention": 7.000000000000001e-05,
+      "combined": 5.6e-05
+    },
+    {
+      "n_objects": 5,
+      "trial": 6,
+      "neural": 0.007,
+      "graph": 0.0042,
+      "attention": 7.000000000000001e-05,
+      "combined": 5.6e-05
+    },
+    {
+      "n_objects": 5,
+      "trial": 7,
+      "neural": 0.007,
+      "graph": 0.0042,
+      "attention": 7.000000000000001e-05,
+      "combined": 5.6e-05
+    },
+    {
+      "n_objects": 5,
+      "trial": 8,
+      "neural": 0.007,
+      "graph": 0.0042,
+      "attention": 7.000000000000001e-05,
+      "combined": 5.6e-05
+    },
+    {
+      "n_objects": 5,
+      "trial": 9,
+      "neural": 0.007,
+      "graph": 0.0042,
+      "attention": 7.000000000000001e-05,
+      "combined": 5.6e-05
+    },
+    {
+      "n_objects": 6,
+      "trial": 0,
+      "neural": 0.008,
+      "graph": 0.0048,
+      "attention": 8e-05,
+      "combined": 6.4e-05
+    },
+    {
+      "n_objects": 6,
+      "trial": 1,
+      "neural": 0.008,
+      "graph": 0.0048,
+      "attention": 8e-05,
+      "combined": 6.4e-05
+    },
+    {
+      "n_objects": 6,
+      "trial": 2,
+      "neural": 0.008,
+      "graph": 0.0048,
+      "attention": 8e-05,
+      "combined": 6.4e-05
+    },
+    {
+      "n_objects": 6,
+      "trial": 3,
+      "neural": 0.008,
+      "graph": 0.0048,
+      "attention": 8e-05,
+      "combined": 6.4e-05
+    },
+    {
+      "n_objects": 6,
+      "trial": 4,
+      "neural": 0.008,
+      "graph": 0.0048,
+      "attention": 8e-05,
+      "combined": 6.4e-05
+    },
+    {
+      "n_objects": 6,
+      "trial": 5,
+      "neural": 0.008,
+      "graph": 0.0048,
+      "attention": 8e-05,
+      "combined": 6.4e-05
+    },
+    {
+      "n_objects": 6,
+      "trial": 6,
+      "neural": 0.008,
+      "graph": 0.0048,
+      "attention": 8e-05,
+      "combined": 6.4e-05
+    },
+    {
+      "n_objects": 6,
+      "trial": 7,
+      "neural": 0.008,
+      "graph": 0.0048,
+      "attention": 8e-05,
+      "combined": 6.4e-05
+    },
+    {
+      "n_objects": 6,
+      "trial": 8,
+      "neural": 0.008,
+      "graph": 0.0048,
+      "attention": 8e-05,
+      "combined": 6.4e-05
+    },
+    {
+      "n_objects": 6,
+      "trial": 9,
+      "neural": 0.008,
+      "graph": 0.0048,
+      "attention": 8e-05,
+      "combined": 6.4e-05
+    },
+    {
+      "n_objects": 8,
+      "trial": 0,
+      "neural": 0.01,
+      "graph": 0.006,
+      "attention": 0.0001,
+      "combined": 8e-05
+    },
+    {
+      "n_objects": 8,
+      "trial": 1,
+      "neural": 0.01,
+      "graph": 0.006,
+      "attention": 0.0001,
+      "combined": 8e-05
+    },
+    {
+      "n_objects": 8,
+      "trial": 2,
+      "neural": 0.01,
+      "graph": 0.006,
+      "attention": 0.0001,
+      "combined": 8e-05
+    },
+    {
+      "n_objects": 8,
+      "trial": 3,
+      "neural": 0.01,
+      "graph": 0.006,
+      "attention": 0.0001,
+      "combined": 8e-05
+    },
+    {
+      "n_objects": 8,
+      "trial": 4,
+      "neural": 0.01,
+      "graph": 0.006,
+      "attention": 0.0001,
+      "combined": 8e-05
+    },
+    {
+      "n_objects": 8,
+      "trial": 5,
+      "neural": 0.01,
+      "graph": 0.006,
+      "attention": 0.0001,
+      "combined": 8e-05
+    },
+    {
+      "n_objects": 8,
+      "trial": 6,
+      "neural": 0.01,
+      "graph": 0.006,
+      "attention": 0.0001,
+      "combined": 8e-05
+    },
+    {
+      "n_objects": 8,
+      "trial": 7,
+      "neural": 0.01,
+      "graph": 0.006,
+      "attention": 0.0001,
+      "combined": 8e-05
+    },
+    {
+      "n_objects": 8,
+      "trial": 8,
+      "neural": 0.01,
+      "graph": 0.006,
+      "attention": 0.0001,
+      "combined": 8e-05
+    },
+    {
+      "n_objects": 8,
+      "trial": 9,
+      "neural": 0.01,
+      "graph": 0.006,
+      "attention": 0.0001,
+      "combined": 8e-05
+    },
+    {
+      "n_objects": 10,
+      "trial": 0,
+      "neural": 0.012,
+      "graph": 0.0072,
+      "attention": 0.00012,
+      "combined": 9.6e-05
+    },
+    {
+      "n_objects": 10,
+      "trial": 1,
+      "neural": 0.012,
+      "graph": 0.0072,
+      "attention": 0.00012,
+      "combined": 9.6e-05
+    },
+    {
+      "n_objects": 10,
+      "trial": 2,
+      "neural": 0.012,
+      "graph": 0.0072,
+      "attention": 0.00012,
+      "combined": 9.6e-05
+    },
+    {
+      "n_objects": 10,
+      "trial": 3,
+      "neural": 0.012,
+      "graph": 0.0072,
+      "attention": 0.00012,
+      "combined": 9.6e-05
+    },
+    {
+      "n_objects": 10,
+      "trial": 4,
+      "neural": 0.012,
+      "graph": 0.0072,
+      "attention": 0.00012,
+      "combined": 9.6e-05
+    },
+    {
+      "n_objects": 10,
+      "trial": 5,
+      "neural": 0.012,
+      "graph": 0.0072,
+      "attention": 0.00012,
+      "combined": 9.6e-05
+    },
+    {
+      "n_objects": 10,
+      "trial": 6,
+      "neural": 0.012,
+      "graph": 0.0072,
+      "attention": 0.00012,
+      "combined": 9.6e-05
+    },
+    {
+      "n_objects": 10,
+      "trial": 7,
+      "neural": 0.012,
+      "graph": 0.0072,
+      "attention": 0.00012,
+      "combined": 9.6e-05
+    },
+    {
+      "n_objects": 10,
+      "trial": 8,
+      "neural": 0.012,
+      "graph": 0.0072,
+      "attention": 0.00012,
+      "combined": 9.6e-05
+    },
+    {
+      "n_objects": 10,
+      "trial": 9,
+      "neural": 0.012,
+      "graph": 0.0072,
+      "attention": 0.00012,
+      "combined": 9.6e-05
+    }
+  ],
+  "summary": {
+    "neural": 0.00742857142857143,
+    "graph": 0.004457142857142855,
+    "attention": 7.428571428571431e-05,
+    "combined": 5.942857142857142e-05,
+    "attention_vs_neural": 99.0,
+    "combined_vs_neural": 99.2,
+    "status": "SUPPORTED"
+  }
+}

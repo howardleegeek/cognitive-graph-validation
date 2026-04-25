@@ -1,0 +1,211 @@
+{
+  "hypothesis": "H1.48",
+  "results": [
+    {
+      "complexity": "low",
+      "fixed": 5e-05,
+      "aware": 2e-05
+    },
+    {
+      "complexity": "low",
+      "fixed": 5e-05,
+      "aware": 2e-05
+    },
+    {
+      "complexity": "low",
+      "fixed": 5e-05,
+      "aware": 2e-05
+    },
+    {
+      "complexity": "low",
+      "fixed": 5e-05,
+      "aware": 2e-05
+    },
+    {
+      "complexity": "low",
+      "fixed": 5e-05,
+      "aware": 2e-05
+    },
+    {
+      "complexity": "low",
+      "fixed": 5e-05,
+      "aware": 2e-05
+    },
+    {
+      "complexity": "low",
+      "fixed": 5e-05,
+      "aware": 2e-05
+    },
+    {
+      "complexity": "low",
+      "fixed": 5e-05,
+      "aware": 2e-05
+    },
+    {
+      "complexity": "low",
+      "fixed": 5e-05,
+      "aware": 2e-05
+    },
+    {
+      "complexity": "low",
+      "fixed": 5e-05,
+      "aware": 2e-05
+    },
+    {
+      "complexity": "medium",
+      "fixed": 0.00025,
+      "aware": 0.00025
+    },
+    {
+      "complexity": "medium",
+      "fixed": 0.00025,
+      "aware": 0.00025
+    },
+    {
+      "complexity": "medium",
+      "fixed": 0.00025,
+      "aware": 0.00025
+    },
+    {
+      "complexity": "medium",
+      "fixed": 0.00025,
+      "aware": 0.00025
+    },
+    {
+      "complexity": "medium",
+      "fixed": 0.00025,
+      "aware": 0.00025
+    },
+    {
+      "complexity": "medium",
+      "fixed": 0.00025,
+      "aware": 0.00025
+    },
+    {
+      "complexity": "medium",
+      "fixed": 0.00025,
+      "aware": 0.00025
+    },
+    {
+      "complexity": "medium",
+      "fixed": 0.00025,
+      "aware": 0.00025
+    },
+    {
+      "complexity": "medium",
+      "fixed": 0.00025,
+      "aware": 0.00025
+    },
+    {
+      "complexity": "medium",
+      "fixed": 0.00025,
+      "aware": 0.00025
+    },
+    {
+      "complexity": "high",
+      "fixed": 0.00075,
+      "aware": 0.00075
+    },
+    {
+      "complexity": "high",
+      "fixed": 0.00075,
+      "aware": 0.00075
+    },
+    {
+      "complexity": "high",
+      "fixed": 0.00075,
+      "aware": 0.00075
+    },
+    {
+      "complexity": "high",
+      "fixed": 0.00075,
+      "aware": 0.00075
+    },
+    {
+      "complexity": "high",
+      "fixed": 0.00075,
+      "aware": 0.00075
+    },
+    {
+      "complexity": "high",
+      "fixed": 0.00075,
+      "aware": 0.00075
+    },
+    {
+      "complexity": "high",
+      "fixed": 0.00075,
+      "aware": 0.00075
+    },
+    {
+      "complexity": "high",
+      "fixed": 0.00075,
+      "aware": 0.00075
+    },
+    {
+      "complexity": "high",
+      "fixed": 0.00075,
+      "aware": 0.00075
+    },
+    {
+      "complexity": "high",
+      "fixed": 0.00075,
+      "aware": 0.00075
+    },
+    {
+      "complexity": "very_high",
+      "fixed": 0.0025000000000000005,
+      "aware": 0.0015
+    },
+    {
+      "complexity": "very_high",
+      "fixed": 0.0025000000000000005,
+      "aware": 0.0015
+    },
+    {
+      "complexity": "very_high",
+      "fixed": 0.0025000000000000005,
+      "aware": 0.0015
+    },
+    {
+      "complexity": "very_high",
+      "fixed": 0.0025000000000000005,
+      "aware": 0.0015
+    },
+    {
+      "complexity": "very_high",
+      "fixed": 0.0025000000000000005,
+      "aware": 0.0015
+    },
+    {
+      "complexity": "very_high",
+      "fixed": 0.0025000000000000005,
+      "aware": 0.0015
+    },
+    {
+      "complexity": "very_high",
+      "fixed": 0.0025000000000000005,
+      "aware": 0.0015
+    },
+    {
+      "complexity": "very_high",
+      "fixed": 0.0025000000000000005,
+      "aware": 0.0015
+    },
+    {
+      "complexity": "very_high",
+      "fixed": 0.0025000000000000005,
+      "aware": 0.0015
+    },
+    {
+      "complexity": "very_high",
+      "fixed": 0.0025000000000000005,
+      "aware": 0.0015
+    }
+  ],
+  "summary": {
+    "fixed": 0.0008875,
+    "complexity_aware": 0.00063,
+    "improvement": 29.014084507042252,
+    "status": "SUPPORTED"
+  }
+}
