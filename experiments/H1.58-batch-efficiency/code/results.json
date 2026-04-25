@@ -1,0 +1,538 @@
+{
+  "hypothesis": "H1.58",
+  "results": [
+    {
+      "batch_size": 8,
+      "trial": 0,
+      "concat_convergence": 0.0012351106498362271,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.016760973261692437,
+      "attn_val": 0.0001996993096323752
+    },
+    {
+      "batch_size": 8,
+      "trial": 1,
+      "concat_convergence": 0.001,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.016123423759425173,
+      "attn_val": 0.0001407639558617294
+    },
+    {
+      "batch_size": 8,
+      "trial": 2,
+      "concat_convergence": 0.0013487955777624371,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.020689651771225726,
+      "attn_val": 0.00015091374491047325
+    },
+    {
+      "batch_size": 8,
+      "trial": 3,
+      "concat_convergence": 0.00125880148263539,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.014743318566668,
+      "attn_val": 0.00023947950113587289
+    },
+    {
+      "batch_size": 8,
+      "trial": 4,
+      "concat_convergence": 0.0013726800612167593,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.026100677760040273,
+      "attn_val": 0.00028435391008787826
+    },
+    {
+      "batch_size": 8,
+      "trial": 5,
+      "concat_convergence": 0.0013070798037397378,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.01354702929295817,
+      "attn_val": 0.00020400562750034197
+    },
+    {
+      "batch_size": 8,
+      "trial": 6,
+      "concat_convergence": 0.001,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.015577991384362295,
+      "attn_val": 0.00012405395599910486
+    },
+    {
+      "batch_size": 8,
+      "trial": 7,
+      "concat_convergence": 0.0024825525624655644,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.024809607042237128,
+      "attn_val": 0.00020591116526587282
+    },
+    {
+      "batch_size": 8,
+      "trial": 8,
+      "concat_convergence": 0.001386652387224695,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.01536653280870222,
+      "attn_val": 0.00022628119152175004
+    },
+    {
+      "batch_size": 8,
+      "trial": 9,
+      "concat_convergence": 0.0014202404609476218,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.022522709767209874,
+      "attn_val": 0.00021083490613875593
+    },
+    {
+      "batch_size": 16,
+      "trial": 0,
+      "concat_convergence": 0.003577729675170135,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.020277135344379728,
+      "attn_val": 0.00021678298842685932
+    },
+    {
+      "batch_size": 16,
+      "trial": 1,
+      "concat_convergence": 0.0029380887013904806,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.022037635039242914,
+      "attn_val": 0.00021327490619714348
+    },
+    {
+      "batch_size": 16,
+      "trial": 2,
+      "concat_convergence": 0.004557003009238621,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.020708942725231275,
+      "attn_val": 0.00023492826660745597
+    },
+    {
+      "batch_size": 16,
+      "trial": 3,
+      "concat_convergence": 0.003601394368834826,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.01687141303264297,
+      "attn_val": 0.00026956380377760974
+    },
+    {
+      "batch_size": 16,
+      "trial": 4,
+      "concat_convergence": 0.0024822259792230666,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.023139501382815238,
+      "attn_val": 0.00018483430561855706
+    },
+    {
+      "batch_size": 16,
+      "trial": 5,
+      "concat_convergence": 0.0022790023266757178,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.01789708113826533,
+      "attn_val": 0.00020753828578869667
+    },
+    {
+      "batch_size": 16,
+      "trial": 6,
+      "concat_convergence": 0.0033399219789372043,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.021623021586468293,
+      "attn_val": 0.00027134680913019573
+    },
+    {
+      "batch_size": 16,
+      "trial": 7,
+      "concat_convergence": 0.0019998863132162635,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.026602330762841905,
+      "attn_val": 0.00014111088425652863
+    },
+    {
+      "batch_size": 16,
+      "trial": 8,
+      "concat_convergence": 0.0029525226250953496,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.017540636162123584,
+      "attn_val": 0.00021537287738295527
+    },
+    {
+      "batch_size": 16,
+      "trial": 9,
+      "concat_convergence": 0.003005885170905926,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.017302544027467275,
+      "attn_val": 0.00019329650308632724
+    },
+    {
+      "batch_size": 32,
+      "trial": 0,
+      "concat_convergence": 0.005005847389417524,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.021526268715169394,
+      "attn_val": 0.00018785088037046269
+    },
+    {
+      "batch_size": 32,
+      "trial": 1,
+      "concat_convergence": 0.005040489280107687,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.02419921048134583,
+      "attn_val": 0.00023944737080594744
+    },
+    {
+      "batch_size": 32,
+      "trial": 2,
+      "concat_convergence": 0.007953888106812827,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.029377705190683674,
+      "attn_val": 0.0002211203103380988
+    },
+    {
+      "batch_size": 32,
+      "trial": 3,
+      "concat_convergence": 0.0056563012938100656,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.018981560321030547,
+      "attn_val": 0.00020108005878407726
+    },
+    {
+      "batch_size": 32,
+      "trial": 4,
+      "concat_convergence": 0.0058187929094373515,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.022473893996568343,
+      "attn_val": 0.0002356900321637216
+    },
+    {
+      "batch_size": 32,
+      "trial": 5,
+      "concat_convergence": 0.006760247353699559,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.01264506860450457,
+      "attn_val": 0.000223674561762101
+    },
+    {
+      "batch_size": 32,
+      "trial": 6,
+      "concat_convergence": 0.005895001960890531,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.016769725463573967,
+      "attn_val": 0.00022791111165013076
+    },
+    {
+      "batch_size": 32,
+      "trial": 7,
+      "concat_convergence": 0.005998390927186129,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.01925406345609194,
+      "attn_val": 0.00019007602517925247
+    },
+    {
+      "batch_size": 32,
+      "trial": 8,
+      "concat_convergence": 0.006122153234984735,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.01828900559041498,
+      "attn_val": 0.00011669821385670693
+    },
+    {
+      "batch_size": 32,
+      "trial": 9,
+      "concat_convergence": 0.006848024583110995,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.02059283491556118,
+      "attn_val": 0.00023107417807507487
+    },
+    {
+      "batch_size": 64,
+      "trial": 0,
+      "concat_convergence": 0.00990702148412891,
+      "attn_convergence": 0.00014914709914543717,
+      "concat_val": 0.023333278435075853,
+      "attn_val": 0.00019341794670391885
+    },
+    {
+      "batch_size": 64,
+      "trial": 1,
+      "concat_convergence": 0.01524719285869815,
+      "attn_convergence": 0.00013641888961011078,
+      "concat_val": 0.02369748206109371,
+      "attn_val": 0.00022133301621736368
+    },
+    {
+      "batch_size": 64,
+      "trial": 2,
+      "concat_convergence": 0.009928688940868872,
+      "attn_convergence": 0.00015837465547045626,
+      "concat_val": 0.023723428434547663,
+      "attn_val": 0.00020464922541528764
+    },
+    {
+      "batch_size": 64,
+      "trial": 3,
+      "concat_convergence": 0.020897428355402252,
+      "attn_convergence": 0.00013438617520016653,
+      "concat_val": 0.021983928690134477,
+      "attn_val": 0.0001845450992307388
+    },
+    {
+      "batch_size": 64,
+      "trial": 4,
+      "concat_convergence": 0.009666222411369718,
+      "attn_convergence": 0.00016059932456539391,
+      "concat_val": 0.01523815730298469,
+      "attn_val": 0.00024410866849757125
+    },
+    {
+      "batch_size": 64,
+      "trial": 5,
+      "concat_convergence": 0.010434114654222905,
+      "attn_convergence": 0.00012037345256711754,
+      "concat_val": 0.025963577036388786,
+      "attn_val": 0.0002497802999559051
+    },
+    {
+      "batch_size": 64,
+      "trial": 6,
+      "concat_convergence": 0.019050515490794614,
+      "attn_convergence": 0.00010221215409213139,
+      "concat_val": 0.017355362231129545,
+      "attn_val": 0.00019829143055088926
+    },
+    {
+      "batch_size": 64,
+      "trial": 7,
+      "concat_convergence": 0.01383365338784607,
+      "attn_convergence": 0.0001086767125063915,
+      "concat_val": 0.02393219782500498,
+      "attn_val": 0.00017402051554479196
+    },
+    {
+      "batch_size": 64,
+      "trial": 8,
+      "concat_convergence": 0.010253896170091236,
+      "attn_convergence": 0.00013716273190126876,
+      "concat_val": 0.020323955137961584,
+      "attn_val": 0.000140535663844695
+    },
+    {
+      "batch_size": 64,
+      "trial": 9,
+      "concat_convergence": 0.010350994493488103,
+      "attn_convergence": 0.0001,
+      "concat_val": 0.022580418898326324,
+      "attn_val": 0.0002287440494585017
+    },
+    {
+      "batch_size": 128,
+      "trial": 0,
+      "concat_convergence": 0.035846079420867885,
+      "attn_convergence": 0.00026964442524874446,
+      "concat_val": 0.01906667870558221,
+      "attn_val": 0.00014795021922949495
+    },
+    {
+      "batch_size": 128,
+      "trial": 1,
+      "concat_convergence": 0.026145827028422497,
+      "attn_convergence": 0.00025177635572983426,
+      "concat_val": 0.02613684052842312,
+      "attn_val": 0.00024035864639370953
+    },
+    {
+      "batch_size": 128,
+      "trial": 2,
+      "concat_convergence": 0.016982128711608563,
+      "attn_convergence": 0.0002394393230217803,
+      "concat_val": 0.02427710595262349,
+      "attn_val": 0.00021466461249010666
+    },
+    {
+      "batch_size": 128,
+      "trial": 3,
+      "concat_convergence": 0.012197371121390863,
+      "attn_convergence": 0.00029203941119654547,
+      "concat_val": 0.02016060322780032,
+      "attn_val": 0.00011230379982521716
+    },
+    {
+      "batch_size": 128,
+      "trial": 4,
+      "concat_convergence": 0.025480141696817435,
+      "attn_convergence": 0.00021315718624697518,
+      "concat_val": 0.014773678810952188,
+      "attn_val": 0.00025980336079236123
+    },
+    {
+      "batch_size": 128,
+      "trial": 5,
+      "concat_convergence": 0.01665002162952451,
+      "attn_convergence": 0.0002612724386807857,
+      "concat_val": 0.019124596215452847,
+      "attn_val": 0.0001811520649289223
+    },
+    {
+      "batch_size": 128,
+      "trial": 6,
+      "concat_convergence": 0.02152977347535853,
+      "attn_convergence": 0.00034883542940744724,
+      "concat_val": 0.017689004995441033,
+      "attn_val": 0.00021925201545319078
+    },
+    {
+      "batch_size": 128,
+      "trial": 7,
+      "concat_convergence": 0.018555757454455365,
+      "attn_convergence": 0.0002505070650479316,
+      "concat_val": 0.018635941695276187,
+      "attn_val": 0.00014876877340865163
+    },
+    {
+      "batch_size": 128,
+      "trial": 8,
+      "concat_convergence": 0.02818285376363757,
+      "attn_convergence": 0.000282421025162048,
+      "concat_val": 0.01910659053242261,
+      "attn_val": 0.00022201652082341978
+    },
+    {
+      "batch_size": 128,
+      "trial": 9,
+      "concat_convergence": 0.02664186293770182,
+      "attn_convergence": 0.00030302700832888043,
+      "concat_val": 0.014903920762120033,
+      "attn_val": 0.00022142092060430457
+    },
+    {
+      "batch_size": 256,
+      "trial": 0,
+      "concat_convergence": 0.043035673597507824,
+      "attn_convergence": 0.00039348218214948236,
+      "concat_val": 0.017337426084500295,
+      "attn_val": 0.0001998845685402249
+    },
+    {
+      "batch_size": 256,
+      "trial": 1,
+      "concat_convergence": 0.04340915710443213,
+      "attn_convergence": 0.0005031687566782688,
+      "concat_val": 0.026574413962622973,
+      "attn_val": 0.00019794920884229087
+    },
+    {
+      "batch_size": 256,
+      "trial": 2,
+      "concat_convergence": 0.035416400904002616,
+      "attn_convergence": 0.000447599512179509,
+      "concat_val": 0.017392968612720244,
+      "attn_val": 0.00020293555890796178
+    },
+    {
+      "batch_size": 256,
+      "trial": 3,
+      "concat_convergence": 0.07337422991604173,
+      "attn_convergence": 0.0005528020381266387,
+      "concat_val": 0.02752677623961809,
+      "attn_val": 0.00023525086054103752
+    },
+    {
+      "batch_size": 256,
+      "trial": 4,
+      "concat_convergence": 0.04998664536537986,
+      "attn_convergence": 0.0006350305006141146,
+      "concat_val": 0.020298106154160358,
+      "attn_val": 0.00014841665636058812
+    },
+    {
+      "batch_size": 256,
+      "trial": 5,
+      "concat_convergence": 0.048049608676190875,
+      "attn_convergence": 0.0005653915170989054,
+      "concat_val": 0.020465520516167374,
+      "attn_val": 0.00021734568002930923
+    },
+    {
+      "batch_size": 256,
+      "trial": 6,
+      "concat_convergence": 0.03624578263881299,
+      "attn_convergence": 0.00024592283246345557,
+      "concat_val": 0.025532242557873057,
+      "attn_val": 0.00018822584266872623
+    },
+    {
+      "batch_size": 256,
+      "trial": 7,
+      "concat_convergence": 0.04410705279090653,
+      "attn_convergence": 0.0004920981667115623,
+      "concat_val": 0.019688267473863836,
+      "attn_val": 0.00016435637607315772
+    },
+    {
+      "batch_size": 256,
+      "trial": 8,
+      "concat_convergence": 0.05146486868211504,
+      "attn_convergence": 0.0004870867457841532,
+      "concat_val": 0.021504503304954792,
+      "attn_val": 0.0002520626204841393
+    },
+    {
+      "batch_size": 256,
+      "trial": 9,
+      "concat_convergence": 0.055933641361889185,
+      "attn_convergence": 0.0006194003605594,
+      "concat_val": 0.009903969920320834,
+      "attn_val": 0.00016210823556598968
+    }
+  ],
+  "summary": {
+    "by_batch_size": {
+      "8": {
+        "concat_conv_avg": 0.0013811912985828433,
+        "attn_conv_avg": 0.0001,
+        "concat_val_avg": 0.01862419154145213,
+        "attn_val_avg": 0.00019862972680541547,
+        "efficiency_ratio": 13.811912985828432
+      },
+      "16": {
+        "concat_conv_avg": 0.003073366014868759,
+        "attn_conv_avg": 0.0001,
+        "concat_val_avg": 0.020400024120147853,
+        "attn_val_avg": 0.0002148049630272329,
+        "efficiency_ratio": 30.73366014868759
+      },
+      "32": {
+        "concat_conv_avg": 0.006109913703945741,
+        "attn_conv_avg": 0.0001,
+        "concat_val_avg": 0.020410933673494443,
+        "attn_val_avg": 0.00020746227429855737,
+        "efficiency_ratio": 61.0991370394574
+      },
+      "64": {
+        "concat_conv_avg": 0.012956972824691085,
+        "attn_conv_avg": 0.00013073511950584737,
+        "concat_val_avg": 0.021813178605264764,
+        "attn_val_avg": 0.00020394259154196632,
+        "efficiency_ratio": 99.10858592293987
+      },
+      "128": {
+        "concat_conv_avg": 0.022821181723978505,
+        "attn_conv_avg": 0.0002712119668070973,
+        "concat_val_avg": 0.0193874961426094,
+        "attn_val_avg": 0.00019676909339493785,
+        "efficiency_ratio": 84.14518722254736
+      },
+      "256": {
+        "concat_conv_avg": 0.04810230610372787,
+        "attn_conv_avg": 0.000494198261236549,
+        "concat_val_avg": 0.020622419482680187,
+        "attn_val_avg": 0.00019685356080134252,
+        "efficiency_ratio": 97.33402538359721
+      }
+    },
+    "efficiency": {
+      "avg_concat_convergence": 0.015740821944965802,
+      "avg_attn_convergence": 0.00019935755792491563,
+      "efficiency_ratio": 78.95773859195393,
+      "attn_faster": true
+    },
+    "status": "SUPPORTED"
+  }
+}

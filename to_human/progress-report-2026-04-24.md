@@ -88,15 +88,25 @@
 
 ---
 
-## Key Robustness Findings
+## Experiments Completed Cycle 42-43
 
-| Robustness Test | Concat Degradation | Attn Degradation | Advantage |
-|-----------------|-------------------|------------------|-----------|
-| Sensor Noise | +480% | +98% | 5x more robust |
-| Action Delay | +301% | +98% | 3x more robust |
-| Observation Dropout | +129% | +23% | 5x more robust |
+| Hypothesis | Status | Key Finding |
+|-------------|--------|-------------|
+| H1.53 Action Delay | ✅ +99% | 3x more robust than concat |
+| H1.54 Observation Dropout | ✅ +99% | 5x more robust than concat |
+| H1.55 Novel Objects | ❌ -4.8% | Attention worse than concat |
+| H1.56 Action Space | ✅ mixed | Better on 6DOF, 3DOF transfer |
 
-**Conclusion**: Attention mechanisms are significantly more robust to real-world imperfections than concatenation.
+---
+
+## Attention Limitations Discovered
+
+| Limitation | Impact | Mitigation |
+|------------|--------|------------|
+| Novel object generalization | -4.8% vs concat | Additional training on diverse objects |
+| 4DOF action space transfer | Worse than concat | Domain-specific fine-tuning |
+
+**Conclusion**: Attention works best on familiar domains but has limitations for truly novel scenarios.
 
 ---
 

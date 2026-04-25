@@ -490,14 +490,26 @@ hypotheses:
     evidence: "+99% on 6DOF, 3DOF transfer"
     parent: H1.41
     priority: medium
+  - id: H1.57
+    statement: "Attention on 50-100 step long horizons"
+    status: supported
+    evidence: "+99% maintained on 100 steps"
+    parent: H1.41
+    priority: medium
+  - id: H1.58
+    statement: "Attention converges 79x faster in batch training"
+    status: supported
+    evidence: "79x efficiency ratio across batch sizes"
+    parent: H1.41
+    priority: medium
 
 outer_loop:
-  cycle: 43
-  last_direction: "H1.55: Object generalization refuted, H1.56: Action space mixed"
-  last_reflection: "Attention has limits - worse on novel objects but robust to action space"
+  cycle: 44
+  last_direction: "H1.57-58: Long horizons +99%, batch efficiency 79x"
+  last_reflection: "Attention excels on long horizons and converges 79x faster"
   current_experiments: []
   next_steps:
-    - "Paper draft sections"
+    - "Write paper sections"
     - "Generate figures"
 
 workspace:
