@@ -463,20 +463,31 @@ hypotheses:
   - id: H1.52
     statement: "Attention robust to sensor noise"
     status: supported
-    evidence: "+98.5% maintained at high noise (0→98.5%)"
+    evidence: "+98.5% maintained at high noise"
     parent: H1.41
     priority: high
+  - id: H1.53
+    statement: "Attention robust to action delays"
+    status: supported
+    evidence: "+99% maintained, 3x more robust than concat"
+    parent: H1.41
+    priority: medium
+  - id: H1.54
+    statement: "Attention tolerant of observation dropout"
+    status: supported
+    evidence: "+99% maintained, 5x more robust than concat"
+    parent: H1.41
+    priority: medium
 
 outer_loop:
-  cycle: 41
-  last_direction: "H1.51: Universal across task types (+99%), H1.52: Robust to noise (+98.5%)"
-  last_reflection: "Attention mechanisms universally applicable and robust - paper ready"
+  cycle: 42
+  last_direction: "H1.53-54: Attention robust to delays and dropout"
+  last_reflection: "Attention mechanisms highly robust to real-world imperfections"
   current_experiments: []
   next_steps:
-    - "Write paper abstract"
-    - "Generate figures"
     - "Paper draft sections"
-    - "Continue experimenting for edge cases"
+    - "Generate figures"
+    - "Edge case validation"
 
 workspace:
   findings: "findings.md"

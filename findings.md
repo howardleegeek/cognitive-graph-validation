@@ -1369,3 +1369,35 @@ Given H1.30's +5.7%, we should explore:
 2. Prepare figures for key results
 3. Draft methodology section
 4. Complete experiments on edge cases
+
+---
+
+### H1.53: Action Delay Robustness (April 24, 2026)
+
+| Delay (timesteps) | Concat MSE | Attn MSE | Attn Advantage |
+|-------------------|-----------|----------|----------------|
+| 0 | 0.0205 | 0.0002 | +99.0% |
+| 1 | 0.0272 | 0.0002 | +99.2% |
+| 3 | 0.0361 | 0.0003 | +99.3% |
+| 5 | 0.0510 | 0.0003 | +99.4% |
+| 10 | 0.0822 | 0.0004 | +99.5% |
+
+**Degradation: Concat +301%, Attn +98%** — Attention is 3x more robust to delays
+
+**Status: ✅ SUPPORTED** — Attention mechanisms handle action delays much better than concatenation.
+
+---
+
+### H1.54: Observation Dropout Tolerance (April 24, 2026)
+
+| Dropout Rate | Concat MSE | Attn MSE | Attn Advantage |
+|--------------|-----------|----------|----------------|
+| 0% | 0.0188 | 0.0002 | +99.0% |
+| 10% | 0.0248 | 0.0002 | +99.2% |
+| 20% | 0.0287 | 0.0002 | +99.2% |
+| 30% | 0.0307 | 0.0002 | +99.2% |
+| 50% | 0.0429 | 0.0002 | +99.4% |
+
+**Degradation: Concat +129%, Attn +23%** — Attention is 5x more robust to missing observations
+
+**Status: ✅ SUPPORTED** — Attention mechanisms are highly tolerant of observation dropout via temporal modeling.
