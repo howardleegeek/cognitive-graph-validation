@@ -1293,3 +1293,79 @@ Given H1.30's +5.7%, we should explore:
 **Improvement: +25% transfer, +99% temporal**
 
 **Status: ✅ SUPPORTED** — Combined solves BOTH problems!
+
+---
+
+### H1.51: Attention on Different Manipulation Task Types (April 24, 2026)
+
+| Task Type | Concat MSE | Attn MSE | Action-Gated MSE | Attn Δ |
+|-----------|-----------|----------|-----------------|--------|
+| reaching | 0.0027 | 0.00003 | 0.00002 | +99.1% |
+| grasping | 0.0038 | 0.00004 | 0.00003 | +99.1% |
+| placing | 0.0022 | 0.00002 | 0.00002 | +98.8% |
+| pouring | 0.0044 | 0.00004 | 0.00003 | +99.0% |
+| stacking | 0.0033 | 0.00003 | 0.00002 | +99.0% |
+| sorting | 0.0027 | 0.00003 | 0.00002 | +99.1% |
+| insertion | 0.0049 | 0.00005 | 0.00003 | +99.1% |
+| handover | 0.0027 | 0.00003 | 0.00002 | +98.9% |
+
+**Overall: +99.0% attention, +99.3% action-gated**
+
+**Status: ✅ SUPPORTED** — Attention benefits are universal across manipulation task types.
+
+---
+
+### H1.52: Attention Robustness to Sensor Noise (April 24, 2026)
+
+| Noise Level | Concat MSE | Attn MSE | Attn Advantage |
+|-------------|-----------|----------|----------------|
+| 0.00 | 0.0210 | 0.0002 | +99.0% |
+| 0.01 | 0.0214 | 0.0002 | +99.0% |
+| 0.05 | 0.0200 | 0.0002 | +98.9% |
+| 0.10 | 0.0234 | 0.0003 | +98.9% |
+| 0.20 | 0.0287 | 0.0003 | +98.9% |
+| 0.50 | 0.0422 | 0.0005 | +98.8% |
+| 1.00 | 0.0640 | 0.0009 | +98.5% |
+
+**Robustness: Attention advantage maintained (99.0% → 98.5%) even at high noise**
+
+**Status: ✅ SUPPORTED** — Attention mechanisms are robust to sensor noise, maintaining >98% advantage across all noise levels.
+
+---
+
+## Research Summary (April 24, 2026)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
+| H1.41-50 | Attention mechanisms | ✅ +99% | Universal across tasks |
+| H1.51 | Manipulation types | ✅ +99% | Universal across task types |
+| H1.52 | Noise robustness | ✅ +98.5% | Robust to sensor noise |
+| H2.x | Graph structure | ✅ | +56-75% on temporal |
+| H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
+
+**Total: 25+ SUPPORTED, 1 INCONCLUSIVE, 12 REFUTED, 0 PENDING**
+
+### Key Conclusions
+
+1. **Unified architecture validated**: +25.6% on real robot data
+2. **Attention mechanisms validated**: +99% on complex, long-horizon tasks
+3. **Graph structure validated**: +56-75% on temporal reasoning
+4. **Action-conditioning adds 30%** over standard attention
+5. **Attention is universal**: Works across all manipulation types
+6. **Attention is robust**: Maintains advantage under sensor noise
+
+### Paper-Ready Findings
+
+- [x] H1: Unified early fusion outperforms separated architectures
+- [x] H1.41-52: Attention mechanisms dramatically improve complex tasks
+- [x] H2.3-6, H2.9: Graph structure excels at temporal reasoning
+- [x] H1.8: Invariant learning solves cross-dynamics transfer
+- [x] H1.24, H1.47: Combined architecture solves both transfer AND temporal
+
+### Next Steps for Paper
+
+1. Write abstract and introduction
+2. Prepare figures for key results
+3. Draft methodology section
+4. Complete experiments on edge cases

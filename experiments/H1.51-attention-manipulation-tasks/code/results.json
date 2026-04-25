@@ -1,0 +1,265 @@
+{
+  "hypothesis": "H1.51",
+  "results": [
+    {
+      "task": "reaching",
+      "steps": 10,
+      "complexity": 0.5,
+      "concat": 0.004709496826651368,
+      "attn": 4.815110163015049e-05,
+      "action": 3.88570934481964e-05
+    },
+    {
+      "task": "reaching",
+      "steps": 20,
+      "complexity": 0.5,
+      "concat": 0.003639110028877855,
+      "attn": 3.7118433797226065e-05,
+      "action": 2.529912529759788e-05
+    },
+    {
+      "task": "reaching",
+      "steps": 30,
+      "complexity": 0.5,
+      "concat": 0.004643770309746237,
+      "attn": 3.632766636040196e-05,
+      "action": 3.0876346601463195e-05
+    },
+    {
+      "task": "grasping",
+      "steps": 10,
+      "complexity": 0.7,
+      "concat": 0.010623759935102318,
+      "attn": 9.549377411873171e-05,
+      "action": 6.815875879116116e-05
+    },
+    {
+      "task": "grasping",
+      "steps": 20,
+      "complexity": 0.7,
+      "concat": 0.005217660873916312,
+      "attn": 5.996953003454625e-05,
+      "action": 3.3610365427969824e-05
+    },
+    {
+      "task": "grasping",
+      "steps": 30,
+      "complexity": 0.7,
+      "concat": 0.006844877817012665,
+      "attn": 5.21944297875951e-05,
+      "action": 4.1012961506181904e-05
+    },
+    {
+      "task": "placing",
+      "steps": 10,
+      "complexity": 0.4,
+      "concat": 0.0034481106147162335,
+      "attn": 3.389049589296821e-05,
+      "action": 2.6973718525717197e-05
+    },
+    {
+      "task": "placing",
+      "steps": 20,
+      "complexity": 0.4,
+      "concat": 0.0047328190436971415,
+      "attn": 6.357925331566842e-05,
+      "action": 3.558729735563628e-05
+    },
+    {
+      "task": "placing",
+      "steps": 30,
+      "complexity": 0.4,
+      "concat": 0.005462972848630142,
+      "attn": 6.645610643807115e-05,
+      "action": 4.0254594340115376e-05
+    },
+    {
+      "task": "pouring",
+      "steps": 10,
+      "complexity": 0.8,
+      "concat": 0.008471210596558585,
+      "attn": 6.207358001706246e-05,
+      "action": 5.045943856061396e-05
+    },
+    {
+      "task": "pouring",
+      "steps": 20,
+      "complexity": 0.8,
+      "concat": 0.00538080964948883,
+      "attn": 6.810022028202336e-05,
+      "action": 3.9912068915094944e-05
+    },
+    {
+      "task": "pouring",
+      "steps": 30,
+      "complexity": 0.8,
+      "concat": 0.00914839150244167,
+      "attn": 0.00010982017227341473,
+      "action": 6.216764602189951e-05
+    },
+    {
+      "task": "stacking",
+      "steps": 10,
+      "complexity": 0.6,
+      "concat": 0.005960496276827342,
+      "attn": 5.515680052974832e-05,
+      "action": 4.360572566572079e-05
+    },
+    {
+      "task": "stacking",
+      "steps": 20,
+      "complexity": 0.6,
+      "concat": 0.0056343044137479115,
+      "attn": 6.042967864839526e-05,
+      "action": 3.628125465870332e-05
+    },
+    {
+      "task": "stacking",
+      "steps": 30,
+      "complexity": 0.6,
+      "concat": 0.005638351708682043,
+      "attn": 6.0011494346723806e-05,
+      "action": 4.150033652979054e-05
+    },
+    {
+      "task": "sorting",
+      "steps": 10,
+      "complexity": 0.5,
+      "concat": 0.004804530957743342,
+      "attn": 3.516328057094598e-05,
+      "action": 3.889083913046583e-05
+    },
+    {
+      "task": "sorting",
+      "steps": 20,
+      "complexity": 0.5,
+      "concat": 0.0038243627370351994,
+      "attn": 3.596700559635013e-05,
+      "action": 2.465332183148536e-05
+    },
+    {
+      "task": "sorting",
+      "steps": 30,
+      "complexity": 0.5,
+      "concat": 0.004444959006983554,
+      "attn": 4.841646500751431e-05,
+      "action": 3.4815349704864836e-05
+    },
+    {
+      "task": "insertion",
+      "steps": 10,
+      "complexity": 0.9,
+      "concat": 0.008458683825134794,
+      "attn": 7.29066361573802e-05,
+      "action": 5.748509197642553e-05
+    },
+    {
+      "task": "insertion",
+      "steps": 20,
+      "complexity": 0.9,
+      "concat": 0.009060628376538574,
+      "attn": 0.00010330184357881865,
+      "action": 5.4397073142179163e-05
+    },
+    {
+      "task": "insertion",
+      "steps": 30,
+      "complexity": 0.9,
+      "concat": 0.0075925571640954636,
+      "attn": 5.416751000598342e-05,
+      "action": 5.2052755351614484e-05
+    },
+    {
+      "task": "handover",
+      "steps": 10,
+      "complexity": 0.5,
+      "concat": 0.0037072200240667857,
+      "attn": 4.1191076693196565e-05,
+      "action": 3.0069235909480494e-05
+    },
+    {
+      "task": "handover",
+      "steps": 20,
+      "complexity": 0.5,
+      "concat": 0.005256012307955191,
+      "attn": 6.0492051159126715e-05,
+      "action": 2.6575069652422876e-05
+    },
+    {
+      "task": "handover",
+      "steps": 30,
+      "complexity": 0.5,
+      "concat": 0.0053707192881193395,
+      "attn": 5.724439124194154e-05,
+      "action": 3.365313792975749e-05
+    }
+  ],
+  "summary": {
+    "by_task": {
+      "reaching": {
+        "concat_avg": 0.004330792388425153,
+        "attn_avg": 4.053240059592617e-05,
+        "action_avg": 3.167752178241916e-05,
+        "attn_vs_concat": 99.06408811689388,
+        "action_vs_concat": 99.26855136563269
+      },
+      "grasping": {
+        "concat_avg": 0.007562099542010432,
+        "attn_avg": 6.921924464695768e-05,
+        "action_avg": 4.7594028575104304e-05,
+        "attn_vs_concat": 99.08465573267824,
+        "action_vs_concat": 99.37062414597028
+      },
+      "placing": {
+        "concat_avg": 0.0045479675023478395,
+        "attn_avg": 5.4641951882235923e-05,
+        "action_avg": 3.427187007382296e-05,
+        "attn_vs_concat": 98.79854128566163,
+        "action_vs_concat": 99.24643546691725
+      },
+      "pouring": {
+        "concat_avg": 0.007666803916163028,
+        "attn_avg": 7.999799085750018e-05,
+        "action_avg": 5.08463844992028e-05,
+        "attn_vs_concat": 98.95656662499415,
+        "action_vs_concat": 99.33679816185192
+      },
+      "stacking": {
+        "concat_avg": 0.0057443841330857654,
+        "attn_avg": 5.853265784162246e-05,
+        "action_avg": 4.046243895140488e-05,
+        "attn_vs_concat": 98.98104554839058,
+        "action_vs_concat": 99.2956174584782
+      },
+      "sorting": {
+        "concat_avg": 0.004357950900587365,
+        "attn_avg": 3.984891705827014e-05,
+        "action_avg": 3.278650355560534e-05,
+        "attn_vs_concat": 99.0856042675263,
+        "action_vs_concat": 99.24766239217642
+      },
+      "insertion": {
+        "concat_avg": 0.008370623121922943,
+        "attn_avg": 7.679199658072742e-05,
+        "action_avg": 5.464497349007305e-05,
+        "attn_vs_concat": 99.08260119393493,
+        "action_vs_concat": 99.34718153363093
+      },
+      "handover": {
+        "concat_avg": 0.0047779838733804396,
+        "attn_avg": 5.297583969808827e-05,
+        "action_avg": 3.009914783055362e-05,
+        "attn_vs_concat": 98.89125118246564,
+        "action_vs_concat": 99.37004501002514
+      }
+    },
+    "overall": {
+      "concat_avg": 0.005919825672240371,
+      "attn_avg": 5.906762489516604e-05,
+      "action_avg": 4.0297858594773265e-05,
+      "attn_vs_concat": 99.00220668368411,
+      "action_vs_concat": 99.31927288359621
+    },
+    "status": "SUPPORTED"
+  }
+}
