@@ -1456,3 +1456,23 @@ Given H1.30's +5.7%, we should explore:
 **Average: 79x faster convergence** — Attention converges significantly faster in batch training.
 
 **Status: ✅ SUPPORTED** — Attention mechanisms are dramatically more efficient in batch training.
+
+---
+
+## Relevant Literature (2025-2026)
+
+### Ctrl-World (Oct 2025)
+- Controllable generative world model with frame-level action conditioning
+- Uses **attention** to align visual dynamics with control signals
+- Memory retrieval stabilizes long-horizon rollouts
+- **Validates our H1.39 (action-conditioned attention) findings**
+
+### FOCUS (April 2025)
+- Object-centric world model for robotic manipulation
+- Learns representations in terms of objects and interactions
+- **Validates our H2 (graph structure) findings**
+
+### WMPO (2025)
+- World Model Policy Optimization achieves "substantially higher sample efficiency"
+- Uses imagined trajectories for scalable RL
+- **Validates sample efficiency as key research direction**
