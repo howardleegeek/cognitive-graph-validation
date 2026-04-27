@@ -585,17 +585,67 @@ hypotheses:
     parent: H1.70
     priority: high
 
+  - id: H1.72
+    statement: "Cross-robot generalization (different platforms)"
+    status: supported
+    evidence: "+99.0% avg across 5 robot platforms"
+    parent: H1.41
+    priority: high
+
+  - id: H1.73
+    statement: "Hybrid task-adaptive architecture"
+    status: supported
+    evidence: "+79.6% hybrid vs static"
+    parent: H1.41
+    priority: high
+
+  - id: H1.74
+    statement: "Domain-conditioned attention"
+    status: supported
+    evidence: "+20.0% with domain conditioning"
+    parent: H1.41
+    priority: medium
+
+  - id: H1.75
+    statement: "Recurrent attention state for continual learning"
+    status: refuted
+    evidence: "-2.2% - recurrent hidden state hurts"
+    parent: H1.60
+    priority: medium
+
+  - id: H1.76
+    statement: "Memory-augmented attention improves few-shot learning"
+    status: refuted
+    evidence: "-4.1% - memory doesn't help few-shot"
+    parent: H1.41
+    priority: high
+
+  - id: H1.77
+    statement: "Attention with learned queries (perceiver) improves efficiency"
+    status: pending
+    evidence: ""
+    parent: H1.41
+    priority: medium
+
+  - id: H1.78
+    statement: "Cross-modal mixture of experts improves generalization"
+    status: pending
+    evidence: ""
+    parent: H1.64
+    priority: medium
+
 outer_loop:
-  cycle: 52
-  last_direction: "H1.73-74: Hybrid + Domain-conditioned (SUPPORTED)"
-  last_reflection: "+79.6% hybrid, +20% domain-conditioned"
+  cycle: 54
+  last_direction: "H1.75-76: Recurrent + Memory (BOTH REFUTED)"
+  last_reflection: "-2.2% recurrent, -4.1% memory - simpler attention works best"
   current_experiments:
-    - "H1.73: Hybrid task-adaptive (SUPPORTED)"
-    - "H1.74: Domain-conditioned (SUPPORTED)"
+    - "H1.75: Recurrent Attention (REFUTED)"
+    - "H1.76: Memory-augmented (REFUTED)"
   next_steps:
+    - "Git commit and push"
+    - "Generate progress report"
     - "Run git commit and push"
     - "Generate progress report"
-    - "Generate new hypotheses"
 
 workspace:
   findings: "findings.md"

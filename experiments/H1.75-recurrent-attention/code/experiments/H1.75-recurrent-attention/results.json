@@ -1,0 +1,11 @@
+{
+  "hypothesis": "H1.75",
+  "statement": "Recurrent attention state across episodes improves continual learning",
+  "status": "REFUTED",
+  "baseline_mse": 0.2617761480311553,
+  "recurrent_mse": 0.26745421017209686,
+  "improvement_pct": -2.1690525220295473,
+  "trials": 3,
+  "n_tasks": 5,
+  "n_episodes_per_task": 20
+}

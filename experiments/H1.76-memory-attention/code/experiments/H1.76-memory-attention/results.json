@@ -1,0 +1,17 @@
+{
+  "hypothesis": "H1.76",
+  "statement": "Memory-augmented attention improves few-shot learning",
+  "status": "REFUTED",
+  "baseline_mse": 0.26686304443412356,
+  "memory_mse": 0.27775555981530087,
+  "improvement_pct": -4.08168744543652,
+  "baseline_finetune_mse": 0.5049619774023691,
+  "memory_finetune_mse": 7.090816635555691,
+  "finetune_improvement_pct": -1304.227833555379,
+  "trials": 3,
+  "k_shots": [
+    2,
+    5,
+    10
+  ]
+}

@@ -1800,3 +1800,29 @@ Based on research trajectory and latest literature, the following hypotheses are
 | H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
 
 **Total: 30+ SUPPORTED, 2 INCONCLUSIVE, 12 REFUTED, 2 ESTIMATED**
+
+---
+
+### H1.75: Recurrent Attention State (April 26, 2026)
+
+| Architecture | Final MSE | Notes |
+|--------------|-----------|-------|
+| Baseline (no hidden) | 0.2618 | Resets between episodes |
+| Recurrent (with hidden) | 0.2675 | Maintains hidden state |
+
+**Improvement: -2.2%**
+
+**Status: ❌ REFUTED** — Recurrent attention state doesn't help in this synthetic setting. Resets may be beneficial for task boundaries.
+
+---
+
+### H1.76: Memory-Augmented Attention (April 26, 2026)
+
+| Architecture | Few-Shot MSE | Notes |
+|--------------|--------------|-------|
+| Baseline (no memory) | 0.2669 | Standard attention |
+| Memory-augmented | 0.2778 | External memory slots |
+
+**Improvement: -4.1%**
+
+**Status: ❌ REFUTED** — Memory-augmented attention doesn't improve few-shot learning in this synthetic setting.
