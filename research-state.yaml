@@ -560,7 +560,7 @@ hypotheses:
   - id: H1.68
     statement: "128k+ dimensions with α≥0.5 maintains scaling advantage"
     status: estimated
-    evidence: "Plateau extends to 32k-64k"
+    evidence: "8k plateau on small data (200 samples). Prior H1.20: 32k optimal w α≥0.3"
     parent: H1.21
     priority: high
 

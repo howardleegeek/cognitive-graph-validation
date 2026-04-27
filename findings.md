@@ -1650,4 +1650,31 @@ Based on research trajectory and latest literature, the following hypotheses are
 | H2.x | Graph structure | ✅ | +56-75% |
 | H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
 
-**Total: 25+ SUPPORTED, 2 INCONCLUSIVE, 12 REFUTED, 3 PENDING**
+### H1.68: 128k+ Dimension Scaling (April 26, 2026)
+
+| Dimensions | α | MSE | Status |
+|------------|---|-----|--------|
+| 4096 | 0.1 | 0.0102 | Baseline |
+| 8192 | 0.1 | 0.0098 | **BEST** |
+| 16384 | 0.1 | 0.0120 | |
+| 32768 | 0.3 | 0.0122 | |
+| 65536 | 0.5 | 0.0188 | |
+
+**Finding: PLATEAU at 8k for this data size!** — Larger dimensions overfit on small data (200 samples).
+
+**Status: ⚠️ ESTIMATED** — True 128k scaling requires larger dataset. Prior H1.20 showed 32k optimal with α≥0.3, but this fast test confirms plateau at 8k for small data.
+
+---
+
+## Research Trajectory Summary (April 26, 2026)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion |
+| H1.x | Attention mechanisms | ✅ +99% | Universal |
+| H1.64 | Causal attention | ✅ SOLVES | -2.7% gap |
+| H1.68 | 128k+ scaling | ⚠️ ESTIMATED | 8k plateau on small data |
+| H2.x | Graph structure | ✅ | +56-75% |
+| H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
+
+**Total: 25+ SUPPORTED, 2 INCONCLUSIVE, 12 REFUTED, 1 ESTIMATED**

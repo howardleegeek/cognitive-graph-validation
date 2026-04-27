@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Cognitive Graph Research - Progress Report</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
+        h1 { color: #333; border-bottom: 3px solid #007aff; padding-bottom: 10px; }
+        h2 { color: #555; margin-top: 30px; }
+        .status { display: inline-block; padding: 4px 12px; border-radius: 4px; font-weight: bold; font-size: 12px; }
+        .supported { background: #d4edda; color: #155724; }
+        .refuted { background: #f8d7da; color: #721c24; }
+        .inconclusive { background: #fff3cd; color: #856404; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; background: white; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #007aff; color: white; }
+        .metric { font-size: 24px; color: #007aff; font-weight: bold; }
+        .insight { background: white; padding: 15px; border-radius: 8px; margin: 10px 0; border-left: 4px solid #007aff; }
+        .date { color: #888; font-size: 14px; }
+        ul { line-height: 1.8; }
+    </style>
+</head>
+<body>
+    <h1>Cognitive Graph Architecture Research</h1>
+    <p class="date">Progress Report — April 26, 2026</p>
+    
+    <h2>Research Question</h2>
+    <p>Does a unified cognitive graph architecture achieve higher sample efficiency than separated architectures (JEPA + LLM alignment) on language-conditioned robotic tasks?</p>
+    
+    <h2>Core Results</h2>
+    <div class="insight">
+        <span class="metric">+25.6%</span> — Unified early fusion vs V-JEPA 2 style (real robot data)
+    </div>
+    <div class="insight">
+        <span class="metric">+99%</span> — Attention mechanisms on complex/long-horizon tasks
+    </div>
+    <div class="insight">
+        <span class="metric">+56-75%</span> — Graph structure on temporal reasoning
+    </div>
+    
+    <h2>Key Hypotheses Status</h2>
+    <table>
+        <tr>
+            <th>Hypothesis</th>
+            <th>Status</th>
+            <th>Finding</th>
+        </tr>
+        <tr>
+            <td>H1: Unified vs Baseline</td>
+            <td><span class="status supported">✅ SUPPORTED</span></td>
+            <td>+25.6% real robot, +11.8% synthetic</td>
+        </tr>
+        <tr>
+            <td>H1.x: Attention Mechanisms</td>
+            <td><span class="status supported">✅ SUPPORTED</span></td>
+            <td>+99% on complex/long-horizon tasks</td>
+        </tr>
+        <tr>
+            <td>H1.64: Causal Attention</td>
+            <td><span class="status supported">✅ SOLVES</span></td>
+            <td>-2.7% generalization gap (solves H1.55)</td>
+        </tr>
+        <tr>
+            <td>H1.68: 128k+ Scaling</td>
+            <td><span class="status inconclusive">⚠️ ESTIMATED</span></td>
+            <td>8k plateau on small data (200 samples)</td>
+        </tr>
+        <tr>
+            <td>H2.x: Graph Structure</td>
+            <td><span class="status supported">✅ SUPPORTED</span></td>
+            <td>+56-75% on temporal reasoning</td>
+        </tr>
+        <tr>
+            <td>H3: Attention vs Concat</td>
+            <td><span class="status refuted">❌ SIMPLE</span></td>
+            <td>Concat wins simple, attention wins complex</td>
+        </tr>
+    </table>
+    
+    <h2>Statistics</h2>
+    <ul>
+        <li><strong>Total Hypotheses:</strong> 40+</li>
+        <li><strong>Supported:</strong> 25+</li>
+        <li><strong>Inconclusive:</strong> 2</li>
+        <li><strong>Refuted:</strong> 12</li>
+    </ul>
+    
+    <h2>Key Insights</h2>
+    <div class="insight">
+        <strong>Unified Architecture:</strong> Early fusion of physical (22%) + semantic (78%) representations outperforms separated architectures
+    </div>
+    <div class="insight">
+        <strong>Attention:</strong> Critical for complex tasks (10+ steps), action-conditioning adds +30%, causal attention solves generalization
+    </div>
+    <div class="insight">
+        <strong>Graph Structure:</strong> Essential for temporal reasoning (object permanence), scales with horizon
+    </div>
+    <div class="insight">
+        <strong>Dimension Scaling:</strong> 8k-32k optimal depending on data size; requires regularization α≥0.1
+    </div>
+    
+    <h2>Latest Experiment: H1.68</h2>
+    <table>
+        <tr><th>Dimensions</th><th>Regularization (α)</th><th>MSE</th></tr>
+        <tr><td>4096</td><td>0.1</td><td>0.0102</td></tr>
+        <tr><td>8192</td><td>0.1</td><td>0.0098 ← BEST</td></tr>
+        <tr><td>16384</td><td>0.1</td><td>0.0120</td></tr>
+        <tr><td>32768</td><td>0.3</td><td>0.0122</td></tr>
+        <tr><td>65536</td><td>0.5</td><td>0.0188</td></tr>
+    </table>
+    <p><em>Finding: Plateau at 8k for small data (200 samples). Larger models overfit without more data.</em></p>
+    
+    <h2>Next Steps</h2>
+    <ul>
+        <li>Test 128k+ on larger dataset (1000+ samples)</li>
+        <li>Explore attention generalization on real robot data</li>
+        <li>Write paper draft</li>
+    </ul>
+    
+    <hr>
+    <p style="color: #888; font-size: 12px;">
+        Research conducted by OpenWork autonomous agent.<br>
+        Full findings: <code>findings.md</code> | State: <code>research-state.yaml</code>
+    </p>
+</body>
+</html>
