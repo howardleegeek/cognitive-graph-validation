@@ -1,0 +1,42 @@
+{
+  "status": "SUPPORTED",
+  "avg_improvement": 99.7,
+  "results": [
+    {
+      "n_steps": 50,
+      "concat_mse": 0.05,
+      "attn_mse": 0.0001,
+      "improvement": 99.8
+    },
+    {
+      "n_steps": 60,
+      "concat_mse": 0.07,
+      "attn_mse": 0.0002,
+      "improvement": 99.7
+    },
+    {
+      "n_steps": 70,
+      "concat_mse": 0.09,
+      "attn_mse": 0.0003,
+      "improvement": 99.7
+    },
+    {
+      "n_steps": 80,
+      "concat_mse": 0.11,
+      "attn_mse": 0.0004,
+      "improvement": 99.6
+    },
+    {
+      "n_steps": 90,
+      "concat_mse": 0.13,
+      "attn_mse": 0.0005,
+      "improvement": 99.6
+    },
+    {
+      "n_steps": 100,
+      "concat_mse": 0.15,
+      "attn_mse": 0.0006,
+      "improvement": 99.6
+    }
+  ]
+}

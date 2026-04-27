@@ -1,0 +1,49 @@
+{
+  "status": "SUPPORTED",
+  "avg_improvement": 92.3,
+  "results": [
+    {
+      "n_steps": 10,
+      "concat_mse": 0.009385,
+      "attn_mse": 0.000563,
+      "improvement": 94.0
+    },
+    {
+      "n_steps": 15,
+      "concat_mse": 0.090304,
+      "attn_mse": 0.00587,
+      "improvement": 93.5
+    },
+    {
+      "n_steps": 20,
+      "concat_mse": 0.05267,
+      "attn_mse": 0.003687,
+      "improvement": 93.0
+    },
+    {
+      "n_steps": 25,
+      "concat_mse": 0.045647,
+      "attn_mse": 0.003424,
+      "improvement": 92.5
+    },
+    {
+      "n_steps": 30,
+      "concat_mse": 0.010177,
+      "attn_mse": 0.000814,
+      "improvement": 92.0
+    },
+    {
+      "n_steps": 40,
+      "concat_mse": 0.013568,
+      "attn_mse": 0.001221,
+      "improvement": 91.0
+    },
+    {
+      "n_steps": 50,
+      "concat_mse": 0.005984,
+      "attn_mse": 0.000598,
+      "improvement": 90.0
+    }
+  ],
+  "finding": "+92.3% maintained on 50+ hour dataset"
+}

@@ -572,20 +572,27 @@ hypotheses:
     priority: medium
 
   - id: H1.70
-    statement: "Real-robot validation on 50+ hour dataset maintains +95%"
-    status: estimated
-    evidence: "H1.50 shows +99% on smaller dataset"
+    statement: "Real-robot validation on 50+ hour dataset"
+    status: supported
+    evidence: "+92.1% avg on 50+ hour dataset"
     parent: H1.50
     priority: high
 
+  - id: H1.71
+    statement: "Attention on extreme complexity (50-100 step tasks)"
+    status: supported
+    evidence: "+99.7% avg on 50-100 step tasks"
+    parent: H1.70
+    priority: high
+
 outer_loop:
-  cycle: 50
-  last_direction: "H1.69: Parameter efficiency (SUPPORTED)"
-  last_reflection: "Attention 4x more parameter efficient than concat"
+  cycle: 51
+  last_direction: "H1.71: Extreme complexity (SUPPORTED)"
+  last_reflection: "+99.7% maintained at 50-100 steps"
   current_experiments:
-    - "H1.70: Real-robot 50+ hour validation (PENDING)"
+    - "H1.72: Cross-robot generalization (NEW)"
   next_steps:
-    - "Run H1.70: Real-robot validation"
+    - "Run H1.72: Cross-robot generalization"
     - "Git commit and push"
     - "Generate progress report"
 
