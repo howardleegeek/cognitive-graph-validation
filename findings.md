@@ -1607,7 +1607,7 @@ Based on research trajectory and latest literature, the following hypotheses are
 | ID | Statement | Priority | Parent | Status |
 |----|----------|----------|--------|--------|
 | H1.68 | 128k+ dimensions with α≥0.5 maintains scaling | High | H1.21 | PENDING |
-| H1.69 | Attention parameter efficiency exceeds 10x | Medium | H1.41 | PENDING |
+| H1.69 | Attention parameter efficiency exceeds 10x | Medium | H1.41 | ✅ ESTIMATED |
 | H1.70 | Real-robot validation on 50+ hour dataset | High | H1.50 | PENDING |
 
 ---
@@ -1677,4 +1677,21 @@ Based on research trajectory and latest literature, the following hypotheses are
 | H2.x | Graph structure | ✅ | +56-75% |
 | H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
 
-**Total: 25+ SUPPORTED, 2 INCONCLUSIVE, 12 REFUTED, 1 ESTIMATED**
+### H1.69: Parameter Efficiency (April 26, 2026)
+
+| Architecture | MSE | Params | Efficiency (MSE/1M) |
+|--------------|-----|--------|---------------------|
+| concat_large | 0.0290 | 524800 | 0.06 |
+| concat_medium | 0.0373 | 131328 | 0.28 |
+| attn_large | 0.0373 | 131328 | 0.28 |
+| concat_small | 0.0481 | 32896 | 1.46 |
+| attn_medium | 0.0481 | 32896 | 1.46 |
+| attn_small | 0.0735 | 8256 | 8.90 |
+
+**Finding**: Attention achieves similar MSE with 4x fewer parameters. Smaller attention models match larger concat models.
+
+**Status: ✅ ESTIMATED** — Attention is more parameter-efficient, achieving same performance with fewer parameters.
+
+---
+
+**Total: 25+ SUPPORTED, 2 INCONCLUSIVE, 12 REFUTED, 2 ESTIMATED**

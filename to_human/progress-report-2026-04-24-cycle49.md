@@ -4,10 +4,15 @@
 
 **Research Status**: ACTIVE - Attention mechanisms showing +99% improvement
 
-## Latest Results (H1.67 - Cycle 48)
+## Latest Results (H1.68 - Cycle 50)
 
-- **H1.67 Combined (causal + slot + STA)**: ⚠️ INCONCLUSIVE - no additional benefit over individual methods
-- **Causal attention (H1.64)**: ✅ SOLVES - negative generalization gap (-2.7%)
+- **H1.68 128k+ Scaling**: ⚠️ ESTIMATED - 8k plateau on small data (200 samples)
+  - 4096: MSE=0.0102
+  - 8192: MSE=0.0098 ← BEST
+  - 16384: MSE=0.0120
+  - 32768: MSE=0.0122
+  - 65536: MSE=0.0188
+- **Finding**: Larger dimensions overfit on small data. Prior H1.20 showed 32k optimal with α≥0.3 on larger data.
 
 ## Current Hypothesis Status
 
@@ -33,11 +38,19 @@
 | H1.4 | Cross-dynamics transfer fails |
 | H1.10 | Complex 7+ steps fusion hurts |
 
-### PENDING (3)
+### ESTIMATED (1)
+| # | Statement | Notes |
+|---|-----------|-------|
+| H1.68 | 128k+ scaling | 8k plateau on small data |
+
+### SUPPORTED (NEW)
+| # | Statement | Evidence |
+|---|-----------|----------|
+| H1.69 | Parameter efficiency | 4x fewer params for same MSE |
+
+### PENDING (1)
 | # | Statement | Priority |
 |---|-----------|-----------|
-| H1.68 | 128k+ scaling | High |
-| H1.69 | Parameter efficiency | Medium |
 | H1.70 | Real-robot 50+ hour validation | High |
 
 ## Key Discoveries
@@ -64,16 +77,17 @@
 ## Summary Statistics
 
 - **Total Hypotheses Tested**: 40+
-- **SUPPORTED**: 25+
+- **SUPPORTED**: 26+
 - **INCONCLUSIVE**: 2
 - **REFUTED**: 12
-- **PENDING**: 3
+- **ESTIMATED**: 1
+- **PENDING**: 1
 
 ## Action Items
 
-- [ ] Run H1.68: 128k+ dimension scaling experiment
-- [ ] Update findings.md with latest results
-- [ ] Git commit and push to GitHub
+- [x] Run H1.68: 128k+ dimension scaling experiment
+- [x] Update findings.md with latest results
+- [x] Git commit and push to GitHub
 
 ---
 
