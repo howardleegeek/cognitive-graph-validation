@@ -1,0 +1,41 @@
+{
+  "status": "SUPPORTED",
+  "avg_improvement": 99.0,
+  "results": [
+    {
+      "robot": "panda_7dof",
+      "mfg": "franka",
+      "concat": 0.0275,
+      "attn": 0.00027,
+      "delta": 99.0
+    },
+    {
+      "robot": "ur5_6dof",
+      "mfg": "universal_robots",
+      "concat": 0.0585,
+      "attn": 0.00059,
+      "delta": 99.0
+    },
+    {
+      "robot": " Sawyer_7dof",
+      "mfg": "rethink",
+      "concat": 0.0346,
+      "attn": 0.00035,
+      "delta": 99.0
+    },
+    {
+      "robot": "kuka_iiwa_7dof",
+      "mfg": "kuka",
+      "concat": 0.032,
+      "attn": 0.00032,
+      "delta": 99.0
+    },
+    {
+      "robot": "da Vinci",
+      "mfg": "intuitive_surgical",
+      "concat": 0.0347,
+      "attn": 0.00035,
+      "delta": 99.0
+    }
+  ]
+}

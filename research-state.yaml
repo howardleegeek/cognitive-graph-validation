@@ -586,15 +586,16 @@ hypotheses:
     priority: high
 
 outer_loop:
-  cycle: 51
-  last_direction: "H1.71: Extreme complexity (SUPPORTED)"
-  last_reflection: "+99.7% maintained at 50-100 steps"
+  cycle: 52
+  last_direction: "H1.73-74: Hybrid + Domain-conditioned (SUPPORTED)"
+  last_reflection: "+79.6% hybrid, +20% domain-conditioned"
   current_experiments:
-    - "H1.72: Cross-robot generalization (NEW)"
+    - "H1.73: Hybrid task-adaptive (SUPPORTED)"
+    - "H1.74: Domain-conditioned (SUPPORTED)"
   next_steps:
-    - "Run H1.72: Cross-robot generalization"
-    - "Git commit and push"
+    - "Run git commit and push"
     - "Generate progress report"
+    - "Generate new hypotheses"
 
 workspace:
   findings: "findings.md"

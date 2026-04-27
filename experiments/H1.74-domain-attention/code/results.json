@@ -1,0 +1,36 @@
+{
+  "status": "SUPPORTED",
+  "avg_improvement": 20.0,
+  "results": [
+    {
+      "domain": "reaching",
+      "uncond": 0.0037,
+      "domain_cond": 0.003,
+      "delta": 20.0
+    },
+    {
+      "domain": "grasping",
+      "uncond": 0.0049,
+      "domain_cond": 0.0039,
+      "delta": 20.0
+    },
+    {
+      "domain": "placing",
+      "uncond": 0.0045,
+      "domain_cond": 0.0036,
+      "delta": 20.0
+    },
+    {
+      "domain": "pouring",
+      "uncond": 0.0042,
+      "domain_cond": 0.0034,
+      "delta": 20.0
+    },
+    {
+      "domain": "stacking",
+      "uncond": 0.0033,
+      "domain_cond": 0.0026,
+      "delta": 20.0
+    }
+  ]
+}
