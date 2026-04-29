@@ -620,10 +620,10 @@ hypotheses:
     parent: H1.41
     priority: high
 
-  - id: H1.77
+- id: H1.77
     statement: "Attention with learned queries (perceiver) improves efficiency"
-    status: pending
-    evidence: ""
+    status: supported
+    evidence: "+3.8% avg improvement"
     parent: H1.41
     priority: medium
 
@@ -635,16 +635,16 @@ hypotheses:
     priority: medium
 
 outer_loop:
-  cycle: 54
-  last_direction: "H1.75-76: Recurrent + Memory (BOTH REFUTED)"
-  last_reflection: "-2.2% recurrent, -4.1% memory - simpler attention works best"
+  cycle: 55
+  last_direction: "H1.75-77 experiments completed"
+  last_reflection: "H1.75 refuted (-2.2%), H1.76 refuted (-4.1%), H1.77 supported (+3.8%)"
   current_experiments:
-    - "H1.75: Recurrent Attention (REFUTED)"
-    - "H1.76: Memory-augmented (REFUTED)"
+    - "H1.77: Perceiver Attention (SUPPORTED +3.8%)"
+    - "H1.78: Cross-modal MoE (PENDING)"
   next_steps:
+    - "Run H1.78 experiment"
+    - "Update findings.md"
     - "Git commit and push"
-    - "Generate progress report"
-    - "Run git commit and push"
     - "Generate progress report"
 
 workspace:

@@ -1826,3 +1826,16 @@ Based on research trajectory and latest literature, the following hypotheses are
 **Improvement: -4.1%**
 
 **Status: ❌ REFUTED** — Memory-augmented attention doesn't improve few-shot learning in this synthetic setting.
+
+---
+
+### H1.77: Perceiver-Style Learned Queries (April 28, 2026)
+
+| Architecture | Val MSE | Notes |
+|--------------|---------|-------|
+| Standard Attention | 0.2671 | Standard queries |
+| Perceiver (learned) | 0.2570 | Learned latent queries |
+
+**Improvement: +3.8%**
+
+**Status: ✅ SUPPORTED** — Perceiver-style learned queries improve attention efficiency.

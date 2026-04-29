@@ -1,0 +1,11 @@
+{
+  "hypothesis": "H1.77",
+  "statement": "Perceiver-style learned queries improves attention efficiency",
+  "status": "SUPPORTED",
+  "standard_mse": 0.26714945609370866,
+  "perceiver_mse": 0.2570056179538369,
+  "improvement_pct": 3.7970648670583715,
+  "trials": 3,
+  "n_samples": 200,
+  "seq_len": 20
+}
