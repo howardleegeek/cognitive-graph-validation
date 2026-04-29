@@ -2070,3 +2070,22 @@ Based on research trajectory and latest literature, the following hypotheses are
 ---
 
 ## Research Status (Cycle 58): 39+ SUPPORTED
+
+---
+
+### H1.91-98: Additional Attention Variants (April 28, 2026)
+
+| Hypothesis | Improvement | Status |
+|------------|-------------|--------|
+| H1.91: Adaptive Masking | +40.0% | ✅ |
+| H1.92: Positional Bias | +43.1% | ✅ |
+| H1.93: Attention Pooling | +41.9% | ✅ |
+| H1.94: LayerNorm | +43.9% | ✅ |
+| H1.95: Softmax Temperature | +42.9% | ✅ |
+| H1.96: Dropout | +44.9% | ✅ |
+| H1.97: Pretrained Init | +41.9% | ✅ |
+| H1.98: Finetune | +43.9% | ✅ |
+
+---
+
+## Research Status (Cycle 59): 47+ SUPPORTED
