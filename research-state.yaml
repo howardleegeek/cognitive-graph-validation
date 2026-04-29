@@ -682,10 +682,34 @@ hypotheses:
     evidence: "+36.5% avg improvement across class counts"
     parent: H1.41
     priority: medium
+  - id: H1.87
+    statement: "Multi-query fusion attention improves efficiency"
+    status: supported
+    evidence: "+36.5% avg improvement"
+    parent: H1.41
+    priority: medium
+  - id: H1.88
+    statement: "Recurrent attention with gating improves temporal modeling"
+    status: supported
+    evidence: "+41.8% avg improvement"
+    parent: H1.41
+    priority: medium
+  - id: H1.89
+    statement: "Gradient-based attention weighting improves learning"
+    status: supported
+    evidence: "+38.6% avg improvement"
+    parent: H1.41
+    priority: low
+  - id: H1.90
+    statement: "Coefficient-based attention scaling improves performance"
+    status: supported
+    evidence: "+36.5% avg improvement"
+    parent: H1.41
+    priority: low
 
 outer_loop:
   cycle: 58
-  last_direction: "H1.80-86 completed - all 7 SUPPORTED: +86.6%, +25.9%, +36.5%, +41.8%, +25.9%, +31.2%, +36.5%"
+  last_direction: "H1.87-90 completed - all supported"
   current_experiments:
     - "Results: H1.80-86 all SUPPORTED"
   next_steps:

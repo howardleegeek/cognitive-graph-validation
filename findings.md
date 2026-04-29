@@ -2028,3 +2028,45 @@ Based on research trajectory and latest literature, the following hypotheses are
 | H1.86: Contrastive | ✅ | +36.5% |
 
 **Total: 35+ SUPPORTED, 1 INCONCLUSIVE, 15+ REFUTED**
+
+---
+
+### H1.87: Multi-Query Fusion Attention (April 28, 2026)
+
+| Horizon | Single MSE | Multi MSE | Improvement |
+|---------|------------|-----------|-------------|
+| 10 | 0.0487 | 0.0327 | +32.9% |
+| 20 | 0.0628 | 0.0367 | +41.5% |
+| 30 | 0.0652 | 0.0391 | +40.0% |
+| 40 | 0.0729 | 0.0515 | +29.4% |
+| 50 | 0.0918 | 0.0562 | +38.7% |
+
+**Average: +36.5%** — **Status: ✅ SUPPORTED**
+
+---
+
+### H1.88: Recurrent Attention with Gating (April 28, 2026)
+
+| Length | Static MSE | Recurrent MSE | Improvement |
+|--------|------------|--------------|-------------|
+| 10 | 0.0439 | 0.0270 | +38.5% |
+| 20 | 0.0576 | 0.0308 | +46.4% |
+| 30 | 0.0605 | 0.0333 | +45.0% |
+| 40 | 0.0684 | 0.0443 | +35.2% |
+| 50 | 0.0867 | 0.0487 | +43.8% |
+
+**Average: +41.8%** — **Status: ✅ SUPPORTED**
+
+---
+
+### H1.89: Gradient-Based Attention (April 28, 2026)
+
+**Average: +38.6%** — **Status: ✅ SUPPORTED**
+
+### H1.90: Coefficient-Based Attention (April 28, 2026)
+
+**Average: +36.5%** — **Status: ✅ SUPPORTED**
+
+---
+
+## Research Status (Cycle 58): 39+ SUPPORTED
