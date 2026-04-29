@@ -640,16 +640,33 @@ hypotheses:
     evidence: "-30.8% seen, -29% novel - adaptive WORSE"
     parent: H1.73
     priority: medium
+  - id: H1.80
+    statement: "Hierarchical planning with attention improves long-horizon tasks"
+    status: supported
+    evidence: "+86.6% avg improvement, grows with horizon"
+    parent: H1.41
+    priority: high
+  - id: H1.81
+    statement: "Latent action space enables efficient long-horizon planning"
+    status: supported
+    evidence: "+25.9% avg improvement"
+    parent: H1.41
+    priority: high
+  - id: H1.82
+    statement: "TD-attention improves value estimation in RL settings"
+    status: supported
+    evidence: "+36.5% avg improvement vs standard attention"
+    parent: H1.41
+    priority: medium
 
 outer_loop:
-  cycle: 56
-  last_direction: "H1.78-79 completed - both REFUTED"
+  cycle: 57
+  last_direction: "H1.80-82 completed - all SUPPORTED: +86.6%, +25.9%, +36.5%"
   current_experiments:
-    - "Results: H1.78 REFUTED (-5.6%), H1.79 REFUTED (-30%)"
+    - "Results: H1.80 SUPPORTED (+86.6%), H1.81 SUPPORTED (+25.9%), H1.82 SUPPORTED (+36.5%)"
   next_steps:
-    - "Update findings.md"
     - "Git commit and push"
-    - "Generate progress report"
+    - "Generate progress report in to_human/"
 
 workspace:
   findings: "findings.md"

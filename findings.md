@@ -1881,3 +1881,70 @@ Based on research trajectory and latest literature, the following hypotheses are
 | H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
 
 **Total: 25+ SUPPORTED, 1 INCONCLUSIVE, 15+ REFUTED**
+
+---
+
+### H1.80: Hierarchical Planning with Attention (April 28, 2026)
+
+| Horizon | Flat MSE | Hierarchical MSE | Improvement |
+|---------|----------|-----------------|-------------|
+| 20 | 0.0682 | 0.0165 | +75.8% |
+| 40 | 0.0942 | 0.0119 | +87.4% |
+| 60 | 0.1024 | 0.0133 | +87.0% |
+| 80 | 0.1185 | 0.0108 | +90.8% |
+| 100 | 0.1530 | 0.0121 | +92.1% |
+
+**Average: +86.6%**
+
+**Status: ✅ SUPPORTED** — Hierarchical attention dramatically outperforms flat attention at all horizons.
+
+---
+
+### H1.81: Latent Action Space (April 28, 2026)
+
+| Horizon | Primitive MSE | Latent MSE | Improvement |
+|---------|---------------|------------|-------------|
+| 20 | 0.0682 | 0.0534 | +21.7% |
+| 40 | 0.0942 | 0.0642 | +31.8% |
+| 60 | 0.1024 | 0.0717 | +30.0% |
+| 80 | 0.1185 | 0.0977 | +17.6% |
+| 100 | 0.1530 | 0.1094 | +28.5% |
+
+**Average: +25.9%**
+
+**Status: ✅ SUPPORTED** — Latent action space enables more efficient long-horizon planning.
+
+---
+
+### H1.82: TD-Attention for Value Estimation (April 28, 2026)
+
+| Horizon | Standard MSE | TD-Attn MSE | Improvement |
+|---------|--------------|-------------|-------------|
+| 10 | 0.0390 | 0.0262 | +32.9% |
+| 20 | 0.0523 | 0.0306 | +41.5% |
+| 30 | 0.0559 | 0.0335 | +40.0% |
+| 40 | 0.0638 | 0.0451 | +29.4% |
+| 50 | 0.0816 | 0.0500 | +38.7% |
+
+**Average: +36.5%**
+
+**Status: ✅ SUPPORTED** — TD-attention improves value estimation in RL settings.
+
+---
+
+## Research Summary (April 28 Evening 2026)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
+| H1.41-54 | Attention mechanisms | ✅ +99% | Universal across tasks |
+| H1.77 | Perceiver attention | ✅ +3.8% | Learned queries help |
+| H1.78 | Cross-modal MoE | ❌ -5.6% | Does NOT help |
+| H1.79 | Task-adaptive | ❌ -30% | Makes WORSE |
+| H1.80 | Hierarchical planning | ✅ +86.6% | Multi-level abstraction |
+| H1.81 | Latent action space | ✅ +25.9% | Efficient planning |
+| H1.82 | TD-attention | ✅ +36.5% | Better value estimation |
+| H2.x | Graph structure | ✅ | +56-75% on temporal |
+| H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
+
+**Total: 28+ SUPPORTED, 1 INCONCLUSIVE, 15+ REFUTED**
