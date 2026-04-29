@@ -1,0 +1,14 @@
+{
+  "hypothesis": "H1.78",
+  "statement": "Cross-modal mixture of experts improves generalization",
+  "status": "REFUTED",
+  "single_gap_pct": 2.1586633874604457,
+  "moe_gap_pct": 7.7937615436002385,
+  "improvement_gap_pct": -5.635098156139793,
+  "single_seen_mse": 0.11670620329678058,
+  "single_novel_mse": 0.11922549737824334,
+  "moe_seen_mse": 0.12484388515353202,
+  "moe_novel_mse": 0.13457391986416445,
+  "trials": 3,
+  "num_experts": 4
+}

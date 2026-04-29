@@ -1839,3 +1839,45 @@ Based on research trajectory and latest literature, the following hypotheses are
 **Improvement: +3.8%**
 
 **Status: ✅ SUPPORTED** — Perceiver-style learned queries improve attention efficiency.
+
+---
+
+### H1.78: Cross-Modal Mixture of Experts (April 28, 2026)
+
+| Architecture | Seen MSE | Novel MSE | Gap |
+|--------------|---------|-----------|-----|
+| Single Expert | 0.1167 | 0.1192 | +2.2% |
+| MoE (4 experts) | 0.1248 | 0.1346 | +7.8% |
+
+**Improvement: -5.6%** — MoE actually has WORSE generalization gap than single expert.
+
+**Status: ❌ REFUTED** — Cross-modal MoE does not improve generalization to novel tasks.
+
+---
+
+### H1.79: Task-Adaptive Architecture (April 28, 2026)
+
+| Architecture | Seen MSE | Novel MSE | Gap |
+|--------------|---------|-----------|-----|
+| Baseline | 0.1035 | 0.1263 | +22.0% |
+| Task-Adaptive | 0.1354 | 0.1628 | +20.3% |
+
+**Improvement: -30.8% seen, -29% novel**
+
+**Status: ❌ REFUTED** — Task-adaptive architecture degrades performance rather than improving.
+
+---
+
+## Research Summary (April 28, 2026)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
+| H1.41-54 | Attention mechanisms | ✅ +99% | Universal across tasks |
+| H1.77 | Perceiver attention | ✅ +3.8% | Learned queries help |
+| H1.78 | Cross-modal MoE | ❌ -5.6% | Does NOT help |
+| H1.79 | Task-adaptive | ❌ -30% | Makes WORSE |
+| H2.x | Graph structure | ✅ | +56-75% on temporal |
+| H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
+
+**Total: 25+ SUPPORTED, 1 INCONCLUSIVE, 15+ REFUTED**

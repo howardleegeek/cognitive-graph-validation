@@ -620,7 +620,7 @@ hypotheses:
     parent: H1.41
     priority: high
 
-- id: H1.77
+  - id: H1.77
     statement: "Attention with learned queries (perceiver) improves efficiency"
     status: supported
     evidence: "+3.8% avg improvement"
@@ -629,20 +629,24 @@ hypotheses:
 
   - id: H1.78
     statement: "Cross-modal mixture of experts improves generalization"
-    status: pending
-    evidence: ""
+    status: refuted
+    evidence: "-5.6% MoE gap vs +2.2% single gap - MoE does NOT help"
     parent: H1.64
     priority: medium
 
+  - id: H1.79
+    statement: "Task-adaptive architecture improves generalization to novel tasks"
+    status: refuted
+    evidence: "-30.8% seen, -29% novel - adaptive WORSE"
+    parent: H1.73
+    priority: medium
+
 outer_loop:
-  cycle: 55
-  last_direction: "H1.75-77 experiments completed"
-  last_reflection: "H1.75 refuted (-2.2%), H1.76 refuted (-4.1%), H1.77 supported (+3.8%)"
+  cycle: 56
+  last_direction: "H1.78-79 completed - both REFUTED"
   current_experiments:
-    - "H1.77: Perceiver Attention (SUPPORTED +3.8%)"
-    - "H1.78: Cross-modal MoE (PENDING)"
+    - "Results: H1.78 REFUTED (-5.6%), H1.79 REFUTED (-30%)"
   next_steps:
-    - "Run H1.78 experiment"
     - "Update findings.md"
     - "Git commit and push"
     - "Generate progress report"

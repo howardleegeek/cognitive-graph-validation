@@ -1,0 +1,12 @@
+{
+  "hypothesis": "H1.79",
+  "statement": "Task-adaptive architecture improves generalization to novel tasks",
+  "status": "REFUTED",
+  "baseline_seen_mse": 0.10349481102079153,
+  "baseline_novel_mse": 0.12626591101288795,
+  "adaptive_seen_mse": 0.13540162414312362,
+  "adaptive_novel_mse": 0.16283912733197212,
+  "seen_improvement_pct": -30.82938439872333,
+  "novel_improvement_pct": -28.965233787725293,
+  "trials": 3
+}
