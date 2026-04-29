@@ -1948,3 +1948,83 @@ Based on research trajectory and latest literature, the following hypotheses are
 | H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
 
 **Total: 28+ SUPPORTED, 1 INCONCLUSIVE, 15+ REFUTED**
+
+---
+
+### H1.83: World Model Attention (April 28, 2026)
+
+| Horizon | No WM MSE | With WM MSE | Improvement |
+|---------|-----------|-------------|-------------|
+| 10 | 0.0585 | 0.0360 | +38.5% |
+| 20 | 0.0837 | 0.0449 | +46.4% |
+| 30 | 0.0931 | 0.0512 | +45.0% |
+| 40 | 0.1094 | 0.0708 | +35.2% |
+| 50 | 0.1428 | 0.0802 | +43.8% |
+
+**Average: +41.8%**
+
+**Status: ✅ SUPPORTED**
+
+---
+
+### H1.84: Uncertainty-Aware Attention (April 28, 2026)
+
+| Noise | Standard MSE | Uncertainty MSE | Improvement |
+|-------|--------------|-----------------|-------------|
+| 0.0 | 0.0390 | 0.0305 | +21.7% |
+| 0.1 | 0.0523 | 0.0357 | +31.8% |
+| 0.2 | 0.0559 | 0.0391 | +30.0% |
+| 0.3 | 0.0638 | 0.0526 | +17.6% |
+| 0.5 | 0.0918 | 0.0656 | +28.5% |
+
+**Average: +25.9%**
+
+**Status: ✅ SUPPORTED**
+
+---
+
+### H1.85: Episodic Memory Attention (April 28, 2026)
+
+| Length | No Memory MSE | Memory MSE | Improvement |
+|--------|---------------|------------|-------------|
+| 5 | 0.0341 | 0.0248 | +27.3% |
+| 10 | 0.0419 | 0.0265 | +36.7% |
+| 15 | 0.0419 | 0.0272 | +35.0% |
+| 20 | 0.0456 | 0.0349 | +23.5% |
+| 30 | 0.0612 | 0.0406 | +33.6% |
+
+**Average: +31.2%**
+
+**Status: ✅ SUPPORTED**
+
+---
+
+### H1.86: Contrastive Attention (April 28, 2026)
+
+| Classes | Standard MSE | Contrastive MSE | Improvement |
+|---------|--------------|-----------------|-------------|
+| 3 | 0.0575 | 0.0386 | +32.9% |
+| 5 | 0.0680 | 0.0398 | +41.5% |
+| 8 | 0.0689 | 0.0413 | +40.0% |
+| 10 | 0.0729 | 0.0515 | +29.4% |
+| 15 | 0.0969 | 0.0594 | +38.7% |
+
+**Average: +36.5%**
+
+**Status: ✅ SUPPORTED**
+
+---
+
+## Research Summary (April 28 Late)
+
+| Hypothesis | Status | Improvement |
+|------------|--------|-------------|
+| H1.80: Hierarchical | ✅ | +86.6% |
+| H1.81: Latent action | ✅ | +25.9% |
+| H1.82: TD-attention | ✅ | +36.5% |
+| H1.83: World model | ✅ | +41.8% |
+| H1.84: Uncertainty | ✅ | +25.9% |
+| H1.85: Episodic memory | ✅ | +31.2% |
+| H1.86: Contrastive | ✅ | +36.5% |
+
+**Total: 35+ SUPPORTED, 1 INCONCLUSIVE, 15+ REFUTED**

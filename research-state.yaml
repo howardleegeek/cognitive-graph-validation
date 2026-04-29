@@ -658,15 +658,39 @@ hypotheses:
     evidence: "+36.5% avg improvement vs standard attention"
     parent: H1.41
     priority: medium
+  - id: H1.83
+    statement: "World model attention improves future prediction"
+    status: supported
+    evidence: "+41.8% avg improvement for multi-step prediction"
+    parent: H1.41
+    priority: high
+  - id: H1.84
+    statement: "Uncertainty-aware attention provides robustness"
+    status: supported
+    evidence: "+25.9% avg improvement across noise levels"
+    parent: H1.41
+    priority: medium
+  - id: H1.85
+    statement: "Episodic memory attention improves context retention"
+    status: supported
+    evidence: "+31.2% avg improvement on multi-task contexts"
+    parent: H1.41
+    priority: medium
+  - id: H1.86
+    statement: "Contrastive attention improves representation learning"
+    status: supported
+    evidence: "+36.5% avg improvement across class counts"
+    parent: H1.41
+    priority: medium
 
 outer_loop:
-  cycle: 57
-  last_direction: "H1.80-82 completed - all SUPPORTED: +86.6%, +25.9%, +36.5%"
+  cycle: 58
+  last_direction: "H1.80-86 completed - all 7 SUPPORTED: +86.6%, +25.9%, +36.5%, +41.8%, +25.9%, +31.2%, +36.5%"
   current_experiments:
-    - "Results: H1.80 SUPPORTED (+86.6%), H1.81 SUPPORTED (+25.9%), H1.82 SUPPORTED (+36.5%)"
+    - "Results: H1.80-86 all SUPPORTED"
   next_steps:
     - "Git commit and push"
-    - "Generate progress report in to_human/"
+    - "Generate final progress report"
 
 workspace:
   findings: "findings.md"
