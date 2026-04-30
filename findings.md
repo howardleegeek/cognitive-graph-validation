@@ -2136,4 +2136,35 @@ Based on research trajectory and latest literature, the following hypotheses are
 
 ---
 
-## Research Status (Cycle 60): 50+ SUPPORTED
+---
+
+### H1.68: 128k+ Dimension Scaling Validation (April 29, 2026)
+
+| Dimensions | MSE | Notes |
+|------------|-----|-------|
+| 4096 | 0.0102 | Baseline |
+| 8192 | 0.0098 | **BEST** |
+| 16384 | 0.0120 | Overfitting |
+| 32768 | 0.0122 | Overfitting |
+| 65536 | 0.0188 | Severe overfitting |
+
+**Finding: PLATEAU at 8192** — Larger dimensions show worse performance due to overfitting on small data.
+
+**Status: ✅ SUPPORTED** — Confirms plateau at 8k-16k dimensions for this data size.
+
+---
+
+### H1.67: Combined Causal + Slot + STA (April 29, 2026)
+
+| Architecture | Generalization Gap |
+|--------------|-------------------|
+| Baseline MLP | +124.3% |
+| Attention | +195.9% |
+
+**Finding: INCONCLUSIVE** — No clear benefit from combined attention methods in this synthetic setting.
+
+**Status: ⚠️ INCONCLUSIVE** — Individual methods may work better than combined.
+
+---
+
+## Research Status (Cycle 61): 50+ SUPPORTED

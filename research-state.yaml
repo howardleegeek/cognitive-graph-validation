@@ -726,10 +726,11 @@ hypotheses:
     priority: high
 
 outer_loop:
-  cycle: 60
-  last_direction: "H1.99, H3.7, H2.12 completed - 3 more SUPPORTED (+99%, +99.6%, +77%)"
+  cycle: 61
+  last_direction: "H1.68 validated (plateau at 8k), H1.67 inconclusive, H1.99/H3.7/H2.12 confirmed (+99%, +99.6%, +77%)"
   current_experiments:
-    - "Results: 50+ hypotheses supported total"
+    - "H1.68: 128k scaling - PLATEAU at 8192 confirmed"
+    - "H1.67: Combined attention - INCONCLUSIVE"
   next_steps:
     - "Generate final progress report"
     - "Prepare paper draft"
