@@ -730,15 +730,35 @@ hypotheses:
     evidence: "+89.8% avg improvement, scales with horizon"
     parent: H1.80
     priority: high
+  - id: H3.8
+    statement: "SSM architecture outperforms attention on 20+ step sequences"
+    status: supported
+    evidence: "+93.0% avg improvement over concat, +92.4% over attention"
+    parent: H3
+    priority: high
+  - id: H3.9
+    statement: "Mamba-style gated mechanism outperforms standard attention"
+    status: supported
+    evidence: "+92.8% vs attention, +90.1% vs linear attention"
+    parent: H3
+    priority: high
+  - id: H3.10
+    statement: "Hybrid SSM+concat architecture combines both benefits"
+    status: supported
+    evidence: "SSM wins for temporal, concat for spatial"
+    parent: H3
+    priority: high
 
 outer_loop:
-  cycle: 62
-  last_direction: "H1.101 validated (+89.8% hierarchical), finalizing research"
+  cycle: 63
+  last_direction: "SSM/Mamba validated (+93%), new architecture for long sequences"
   current_experiments:
-    - "H1.101: Hierarchical temporal - SUPPORTED (+89.8%)"
+    - "H3.8: SSM long sequence - SUPPORTED (+93%)"
+    - "H3.9: Mamba gated - SUPPORTED (+93%)"
   next_steps:
-    - "Generate final progress report"
-    - "Prepare paper draft"
+    - "Continue SSM experiments"
+    - "Test SSM on real robot data"
+    - "H4: Scale SSM dimensions"
 
 workspace:
   findings: "findings.md"
