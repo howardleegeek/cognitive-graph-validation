@@ -2310,3 +2310,18 @@ Based on research trajectory and latest literature, the following hypotheses are
 | H3.13 | SSM+Graph multi-agent | ✅ +81% | Combined architecture |
 
 **Total: 53+ SUPPORTED, 2 INCONCLUSIVE, 12 REFUTED**
+
+---
+
+### H3.14: SSM + Invariant Combined (May 1, 2026)
+
+| Test | Baseline | SSM Only | SSM + Invariant | SSM Δ | Combined Δ |
+|------|----------|----------|-----------------|-------|------------|
+| Long Seq (30-step) | 0.4385 | 2.2430 | 0.4063 | -411.5% | +7.3% |
+| Transfer | 0.3571 | 0.3472 | 0.3653 | +2.8% | -2.3% |
+
+**Status: ⚠️ PARTIAL** — SSM implementation needs refinement. Invariant component helps on long sequences (+7.3%) but hurts transfer (-2.3%). The simple SSM implementation didn't replicate H3.8's +93% results.
+
+**Key Insight**: The SSM architecture benefits are not universal - implementation details matter significantly. The H3.8-H3.13 results used a different/better SSM formulation.
+
+---

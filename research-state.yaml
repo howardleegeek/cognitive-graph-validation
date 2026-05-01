@@ -766,10 +766,16 @@ hypotheses:
     evidence: "+80.5% improvement on multi-agent tasks"
     parent: H3
     priority: high
+  - id: H3.14
+    statement: "SSM + Invariant combined solves both long-sequence and transfer"
+    status: partial
+    evidence: "+7.3% long-seq, -2.3% transfer - implementation needs refinement"
+    parent: H3
+    priority: high
 
 outer_loop:
-  cycle: 65
-  last_direction: "SSM/Mamba validated (+93%), extended to real robot + multi-agent"
+  cycle: 66
+  last_direction: "H3.14: SSM+Invariant partial results - implementation needs work"
   current_experiments:
     - "H3.8: SSM long sequence - SUPPORTED (+93%)"
     - "H3.9: Mamba gated - SUPPORTED (+93%)"
@@ -777,9 +783,11 @@ outer_loop:
     - "H3.11: SSM real robot - SUPPORTED (+82%)"
     - "H3.12: Mamba real robot - SUPPORTED (+82%)"
     - "H3.13: SSM+Graph multi-agent - SUPPORTED (+81%)"
+    - "H3.14: SSM+Invariant - PARTIAL (+7.3% long, -2.3% transfer)"
   next_steps:
+    - "Refine SSM implementation to match H3.8 results"
+    - "Test different SSM variants (Mamba, S4, etc.)"
     - "Write paper with all SSM results"
-    - "Generate final progress report"
 
 workspace:
   findings: "findings.md"

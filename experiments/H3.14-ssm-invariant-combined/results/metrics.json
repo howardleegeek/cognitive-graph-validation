@@ -1,0 +1,22 @@
+{
+  "hypothesis": "H3.14",
+  "experiment": "SSM + Invariant Combined",
+  "status": "PARTIAL",
+  "long_sequence": {
+    "baseline": 0.4385,
+    "ssm_only": 2.2430,
+    "ssm_invariant": 0.4063,
+    "ssm_improvement": -411.5,
+    "combined_improvement": 7.3
+  },
+  "transfer": {
+    "baseline": 0.3571,
+    "ssm_only": 0.3472,
+    "ssm_invariant": 0.3653,
+    "ssm_improvement": 2.8,
+    "combined_improvement": -2.3
+  },
+  "long_supported": false,
+  "transfer_supported": false,
+  "notes": "SSM implementation needs refinement. Invariant component helps on long sequences but hurts transfer."
+}
