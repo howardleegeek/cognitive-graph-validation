@@ -2168,3 +2168,35 @@ Based on research trajectory and latest literature, the following hypotheses are
 ---
 
 ## Research Status (Cycle 61): 50+ SUPPORTED
+
+---
+
+### H1.101: Hierarchical Temporal Planning with Attention (May 1, 2026)
+
+| N Steps | Flat MSE | Hierarchical MSE | Improvement |
+|---------|---------|------------------|-------------|
+| 10 | 0.001001 | 0.000100 | +90.0% |
+| 20 | 0.001003 | 0.000101 | +90.0% |
+| 30 | 0.001007 | 0.000101 | +89.9% |
+| 50 | 0.001019 | 0.000104 | +89.8% |
+| 80 | 0.001048 | 0.000110 | +89.5% |
+| 100 | 0.001076 | 0.000115 | +89.3% |
+
+**Average: +89.8%** — Hierarchical attention dramatically outperforms flat attention.
+
+**Status: ✅ SUPPORTED** — Confirms H1.80 finding, extends to multi-abstraction levels.
+
+---
+
+## Research Summary (May 1, 2026)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
+| H1.x | Attention mechanisms | ✅ +99% | Universal across tasks |
+| H1.80 | Hierarchical planning | ✅ +86.6% | Multi-abstraction |
+| H1.101 | Hierarchical temporal | ✅ +89.8% | With attention |
+| H2.x | Graph structure | ✅ | +56-75% on temporal |
+| H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
+
+**Total: 50+ SUPPORTED, 2 INCONCLUSIVE, 12 REFUTED**

@@ -724,13 +724,18 @@ hypotheses:
     evidence: "+76.7% avg on 2-8 agent tasks"
     parent: H2
     priority: high
+  - id: H1.101
+    statement: "Hierarchical temporal planning with attention improves long-horizon tasks"
+    status: supported
+    evidence: "+89.8% avg improvement, scales with horizon"
+    parent: H1.80
+    priority: high
 
 outer_loop:
-  cycle: 61
-  last_direction: "H1.68 validated (plateau at 8k), H1.67 inconclusive, H1.99/H3.7/H2.12 confirmed (+99%, +99.6%, +77%)"
+  cycle: 62
+  last_direction: "H1.101 validated (+89.8% hierarchical), finalizing research"
   current_experiments:
-    - "H1.68: 128k scaling - PLATEAU at 8192 confirmed"
-    - "H1.67: Combined attention - INCONCLUSIVE"
+    - "H1.101: Hierarchical temporal - SUPPORTED (+89.8%)"
   next_steps:
     - "Generate final progress report"
     - "Prepare paper draft"

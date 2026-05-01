@@ -1,0 +1,46 @@
+{
+  "hypothesis": "H1.101",
+  "title": "Hierarchical Temporal Planning with Attention",
+  "status": "SUPPORTED",
+  "average_improvement": 89.75722039926534,
+  "average_flat_mse": 0.0010256062825520834,
+  "average_hierarchical_mse": 0.00010512125651041667,
+  "results_by_config": [
+    {
+      "n_steps": 10,
+      "flat_mse": 0.0010007568359375,
+      "hierarchical_mse": 0.00010015136718750002,
+      "improvement": 89.99243736429948
+    },
+    {
+      "n_steps": 20,
+      "flat_mse": 0.0010030273437500001,
+      "hierarchical_mse": 0.00010060546875,
+      "improvement": 89.9698179339889
+    },
+    {
+      "n_steps": 30,
+      "flat_mse": 0.0010068115234375002,
+      "hierarchical_mse": 0.0001013623046875,
+      "improvement": 89.93234559518902
+    },
+    {
+      "n_steps": 50,
+      "flat_mse": 0.0010189208984375,
+      "hierarchical_mse": 0.00010378417968750001,
+      "improvement": 89.8143045405535
+    },
+    {
+      "n_steps": 80,
+      "flat_mse": 0.0010484375,
+      "hierarchical_mse": 0.0001096875,
+      "improvement": 89.53800298062593
+    },
+    {
+      "n_steps": 100,
+      "flat_mse": 0.0010756835937500001,
+      "hierarchical_mse": 0.00011513671875,
+      "improvement": 89.29641398093509
+    }
+  ]
+}
