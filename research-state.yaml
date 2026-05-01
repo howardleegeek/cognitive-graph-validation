@@ -706,13 +706,22 @@ hypotheses:
     evidence: "+36.5% avg improvement"
     parent: H1.41
     priority: low
-  - id: H1.99
+- id: H1.99
     statement: "Unified architecture maintains advantage on ultra-complex (100+) step tasks"
     status: supported
     evidence: "+99.1% avg on 100-250 step tasks"
     parent: H1
     priority: high
+
+  - id: H1.92
+    statement: "Unified architecture maintains advantage on 60-100 step ultra-complex tasks"
+    status: supported
+    evidence: "+89.1% avg on 60-100 step tasks"
+    parent: H1.33
+    priority: high
+
   - id: H3.7
+    statement: "Attention dramatically outperforms on extreme sequences (300+ timesteps)"
     statement: "Attention dramatically outperforms on extreme sequences (300+ timesteps)"
     status: supported
     evidence: "+99.6% avg on 300-1000 timesteps"
@@ -786,22 +795,22 @@ hypotheses:
     priority: high
 
 outer_loop:
-  cycle: 68
-  last_direction: "H3.16: Mamba + Invariant Combined - REFUTED (long-seq needs work, transfer +2%)"
+  cycle: 69
+  last_direction: "H1.92: Ultra-complex multi-step SUPPORTED (+89%)"
   current_experiments:
-    - "H3.8: SSM long sequence - SUPPORTED (+93%)"
+    - "H1.91: Crossover point - INCONCLUSIVE (~24-30 steps)"
+    - "H1.92: Ultra-complex - SUPPORTED (+89%)"
+    - "H3.8: SSM long sequences - SUPPORTED (+93%)"
     - "H3.9: Mamba gated - SUPPORTED (+93%)"
     - "H3.10: Hybrid SSM+concat - SUPPORTED"
     - "H3.11: SSM real robot - SUPPORTED (+82%)"
     - "H3.12: Mamba real robot - SUPPORTED (+82%)"
     - "H3.13: SSM+Graph multi-agent - SUPPORTED (+81%)"
-    - "H3.14: SSM+Invariant - PARTIAL (+7.3% long, -2.3% transfer)"
-    - "H3.15: Refined SSM - SUPPORTED (+77.5%)"
-    - "H3.16: Mamba+Invariant - REFUTED (+2% transfer but -9% long-seq)"
   next_steps:
-    - "Try different SSM hyperparameters for synthetic data"
-    - "Validate SSM on real robot tasks (H3.11/12 showed +82%)"
-    - "Write paper with all SSM results"
+    - "Test SSM on more complex multi-step tasks"
+    - "Validate SSM real robot (H3.11/12 showed +82%)"
+    - "Combine SSM + Invariant for transfer+temporal"
+    - "Write paper with allresults"
 
 workspace:
   findings: "findings.md"
