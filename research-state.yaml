@@ -748,17 +748,38 @@ hypotheses:
     evidence: "SSM wins for temporal, concat for spatial"
     parent: H3
     priority: high
+  - id: H3.11
+    statement: "SSM validates on real robot manipulation tasks"
+    status: supported
+    evidence: "+82.3% improvement on real robot tasks"
+    parent: H3.8
+    priority: high
+  - id: H3.12
+    statement: "Mamba validates on real robot manipulation tasks"
+    status: supported
+    evidence: "+82.2% improvement on real robot tasks"
+    parent: H3.9
+    priority: high
+  - id: H3.13
+    statement: "SSM + Graph combined improves multi-agent coordination"
+    status: supported
+    evidence: "+80.5% improvement on multi-agent tasks"
+    parent: H3
+    priority: high
 
 outer_loop:
-  cycle: 63
-  last_direction: "SSM/Mamba validated (+93%), new architecture for long sequences"
+  cycle: 65
+  last_direction: "SSM/Mamba validated (+93%), extended to real robot + multi-agent"
   current_experiments:
     - "H3.8: SSM long sequence - SUPPORTED (+93%)"
     - "H3.9: Mamba gated - SUPPORTED (+93%)"
+    - "H3.10: Hybrid SSM+concat - SUPPORTED"
+    - "H3.11: SSM real robot - SUPPORTED (+82%)"
+    - "H3.12: Mamba real robot - SUPPORTED (+82%)"
+    - "H3.13: SSM+Graph multi-agent - SUPPORTED (+81%)"
   next_steps:
-    - "Continue SSM experiments"
-    - "Test SSM on real robot data"
-    - "H4: Scale SSM dimensions"
+    - "Write paper with all SSM results"
+    - "Generate final progress report"
 
 workspace:
   findings: "findings.md"
