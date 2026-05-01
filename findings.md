@@ -2325,3 +2325,25 @@ Based on research trajectory and latest literature, the following hypotheses are
 **Key Insight**: The SSM architecture benefits are not universal - implementation details matter significantly. The H3.8-H3.13 results used a different/better SSM formulation.
 
 ---
+
+### H3.15: Refined SSM Implementation (May 1, 2026)
+
+| Sequence Length | Baseline MSE | Simple SSM MSE | Mamba SSM MSE | S4-style MSE | Mamba Δ |
+|-----------------|--------------|----------------|---------------|--------------|---------|
+| 15 steps | 0.0518 | 0.0411 | 0.0104 | 0.0129 | +79.9% |
+| 20 steps | 0.0671 | 0.0559 | 0.0143 | 0.0168 | +78.7% |
+| 30 steps | 0.0969 | 0.0867 | 0.0223 | 0.0241 | +77.0% |
+| 40 steps | 0.1155 | 0.1059 | 0.0276 | 0.0292 | +76.1% |
+| 50 steps | 0.1384 | 0.1294 | 0.0336 | 0.0346 | +75.7% |
+
+| Method | Average Improvement |
+|--------|---------------------|
+| Simple SSM | +12.6% |
+| **Mamba SSM** | **+77.5%** |
+| S4-style | +75.0% |
+
+**Status: ✅ SUPPORTED** — Mamba-style SSM with proper selective mechanism achieves +77.5% improvement, significantly better than simple SSM (+12.6%) and comparable to H3.8's +93% results.
+
+**Key Finding**: The Mamba-style gating mechanism (selective SSM) is critical for SSM performance. Simple SSM with basic gating only achieves +12.6%, while Mamba-style achieves +77.5%. This explains why H3.14's simple SSM implementation showed -411.5% (it was using a broken formulation).
+
+---

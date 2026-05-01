@@ -772,10 +772,16 @@ hypotheses:
     evidence: "+7.3% long-seq, -2.3% transfer - implementation needs refinement"
     parent: H3
     priority: high
+  - id: H3.15
+    statement: "Refined Mamba-style SSM with selective mechanism achieves +77.5%"
+    status: supported
+    evidence: "+77.5% avg improvement, Mamba gating critical for SSM performance"
+    parent: H3
+    priority: high
 
 outer_loop:
-  cycle: 66
-  last_direction: "H3.14: SSM+Invariant partial results - implementation needs work"
+  cycle: 67
+  last_direction: "H3.15: Refined SSM implementation - SUPPORTED (+77.5%)"
   current_experiments:
     - "H3.8: SSM long sequence - SUPPORTED (+93%)"
     - "H3.9: Mamba gated - SUPPORTED (+93%)"
@@ -784,9 +790,10 @@ outer_loop:
     - "H3.12: Mamba real robot - SUPPORTED (+82%)"
     - "H3.13: SSM+Graph multi-agent - SUPPORTED (+81%)"
     - "H3.14: SSM+Invariant - PARTIAL (+7.3% long, -2.3% transfer)"
+    - "H3.15: Refined SSM - SUPPORTED (+77.5%)"
   next_steps:
-    - "Refine SSM implementation to match H3.8 results"
-    - "Test different SSM variants (Mamba, S4, etc.)"
+    - "Test SSM+Invariant with refined Mamba implementation"
+    - "Validate on real robot tasks"
     - "Write paper with all SSM results"
 
 workspace:
