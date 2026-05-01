@@ -778,10 +778,16 @@ hypotheses:
     evidence: "+77.5% avg improvement, Mamba gating critical for SSM performance"
     parent: H3
     priority: high
+  - id: H3.16
+    statement: "Mamba + Invariant combined solves both long-sequence and transfer"
+    status: refuted
+    evidence: "Long-seq: -0.9% (Mamba), -8.9% (M+Inv); Transfer: -4.0% (Mamba), +2.0% (M+Inv)"
+    parent: H3
+    priority: high
 
 outer_loop:
-  cycle: 67
-  last_direction: "H3.15: Refined SSM implementation - SUPPORTED (+77.5%)"
+  cycle: 68
+  last_direction: "H3.16: Mamba + Invariant Combined - REFUTED (long-seq needs work, transfer +2%)"
   current_experiments:
     - "H3.8: SSM long sequence - SUPPORTED (+93%)"
     - "H3.9: Mamba gated - SUPPORTED (+93%)"
@@ -791,9 +797,10 @@ outer_loop:
     - "H3.13: SSM+Graph multi-agent - SUPPORTED (+81%)"
     - "H3.14: SSM+Invariant - PARTIAL (+7.3% long, -2.3% transfer)"
     - "H3.15: Refined SSM - SUPPORTED (+77.5%)"
+    - "H3.16: Mamba+Invariant - REFUTED (+2% transfer but -9% long-seq)"
   next_steps:
-    - "Test SSM+Invariant with refined Mamba implementation"
-    - "Validate on real robot tasks"
+    - "Try different SSM hyperparameters for synthetic data"
+    - "Validate SSM on real robot tasks (H3.11/12 showed +82%)"
     - "Write paper with all SSM results"
 
 workspace:
