@@ -812,17 +812,9 @@ hypotheses:
 
 outer_loop:
   cycle: 72
-  last_direction: "H3.18: Transfer with Graph+SSM SUPPORTED (+25%)"
+  last_direction: "H3.20: ALOHA validation SUPPORTED (+91%)"
   current_experiments:
-    - "H1.99: Ultra-complex multi-step - SUPPORTED (+99.1%)"
-    - "H3.8: SSM long sequences - SUPPORTED (+93%)"
-    - "H3.9: Mamba gated - SUPPORTED (+93%)"
-    - "H3.10: Hybrid SSM+concat - SUPPORTED"
-    - "H3.11: SSM real robot - SUPPORTED (+82%)"
-    - "H3.12: Mamba real robot - SUPPORTED (+82%)"
-    - "H3.13: SSM+Graph multi-agent - SUPPORTED (+81%)"
-    - "H3.14: SSM+Invariant - PARTIAL"
-    - "H3.16: Mamba+Invariant - REFUTED"
+    - "H3.20: ALOHA real robot - SUPPORTED (+91%)"
   next_steps:
     - "Combine Graph + SSM for best temporal performance"
     - "Refine invariant learning for transfer problem"
