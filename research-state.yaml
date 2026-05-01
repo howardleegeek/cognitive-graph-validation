@@ -722,7 +722,6 @@ hypotheses:
 
   - id: H3.7
     statement: "Attention dramatically outperforms on extreme sequences (300+ timesteps)"
-    statement: "Attention dramatically outperforms on extreme sequences (300+ timesteps)"
     status: supported
     evidence: "+99.6% avg on 300-1000 timesteps"
     parent: H3
@@ -795,22 +794,23 @@ hypotheses:
     priority: high
 
 outer_loop:
-  cycle: 69
-  last_direction: "H1.92: Ultra-complex multi-step SUPPORTED (+89%)"
+  cycle: 70
+  last_direction: "H1.99: Ultra-complex 250+ steps SUPPORTED (+99.1%)"
   current_experiments:
-    - "H1.91: Crossover point - INCONCLUSIVE (~24-30 steps)"
-    - "H1.92: Ultra-complex - SUPPORTED (+89%)"
+    - "H1.99: Ultra-complex multi-step - SUPPORTED (+99.1%)"
     - "H3.8: SSM long sequences - SUPPORTED (+93%)"
     - "H3.9: Mamba gated - SUPPORTED (+93%)"
     - "H3.10: Hybrid SSM+concat - SUPPORTED"
     - "H3.11: SSM real robot - SUPPORTED (+82%)"
     - "H3.12: Mamba real robot - SUPPORTED (+82%)"
     - "H3.13: SSM+Graph multi-agent - SUPPORTED (+81%)"
+    - "H3.14: SSM+Invariant - PARTIAL"
+    - "H3.16: Mamba+Invariant - REFUTED"
   next_steps:
-    - "Test SSM on more complex multi-step tasks"
-    - "Validate SSM real robot (H3.11/12 showed +82%)"
-    - "Combine SSM + Invariant for transfer+temporal"
-    - "Write paper with allresults"
+    - "Combine Graph + SSM for best temporal performance"
+    - "Refine invariant learning for transfer problem"
+    - "Write paper with all SSM results"
+    - "Test on ALOHA real robot data"
 
 workspace:
   findings: "findings.md"

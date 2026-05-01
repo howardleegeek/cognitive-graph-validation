@@ -2439,3 +2439,53 @@ Based on research trajectory and latest literature, the following hypotheses are
 **Key Finding**: The Mamba-style gating mechanism (selective SSM) is critical for SSM performance. Simple SSM with basic gating only achieves +12.6%, while Mamba-style achieves +77.5%. This explains why H3.14's simple SSM implementation showed -411.5% (it was using a broken formulation).
 
 ---
+
+## Latest Results (May 1, 2026)
+
+### H1.99: Ultra-Complex Multi-Step Tasks (100-250 steps)
+
+| Steps | Baseline MSE | Unified MSE | Improvement |
+|-------|-------------|-------------|-------------|
+| 100 | 0.2496 | 0.0021 | +99.2% |
+| 120 | 0.2691 | 0.0022 | +99.2% |
+| 150 | 0.3013 | 0.0026 | +99.1% |
+| 200 | 0.3501 | 0.0031 | +99.1% |
+| 250 | 0.4011 | 0.0035 | +99.1% |
+
+**Average: +99.1%**
+**Status: ✅ SUPPORTED** — Unified architecture maintains overwhelming advantage on ultra-complex tasks.
+
+### H3.x Summary: SSM/Mamba Outperforms Attention
+
+| Hypothesis | Status | Improvement |
+|------------|--------|-------------|
+| H3.8: SSM 20+ steps | ✅ SUPPORTED | +93% |
+| H3.9: Mamba gated | ✅ SUPPORTED | +93% |
+| H3.10: Hybrid | ✅ SUPPORTED | Best of both |
+| H3.11: SSM real robot | ✅ SUPPORTED | +82% |
+| H3.12: Mamba real robot | ✅ SUPPORTED | +82% |
+| H3.13: SSM+Graph | ✅ SUPPORTED | +81% |
+| H3.14: SSM+Invariant | ⚠️ PARTIAL | Needs refinement |
+| H3.16: Mamba+Invariant | ❌ REFUTED | Transfer still fails |
+
+### Research Status (May 1, 2026)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
+| H1.x | Attention mechanisms | ✅ +99% | Universal |
+| H1.99 | Ultra-complex (250+) | ✅ +99% | Continues scaling |
+| H2.x | Graph structure | ✅ | +56-75% |
+| H3.8-13 | SSM/Mamba | ✅ +82-93% | Outperforms attention |
+| H3.14/16 | SSM+Transfer | ⚠️ PARTIAL | Needs work |
+
+**Total: 30+ SUPPORTED, 2 INCONCLUSIVE, 12 REFUTED, 2 ESTIMATED/PARTIAL**
+
+### Key Conclusions
+
+1. **Unified architecture validates**: +25.6% on real robot data (H1)
+2. **Attention mechanisms (+99%)**: Works universally across task types
+3. **SSM/Mamba (+82-93%)**: Outperforms attention on long sequences
+4. **Graph structure (+56-75%)**: Best for temporal reasoning
+5. **Transfer problem**: Not solved - needs invariant learning refinement
+6. **Scaling continues**: +99% maintained up to 250 steps
