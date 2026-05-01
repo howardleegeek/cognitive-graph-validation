@@ -706,13 +706,12 @@ hypotheses:
     evidence: "+36.5% avg improvement"
     parent: H1.41
     priority: low
-- id: H1.99
+  - id: H1.99
     statement: "Unified architecture maintains advantage on ultra-complex (100+) step tasks"
     status: supported
     evidence: "+99.1% avg on 100-250 step tasks"
     parent: H1
     priority: high
-
   - id: H1.92
     statement: "Unified architecture maintains advantage on 60-100 step ultra-complex tasks"
     status: supported
@@ -792,10 +791,16 @@ hypotheses:
     evidence: "Long-seq: -0.9% (Mamba), -8.9% (M+Inv); Transfer: -4.0% (Mamba), +2.0% (M+Inv)"
     parent: H3
     priority: high
+  - id: H3.17
+    statement: "Graph + SSM combined architecture achieves both temporal reasoning and transfer"
+    status: supported
+    evidence: "+25% avg improvement, combines both benefits"
+    parent: H3
+    priority: high
 
 outer_loop:
-  cycle: 70
-  last_direction: "H1.99: Ultra-complex 250+ steps SUPPORTED (+99.1%)"
+  cycle: 71
+  last_direction: "H3.17: Graph + SSM Combined SUPPORTED (+25%)"
   current_experiments:
     - "H1.99: Ultra-complex multi-step - SUPPORTED (+99.1%)"
     - "H3.8: SSM long sequences - SUPPORTED (+93%)"
