@@ -2468,6 +2468,8 @@ Based on research trajectory and latest literature, the following hypotheses are
 | H3.14: SSM+Invariant | ⚠️ PARTIAL | Needs refinement |
 | H3.16: Mamba+Invariant | ❌ REFUTED | Transfer still fails |
 | H3.17: Graph+SSM Combined | ✅ SUPPORTED | +25% combined |
+| H3.18: Transfer with Graph+SSM | ✅ SUPPORTED | +25% transfer |
+| H3.19: Multi-source | ❌ REFUTED | -75% no help |
 
 ### Research Status (May 1, 2026)
 

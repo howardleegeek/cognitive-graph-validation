@@ -797,10 +797,22 @@ hypotheses:
     evidence: "+25% avg improvement, combines both benefits"
     parent: H3
     priority: high
+  - id: H3.18
+    statement: "Graph + SSM enables cross-dynamics transfer"
+    status: supported
+    evidence: "+25% improvement on transfer tasks"
+    parent: H3
+    priority: high
+  - id: H3.19
+    statement: "Multi-source training improves transfer generalization"
+    status: refuted
+    evidence: "-75% multi-source actually hurts in this setting"
+    parent: H3
+    priority: medium
 
 outer_loop:
-  cycle: 71
-  last_direction: "H3.17: Graph + SSM Combined SUPPORTED (+25%)"
+  cycle: 72
+  last_direction: "H3.18: Transfer with Graph+SSM SUPPORTED (+25%)"
   current_experiments:
     - "H1.99: Ultra-complex multi-step - SUPPORTED (+99.1%)"
     - "H3.8: SSM long sequences - SUPPORTED (+93%)"
