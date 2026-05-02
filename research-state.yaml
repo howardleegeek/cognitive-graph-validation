@@ -865,6 +865,12 @@ hypotheses:
     parent: H3.27
     priority: medium
 
+  - id: H1.105
+    statement: "Attention on multi-agent coordination"
+    status: refuted
+    evidence: "-89.4% - attention doesn't help simple multi-agent tasks"
+    parent: H1.41
+    priority: high
   - id: H1.104
     statement: "Hierarchical attention improves compositional planning on 10-30 step tasks"
     status: supported
@@ -873,13 +879,13 @@ hypotheses:
     priority: high
 
 outer_loop:
-  cycle: 82
-  last_direction: "H1.104: Hierarchical compositional planning +34.9%"
+  cycle: 83
+  last_direction: "H1.105: Multi-agent attention REFUTED (-89.4%)"
   current_experiments:
-    - "H1.105: Multi-agent coordination with attention"
+    - "Paper consolidation: ICRA/RSS structure"
   next_steps:
-    - "Paper draft: ICRA/RSS structure"
-    - "Consolidate paper-ready findings"
+    - "Paper draft: abstract and introduction"
+    - "Finalize experiment findings"
 
 workspace:
   findings: "findings.md"

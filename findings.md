@@ -2768,4 +2768,21 @@ Based on validated results:
 
 **Average: +34.9% improvement**
 
+---
+
+### H1.105: Multi-Agent Coordination with Attention (May 2, 2026)
+
+| Agents | Baseline MSE | Attention MSE | Delta |
+|--------|-------------|--------------|-------|
+| 2 | 9.166 | 17.112 | -86.7% |
+| 3 | 5.303 | 3.385 | +36.2% |
+| 4 | 5.877 | 15.575 | -165.0% |
+| 5 | 9.272 | 10.327 | -11.4% |
+| 6 | 5.821 | 21.721 | -273.1% |
+| 8 | 6.382 | 8.709 | -36.5% |
+
+**Average: -89.4%**
+
+**Status: ❌ REFUTED** — Attention doesn't help simple multi-agent coordination tasks. The cross-agent attention overhead hurts performance on most agent counts.
+
 **Status: ✅ SUPPORTED** — Hierarchical attention significantly outperforms flat attention on compositional planning tasks. The improvement is consistent across all sequence lengths (10-30 steps).
