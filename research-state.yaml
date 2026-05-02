@@ -821,17 +821,22 @@ hypotheses:
     evidence: "-274% avg - synthetic data generation issue"
     parent: H1
     priority: medium
+  - id: H1.102
+    statement: "Unified + SSM combined outperforms baseline on multi-step tasks"
+    status: supported
+    evidence: "+18% (5-step), +40% (10-step), +29% (15-step), avg +28.9%"
+    parent: H1
+    priority: high
 
 outer_loop:
-  cycle: 76
-  last_direction: "H3.22: SSM dimension scaling supported (state=16 optimal)"
+  cycle: 77
+  last_direction: "H1.102: Unified + SSM combined supported (+28.9% avg)"
   current_experiments:
-    - "H1.102: Unified + SSM combined (in progress)"
     - "H3.23: SSM on ALOHA tasks (pending)"
   next_steps:
-    - "Test Unified + SSM combined on multi-step tasks"
     - "Run SSM on ALOHA real robot data"
     - "Write paper: Draft ICRA/RSS structure"
+    - "Generate progress report"
 
 workspace:
   findings: "findings.md"

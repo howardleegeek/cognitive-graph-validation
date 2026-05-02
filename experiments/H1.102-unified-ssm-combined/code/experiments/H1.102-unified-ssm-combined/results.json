@@ -1,0 +1,32 @@
+{
+  "5step_Baseline": {
+    "mse": 0.6902886033058167,
+    "n_steps": 5,
+    "arch": "Baseline"
+  },
+  "5step_Unified+SSM": {
+    "mse": 0.566163957118988,
+    "n_steps": 5,
+    "arch": "Unified+SSM"
+  },
+  "10step_Baseline": {
+    "mse": 55.518089294433594,
+    "n_steps": 10,
+    "arch": "Baseline"
+  },
+  "10step_Unified+SSM": {
+    "mse": 33.1858024597168,
+    "n_steps": 10,
+    "arch": "Unified+SSM"
+  },
+  "15step_Baseline": {
+    "mse": 3188.802734375,
+    "n_steps": 15,
+    "arch": "Baseline"
+  },
+  "15step_Unified+SSM": {
+    "mse": 2281.04931640625,
+    "n_steps": 15,
+    "arch": "Unified+SSM"
+  }
+}

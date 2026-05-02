@@ -2651,6 +2651,20 @@ Based on research trajectory and latest literature, the following hypotheses are
 
 ---
 
+### H1.102: Unified + SSM Combined (May 1, 2026)
+
+| N Steps | Baseline MSE | Unified+SSM MSE | Improvement |
+|---------|-------------|-----------------|-------------|
+| 5 | 0.6903 | 0.5662 | **+18.0%** |
+| 10 | 55.5181 | 33.1858 | **+40.2%** |
+| 15 | 3188.8027 | 2281.0493 | **+28.5%** |
+
+**Average: +28.9%** — Unified + SSM combined architecture outperforms baseline on multi-step tasks!
+
+**Status: ✅ SUPPORTED** — SSM enhances unified architecture on temporal tasks.
+
+---
+
 ### New Sub-Hypotheses Generated
 
 Based on validated results:
