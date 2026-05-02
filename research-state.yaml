@@ -865,12 +865,18 @@ hypotheses:
     parent: H3.27
     priority: medium
 
+  - id: H1.104
+    statement: "Hierarchical attention improves compositional planning on 10-30 step tasks"
+    status: supported
+    evidence: "+34.9% avg improvement, consistent across all lengths"
+    parent: H1.41
+    priority: high
+
 outer_loop:
-  cycle: 81
-  last_direction: "H3.27: Joint Point Cloud +97.9% (+99% action-gated), H3.28: Temporal supported"
+  cycle: 82
+  last_direction: "H1.104: Hierarchical compositional planning +34.9%"
   current_experiments:
-    - "H1.104: Hierarchical compositional planning"
-    - "H3.28: Temporal point cloud"
+    - "H1.105: Multi-agent coordination with attention"
   next_steps:
     - "Paper draft: ICRA/RSS structure"
     - "Consolidate paper-ready findings"

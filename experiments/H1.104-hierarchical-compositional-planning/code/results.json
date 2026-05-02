@@ -1,0 +1,35 @@
+{
+  "status": "SUPPORTED",
+  "improvement_hierarchical": 34.908206563021636,
+  "improvement_subgoal": 0.0,
+  "avg_flat_mse": 0.15163392393045524,
+  "avg_hierarchical_mse": 0.09870124054519683,
+  "avg_flat_subgoal_mse": 0.15163392393045524,
+  "by_length": {
+    "10_steps": {
+      "flat": 0.14394874622280673,
+      "hierarchical": 0.09330121489062616,
+      "flat_subgoal": 0.14394874622280673
+    },
+    "15_steps": {
+      "flat": 0.16190489078361264,
+      "hierarchical": 0.10498905413508222,
+      "flat_subgoal": 0.16190489078361264
+    },
+    "20_steps": {
+      "flat": 0.1556863210557783,
+      "hierarchical": 0.1021994020668325,
+      "flat_subgoal": 0.1556863210557783
+    },
+    "25_steps": {
+      "flat": 0.15240330345021474,
+      "hierarchical": 0.09893331647637467,
+      "flat_subgoal": 0.15240330345021474
+    },
+    "30_steps": {
+      "flat": 0.1442263581398639,
+      "hierarchical": 0.0940832151570686,
+      "flat_subgoal": 0.1442263581398639
+    }
+  }
+}
