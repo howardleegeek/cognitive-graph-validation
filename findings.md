@@ -2634,6 +2634,23 @@ Based on research trajectory and latest literature, the following hypotheses are
 
 ---
 
+### H3.13: SSM + Graph Multi-Agent (May 1, 2026)
+
+| Architecture | Avg MSE |
+|--------------|--------|
+| Concatenation | 0.1065 |
+| SSM | 0.0309 |
+| Graph | 0.0375 |
+| **SSM + Graph** | **0.0201** |
+
+**Combined vs Concat: +81.2%**
+**Combined vs SSM: +35.2%**
+**Combined vs Graph: +46.6%**
+
+**Status: ✅ SUPPORTED** — Combined SSM + Graph multi-agent validation confirms prior results!
+
+---
+
 ### New Sub-Hypotheses Generated
 
 Based on validated results:
