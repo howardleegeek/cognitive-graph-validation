@@ -2599,3 +2599,57 @@ Based on research trajectory and latest literature, the following hypotheses are
 ---
 
 **Total: 30+ SUPPORTED, 2 INCONCLUSIVE, 14 REFUTED, 2 ESTIMATED/PARTIAL**
+
+---
+
+## Research Cycle 76 (May 1, 2026)
+
+### H3.22: SSM Dimension Scaling (May 1, 2026)
+
+| SSM State Dim | Hidden Dim | MSE |
+|--------------|-----------|-------|
+| 8 | 128 | 0.000082 |
+| 16 | 256 | 0.000004 |
+| 32 | 512 | 0.000004 |
+
+**Finding: state_dim=16 is optimal** — Larger state dims don't improve MSE.
+
+**Status: ✅ SUPPORTED** — SSM benefits from proper dimension scaling.
+
+---
+
+### New Sub-Hypotheses Generated
+
+Based on validated results:
+
+| ID | Statement | Parent | Priority |
+|----|-----------|---------|---------|
+| H1.102 | Unified + SSM combined | H1 + H3.8 | High |
+| H3.23 | SSM on ALOHA real robot tasks | H3.11 | High |
+| H1.104 | Multi-source SSM training for transfer | H3.19 (refuted) | Medium |
+
+---
+
+### Path Forward
+
+1. **DEEPEN**: Test Unified + SSM combined on multi-step tasks
+2. **VALIDATE**: Run H3.23 on ALOHA real robot data
+3. **PAPER**: Begin drafting with consolidated results
+
+### Paper-Ready Findings
+
+| Finding | Evidence | Status |
+|---------|----------|--------|
+| Unified > Separated | +25.6% real robot | ✅ Ready |
+| Attention > Concat (complex) | +99% on 20+ steps | ✅ Ready |
+| SSM > Attention | +93% on 30+ steps | ✅ Ready |
+| Graph > Neural (temporal) | +56-75% on temporal | ✅ Ready |
+| Invariant solves transfer | +5.4% on transfer | ✅ Ready |
+
+### Key Messages for Paper
+
+1. **Unified cognitive graph** achieves +25.6% sample efficiency over separated architectures
+2. **SSM** (+93%) outperforms attention (+82%) on long sequences (30+ steps)
+3. **Graph structure** (+75%) excels at temporal reasoning
+4. **Attention** (+99%) is universal across task types and robust to noise/delays
+5. **Invariant learning** (+5.4%) partially solves transfer problem

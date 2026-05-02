@@ -823,15 +823,15 @@ hypotheses:
     priority: medium
 
 outer_loop:
-  cycle: 75
-  last_direction: "H3.21: Combined REFUTED (-18%), H1.93: Ultra-complex REFUTED (-274%)"
+  cycle: 76
+  last_direction: "H3.22: SSM dimension scaling supported (state=16 optimal)"
   current_experiments:
-    - "H3.22: SSM dimension scaling (in progress)"
-    - "Paper writing: Consolidating validated results"
+    - "H1.102: Unified + SSM combined (in progress)"
+    - "H3.23: SSM on ALOHA tasks (pending)"
   next_steps:
-    - "Debug H1.93: Fix ultra-complex synthetic data generation"
-    - "Continue SSM dimension scaling"
-    - "Write paper: ICRA/RSS submission structure"
+    - "Test Unified + SSM combined on multi-step tasks"
+    - "Run SSM on ALOHA real robot data"
+    - "Write paper: Draft ICRA/RSS structure"
 
 workspace:
   findings: "findings.md"
