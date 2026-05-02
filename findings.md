@@ -2553,4 +2553,49 @@ Based on research trajectory and latest literature, the following hypotheses are
 | H3.21 | Combined architecture | ❌ REFUTED | -18% combined |
 | H1.93 | Ultra-complex (300+) | ❌ REFUTED | -274% (synthetic issue) |
 
+---
+
+## Cycle 75: Next Steps (May 1, 2026)
+
+### Findings from Recent Failures
+
+**H3.21: Graph+SSM+Invariant Combined**
+- Result: ❌ REFUTED (-18%)
+- Issue: Temporal performance degrades while transfer only improves marginally
+- Lesson: Combined architectures don't synergize in this setting
+
+**H1.93: Ultra-Complex Tasks (150-300 steps)**
+- Result: ❌ REFUTED (-274%)
+- Issue: Likely synthetic data generation bug (contradicts H1.99's +99%)
+- Lesson: Need to debug data generation pipeline
+
+### Key Validated Findings Moving Forward
+
+| Hypothesis | Status | Key Finding |
+|------------|--------|-------------|
+| H1 | ✅ +25.6% | Unified early fusion wins on real robot |
+| H1.41-52 | ✅ +99% | Attention mechanisms universal |
+| H1.8 | ✅ +5.4% | Invariant learning solves transfer |
+| H2.x | ✅ +56-75% | Graph for temporal reasoning |
+| H3.8-13 | ✅ +82-93% | SSM/Mamba outperforms attention |
+| H3.17 | ✅ +25% | Graph+SSM combined |
+| H3.18 | ✅ +25% | Graph+SSM for transfer |
+
+### Path Forward
+
+1. **Debug H1.93**: Fix ultra-complex synthetic data generation
+2. **Refine SSM**: Continue SSM dimension scaling (H3.22)
+3. **Paper Writing**: Consolidate validated results for ICRA/RSS submission
+
+### Recommended Paper Structure
+
+1. **Introduction**: Why unified cognitive graph?
+2. **Method**: Architecture (unified, SSM, graph)
+3. **Experiments**: Real robot validation
+4. **Results**: Key findings table
+5. **Related Work**: JEPA, π0, V-JEPA 2 comparison
+6. **Conclusion**: Summary
+
+---
+
 **Total: 30+ SUPPORTED, 2 INCONCLUSIVE, 14 REFUTED, 2 ESTIMATED/PARTIAL**

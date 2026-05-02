@@ -823,16 +823,15 @@ hypotheses:
     priority: medium
 
 outer_loop:
-  cycle: 74
-  last_direction: "H3.21: Combined architecture REFUTED (-18%), H1.93: Ultra-complex REFUTED (-274%)"
+  cycle: 75
+  last_direction: "H3.21: Combined REFUTED (-18%), H1.93: Ultra-complex REFUTED (-274%)"
   current_experiments:
-    - "H3.21: Graph+SSM+Invariant - REFUTED"
-    - "H1.93: Ultra-complex tasks - REFUTED"
+    - "H3.22: SSM dimension scaling (in progress)"
+    - "Paper writing: Consolidating validated results"
   next_steps:
-    - "Investigate H1.93 discrepancy with H1.99"
-    - "Focus on transfer problem (H1.8 invariant learning)"
-    - "Write paper with validated SSM results"
-    - "Test on more diverse real robot data"
+    - "Debug H1.93: Fix ultra-complex synthetic data generation"
+    - "Continue SSM dimension scaling"
+    - "Write paper: ICRA/RSS submission structure"
 
 workspace:
   findings: "findings.md"
