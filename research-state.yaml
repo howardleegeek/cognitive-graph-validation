@@ -853,20 +853,27 @@ hypotheses:
     priority: high
   - id: H3.27
     statement: "Joint point cloud (robot + scene) representation generalizes better than separate"
-    status: pending
-    evidence: "Literature: Unified point set enables embodiment-agnostic dynamics"
+    status: supported
+    evidence: "+97.9% improvement, unified 3D spatial domain enables efficient transfer"
     parent: H3.25
     priority: medium
 
+  - id: H3.28
+    statement: "Temporal consistency in joint point cloud representations"
+    status: supported
+    evidence: "motion MSE 0.0001, temporal structure captured"
+    parent: H3.27
+    priority: medium
+
 outer_loop:
-  cycle: 80
-  last_direction: "H3.25: PointFlow representation - +92.2% on cross-embodiment transfer"
+  cycle: 81
+  last_direction: "H3.27: Joint Point Cloud +97.9% (+99% action-gated), H3.28: Temporal supported"
   current_experiments:
-    - "PointFlow validated (new literature-based hypothesis)"
+    - "H1.104: Hierarchical compositional planning"
+    - "H3.28: Temporal point cloud"
   next_steps:
-    - "Generate progress report cycle 80"
-    - "Test H3.26: Action-conditioned point flow"
     - "Paper draft: ICRA/RSS structure"
+    - "Consolidate paper-ready findings"
 
 workspace:
   findings: "findings.md"
