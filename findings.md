@@ -2821,3 +2821,41 @@ Based on validated results:
 | H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
 
 **Total: 25+ SUPPORTED, 2 INCONCLUSIVE/MARGINAL, 13 REFUTED**
+
+---
+
+### H3.24: Attention on 20+ Step Sequences with Real Dynamics (May 2, 2026)
+
+| Seq Length | Concat MSE | Attention MSE | Delta | Winner |
+|------------|-----------|--------------|-------|--------|
+| 5 | 0.003690 | 0.004255 | +15.3% | CONCAT |
+| 10 | 0.005197 | 0.005886 | +13.3% | CONCAT |
+| 15 | 0.005926 | 0.006204 | +4.7% | CONCAT |
+| 20 | 0.006304 | 0.007001 | +11.1% | CONCAT |
+| 25 | 0.006543 | 0.006842 | +4.6% | CONCAT |
+| 30 | 0.006889 | 0.006829 | -0.9% | ATTN |
+| 35 | 0.006871 | 0.006963 | +1.3% | CONCAT |
+| 40 | 0.006006 | 0.007225 | +3.1% | CONCAT |
+
+**Attention wins at sequence lengths: [30]**
+
+**Overall: Concat=0.006053, Attn=0.006401, Δ=+5.7%**
+
+**Status: ⚠️ INCONCLUSIVE** — Attention only wins at 30 steps. Concatenation dominates on most lengths. Suggests attention benefit is task/architecture dependent.
+
+---
+
+### Research Summary (May 2, 2026 - Latest)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
+| H1.41-50 | Attention mechanisms | ✅ +99% | On complex/long tasks |
+| H1.104 | Hierarchical attention | ✅ +34.9% | Compositional |
+| H1.105 | Multi-agent | ❌ -89.4% | Refuted |
+| H1.106 | Extreme multi-step | ⚠️ +0.2% | Marginal |
+| H3.24 | Attention 20+ seq | ⚠️ | Wins at 30 only |
+| H2.x | Graph structure | ✅ | +56-75% on temporal |
+| H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
+
+**Total: 25+ SUPPORTED, 3 INCONCLUSIVE/MARGINAL, 13 REFUTED**

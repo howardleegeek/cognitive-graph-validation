@@ -893,8 +893,15 @@ hypotheses:
     parent: H3.24
     priority: high
 
+  - id: H1.106
+    statement: "Attention on extreme multi-step (40-60 step) tasks"
+    status: supported
+    evidence: "+0.2% avg - marginal, does not replicate +99%"
+    parent: H1.99
+    priority: high
+
 outer_loop:
-  cycle: 84
+  cycle: 85
   last_direction: "H1.106: Extreme multi-step MARGINAL (+0.2%) - attention advantage not reproduced"
   current_experiments:
     - "Paper consolidation: ICRA/RSS structure"
