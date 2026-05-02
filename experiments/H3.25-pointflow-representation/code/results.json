@@ -1,0 +1,9 @@
+{
+  "hypothesis": "H3.25",
+  "pointflow_transfer_mse": 0.030606945105439032,
+  "concatenation_transfer_mse": 0.39000826439085956,
+  "improvement_percent": 92.15223165764372,
+  "winner": "POINTFLOW",
+  "status": "supported",
+  "note": "Cross-embodiment transfer test - key PointWorld benefit"
+}

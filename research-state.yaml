@@ -839,15 +839,33 @@ hypotheses:
     evidence: "-56% without proper training, simple implementation underperforms"
     parent: H3
     priority: high
+  - id: H3.25
+    statement: "PointFlow representation (3D point displacement) outperforms state-action concatenation"
+    status: supported
+    evidence: "+92.2% on cross-embodiment transfer, spatial representation generalizes"
+    parent: H3
+    priority: high
+  - id: H3.26
+    statement: "Action-conditioned point flow enables zero-shot cross-embodiment transfer"
+    status: pending
+    evidence: "Literature: PointWorld transfers across Franka to bimanual without fine-tuning"
+    parent: H3.25
+    priority: high
+  - id: H3.27
+    statement: "Joint point cloud (robot + scene) representation generalizes better than separate"
+    status: pending
+    evidence: "Literature: Unified point set enables embodiment-agnostic dynamics"
+    parent: H3.25
+    priority: medium
 
 outer_loop:
-  cycle: 79
-  last_direction: "H3.24: Attention 20+ step sequences - INCONCLUSIVE, wins at 30 only"
+  cycle: 80
+  last_direction: "H3.25: PointFlow representation - +92.2% on cross-embodiment transfer"
   current_experiments:
-    - "Write progress report (pending)"
+    - "PointFlow validated (new literature-based hypothesis)"
   next_steps:
-    - "Generate progress report in to_human/"
-    - "Git commit and push"
+    - "Generate progress report cycle 80"
+    - "Test H3.26: Action-conditioned point flow"
     - "Paper draft: ICRA/RSS structure"
 
 workspace:
