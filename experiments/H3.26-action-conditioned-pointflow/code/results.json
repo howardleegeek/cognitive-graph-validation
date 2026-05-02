@@ -1,0 +1,9 @@
+{
+  "hypothesis": "H3.26",
+  "full_action_conditioned_mse": 0.01611014721874985,
+  "mean_action_conditioned_mse": 0.01572013183853177,
+  "improvement_percent": -2.480993061789146,
+  "winner": "MEAN_ACTION",
+  "status": "refuted",
+  "note": "Full action trajectory conditioning vs mean action"
+}

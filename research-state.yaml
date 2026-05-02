@@ -847,8 +847,8 @@ hypotheses:
     priority: high
   - id: H3.26
     statement: "Action-conditioned point flow enables zero-shot cross-embodiment transfer"
-    status: pending
-    evidence: "Literature: PointWorld transfers across Franka to bimanual without fine-tuning"
+    status: refuted
+    evidence: "-2.5% mean action slightly better - full trajectory overfits"
     parent: H3.25
     priority: high
   - id: H3.27
