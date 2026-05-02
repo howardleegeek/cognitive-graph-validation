@@ -841,14 +841,14 @@ hypotheses:
     priority: high
 
 outer_loop:
-  cycle: 78
-  last_direction: "H3.23: SSM on ALOHA long sequences REFUTED (-56% without training)"
+  cycle: 79
+  last_direction: "H3.24: Attention 20+ step sequences - INCONCLUSIVE, wins at 30 only"
   current_experiments:
-    - "H3.24: Attention on 20+ step sequences (pending)"
+    - "Write progress report (pending)"
   next_steps:
-    - "Test attention on longer sequences (20+ timesteps)"
-    - "Write paper: Draft ICRA/RSS structure"
-    - "Generate progress report"
+    - "Generate progress report in to_human/"
+    - "Git commit and push"
+    - "Paper draft: ICRA/RSS structure"
 
 workspace:
   findings: "findings.md"

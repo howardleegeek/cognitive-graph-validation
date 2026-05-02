@@ -1,0 +1,68 @@
+{
+  "experiment": "H3.24",
+  "description": "Attention on 20+ step sequences",
+  "findings": [
+    {
+      "seq_length": 5,
+      "concat_mse": 0.003690122781942288,
+      "attn_mse": 0.0042548649944365025,
+      "delta": 15.30415777105833,
+      "winner": "CONCAT"
+    },
+    {
+      "seq_length": 10,
+      "concat_mse": 0.005197139301647742,
+      "attn_mse": 0.005885821611930926,
+      "delta": 13.251180511263932,
+      "winner": "CONCAT"
+    },
+    {
+      "seq_length": 15,
+      "concat_mse": 0.005925828280548255,
+      "attn_mse": 0.00620389108856519,
+      "delta": 4.692387204834919,
+      "winner": "CONCAT"
+    },
+    {
+      "seq_length": 20,
+      "concat_mse": 0.006304320724060138,
+      "attn_mse": 0.007001066580414772,
+      "delta": 11.05187833632158,
+      "winner": "CONCAT"
+    },
+    {
+      "seq_length": 25,
+      "concat_mse": 0.00654345549022158,
+      "attn_mse": 0.006841706732908885,
+      "delta": 4.558008274573069,
+      "winner": "CONCAT"
+    },
+    {
+      "seq_length": 30,
+      "concat_mse": 0.0068894837362070875,
+      "attn_mse": 0.006829144588361184,
+      "delta": -0.8758152302297524,
+      "winner": "ATTN"
+    },
+    {
+      "seq_length": 35,
+      "concat_mse": 0.006870675987253587,
+      "attn_mse": 0.006963334511965513,
+      "delta": 1.3486085631723241,
+      "winner": "CONCAT"
+    },
+    {
+      "seq_length": 40,
+      "concat_mse": 0.007005698978900909,
+      "attn_mse": 0.007224602779994409,
+      "delta": 3.124653253769147,
+      "winner": "CONCAT"
+    }
+  ],
+  "threshold": 30,
+  "summary": {
+    "concat_overall": 0.006053340660097699,
+    "attn_overall": 0.006400554111072172,
+    "avg_delta": 5.735898084560631
+  }
+}

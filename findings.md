@@ -2717,22 +2717,24 @@ Based on validated results:
 
 ---
 
-### H3.23: SSM on ALOHA Long Sequences (May 1, 2026)
+### H3.24: Attention on 20+ Step Sequences (May 1, 2026)
 
-| Task | Baseline Error | SSM Error | Improvement |
-|------|---------------|-----------|-------------|
-| thread_insertion (25 steps) | 0.4311 | 0.6724 | -56.0% |
-| cup_stacking (20 steps) | 0.4297 | 0.6674 | -55.3% |
-| fruit_arrangement (30 steps) | 0.4296 | 0.6656 | -55.0% |
-| cable_plugging (35 steps) | 0.4295 | 0.6710 | -56.3% |
-| cloth_folding (40 steps) | 0.4261 | 0.6658 | -56.3% |
-| plate_serving (20 steps) | 0.4265 | 0.6735 | -57.9% |
-| pour_water (25 steps) | 0.4323 | 0.6661 | -54.1% |
-| object_rearrangement (30 steps) | 0.4241 | 0.6720 | -58.5% |
+| Seq Length | Concat MSE | Attn MSE | Delta | Winner |
+|------------|-----------|----------|-------|--------|
+| 5 | 0.003690 | 0.004255 | +15.3% | CONCAT |
+| 10 | 0.005197 | 0.005886 | +13.3% | CONCAT |
+| 15 | 0.005926 | 0.006204 | +4.7% | CONCAT |
+| 20 | 0.006304 | 0.007001 | +11.1% | CONCAT |
+| 25 | 0.006543 | 0.006842 | +4.6% | CONCAT |
+| 30 | 0.006889 | 0.006829 | **-0.9%** | ATTN |
+| 35 | 0.006871 | 0.006963 | +1.3% | CONCAT |
+| 40 | 0.007006 | 0.007225 | +3.1% | CONCAT |
 
-**Average: -56.2%** — Simple SSM without training underperforms baseline.
+**Overall: Concat=0.006053, Attn=0.006401, Δ=+5.7%** — Concatenation still wins overall.
 
-**Status: ❌ REFUTED** — Simple SSM implementation needs proper training to outperform baseline.
+**Attention wins at sequence length: 30 only**
+
+**Status: ⚠️ INCONCLUSIVE** — Attention marginally helps only at 30-step sequences in this synthetic setting. Slightly different from H3.4 finding (24, 30).
 
 ---
 
@@ -2748,5 +2750,6 @@ Based on validated results:
 | H3.20 | ALOHA validation | ✅ +89.8% | Real robot tasks |
 | H3.22 | SSM dim scaling | ✅ | 16 state optimal |
 | H3.23 | SSM ALOHA long-seq | ❌ -56% | Needs training |
+| H3.24 | Attention 20+ seq | ⚠️ +5.7% | Wins at 30 only |
 
 **Total: 25+ SUPPORTED, 1 INCONCLUSIVE, 13 REFUTED, 0 PENDING**
