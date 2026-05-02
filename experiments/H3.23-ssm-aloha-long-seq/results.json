@@ -1,0 +1,46 @@
+{
+  "hypothesis": "H3.23",
+  "statement": "SSM outperforms on ALOHA long-sequence tasks",
+  "tasks": [
+    "thread_insertion",
+    "cup_stacking",
+    "fruit_arrangement",
+    "cable_plugging",
+    "cloth_folding",
+    "plate_serving",
+    "pour_water",
+    "object_rearrangement"
+  ],
+  "baseline_errors": [
+    0.43111544451685396,
+    0.4296942779545458,
+    0.42954985958619646,
+    0.42945330391181336,
+    0.4260498386119527,
+    0.4264618269893832,
+    0.43229848230062307,
+    0.42410307349588067
+  ],
+  "ssm_errors": [
+    0.6723969172087187,
+    0.6673969610003238,
+    0.6656311975297173,
+    0.6710359170406628,
+    0.6657737035635145,
+    0.6734542012590216,
+    0.6661343282926637,
+    0.6720120292775278
+  ],
+  "improvements": [
+    -55.96678935088166,
+    -55.319024534676906,
+    -54.96017113611631,
+    -56.2535230089783,
+    -56.26662498748248,
+    -57.91664309401069,
+    -54.09129468778235,
+    -58.45488308729625
+  ],
+  "evidence": "+-56.2% avg improvement on ALOHA long-sequence tasks",
+  "status": "REFUTED"
+}

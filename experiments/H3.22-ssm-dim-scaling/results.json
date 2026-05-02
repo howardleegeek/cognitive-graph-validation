@@ -1,0 +1,15 @@
+{
+  "experiment": "H3.22",
+  "results": {
+    "state=8_hidden=128": {
+      "mse": 9.861965372692794e-05
+    },
+    "state=16_hidden=256": {
+      "mse": 3.3829128369688988e-06
+    },
+    "state=32_hidden=512": {
+      "mse": 4.989844001102028e-06
+    }
+  },
+  "best": "state=16_hidden=256"
+}

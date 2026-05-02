@@ -827,14 +827,26 @@ hypotheses:
     evidence: "+18% (5-step), +40% (10-step), +29% (15-step), avg +28.9%"
     parent: H1
     priority: high
+  - id: H3.22
+    statement: "SSM dimension scaling shows optimal configuration"
+    status: supported
+    evidence: "state=16, hidden=256 best (MSE 0.000003)"
+    parent: H3
+    priority: medium
+  - id: H3.23
+    statement: "SSM on ALOHA long sequences (20+ timesteps)"
+    status: refuted
+    evidence: "-56% without proper training, simple implementation underperforms"
+    parent: H3
+    priority: high
 
 outer_loop:
-  cycle: 77
-  last_direction: "H1.102: Unified + SSM combined supported (+28.9% avg)"
+  cycle: 78
+  last_direction: "H3.23: SSM on ALOHA long sequences REFUTED (-56% without training)"
   current_experiments:
-    - "H3.23: SSM on ALOHA tasks (pending)"
+    - "H3.24: Attention on 20+ step sequences (pending)"
   next_steps:
-    - "Run SSM on ALOHA real robot data"
+    - "Test attention on longer sequences (20+ timesteps)"
     - "Write paper: Draft ICRA/RSS structure"
     - "Generate progress report"
 

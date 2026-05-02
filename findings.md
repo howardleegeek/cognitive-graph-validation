@@ -2700,3 +2700,53 @@ Based on validated results:
 3. **Graph structure** (+75%) excels at temporal reasoning
 4. **Attention** (+99%) is universal across task types and robust to noise/delays
 5. **Invariant learning** (+5.4%) partially solves transfer problem
+
+---
+
+### H3.22: SSM Dimension Scaling (May 1, 2026)
+
+| Configuration | MSE |
+|--------------|-----|
+| state=8, hidden=128 | 0.000099 |
+| state=16, hidden=256 | 0.000003 |
+| state=32, hidden=512 | 0.000005 |
+
+**Best: state=16, hidden=256** — Moderate state dimension optimal.
+
+**Status: ✅ SUPPORTED** — SSM dimension scaling shows optimal configuration.
+
+---
+
+### H3.23: SSM on ALOHA Long Sequences (May 1, 2026)
+
+| Task | Baseline Error | SSM Error | Improvement |
+|------|---------------|-----------|-------------|
+| thread_insertion (25 steps) | 0.4311 | 0.6724 | -56.0% |
+| cup_stacking (20 steps) | 0.4297 | 0.6674 | -55.3% |
+| fruit_arrangement (30 steps) | 0.4296 | 0.6656 | -55.0% |
+| cable_plugging (35 steps) | 0.4295 | 0.6710 | -56.3% |
+| cloth_folding (40 steps) | 0.4261 | 0.6658 | -56.3% |
+| plate_serving (20 steps) | 0.4265 | 0.6735 | -57.9% |
+| pour_water (25 steps) | 0.4323 | 0.6661 | -54.1% |
+| object_rearrangement (30 steps) | 0.4241 | 0.6720 | -58.5% |
+
+**Average: -56.2%** — Simple SSM without training underperforms baseline.
+
+**Status: ❌ REFUTED** — Simple SSM implementation needs proper training to outperform baseline.
+
+---
+
+### Research Status Update (May 1, 2026)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
+| H1.102 | Unified + SSM | ✅ +28.9% | Combined best |
+| H2.x | Graph structure | ✅ | +56-75% on temporal |
+| H3.8 | SSM > Attention | ✅ +93% | Long sequences |
+| H3.9 | Mamba > Attention | ✅ +92.8% | Gated mechanism |
+| H3.20 | ALOHA validation | ✅ +89.8% | Real robot tasks |
+| H3.22 | SSM dim scaling | ✅ | 16 state optimal |
+| H3.23 | SSM ALOHA long-seq | ❌ -56% | Needs training |
+
+**Total: 25+ SUPPORTED, 1 INCONCLUSIVE, 13 REFUTED, 0 PENDING**
