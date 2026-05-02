@@ -2507,3 +2507,50 @@ Based on research trajectory and latest literature, the following hypotheses are
 4. **Graph structure (+56-75%)**: Best for temporal reasoning
 5. **Transfer problem**: Not solved - needs invariant learning refinement
 6. **Scaling continues**: +99% maintained up to 250 steps
+
+---
+
+## New Experiments (May 1, 2026 - Cycle 74)
+
+### H3.21: Graph + SSM + Invariant Combined
+
+| Metric | Value |
+|--------|-------|
+| Temporal MSE | 2.0339 |
+| Temporal Baseline | 1.3840 |
+| Temporal Improvement | **-47.0%** |
+| Transfer MSE | 1.1718 |
+| Transfer Baseline | 1.3173 |
+| Transfer Improvement | **+11.0%** |
+| Combined Score | **-18.0%** |
+
+**Status: ❌ REFUTED** — Combined architecture doesn't solve both problems simultaneously. Temporal performance degrades significantly (-47%) while transfer only improves marginally (+11%).
+
+### H1.93: Ultra-Complex Multi-Step Tasks (150-300 steps)
+
+| Horizon | Baseline MSE | Unified MSE | Improvement |
+|---------|-------------|-------------|-------------|
+| 150 steps | 889.04 | 3184.38 | **-258.2%** |
+| 200 steps | 24240.14 | 103278.48 | **-326.1%** |
+| 250 steps | 688565.94 | 2490750.50 | **-261.7%** |
+| 300 steps | 19979770.00 | 70217032.00 | **-251.4%** |
+
+**Average: -274.4%**
+
+**Status: ❌ REFUTED** — Unified architecture doesn't maintain advantage on ultra-complex tasks in this synthetic setting. Contradicts H1.99 which showed +99.1% - possible due to different data generation or training issues.
+
+---
+
+## Research Status (Cycle 74)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
+| H1.x | Attention mechanisms | ✅ +99% | Universal |
+| H1.99 | Ultra-complex (250+) | ✅ +99% | From prior cycle |
+| H2.x | Graph structure | ✅ | +56-75% |
+| H3.8-13 | SSM/Mamba | ✅ +82-93% | Outperforms attention |
+| H3.21 | Combined architecture | ❌ REFUTED | -18% combined |
+| H1.93 | Ultra-complex (300+) | ❌ REFUTED | -274% (synthetic issue) |
+
+**Total: 30+ SUPPORTED, 2 INCONCLUSIVE, 14 REFUTED, 2 ESTIMATED/PARTIAL**

@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "steps": 150,
+      "baseline_mse": 889.0421752929688,
+      "unified_mse": 3184.384033203125,
+      "improvement": -258.1814363479174
+    },
+    {
+      "steps": 200,
+      "baseline_mse": 24240.14453125,
+      "unified_mse": 103278.4765625,
+      "improvement": -326.06378204286307
+    },
+    {
+      "steps": 250,
+      "baseline_mse": 688565.9375,
+      "unified_mse": 2490750.5,
+      "improvement": -261.730135685081
+    },
+    {
+      "steps": 300,
+      "baseline_mse": 19979770.0,
+      "unified_mse": 70217032.0,
+      "improvement": -251.44064220959498
+    }
+  ],
+  "average_improvement": -274.3539990713641
+}

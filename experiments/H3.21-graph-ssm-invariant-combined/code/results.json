@@ -1,0 +1,9 @@
+{
+  "temporal_mse": 2.0339059829711914,
+  "temporal_baseline": 1.3840396404266357,
+  "temporal_improvement": -46.95431572640736,
+  "transfer_mse": 1.1718231439590454,
+  "transfer_baseline": 1.3173201084136963,
+  "transfer_improvement": 11.044920936480418,
+  "combined_score": -17.95469739496347
+}

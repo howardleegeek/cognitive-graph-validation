@@ -809,17 +809,30 @@ hypotheses:
     evidence: "-75% multi-source actually hurts in this setting"
     parent: H3
     priority: medium
+  - id: H3.21
+    statement: "Graph + SSM + Invariant combined solves both temporal and transfer"
+    status: refuted
+    evidence: "-47% temporal, +11% transfer, -18% combined"
+    parent: H3
+    priority: high
+  - id: H1.93
+    statement: "Unified architecture maintains advantage on 150-300 step ultra-complex tasks"
+    status: refuted
+    evidence: "-274% avg - synthetic data generation issue"
+    parent: H1
+    priority: medium
 
 outer_loop:
-  cycle: 72
-  last_direction: "H3.20: ALOHA validation SUPPORTED (+91%)"
+  cycle: 74
+  last_direction: "H3.21: Combined architecture REFUTED (-18%), H1.93: Ultra-complex REFUTED (-274%)"
   current_experiments:
-    - "H3.20: ALOHA real robot - SUPPORTED (+91%)"
+    - "H3.21: Graph+SSM+Invariant - REFUTED"
+    - "H1.93: Ultra-complex tasks - REFUTED"
   next_steps:
-    - "Combine Graph + SSM for best temporal performance"
-    - "Refine invariant learning for transfer problem"
-    - "Write paper with all SSM results"
-    - "Test on ALOHA real robot data"
+    - "Investigate H1.93 discrepancy with H1.99"
+    - "Focus on transfer problem (H1.8 invariant learning)"
+    - "Write paper with validated SSM results"
+    - "Test on more diverse real robot data"
 
 workspace:
   findings: "findings.md"
