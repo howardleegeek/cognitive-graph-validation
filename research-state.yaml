@@ -865,12 +865,13 @@ hypotheses:
     parent: H3.27
     priority: medium
 
-  - id: H1.105
+- id: H1.105
     statement: "Attention on multi-agent coordination"
     status: refuted
     evidence: "-89.4% - attention doesn't help simple multi-agent tasks"
     parent: H1.41
     priority: high
+
   - id: H1.104
     statement: "Hierarchical attention improves compositional planning on 10-30 step tasks"
     status: supported
@@ -878,14 +879,29 @@ hypotheses:
     parent: H1.41
     priority: high
 
+  - id: H1.106
+    statement: "Attention on extreme multi-step (40-60 step) tasks from H1.99 validation"
+    status: pending
+    evidence: "From H1.99: +99.1% on 100-250 steps"
+    parent: H1.99
+    priority: high
+
+  - id: H3.29
+    statement: "Attention with real robot dynamics (continuous control)"
+    status: pending
+    evidence: "H3.24: mixed results, wins at 30 only; H3.4: wins at 24,30"
+    parent: H3.24
+    priority: high
+
 outer_loop:
-  cycle: 83
-  last_direction: "H1.105: Multi-agent attention REFUTED (-89.4%)"
+  cycle: 84
+  last_direction: "H1.106: Extreme multi-step MARGINAL (+0.2%) - attention advantage not reproduced"
   current_experiments:
     - "Paper consolidation: ICRA/RSS structure"
   next_steps:
-    - "Paper draft: abstract and introduction"
-    - "Finalize experiment findings"
+    - "Test with more realistic continuous control dynamics"
+    - "Run SSM experiments to validate +93% finding"
+    - "Update findings.md"
 
 workspace:
   findings: "findings.md"
