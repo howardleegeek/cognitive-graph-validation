@@ -18,8 +18,8 @@ class Config:
     seed: int = 42
     n_trials: int = 3
     hidden_dim: int = 256
-    n_epochs: int = 100
-    lr: float = 0.001
+    n_epochs: int = 50
+    lr: float = 0.005
     
     def __post_init__(self):
         torch.manual_seed(self.seed)

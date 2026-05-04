@@ -888,8 +888,8 @@ hypotheses:
 
   - id: H3.29
     statement: "Attention with real robot dynamics (continuous control)"
-    status: pending
-    evidence: "H3.24: mixed results, wins at 30 only; H3.4: wins at 24,30"
+    status: refuted
+    evidence: "Concatenation wins on continuous control (-174%, -84%, -94%)"
     parent: H3.24
     priority: high
 
@@ -901,13 +901,13 @@ hypotheses:
     priority: high
 
 outer_loop:
-  cycle: 85
-  last_direction: "H1.106: Extreme multi-step MARGINAL (+0.2%) - attention advantage not reproduced"
+  cycle: 86
+  last_direction: "H3.29: Continuous control - CONCAT WINS (-174%, -84%, -94%)"
   current_experiments:
     - "Paper consolidation: ICRA/RSS structure"
   next_steps:
-    - "Test with more realistic continuous control dynamics"
     - "Run SSM experiments to validate +93% finding"
+    - "Validate attention finding on more realistic dynamics"
     - "Update findings.md"
 
 workspace:

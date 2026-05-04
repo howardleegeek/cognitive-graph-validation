@@ -2859,3 +2859,23 @@ Based on validated results:
 | H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
 
 **Total: 25+ SUPPORTED, 3 INCONCLUSIVE/MARGINAL, 13 REFUTED**
+
+---
+
+### H3.29: Attention + Continuous Control Dynamics (May 3, 2026)
+
+| Sequence | Concat MSE | Attn MSE | Delta | Winner |
+|----------|----------|----------|-------|--------|
+| 10 | 0.0043 | 0.0117 | -174.6% | CONCAT |
+| 20 | 0.0060 | 0.0111 | -84.0% | CONCAT |
+| 30 | 0.0056 | 0.0108 | -94.0% | CONCAT |
+
+**Status: ❌ REFUTED** — Concatenation massively outperforms attention on continuous control. Attention benefit does NOT transfer to realistic dynamics.
+
+### Key Insight
+
+The +99% attention finding from earlier experiments was on synthetic/discrete tasks. With continuous control dynamics:
+- Attention performs WORSE (not better)
+- This suggests earlier findings were artifacts of synthetic data generation, not real dynamics
+
+---
