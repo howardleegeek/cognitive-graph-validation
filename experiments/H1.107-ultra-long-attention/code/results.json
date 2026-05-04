@@ -1,0 +1,38 @@
+{
+  "hypothesis": "H1.107",
+  "statement": "Attention maintains +99% on 100-300 step ultra-long sequences",
+  "results": [
+    {
+      "n_steps": 100,
+      "concat_mse": 0.0017755365572702997,
+      "attention_mse": 0.07120909593190339,
+      "improvement": -3910.567714887261
+    },
+    {
+      "n_steps": 150,
+      "concat_mse": 0.0018634095830438026,
+      "attention_mse": 0.08360234908978648,
+      "improvement": -4386.525659765337
+    },
+    {
+      "n_steps": 200,
+      "concat_mse": 0.002037674411686089,
+      "attention_mse": 0.0753924969795767,
+      "improvement": -3599.928533587101
+    },
+    {
+      "n_steps": 250,
+      "concat_mse": 0.0021876331742467525,
+      "attention_mse": 0.07222690208768093,
+      "improvement": -3201.600238008374
+    },
+    {
+      "n_steps": 300,
+      "concat_mse": 0.002291890163829758,
+      "attention_mse": 0.07763717756680578,
+      "improvement": -3287.473745123708
+    }
+  ],
+  "avg_improvement": -3677.219178274356,
+  "status": "REFUTED"
+}

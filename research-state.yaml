@@ -881,8 +881,8 @@ hypotheses:
 
   - id: H1.106
     statement: "Attention on extreme multi-step (40-60 step) tasks from H1.99 validation"
-    status: pending
-    evidence: "From H1.99: +99.1% on 100-250 steps"
+    status: supported
+    evidence: "+0.2% avg - marginal, does not replicate +99%"
     parent: H1.99
     priority: high
 
@@ -915,13 +915,14 @@ hypotheses:
     priority: high
 
 outer_loop:
-  cycle: 88
-  last_direction: "H3.33: SSM optimized dimensions - SUPPORTED (+2.30%)"
+  cycle: 89
+  last_direction: "H1.106: Attention on 40-60 step tasks - MARGINAL (+0.2%)"
   current_experiments:
-    - "H3.33: SSM optimized dimensions completed"
+    - "H1.106: Attention extreme multi-step completed"
   next_steps:
+    - "Update findings.md with H1.106 results"
     - "Git commit and push results"
-    - "Generate progress report"
+    - "Generate progress report in to_human/"
     - "Continue research: test SSM+Graph hybrid on temporal tasks"
 
 workspace:

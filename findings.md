@@ -2932,3 +2932,19 @@ This confirms that the dramatic improvements found in synthetic experiments were
 **Status: ✅ SUPPORTED** — SSM with optimized dimensions (state=16, hidden=256) slightly outperforms concatenation on continuous control. This is a small but consistent improvement, building on H3.32's inconclusive +0.0% result.
 
 ---
+
+### H1.106: Attention on Extreme Multi-Step Tasks (40-60 steps) (May 3, 2026)
+
+| N Steps | Concat MSE | Attn MSE | Delta |
+|---------|-----------|----------|-------|
+| 40 | 0.000725 | 0.000774 | -6.6% |
+| 45 | 0.000765 | 0.000756 | +1.2% |
+| 50 | 0.000791 | 0.000769 | +2.8% |
+| 55 | 0.000801 | 0.000785 | +2.1% |
+| 60 | 0.000810 | 0.000797 | +1.6% |
+
+**Average: +0.2%**
+
+**Status: ⚠️ MARGINAL** — Attention shows only marginal improvement (+0.2%) on 40-60 step tasks, not replicating the +99% seen in H1.99 on 100-250 step tasks. This suggests the dramatic attention improvements may be task-dependent or require specific temporal structure.
+
+---

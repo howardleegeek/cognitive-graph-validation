@@ -87,5 +87,5 @@ print(f"\n=== SUMMARY: avg {avg:+.1f}% ===")
 status = "SUPPORTED" if avg > 50 else "MARGINAL" if avg > 0 else "REFUTED"
 print(f"Status: {status}")
 
-with open('experiments/H1.106-extreme-multi-step/results.json', 'w') as f:
+with open('results.json', 'w') as f:
     json.dump({**results, 'summary': {'avg_delta': avg, 'status': status}}, f, indent=2)
