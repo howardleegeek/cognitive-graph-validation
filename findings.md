@@ -2977,3 +2977,28 @@ This confirms that the dramatic improvements found in synthetic experiments were
 **Status: ❌ REFUTED** — Graph + SSM hybrid significantly underperforms baseline. The model is too complex for the dataset size, leading to overfitting. Simpler architectures (like H1.102's Unified+SSM) work better.
 
 ---
+
+### H1.109: Complex Compositional Multi-Step Tasks (May 3, 2026)
+
+| Task Length | Baseline MSE | Unified MSE | Unified+Attn MSE | Unified+SSM MSE |
+|-------------|-------------|-------------|------------------|-----------------|
+| 20-step | 0.0145 | 0.0032 | 0.0082 | 0.0029 |
+| 30-step | 0.0126 | 0.0035 | 0.0080 | 0.0030 |
+| 40-step | 0.0119 | 0.0040 | 0.0082 | 0.0029 |
+
+**Improvements vs Baseline:**
+
+| Task Length | Unified | Unified+Attn | Unified+SSM |
+|-------------|---------|--------------|--------------|
+| 20-step | +77.9% | +43.6% | +80.3% |
+| 30-step | +72.2% | +36.2% | +76.6% |
+| 40-step | +66.1% | +31.3% | +76.0% |
+
+**Average Improvements:**
+- **Unified**: +72.1%
+- **Unified+Attn**: +37.0%
+- **Unified+SSM**: +77.6%
+
+**Status: ✅ SUPPORTED** — Unified+SSM achieves +77.6% improvement on complex compositional multi-step tasks.
+
+---

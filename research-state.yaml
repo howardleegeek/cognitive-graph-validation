@@ -921,10 +921,18 @@ hypotheses:
     parent: H1
     priority: medium
 
+  - id: H1.109
+    statement: "Unified+SSM on complex compositional multi-step tasks (20-40 steps)"
+    status: supported
+    evidence: "+77.6% avg improvement, SSM adds +5.5% over standard unified"
+    parent: H1
+    priority: high
+
 outer_loop:
-  cycle: 92
-  last_direction: "H1.108: Graph+SSM hybrid - REFUTED (-446.5%)"
+  cycle: 93
+  last_direction: "H1.109: Complex compositional multi-step - SUPPORTED (+77.6%)"
   current_experiments:
+    - "H1.109: Complex compositional multi-step - SUPPORTED (+77.6%)"
     - "H1.106: Attention 40-60 step - MARGINAL (+0.2%)"
     - "H1.102: Unified+SSM combined - SUPPORTED (+29.8%)"
     - "H3.5: Attention variants 30+ steps - MARGINAL (+4.9%)"
@@ -932,7 +940,7 @@ outer_loop:
   next_steps:
     - "Git commit and push results"
     - "Generate progress report in to_human/"
-    - "Continue research: explore simpler architectures"
+    - "Continue research: test H3.34 (attention on longer sequences)"
 
 workspace:
   findings: "findings.md"
