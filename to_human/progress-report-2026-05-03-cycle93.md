@@ -1,4 +1,4 @@
-# Progress Report — May 3, 2026 (Evening)
+# Progress Report — May 3, 2026 (Cycle 93)
 
 ## Executive Summary
 
@@ -45,6 +45,7 @@
 1. **Unified+SSM excels on complex tasks**: +77.6% improvement on 20-40 step compositional tasks
 2. **SSM adds +5.5%** over standard unified architecture
 3. **Attention underperforms** on this task type (+37.0% vs +77.6% for SSM)
+4. **Advantage decreases slightly with length**: 80% (20-step) → 76% (40-step)
 
 ## Next Steps
 
@@ -56,4 +57,12 @@
 
 - `findings.md`: Full research findings (2980+ lines)
 - `research-state.yaml`: Hypothesis tracking (950+ lines)
-- `experiments/`: Individual experiment codes
+- `experiments/H1.109-complex-compositional-multi-step/`: New experiment
+
+## Git Commit
+
+```
+Cycle 93: H1.109 Complex compositional multi-step - SUPPORTED (+77.6%)
+```
+
+Pushed to: https://github.com/howardleegeek/cognitive-graph-validation
