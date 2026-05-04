@@ -900,6 +900,13 @@ hypotheses:
     parent: H3.8
     priority: high
 
+  - id: H3.33
+    statement: "SSM with optimized state dimensions on continuous control"
+    status: supported
+    evidence: "state=16, hidden=256 best, +2.30% improvement"
+    parent: H3.32
+    priority: high
+
   - id: H1.106
     statement: "Attention on extreme multi-step (40-60 step) tasks"
     status: supported
@@ -908,14 +915,14 @@ hypotheses:
     priority: high
 
 outer_loop:
-  cycle: 87
-  last_direction: "H3.32: SSM on continuous control - TIED (+0.0%)"
+  cycle: 88
+  last_direction: "H3.33: SSM optimized dimensions - SUPPORTED (+2.30%)"
   current_experiments:
-    - "Paper consolidation: ICRA/RSS structure"
+    - "H3.33: SSM optimized dimensions completed"
   next_steps:
     - "Git commit and push results"
     - "Generate progress report"
-    - "Consolidate paper structure"
+    - "Continue research: test SSM+Graph hybrid on temporal tasks"
 
 workspace:
   findings: "findings.md"

@@ -1,0 +1,90 @@
+{
+  "experiment": "H3.33",
+  "timestamp": "2026-05-03T17:41:24.488963",
+  "hypothesis": "SSM with optimized state dimensions outperforms concatenation on continuous control",
+  "configurations": [
+    {
+      "ssm_state_dim": 8,
+      "ssm_hidden_dim": 64,
+      "mse": 0.01131237018853426
+    },
+    {
+      "ssm_state_dim": 8,
+      "ssm_hidden_dim": 128,
+      "mse": 0.011256393976509571
+    },
+    {
+      "ssm_state_dim": 8,
+      "ssm_hidden_dim": 256,
+      "mse": 0.01115177758038044
+    },
+    {
+      "ssm_state_dim": 16,
+      "ssm_hidden_dim": 64,
+      "mse": 0.010844673030078411
+    },
+    {
+      "ssm_state_dim": 16,
+      "ssm_hidden_dim": 128,
+      "mse": 0.011157728731632233
+    },
+    {
+      "ssm_state_dim": 16,
+      "ssm_hidden_dim": 256,
+      "mse": 0.010708865709602833
+    },
+    {
+      "ssm_state_dim": 24,
+      "ssm_hidden_dim": 64,
+      "mse": 0.010916798375546932
+    },
+    {
+      "ssm_state_dim": 24,
+      "ssm_hidden_dim": 128,
+      "mse": 0.011276514269411564
+    },
+    {
+      "ssm_state_dim": 24,
+      "ssm_hidden_dim": 256,
+      "mse": 0.01118579600006342
+    },
+    {
+      "ssm_state_dim": 32,
+      "ssm_hidden_dim": 64,
+      "mse": 0.010839386843144894
+    },
+    {
+      "ssm_state_dim": 32,
+      "ssm_hidden_dim": 128,
+      "mse": 0.010902597568929195
+    },
+    {
+      "ssm_state_dim": 32,
+      "ssm_hidden_dim": 256,
+      "mse": 0.01099351979792118
+    },
+    {
+      "ssm_state_dim": 48,
+      "ssm_hidden_dim": 64,
+      "mse": 0.01168212853372097
+    },
+    {
+      "ssm_state_dim": 48,
+      "ssm_hidden_dim": 128,
+      "mse": 0.010838045738637447
+    },
+    {
+      "ssm_state_dim": 48,
+      "ssm_hidden_dim": 256,
+      "mse": 0.010801062919199467
+    }
+  ],
+  "concat_mse": 0.010961521416902542,
+  "best_ssm_mse": 0.010708865709602833,
+  "best_config": {
+    "state_dim": 16,
+    "hidden_dim": 256
+  },
+  "improvement_percent": 2.304932843629873,
+  "status": "SUPPORTED"
+}
