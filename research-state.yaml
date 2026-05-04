@@ -865,7 +865,7 @@ hypotheses:
     parent: H3.27
     priority: medium
 
-- id: H1.105
+  - id: H1.105
     statement: "Attention on multi-agent coordination"
     status: refuted
     evidence: "-89.4% - attention doesn't help simple multi-agent tasks"
@@ -893,6 +893,13 @@ hypotheses:
     parent: H3.24
     priority: high
 
+  - id: H3.32
+    statement: "SSM validation on continuous control"
+    status: inconclusive
+    evidence: "SSM +0.0% vs concat - essentially tied"
+    parent: H3.8
+    priority: high
+
   - id: H1.106
     statement: "Attention on extreme multi-step (40-60 step) tasks"
     status: supported
@@ -901,14 +908,14 @@ hypotheses:
     priority: high
 
 outer_loop:
-  cycle: 86
-  last_direction: "H3.29: Continuous control - CONCAT WINS (-174%, -84%, -94%)"
+  cycle: 87
+  last_direction: "H3.32: SSM on continuous control - TIED (+0.0%)"
   current_experiments:
     - "Paper consolidation: ICRA/RSS structure"
   next_steps:
-    - "Run SSM experiments to validate +93% finding"
-    - "Validate attention finding on more realistic dynamics"
-    - "Update findings.md"
+    - "Git commit and push results"
+    - "Generate progress report"
+    - "Consolidate paper structure"
 
 workspace:
   findings: "findings.md"

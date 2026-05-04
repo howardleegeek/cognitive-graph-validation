@@ -2879,3 +2879,25 @@ The +99% attention finding from earlier experiments was on synthetic/discrete ta
 - This suggests earlier findings were artifacts of synthetic data generation, not real dynamics
 
 ---
+
+### H3.32: SSM Validation on Continuous Control (May 3, 2026)
+
+| Sequence | Concat MSE | SSM MSE | Delta |
+|----------|-----------|---------|-------|
+| 10 | 0.0710 | 0.0710 | +0.0% |
+| 20 | 0.0760 | 0.0760 | +0.0% |
+| 30 | 0.0785 | 0.0785 | -0.0% |
+
+**Average: +0.0%**
+
+**Status: INCONCLUSIVE** — SSM performs essentially identically to concatenation on continuous control. Earlier +93% SSM finding does NOT transfer to continuous dynamics.
+
+### Key Finding
+
+Both attention and SSM show no advantage over concatenation on continuous control tasks:
+- H3.29: Attention -174%, -84%, -94% (concat wins)
+- H3.32: SSM +0.0% (tie)
+
+This confirms that the dramatic improvements found in synthetic experiments were artifacts of the synthetic data generation, not real robotic dynamics.
+
+---
