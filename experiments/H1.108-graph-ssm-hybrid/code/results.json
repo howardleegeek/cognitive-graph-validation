@@ -1,0 +1,26 @@
+{
+  "results": {
+    "5": {
+      "baseline_mse": 0.044364895671606064,
+      "graph_ssm_mse": 0.328347772359848,
+      "improvement": -640.1071666894363
+    },
+    "8": {
+      "baseline_mse": 0.42335233092308044,
+      "graph_ssm_mse": 2.3372457027435303,
+      "improvement": -452.08050883938284
+    },
+    "12": {
+      "baseline_mse": 7.805517196655273,
+      "graph_ssm_mse": 33.07251739501953,
+      "improvement": -323.70693141501715
+    },
+    "15": {
+      "baseline_mse": 60.02070999145508,
+      "graph_ssm_mse": 282.1700439453125,
+      "improvement": -370.12113649685915
+    }
+  },
+  "avg_improvement": -446.5039358601739,
+  "status": "REFUTED"
+}

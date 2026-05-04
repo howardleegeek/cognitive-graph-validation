@@ -2962,3 +2962,18 @@ This confirms that the dramatic improvements found in synthetic experiments were
 **Status: ✅ SUPPORTED** — Unified + SSM combined architecture significantly outperforms baseline on multi-step tasks. The improvement grows with task complexity (40.2% at 10 steps), demonstrating that the combined approach effectively leverages both unified representations and SSM temporal modeling.
 
 ---
+
+### H1.108: Graph + SSM Hybrid for Complex Temporal Tasks (May 3, 2026)
+
+| N Steps | Baseline MSE | Graph+SSM MSE | Improvement |
+|---------|-------------|----------------|-------------|
+| 5 | 0.0444 | 0.3283 | **-640.1%** |
+| 8 | 0.4234 | 2.3372 | **-452.1%** |
+| 12 | 7.8055 | 33.0725 | **-323.7%** |
+| 15 | 60.0207 | 282.1700 | **-370.1%** |
+
+**Average: -446.5%**
+
+**Status: ❌ REFUTED** — Graph + SSM hybrid significantly underperforms baseline. The model is too complex for the dataset size, leading to overfitting. Simpler architectures (like H1.102's Unified+SSM) work better.
+
+---
