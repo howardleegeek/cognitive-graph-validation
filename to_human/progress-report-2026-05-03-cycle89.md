@@ -1,8 +1,10 @@
-# Research Progress Report - Cycle 89 (May 3, 2026)
+# Research Progress Report - Cycle 90 (May 3, 2026)
 
 ## Executive Summary
 
-Research continues on Cognitive Graph architecture validation. Completed H1.106 experiment testing attention on extreme multi-step tasks (40-60 steps). Results show marginal improvement (+0.2%), not replicating earlier +99% findings.
+Research continues on Cognitive Graph architecture validation. Completed two experiments:
+1. H1.106: Attention on 40-60 step tasks - MARGINAL (+0.2%)
+2. H1.102: Unified + SSM combined - SUPPORTED (+29.8%)
 
 ## Current Status
 
@@ -12,9 +14,9 @@ Research continues on Cognitive Graph architecture validation. Completed H1.106 
 | Supported | 60+ |
 | Refuted | 25+ |
 | Inconclusive | 5+ |
-| Current Cycle | 89 |
+| Current Cycle | 90 |
 
-## This Cycle's Experiment
+## This Cycle's Experiments
 
 ### H1.106: Attention on Extreme Multi-Step Tasks (40-60 steps)
 
@@ -32,6 +34,21 @@ Research continues on Cognitive Graph architecture validation. Completed H1.106 
 **Average: +0.2%**
 
 **Status**: ⚠️ MARGINAL - Does not replicate +99% from H1.99
+
+### H1.102: Unified + SSM Combined Architecture
+
+**Hypothesis**: Combining unified cognitive graph with SSM for temporal reasoning
+
+**Results**:
+| N Steps | Baseline MSE | Unified+SSM MSE | Improvement |
+|---------|-------------|-----------------|-------------|
+| 5 | 0.7149 | 0.5662 | **+20.8%** |
+| 10 | 55.5181 | 33.1858 | **+40.2%** |
+| 15 | 3188.8027 | 2281.0493 | **+28.5%** |
+
+**Average: +29.8%**
+
+**Status**: ✅ SUPPORTED - Strong improvement across all step counts
 
 ## Key Findings Summary
 

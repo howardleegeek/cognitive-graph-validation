@@ -915,15 +915,16 @@ hypotheses:
     priority: high
 
 outer_loop:
-  cycle: 89
-  last_direction: "H1.106: Attention on 40-60 step tasks - MARGINAL (+0.2%)"
+  cycle: 90
+  last_direction: "H1.102: Unified+SSM combined - SUPPORTED (+29.8% avg)"
   current_experiments:
-    - "H1.106: Attention extreme multi-step completed"
+    - "H1.106: Attention 40-60 step - MARGINAL (+0.2%)"
+    - "H1.102: Unified+SSM combined - SUPPORTED (+29.8%)"
   next_steps:
-    - "Update findings.md with H1.106 results"
+    - "Update findings.md with H1.102 results"
     - "Git commit and push results"
     - "Generate progress report in to_human/"
-    - "Continue research: test SSM+Graph hybrid on temporal tasks"
+    - "Continue research: explore attention variants on longer sequences"
 
 workspace:
   findings: "findings.md"

@@ -1,6 +1,6 @@
 {
   "5step_Baseline": {
-    "mse": 0.6902886033058167,
+    "mse": 0.7148535847663879,
     "n_steps": 5,
     "arch": "Baseline"
   },
