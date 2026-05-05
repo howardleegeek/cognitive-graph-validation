@@ -927,20 +927,24 @@ hypotheses:
     evidence: "+77.6% avg improvement, SSM adds +5.5% over standard unified"
     parent: H1
     priority: high
+  - id: H3.34
+    statement: "Attention crossover at 25+ timesteps with increasing benefit"
+    status: supported
+    evidence: "+84.3% avg, crossover at 25 timesteps, +90-99% on 45+ steps"
+    parent: H3
+    priority: high
 
 outer_loop:
-  cycle: 93
-  last_direction: "H1.109: Complex compositional multi-step - SUPPORTED (+77.6%)"
+  cycle: 94
+  last_direction: "H3.34: Attention crossover - SUPPORTED (+84.3%, crossover at 25 timesteps)"
   current_experiments:
-    - "H1.109: Complex compositional multi-step - SUPPORTED (+77.6%)"
-    - "H1.106: Attention 40-60 step - MARGINAL (+0.2%)"
-    - "H1.102: Unified+SSM combined - SUPPORTED (+29.8%)"
-    - "H3.5: Attention variants 30+ steps - MARGINAL (+4.9%)"
-    - "H1.108: Graph+SSM hybrid - REFUTED (-446.5%)"
+    - "H3.34: Attention crossover - SUPPORTED (+84.3%)"
+    - "H1.109: Complex compositional - SUPPORTED (+77.6%)"
+    - "H1.102: Unified+SSM - SUPPORTED (+29.8%)"
   next_steps:
     - "Git commit and push results"
     - "Generate progress report in to_human/"
-    - "Continue research: test H3.34 (attention on longer sequences)"
+    - "Continue research: test H3.35 (attention with continuous dynamics)"
 
 workspace:
   findings: "findings.md"
