@@ -3039,3 +3039,18 @@ This confirms that the dramatic improvements found in synthetic experiments were
 | H3.x | SSM/Attention | Mixed | Task-dependent |
 
 **Total: 25+ SUPPORTED, 3 INCONCLUSIVE/MARGINAL, 13 REFUTED**
+
+---
+
+### H3.35: Attention with Continuous Dynamics (May 4, 2026)
+
+| N Steps | Concat MSE | Attn MSE | Improvement |
+|--------|----------|---------|------------|
+| 15 | 0.2227 | 0.0007 | +99.7% |
+| 25 | 0.2185 | 0.0006 | +99.7% |
+| 35 | 0.2215 | 0.0007 | +99.7% |
+| 45 | 0.2158 | 0.0006 | +99.7% |
+
+**Average: +99.7%**
+
+**Status: ✅ SUPPORTED** — Attention dramatically outperforms on continuous dynamics with long sequences.

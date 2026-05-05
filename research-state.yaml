@@ -933,18 +933,24 @@ hypotheses:
     evidence: "+84.3% avg, crossover at 25 timesteps, +90-99% on 45+ steps"
     parent: H3
     priority: high
+  - id: H3.35
+    statement: "Attention with continuous dynamics + long sequences"
+    status: supported
+    evidence: "+99.7% avg, attention wins across all lengths"
+    parent: H3.34
+    priority: high
 
 outer_loop:
-  cycle: 94
-  last_direction: "H3.34: Attention crossover - SUPPORTED (+84.3%, crossover at 25 timesteps)"
+  cycle: 95
+  last_direction: "H3.35: Attention + Continuous Dynamics - SUPPORTED (+99.7%)"
   current_experiments:
+    - "H3.35: Attention + Continuous Dynamics - SUPPORTED (+99.7%)"
     - "H3.34: Attention crossover - SUPPORTED (+84.3%)"
     - "H1.109: Complex compositional - SUPPORTED (+77.6%)"
-    - "H1.102: Unified+SSM - SUPPORTED (+29.8%)"
   next_steps:
     - "Git commit and push results"
     - "Generate progress report in to_human/"
-    - "Continue research: test H3.35 (attention with continuous dynamics)"
+    - "Continue research: test H3.36 (attention with physics-based dynamics)"
 
 workspace:
   findings: "findings.md"

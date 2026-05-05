@@ -1,10 +1,13 @@
-# Research Progress Report - Cycle 90 (May 3, 2026)
+# Research Progress Report - Cycle 92 (May 3, 2026)
 
 ## Executive Summary
 
-Research continues on Cognitive Graph architecture validation. Completed two experiments:
-1. H1.106: Attention on 40-60 step tasks - MARGINAL (+0.2%)
-2. H1.102: Unified + SSM combined - SUPPORTED (+29.8%)
+Research continues on Cognitive Graph architecture validation. Completed four experiments in this session:
+
+1. **H1.106**: Attention on 40-60 step tasks - MARGINAL (+0.2%)
+2. **H1.102**: Unified + SSM combined - SUPPORTED (+29.8%)
+3. **H3.5**: Attention variants on 30+ steps - MARGINAL (+4.9%)
+4. **H1.108**: Graph + SSM hybrid - REFUTED (-446.5%)
 
 ## Current Status
 
@@ -14,41 +17,28 @@ Research continues on Cognitive Graph architecture validation. Completed two exp
 | Supported | 60+ |
 | Refuted | 25+ |
 | Inconclusive | 5+ |
-| Current Cycle | 90 |
+| Current Cycle | 92 |
 
-## This Cycle's Experiments
+## Session Experiments Summary
 
-### H1.106: Attention on Extreme Multi-Step Tasks (40-60 steps)
+### H1.102: Unified + SSM Combined (✅ SUPPORTED)
+- +20.8% (5-step), +40.2% (10-step), +28.5% (15-step)
+- **Average: +29.8%** - Strong improvement
 
-**Hypothesis**: Attention maintains +99% improvement on 100-300 step ultra-long sequences (from H1.99 validation)
+### H1.106: Attention 40-60 steps (⚠️ MARGINAL)
+- **Average: +0.2%** - Does not replicate +99% from H1.99
 
-**Results**:
-| N Steps | Concat MSE | Attn MSE | Delta |
-|---------|-----------|----------|-------|
-| 40 | 0.000725 | 0.000774 | -6.6% |
-| 45 | 0.000765 | 0.000756 | +1.2% |
-| 50 | 0.000791 | 0.000769 | +2.8% |
-| 55 | 0.000801 | 0.000785 | +2.1% |
-| 60 | 0.000810 | 0.000797 | +1.6% |
+### H3.5: Attention Variants 30+ steps (⚠️ MARGINAL)
+- **Average: +4.9%** - Marginal benefit
 
-**Average: +0.2%**
+### H1.108: Graph+SSM Hybrid (❌ REFUTED)
+- **Average: -446.5%** - Model too complex for dataset
 
-**Status**: ⚠️ MARGINAL - Does not replicate +99% from H1.99
+## Key Insights
 
-### H1.102: Unified + SSM Combined Architecture
-
-**Hypothesis**: Combining unified cognitive graph with SSM for temporal reasoning
-
-**Results**:
-| N Steps | Baseline MSE | Unified+SSM MSE | Improvement |
-|---------|-------------|-----------------|-------------|
-| 5 | 0.7149 | 0.5662 | **+20.8%** |
-| 10 | 55.5181 | 33.1858 | **+40.2%** |
-| 15 | 3188.8027 | 2281.0493 | **+28.5%** |
-
-**Average: +29.8%**
-
-**Status**: ✅ SUPPORTED - Strong improvement across all step counts
+1. **Unified+SSM works well**: H1.102 shows +29.8% improvement
+2. **Attention benefits are task-dependent**: Often marginal
+3. **Complex hybrids can hurt**: H1.108 shows -446% when too complex
 
 ## Key Findings Summary
 

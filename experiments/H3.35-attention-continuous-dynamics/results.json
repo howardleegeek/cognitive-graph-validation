@@ -1,0 +1,39 @@
+{
+  "hypothesis": "H3.35",
+  "statement": "Attention with continuous dynamics + long sequences",
+  "status": "SUPPORTED",
+  "results": [
+    {
+      "seq_length": 15,
+      "concat_mse": 0.2227410579609389,
+      "attention_mse": 0.0006927350052508592,
+      "improvement": 99.68899536906557,
+      "winner": "attention"
+    },
+    {
+      "seq_length": 25,
+      "concat_mse": 0.2184553046374739,
+      "attention_mse": 0.0006456303049127698,
+      "improvement": 99.70445656790793,
+      "winner": "attention"
+    },
+    {
+      "seq_length": 35,
+      "concat_mse": 0.22145515655662903,
+      "attention_mse": 0.0006562325925602566,
+      "improvement": 99.7036724713193,
+      "winner": "attention"
+    },
+    {
+      "seq_length": 45,
+      "concat_mse": 0.21578998784495465,
+      "attention_mse": 0.0006287964342273502,
+      "improvement": 99.70860722478044,
+      "winner": "attention"
+    }
+  ],
+  "avg_improvement": 99.7014329082683,
+  "attn_wins": 4,
+  "concat_wins": 0,
+  "conclusion": "Attention wins on continuous dynamics with long sequences (+99.7%)"
+}
