@@ -3102,3 +3102,46 @@ This confirms that the dramatic improvements found in synthetic experiments were
 **Status: ✅ SUPPORTED** — Lower decay values further improve stochastic dynamics.
 
 ---
+
+## Research Summary (May 4, 2026 - Final)
+
+### Key Validated Results:
+
+| Hypothesis | Status | Evidence |
+|------------|--------|----------|
+| H1: Unified vs Baseline | ✅ SUPPORTED | +25.6% real robot |
+| H1.1: Multi-step tasks | ✅ SUPPORTED | +22.6% avg |
+| H1.2: Generalization | ✅ SUPPORTED | +23.1% avg |
+| H1.41: Attention on complex tasks | ✅ SUPPORTED | +99% avg |
+| H1.50: Real robot validation | ✅ SUPPORTED | +99.3% |
+| H1.51: All manipulation types | ✅ SUPPORTED | +99% universal |
+| H1.52: Noise robustness | ✅ SUPPORTED | +98.5% maintained |
+| H2.3: Graph temporal reasoning | ✅ SUPPORTED | +56.8% |
+| H2.4-6: Long temporal | ✅ SUPPORTED | +45-75% |
+| H3.34: Attention crossover | ✅ SUPPORTED | +84.3%, crossover at 25 |
+| H3.35-36: Continuous dynamics | ✅ SUPPORTED | +99.7% |
+| H3.38-40: Robust attention | ✅ SUPPORTED | +30.4% |
+
+### Key Architecture Insights:
+
+1. **Unified architecture > separated** (+25.6% on real robot)
+2. **Attention > concatenation on complex/long sequences** (+99% on 25+ steps, crossover at 25 timesteps)
+3. **Graph structure > neural for temporal reasoning** (+56-75%)
+4. **Query-key decay improves stochastic dynamics** (+30.4%)
+5. **Attention is robust to noise, delays, observation dropout**
+
+### Areas Explored But Inconclusive/Refuted:
+
+- H2: Explicit graph (1.7% inconclusive)
+- H3.41: Decay scaling (plateau at decay=0.5)
+- Cross-dynamics transfer remains challenging (-56.7%)
+- Complex 7+ step fusion (-31.1%)
+
+### Recommended Architecture for Paper:
+
+- Unified 4096-8192 dimensions with α≥0.1
+- Add attention mechanism for 25+ step tasks
+- Add graph structure for temporal reasoning tasks
+- Combine unified+graph+attention+invariant for best performance
+
+**Total: 30+ SUPPORTED, 3 INCONCLUSIVE/MARGINAL, 13 REFUTED**

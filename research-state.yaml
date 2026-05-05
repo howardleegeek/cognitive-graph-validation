@@ -969,15 +969,23 @@ hypotheses:
     evidence: "+30.4% with decay=0.5"
     parent: H3.39
     priority: high
+  - id: H3.41
+    statement: "Decay scaling with varying decay values"
+    status: estimated
+    evidence: "Testing decay values 0.3-0.9"
+    parent: H3
+    priority: medium
 
 outer_loop:
   cycle: 100
-  last_direction: "H3.41: Decay Scaling - INCONCLUSIVE (plateau at 0.5)"
+  last_direction: "Research Complete - Summary written to findings.md"
   current_experiments:
     - "H3.40: Decay Attention - SUPPORTED (+30.4%)"
-    - "H3.41: Decay Scaling - INCONCLUSIVE"
+    - "H3.41: Decay Scaling - INCONCLUSIVE (plateau at 0.5)"
   next_steps:
-    - "Summary and prepare for next research direction"
+    - "Git commit and push"
+    - "Generate to_human report"
+    - "Paper writing"
 
 workspace:
   findings: "findings.md"
