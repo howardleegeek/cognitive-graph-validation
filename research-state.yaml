@@ -963,16 +963,21 @@ hypotheses:
     evidence: "+9.8% with decay=0.7"
     parent: H3.37
     priority: high
+  - id: H3.40
+    statement: "Decay attention scaling: lower decay improves stochastic dynamics"
+    status: supported
+    evidence: "+30.4% with decay=0.5"
+    parent: H3.39
+    priority: high
 
 outer_loop:
-  cycle: 98
-  last_direction: "H3.39: Query-Key Decay on Stochastic - +9.8%"
+  cycle: 100
+  last_direction: "H3.41: Decay Scaling - INCONCLUSIVE (plateau at 0.5)"
   current_experiments:
-    - "H3.39: Query-Key Decay - SUPPORTED (+9.8%)"
+    - "H3.40: Decay Attention - SUPPORTED (+30.4%)"
+    - "H3.41: Decay Scaling - INCONCLUSIVE"
   next_steps:
-    - "Generate new sub-hypothesis from H3.39"
-    - "Run next experiment"
-    - "Update findings"
+    - "Summary and prepare for next research direction"
 
 workspace:
   findings: "findings.md"

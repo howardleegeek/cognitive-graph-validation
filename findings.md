@@ -3089,3 +3089,16 @@ This confirms that the dramatic improvements found in synthetic experiments were
 **Status: ✅ SUPPORTED** — Query-key decay attention improves stochastic dynamics by up to 9.8%.
 
 ---
+
+### H3.40: Decay Attention Scaling (May 4, 2026)
+
+| Configuration | MSE | Improvement |
+|----------------|-----|-------------|
+| Standard | 5.5798 | 0% |
+| Decay=0.9 | 4.0311 | +27.8% |
+| Decay=0.7 | 3.9001 | +30.1% |
+| Decay=0.5 | 3.8813 | **+30.4%** |
+
+**Status: ✅ SUPPORTED** — Lower decay values further improve stochastic dynamics.
+
+---
