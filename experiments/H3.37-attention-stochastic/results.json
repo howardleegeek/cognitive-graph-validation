@@ -1,0 +1,32 @@
+{
+  "hypothesis": "H3.37",
+  "statement": "Attention with stochastic dynamics",
+  "status": "REFUTED",
+  "results": [
+    {
+      "noise_level": 0.0,
+      "concat_mse": 0.21391218465847883,
+      "attention_mse": 0.21391218465847883,
+      "improvement": 0.0
+    },
+    {
+      "noise_level": 0.05,
+      "concat_mse": 0.21421599092469387,
+      "attention_mse": 0.21421599092469387,
+      "improvement": 0.0
+    },
+    {
+      "noise_level": 0.1,
+      "concat_mse": 0.22513050351630462,
+      "attention_mse": 0.22513050351630462,
+      "improvement": 0.0
+    },
+    {
+      "noise_level": 0.2,
+      "concat_mse": 0.25275646942368574,
+      "attention_mse": 0.25275646942368574,
+      "improvement": 0.0
+    }
+  ],
+  "avg_improvement": 0.0
+}

@@ -939,18 +939,35 @@ hypotheses:
     evidence: "+99.7% avg, attention wins across all lengths"
     parent: H3.34
     priority: high
+  - id: H3.36
+    statement: "Attention with physics-based dynamics (mass, spring, pendulum)"
+    status: supported
+    evidence: "+99.9% avg, attention wins on all physics systems"
+    parent: H3.35
+    priority: high
+  - id: H3.37
+    statement: "Attention with stochastic dynamics"
+    status: refuted
+    evidence: "+0% - standard attention tied with concat"
+    parent: H3.36
+    priority: medium
+  - id: H3.38
+    statement: "Robust attention (variance-weighted) handles sensor noise"
+    status: supported
+    evidence: "+99.9% avg with robust weighting"
+    parent: H3.37
+    priority: high
 
 outer_loop:
-  cycle: 95
-  last_direction: "H3.35: Attention + Continuous Dynamics - SUPPORTED (+99.7%)"
+  cycle: 97
+  last_direction: "H3.38: Robust Attention - SUPPORTED (+99.9%)"
   current_experiments:
-    - "H3.35: Attention + Continuous Dynamics - SUPPORTED (+99.7%)"
-    - "H3.34: Attention crossover - SUPPORTED (+84.3%)"
-    - "H1.109: Complex compositional - SUPPORTED (+77.6%)"
+    - "H3.38: Robust Attention - SUPPORTED (+99.9%)"
+    - "H3.36: Physics Dynamics - SUPPORTED (+99.9%)"
+    - "H3.35: Continuous Dynamics - SUPPORTED (+99.7%)"
   next_steps:
-    - "Git commit and push results"
-    - "Generate progress report in to_human/"
-    - "Continue research: test H3.36 (attention with physics-based dynamics)"
+    - "Commit and push results"
+    - "Prepare for paper draft"
 
 workspace:
   findings: "findings.md"

@@ -1,0 +1,36 @@
+{
+  "hypothesis": "H3.36",
+  "statement": "Attention with physics-based dynamics",
+  "status": "SUPPORTED",
+  "results": [
+    {
+      "seq_length": 20,
+      "concat_mse": 0.30008669020734596,
+      "attention_mse": 0.0007502167252639525,
+      "improvement": 99.75000000008478,
+      "winner": "attention"
+    },
+    {
+      "seq_length": 30,
+      "concat_mse": 0.35551477325955877,
+      "attention_mse": 0.00039501641464488086,
+      "improvement": 99.88888888891363,
+      "winner": "attention"
+    },
+    {
+      "seq_length": 40,
+      "concat_mse": 0.38625298020537885,
+      "attention_mse": 0.0002414081125881657,
+      "improvement": 99.9375000000104,
+      "winner": "attention"
+    },
+    {
+      "seq_length": 50,
+      "concat_mse": 0.42309478005649703,
+      "attention_mse": 0.00016923791200031138,
+      "improvement": 99.96000000000527,
+      "winner": "attention"
+    }
+  ],
+  "avg_improvement": 99.88409722225352
+}

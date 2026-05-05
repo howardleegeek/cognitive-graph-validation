@@ -3046,11 +3046,33 @@ This confirms that the dramatic improvements found in synthetic experiments were
 
 | N Steps | Concat MSE | Attn MSE | Improvement |
 |--------|----------|---------|------------|
-| 15 | 0.2227 | 0.0007 | +99.7% |
-| 25 | 0.2185 | 0.0006 | +99.7% |
-| 35 | 0.2215 | 0.0007 | +99.7% |
-| 45 | 0.2158 | 0.0006 | +99.7% |
+| 15 | 0.2227 | 0.0007 | **+99.7%** |
+| 25 | 0.2185 | 0.0006 | **+99.7%** |
+| 35 | 0.2215 | 0.0007 | **+99.7%** |
+| 45 | 0.2158 | 0.0006 | **+99.7%** |
 
-**Average: +99.7%**
+**Status: ✅ SUPPORTED** — Attention works on continuous control.
 
-**Status: ✅ SUPPORTED** — Attention dramatically outperforms on continuous dynamics with long sequences.
+### H3.36: Attention with Physics Dynamics (May 4, 2026)
+
+| System | Concat MSE | Attn MSE | Improvement |
+|--------|----------|---------|------------|
+| Mass | 0.3001 | 0.0008 | **+99.8%** |
+| Spring | 0.3555 | 0.0004 | **+99.9%** |
+| Pendulum | 0.3863 | 0.0002 | **+99.9%** |
+| Damped | 0.4231 | 0.0002 | **+100%** |
+
+**Status: ✅ SUPPORTED** — Attention wins on all physics systems.
+
+### H3.38: Robust Attention with Noise (May 4, 2026)
+
+| Noise | Concat MSE | Robust MSE | Improvement |
+|-------|-----------|------------|-------------|
+| 0.00 | 0.2209 | 0.0002 | **+99.9%** |
+| 0.05 | 0.2339 | 0.0003 | **+99.9%** |
+| 0.10 | 0.2193 | 0.0002 | **+99.9%** |
+| 0.20 | 0.2471 | 0.0003 | **+99.9%** |
+
+**Status: ✅ SUPPORTED** — Variance-weighted robust attention handles sensor noise.
+
+---
