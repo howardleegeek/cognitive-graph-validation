@@ -983,8 +983,8 @@ hypotheses:
     priority: high
   - id: H3.43
     statement: "Multi-hop message passing (GWM 2-3 hops) improves temporal reasoning"
-    status: pending
-    evidence: "Literature: GWM benefits from multi-hop graphs"
+    status: inconclusive
+    evidence: "-0.4% avg - essentially no improvement"
     parent: H3
     priority: high
   - id: H3.44

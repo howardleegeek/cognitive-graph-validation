@@ -3137,6 +3137,16 @@ This confirms that the dramatic improvements found in synthetic experiments were
 - Cross-dynamics transfer remains challenging (-56.7%)
 - Complex 7+ step fusion (-31.1%)
 
+### H3.43: Multi-hop Message Passing (GWM-style) (May 4, 2026)
+
+| Hops | Baseline MSE | Graph MSE | Improvement |
+|------|-------------|----------|------------|
+| 1 | 0.6292 | 0.6323 | -0.5% |
+| 2 | 0.6289 | 0.6318 | -0.5% |
+| 3 | 0.6291 | 0.6307 | -0.3% |
+
+**Average: -0.4%** — INCONCLUSIVE
+
 ### Recommended Architecture for Paper:
 
 - Unified 4096-8192 dimensions with α≥0.1
