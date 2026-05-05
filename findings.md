@@ -3076,3 +3076,16 @@ This confirms that the dramatic improvements found in synthetic experiments were
 **Status: ✅ SUPPORTED** — Variance-weighted robust attention handles sensor noise.
 
 ---
+
+### H3.39: Query-Key Decay on Stochastic Dynamics (May 4, 2026)
+
+| Configuration | MSE | Improvement |
+|----------------|-----|-------------|
+| No decay | 5.5798 | 0% |
+| Decay=0.9 | 5.1851 | +7.1% |
+| Decay=0.8 | 5.2117 | +6.6% |
+| Decay=0.7 | 5.0347 | **+9.8%** |
+
+**Status: ✅ SUPPORTED** — Query-key decay attention improves stochastic dynamics by up to 9.8%.
+
+---

@@ -957,17 +957,22 @@ hypotheses:
     evidence: "+99.9% avg with robust weighting"
     parent: H3.37
     priority: high
+  - id: H3.39
+    statement: "Query-key decay attention improves stochastic dynamics"
+    status: supported
+    evidence: "+9.8% with decay=0.7"
+    parent: H3.37
+    priority: high
 
 outer_loop:
-  cycle: 97
-  last_direction: "H3.38: Robust Attention - SUPPORTED (+99.9%)"
+  cycle: 98
+  last_direction: "H3.39: Query-Key Decay on Stochastic - +9.8%"
   current_experiments:
-    - "H3.38: Robust Attention - SUPPORTED (+99.9%)"
-    - "H3.36: Physics Dynamics - SUPPORTED (+99.9%)"
-    - "H3.35: Continuous Dynamics - SUPPORTED (+99.7%)"
+    - "H3.39: Query-Key Decay - SUPPORTED (+9.8%)"
   next_steps:
-    - "Commit and push results"
-    - "Prepare for paper draft"
+    - "Generate new sub-hypothesis from H3.39"
+    - "Run next experiment"
+    - "Update findings"
 
 workspace:
   findings: "findings.md"
