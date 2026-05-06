@@ -1,0 +1,34 @@
+{
+  "experiment": "H3.52",
+  "timestamp": "2026-05-05T19:21:05.057933",
+  "results": {
+    "Baseline_50steps": 0.6598074106665899,
+    "SRH only_50steps": 0.2562029406123804,
+    "Graph only_50steps": 0.33260294978254723,
+    "Attention only_50steps": 0.15695097004389363,
+    "SRH+Graph_50steps": 0.1872505934944808,
+    "SRH+Attn_50steps": 0.11543525118552622,
+    "Graph+Attn_50steps": 0.13145050191814955,
+    "Combined_50steps": 0.10256086480844787,
+    "Baseline_75steps": 0.44945068510098124,
+    "SRH only_75steps": 0.21790105898444306,
+    "Graph only_75steps": 0.22663590757002433,
+    "Attention only_75steps": 0.14208078351800602,
+    "SRH+Graph_75steps": 0.1470915336107304,
+    "SRH+Attn_75steps": 0.10639392074447818,
+    "Graph+Attn_75steps": 0.11362594014542,
+    "Combined_75steps": 0.08840581056955849,
+    "Baseline_100steps": 0.33591521839155786,
+    "SRH only_100steps": 0.18526967686408669,
+    "Graph only_100steps": 0.17803205271269668,
+    "Attention only_100steps": 0.13233645218536833,
+    "SRH+Graph_100steps": 0.12289703358460344,
+    "SRH+Attn_100steps": 0.10089193355187036,
+    "Graph+Attn_100steps": 0.09977256920965318,
+    "Combined_100steps": 0.08153486033761602
+  },
+  "summary": {
+    "combined_improvement": 81.14402383120554,
+    "status": "SUPPORTED"
+  }
+}

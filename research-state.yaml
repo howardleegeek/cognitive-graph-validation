@@ -973,64 +973,28 @@ hypotheses:
   statement: SRH + Invariant combined solves both temporal and transfer
   status: supported
 - evidence: -18.7% avg, hub=256 best but all negative vs baseline
-  id: H3.50
-  parent: H3.45
-  priority: medium
-  statement: 'SRH scaling: larger semantic hub dimensions improve task understanding'
-  status: refuted
-- evidence: +5.9% cross-platform improvement
-  id: H3.51
-  parent: H3.49
-  priority: high
-  statement: SRH + Invariant for cross-platform transfer
-  status: supported
-literature:
-  evidence_gaps:
-  - No systematic comparison of early fusion vs late fusion vs alignment approaches
-  - Limited ablation studies on representation dimension allocation
-  - No published results on sample efficiency with <100 hours robot data
-  key_papers:
-  - authors: Feichtenhofer et al. (Meta FAIR)
-    id: feichtenhofer2024v-jepa2
-    relevance: SOTA video world model with action-conditional prediction. Uses separate
-      JEPA + LLM alignment.
-    title: 'V-JEPA 2: Self-Supervised Video Models with Joint-Embedding Predictive
-      Architectures'
-    year: 2025
-  - authors: Physical Intelligence
-    id: black2025pi0
-    relevance: VLA architecture with flow matching. Late fusion of vision and language.
-    title: "\u03C00: A Vision-Language-Action Flow Model for Generalist Robot Control"
-    year: 2024
-  - authors: Li et al.
-    id: li2025led-wm
-    relevance: Language-conditioned Dreamer with attention alignment. Closer to unified
-      but still separate encoders.
-    title: 'LED-WM: Language-Conditioned World Models with Attention Alignment'
-    year: 2025
-  - authors: Feichtenhofer et al. (Meta FAIR)
-    id: feichtenhofer2023v-jepa
-    relevance: Baseline JEPA architecture for video understanding.
-    title: 'V-JEPA: Video Joint Embedding Predictive Architecture'
-    year: 2024
-  - authors: Assouel et al.
-    id: assouel2025overworld
-    relevance: Diffusion-based world model with DiT. Real-time generation but no language
-      integration.
-    title: 'Overworld: Open-Source World Model with Diffusion Forcing'
-    year: 2025
-  open_problems:
-  - How to achieve true early fusion of physical and semantic representations (not
-    just alignment)?
-  - Can explicit graph structure improve sample efficiency over pure neural approaches?
-  - What is the optimal dimension allocation between physical (144-dim) and semantic
-    (368-dim) in unified space?
+    id: H3.50
+    parent: H3.45
+    priority: medium
+    statement: 'SRH scaling: larger semantic hub dimensions improve task understanding'
+    status: refuted
+  - evidence: +5.9% cross-platform improvement
+    id: H3.51
+    parent: H3.45
+    priority: high
+    statement: SRH + Invariant for cross-platform transfer
+    status: supported
+  - evidence: +81.1% avg improvement on 50-100 step complex tasks
+    id: H3.52
+    parent: H3.45
+    priority: high
+    statement: Combined (SRH + Graph + Attention) achieves maximum performance
+    status: supported
 outer_loop:
   current_experiments:
-  - 'H3.50: SRH scaling - REFUTED (-18.7%)'
-  - 'H3.51: SRH+Invariant cross-platform - SUPPORTED (+5.9%)'
-  cycle: 108
-  last_direction: H3.51 +5.9% supported
+  - 'H3.52: Combined architecture - SUPPORTED (+81.1%)'
+  cycle: 109
+  last_direction: H3.52 +81.1% supported
   next_steps:
   - Paper writing integration
   - Explore new literature directions

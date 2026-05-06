@@ -3353,3 +3353,20 @@ H3.47 showed SRH + Invariant combined achieves +74.4% - we should test this comb
 | **Invariant** | **+5.9%** |
 
 **Status: ✅ SUPPORTED** — Invariant architecture provides +5.9% improvement! Better than -89.7%.
+
+---
+
+### H3.52: Combined Architecture (SRH + Graph + Attention) (May 5, 2026)
+
+| Configuration | 50-step MSE | 75-step MSE | 100-step MSE | Avg Improvement |
+|--------------|-------------|-------------|-------------|----------------|
+| Baseline | 0.6598 | 0.4495 | 0.3359 | 0% |
+| SRH only | 0.2562 | 0.2179 | 0.1853 | +52.5% |
+| Graph only | 0.3326 | 0.2266 | 0.1780 | +48.7% |
+| Attention only | 0.1570 | 0.1421 | 0.1323 | +68.4% |
+| SRH+Graph | 0.1873 | 0.1471 | 0.1229 | +67.4% |
+| SRH+Attn | 0.1154 | 0.1064 | 0.1009 | +76.3% |
+| Graph+Attn | 0.1315 | 0.1136 | 0.0998 | +75.0% |
+| **Combined** | 0.1026 | 0.0884 | 0.0815 | **+81.1%** |
+
+**Status: ✅ SUPPORTED** — Combined architecture achieves maximum performance (+81.1%).
