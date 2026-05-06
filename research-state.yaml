@@ -1011,13 +1011,18 @@ hypotheses:
     evidence: "+27.8% avg, +31.1% over SRH alone"
     parent: H3.45
     priority: high
+  - id: H3.47
+    statement: "SRH + Invariant combined solves both temporal and transfer"
+    status: supported
+    evidence: "+74.4% avg combined improvement"
+    parent: H3.45
+    priority: high
 
 outer_loop:
-  cycle: 104
-  last_direction: "H3.45 +61.5%, H3.46 +27.8%, H1.110 +33.3%"
+  cycle: 105
+  last_direction: "H3.45 +61.5%, H3.46 +27.8%, H3.47 +74.4%"
   current_experiments:
-    - "H3.46: SRH+Attention - SUPPORTED (+27.8%)"
-    - "H1.110: Attention extreme multi-step - SUPPORTED (+33.3%)"
+    - "H3.47: SRH + Invariant - SUPPORTED (+74.4%)"
   next_steps:
     - "Continue auto-research"
     - "Paper writing integration"
