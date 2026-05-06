@@ -3426,6 +3426,27 @@ Key insight: Exponential decay attention (decay=0.95) best captures current phas
 
 ---
 
+### H1.112: Attention + Invariant for Ultra-Extreme Transfer (May 5, 2026)
+
+| Length | Method | Source MSE | Target MSE | Source Imp | Target Imp |
+|--------|--------|-----------|-----------|-----------|------------|
+| 100 | Baseline | 0.01083 | 0.01731 | 0% | 0% |
+| 100 | Attention | 0.00077 | 0.00135 | +92.9% | +92.2% |
+| 100 | Invariant | 0.00285 | 0.00393 | +73.7% | +77.3% |
+| 100 | **Attn+Inv** | 0.00073 | 0.00120 | +93.3% | +93.1% |
+| 120 | **Attn+Inv** | 0.00090 | 0.00102 | +91.0% | +92.1% |
+| 140 | **Attn+Inv** | 0.00098 | 0.00070 | +89.8% | +95.4% |
+
+**Average Improvements:**
+- **Source (same dynamics): +91.4%**
+- **Target (different dynamics): +93.5%** ⬅️ Solves transfer!
+
+**Status: ✅ SUPPORTED** — Attention+Invariant solves BOTH temporal AND transfer simultaneously!
+
+Key insight: Attention captures temporal structure while averaging provides invariance across dynamics.
+
+---
+
 ## Research Status (May 5, 2026)
 
 ### Summary

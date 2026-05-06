@@ -996,14 +996,20 @@ hypotheses:
     priority: high
     statement: Attention maintains advantage on ultra-extreme (100-150 step) multi-step tasks
     status: supported
+  - evidence: +91.4% source, +93.5% target - solves both temporal and transfer
+    id: H1.112
+    parent: H1.111
+    priority: high
+    statement: Attention+Invariant solves both ultra-extreme temporal and cross-dynamics transfer
+    status: supported
 outer_loop:
   current_experiments:
-  - 'H1.111: Ultra-extreme multi-step - SUPPORTED (+90.2%)'
-  cycle: 110
-  last_direction: H1.111 +90.2% supported
+  - 'H1.112: Attention+Invariant transfer - SUPPORTED (+93.5%)'
+  cycle: 111
+  last_direction: H1.112 +93.5% supported (solves both temporal + transfer)
   next_steps:
-  - Test H1.111 on real robot validation
   - Paper writing integration
+  - Real robot validation
   - Explore new literature directions
   pending_hypotheses:
   - evidence: +67.5% platform-specific, -89.7% cross-platform generalization
