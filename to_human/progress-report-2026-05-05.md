@@ -1,7 +1,7 @@
 # Progress Report — Cognitive Graph Validation
 
 **Date**: May 5, 2026  
-**Research Cycle**: 105  
+**Research Cycle**: 106  
 **Status**: ACTIVE
 
 ---
@@ -27,7 +27,13 @@ The cognitive graph architecture research continues to produce strong results. B
 ### H3.47: SRH + Invariant Combined
 - **Status**: ✅ SUPPORTED (+74.4% combined)
 - **Finding**: Combining SRH with invariant learning solves BOTH temporal reasoning AND transfer
-- **Evidence**: 
+- **Evidence**: +74.4% average improvement combining both approaches
+
+### H3.48: SRH on Extreme Long Sequences (100+ timesteps)
+- **Status**: ✅ SUPPORTED (+11.6%)
+- **Finding**: Simple SRH alone beats SRH+Attention at extreme lengths. Attention overhead not justified at 100+ steps
+- **Evidence**: +11.6% for SRH, +7.3% for SRH+Attention
+- **Insight**: SRH's pooling effect already captures long-range dependencies at extreme lengths 
   - Temporal: +61.5%
   - Transfer: +27.8% (via attention component)
   - Combined: +74.4%
