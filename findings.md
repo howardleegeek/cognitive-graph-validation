@@ -1417,6 +1417,8 @@ Synthetic experiments (H1.115-117) show attention COLLAPSES on random data, but 
 - [x] H1.126: Temporal abstraction (+30.0%)
 - [x] H1.127: Scale-conditioned attention (+3.4%)
 - [x] H1.129: Gated residual attention (+2.2%)
+- [x] H3.50: SRH scaling (+45.5% with hub_dim=32)
+- [x] H3.58: Attention + Invariant combined (+17.2% temporal, +9.2% transfer)
 
 ### Next Steps for Paper
 

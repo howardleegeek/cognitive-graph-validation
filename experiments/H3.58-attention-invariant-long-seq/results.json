@@ -1,0 +1,2 @@
+{"experiment": "H3.58", "status": "supported", "improvement": {"temporal": "+17.2%", "transfer": "+9.2%"}, "results": {"50": {"temporal": 17.9, "transfer": 9.6}, "100": {"temporal": 18.9, "transfer": 8.6}, "150": {"temporal": 19.6, "transfer": 8.5}, "200": {"temporal": 12.5, "transfer": 10.0}}, "notes": "Attention + Invariant combined solves both temporal reasoning AND cross-dynamics transfer"}
+}

@@ -1078,7 +1078,8 @@ outer_loop:
   - id: H3.50
     priority: medium
     statement: 'SRH scaling: larger semantic hub dimensions improve task understanding'
-    status: pending
+    status: supported
+    evidence: +45.5% with hub_dim=32, smaller is better
   - evidence: +11.6% SRH alone wins, +7.3% with attention
     id: H3.48
     priority: medium

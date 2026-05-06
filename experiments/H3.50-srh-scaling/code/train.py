@@ -62,11 +62,11 @@ def train_eval(agent, episodes=100):
     optimizer = torch.optim.Adam(agent.parameters(), lr=3e-4)
     for ep in range(episodes):
         state = torch.randn(8, 16, device=device)
-        target = state + torch.randn_like(state) * 0.1
+        target = torch.randn(8, 8, device=device) * 0.5
         action, _ = agent(state)
         if isinstance(action, tuple):
             action = action[0]
-        loss = nn.MSELoss()(action.mean(dim=0, keepdim=True), target.mean(dim=0, keepdim=True))
+        loss = nn.MSELoss()(action, target)
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
@@ -84,17 +84,17 @@ def run():
     results = {}
     hub_dims = [32, 64, 128, 256, 512]
     
-    for hdim in hub_dims:
-        print(f"Testing hub_dim = {hd im}...")
+    for hd in hub_dims:
+        print(f"Testing hub_dim = {hd}...")
         
-        srh = SRHub(16, 8, hdim).to(device)
+        srh = SRHub(16, 8, hd).to(device)
         srh_perf = train_eval(srh)
         
         base = Baseline(16, 8).to(device)
         base_perf = train_eval(base)
         
         imp = (base_perf - srh_perf) / (base_perf + 1e-6) * 100
-        results[hd im] = imp
+        results[hd] = imp
         
         print(f"  SRH: {srh_perf:.4f}, Base: {base_perf:.4f}, Delta: {imp:+.1f}%")
     
@@ -102,8 +102,8 @@ def run():
     best_hdim = max(results.keys(), key=lambda k: results[k])
     best_imp = results[best_hdim]
     
-    for hdim in hub_dims:
-        print(f"  hub_dim={hd im}: {results[hd im]:+.1f}%")
+    for hd in hub_dims:
+        print(f"  hub_dim={hd}: {results[hd]:+.1f}%")
     
     print(f"\nBest: hub_dim={best_hdim} with {best_imp:+.1f}%")
     

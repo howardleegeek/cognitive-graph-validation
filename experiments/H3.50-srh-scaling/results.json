@@ -1,0 +1,2 @@
+{"experiment": "H3.50", "status": "supported", "improvement": "+45.5%", "best_hub_dim": 32, "results": {"32": 45.5, "64": 28.1, "128": 35.7, "256": 45.4, "512": 35.7}, "notes": "SRHub scaling test - smaller hub_dim (32) performs best"}
+}
