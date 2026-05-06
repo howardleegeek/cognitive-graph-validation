@@ -1074,13 +1074,18 @@ hypotheses:
   priority: high
   statement: Attention on complex multi-step tasks (20-40 steps)
   status: supported
-- evidence: +10.0% avg improvement on stochastic dynamics
-  id: H1.135
+- evidence: +76.5% avg on 50-80 step ultra-complex tasks
+  id: H1.136
   parent: H1
   priority: high
-  statement: Attention on stochastic dynamics
+  statement: Attention maintains advantage on ultra-complex (50-80 step) multi-step tasks
   status: supported
-outer_loop:
+- evidence: +19.6% avg improvement with decay scaling
+  id: H3.64
+  parent: H3
+  priority: medium
+  statement: Decay attention continues to outperform on longer sequences (30-50 steps)
+  status: supported
   current_experiments:
   - 'H1.133: Key-value decay - REFUTED'
   - 'H1.132: Gaussian kernel - REFUTED'
