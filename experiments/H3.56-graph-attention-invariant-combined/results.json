@@ -1,0 +1,66 @@
+{
+  "temporal": {
+    "Graph + Attention": {
+      "8": 0.0001,
+      "15": 0.0002,
+      "25": 0.0002,
+      "40": 0.0002,
+      "50": 0.0002
+    },
+    "Graph Only": {
+      "8": 0.0001,
+      "15": 0.0001,
+      "25": 0.0002,
+      "40": 0.0003,
+      "50": 0.0003
+    },
+    "Attention Only": {
+      "8": 0.0001,
+      "15": 0.0002,
+      "25": 0.0002,
+      "40": 0.0002,
+      "50": 0.0002
+    },
+    "Baseline (concat)": {
+      "8": 0.0001,
+      "15": 0.0002,
+      "25": 0.0002,
+      "40": 0.0002,
+      "50": 0.0002
+    }
+  },
+  "transfer": {
+    "Graph + Attention": {
+      "high_friction": 0.0004,
+      "low_friction": 0.0002,
+      "heavy_mass": 0.0006,
+      "light_mass": 0.0022
+    },
+    "Graph Only": {
+      "high_friction": 0.0004,
+      "low_friction": 0.0002,
+      "heavy_mass": 0.0006,
+      "light_mass": 0.0024
+    },
+    "Attention Only": {
+      "high_friction": 0.0004,
+      "low_friction": 0.0002,
+      "heavy_mass": 0.0006,
+      "light_mass": 0.0023
+    },
+    "Baseline (concat)": {
+      "high_friction": 0.0004,
+      "low_friction": 0.0002,
+      "heavy_mass": 0.0006,
+      "light_mass": 0.0025
+    }
+  },
+  "best_combined": "Attention Only",
+  "best_combined_mse": 0.0005,
+  "improvement": {
+    "Graph + Attention": "+5.0% vs baseline",
+    "Graph Only": "-4.7% vs baseline",
+    "Attention Only": "+5.2% vs baseline",
+    "Baseline (concat)": "+0.0% vs baseline"
+  }
+}

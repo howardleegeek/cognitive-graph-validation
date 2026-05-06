@@ -2875,7 +2875,46 @@ Based on validated results:
 
 ### Research Status Update (May 1, 2026)
 
-| # | Hypothesis | Status | Key Finding |
+---
+
+### H3.56: Graph + Attention + Invariant Combined (May 6, 2026)
+
+| Architecture | Temporal MSE | Transfer MSE | Best Combined |
+|--------------|-------------|-------------|---------------|
+| Graph + Attention | 0.0002 | 0.0008 | +5.0% vs baseline |
+| Graph Only | 0.0002 | 0.0009 | -4.7% vs baseline |
+| Attention Only | 0.0002 | 0.0009 | +5.2% vs baseline |
+| Baseline (concat) | 0.0002 | 0.0009 | baseline |
+
+**Best Combined: Attention Only (MSE: 0.0005)**
+
+| Method | Improvement vs Baseline |
+|--------|-------------------|
+| Graph + Attention | +5.0% |
+| Graph Only | -4.7% |
+| Attention Only | +5.2% |
+
+**Status: ⚠️ INCONCLUSIVE** — In this synthetic setting, attention provides marginal benefit (+5.2%) but graph-only actually hurts (-4.7%). The combination doesn't provide synergy beyond what attention alone achieves.
+
+**Key Finding**: Attention dominates over graph in this synthetic setting - attention provides +5.2% improvement while graph hurts performance by -4.7%.
+
+---
+
+## Current Status (May 6, 2026 - Cycle 118)
+
+| Hypothesis | Status | Key Finding |
+|-----------|--------|-----------|
+| H1 | ✅ +25.6% | Unified early fusion wins |
+| H1.1-3 | ✅ +22-28% | Multi-step, generalization |
+| H1.41-54 | ✅ +99% | Attention mechanisms |
+| H1.112 | ✅ +93.5% | Attention+Invariant |
+| H1.122 | ✅ +89.5% | Adaptive decay |
+| H1.123 | ✅ +94.7% | Real robot validation |
+| H2.x | ✅ +56-75% | Graph for temporal |
+| H3.56 | ⚠️ INCONCLUSIVE | Attention > Graph |
+| H3 | ❌ simple, ✅ complex | Task-dependent |
+
+**Total: 30+ SUPPORTED, 2 INCONCLUSIVE, 14 REFUTED**
 |---|------------|--------|-------------|
 | H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
 | H1.102 | Unified + SSM | ✅ +28.9% | Combined best |
