@@ -1,0 +1,34 @@
+{
+  "experiment": "H3.55",
+  "results": {
+    "dim_256": {
+      "baseline_ms": 40.06028175354004,
+      "combined_ms": 82.74197578430176,
+      "overhead_pct": 106.5436690968606
+    },
+    "dim_512": {
+      "baseline_ms": 160.5660915374756,
+      "combined_ms": 334.9330425262451,
+      "overhead_pct": 108.59512697802253
+    },
+    "dim_1024": {
+      "baseline_ms": 619.9970245361328,
+      "combined_ms": 1251.2831687927246,
+      "overhead_pct": 101.82083449979542
+    },
+    "dim_2048": {
+      "baseline_ms": 3066.732883453369,
+      "combined_ms": 5334.2297077178955,
+      "overhead_pct": 73.93851732242022
+    },
+    "dim_4096": {
+      "baseline_ms": 10374.097108840942,
+      "combined_ms": 20591.246843338013,
+      "overhead_pct": 98.48712256404349
+    }
+  },
+  "summary": {
+    "avg_overhead": 97.87705409222846,
+    "status": "SUPPORTED"
+  }
+}

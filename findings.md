@@ -3370,3 +3370,34 @@ H3.47 showed SRH + Invariant combined achieves +74.4% - we should test this comb
 | **Combined** | 0.1026 | 0.0884 | 0.0815 | **+81.1%** |
 
 **Status: ✅ SUPPORTED** — Combined architecture achieves maximum performance (+81.1%).
+
+---
+
+### H3.53: Combined on Extreme Long Sequences (May 5, 2026)
+
+| Length | Baseline MSE | Combined MSE | Improvement |
+|--------|-------------|--------------|--------------|
+| 150 steps | 0.2281 | 0.0940 | +58.8% |
+| 200 steps | 0.1718 | 0.0805 | +53.1% |
+| 250 steps | 0.1451 | 0.0707 | +51.3% |
+| 300 steps | 0.1192 | 0.0625 | +47.5% |
+
+**Average: +52.7%**
+
+**Status: ✅ SUPPORTED** — Combined architecture scales to extreme long sequences.
+
+---
+
+### H3.54: Combined Cross-Platform Transfer (May 5, 2026)
+
+| Target Platform | Improvement |
+|-----------------|--------------|
+| panda → aloha | +76.9% |
+| panda → franka | +77.0% |
+| panda → ur5 | +93.0% |
+| panda → widowx | -0.8% |
+| Same platform | +84.1% |
+
+**Same platform: +84.1%, Cross-platform avg: +61.6%**
+
+**Status: ✅ SUPPORTED** — Combined architecture improves both same and cross-platform generalization.
