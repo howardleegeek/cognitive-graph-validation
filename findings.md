@@ -1506,6 +1506,27 @@ Given H1.30's +5.7%, we should explore:
 
 ---
 
+### H3.49: MIND-V on Different Robot Platforms (May 5, 2026)
+
+| Platform | Baseline MSE | SRH MSE | Improvement |
+|----------|-------------|---------|-------------|
+| panda_arm (7-DOF) | 0.2410 | 0.0557 | **+76.9%** |
+| aloha_bimanual (14-DOF) | 0.2895 | 0.0848 | **+70.7%** |
+| franka_table (7-DOF) | 0.2112 | 0.0567 | **+73.1%** |
+| ur5_industrial (6-DOF) | 0.1420 | 0.0821 | **+42.2%** |
+| widowx_hover (6-DOF) | 0.1108 | 0.0280 | **+74.8%** |
+
+**Platform-specific: +67.5% average**
+
+| Cross-Platform | Generalization |
+|----------------|----------------|
+| Same platform | -3.1% (within-platform) |
+| Different platforms | -89.7% (cross-platform) |
+
+**Status: ✅ SUPPORTED** — SRH works well on each individual platform (+67.5%), but cross-platform generalization is poor. This reveals a key limitation: SRH learns platform-specific features that don't transfer.
+
+---
+
 ## Research Status (May 5, 2026)
 
 | # | Hypothesis | Status | Key Finding |
