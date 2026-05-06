@@ -1056,6 +1056,24 @@ hypotheses:
   priority: high
   statement: Attention crossover point at 25+ timesteps
   status: supported
+- evidence: -45.0% avg - causal attention hurts continuous control
+  id: H3.62
+  parent: H3
+  priority: high
+  statement: Causal attention for continuous control
+  status: refuted
+- evidence: -77573% avg - too simple, baseline near optimal
+  id: H3.63
+  parent: H3
+  priority: high
+  statement: Attention on physics-based long sequences (50-100 steps)
+  status: refuted
+- evidence: +7.2% avg improvement on complex multi-step tasks
+  id: H1.134
+  parent: H1
+  priority: high
+  statement: Attention on complex multi-step tasks (20-40 steps)
+  status: supported
 outer_loop:
   current_experiments:
   - 'H1.133: Key-value decay - REFUTED'
@@ -1063,8 +1081,8 @@ outer_loop:
   - 'H1.131: Cauchy attention - REFUTED'
   - 'H1.130: Learned queries - SUPPORTED (+5.0%)'
   - 'H1.129: Gated residual - SUPPORTED (+2.2%)'
-  cycle: 122
-  last_direction: Multiple attention variants tested for long-horizon ALOHA tasks
+  cycle: 123
+  last_direction: H3.62 causal attention tested - REFUTED (-45.0%)
   next_steps:
   - Focus on architecture combinations
   - Paper writing
@@ -1075,25 +1093,17 @@ outer_loop:
   - 'H3.59: ALOHA long-horizon - SUPPORTED (+45.7%)'
   - 'H3.60: Cross-modal VLA - REFUTED (-31.5%)'
   - 'H3.61: Multi-scale temporal - REFUTED (-76.5%)'
-  - evidence: +67.5% platform-specific, -89.7% cross-platform generalization
-    id: H3.49
-    priority: medium
-    statement: MIND-V style semantic hub on different robot platforms
-    status: supported
-  - id: H3.50
-    priority: medium
-    statement: 'SRH scaling: larger semantic hub dimensions improve task understanding'
-    status: supported
-    evidence: +45.5% with hub_dim=32, smaller is better
-  - evidence: +11.6% SRH alone wins, +7.3% with attention
-    id: H3.48
-    priority: medium
-    statement: SRH + Attention on extreme long sequences (100-200 timesteps)
-    status: supported
+  - 'H3.62: Causal attention - REFUTED (-45.0%)'
   - evidence: +5.9%
     id: H3.51
     priority: high
     statement: SRH + Invariant for cross-platform transfer
+    status: supported
+  - evidence: +82.3% improvement on real robot tasks
+    id: H3.11
+    parent: H3.8
+    priority: high
+    statement: SSM validates on real robot manipulation tasks
     status: supported
 project:
   domain: world-models

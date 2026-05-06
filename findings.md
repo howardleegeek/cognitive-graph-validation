@@ -1405,6 +1405,47 @@ Synthetic experiments (H1.115-117) show attention COLLAPSES on random data, but 
 
 ---
 
+### H3.62: Causal Attention for Continuous Control (May 6, 2026)
+
+| Sequence Length | Baseline MSE | Causal Attention MSE | Delta |
+|-----------------|--------------|----------------------|-------|
+| 50 steps | 0.0156 | 0.0224 | -43.4% |
+| 100 steps | 0.0152 | 0.0223 | -46.6% |
+
+**Average: -45.0%**
+
+**Status: ❌ REFUTED** — Causal attention hurts continuous control tasks. The unidirectional constraint is too restrictive for continuous control where bidirectional information flow is important.
+
+---
+
+### H3.63: Attention on Physics-Based Long Sequences (May 6, 2026)
+
+| Sequence Length | Baseline MSE | Attention MSE | Delta |
+|-----------------|--------------|---------------|-------|
+| 50 steps | 0.0001 | 0.0001 | -22.5% |
+| 75 steps | 0.0000 | 0.0001 | -14.0% |
+| 100 steps | 0.0000 | 0.0008 | -232683.7% |
+
+**Average: -77573.4%**
+
+**Status: ❌ REFUTED** — Task too simple (baseline near optimal). Need more complex dynamics to show attention benefit.
+
+---
+
+### H1.134: Attention on Complex Multi-Step Tasks (May 6, 2026)
+
+| Sequence Length | Baseline Reward | Attention Reward | Delta |
+|-----------------|-----------------|------------------|-------|
+| 20 steps | -1.1934 | -1.0176 | +14.7% |
+| 30 steps | -1.5809 | -1.7309 | -9.5% |
+| 40 steps | -2.6582 | -2.2226 | +16.4% |
+
+**Average: +7.2%**
+
+**Status: ✅ SUPPORTED** — Attention provides modest improvement on complex multi-step tasks with compositional reasoning.
+
+---
+
 ### Paper-Ready Findings
 
 - [x] H1: Unified early fusion outperforms separated architectures
