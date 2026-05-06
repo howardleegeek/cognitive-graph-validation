@@ -1,0 +1,30 @@
+{
+  "experiment": "H3.53",
+  "timestamp": "2026-05-05T19:22:28.390110",
+  "results": {
+    "150steps": {
+      "baseline": 0.22811048376155849,
+      "combined": 0.09397367560838973,
+      "improvement": 58.803438553653045
+    },
+    "200steps": {
+      "baseline": 0.17176978241486937,
+      "combined": 0.08047567252925993,
+      "improvement": 53.14910958267972
+    },
+    "250steps": {
+      "baseline": 0.14506713597255888,
+      "combined": 0.07067845915170254,
+      "improvement": 51.27879331327519
+    },
+    "300steps": {
+      "baseline": 0.11916988137938753,
+      "combined": 0.06254227294815616,
+      "improvement": 47.51838952574982
+    }
+  },
+  "summary": {
+    "avg_improvement": 52.687432743839445,
+    "status": "SUPPORTED"
+  }
+}
