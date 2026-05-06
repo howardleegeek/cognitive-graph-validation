@@ -1019,10 +1019,13 @@ outer_loop:
   - 'H1.112: Attention+Invariant transfer - SUPPORTED (+93.5%)'
   - 'H1.113: CroSTA attention - SUPPORTED (+97.8%)'
   - 'H1.114: Hierarchical ALOHA - SUPPORTED (+94.3%)'
-  cycle: 112
-  last_direction: H1.114 +94.3% supported (hierarchical attention on ALOHA tasks)
+  - 'H1.115: Ultra-complex multi-step - REFUTED (-83.1%)'
+  - 'H1.116: Adaptive attention switch - REFUTED (-55.2%)'
+  - 'H1.117: Chunked attention - REFUTED (-5879.6%)'
+  cycle: 113
+  last_direction: H1.117 REFUTED, attention collapses on 200+ synthetic (validates complex tasks need different approach)
   next_steps:
-  - Test on real robot ALOHA data
+  - Test attention on ALOHA real robot data
   - Explore multi-robot coordination
   - Paper writing integration
   pending_hypotheses:

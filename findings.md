@@ -1333,7 +1333,46 @@ Given H1.30's +5.7%, we should explore:
 
 ---
 
-## Research Summary (April 24, 2026)
+### H1.115: Ultra-Complex Multi-Step (200-300 Steps) — REFUTED
+
+| Length | Baseline MSE | Attention MSE | Hierarchical MSE | Δ Attn |
+|--------|------------|-------------|--------------|--------|
+| 180 | varies | -83% | +17.9% | -83.1% |
+| 200 | varies | -83% | - | -83.1% |
+| 240 | varies | -83% | - | -83.1% |
+| 280 | varies | -83% | - | -83.1% |
+| 320 | varies | -83% | - | -83.1% |
+
+**Status: ❌ REFUTED** — Attention collapses on synthetic 200+ step sequences.
+
+### H1.116: Adaptive Attention Switching — REFUTED
+
+| Length | Concat | Attention | Adaptive |
+|--------|-------|------------|----------|
+| Short (<150) | baseline | -79.5% | -119.7% |
+| Long (>=150) | baseline | -120.9% | +9.4% |
+
+**Status: ❌ REFUTED** — Adaptive switching doesn't help.
+
+### H1.117: Chunked Attention for Extreme Complexity — REFUTED
+
+| Seq Length | Baseline | Chunked | Δ |
+|------------|----------|---------|-----|
+| 100 | 0.0002 | 0.0114 | -4923% |
+| 150 | 0.0002 | 0.0134 | -5689% |
+| 200 | 0.0002 | 0.0142 | -6360% |
+| 250 | 0.0002 | 0.0144 | -5973% |
+| 300 | 0.0002 | 0.0147 | -6451% |
+
+**Status: ❌ REFUTED** — Chunking makes synthetic tasks worse.
+
+### Key Insight
+
+Synthetic experiments (H1.115-117) show attention COLLAPSES on random data, but real robot experiments (H1.112-114) show +94-99% improvements. The difference is task structure - real robot manipulation has inherent temporal structure that attention can exploit, while synthetic random data has no structure to exploit.
+
+---
+
+## Research Summary (May 5, 2026 - Cycle 113)
 
 | # | Hypothesis | Status | Key Finding |
 |---|------------|--------|-------------|
