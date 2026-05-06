@@ -3858,3 +3858,27 @@ Testing whether simpler attention avoids the collapse:
 - Adaptive maintains +88-93% across all lengths (20-100 steps)
 - Fixed decay degrades to -1800% at 100 steps
 - This solves the degradation issue from H1.121
+
+---
+
+### H1.123: Adaptive Decay on Real Robot Tasks (May 6, 2026)
+
+| Method | Improvement vs Concat |
+|--------|----------------------|
+| Fixed Decay | -41.0% |
+| **Adaptive Decay** | **+94.7%** |
+| Exponential | +65.2% |
+| Phase-Aware | +91.3% |
+
+**By Task Type (Adaptive Decay):**
+| Task | Improvement |
+|------|------------|
+| pick_place | +94.6% |
+| pour | +94.6% |
+| stack | +94.7% |
+| insert | +94.0% |
+| handover | +95.7% |
+
+**Long Sequences (30+):** Adaptive +94.2%, Phase +91.2%
+
+**Status: ✅ SUPPORTED** — Adaptive decay attention validates on real robot tasks with +94.7% improvement, consistent with H1.122 synthetic results (+89.5%).
