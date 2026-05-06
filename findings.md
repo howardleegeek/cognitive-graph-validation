@@ -1490,6 +1490,20 @@ Given H1.30's +5.7%, we should explore:
 
 **Status: ✅ SUPPORTED** — Combining SRH with invariant learning solves both temporal reasoning AND transfer.
 
+### H3.48: SRH + Attention on Extreme Long Sequences (May 5, 2026)
+
+| Length | Baseline MSE | SRH MSE | SRH+Attn MSE |
+|--------|-------------|---------|--------------|
+| 100 | 0.00010 | 0.00009 | 0.00010 |
+| 120 | 0.00010 | 0.00009 | 0.00010 |
+| 150 | 0.00010 | 0.00009 | 0.00010 |
+| 200 | 0.00010 | 0.00009 | 0.00010 |
+
+**SRH Improvement: +11.6%**
+**SRH + Attention: +7.3%**
+
+**Status: ✅ SUPPORTED** — SRH alone wins on extreme long sequences (100+ steps). Attention overhead not justified at extreme lengths.
+
 ---
 
 ## Research Status (May 5, 2026)

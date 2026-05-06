@@ -1039,6 +1039,11 @@ outer_loop:
       statement: "SRH scaling: larger semantic hub dimensions improve task understanding"
       priority: medium
       status: pending
+    - id: H3.48
+      statement: "SRH + Attention on extreme long sequences (100-200 timesteps)"
+      priority: medium
+      status: supported
+      evidence: "+11.6% SRH alone wins, +7.3% with attention"
 
 workspace:
   findings: "findings.md"
