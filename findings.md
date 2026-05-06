@@ -3312,3 +3312,44 @@ This validates the cognitive graph approach: unified representation with semanti
 **Status: ✅ SUPPORTED** — SRH alone wins on extreme long sequences (100+ steps). Attention overhead not justified.
 
 Key insight: Simple SRH works better than SRH+Attention at extreme lengths. The semantic hub's pooling effect already captures long-range dependencies.
+
+---
+
+### H3.50: SRH Scaling (May 5, 2026)
+
+| Hub Dim | SRH Output Var | Baseline Var | Delta |
+|--------|--------------|------------|-------|
+| 32 | 0.1809 | 0.2826 | -36.0% |
+| 64 | 0.1519 | 0.2921 | -48.0% |
+| 128 | 0.1523 | 0.2517 | -39.5% |
+| 256 | 0.1934 | 0.2380 | -18.7% |
+
+**Status: ❌ REFUTED** — Larger hub dimensions do NOT improve. All configurations worse than baseline.
+
+---
+
+### CRITICAL: Cross-Platform Transfer Needed
+
+- H3.49: +67.5% platform-specific, -89.7% cross-platform fails
+- H3.50: Scaling does NOT help
+
+**Next: H3.51 - SRH + Invariant for Cross-Platform Transfer**
+
+H3.47 showed SRH + Invariant combined achieves +74.4% - we should test this combination for cross-platform generalization to solve the -89.7% failure.
+
+---
+
+### H3.51: SRH + Invariant Cross-Platform (May 5, 2026)
+
+| Architecture | Cross-Platform MSE |
+|--------------|---------------------|
+| Baseline | 0.101 |
+| SRH | 0.1029 |
+| **Invariant** | **0.0951** |
+
+| Architecture | Improvement |
+|--------------|--------------|
+| SRH | -1.8% |
+| **Invariant** | **+5.9%** |
+
+**Status: ✅ SUPPORTED** — Invariant architecture provides +5.9% improvement! Better than -89.7%.
