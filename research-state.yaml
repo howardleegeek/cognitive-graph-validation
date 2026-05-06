@@ -927,6 +927,12 @@ hypotheses:
     evidence: "+77.6% avg improvement, SSM adds +5.5% over standard unified"
     parent: H1
     priority: high
+  - id: H1.110
+    statement: "Attention on extreme multi-step (50-100 step) tasks"
+    status: supported
+    evidence: "+33.3% avg, +36.7% combined"
+    parent: H1
+    priority: high
   - id: H3.34
     statement: "Attention crossover at 25+ timesteps with increasing benefit"
     status: supported
@@ -1007,14 +1013,15 @@ hypotheses:
     priority: high
 
 outer_loop:
-  cycle: 103
-  last_direction: "H3.42 REFUTED (-81%), H3.44 REFUTED (-26%), H3.45 SUPPORTED (+61.5%), H3.46 SUPPORTED (+27.8%)"
+  cycle: 104
+  last_direction: "H3.45 +61.5%, H3.46 +27.8%, H1.110 +33.3%"
   current_experiments:
-    - "H3.46: SRH + Attention - SUPPORTED (+27.8%)"
+    - "H3.46: SRH+Attention - SUPPORTED (+27.8%)"
+    - "H1.110: Attention extreme multi-step - SUPPORTED (+33.3%)"
   next_steps:
-    - "Test H1.110: Attention on extreme multi-step tasks"
-    - "Explore BSB component isolation"
-    - "Paper writing with new findings"
+    - "Continue auto-research"
+    - "Paper writing integration"
+    - "Explore new literature directions"
 
 workspace:
   findings: "findings.md"
