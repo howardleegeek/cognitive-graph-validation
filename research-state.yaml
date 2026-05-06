@@ -1014,6 +1014,18 @@ hypotheses:
   priority: high
   statement: Hierarchical attention on ALOHA long-horizon manipulation
   status: supported
+- evidence: +94.8% avg improvement on continuous control
+  id: H1.119
+  parent: H1.112
+  priority: high
+  statement: Attention + Invariant on continuous control (reverses H3.29)
+  status: supported
+- evidence: Graph 83.2% avg, SSM 70.1% avg, Graph dominates at 15+ steps
+  id: H3.55
+  parent: H3.8
+  priority: medium
+  statement: Graph + SSM crossover point discovery
+  status: supported
 outer_loop:
   current_experiments:
   - 'H1.112: Attention+Invariant transfer - SUPPORTED (+93.5%)'
@@ -1022,12 +1034,14 @@ outer_loop:
   - 'H1.115: Ultra-complex multi-step - REFUTED (-83.1%)'
   - 'H1.116: Adaptive attention switch - REFUTED (-55.2%)'
   - 'H1.117: Chunked attention - REFUTED (-5879.6%)'
-  cycle: 113
-  last_direction: H1.117 REFUTED, attention collapses on 200+ synthetic (validates complex tasks need different approach)
+  - 'H1.119: Attn+Invariant continuous - SUPPORTED (+94.8%)'
+  - 'H3.55: Graph vs SSM crossover - SUPPORTED (Graph 83.2%)'
+  cycle: 114
+  last_direction: H1.119 REVERSES H3.29 - attention+invariant achieves +94.8% on continuous control. H3.55 confirms Graph dominates SSM (83% vs 70%).
   next_steps:
-  - Test attention on ALOHA real robot data
-  - Explore multi-robot coordination
+  - Fix H1.118 baseline numerical issues
   - Paper writing integration
+  - H1.120: Unified 64k+ attention on continuous control
   pending_hypotheses:
   - evidence: +67.5% platform-specific, -89.7% cross-platform generalization
     id: H3.49

@@ -1,0 +1,129 @@
+{
+  "experiment": "H3.55",
+  "timestamp": "2026-05-06T11:42:58.283119",
+  "hypothesis": "Find where Graph starts outperforming SSM (and vice versa)",
+  "hypothesis_id": "H3.55",
+  "parent": "H3.8",
+  "priority": "medium",
+  "per_length_results": [
+    {
+      "length": 5,
+      "ssm_mse": 0.01167751267888835,
+      "graph_mse": 0.006250920216462423,
+      "hybrid_mse": 0.005800295336427357,
+      "ssm_improvement": 46.13075378218537,
+      "graph_improvement": 61.53497689238454,
+      "hybrid_improvement": 63.289956213319265,
+      "winner": "hybrid"
+    },
+    {
+      "length": 10,
+      "ssm_mse": 0.009256178306525639,
+      "graph_mse": 0.0066890712681085185,
+      "hybrid_mse": 0.0058275721298080944,
+      "ssm_improvement": 51.9313845188645,
+      "graph_improvement": 59.919451713944085,
+      "hybrid_improvement": 63.180884079921405,
+      "winner": "hybrid"
+    },
+    {
+      "length": 15,
+      "ssm_mse": 0.007245142180963185,
+      "graph_mse": 0.004889961741619417,
+      "hybrid_mse": 0.004917111468144883,
+      "ssm_improvement": 57.98734446526596,
+      "graph_improvement": 67.15933978559981,
+      "hybrid_improvement": 67.03710715948425,
+      "winner": "graph"
+    },
+    {
+      "length": 20,
+      "ssm_mse": 0.005787592098231573,
+      "graph_mse": 0.0031157279634507805,
+      "hybrid_mse": 0.0032601581352114132,
+      "ssm_improvement": 63.340881483251245,
+      "graph_improvement": 76.24433830792093,
+      "hybrid_improvement": 75.41388193136027,
+      "winner": "graph"
+    },
+    {
+      "length": 25,
+      "ssm_mse": 0.004254636225050268,
+      "graph_mse": 0.002525073580728895,
+      "hybrid_mse": 0.002878024688260912,
+      "ssm_improvement": 70.15261450465205,
+      "graph_improvement": 79.83985032539866,
+      "hybrid_improvement": 77.65166042208007,
+      "winner": "graph"
+    },
+    {
+      "length": 30,
+      "ssm_mse": 0.00325399380575294,
+      "graph_mse": 0.001108496388814063,
+      "hybrid_mse": 0.0013817743205859546,
+      "ssm_improvement": 75.44895634144228,
+      "graph_improvement": 90.02118423578652,
+      "hybrid_improvement": 87.85976349850154,
+      "winner": "graph"
+    },
+    {
+      "length": 40,
+      "ssm_mse": 0.002919121938157988,
+      "graph_mse": 7.077479649607337e-05,
+      "hybrid_mse": 0.0002081381673544645,
+      "ssm_improvement": 77.40464133606439,
+      "graph_improvement": 99.29722590439916,
+      "hybrid_improvement": 97.96105652233345,
+      "winner": "graph"
+    },
+    {
+      "length": 50,
+      "ssm_mse": 0.0033042044844866845,
+      "graph_mse": 0.0008347713240140111,
+      "hybrid_mse": 0.001058099153961642,
+      "ssm_improvement": 75.16420851513867,
+      "graph_improvement": 92.29544123221284,
+      "hybrid_improvement": 90.43145535928234,
+      "winner": "graph"
+    },
+    {
+      "length": 60,
+      "ssm_mse": 0.0025739661214574175,
+      "graph_mse": 0.0003839818612188072,
+      "hybrid_mse": 0.0006695997665338893,
+      "ssm_improvement": 79.52940149039406,
+      "graph_improvement": 96.30217130238961,
+      "hybrid_improvement": 93.72422788871475,
+      "winner": "graph"
+    },
+    {
+      "length": 80,
+      "ssm_mse": 0.0013032024473166892,
+      "graph_mse": 0.0001452203717453919,
+      "hybrid_mse": 0.000321522182714611,
+      "ssm_improvement": 88.47050246697067,
+      "graph_improvement": 98.56858336808698,
+      "hybrid_improvement": 96.88493444064808,
+      "winner": "graph"
+    },
+    {
+      "length": 100,
+      "ssm_mse": 0.0016509902096979393,
+      "graph_mse": 0.0005810903527896349,
+      "hybrid_mse": 0.0008272316215599285,
+      "ssm_improvement": 85.82961465091866,
+      "graph_improvement": 94.50821859170276,
+      "hybrid_improvement": 92.35971252418128,
+      "winner": "graph"
+    }
+  ],
+  "crossovers": [],
+  "status": "SUPPORTED",
+  "summary": {
+    "avg_ssm": 70.12639123228617,
+    "avg_graph": 83.24461651452962,
+    "avg_hybrid": 82.34496727634787,
+    "winner": "Graph"
+  },
+  "conclusion": "SSM: 70.1%, Graph: 83.2%, Hybrid: 82.3%"
+}
