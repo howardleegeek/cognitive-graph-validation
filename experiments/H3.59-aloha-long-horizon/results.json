@@ -1,0 +1,2 @@
+{"experiment": "H3.59", "status": "supported", "improvement": "+45.7%", "results": {"50": 41.5, "100": 53.6, "150": 43.2, "200": 44.3}, "notes": "Attention dramatically improves ALOHA-style long-horizon manipulation"}
+}

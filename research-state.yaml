@@ -1063,13 +1063,18 @@ outer_loop:
   - 'H1.131: Cauchy attention - REFUTED'
   - 'H1.130: Learned queries - SUPPORTED (+5.0%)'
   - 'H1.129: Gated residual - SUPPORTED (+2.2%)'
-  cycle: 121
-  last_direction: Multiple attention variants tested, standard attention remains strong baseline
+  cycle: 122
+  last_direction: Multiple attention variants tested for long-horizon ALOHA tasks
   next_steps:
   - Focus on architecture combinations
   - Paper writing
   - Real robot validation
-  pending_hypotheses:
+  current_experiments:
+  - 'H3.50: SRH scaling - SUPPORTED (+45.5%)'
+  - 'H3.58: Attention + Invariant combined - SUPPORTED (+17.2% temporal, +9.2% transfer)'
+  - 'H3.59: ALOHA long-horizon - SUPPORTED (+45.7%)'
+  - 'H3.60: Cross-modal VLA - REFUTED (-31.5%)'
+  - 'H3.61: Multi-scale temporal - REFUTED (-76.5%)'
   - evidence: +67.5% platform-specific, -89.7% cross-platform generalization
     id: H3.49
     priority: medium
