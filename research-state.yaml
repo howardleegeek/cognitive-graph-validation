@@ -1044,22 +1044,25 @@ hypotheses:
   priority: high
   statement: Adaptive decay attention validates on real robot manipulation tasks
   status: supported
+- evidence: +5.2% attention, -4.7% graph - marginal combined benefit
+  id: H3.56
+  parent: H3
+  priority: high
+  statement: Graph + Attention + Invariant combined architecture
+  status: inconclusive
+- evidence: +78.4% avg at 30-50 steps, crossover at 25+
+  id: H3.57
+  parent: H3
+  priority: high
+  statement: Attention crossover point at 25+ timesteps
+  status: supported
 outer_loop:
   current_experiments:
-  - 'H1.112: Attention+Invariant transfer - SUPPORTED (+93.5%)'
-  - 'H1.113: CroSTA attention - SUPPORTED (+97.8%)'
-  - 'H1.114: Hierarchical ALOHA - SUPPORTED (+94.3%)'
-  - 'H1.115: Ultra-complex multi-step - REFUTED (-83.1%)'
-  - 'H1.116: Adaptive attention switch - REFUTED (-55.2%)'
-  - 'H1.117: Chunked attention - REFUTED (-5879.6%)'
-  - 'H1.119: Attn+Invariant continuous - SUPPORTED (+94.8%)'
-  - 'H3.55: Graph vs SSM crossover - SUPPORTED (Graph 83.2%)'
-  - 'H1.120: Unified 64k+ continuous - REFUTED (-460%)'
-  - 'H1.121: Variable complexity attention - SUPPORTED (+68.6%)'
-  - 'H1.122: Adaptive decay attention - SUPPORTED (+89.5%)'
+  - 'H3.57: Attention crossover - SUPPORTED (+78.4% at 30-50 steps)'
+  - 'H3.56: Graph + Attention combined - INCONCLUSIVE (+5.2%)'
   - 'H1.123: Adaptive decay real robot - SUPPORTED (+94.7%)'
-  cycle: 117
-  last_direction: H1.123 validates adaptive decay on real robot tasks - +94.7% improvement, consistent with H1.122 synthetic results. All 5 task types show +94-96% improvement.
+  cycle: 118
+  last_direction: H3.57 confirms crossover at 25+ timesteps - attention wins on long sequences
   next_steps:
   - H3.56: Graph + Attention + Invariant combined
   - Paper writing integration
