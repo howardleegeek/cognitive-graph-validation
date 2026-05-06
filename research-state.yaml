@@ -999,16 +999,22 @@ hypotheses:
     evidence: "+61.5% avg - SRH dramatically improves task understanding"
     parent: H3
     priority: high
+  - id: H3.46
+    statement: "MIND-V SRH + Attention on long sequences (40-100 timesteps)"
+    status: supported
+    evidence: "+27.8% avg, +31.1% over SRH alone"
+    parent: H3.45
+    priority: high
 
 outer_loop:
-  cycle: 102
-  last_direction: "Literature experiments complete: H3.42 REFUTED (-81%), H3.44 REFUTED (-26%), H3.45 SUPPORTED (+61.5%)"
+  cycle: 103
+  last_direction: "H3.42 REFUTED (-81%), H3.44 REFUTED (-26%), H3.45 SUPPORTED (+61.5%), H3.46 SUPPORTED (+27.8%)"
   current_experiments:
-    - "H3.45: MIND-V SRH - SUPPORTED (+61.5%)"
+    - "H3.46: SRH + Attention - SUPPORTED (+27.8%)"
   next_steps:
-    - "Deep dive on H3.45 success - what makes SRH work?"
-    - "Test MIND-V components individually"
-    - "Paper writing - integrate new findings"
+    - "Test H1.110: Attention on extreme multi-step tasks"
+    - "Explore BSB component isolation"
+    - "Paper writing with new findings"
 
 workspace:
   findings: "findings.md"
