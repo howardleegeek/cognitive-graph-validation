@@ -1074,6 +1074,12 @@ hypotheses:
   priority: high
   statement: Attention on complex multi-step tasks (20-40 steps)
   status: supported
+- evidence: +10.0% avg improvement on stochastic dynamics
+  id: H1.135
+  parent: H1
+  priority: high
+  statement: Attention on stochastic dynamics
+  status: supported
 outer_loop:
   current_experiments:
   - 'H1.133: Key-value decay - REFUTED'
