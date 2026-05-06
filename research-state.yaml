@@ -1032,6 +1032,12 @@ hypotheses:
   priority: high
   statement: Attention+Invariant on variable-length complex multi-step tasks
   status: supported
+- evidence: +89.5% overall, +88.1% on 50+ steps, +672% over fixed decay
+  id: H1.122
+  parent: H1.121
+  priority: high
+  statement: Adaptive decay attention improves very long sequence performance
+  status: supported
 outer_loop:
   current_experiments:
   - 'H1.112: Attention+Invariant transfer - SUPPORTED (+93.5%)'
@@ -1044,12 +1050,13 @@ outer_loop:
   - 'H3.55: Graph vs SSM crossover - SUPPORTED (Graph 83.2%)'
   - 'H1.120: Unified 64k+ continuous - REFUTED (-460%)'
   - 'H1.121: Variable complexity attention - SUPPORTED (+68.6%)'
-  cycle: 115
-  last_direction: H1.121 tests attention+invariant on variable-length complex tasks - +68.6% overall, best on short sequences (+98%), degrades on very long (+16%).
+  - 'H1.122: Adaptive decay attention - SUPPORTED (+89.5%)'
+  cycle: 116
+  last_direction: H1.122 tests adaptive decay for very long sequences - +89.5% overall, +672% over fixed decay, solves degradation issue from H1.121.
   next_steps:
-  - H1.122: Attention with adaptive decay for very long sequences
-  - Paper writing integration
   - H3.56: Graph + Attention + Invariant combined
+  - Paper writing integration
+  - H1.123: Test adaptive decay on real robot tasks
   pending_hypotheses:
   - evidence: +67.5% platform-specific, -89.7% cross-platform generalization
     id: H3.49

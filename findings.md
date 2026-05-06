@@ -3827,3 +3827,34 @@ Testing whether simpler attention avoids the collapse:
 - Good on medium sequences (20 steps): +86.5%
 - Degrades on very long (40-50 steps): +16-35%
 - Better on low complexity: +80.9% vs +54.6% at high complexity
+
+---
+
+### H1.122: Adaptive Decay Attention for Very Long Sequences (May 6, 2026)
+
+| Length | Fixed Decay | Adaptive Decay | Exponential | Recency | Hybrid | Best |
+|--------|-------------|----------------|-------------|---------|--------|------|
+| 20 | +45.1% | +91.9% | +78.3% | -2680% | **+100%** | hybrid |
+| 30 | -81.9% | **+90.8%** | +53.2% | -2310% | -60% | adaptive |
+| 40 | -166.4% | **+93.1%** | +44.7% | -2499% | -97% | adaptive |
+| 50 | -245.2% | **+92.7%** | +40.7% | -3353% | -143% | adaptive |
+| 60 | -468.6% | **+90.4%** | +10.5% | -5732% | -277% | adaptive |
+| 70 | -773.2% | **+87.6%** | -29.8% | -4775% | -369% | adaptive |
+| 80 | -1155.1% | **+85.1%** | -80.3% | -5615% | -355% | adaptive |
+| 100 | -1814.6% | **+84.6%** | -157.7% | -4930% | -222% | adaptive |
+
+**Overall Improvement:**
+- Fixed Decay (baseline from H1.121): **-582.5%** (degrades on long sequences)
+- **Adaptive Decay: +89.5%** ← BEST
+- Exponential Decay: -5.0%
+- Recency-Weighted: -3986.7%
+- Hybrid (window+global): -177.8%
+
+**Improvement over Fixed: +672%**
+
+**Long Sequences (50+):** Fixed -891.3%, Adaptive +88.1%
+
+**Status: ✅ SUPPORTED** — Adaptive decay dramatically improves very long sequence performance!
+- Adaptive maintains +88-93% across all lengths (20-100 steps)
+- Fixed decay degrades to -1800% at 100 steps
+- This solves the degradation issue from H1.121
