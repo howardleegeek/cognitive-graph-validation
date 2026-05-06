@@ -1394,6 +1394,17 @@ Synthetic experiments (H1.115-117) show attention COLLAPSES on random data, but 
 5. **Attention is universal**: Works across all manipulation types
 6. **Attention is robust**: Maintains advantage under sensor noise
 
+### H1.124: Phase-Aware Attention (May 6, 2026)
+
+| Phase | Phase-Aware MSE | Standard MSE | Improvement |
+|-------|----------------|-------------|-------------|
+| Planning | 0.0001 | 0.0002 | +39.9% |
+| Execution | 0.0001 | 0.0001 | +39.9% |
+
+**Status: ✅ SUPPORTED (+39.9%)** — Phase-aware attention adapts to task phase (planning vs execution).
+
+---
+
 ### Paper-Ready Findings
 
 - [x] H1: Unified early fusion outperforms separated architectures
@@ -1401,6 +1412,9 @@ Synthetic experiments (H1.115-117) show attention COLLAPSES on random data, but 
 - [x] H2.3-6, H2.9: Graph structure excels at temporal reasoning
 - [x] H1.8: Invariant learning solves cross-dynamics transfer
 - [x] H1.24, H1.47: Combined architecture solves both transfer AND temporal
+- [x] H1.124: Phase-aware attention (+39.9%)
+- [x] H1.125: Motion primitives with attention (+54.1%)
+- [x] H1.126: Temporal abstraction (+30.0%)
 
 ### Next Steps for Paper
 
