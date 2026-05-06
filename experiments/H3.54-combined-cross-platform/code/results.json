@@ -1,0 +1,36 @@
+{
+  "experiment": "H3.54",
+  "timestamp": "2026-05-05T19:23:04.803997",
+  "results": {
+    "cross_aloha_14dof": {
+      "baseline": 0.0592234401998955,
+      "combined": 0.013652802917033796,
+      "improvement": 76.94696074569156
+    },
+    "cross_franka_7dof": {
+      "baseline": 0.08342680026843846,
+      "combined": 0.019171588834713295,
+      "improvement": 77.01986798843325
+    },
+    "cross_ur5_6dof": {
+      "baseline": 0.08179678792747641,
+      "combined": 0.005693709311485879,
+      "improvement": 93.03920183695465
+    },
+    "cross_widowx_6dof": {
+      "baseline": 0.039913021993371045,
+      "combined": 0.040218470614750236,
+      "improvement": -0.7652856289105882
+    },
+    "same_platform": {
+      "baseline": 0.09514337036462078,
+      "combined": 0.015145810417673034,
+      "improvement": 84.08106591176107
+    }
+  },
+  "summary": {
+    "same": 84.08106591176107,
+    "cross": 61.56018623554222,
+    "status": "SUPPORTED"
+  }
+}
