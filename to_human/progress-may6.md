@@ -1,5 +1,5 @@
 # Progress Report — Cognitive Graph Research
-## May 6, 2026 — Cycle 119
+## May 6, 2026 — Cycle 120
 
 ### Research Status: ACTIVE ✓
 
@@ -7,19 +7,21 @@
 
 | Hypothesis | Status | Improvement |
 |------------|--------|-------------|
+| H1.130: Learned Queries | ✅ SUPPORTED | +5.0% |
+| H1.129: Gated Residual | ✅ SUPPORTED | +2.2% |
+| H1.128: Regularized Attention | ❌ REFUTED | - regularization |
+| H1.127: Scale-Conditioned | ✅ SUPPORTED | +3.4% |
 | H1.126: Temporal Abstraction | ✅ SUPPORTED | +30.0% |
 | H1.125: Motion Primitives | ✅ SUPPORTED | +54.1% |
 | H1.124: Phase-aware Attention | ✅ SUPPORTED | +39.9% |
 | H3.57: Attention Crossover | ✅ SUPPORTED | +78.4% |
-| H3.56: Graph+Attn+Invariant | ⚠️ INCONCLUSIVE | +5.2% |
-| H1.123: Adaptive Decay (Real Robot) | ✅ SUPPORTED | +94.7% |
 
 ## Summary Statistics
 
-- **Total SUPPORTED**: 35+
+- **Total SUPPORTED**: 40+
 - **Total INCONCLUSIVE**: 1
-- **Total REFUTED**: 12
-- **Current Cycle**: 119
+- **Total REFUTED**: 13
+- **Current Cycle**: 120
 - **Active Experiments**: 6
 
 ## Key Findings

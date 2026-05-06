@@ -1058,17 +1058,17 @@ hypotheses:
   status: supported
 outer_loop:
   current_experiments:
+  - 'H1.133: Key-value decay - REFUTED'
+  - 'H1.132: Gaussian kernel - REFUTED'
+  - 'H1.131: Cauchy attention - REFUTED'
+  - 'H1.130: Learned queries - SUPPORTED (+5.0%)'
   - 'H1.129: Gated residual - SUPPORTED (+2.2%)'
-  - 'H1.128: Regularized attention - REFUTED (- regularization)'
-  - 'H1.127: Scale-conditioned - SUPPORTED (+3.4%)'
-  - 'H1.126: Temporal abstraction - SUPPORTED (+30.0%)'
-  - 'H1.125: Motion primitives - SUPPORTED (+54.1%)'
-  - 'H1.124: Phase-aware attention - SUPPORTED (+39.9%)'
-  cycle: 120
-  last_direction: H1.129 confirms gated residuals help attention (+2.2%)
+  cycle: 121
+  last_direction: Multiple attention variants tested, standard attention remains strong baseline
   next_steps:
-  - More experiments on attention mechanisms
-  - Paper writing integration
+  - Focus on architecture combinations
+  - Paper writing
+  - Real robot validation
   pending_hypotheses:
   - evidence: +67.5% platform-specific, -89.7% cross-platform generalization
     id: H3.49
