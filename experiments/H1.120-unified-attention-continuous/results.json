@@ -1,0 +1,57 @@
+{
+  "experiment": "H1.120",
+  "timestamp": "2026-05-06T11:45:05.223650",
+  "hypothesis": "Unified 64k+ dimensions with attention+invariant on continuous control",
+  "hypothesis_id": "H1.120",
+  "parent": "H1.119",
+  "priority": "high",
+  "dimension_results": {
+    "256": {
+      "concat": 3.567438532660962e-05,
+      "unified": 0.0002114945361034278,
+      "combined": 0.00019996170342748777
+    },
+    "512": {
+      "concat": 3.567438532660962e-05,
+      "unified": 0.0002114945361034278,
+      "combined": 0.0002001488648458569
+    },
+    "1024": {
+      "concat": 3.567438532660962e-05,
+      "unified": 0.0002114945361034278,
+      "combined": 0.00020191180478750626
+    },
+    "2048": {
+      "concat": 3.567438532660962e-05,
+      "unified": 0.0002114945361034278,
+      "combined": 0.0002017240598401853
+    },
+    "4096": {
+      "concat": 3.567438532660962e-05,
+      "unified": 0.0002114945361034278,
+      "combined": 0.00020089504740299161
+    },
+    "8192": {
+      "concat": 3.567438532660962e-05,
+      "unified": 0.0002114945361034278,
+      "combined": 0.00020117378585661456
+    },
+    "16384": {
+      "concat": 3.567438532660962e-05,
+      "unified": 0.0002114945361034278,
+      "combined": 0.00020020921738423173
+    },
+    "32768": {
+      "concat": 3.567438532660962e-05,
+      "unified": 0.0002114945361034278,
+      "combined": 0.00020113321277159796
+    }
+  },
+  "best_dimensions": {
+    "unified": 256,
+    "combined": 256
+  },
+  "overall_improvement": -460.5174162900571,
+  "status": "REFUTED",
+  "conclusion": "Best combined: 256 dims, -460.5% improvement"
+}

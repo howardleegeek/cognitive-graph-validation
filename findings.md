@@ -3766,4 +3766,33 @@ Testing whether simpler attention avoids the collapse:
 
 1. **Fix H1.118**: Re-run with realistic baseline
 2. **Paper writing**: Compile results into manuscript
-3. **H1.120**: Test unified architecture with 64k+ dimensions + attention on continuous control
+3. **H1.120**: REFUTED - large unified dims (256+) HURT continuous control (-460%)
+
+### Key Negative Result
+
+**H1.120: Large Unified Dimensions on Continuous Control** ❌
+
+| Dim | Unified Improvement | Combined Improvement |
+|-----|---------------------|----------------------|
+| 256 | -492.8% | -460.5% |
+| 1024 | -492.8% | -466.0% |
+| 4096 | -492.8% | -463.1% |
+| 32768 | -492.8% | -463.8% |
+
+**Key insight**: H1.119 worked because it used attention+invariant WITHOUT large dimension expansion. Adding unified dimensions (256+) adds noise that overwhelms the attention mechanism.
+
+**Takeaway**: For continuous control, use attention+invariant at NATIVE dimensions (16), NOT expanded unified dimensions.
+
+---
+
+### Architecture Selection Guide (Updated)
+
+| Task | Best Architecture | Improvement |
+|------|------------------|--------------|
+| Long sequences (25+) | Attention + Invariant (native dims) | +93-99% |
+| Cross-dynamics transfer | Attention + Invariant (native dims) | +93.5% |
+| Continuous control | Attention + Invariant (native dims) | +94.8% |
+| Continuous + Unified | ❌ AVOID large unified dims | -460% |
+| Multi-object temporal | Graph structure | +56-83% |
+| Long-horizon ALOHA | Hierarchical attention | +94.3% |
+| Precision-critical | CroSTA attention | +97.8% |
