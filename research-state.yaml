@@ -1026,6 +1026,12 @@ hypotheses:
   priority: medium
   statement: Graph + SSM crossover point discovery
   status: supported
+- evidence: +68.6% avg, +98% short seq, +86% 20-step, +16% 50-step
+  id: H1.121
+  parent: H1.112
+  priority: high
+  statement: Attention+Invariant on variable-length complex multi-step tasks
+  status: supported
 outer_loop:
   current_experiments:
   - 'H1.112: Attention+Invariant transfer - SUPPORTED (+93.5%)'
@@ -1036,12 +1042,14 @@ outer_loop:
   - 'H1.117: Chunked attention - REFUTED (-5879.6%)'
   - 'H1.119: Attn+Invariant continuous - SUPPORTED (+94.8%)'
   - 'H3.55: Graph vs SSM crossover - SUPPORTED (Graph 83.2%)'
-  cycle: 114
-  last_direction: H1.119 REVERSES H3.29 - attention+invariant achieves +94.8% on continuous control. H3.55 confirms Graph dominates SSM (83% vs 70%).
+  - 'H1.120: Unified 64k+ continuous - REFUTED (-460%)'
+  - 'H1.121: Variable complexity attention - SUPPORTED (+68.6%)'
+  cycle: 115
+  last_direction: H1.121 tests attention+invariant on variable-length complex tasks - +68.6% overall, best on short sequences (+98%), degrades on very long (+16%).
   next_steps:
-  - Fix H1.118 baseline numerical issues
+  - H1.122: Attention with adaptive decay for very long sequences
   - Paper writing integration
-  - H1.120: Unified 64k+ attention on continuous control
+  - H3.56: Graph + Attention + Invariant combined
   pending_hypotheses:
   - evidence: +67.5% platform-specific, -89.7% cross-platform generalization
     id: H3.49

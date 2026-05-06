@@ -3796,3 +3796,34 @@ Testing whether simpler attention avoids the collapse:
 | Multi-object temporal | Graph structure | +56-83% |
 | Long-horizon ALOHA | Hierarchical attention | +94.3% |
 | Precision-critical | CroSTA attention | +97.8% |
+
+---
+
+### H1.121: Attention on Variable-Length Complex Multi-Step Tasks (May 6, 2026)
+
+| Length | Complexity | Concat MSE | Attn+Inv MSE | Improvement |
+|--------|------------|------------|--------------|-------------|
+| 5 | 0.2-1.0 | 0.000074 | 0.000001 | **+98.4%** |
+| 10 | 0.2-1.0 | 0.000077 | 0.000004 | **+95.0%** |
+| 15 | 0.2-1.0 | 0.000077 | 0.000005 | **+94.0%** |
+| 20 | 0.2-1.0 | 0.000074 | 0.000010 | **+86.5%** |
+| 25 | 0.2-1.0 | 0.000071 | 0.000022 | **+68.6%** |
+| 30 | 0.2-1.0 | 0.000072 | 0.000032 | **+55.5%** |
+| 40 | 0.2-1.0 | 0.000078 | 0.000051 | **+35.0%** |
+| 50 | 0.2-1.0 | 0.000085 | 0.000071 | **+16.0%** |
+
+**Overall: +68.6%** — Attention+Invariant works well on short-medium sequences, degrades on very long.
+
+| Complexity | Improvement |
+|------------|-------------|
+| 0.2 (low) | **+80.9%** |
+| 0.4 (medium-low) | **+80.9%** |
+| 0.6 (medium-high) | **+72.2%** |
+| 0.8 (high) | **+54.6%** |
+| 1.0 (very high) | **+54.6%** |
+
+**Status: ✅ SUPPORTED** — Attention+Invariant achieves +68.6% on variable-length complex tasks.
+- Best on short sequences (5-15 steps): +94-98%
+- Good on medium sequences (20 steps): +86.5%
+- Degrades on very long (40-50 steps): +16-35%
+- Better on low complexity: +80.9% vs +54.6% at high complexity
