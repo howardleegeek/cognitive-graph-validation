@@ -1058,18 +1058,17 @@ hypotheses:
   status: supported
 outer_loop:
   current_experiments:
+  - 'H1.129: Gated residual - SUPPORTED (+2.2%)'
+  - 'H1.128: Regularized attention - REFUTED (- regularization)'
+  - 'H1.127: Scale-conditioned - SUPPORTED (+3.4%)'
   - 'H1.126: Temporal abstraction - SUPPORTED (+30.0%)'
   - 'H1.125: Motion primitives - SUPPORTED (+54.1%)'
   - 'H1.124: Phase-aware attention - SUPPORTED (+39.9%)'
-  - 'H3.57: Attention crossover - SUPPORTED (+78.4%)'
-  - 'H3.56: Graph + Attention combined - INCONCLUSIVE (+5.2%)'
-  - 'H1.123: Adaptive decay real robot - SUPPORTED (+94.7%)'
-  cycle: 119
-  last_direction: H1.126 confirms hierarchical attention improves long-horizon tasks (+30%)
+  cycle: 120
+  last_direction: H1.129 confirms gated residuals help attention (+2.2%)
   next_steps:
+  - More experiments on attention mechanisms
   - Paper writing integration
-  - H1.127: Test scale-conditioned attention
-  - Real robot validation of combined architecture
   pending_hypotheses:
   - evidence: +67.5% platform-specific, -89.7% cross-platform generalization
     id: H3.49
