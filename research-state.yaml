@@ -977,8 +977,8 @@ hypotheses:
     priority: medium
   - id: H3.42
     statement: "GWM-style action nodes improve task representation"
-    status: pending
-    evidence: "Literature: GWM uses action nodes for task representation"
+    status: refuted
+    evidence: "-81.1% avg - explicit action nodes hurt performance"
     parent: H3
     priority: high
   - id: H3.43
@@ -989,27 +989,26 @@ hypotheses:
     priority: high
   - id: H3.44
     statement: "AGT-World style hierarchical task decomposition"
-    status: pending
-    evidence: "Literature: AGT-World decomposes long-horizon tasks"
+    status: refuted
+    evidence: "-26.0% avg - hierarchical hurts in this setting"
     parent: H3
     priority: high
   - id: H3.45
     statement: "MIND-V style semantic reasoning hub integration"
-    status: pending
-    evidence: "Literature: MIND-V bridges semantic reasoning with motor video"
+    status: supported
+    evidence: "+61.5% avg - SRH dramatically improves task understanding"
     parent: H3
     priority: high
 
 outer_loop:
-  cycle: 101
-  last_direction: "Research Complete - Progress report generated. Literature updated with GWM (Graph World Model) findings. Commit and pushed."
+  cycle: 102
+  last_direction: "Literature experiments complete: H3.42 REFUTED (-81%), H3.44 REFUTED (-26%), H3.45 SUPPORTED (+61.5%)"
   current_experiments:
-    - "H3.40: Decay Attention - SUPPORTED (+30.4%)"
-    - "H3.41: Decay Scaling - INCONCLUSIVE (plateau at 0.5)"
+    - "H3.45: MIND-V SRH - SUPPORTED (+61.5%)"
   next_steps:
-    - "Paper writing - abstract, intro, methodology"
-    - "Edge case experiments on estimated hypotheses"
-    - "Literature update with GWM, AGT-World, MIND-V findings"
+    - "Deep dive on H3.45 success - what makes SRH work?"
+    - "Test MIND-V components individually"
+    - "Paper writing - integrate new findings"
 
 workspace:
   findings: "findings.md"

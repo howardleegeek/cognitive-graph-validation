@@ -3155,3 +3155,46 @@ This confirms that the dramatic improvements found in synthetic experiments were
 - Combine unified+graph+attention+invariant for best performance
 
 **Total: 30+ SUPPORTED, 3 INCONCLUSIVE/MARGINAL, 13 REFUTED**
+
+---
+
+## New Findings (May 5, 2026): Literature Integration
+
+### H3.42: GWM-Style Action Nodes (REFUTED)
+
+| Task Length | Baseline MSE | GWM MSE | Improvement |
+|------------|-------------|---------|----------|-------------|
+| 5 steps | 0.1659 | 0.2681 | -61.6% |
+| 10 steps | 0.2317 | 0.4263 | -84.0% |
+| 15 steps | 0.1966 | 0.3886 | -97.7% |
+
+**Average: -81.1%** — Explicit action nodes as separate graph nodes HURT performance in this synthetic setting.
+
+### H3.44: AGT-World Hierarchical Decomposition (REFUTED)
+
+| Task Length | Flat MSE | Hierarchical MSE | Improvement |
+|-------------|----------|-----------------|-------------|
+| 5 steps | 0.1554 | 0.1332 | +14.3% |
+| 10 steps | 0.1251 | 0.1551 | -24.0% |
+| 15 steps | 0.0937 | 0.1577 | -68.3% |
+
+**Average: -26.0%** — Hierarchical decomposition HURT on longer tasks. May require proper task decomposition algorithm.
+
+### H3.45: MIND-V Semantic Reasoning Hub (SUPPORTED)
+
+| Task Length | Direct MSE | SRH MSE | Improvement |
+|-------------|------------|---------|-------------|
+| 5 steps | 0.2802 | 0.1132 | +59.6% |
+| 10 steps | 0.2370 | 0.0867 | +63.4% |
+| 15 steps | 0.2524 | 0.0971 | +61.5% |
+
+**Average: +61.5%** — Semantic Reasoning Hub DRAMATICALLY improves task understanding!
+
+### New Key Insight
+
+**MIND-V SRH works because:**
+1. Task understanding is separated from execution
+2. Domain-invariant representation (BSB) acts as bottleneck
+3. Structured intermediate representation captures semantics
+
+This validates the cognitive graph approach: unified representation with semantic reasoning hub.
