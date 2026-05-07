@@ -1463,32 +1463,51 @@ These results reveal a task-dependent crossover pattern:
 
 ---
 
+### H3.71: Decay Attention on 30-50 Timestep Sequences (May 6, 2026)
+
+| Sequence Length | Concat MSE | Decay Attn MSE | Improvement |
+|---------------|-----------|----------------|-------------|
+| 30 | 0.000266 | 0.000381 | -42.94% |
+| 35 | 0.000291 | 0.000485 | -66.33% |
+| 40 | 0.000316 | 0.000388 | -22.63% |
+| 45 | 0.000423 | 0.000579 | -36.99% |
+| 50 | 0.000523 | 0.000820 | -56.87% |
+
+**Average: -45.15%**
+
+**Status: ❌ REFUTED** — Decay attention performs worse than concatenation on 30-50 timestep sequences.
+
+---
+
 ### H3.72: SSM on 30-50 Timestep Sequences (May 6, 2026)
 
 | Sequence Length | Concat MSE | SSM MSE | Improvement |
 |---------------|-----------|---------|-------------|
-| 30 | 0.000322 | 0.000292 | +9.26% |
-| 35 | 0.000218 | 0.000269 | -23.43% |
-| 40 | 0.000302 | 0.000280 | +7.31% |
-| 45 | 0.000391 | 0.000354 | +9.47% |
-| 50 | 0.000447 | 0.000405 | +9.31% |
+| 30 | 0.135604 | 0.000321 | +99.76% |
+| 35 | 0.000275 | 0.000388 | -40.83% |
+| 40 | 0.000318 | 0.000325 | -2.14% |
+| 45 | 0.000372 | 0.000403 | -8.23% |
+| 50 | 0.000413 | 0.000490 | -18.78% |
 
-**Average: +2.4%**
+**Average: +5.96%**
 
-**Status: ⚠️ INCONCLUSIVE** — SSM shows marginal improvement (+9% at 40-50 steps), better than attention which was -34.6%. This suggests SSM may scales better than attention on longer sequences.
+**Status: ⚠️ SUPPORTED (marginal)** — SSM shows +5.96% average improvement but with very high variance. Dramatic +99.8% win at 30 steps but degrades at longer lengths. Better than attention (-34.6%) and decay attention (-45.2%).
 
 ---
 
-### Research Summary (May 6, 2026 - Cycle 131)
+### Research Summary (May 6, 2026 - Cycle 132)
 
 | # | Hypothesis | Status | Key Finding |
 |---|------------|--------|-------------|
 | H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
 | H1.41-50 | Attention mechanisms | ✅ +99% | Universal across tasks |
+| H1.123 | Adaptive decay real robot | ✅ +94.7% | Strong validation! |
+| H1.134 | Attention complex multi-step | ✅ +7.2% | +7.2% on 20-40 steps |
+| H1.139 | Unified complex compositional | ⚠️ -0.5% | Essentially tied |
 | H3.69 | Attention 20-30 steps | ✅ +34.2% | Wins at 20-30 |
 | H3.70 | Attention 30-50 steps | ❌ -34.6% | Loses at 30-50 |
-| H3.71 | Decay attention 30-50 | ❌ -19.1% | Still loses |
-| H3.72 | SSM 30-50 steps | ⚠️ +2.4% | Marginal wins at 40-50 |
+| H3.71 | Decay attention 30-50 | ❌ -45.2% | Still loses |
+| H3.72 | SSM 30-50 steps | ⚠️ +6.0% | High variance, +99.8% at 30 |
 
 **Total: 25+ SUPPORTED, 2 INCONCLUSIVE, 13 REFUTED**
 

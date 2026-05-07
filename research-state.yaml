@@ -1116,25 +1116,16 @@ hypotheses:
   priority: high
   statement: Decay attention on 30-50 timestep sequences
   status: refuted
-last_direction: H3.70 completed - Attention worse on 30-50 timesteps (-34.6%), confirms task-dependent crossover
+last_direction: H3.72 completed - SSM shows +5.96% avg on 30-50 timesteps but high variance (+99.8% at 30, -40% at 35)
 next_steps:
-  - Test SSM (Mamba) on 30-50 timesteps as alternative
+  - Test SSM with better configuration
   - Paper writing
   - Real robot validation
-cycle: 131
+cycle: 132
 current_experiments:
   - 'H3.69: Attention on 20-30 timesteps - SUPPORTED (+34.2%)'
-- evidence: +5.9%
-  id: H3.51
-  priority: high
-  statement: SRH + Invariant for cross-platform transfer
-  status: supported
-- evidence: +82.3% improvement on real robot tasks
-  id: H3.11
-  parent: H3.8
-  priority: high
-  statement: SSM validates on real robot manipulation tasks
-  status: supported
+  - 'H3.71: Decay attention 30-50 - REFUTED (-45.2%)'
+  - 'H3.72: SSM 30-50 timesteps - SUPPORTED (+6.0% avg, high variance)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical

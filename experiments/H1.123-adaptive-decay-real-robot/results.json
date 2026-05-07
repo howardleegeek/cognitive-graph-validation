@@ -1,6 +1,6 @@
 {
   "experiment": "H1.123",
-  "timestamp": "2026-05-06T14:01:51.333239",
+  "timestamp": "2026-05-06T19:44:58.607981",
   "hypothesis": "Adaptive decay attention improves real robot manipulation tasks",
   "hypothesis_id": "H1.123",
   "parent": "H1.122",
