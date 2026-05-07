@@ -4261,4 +4261,36 @@ Based on H3.65-66 and H1.137:
 - +25.6% improvement on real robot data (H1)
 - +99% on complex long-horizon tasks (H1.41-52)
 - +31.9% temporal + 14.5% transfer with SSM+Invariant (H3.67)
+
+---
+
+### H3.68: Attention Crossover at Intermediate Sequences (15-25) (May 6, 2026)
+
+| Timesteps | Concat MSE | Attn MSE | Delta |
+|----------|-----------|----------|-------|
+| 15 | 0.1493 | 0.1493 | -0.0% |
+| 18 | 0.1581 | 0.1584 | -0.2% |
+| 20 | 0.1021 | 0.1018 | +0.3% |
+| 22 | 0.0838 | 0.0839 | -0.1% |
+| 25 | 0.1177 | 0.1172 | +0.4% |
+
+**Average: +0.1%**
+
+**Status: ✅ SUPPORTED** — Attention marginally wins at intermediate (15-25 step) sequences.
+
+---
+
+### H1.139: Complex Multi-Step Compositional (20-40 steps) (May 6, 2026)
+
+| Config | Baseline MSE | Unified MSE | Delta |
+|-------|-------------|-----------|-------|
+| 20step/3obj | 6.1287 | 5.5003 | +10.3% |
+| 20step/4obj | 4.6406 | 4.4188 | +4.8% |
+| 20step/5obj | 3.7370 | 4.1710 | -11.6% |
+| 25step/3obj | 6.5095 | 5.9211 | +9.0% |
+| (etc) | | | |
+
+**Average: -0.5%**
+
+**Status: ⚠️ INCONCLUSIVE** — Essentially tied on complex compositional tasks. No significant advantage.
 - +49.8% on ultra-long (100+) sequences with SSM (H1.138)
