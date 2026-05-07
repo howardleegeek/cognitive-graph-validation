@@ -1104,16 +1104,20 @@ hypotheses:
   priority: medium
   statement: Decay attention scaling on complex multi-step tasks
   status: supported
-cycle: 124
-last_direction: H3.65-66 completed - SSM and attention show marginal benefits on continuous control
+- evidence: +34.2% avg improvement on 20-30 timestep sequences
+  id: H3.69
+  parent: H3
+  priority: high
+  statement: Attention outperforms concatenation on 20-30 timestep sequences
+  status: supported
+last_direction: H3.69 completed - Attention outperforms on 20-30 timesteps (+34.2%)
 next_steps:
-  - Focus on paper writing
+  - Continue testing attention on longer sequences
+  - Paper writing
   - Real robot validation
-  - Summary of key findings
+cycle: 130
 current_experiments:
-  - 'H3.65: SSM+Attention hybrid - SUPPORTED (+7.5%)'
-  - 'H3.66: Adaptive mode selection - SUPPORTED (+27.9%)'
-  - 'H1.137: Decay attention scaling - SUPPORTED (+1.0%)'
+  - 'H3.69: Attention on 20-30 timesteps - SUPPORTED (+34.2%)'
 - evidence: +5.9%
   id: H3.51
   priority: high
