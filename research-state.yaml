@@ -1116,12 +1116,8 @@ hypotheses:
   priority: high
   statement: Decay attention on 30-50 timestep sequences
   status: refuted
-last_direction: H3.72 completed - SSM shows +5.96% avg on 30-50 timesteps but high variance (+99.8% at 30, -40% at 35)
-next_steps:
-  - Test SSM with better configuration
-  - Paper writing
-  - Real robot validation
-cycle: 132
+last_direction: H3.73 completed - SSM +18.2% avg on 35-45 timesteps
+cycle: 133
 current_experiments:
   - 'H3.69: Attention on 20-30 timesteps - SUPPORTED (+34.2%)'
   - 'H3.71: Decay attention 30-50 - REFUTED (-45.2%)'
