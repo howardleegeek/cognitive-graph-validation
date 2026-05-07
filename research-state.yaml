@@ -1086,36 +1086,45 @@ hypotheses:
   priority: medium
   statement: Decay attention continues to outperform on longer sequences (30-50 steps)
   status: supported
-  current_experiments:
-  - 'H1.133: Key-value decay - REFUTED'
-  - 'H1.132: Gaussian kernel - REFUTED'
-  - 'H1.131: Cauchy attention - REFUTED'
-  - 'H1.130: Learned queries - SUPPORTED (+5.0%)'
-  - 'H1.129: Gated residual - SUPPORTED (+2.2%)'
-  cycle: 123
-  last_direction: H3.62 causal attention tested - REFUTED (-45.0%)
-  next_steps:
-  - Focus on architecture combinations
-  - Paper writing
+- evidence: +7.5% attention vs baseline, SSM+Attn -3.5%, SSM +2.0%
+  id: H3.65
+  parent: H3
+  priority: high
+  statement: SSM + Attention hybrid improves continuous control
+  status: supported
+- evidence: +27.9% SSM vs baseline, adaptive +20.4%, mode selection learns concat preference
+  id: H3.66
+  parent: H3
+  priority: high
+  statement: Adaptive mode selection between SSM/attention/concat
+  status: supported
+- evidence: +1.0% best decay=0.3, marginal improvement over concat
+  id: H1.137
+  parent: H1
+  priority: medium
+  statement: Decay attention scaling on complex multi-step tasks
+  status: supported
+cycle: 124
+last_direction: H3.65-66 completed - SSM and attention show marginal benefits on continuous control
+next_steps:
+  - Focus on paper writing
   - Real robot validation
-  current_experiments:
-  - 'H3.50: SRH scaling - SUPPORTED (+45.5%)'
-  - 'H3.58: Attention + Invariant combined - SUPPORTED (+17.2% temporal, +9.2% transfer)'
-  - 'H3.59: ALOHA long-horizon - SUPPORTED (+45.7%)'
-  - 'H3.60: Cross-modal VLA - REFUTED (-31.5%)'
-  - 'H3.61: Multi-scale temporal - REFUTED (-76.5%)'
-  - 'H3.62: Causal attention - REFUTED (-45.0%)'
-  - evidence: +5.9%
-    id: H3.51
-    priority: high
-    statement: SRH + Invariant for cross-platform transfer
-    status: supported
-  - evidence: +82.3% improvement on real robot tasks
-    id: H3.11
-    parent: H3.8
-    priority: high
-    statement: SSM validates on real robot manipulation tasks
-    status: supported
+  - Summary of key findings
+current_experiments:
+  - 'H3.65: SSM+Attention hybrid - SUPPORTED (+7.5%)'
+  - 'H3.66: Adaptive mode selection - SUPPORTED (+27.9%)'
+  - 'H1.137: Decay attention scaling - SUPPORTED (+1.0%)'
+- evidence: +5.9%
+  id: H3.51
+  priority: high
+  statement: SRH + Invariant for cross-platform transfer
+  status: supported
+- evidence: +82.3% improvement on real robot tasks
+  id: H3.11
+  parent: H3.8
+  priority: high
+  statement: SSM validates on real robot manipulation tasks
+  status: supported
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical

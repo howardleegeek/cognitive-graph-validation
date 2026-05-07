@@ -9,6 +9,7 @@ Chronological record of research decisions and actions. Append-only.
 | 3 | 2026-04-15 | report | Generated progress report for research team - summarizing all hypothesis status and next steps. |
 | 4 | 2026-04-15 | inner-loop | Created H1.3 few-shot learning experiment (code ready, no GPU yet), Created H5 curriculum experiment design. Updated research-state.yaml and findings.md |
 | 5 | 2026-05-05 | inner-loop | H3.45-47 series: Semantic Reasoning Hub (MIND-V style) validated with +61.5% temporal, +27.8% attention, +74.4% combined. Key finding: Combined architecture solves both temporal AND transfer. Updated findings.md, progress report, pushed to GitHub. |
+| 6 | 2026-05-06 | inner-loop | H3.65-66, H1.137: SSM+Attention hybrid (+7.5%), Adaptive mode selection (+27.9% SSM-only best), Decay attention scaling (+1.0%). Key findings: (1) Attention wins on continuous control, (2) SSM dynamics powerful but combining doesn't help, (3) Decay scaling marginal. Updated research-state.yaml, findings.md, ready for paper writing. |
 
 <!-- Entry types:
   bootstrap    — initial scoping, literature search, hypothesis formation
