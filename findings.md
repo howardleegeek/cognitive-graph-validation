@@ -4499,3 +4499,42 @@ Based on H3.65-66 and H1.137:
 | H2.x | Graph structure | ✅ | +56-75% on temporal |
 | H3 | Attention vs Concat | ❌ simple ✅ complex | Task-dependent |
 | H3.69-73 | SSM/Attention Medium Seq | ✅ | +18-34% on 20-45 steps |
+
+---
+
+### H1.139: Ultra-Complex Hybrid Tasks (60-100 steps) (May 6, 2026)
+
+| Seq Length | Baseline | Attention | Hybrid | Hybrid Δ |
+|------------|----------|-----------|--------|----------|
+| 60 | -0.0051 | -0.0705 | -0.0046 | +10.2% |
+| 70 | -0.0064 | -0.0029 | -0.0124 | -94.9% |
+| 80 | -0.0055 | -0.0527 | -0.0145 | -160.9% |
+| 90 | -0.0199 | -0.0297 | -0.0128 | +36.1% |
+| 100 | -0.0253 | -0.0652 | -0.0211 | +16.5% |
+
+**Hybrid wins: 3/5, Attention wins: 1/5**
+**Average: -38.6%** (mixed results)
+
+**Status: ⚠️ INCONCLUSIVE** — Hybrid architecture shows mixed results on ultra-complex (60-100 step) tasks. No clear winner.
+
+---
+
+### H3.74: Attention Mechanisms on Long Sequences (40-60 steps) (May 6, 2026)
+
+| Seq Length | Baseline | Standard | Linear | Causal | Gated |
+|------------|----------|----------|--------|--------|-------|
+| 40 | -0.0994 | -0.0943 | -0.0827 | -0.1093 | -0.0877 |
+| 45 | -0.0898 | -0.1684 | -0.1187 | -0.0877 | -0.1182 |
+| 50 | -0.0886 | -0.2301 | -0.2320 | -0.1126 | -0.1006 |
+| 55 | -0.0861 | -0.1700 | -0.1847 | -0.1423 | -0.0849 |
+| 60 | -0.1535 | -0.1956 | -0.1738 | -0.2968 | -0.1328 |
+
+**Win counts: Gated 2/5, Baseline 1/5, Linear 1/5, Causal 1/5, Standard 0/5**
+
+**Improvement over Baseline:**
+- Standard: -73.4% avg
+- Linear: -61.0% avg
+- Causal: -38.7% avg
+- Gated: -3.7% avg
+
+**Status: ⚠️ INCONCLUSIVE** — Gated attention is closest to baseline (-3.7%), but all attention mechanisms underperform on this synthetic task. Task structure matters more than mechanism choice.

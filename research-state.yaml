@@ -1110,12 +1110,23 @@ hypotheses:
   priority: high
   statement: SSM+Attention hybrid on ultra-long (30-50 step) sequences
   status: supported
-last_direction: H1.138 completed - Hybrid wins 3/5 on ultra-long sequences
-cycle: 135
+- evidence: Hybrid wins 3/5, avg -38.6% - mixed results on 60-100 step tasks
+  id: H1.139
+  parent: H1
+  priority: high
+  statement: Ultra-complex hybrid tasks (60-100 steps)
+  status: inconclusive
+- evidence: Gated wins 2/5, -3.7% avg vs baseline - all attention underperforms
+  id: H3.74
+  parent: H3
+  priority: high
+  statement: Attention mechanisms on long sequences (40-60 steps)
+  status: inconclusive
+last_direction: H1.139 and H3.74 completed - mixed results on ultra-complex tasks
+cycle: 136
 current_experiments:
-  - 'H3.69: Attention on 20-30 timesteps - SUPPORTED (+34.2%)'
-  - 'H3.71: Decay attention 30-50 - REFUTED (-45.2%)'
-  - 'H3.72: SSM 30-50 timesteps - SUPPORTED (+6.0% avg, high variance)'
+  - 'H1.139: Ultra-complex hybrid 60-100 - INCONCLUSIVE (Hybrid wins 3/5)'
+  - 'H3.74: Attention mechanisms 40-60 - INCONCLUSIVE (Gated wins 2/5)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
