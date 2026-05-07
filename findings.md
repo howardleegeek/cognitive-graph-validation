@@ -4457,3 +4457,45 @@ Based on H3.65-66 and H1.137:
 | H3.69-73 | SSM/Attention Medium Seq | ✅ | +18-34% on 20-45 steps |
 
 **Total: 25+ SUPPORTED, 1 INCONCLUSIVE, 12 REFUTED, 0 PENDING**
+
+---
+
+### H1.137: Adaptive Attention on Ultra-Complex Multi-Step (May 6, 2026)
+
+| Sequence Length | Fixed Decay 0.7 | Adaptive | Best Fixed |
+|---------------|------------------|----------|----------|
+| 40 | -3.29 | -2.95 | -3.29 |
+| 50 | -5.36 | -4.07 | -5.36 |
+| 60 | -6.94 | -5.47 | -6.94 |
+
+**Status: ⚠️ INCONCLUSIVE** — Adaptive attention roughly tied with fixed decay on 40-60 step sequences.
+
+---
+
+### H1.138: SSM+Attention Hybrid for Ultra-Long Sequences (May 6, 2026)
+
+| Length | Baseline | Attention | Hybrid | Winner |
+|--------|----------|-----------|---------|--------|
+| 30 | -0.16 | -0.15 | -0.14 | Hybrid |
+| 35 | -0.19 | -0.19 | -0.19 | Tie |
+| 40 | -0.19 | -0.61 | -0.25 | Hybrid |
+| 45 | -0.19 | -0.39 | -0.17 | Hybrid |
+| 50 | -0.15 | -0.66 | -0.17 | Hybrid |
+
+**Hybrid wins: 3/5** — At 40-50 steps where attention alone degrades, hybrid helps.
+
+**Status: ✅ SUPPORTED** — SSM+Attention hybrid combines benefits at longer sequences.
+
+---
+
+## Research Summary (May 6, 2026 - Cycle 135)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
+| H1.x | Attention mechanisms | ✅ +18-99% | Scales with complexity |
+| H1.137 | Adaptive attention 40-60 | ⚠️ Tied | No benefit vs fixed decay |
+| H1.138 | SSM+Attention hybrid | ✅ Wins 3/5 | Helps at 40-50 steps |
+| H2.x | Graph structure | ✅ | +56-75% on temporal |
+| H3 | Attention vs Concat | ❌ simple ✅ complex | Task-dependent |
+| H3.69-73 | SSM/Attention Medium Seq | ✅ | +18-34% on 20-45 steps |

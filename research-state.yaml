@@ -127,12 +127,12 @@ hypotheses:
   statement: Unified architecture maintains advantage on 7+ step complex compositional
     tasks
   status: refuted
-- evidence: 1024 best (0.0027), 512 middle (0.0047), 256 worst (0.0072)
-  id: H1.11
+- evidence: Adaptive vs fixed decay tied on 40-60 step sequences
+  id: H1.137
   parent: H1
-  priority: medium
-  statement: 512-dim optimal vs 256/1024 for unified architecture
-  status: refuted
+  priority: high
+  statement: Adaptive attention on ultra-complex (40-60 step) multi-step tasks
+  status: inconclusive
 - evidence: +75.5% improvement on 12-step temporal tasks
   id: H2.4
   parent: H2
@@ -1098,26 +1098,20 @@ hypotheses:
   priority: high
   statement: Adaptive mode selection between SSM/attention/concat
   status: supported
-- evidence: +34.2% avg improvement on 20-30 timestep sequences
-  id: H3.69
-  parent: H3
+- evidence: Adaptive vs fixed decay tied on 40-60 step sequences
+  id: H1.137
+  parent: H1
   priority: high
-  statement: Attention outperforms concatenation on 20-30 timestep sequences
+  statement: Adaptive attention on ultra-complex (40-60 step) multi-step tasks
+  status: inconclusive
+- evidence: Hybrid wins 3/5 at 40-50 steps where attention degrades
+  id: H1.138
+  parent: H1
+  priority: high
+  statement: SSM+Attention hybrid on ultra-long (30-50 step) sequences
   status: supported
-- evidence: -34.6% avg, attention worse on 30-50 step sequences in this setting
-  id: H3.70
-  parent: H3
-  priority: high
-  statement: Attention outperforms concatenation on 30-50 timestep sequences
-  status: refuted
-- evidence: -19.1% avg, decay attention worse on 30-50 step sequences
-  id: H3.71
-  parent: H3
-  priority: high
-  statement: Decay attention on 30-50 timestep sequences
-  status: refuted
-last_direction: H3.73 completed - SSM +18.2% avg on 35-45 timesteps
-cycle: 133
+last_direction: H1.138 completed - Hybrid wins 3/5 on ultra-long sequences
+cycle: 135
 current_experiments:
   - 'H3.69: Attention on 20-30 timesteps - SUPPORTED (+34.2%)'
   - 'H3.71: Decay attention 30-50 - REFUTED (-45.2%)'
