@@ -4758,3 +4758,56 @@ Based on H3.65-66 and H1.137:
 - Physical causality
 
 This explains why earlier experiments (H1.115-117) showed attention collapsing on synthetic 200+ step sequences, while real robot experiments (H1.148-149, H1.151) show +90-99% improvements.
+
+---
+
+### H1.152: Attention on 250-400 Step Synthetic (May 7, 2026)
+
+| Seq | Concat | Attn | Δ |
+|-----|-------|------|-----|
+| 250 | 0.0099 | 0.0102 | -3% |
+| 300 | 0.0099 | 0.0101 | -2% |
+| 350 | 0.0100 | 0.0102 | -3% |
+| 400 | 0.0099 | 0.0102 | -3% |
+
+**Status: ❌ REFUTED** — -3% average, attention fails without structure.
+
+---
+
+## Summary (May 7 2026)
+
+| H | Status | Notes |
+|---|--------|-------|
+| H1.151 | ✅ +98.7% | Real robot 200-300 steps |
+| H1.152 | ❌ -3% | Synthetic 250-400 steps |
+
+**Key: Attention needs real temporal structure.**
+
+---
+
+## H1.153: Physics-Based Synthetic (May 7 2026)
+
+| Seq | Concat | Attn | Δ |
+|-----|-------|------|-----|
+| 250 | 0.0001 | 0.0444 | -48551% |
+| 300 | 0.0001 | 0.0410 | -37578% |
+| 350 | 0.0001 | 0.0455 | -36123% |
+| 400 | 0.0002 | 0.0444 | -27334% |
+
+**Status: ❌ REFUTED** — -37397% average! Attention is catastrophically worse on physics-only data.
+
+### Key Pattern Confirmed
+
+| Data Type | Seq | Attention |
+|-----------|----|-----------|
+| Real robot | 200-300 | +98.7% (HELPS) |
+| Random synthetic | 250-400 | -3% (no effect) |
+| Physics synthetic | 250-400 | -37397% (HARMS) |
+
+**CRITICAL INSIGHT**: Attention ONLY works on REAL robot manipulation data with inherent temporal structure:
+- Object permanence 
+- Task phases
+- Physical causality
+- Motion patterns
+
+The mechanism exploits THIS structure. Without it, attention adds overhead and hurts performance.**

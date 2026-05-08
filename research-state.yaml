@@ -1188,8 +1188,20 @@ hypotheses:
   priority: high
   statement: Attention maintains +98% advantage on real robot data at 200+ steps
   status: supported
-last_direction: H1.151 completed - SUPPORTED (+98.7% on real robot 200-300 steps, confirms attention benefits from real temporal structure)
-cycle: 144
+- evidence: -3% avg on 250-400 step synthetic, attention fails without structure
+  id: H1.152
+  parent: H1
+  priority: high
+  statement: Attention on 250-400 step ultra-long synthetic sequences
+  status: refuted
+- evidence: -37397% on physics-only synthetic, attention hurts catastrophically
+  id: H1.153
+  parent: H1
+  priority: high
+  statement: Attention on physics-based synthetic sequences
+  status: refuted
+last_direction: H1.153 completed - REFUTED (-37397%, attention needs real robot temporal structure, not just any physics)
+cycle: 146
 current_experiments:
   - 'H1.148: Ultra-complex 100-150 step attention - SUPPORTED (+90.2%)'
   - 'H1.149: Ultra-extreme 150-200 step attention - SUPPORTED (+90.7%)'
