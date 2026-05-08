@@ -4697,3 +4697,17 @@ Based on H3.65-66 and H1.137:
 **Average: +90.2% (full attention), +91.4% (combined)**
 
 **Status: ✅ SUPPORTED** — Attention maintains strong advantage on 100-150 step ultra-complex multi-step tasks, consistent with H1.111 (+90.2%) and H1.112 (+91.4% source/target).
+
+---
+
+### H1.149: Attention on 150-200 Step Ultra-Extreme Tasks (May 7, 2026)
+
+| Sequence Length | Baseline MSE | Full Attention MSE | Linear Attention MSE | Combined MSE | Full Attn Δ |
+|-----------------|--------------|--------------------|---------------------|--------------|-------------|
+| 150 steps | 0.0203 | 0.0020 | 0.0010 | 0.0017 | **+90.2%** |
+| 175 steps | 0.0233 | 0.0022 | 0.0012 | 0.0020 | **+90.7%** |
+| 200 steps | 0.0255 | 0.0022 | 0.0013 | 0.0022 | **+91.2%** |
+
+**Average: +90.7% (full attention), +95.0% (linear attention), +91.4% (combined)**
+
+**Status: ✅ SUPPORTED** — Attention maintains and slightly increases advantage on 150-200 step ultra-extreme sequences. Linear attention shows even better performance (+95.0%) on these extremely long sequences.

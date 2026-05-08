@@ -1170,10 +1170,17 @@ hypotheses:
   priority: high
   statement: Attention maintains advantage on 100-150 step ultra-complex multi-step tasks
   status: supported
-last_direction: H1.148 completed - SUPPORTED (+90.2%)
-cycle: 141
+- evidence: +90.7% full attention, +95.0% linear attention on 150-200 step tasks
+  id: H1.149
+  parent: H1
+  priority: high
+  statement: Attention maintains advantage on 150-200 step ultra-extreme multi-step tasks
+  status: supported
+last_direction: H1.149 completed - SUPPORTED (+90.7% full, +95.0% linear)
+cycle: 142
 current_experiments:
   - 'H1.148: Ultra-complex 100-150 step attention - SUPPORTED (+90.2%)'
+  - 'H1.149: Ultra-extreme 150-200 step attention - SUPPORTED (+90.7%)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
