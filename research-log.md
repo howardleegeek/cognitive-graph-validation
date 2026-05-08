@@ -14,6 +14,7 @@ Chronological record of research decisions and actions. Append-only.
 | 8 | 2026-05-07 | inner-loop | H1.148: Attention on 100-150 step ultra-complex tasks - SUPPORTED (+90.2%). Full attention shows +90.2%, combined (attention+invariant) shows +91.4%. Builds on H1.111 (+90.2%) and H1.112 (solves both temporal and transfer). Updated findings.md, research-state.yaml. |
 | 9 | 2026-05-07 | inner-loop | H1.155: Attention on 400-500 step ultra-extreme real robot tasks - SUPPORTED (+98.0%). Nearly matches H1.154's +98.3% at 300-400 steps. Attention benefit consistent across all sequence lengths. Updated findings.md, research-state.yaml, generated progress report. |
 | 10 | 2026-05-07 | inner-loop | H1.156: Attention on 500-600 step ultra-extreme real robot tasks - SUPPORTED (+97.5%). Slight degradation from H1.155 but still very strong. Attention benefit consistent across 200-600 step range. Updated findings.md, research-state.yaml, generated progress report. |
+| 11 | 2026-05-07 | inner-loop | H1.157: Attention on 600-700 step ultra-extreme real robot tasks - SUPPORTED (+96.9%). Continued graceful degradation. Attention benefit consistent across 200-700 step range (~1.8% total degradation). Updated findings.md, research-state.yaml, generated progress report. |
 
 <!-- Entry types:
   bootstrap    — initial scoping, literature search, hypothesis formation
