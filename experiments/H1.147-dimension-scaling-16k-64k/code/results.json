@@ -1,0 +1,28 @@
+{
+  "experiment": "H1.147",
+  "hypothesis": "Dimension scaling 16k-64k with attention",
+  "timestamp": "2026-05-08T01:01:46",
+  "dimensions": [
+    16384,
+    32768,
+    65536
+  ],
+  "baseline_mses": [
+    10.876946398202005,
+    17.570878447964127,
+    30.826934967187338
+  ],
+  "attention_mses": [
+    4.622997651802647,
+    4.604671484413912,
+    6.288570334658809
+  ],
+  "improvements": [
+    57.497283864827686,
+    73.79373206609691,
+    79.60040353881286
+  ],
+  "average_improvement": 70.29713982324581,
+  "status": "SUPPORTED",
+  "conclusion": "SUPPORTED: 70.3% average improvement"
+}

@@ -4669,3 +4669,17 @@ Based on H3.65-66 and H1.137:
 1. Test graph structure on complex multi-step tasks (H2.x showed +56-75%)
 2. Test invariant learning for transfer (H1.8 showed +5.4%)
 3. Focus on real robot validation rather than synthetic
+
+---
+
+### H1.147: Dimension Scaling 16k-64k with Attention (May 7, 2026)
+
+| Dimensions | Baseline MSE | Attention MSE | Improvement |
+|------------|--------------|---------------|-------------|
+| 16384 | 10.8769 | 4.6230 | **+57.5%** |
+| 32768 | 17.5709 | 4.6047 | **+73.8%** |
+| 65536 | 30.8269 | 6.2886 | **+79.6%** |
+
+**Average: +70.3%**
+
+**Status: ✅ SUPPORTED** — Attention with dimension scaling shows significant improvement, scales with dimension (16k-64k).

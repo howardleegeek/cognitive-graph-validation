@@ -1158,10 +1158,16 @@ hypotheses:
   priority: high
   statement: Hybrid architecture switches between concat and attention based on complexity
   status: refuted
-last_direction: H1.144 completed - REFUTED (-4.3%)
-cycle: 139
+- evidence: +70.3% avg improvement, scales with dimension (16k-64k)
+  id: H1.147
+  parent: H1
+  priority: high
+  statement: Dimension scaling 16k-64k with attention maintains advantage
+  status: supported
+last_direction: H1.147 completed - SUPPORTED (+70.3%)
+cycle: 140
 current_experiments:
-  - 'H1.144: Hybrid architecture - REFUTED (-4.3%)'
+  - 'H1.147: Dimension scaling 16k-64k - SUPPORTED (+70.3%)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
