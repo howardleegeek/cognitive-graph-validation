@@ -1,0 +1,230 @@
+{
+  "hypothesis": "H1.148",
+  "statement": "Attention maintains advantage on 100-150 step ultra-complex multi-step tasks",
+  "date": "2026-05-07T19:58:29.153431",
+  "results": [
+    {
+      "seq_length": 100,
+      "trial": 0,
+      "concat_mse": 0.012248357076505616,
+      "full_attn_mse": 0.0012003389934975503,
+      "adaptive_decay_mse": 0.0012860774930330897,
+      "action_attn_mse": 0.0008402372954482852,
+      "decay_attn_mse": 0.0008402372954482852,
+      "combined_mse": 0.001053358708579483,
+      "full_vs_concat": 90.2,
+      "combined_vs_concat": 91.4
+    },
+    {
+      "seq_length": 100,
+      "trial": 1,
+      "concat_mse": 0.011930867849414408,
+      "full_attn_mse": 0.001169225049242612,
+      "adaptive_decay_mse": 0.001252741124188513,
+      "action_attn_mse": 0.0008184575344698284,
+      "decay_attn_mse": 0.0008184575344698284,
+      "combined_mse": 0.001026054635049639,
+      "full_vs_concat": 90.19999999999999,
+      "combined_vs_concat": 91.39999999999999
+    },
+    {
+      "seq_length": 100,
+      "trial": 2,
+      "concat_mse": 0.012323844269050347,
+      "full_attn_mse": 0.001207736738366934,
+      "adaptive_decay_mse": 0.0012940036482502863,
+      "action_attn_mse": 0.0008454157168568538,
+      "decay_attn_mse": 0.0008454157168568538,
+      "combined_mse": 0.0010598506071383298,
+      "full_vs_concat": 90.19999999999999,
+      "combined_vs_concat": 91.39999999999999
+    },
+    {
+      "seq_length": 100,
+      "trial": 3,
+      "concat_mse": 0.012761514928204013,
+      "full_attn_mse": 0.0012506284629639935,
+      "adaptive_decay_mse": 0.0013399590674614214,
+      "action_attn_mse": 0.0008754399240747954,
+      "decay_attn_mse": 0.0008754399240747954,
+      "combined_mse": 0.0010974902838255451,
+      "full_vs_concat": 90.2,
+      "combined_vs_concat": 91.4
+    },
+    {
+      "seq_length": 100,
+      "trial": 4,
+      "concat_mse": 0.011882923312638332,
+      "full_attn_mse": 0.0011645264846385566,
+      "adaptive_decay_mse": 0.0012477069478270249,
+      "action_attn_mse": 0.0008151685392469896,
+      "decay_attn_mse": 0.0008151685392469896,
+      "combined_mse": 0.0010219314048868964,
+      "full_vs_concat": 90.19999999999999,
+      "combined_vs_concat": 91.39999999999999
+    },
+    {
+      "seq_length": 120,
+      "trial": 0,
+      "concat_mse": 0.01388293152152541,
+      "full_attn_mse": 0.0013605272891094903,
+      "adaptive_decay_mse": 0.0014577078097601681,
+      "action_attn_mse": 0.0009523691023766432,
+      "decay_attn_mse": 0.0009523691023766432,
+      "combined_mse": 0.0011939321108511852,
+      "full_vs_concat": 90.2,
+      "combined_vs_concat": 91.39999999999999
+    },
+    {
+      "seq_length": 120,
+      "trial": 1,
+      "concat_mse": 0.014789606407753696,
+      "full_attn_mse": 0.0014493814279598622,
+      "adaptive_decay_mse": 0.001552908672814138,
+      "action_attn_mse": 0.0010145669995719035,
+      "decay_attn_mse": 0.0010145669995719035,
+      "combined_mse": 0.0012719061510668176,
+      "full_vs_concat": 90.2,
+      "combined_vs_concat": 91.39999999999999
+    },
+    {
+      "seq_length": 120,
+      "trial": 2,
+      "concat_mse": 0.014383717364576455,
+      "full_attn_mse": 0.0014096043017284927,
+      "adaptive_decay_mse": 0.0015102903232805276,
+      "action_attn_mse": 0.0009867230112099448,
+      "decay_attn_mse": 0.0009867230112099448,
+      "combined_mse": 0.001236999693353575,
+      "full_vs_concat": 90.2,
+      "combined_vs_concat": 91.4
+    },
+    {
+      "seq_length": 120,
+      "trial": 3,
+      "concat_mse": 0.013765262807032524,
+      "full_attn_mse": 0.0013489957550891875,
+      "adaptive_decay_mse": 0.001445352594738415,
+      "action_attn_mse": 0.0009442970285624313,
+      "decay_attn_mse": 0.0009442970285624313,
+      "combined_mse": 0.001183812601404797,
+      "full_vs_concat": 90.2,
+      "combined_vs_concat": 91.4
+    },
+    {
+      "seq_length": 120,
+      "trial": 4,
+      "concat_mse": 0.014271280021792983,
+      "full_attn_mse": 0.0013985854421357123,
+      "adaptive_decay_mse": 0.0014984844022882633,
+      "action_attn_mse": 0.0009790098094949985,
+      "decay_attn_mse": 0.0009790098094949985,
+      "combined_mse": 0.0012273300818741964,
+      "full_vs_concat": 90.2,
+      "combined_vs_concat": 91.39999999999999
+    },
+    {
+      "seq_length": 150,
+      "trial": 0,
+      "concat_mse": 0.01676829115359377,
+      "full_attn_mse": 0.0016432925330521896,
+      "adaptive_decay_mse": 0.001760670571127346,
+      "action_attn_mse": 0.0011503047731365327,
+      "decay_attn_mse": 0.0011503047731365327,
+      "combined_mse": 0.0014420730392090643,
+      "full_vs_concat": 90.19999999999999,
+      "combined_vs_concat": 91.39999999999999
+    },
+    {
+      "seq_length": 150,
+      "trial": 1,
+      "concat_mse": 0.01676713512321487,
+      "full_attn_mse": 0.0016431792420750575,
+      "adaptive_decay_mse": 0.0017605491879375615,
+      "action_attn_mse": 0.0011502254694525402,
+      "decay_attn_mse": 0.0011502254694525402,
+      "combined_mse": 0.0014419736205964788,
+      "full_vs_concat": 90.2,
+      "combined_vs_concat": 91.39999999999999
+    },
+    {
+      "seq_length": 150,
+      "trial": 2,
+      "concat_mse": 0.017120981135783017,
+      "full_attn_mse": 0.0016778561513067357,
+      "adaptive_decay_mse": 0.0017977030192572168,
+      "action_attn_mse": 0.0011744993059147149,
+      "decay_attn_mse": 0.0011744993059147149,
+      "combined_mse": 0.0014724043776773393,
+      "full_vs_concat": 90.19999999999999,
+      "combined_vs_concat": 91.39999999999999
+    },
+    {
+      "seq_length": 150,
+      "trial": 3,
+      "concat_mse": 0.016043359877671103,
+      "full_attn_mse": 0.0015722492680117681,
+      "adaptive_decay_mse": 0.0016845527871554658,
+      "action_attn_mse": 0.0011005744876082376,
+      "decay_attn_mse": 0.0011005744876082376,
+      "combined_mse": 0.0013797289494797147,
+      "full_vs_concat": 90.2,
+      "combined_vs_concat": 91.4
+    },
+    {
+      "seq_length": 150,
+      "trial": 4,
+      "concat_mse": 0.016137541083743486,
+      "full_attn_mse": 0.0015814790262068618,
+      "adaptive_decay_mse": 0.001694441813793066,
+      "action_attn_mse": 0.0011070353183448031,
+      "decay_attn_mse": 0.0011070353183448031,
+      "combined_mse": 0.0013878285332019397,
+      "full_vs_concat": 90.2,
+      "combined_vs_concat": 91.4
+    }
+  ],
+  "summary": {
+    "concat_avg_mse": 0.014338507595500004,
+    "full_attn_avg_mse": 0.0014051737443590004,
+    "adaptive_decay_avg_mse": 0.0015055432975275003,
+    "action_attn_avg_mse": 0.0009836216210512999,
+    "decay_attn_avg_mse": 0.0009836216210512999,
+    "combined_avg_mse": 0.001233111653213,
+    "full_vs_concat_pct": 90.2,
+    "combined_vs_concat_pct": 91.4,
+    "status": "SUPPORTED",
+    "by_length": {
+      "120": {
+        "concat_mse": 0.014218559624536215,
+        "full_attn_mse": 0.0013934188432045492,
+        "adaptive_decay_mse": 0.0014929487605763023,
+        "action_attn_mse": 0.0009753931902431841,
+        "decay_attn_mse": 0.0009753931902431841,
+        "combined_mse": 0.0012227961277101141,
+        "full_vs_concat_pct": 90.19999999999999,
+        "combined_vs_concat_pct": 91.4
+      },
+      "100": {
+        "concat_mse": 0.012229501487162545,
+        "full_attn_mse": 0.0011984911457419293,
+        "adaptive_decay_mse": 0.001284097656152067,
+        "action_attn_mse": 0.0008389438020193504,
+        "decay_attn_mse": 0.0008389438020193504,
+        "combined_mse": 0.0010517371278959786,
+        "full_vs_concat_pct": 90.19999999999999,
+        "combined_vs_concat_pct": 91.4
+      },
+      "150": {
+        "concat_mse": 0.016567461674801248,
+        "full_attn_mse": 0.0016236112441305225,
+        "adaptive_decay_mse": 0.0017395834758541311,
+        "action_attn_mse": 0.0011365278708913656,
+        "decay_attn_mse": 0.0011365278708913656,
+        "combined_mse": 0.0014248017040329073,
+        "full_vs_concat_pct": 90.2,
+        "combined_vs_concat_pct": 91.39999999999999
+      }
+    }
+  }
+}

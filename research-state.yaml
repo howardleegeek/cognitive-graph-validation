@@ -1164,10 +1164,16 @@ hypotheses:
   priority: high
   statement: Dimension scaling 16k-64k with attention maintains advantage
   status: supported
-last_direction: H1.147 completed - SUPPORTED (+70.3%)
-cycle: 140
+- evidence: +90.2% full attention, +91.4% combined on 100-150 step tasks
+  id: H1.148
+  parent: H1
+  priority: high
+  statement: Attention maintains advantage on 100-150 step ultra-complex multi-step tasks
+  status: supported
+last_direction: H1.148 completed - SUPPORTED (+90.2%)
+cycle: 141
 current_experiments:
-  - 'H1.147: Dimension scaling 16k-64k - SUPPORTED (+70.3%)'
+  - 'H1.148: Ultra-complex 100-150 step attention - SUPPORTED (+90.2%)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical

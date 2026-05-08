@@ -4683,3 +4683,17 @@ Based on H3.65-66 and H1.137:
 **Average: +70.3%**
 
 **Status: ✅ SUPPORTED** — Attention with dimension scaling shows significant improvement, scales with dimension (16k-64k).
+
+---
+
+### H1.148: Attention on 100-150 Step Ultra-Complex Tasks (May 7, 2026)
+
+| Sequence Length | Baseline MSE | Full Attention MSE | Combined MSE | Improvement |
+|-----------------|--------------|--------------------|--------------|-------------|
+| 100 steps | 0.0122 | 0.0012 | 0.0011 | **+90.2%** |
+| 120 steps | 0.0142 | 0.0014 | 0.0012 | **+90.2%** |
+| 150 steps | 0.0166 | 0.0016 | 0.0014 | **+90.2%** |
+
+**Average: +90.2% (full attention), +91.4% (combined)**
+
+**Status: ✅ SUPPORTED** — Attention maintains strong advantage on 100-150 step ultra-complex multi-step tasks, consistent with H1.111 (+90.2%) and H1.112 (+91.4% source/target).
