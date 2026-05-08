@@ -1,0 +1,33 @@
+{
+  "hypothesis": "H1.150",
+  "statement": "Attention maintains advantage on 200-250 step ultra-extreme multi-step tasks",
+  "status": "REFUTED",
+  "results": {
+    "200": {
+      "baseline": 0.00010767123603727669,
+      "attention": 0.00014103118155617267,
+      "action_gated": 0.00013370413216762245,
+      "attn_improvement": -30.983154597896963,
+      "action_improvement": -24.178134373169964
+    },
+    "225": {
+      "baseline": 4.3136901695106644e-05,
+      "attention": 4.986051135347225e-05,
+      "action_gated": 3.766848567465786e-05,
+      "attn_improvement": -15.586677285931074,
+      "action_improvement": 12.676886390913678
+    },
+    "250": {
+      "baseline": 4.862624336965382e-05,
+      "attention": 7.120351801859215e-05,
+      "action_gated": 9.59449025685899e-05,
+      "attn_improvement": -46.43022591177201,
+      "action_improvement": -97.31094964343107
+    }
+  },
+  "avg_baseline": 6.647812703401239e-05,
+  "avg_attention": 8.736507030941236e-05,
+  "avg_action_gated": 8.910584013695673e-05,
+  "avg_attn_improvement": -31.419271581934805,
+  "avg_action_improvement": -34.03783185914258
+}

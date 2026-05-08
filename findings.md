@@ -1438,6 +1438,22 @@ Synthetic experiments (H1.115-117) show attention COLLAPSES on random data, but 
 
 ---
 
+### H1.150: Attention on 200-250 Step Ultra-Extreme Multi-Step Tasks (May 7, 2026)
+
+| Sequence Length | Concat MSE | Attention MSE | Action-Gated MSE | Attn Δ |
+|-----------------|-----------|---------------|------------------|--------|
+| 200 | 0.000108 | 0.000141 | 0.000134 | -31.0% |
+| 225 | 0.000043 | 0.000050 | 0.000038 | -15.6% |
+| 250 | 0.000049 | 0.000071 | 0.000096 | -46.4% |
+
+**Average: -31.4% attention, -34.0% action-gated**
+
+**Status: ❌ REFUTED** — Attention WORSE than concatenation on 200-250 step sequences in synthetic setting. This confirms the pattern: attention benefits come from REAL robot temporal structure, not the mechanism itself. Synthetic data lacks the manipulation-specific structure that makes attention effective.
+
+**Key Insight**: This aligns with H1.115-117 findings - attention collapses on synthetic random data but excels (+94-99%) on real robot data with inherent temporal structure (object permanence, motion patterns, task phases).
+
+---
+
 ### H1.140: Attention on ALOHA-Style Long-Horizon Manipulation (May 7, 2026)
 
 | Sequence Length | Concat MSE | Full Attn MSE | Action-Gated MSE | Attn Δ |
