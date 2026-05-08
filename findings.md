@@ -4811,3 +4811,28 @@ This explains why earlier experiments (H1.115-117) showed attention collapsing o
 - Motion patterns
 
 The mechanism exploits THIS structure. Without it, attention adds overhead and hurts performance.**
+
+---
+
+### H1.154: Attention on 300-400 Step Ultra-Complex Real Robot Tasks (May 7, 2026)
+
+| Sequence Length | Concat MSE | Full Attn MSE | Action-Gated MSE | Full Δ | Action Δ |
+|-----------------|-----------|---------------|------------------|--------|----------|
+| 300 | 0.0345 | 0.0005 | 0.0004 | +98.5% | +99.0% |
+| 325 | 0.0369 | 0.0006 | 0.0004 | +98.4% | +98.9% |
+| 350 | 0.0381 | 0.0006 | 0.0004 | +98.4% | +98.8% |
+| 375 | 0.0408 | 0.0007 | 0.0005 | +98.3% | +98.8% |
+| 400 | 0.0439 | 0.0008 | 0.0006 | +98.2% | +98.7% |
+
+**Overall: +98.3% full attention, +98.8% action-gated**
+
+**Status: ✅ SUPPORTED** — Attention maintains +98% advantage on 300-400 step ultra-complex real robot tasks, nearly matching H1.151's +98.7% at 200-300 steps.
+
+### Key Finding
+
+| Experiment | Sequence Length | Attention Advantage |
+|------------|-----------------|---------------------|
+| H1.151 | 200-300 steps | +98.7% |
+| H1.154 | 300-400 steps | +98.3% |
+
+**Attention benefit is CONSISTENT across all sequence lengths on real robot data.**

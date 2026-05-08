@@ -1200,13 +1200,16 @@ hypotheses:
   priority: high
   statement: Attention on physics-based synthetic sequences
   status: refuted
-last_direction: H1.153 completed - REFUTED (-37397%, attention needs real robot temporal structure, not just any physics)
-cycle: 146
+- evidence: +98.3% avg on 300-400 step real robot tasks
+  id: H1.154
+  parent: H1
+  priority: high
+  statement: Attention maintains advantage on 300-400 step ultra-complex real robot tasks
+  status: supported
+last_direction: H1.154 completed - SUPPORTED (+98.3%, attention maintains advantage at 300-400 steps)
+cycle: 147
 current_experiments:
-  - 'H1.148: Ultra-complex 100-150 step attention - SUPPORTED (+90.2%)'
-  - 'H1.149: Ultra-extreme 150-200 step attention - SUPPORTED (+90.7%)'
-  - 'H1.150: Attention 200-250 steps - REFUTED (-31.4% synthetic)'
-  - 'H1.151: Attention 200-300 real robot - SUPPORTED (+98.7%)'
+  - 'H1.154: Ultra-complex 300-400 step attention - SUPPORTED (+98.3%)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
