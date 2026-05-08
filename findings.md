@@ -4890,8 +4890,9 @@ The mechanism exploits THIS structure. Without it, attention adds overhead and h
 | H1.155 | 400-500 steps | +98.0% |
 | H1.156 | 500-600 steps | +97.5% |
 | H1.157 | 600-700 steps | +96.9% |
+| H1.158 | 700-800 steps | +96.1% |
 
-**Attention benefit is CONSISTENT across all sequence lengths on real robot data, with graceful degradation (~1.8% total from 200 to 700 steps).**
+**Attention benefit is CONSISTENT across all sequence lengths on real robot data, with graceful degradation (~2.6% total from 200 to 800 steps).**
 
 ---
 
@@ -4919,4 +4920,33 @@ The mechanism exploits THIS structure. Without it, attention adds overhead and h
 | H1.156 | 500-600 steps | +97.5% |
 | H1.157 | 600-700 steps | +96.9% |
 
-**Attention benefit is CONSISTENT across all sequence lengths on real robot data, with graceful degradation (~1.8% total from 200 to 700 steps).**
+**Attention benefit is CONSISTENT across all sequence lengths on real robot data, with graceful degradation (~2.6% total from 200 to 800 steps).**
+
+---
+
+### H1.158: Attention on 700-800 Step Ultra-Extreme Real Robot Tasks (May 7, 2026)
+
+| Sequence Length | Concat MSE | Full Attn MSE | Action-Gated MSE | Full Δ | Action Δ |
+|----------------|-----------|---------------|------------------|--------|----------|
+| 700 | 0.1135 | 0.0040 | 0.0028 | +96.5% | +97.5% |
+| 725 | 0.1172 | 0.0043 | 0.0030 | +96.3% | +97.4% |
+| 750 | 0.1196 | 0.0046 | 0.0032 | +96.2% | +97.3% |
+| 775 | 0.1235 | 0.0050 | 0.0035 | +96.0% | +97.2% |
+| 800 | 0.1279 | 0.0054 | 0.0038 | +95.8% | +97.1% |
+
+**Overall: +96.1% full attention, +97.3% action-gated, +96.8% linear attention**
+
+**Status: ✅ SUPPORTED** — Attention maintains +96.1% advantage on 700-800 step ultra-extreme real robot tasks, with continued graceful degradation from earlier experiments.
+
+### Key Finding
+
+| Experiment | Sequence Length | Attention Advantage |
+|------------|-----------------|---------------------|
+| H1.151 | 200-300 steps | +98.7% |
+| H1.154 | 300-400 steps | +98.3% |
+| H1.155 | 400-500 steps | +98.0% |
+| H1.156 | 500-600 steps | +97.5% |
+| H1.157 | 600-700 steps | +96.9% |
+| H1.158 | 700-800 steps | +96.1% |
+
+**Attention benefit is CONSISTENT across all sequence lengths on real robot data, with graceful degradation (~2.6% total from 200 to 800 steps).**
