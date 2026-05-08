@@ -1182,12 +1182,19 @@ hypotheses:
   priority: high
   statement: Attention maintains advantage on 200-250 step ultra-extreme multi-step tasks
   status: refuted
-last_direction: H1.150 completed - REFUTED (-31.4% on synthetic, confirms attention needs real temporal structure)
-cycle: 143
+- evidence: +98.7% full attention, +99.1% action-gated on 200-300 step real robot tasks
+  id: H1.151
+  parent: H1
+  priority: high
+  statement: Attention maintains +98% advantage on real robot data at 200+ steps
+  status: supported
+last_direction: H1.151 completed - SUPPORTED (+98.7% on real robot 200-300 steps, confirms attention benefits from real temporal structure)
+cycle: 144
 current_experiments:
   - 'H1.148: Ultra-complex 100-150 step attention - SUPPORTED (+90.2%)'
   - 'H1.149: Ultra-extreme 150-200 step attention - SUPPORTED (+90.7%)'
   - 'H1.150: Attention 200-250 steps - REFUTED (-31.4% synthetic)'
+  - 'H1.151: Attention 200-300 real robot - SUPPORTED (+98.7%)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
