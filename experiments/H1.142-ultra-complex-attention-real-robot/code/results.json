@@ -1,0 +1,329 @@
+{
+  "hypothesis": "H1.142",
+  "statement": "Attention maintains advantage on ultra-complex (50-100 step) multi-step tasks",
+  "date": "2026-05-07T17:22:55.343525",
+  "results": [
+    {
+      "n_steps": 50,
+      "trial": 0,
+      "baseline_mse": 0.009943716694042678,
+      "attention_mse": 0.24854849738491713,
+      "action_gated_mse": 0.2485883535886166,
+      "attention_improvement": -2399.553286084906,
+      "action_gated_improvement": -2399.954104057962
+    },
+    {
+      "n_steps": 50,
+      "trial": 1,
+      "baseline_mse": 0.012425169659706435,
+      "attention_mse": 0.23991191132719888,
+      "action_gated_mse": 0.23984596864898491,
+      "attention_improvement": -1830.8542088178392,
+      "action_gated_improvement": -1830.3234902842498
+    },
+    {
+      "n_steps": 50,
+      "trial": 2,
+      "baseline_mse": 0.011127513256438964,
+      "attention_mse": 0.20262445862390807,
+      "action_gated_mse": 0.20276195879312775,
+      "attention_improvement": -1720.9320802800114,
+      "action_gated_improvement": -1722.167757704526
+    },
+    {
+      "n_steps": 50,
+      "trial": 3,
+      "baseline_mse": 0.011744583683404732,
+      "attention_mse": 0.2315673760046938,
+      "action_gated_mse": 0.23137339282830233,
+      "attention_improvement": -1871.6950574578636,
+      "action_gated_improvement": -1870.043375443238
+    },
+    {
+      "n_steps": 50,
+      "trial": 4,
+      "baseline_mse": 0.01058971149509159,
+      "attention_mse": 0.23347029026443195,
+      "action_gated_mse": 0.23333600653370948,
+      "attention_improvement": -2104.689810224265,
+      "action_gated_improvement": -2103.42175178108
+    },
+    {
+      "n_steps": 60,
+      "trial": 0,
+      "baseline_mse": 0.010600799529267003,
+      "attention_mse": 0.20877146848556838,
+      "action_gated_mse": 0.20903513299667928,
+      "attention_improvement": -1869.3936095026218,
+      "action_gated_improvement": -1871.8808229470696
+    },
+    {
+      "n_steps": 60,
+      "trial": 1,
+      "baseline_mse": 0.01118539301977512,
+      "attention_mse": 0.2578942229885488,
+      "action_gated_mse": 0.25822545183734313,
+      "attention_improvement": -2205.633986509074,
+      "action_gated_improvement": -2208.5952490074833
+    },
+    {
+      "n_steps": 60,
+      "trial": 2,
+      "baseline_mse": 0.011378708792597341,
+      "attention_mse": 0.22115711631826326,
+      "action_gated_mse": 0.2213112554082235,
+      "attention_improvement": -1843.6046773790513,
+      "action_gated_improvement": -1844.959304628678
+    },
+    {
+      "n_steps": 60,
+      "trial": 3,
+      "baseline_mse": 0.008570152738172269,
+      "attention_mse": 0.22838000220274077,
+      "action_gated_mse": 0.22838382837660812,
+      "attention_improvement": -2564.830011552941,
+      "action_gated_improvement": -2564.8746568933943
+    },
+    {
+      "n_steps": 60,
+      "trial": 4,
+      "baseline_mse": 0.00952409791128044,
+      "attention_mse": 0.2355194094331337,
+      "action_gated_mse": 0.23569337758230197,
+      "attention_improvement": -2372.8789185816963,
+      "action_gated_improvement": -2374.7055288369543
+    },
+    {
+      "n_steps": 70,
+      "trial": 0,
+      "baseline_mse": 0.012576537907837334,
+      "attention_mse": 0.20929361697121537,
+      "action_gated_mse": 0.2091891175707201,
+      "attention_improvement": -1564.1592344804976,
+      "action_gated_improvement": -1563.3283269504518
+    },
+    {
+      "n_steps": 70,
+      "trial": 1,
+      "baseline_mse": 0.008684156160880993,
+      "attention_mse": 0.20058176352267806,
+      "action_gated_mse": 0.20062522578112205,
+      "attention_improvement": -2209.7438577420676,
+      "action_gated_improvement": -2210.2443353663616
+    },
+    {
+      "n_steps": 70,
+      "trial": 2,
+      "baseline_mse": 0.012433624708033005,
+      "attention_mse": 0.21702197617117555,
+      "action_gated_mse": 0.21696686733747628,
+      "attention_improvement": -1645.4441586206472,
+      "action_gated_improvement": -1645.0009344201958
+    },
+    {
+      "n_steps": 70,
+      "trial": 3,
+      "baseline_mse": 0.010475000002413236,
+      "attention_mse": 0.24053711837412534,
+      "action_gated_mse": 0.24043104448784505,
+      "attention_improvement": -2196.2970722549903,
+      "action_gated_improvement": -2195.284433722715
+    },
+    {
+      "n_steps": 70,
+      "trial": 4,
+      "baseline_mse": 0.012383159911441791,
+      "attention_mse": 0.2320618791054704,
+      "action_gated_mse": 0.2319477365746315,
+      "attention_improvement": -1774.0118093044239,
+      "action_gated_improvement": -1773.0900532126411
+    },
+    {
+      "n_steps": 80,
+      "trial": 0,
+      "baseline_mse": 0.01111890628035357,
+      "attention_mse": 0.2253814356548741,
+      "action_gated_mse": 0.22525235510976888,
+      "attention_improvement": -1927.0108405636026,
+      "action_gated_improvement": -1925.8499301120657
+    },
+    {
+      "n_steps": 80,
+      "trial": 1,
+      "baseline_mse": 0.006788577824034471,
+      "attention_mse": 0.1921499413799255,
+      "action_gated_mse": 0.19222076868735696,
+      "attention_improvement": -2730.488894148528,
+      "action_gated_improvement": -2731.532224714478
+    },
+    {
+      "n_steps": 80,
+      "trial": 2,
+      "baseline_mse": 0.010428867789954272,
+      "attention_mse": 0.22249705233687933,
+      "action_gated_mse": 0.222524937351894,
+      "attention_improvement": -2033.4727490859766,
+      "action_gated_improvement": -2033.740132042365
+    },
+    {
+      "n_steps": 80,
+      "trial": 3,
+      "baseline_mse": 0.010613525756971338,
+      "attention_mse": 0.22065916693685705,
+      "action_gated_mse": 0.22066662609154647,
+      "attention_improvement": -1979.0373716474032,
+      "action_gated_improvement": -1979.1076513533203
+    },
+    {
+      "n_steps": 80,
+      "trial": 4,
+      "baseline_mse": 0.01125807285774008,
+      "attention_mse": 0.22641322357703456,
+      "action_gated_mse": 0.22635340919204533,
+      "attention_improvement": -1911.1188339074602,
+      "action_gated_improvement": -1910.5875317410498
+    },
+    {
+      "n_steps": 90,
+      "trial": 0,
+      "baseline_mse": 0.009152317419309554,
+      "attention_mse": 0.2318240445242373,
+      "action_gated_mse": 0.2319301009878532,
+      "attention_improvement": -2432.9545939385257,
+      "action_gated_improvement": -2434.1133874850884
+    },
+    {
+      "n_steps": 90,
+      "trial": 1,
+      "baseline_mse": 0.00893710305410968,
+      "attention_mse": 0.23357306506280995,
+      "action_gated_mse": 0.23343643345079523,
+      "attention_improvement": -2513.520999463048,
+      "action_gated_improvement": -2511.9921862538076
+    },
+    {
+      "n_steps": 90,
+      "trial": 2,
+      "baseline_mse": 0.011308783970630147,
+      "attention_mse": 0.24540876888731653,
+      "action_gated_mse": 0.24547694427771055,
+      "attention_improvement": -2070.0721273362683,
+      "action_gated_improvement": -2070.674980751552
+    },
+    {
+      "n_steps": 90,
+      "trial": 3,
+      "baseline_mse": 0.00952471418511882,
+      "attention_mse": 0.19212370175045923,
+      "action_gated_mse": 0.1920812781824815,
+      "attention_improvement": -1917.1072644954386,
+      "action_gated_improvement": -1916.6618593404576
+    },
+    {
+      "n_steps": 90,
+      "trial": 4,
+      "baseline_mse": 0.011624530522847933,
+      "attention_mse": 0.23602885632516257,
+      "action_gated_mse": 0.23598649868748386,
+      "attention_improvement": -1930.4377528300997,
+      "action_gated_improvement": -1930.0733713387742
+    },
+    {
+      "n_steps": 100,
+      "trial": 0,
+      "baseline_mse": 0.008945006329035013,
+      "attention_mse": 0.23501690178393483,
+      "action_gated_mse": 0.23512260243185903,
+      "attention_improvement": -2527.3531078573137,
+      "action_gated_improvement": -2528.5347799996925
+    },
+    {
+      "n_steps": 100,
+      "trial": 1,
+      "baseline_mse": 0.011264510523522491,
+      "attention_mse": 0.22402759134917818,
+      "action_gated_mse": 0.22400974460885226,
+      "attention_improvement": -1888.791176335314,
+      "action_gated_improvement": -1888.6327429947028
+    },
+    {
+      "n_steps": 100,
+      "trial": 2,
+      "baseline_mse": 0.011422661463555295,
+      "attention_mse": 0.23198866106762828,
+      "action_gated_mse": 0.2319831351183549,
+      "attention_improvement": -1930.9510336781177,
+      "action_gated_improvement": -1930.9026566051298
+    },
+    {
+      "n_steps": 100,
+      "trial": 3,
+      "baseline_mse": 0.012031003607293747,
+      "attention_mse": 0.24166616186585974,
+      "action_gated_mse": 0.24189073082527926,
+      "attention_improvement": -1908.694949765875,
+      "action_gated_improvement": -1910.5615351875879
+    },
+    {
+      "n_steps": 100,
+      "trial": 4,
+      "baseline_mse": 0.010107614822368946,
+      "attention_mse": 0.21672409909359341,
+      "action_gated_mse": 0.21673555214643764,
+      "attention_improvement": -2044.166580368357,
+      "action_gated_improvement": -2044.2798915010574
+    }
+  ],
+  "summary": {
+    "overall_baseline_mse": 0.010605617395907613,
+    "overall_attention_mse": 0.22609412595912734,
+    "overall_action_gated_mse": 0.22611286118318036,
+    "overall_attention_improvement_pct": -2063.963335140474,
+    "overall_action_gated_improvement_pct": -2064.170632889271,
+    "status": "REFUTED"
+  },
+  "by_step_count": {
+    "50": {
+      "baseline_mse": 0.011166138957736878,
+      "attention_mse": 0.23122450672102998,
+      "action_gated_mse": 0.23118113607854823,
+      "attention_improvement_pct": -1985.544888572977,
+      "action_gated_improvement_pct": -1985.182095854211
+    },
+    "60": {
+      "baseline_mse": 0.010251830398218436,
+      "attention_mse": 0.230344443885651,
+      "action_gated_mse": 0.2305298092402312,
+      "attention_improvement_pct": -2171.268240705077,
+      "action_gated_improvement_pct": -2173.0031124627158
+    },
+    "70": {
+      "baseline_mse": 0.011310495738121271,
+      "attention_mse": 0.21989927082893296,
+      "action_gated_mse": 0.219831998350359,
+      "attention_improvement_pct": -1877.9312264805253,
+      "action_gated_improvement_pct": -1877.389616734473
+    },
+    "80": {
+      "baseline_mse": 0.010041590101810747,
+      "attention_mse": 0.2174201639771141,
+      "action_gated_mse": 0.21740361928652235,
+      "attention_improvement_pct": -2116.225737870594,
+      "action_gated_improvement_pct": -2116.163493992656
+    },
+    "90": {
+      "baseline_mse": 0.010109489830403228,
+      "attention_mse": 0.22779168730999713,
+      "action_gated_mse": 0.22778225111726483,
+      "attention_improvement_pct": -2172.818547612676,
+      "action_gated_improvement_pct": -2172.703157033936
+    },
+    "100": {
+      "baseline_mse": 0.010754159349155098,
+      "attention_mse": 0.2298846830320389,
+      "action_gated_mse": 0.22994835302615663,
+      "attention_improvement_pct": -2059.9913696009953,
+      "action_gated_improvement_pct": -2060.5823212576342
+    }
+  }
+}

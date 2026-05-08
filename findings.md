@@ -4591,3 +4591,20 @@ Based on H3.65-66 and H1.137:
 - Gated: -3.7% avg
 
 **Status: ⚠️ INCONCLUSIVE** — Gated attention is closest to baseline (-3.7%), but all attention mechanisms underperform on this synthetic task. Task structure matters more than mechanism choice.
+
+---
+
+### H1.142: Ultra-Complex Attention on Real Robot (50-100 Steps) (May 7, 2026)
+
+| Seq Length | Baseline MSE | Attention MSE | Action-Gated MSE | Attn Δ |
+|------------|-------------|---------------|------------------|--------|
+| 50 | 0.0112 | 0.2312 | 0.2312 | -1985% |
+| 60 | 0.0103 | 0.2303 | 0.2305 | -2171% |
+| 70 | 0.0113 | 0.2199 | 0.2198 | -1878% |
+| 80 | 0.0100 | 0.2174 | 0.2174 | -2116% |
+| 90 | 0.0101 | 0.2278 | 0.2278 | -2173% |
+| 100 | 0.0108 | 0.2299 | 0.2300 | -2060% |
+
+**Overall: Baseline 0.0106, Attention 0.2261 (-2064%), Action-Gated 0.2261 (-2064%)**
+
+**Status: ❌ REFUTED** — Attention dramatically underperforms on ultra-complex (50-100 step) tasks in this simplified implementation. Key insight: The simplified attention mechanism doesn't scale to extreme sequence lengths. Previous successful experiments (H1.140, H3.75) used more sophisticated attention implementations that maintained +94% improvement.

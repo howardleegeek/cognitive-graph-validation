@@ -1140,12 +1140,16 @@ hypotheses:
   priority: high
   statement: Attention crossover point on real robot data occurs earlier than synthetic
   status: supported
-last_direction: H1.140, H1.141, H3.75 completed - all SUPPORTED
-cycle: 137
+- evidence: -2064% avg - simplified attention doesn't scale to 50-100 steps
+  id: H1.142
+  parent: H1
+  priority: high
+  statement: Attention maintains advantage on ultra-complex (50-100 step) multi-step tasks
+  status: refuted
+last_direction: H1.142 completed - REFUTED (-2064%)
+cycle: 138
 current_experiments:
-  - 'H1.140: ALOHA long-horizon - SUPPORTED (+94.3%)'
-  - 'H1.141: Graph+Attention temporal - SUPPORTED (+99.1%)'
-  - 'H3.75: Attention crossover real robot - SUPPORTED (+33.6%, crossover at 10)'
+  - 'H1.142: Ultra-complex attention 50-100 steps - REFUTED (-2064%)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
