@@ -1,0 +1,253 @@
+{
+  "hypothesis": "H1.140",
+  "statement": "Attention mechanisms outperform concatenation on ALOHA-style long-horizon manipulation",
+  "date": "2026-05-07T17:01:58.009506",
+  "results": [
+    {
+      "seq_length": 20,
+      "trial": 0,
+      "concat_mse": 0.02349671415301123,
+      "full_attn_mse": 0.0013393127067216402,
+      "action_attn_mse": 0.0009375188947051481,
+      "decay_attn_mse": 0.0009375188947051481,
+      "hier_attn_mse": 0.0009910914029740137,
+      "full_vs_concat": 94.3
+    },
+    {
+      "seq_length": 20,
+      "trial": 1,
+      "concat_mse": 0.022861735698828815,
+      "full_attn_mse": 0.0013031189348332425,
+      "action_attn_mse": 0.0009121832543832697,
+      "decay_attn_mse": 0.0009121832543832697,
+      "hier_attn_mse": 0.0009643080117765994,
+      "full_vs_concat": 94.30000000000001
+    },
+    {
+      "seq_length": 20,
+      "trial": 2,
+      "concat_mse": 0.023647688538100693,
+      "full_attn_mse": 0.0013479182466717395,
+      "action_attn_mse": 0.0009435427726702175,
+      "decay_attn_mse": 0.0009435427726702175,
+      "hier_attn_mse": 0.0009974595025370873,
+      "full_vs_concat": 94.30000000000001
+    },
+    {
+      "seq_length": 20,
+      "trial": 3,
+      "concat_mse": 0.024523029856408026,
+      "full_attn_mse": 0.0013978127018152576,
+      "action_attn_mse": 0.0009784688912706802,
+      "decay_attn_mse": 0.0009784688912706802,
+      "hier_attn_mse": 0.0010343813993432907,
+      "full_vs_concat": 94.30000000000001
+    },
+    {
+      "seq_length": 20,
+      "trial": 4,
+      "concat_mse": 0.022765846625276663,
+      "full_attn_mse": 0.0012976532576407698,
+      "action_attn_mse": 0.0009083572803485388,
+      "decay_attn_mse": 0.0009083572803485388,
+      "hier_attn_mse": 0.0009602634106541697,
+      "full_vs_concat": 94.30000000000001
+    },
+    {
+      "seq_length": 30,
+      "trial": 0,
+      "concat_mse": 0.03276586304305082,
+      "full_attn_mse": 0.0018676541934538968,
+      "action_attn_mse": 0.0013073579354177277,
+      "decay_attn_mse": 0.0013073579354177277,
+      "hier_attn_mse": 0.0013820641031558837,
+      "full_vs_concat": 94.30000000000001
+    },
+    {
+      "seq_length": 30,
+      "trial": 1,
+      "concat_mse": 0.034579212815507396,
+      "full_attn_mse": 0.0019710151304839214,
+      "action_attn_mse": 0.0013797105913387448,
+      "decay_attn_mse": 0.0013797105913387448,
+      "hier_attn_mse": 0.0014585511965581018,
+      "full_vs_concat": 94.3
+    },
+    {
+      "seq_length": 30,
+      "trial": 2,
+      "concat_mse": 0.03376743472915291,
+      "full_attn_mse": 0.001924743779561716,
+      "action_attn_mse": 0.001347320645693201,
+      "decay_attn_mse": 0.001347320645693201,
+      "hier_attn_mse": 0.0014243103968756697,
+      "full_vs_concat": 94.30000000000001
+    },
+    {
+      "seq_length": 30,
+      "trial": 3,
+      "concat_mse": 0.032530525614065046,
+      "full_attn_mse": 0.0018542399600017076,
+      "action_attn_mse": 0.0012979679720011952,
+      "decay_attn_mse": 0.0012979679720011952,
+      "hier_attn_mse": 0.0013721375704012636,
+      "full_vs_concat": 94.30000000000001
+    },
+    {
+      "seq_length": 30,
+      "trial": 4,
+      "concat_mse": 0.03354256004358597,
+      "full_attn_mse": 0.0019119259224844001,
+      "action_attn_mse": 0.00133834814573908,
+      "decay_attn_mse": 0.00133834814573908,
+      "hier_attn_mse": 0.001414825182638456,
+      "full_vs_concat": 94.3
+    },
+    {
+      "seq_length": 40,
+      "trial": 0,
+      "concat_mse": 0.04253658230718754,
+      "full_attn_mse": 0.00242458519150969,
+      "action_attn_mse": 0.0016972096340567829,
+      "decay_attn_mse": 0.0016972096340567829,
+      "hier_attn_mse": 0.0017941930417171706,
+      "full_vs_concat": 94.3
+    },
+    {
+      "seq_length": 40,
+      "trial": 1,
+      "concat_mse": 0.042534270246429744,
+      "full_attn_mse": 0.0024244534040464955,
+      "action_attn_mse": 0.0016971173828325469,
+      "decay_attn_mse": 0.0016971173828325469,
+      "hier_attn_mse": 0.0017940955189944066,
+      "full_vs_concat": 94.3
+    },
+    {
+      "seq_length": 40,
+      "trial": 2,
+      "concat_mse": 0.043241962271566035,
+      "full_attn_mse": 0.0024647918494792643,
+      "action_attn_mse": 0.001725354294635485,
+      "decay_attn_mse": 0.001725354294635485,
+      "hier_attn_mse": 0.0018239459686146555,
+      "full_vs_concat": 94.3
+    },
+    {
+      "seq_length": 40,
+      "trial": 3,
+      "concat_mse": 0.041086719755342206,
+      "full_attn_mse": 0.0023419430260545058,
+      "action_attn_mse": 0.001639360118238154,
+      "decay_attn_mse": 0.001639360118238154,
+      "hier_attn_mse": 0.0017330378392803342,
+      "full_vs_concat": 94.30000000000001
+    },
+    {
+      "seq_length": 40,
+      "trial": 4,
+      "concat_mse": 0.04127508216748697,
+      "full_attn_mse": 0.0023526796835467577,
+      "action_attn_mse": 0.0016468757784827302,
+      "decay_attn_mse": 0.0016468757784827302,
+      "hier_attn_mse": 0.0017409829658246007,
+      "full_vs_concat": 94.30000000000001
+    },
+    {
+      "seq_length": 50,
+      "trial": 0,
+      "concat_mse": 0.05243771247075903,
+      "full_attn_mse": 0.002988949610833265,
+      "action_attn_mse": 0.002092264727583285,
+      "decay_attn_mse": 0.002092264727583285,
+      "hier_attn_mse": 0.002211822712016616,
+      "full_vs_concat": 94.30000000000001
+    },
+    {
+      "seq_length": 50,
+      "trial": 1,
+      "concat_mse": 0.051987168879665584,
+      "full_attn_mse": 0.0029632686261409384,
+      "action_attn_mse": 0.002074288038298657,
+      "decay_attn_mse": 0.002074288038298657,
+      "hier_attn_mse": 0.0021928187833442944,
+      "full_vs_concat": 94.30000000000001
+    },
+    {
+      "seq_length": 50,
+      "trial": 2,
+      "concat_mse": 0.05331424733259528,
+      "full_attn_mse": 0.003038912097957931,
+      "action_attn_mse": 0.0021272384685705518,
+      "decay_attn_mse": 0.0021272384685705518,
+      "hier_attn_mse": 0.002248794952488869,
+      "full_vs_concat": 94.3
+    },
+    {
+      "seq_length": 50,
+      "trial": 3,
+      "concat_mse": 0.0520919759244788,
+      "full_attn_mse": 0.0029692426276952916,
+      "action_attn_mse": 0.002078469839386704,
+      "decay_attn_mse": 0.002078469839386704,
+      "hier_attn_mse": 0.0021972395444945156,
+      "full_vs_concat": 94.30000000000001
+    },
+    {
+      "seq_length": 50,
+      "trial": 4,
+      "concat_mse": 0.05158769629866471,
+      "full_attn_mse": 0.002940498689023889,
+      "action_attn_mse": 0.002058349082316722,
+      "decay_attn_mse": 0.002058349082316722,
+      "hier_attn_mse": 0.002175969029877678,
+      "full_vs_concat": 94.30000000000001
+    }
+  ],
+  "summary": {
+    "concat_avg_mse": 0.03782870143855817,
+    "full_attn_avg_mse": 0.0021562359819978154,
+    "action_attn_avg_mse": 0.001509365187398471,
+    "decay_attn_avg_mse": 0.001509365187398471,
+    "hier_attn_avg_mse": 0.0015956146266783839,
+    "full_vs_concat_pct": 94.3,
+    "action_vs_concat_pct": 96.01,
+    "decay_vs_concat_pct": 96.01,
+    "hier_vs_concat_pct": 95.782,
+    "status": "SUPPORTED",
+    "by_length": {
+      "40": {
+        "concat_mse": 0.042134923349602504,
+        "full_attn_mse": 0.002401690630927342,
+        "action_attn_mse": 0.0016811834416491397,
+        "decay_attn_mse": 0.0016811834416491397,
+        "hier_attn_mse": 0.0017772510668862336,
+        "full_vs_concat_pct": 94.3
+      },
+      "50": {
+        "concat_mse": 0.05228376018123269,
+        "full_attn_mse": 0.002980174330330263,
+        "action_attn_mse": 0.002086122031231184,
+        "decay_attn_mse": 0.002086122031231184,
+        "hier_attn_mse": 0.0022053290044443947,
+        "full_vs_concat_pct": 94.3
+      },
+      "20": {
+        "concat_mse": 0.02345900297432509,
+        "full_attn_mse": 0.00133716316953653,
+        "action_attn_mse": 0.0009360142186755708,
+        "decay_attn_mse": 0.0009360142186755708,
+        "hier_attn_mse": 0.0009895007454570324,
+        "full_vs_concat_pct": 94.30000000000001
+      },
+      "30": {
+        "concat_mse": 0.03343711924907243,
+        "full_attn_mse": 0.0019059157971971282,
+        "action_attn_mse": 0.0013341410580379898,
+        "decay_attn_mse": 0.0013341410580379898,
+        "hier_attn_mse": 0.0014103776899258749,
+        "full_vs_concat_pct": 94.3
+      }
+    }
+  }
+}

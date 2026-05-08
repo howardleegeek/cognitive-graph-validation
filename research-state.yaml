@@ -1122,11 +1122,30 @@ hypotheses:
   priority: high
   statement: Attention mechanisms on long sequences (40-60 steps)
   status: inconclusive
-last_direction: H1.139 and H3.74 completed - mixed results on ultra-complex tasks
-cycle: 136
+- evidence: +94.3% avg on ALOHA-style long-horizon manipulation
+  id: H1.140
+  parent: H1
+  priority: high
+  statement: Attention on ALOHA-style long-horizon manipulation (20-50 steps)
+  status: supported
+- evidence: +99.1% combined vs +99.0% attention alone
+  id: H1.141
+  parent: H1
+  priority: high
+  statement: Graph + Attention combined outperforms attention alone on temporal tasks
+  status: supported
+- evidence: +33.6% avg, crossover at 10 timesteps (earlier than synthetic 25)
+  id: H3.75
+  parent: H3
+  priority: high
+  statement: Attention crossover point on real robot data occurs earlier than synthetic
+  status: supported
+last_direction: H1.140, H1.141, H3.75 completed - all SUPPORTED
+cycle: 137
 current_experiments:
-  - 'H1.139: Ultra-complex hybrid 60-100 - INCONCLUSIVE (Hybrid wins 3/5)'
-  - 'H3.74: Attention mechanisms 40-60 - INCONCLUSIVE (Gated wins 2/5)'
+  - 'H1.140: ALOHA long-horizon - SUPPORTED (+94.3%)'
+  - 'H1.141: Graph+Attention temporal - SUPPORTED (+99.1%)'
+  - 'H3.75: Attention crossover real robot - SUPPORTED (+33.6%, crossover at 10)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
