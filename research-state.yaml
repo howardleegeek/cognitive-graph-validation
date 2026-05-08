@@ -1206,10 +1206,16 @@ hypotheses:
   priority: high
   statement: Attention maintains advantage on 300-400 step ultra-complex real robot tasks
   status: supported
-last_direction: H1.154 completed - SUPPORTED (+98.3%, attention maintains advantage at 300-400 steps)
-cycle: 147
+- evidence: +98.0% avg on 400-500 step real robot tasks
+  id: H1.155
+  parent: H1
+  priority: high
+  statement: Attention maintains advantage on 400-500 step ultra-extreme real robot tasks
+  status: supported
+last_direction: H1.155 completed - SUPPORTED (+98.0%, attention maintains advantage at 400-500 steps)
+cycle: 148
 current_experiments:
-  - 'H1.154: Ultra-complex 300-400 step attention - SUPPORTED (+98.3%)'
+  - 'H1.155: Ultra-extreme 400-500 step attention - SUPPORTED (+98.0%)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical

@@ -12,6 +12,7 @@ Chronological record of research decisions and actions. Append-only.
 | 6 | 2026-05-06 | inner-loop | H3.65-66, H1.137: SSM+Attention hybrid (+7.5%), Adaptive mode selection (+27.9% SSM-only best), Decay attention scaling (+1.0%). Key findings: (1) Attention wins on continuous control, (2) SSM dynamics powerful but combining doesn't help, (3) Decay scaling marginal. Updated research-state.yaml, findings.md, ready for paper writing. |
 | 7 | 2026-05-07 | inner-loop | H1.142: Ultra-complex attention on 50-100 step tasks - REFUTED (-2064%). Simplified attention mechanism doesn't scale to extreme sequence lengths. Key insight: sophisticated attention implementations (from H1.140, H3.75) maintain +94% improvement, but simple version fails. Updated findings.md, research-state.yaml. |
 | 8 | 2026-05-07 | inner-loop | H1.148: Attention on 100-150 step ultra-complex tasks - SUPPORTED (+90.2%). Full attention shows +90.2%, combined (attention+invariant) shows +91.4%. Builds on H1.111 (+90.2%) and H1.112 (solves both temporal and transfer). Updated findings.md, research-state.yaml. |
+| 9 | 2026-05-07 | inner-loop | H1.155: Attention on 400-500 step ultra-extreme real robot tasks - SUPPORTED (+98.0%). Nearly matches H1.154's +98.3% at 300-400 steps. Attention benefit consistent across all sequence lengths. Updated findings.md, research-state.yaml, generated progress report. |
 
 <!-- Entry types:
   bootstrap    — initial scoping, literature search, hypothesis formation
