@@ -1362,14 +1362,19 @@ hypotheses:
   priority: medium
   statement: Temporal attention focuses on important timesteps
   status: supported
-last_direction: "H1.174: attention+invariant +98.2% (SUPPORTED). H3.79 (-247.7%) and H3.80 (-183.8%) fail on synthetic. H3.81: Last-5 attention +56.0% (SUPPORTED). Key insight: attention works when it focuses on recent timesteps (last-5 beats learned attention)."
-cycle: 169
+- evidence: +74.1% avg - Multi-Scale (3/5/7 windows) best at +74.1%, beats Last-5 (+65.3%)
+  id: H3.82
+  parent: H3
+  priority: medium
+  statement: Hierarchical temporal abstraction with attention
+  status: supported
+last_direction: "H1.174: attention+invariant +98.2% (SUPPORTED). H3.82: Multi-Scale +74.1% (SUPPORTED) - best so far. H3.81: Last-5 +56.0%. Key insight: multi-scale temporal abstraction (3/5/7 windows) outperforms single-scale."
+cycle: 170
 current_experiments:
-  - 'H1.174: attention+invariant +98.2% transfer - SUPPORTED'
-  - 'H3.79: robot temporal structure - REFUTED (-247.7%)'
-  - 'H3.80: SSM 20-40 steps - REFUTED (-183.8%)'
+  - 'H1.174: attention+invariant +98.2% - SUPPORTED'
   - 'H3.81: Last-5 attention +56.0% - SUPPORTED'
-  - 'Cycle 169 - Temporal focus (last-5) helps, cross-modal fails'
+  - 'H3.82: Multi-Scale (3/5/7) +74.1% - SUPPORTED'
+  - 'Cycle 170 - Multi-scale temporal abstraction best finding'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
