@@ -1350,19 +1350,26 @@ hypotheses:
   priority: medium
   statement: Attention with robot temporal structure (20-40 steps)
   status: refuted
-- evidence: -183.8% avg - SSM and SSM+Attn both underperform concatenation
-  id: H3.80
+- evidence: -86.97% avg - concat still wins on synthetic transfer
+  id: H1.175
+  parent: H1
+  priority: medium
+  statement: Cross-modal attention for generalization
+  status: refuted
+- evidence: +56.0% avg - Last-5 attention best, focuses on recent timesteps
+  id: H3.81
   parent: H3
   priority: medium
-  statement: SSM on 20-40 step sequences
-status: refuted
-last_direction: "H1.174: attention+invariant +98.2% (SUPPORTED). H3.79/H3.80: attention and SSM still fail on synthetic data. Key insight: synthetic data lacks the complexity that makes attention mechanisms effective. Real robot validation (H1.171 +18.6%) confirms attention works with real temporal structure."
-cycle: 168
+  statement: Temporal attention focuses on important timesteps
+  status: supported
+last_direction: "H1.174: attention+invariant +98.2% (SUPPORTED). H3.79 (-247.7%) and H3.80 (-183.8%) fail on synthetic. H3.81: Last-5 attention +56.0% (SUPPORTED). Key insight: attention works when it focuses on recent timesteps (last-5 beats learned attention)."
+cycle: 169
 current_experiments:
-  - 'H1.174: attention+invariant transfer - SUPPORTED (+98.2%)'
+  - 'H1.174: attention+invariant +98.2% transfer - SUPPORTED'
   - 'H3.79: robot temporal structure - REFUTED (-247.7%)'
-  - 'H3.80: SSM on 20-40 steps - REFUTED (-183.8%)'
-  - 'Cycle 168 - Attention+invariant solves transfer, synthetic attention fails'
+  - 'H3.80: SSM 20-40 steps - REFUTED (-183.8%)'
+  - 'H3.81: Last-5 attention +56.0% - SUPPORTED'
+  - 'Cycle 169 - Temporal focus (last-5) helps, cross-modal fails'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical

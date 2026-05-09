@@ -5700,3 +5700,57 @@ Tested SSM (State Space Model) on 20-40 step sequences based on H3.8 showing +93
 **Total: 58 SUPPORTED, 3 INCONCLUSIVE, 20 REFUTED, 0 PENDING**
 
 ---
+
+### H1.175: Cross-Modal Attention for Generalization (May 8, 2026)
+
+Tested cross-modal attention (state attends to goal) vs self-attention on generalization.
+
+| Scenario | Concat MSE | Self-Attn MSE | Cross-Modal MSE |
+|----------|-----------|--------------|-----------------|
+| high friction | 0.000254 | 0.000151 | 0.000429 |
+| low friction | 0.001408 | 0.003507 | 0.004527 |
+| heavy mass | 0.001031 | 0.001830 | 0.001364 |
+| light mass | 0.000338 | 0.000178 | 0.001311 |
+
+**Average: Concat 0.000758, Best attention 0.000334**
+
+**Status: ❌ REFUTED** — -86.97% improvement over concat. Cross-modal attention doesn't help generalization.
+
+---
+
+### H3.81: Temporal Attention Focus on Important Timesteps (May 8, 2026)
+
+Tested if attention focusing on important timesteps helps generalization.
+
+| Scenario | Concat MSE | Temporal Attn | Last-5 Attn | Weighted Attn |
+|----------|-----------|--------------|-------------|---------------|
+| high friction | 0.000254 | 0.000233 | 0.000094 | 0.000435 |
+| low friction | 0.001408 | 0.003802 | 0.000936 | 0.008536 |
+| heavy mass | 0.001031 | 0.002466 | 0.000179 | 0.004704 |
+| light mass | 0.000338 | 0.000321 | 0.000125 | 0.000787 |
+
+**Average: Concat 0.000758, Best attention 0.000334 = +56.0%**
+
+**Status: ✅ SUPPORTED** — Last-5 attention (+56.0%) dramatically outperforms learned attention. Focus on recent timesteps is key.
+
+---
+
+### Key Insights from Cycle 169
+
+1. **Focus on recent timesteps works**: H3.81 (+56.0%) shows Last-5 attention beats learned temporal attention. Recent timesteps contain more predictive information.
+
+2. **Cross-modal doesn't help generalization**: H1.175 (-87.0%) shows cross-modal attention doesn't help transfer in this synthetic setting.
+
+3. **Architecture matters**: Simple fixed attention patterns (Last-5) can outperform learned attention.
+
+### Updated Research Status (May 8, 2026)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1.174 | Attention+Invariant | ✅ +98.2% | Transfer solved |
+| H1.175 | Cross-modal attention | ❌ -87.0% | Doesn't help |
+| H3.81 | Temporal focus | ✅ +56.0% | Last-5 works best |
+
+**Total: 59 SUPPORTED, 3 INCONCLUSIVE, 21 REFUTED, 0 PENDING**
+
+---
