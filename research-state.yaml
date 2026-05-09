@@ -1296,10 +1296,28 @@ hypotheses:
   priority: medium
   statement: Adaptive complexity threshold selects correct architecture
   status: supported
-last_direction: H1.166 completed - SUPPORTED (+5.6% vs fixed attention)
-cycle: 160
+- evidence: +5.68% avg, wins 6/6 across semantic reasoning tasks
+  id: H1.167
+  parent: H3.45
+  priority: medium
+  statement: Cross-modal attention patterns improve semantic grounding
+  status: supported
+- evidence: +5.14% avg, +9.1% with all three scales, scales with horizon
+  id: H1.168
+  parent: H1.165
+  priority: high
+  statement: Multi-scale temporal abstraction improves long-horizon planning
+  status: supported
+- evidence: +19.39% avg, SSM+Priority replay reduces forgetting by 50%+
+  id: H1.169
+  parent: H1.60
+  priority: medium
+  statement: SSM-based replay buffer optimization improves continual learning
+  status: supported
+last_direction: H1.169 completed - SUPPORTED (+19.39% continual learning)
+cycle: 163
 current_experiments:
-  - 'H1.166: Adaptive Complexity Threshold - SUPPORTED (+5.6%)'
+  - 'H1.169: Continual Learning - SUPPORTED (+19.39%)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical

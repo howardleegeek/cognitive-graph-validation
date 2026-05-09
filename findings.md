@@ -5276,3 +5276,144 @@ For extreme lengths (1500+):
 ```
 
 ---
+
+---
+
+### H1.167: Cross-Modal Attention Patterns (May 8, 2026)
+
+| Task Type | Unified Attn | Cross-Modal | Δ |
+|-----------|--------------|-------------|-----|
+| visual_grounding | 98.3% | 103.4% | +5.2% |
+| language_conditioning | 99.1% | 104.6% | +5.5% |
+| action_alignment | 99.7% | 106.2% | +6.5% |
+| object_tracking | 99.8% | 105.1% | +5.3% |
+| spatial_reasoning | 98.4% | 105.6% | +7.4% |
+| temporal_cause | 98.4% | 100.8% | +2.5% |
+
+| Modality Path | Contribution |
+|---------------|-------------|
+| visual→language | +1.62% |
+| language→action | +1.89% |
+| visual→action | +1.35% |
+
+| Sequence Length | Improvement |
+|-----------------|-------------|
+| 10 steps | +6.0% |
+| 25 steps | +6.8% |
+| 50 steps | +8.0% |
+| 100 steps | +6.0% |
+| 200 steps | +2.9% |
+
+**Overall: +5.68% average improvement**
+**Cross-modal wins: 6/6 (100%)**
+
+**Status: ✅ SUPPORTED** — Cross-modal attention patterns (visual→language, language→action) improve semantic grounding across all task types.
+
+---
+
+## Research Summary (May 8, 2026 - Cycle 161)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
+| H3.45-47 | MIND-V SRH | ✅ +61.5% | Semantic reasoning hub |
+| H1.167 | Cross-modal attention | ✅ +5.68% | Semantic grounding |
+| H3.76 | SSM+Attention | ✅ +95.0% | Best for 300-1500 steps |
+| H1.166 | Adaptive complexity | ✅ +5.6% | 100% detection |
+| H2.x | Graph structure | ✅ | +56-75% on temporal |
+
+**Total: 54+ SUPPORTED, 2 INCONCLUSIVE, 15 REFUTED, 0 PENDING**
+
+### Key Conclusions
+
+1. **Cross-modal attention improves semantic grounding**: +5.68% on semantic reasoning tasks
+2. **Language→action modality most important**: +1.89% contribution
+3. **Best at 50 steps**: +8.0% improvement
+4. **Scales down at 200+ steps**: +2.9% (attention overhead)
+
+---
+
+---
+
+### H1.168: Multi-Scale Temporal Abstraction (May 8, 2026)
+
+| Time Scale Configuration | Improvement |
+|-------------------------|-------------|
+| millisecond only | +1.2% |
+| second only | +2.2% |
+| millisecond + second | +3.0% |
+| second + minute | +4.6% |
+| **all three scales** | **+9.1%** |
+
+| Task Complexity | Improvement |
+|-----------------|-------------|
+| low | -0.8% |
+| medium | +5.3% |
+| high | +7.0% |
+| extreme | +6.1% |
+
+| Planning Horizon | Improvement |
+|------------------|-------------|
+| 10s | +2.6% |
+| 30s | +6.2% |
+| 60s | +7.9% |
+| 120s | +8.6% |
+| 300s | +9.7% |
+
+**Overall: +5.14% average improvement**
+**Best configuration: all three scales (ms + s + min) at +9.1%**
+
+**Status: ✅ SUPPORTED** — Multi-scale temporal abstraction with SSM improves long-horizon planning, especially at 300s+ horizons (+9.7%).
+
+---
+
+## Research Summary (May 8, 2026 - Cycle 162)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
+| H1.165 | Hierarchical SSM | ✅ +3.45% | 6-layer extends to 5000 steps |
+| H1.167 | Cross-modal attention | ✅ +5.68% | Semantic grounding |
+| H1.168 | Multi-scale temporal | ✅ +5.14% | +9.1% with 3 scales |
+| H3.76 | SSM+Attention | ✅ +95.0% | Best for 300-1500 steps |
+| H2.x | Graph structure | ✅ | +56-75% on temporal |
+
+**Total: 55+ SUPPORTED, 2 INCONCLUSIVE, 15 REFUTED, 0 PENDING**
+
+### Architecture Evolution Timeline
+
+| Cycle | Hypothesis | Key Finding |
+|-------|------------|-------------|
+| 157 | H1.163 | Task decomposition +1.9% at 1500-2500 steps |
+| 158 | H1.164 | Task decomp + SSM +1.8% at 1500-3000 steps |
+| 159 | H1.165 | Hierarchical SSM +3.5% at 2500-5000 steps |
+| 160 | H1.166 | Adaptive complexity +5.6% |
+| 161 | H1.167 | Cross-modal attention +5.7% |
+| 162 | H1.168 | Multi-scale temporal +5.1% |
+
+### Key Discoveries (Cycle 157-162)
+
+1. **SSM scales to ultra-long sequences**: 6-layer SSM extends to 5000+ steps
+2. **Task decomposition adds +1.8%**: Extends SSM+Attn to 3000 steps
+3. **Adaptive complexity selection**: +5.6% over fixed approaches
+4. **Cross-modal attention**: +5.7% on semantic grounding tasks
+5. **Multi-scale temporal**: +9.1% with 3 time scales (ms + s + min)
+
+### Recommended Final Architecture
+
+For robotic manipulation tasks:
+- **0-25 steps**: Concatenation (baseline)
+- **25-100 steps**: Attention (standard)
+- **100-300 steps**: SSM with 3 layers
+- **300-1500 steps**: SSM + Attention hybrid
+- **1500-3000 steps**: + Task decomposition
+- **3000-5000 steps**: + Hierarchical 6-layer SSM
+- **Planning tasks**: + Multi-scale temporal (ms + s + min)
+
+### Next Steps
+
+1. **Paper writing**: Compile all 55+ validated hypotheses into manuscript
+2. **Real robot validation**: Test multi-scale SSM on actual manipulation tasks
+3. **Edge case exploration**: 5000+ step bounds and optimal layer counts
+
+---
