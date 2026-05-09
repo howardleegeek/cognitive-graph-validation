@@ -1,0 +1,48 @@
+{
+  "hypothesis": "H1.171",
+  "status": "SUPPORTED (marginal)",
+  "average_attention_delta": 18.606100500985534,
+  "average_action_gated_delta": 20.18843338204803,
+  "results": [
+    {
+      "sequence_length": 200,
+      "concat_mse": 0.00021130127424839884,
+      "attention_mse": 0.00019032260752283037,
+      "action_gated_mse": 0.0001861842756625265,
+      "attention_delta": 9.92832002560791,
+      "action_gated_delta": 11.886818323842967
+    },
+    {
+      "sequence_length": 225,
+      "concat_mse": 0.00022998228087089956,
+      "attention_mse": 0.00019233199418522418,
+      "action_gated_mse": 0.00018835111404769123,
+      "attention_delta": 16.370951076361553,
+      "action_gated_delta": 18.10190187937912
+    },
+    {
+      "sequence_length": 250,
+      "concat_mse": 0.00018773713964037597,
+      "attention_mse": 0.00017220087465830147,
+      "action_gated_mse": 0.00016966763359960169,
+      "attention_delta": 8.275541542731148,
+      "action_gated_delta": 9.624896850664566
+    },
+    {
+      "sequence_length": 275,
+      "concat_mse": 0.0001955937477760017,
+      "attention_mse": 0.0001622528798179701,
+      "action_gated_mse": 0.000159538394655101,
+      "attention_delta": 17.045978379745705,
+      "action_gated_delta": 18.433796341073275
+    },
+    {
+      "sequence_length": 300,
+      "concat_mse": 0.0002664257772266865,
+      "attention_mse": 0.00015609963156748563,
+      "action_gated_mse": 0.00015214309678412974,
+      "attention_delta": 41.40971148048135,
+      "action_gated_delta": 42.894753515280215
+    }
+  ]
+}

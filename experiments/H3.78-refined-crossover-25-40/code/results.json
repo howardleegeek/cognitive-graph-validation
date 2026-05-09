@@ -1,0 +1,118 @@
+{
+  "hypothesis": "H3.78",
+  "status": "REFUTED",
+  "crossover_detection_accuracy": 0.4166666666666667,
+  "attention_wins": 12,
+  "ssm_wins": 0,
+  "concat_wins": 0,
+  "results": [
+    {
+      "sequence_length": 25,
+      "complexity": 0.2,
+      "concat_mse": 4.8857818910619244e-05,
+      "attention_mse": 3.213470733953727e-07,
+      "ssm_mse": 0.0002570271317381412,
+      "best_method": "attention",
+      "crossover_detected": 0.0
+    },
+    {
+      "sequence_length": 25,
+      "complexity": 0.5,
+      "concat_mse": 0.0001475554599892348,
+      "attention_mse": 6.138017649703897e-09,
+      "ssm_mse": 0.0004559274821076542,
+      "best_method": "attention",
+      "crossover_detected": 1.0
+    },
+    {
+      "sequence_length": 25,
+      "complexity": 0.8,
+      "concat_mse": 4.6473287511616945e-05,
+      "attention_mse": 1.0138467132492224e-07,
+      "ssm_mse": 0.00041738038999028504,
+      "best_method": "attention",
+      "crossover_detected": 1.0
+    },
+    {
+      "sequence_length": 30,
+      "complexity": 0.2,
+      "concat_mse": 4.393559356685728e-05,
+      "attention_mse": 1.368946755064826e-06,
+      "ssm_mse": 0.0004855695879086852,
+      "best_method": "attention",
+      "crossover_detected": 0.0
+    },
+    {
+      "sequence_length": 30,
+      "complexity": 0.5,
+      "concat_mse": 0.0002669954265002161,
+      "attention_mse": 2.455100798215426e-07,
+      "ssm_mse": 0.0004782743635587394,
+      "best_method": "attention",
+      "crossover_detected": 0.0
+    },
+    {
+      "sequence_length": 30,
+      "complexity": 0.8,
+      "concat_mse": 0.00018492672825232148,
+      "attention_mse": 3.189040285178635e-07,
+      "ssm_mse": 0.00034997466718778014,
+      "best_method": "attention",
+      "crossover_detected": 1.0
+    },
+    {
+      "sequence_length": 35,
+      "complexity": 0.2,
+      "concat_mse": 2.8554588425322436e-05,
+      "attention_mse": 4.446966386240092e-07,
+      "ssm_mse": 0.000215565538383089,
+      "best_method": "attention",
+      "crossover_detected": 0.0
+    },
+    {
+      "sequence_length": 35,
+      "complexity": 0.5,
+      "concat_mse": 7.901092612883076e-05,
+      "attention_mse": 3.1488907552557066e-06,
+      "ssm_mse": 0.0006602940848097205,
+      "best_method": "attention",
+      "crossover_detected": 0.0
+    },
+    {
+      "sequence_length": 35,
+      "complexity": 0.8,
+      "concat_mse": 0.00019010380492545664,
+      "attention_mse": 3.190410780007369e-06,
+      "ssm_mse": 0.0007392719271592796,
+      "best_method": "attention",
+      "crossover_detected": 1.0
+    },
+    {
+      "sequence_length": 40,
+      "complexity": 0.2,
+      "concat_mse": 5.575504110311158e-05,
+      "attention_mse": 2.3736902221571654e-07,
+      "ssm_mse": 0.0002118562115356326,
+      "best_method": "attention",
+      "crossover_detected": 0.0
+    },
+    {
+      "sequence_length": 40,
+      "complexity": 0.5,
+      "concat_mse": 0.00020751032570842654,
+      "attention_mse": 2.5083738819375867e-06,
+      "ssm_mse": 0.0003681110101751983,
+      "best_method": "attention",
+      "crossover_detected": 0.0
+    },
+    {
+      "sequence_length": 40,
+      "complexity": 0.8,
+      "concat_mse": 0.0002494388318154961,
+      "attention_mse": 2.128580263160984e-07,
+      "ssm_mse": 0.000562171742785722,
+      "best_method": "attention",
+      "crossover_detected": 1.0
+    }
+  ]
+}

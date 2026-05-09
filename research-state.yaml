@@ -1320,11 +1320,24 @@ hypotheses:
   priority: high
   statement: Combined architecture achieves +99.9% but sub-additive
   status: inconclusive
-last_direction: H1.170 completed - INCONCLUSIVE (+4.4% combined, sub-additive synergy)
-cycle: 165
+- evidence: +18.6% avg attention, +20.2% action-gated on 200-300 step tasks
+  id: H1.171
+  parent: H1
+  priority: high
+  statement: Attention maintains advantage on ultra-long (200-300 step) real robot tasks
+  status: supported
+- evidence: 41.7% accuracy, attention wins 12/12 - complexity prediction fails
+  id: H3.78
+  parent: H3
+  priority: medium
+  statement: Task complexity-based crossover detection predicts best architecture
+  status: refuted
+last_direction: H1.171 completed - SUPPORTED (+18.6% attention on 200-300 steps), H3.78 REFUTED (complexity prediction fails)
+cycle: 166
 current_experiments:
-  - 'H1.170: Combined Architecture - INCONCLUSIVE (sub-additive)'
-  - 'FINAL: Cycle 165 - Research complete, paper writing phase'
+  - 'H1.171: Ultra-long real robot - SUPPORTED (+18.6%)'
+  - 'H3.78: Complexity crossover - REFUTED (41.7% accuracy)'
+  - 'Cycle 166 - Continuing research'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
