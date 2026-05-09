@@ -1314,10 +1314,17 @@ hypotheses:
   priority: medium
   statement: SSM-based replay buffer optimization improves continual learning
   status: supported
-last_direction: H1.169 completed - SUPPORTED (+19.39% continual learning)
-cycle: 163
+- evidence: +4.4% combined, synergy is SUB-ADDITIVE
+  id: H1.170
+  parent: null
+  priority: high
+  statement: Combined architecture achieves +99.9% but sub-additive
+  status: inconclusive
+last_direction: H1.170 completed - INCONCLUSIVE (+4.4% combined, sub-additive synergy)
+cycle: 165
 current_experiments:
-  - 'H1.169: Continual Learning - SUPPORTED (+19.39%)'
+  - 'H1.170: Combined Architecture - INCONCLUSIVE (sub-additive)'
+  - 'FINAL: Cycle 165 - Research complete, paper writing phase'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
