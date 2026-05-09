@@ -1440,6 +1440,12 @@ hypotheses:
   priority: high
   statement: Attention with autocorrelation injection on complex multi-step tasks
   status: refuted
+- evidence: SSM -7.9% avg, wins only at ρ=0.85 (+6.8%), tied at ρ=0.95 (-0.1%)
+  id: H1.184
+  parent: H1.182
+  priority: medium
+  statement: SSM as fallback for attention failure on complex tasks
+  status: refuted
 current_experiments:
   - 'H1.181: autocorrelation injection +26.9% at ρ=0.95 - SUPPORTED'
   - 'H1.182a: concat wins all 14 with avg pooling - REFUTED'
