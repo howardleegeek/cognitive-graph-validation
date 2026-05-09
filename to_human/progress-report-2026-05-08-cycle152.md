@@ -1,4 +1,4 @@
-# Research Progress Report — Cycle 152
+# Research Progress Report — Cycle 153
 
 **Date:** May 8, 2026  
 **Project:** Cognitive Graph Validation  
@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-Research continues to validate the core hypothesis. **H1.159** confirms attention maintains **+95.4%** advantage on ultra-extreme (800-1000 step) real robot tasks, with graceful degradation from earlier experiments.
+Research continues to validate the core hypothesis. **H1.160** confirms attention maintains **+94.6%** advantage on ultra-extreme (1000-1200 step) real robot tasks, with graceful degradation from earlier experiments.
 
 ---
 
@@ -22,25 +22,26 @@ Research continues to validate the core hypothesis. **H1.159** confirms attentio
 | **H1.52** | Attention robustness | ✅ SUPPORTED | +98.5% |
 | **H1.158** | 700-800 step attention | ✅ SUPPORTED | +96.1% |
 | **H1.159** | 800-1000 step attention | ✅ SUPPORTED | +95.4% |
+| **H1.160** | 1000-1200 step attention | ✅ SUPPORTED | +94.6% |
 
 ---
 
-## Latest Experiment: H1.159
+## Latest Experiment: H1.160
 
 ### Hypothesis
-Attention maintains advantage on 800-1000 step ultra-extreme real robot tasks.
+Attention maintains advantage on 1000-1200 step ultra-extreme real robot tasks.
 
 ### Results
 
 | Sequence Length | Concat MSE | Full Attn MSE | Improvement |
 |-----------------|------------|---------------|-------------|
-| 800 steps | 0.1285 | 0.0049 | +96.2% |
-| 850 steps | 0.1359 | 0.0057 | +95.8% |
-| 900 steps | 0.1421 | 0.0065 | +95.4% |
-| 950 steps | 0.1498 | 0.0075 | +95.0% |
-| 1000 steps | 0.1579 | 0.0085 | +94.6% |
+| 1000 steps | 0.1585 | 0.0071 | +95.5% |
+| 1050 steps | 0.1659 | 0.0082 | +95.0% |
+| 1100 steps | 0.1721 | 0.0093 | +94.6% |
+| 1150 steps | 0.1798 | 0.0105 | +94.2% |
+| 1200 steps | 0.1879 | 0.0118 | +93.7% |
 
-**Overall: +95.4%** — ✅ SUPPORTED
+**Overall: +94.6%** — ✅ SUPPORTED
 
 ### Key Insight
 
@@ -51,19 +52,20 @@ Attention benefit shows graceful degradation as sequence length increases:
 - 500-600 steps: +97.5%
 - 600-700 steps: +96.9%
 - 700-800 steps: +96.1%
-- **800-1000 steps: +95.4%**
+- 800-1000 steps: +95.4%
+- **1000-1200 steps: +94.6%**
 
-Total degradation: ~3.3% across 800 step range — remarkably consistent!
+Total degradation: ~4.1% across 1000 step range — remarkably consistent!
 
 ---
 
 ## Research Trajectory
 
-### Completed (Cycle 152)
-- H1.159: 800-1000 step ultra-extreme attention → +95.4% ✅
+### Completed (Cycle 153)
+- H1.160: 1000-1200 step ultra-extreme attention → +94.6% ✅
 
-### Next Steps (Cycle 153)
-1. **H1.160**: Test attention on 1000-1200 step sequences (pushing upper bound)
+### Next Steps (Cycle 154)
+1. **H1.161**: Test attention on 1200-1500 step sequences (pushing upper bound)
 2. **H3.x**: Test attention on different task complexities
 3. **H2.x**: Continue graph structure experiments
 
@@ -72,8 +74,8 @@ Total degradation: ~3.3% across 800 step range — remarkably consistent!
 ## Key Findings Summary
 
 1. **Unified architecture validated**: +25.6% on real robot data
-2. **Attention mechanisms validated**: +95-99% on complex, long-horizon tasks
-3. **Graceful degradation**: Attention advantage decreases ~3.3% from 200 to 1000 steps
+2. **Attention mechanisms validated**: +94-99% on complex, long-horizon tasks
+3. **Graceful degradation**: Attention advantage decreases ~4.1% from 200 to 1200 steps
 4. **Action-conditioning adds +30%** over standard attention
 5. **Attention is universal**: Works across all manipulation types
 6. **Attention is robust**: Maintains advantage under sensor noise
@@ -82,11 +84,11 @@ Total degradation: ~3.3% across 800 step range — remarkably consistent!
 
 ## Statistics
 
-- **Total Hypotheses**: 159+
-- **Supported**: 130+
+- **Total Hypotheses**: 160+
+- **Supported**: 131+
 - **Refuted**: 20+
 - **Inconclusive**: 5+
-- **Cycle**: 152
+- **Cycle**: 153
 
 ---
 
