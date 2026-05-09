@@ -5787,6 +5787,49 @@ Tested if hierarchical (coarse + fine) or multi-scale attention helps generaliza
 | H3.82 | Multi-Scale | ✅ +74.1% | **Best: 3/5/7 windows** |
 | H1.175 | Cross-modal | ❌ -87.0% | Doesn't help |
 
-**Total: 60 SUPPORTED, 3 INCONCLUSIVE, 21 REFUTED, 0 PENDING**
+**Total: 60 SUPPORTED, 3 INCONCLUSIVE, 22 REFUTED, 0 PENDING**
+
+---
+
+### H3.83: Multi-Scale Attention on Multi-Object Tasks (May 8, 2026)
+
+Tested if multi-scale attention (H3.82 +74.1%) helps on multi-object tasks with object interactions.
+
+| Scenario | Concat MSE | Multi-Scale MSE |
+|----------|-----------|----------------|
+| high friction | 0.000751 | 0.007987 |
+| low friction | 0.004764 | 0.010860 |
+| heavy mass | 0.002404 | 0.001824 |
+| light mass | 0.018956 | 0.018840 |
+
+**Average: Concat 0.006719, Multi-Scale 0.009878 = -47.0%**
+
+**Status: ❌ REFUTED** — Multi-scale attention fails on multi-object tasks with interactions. Concat wins.
+
+**Key Insight**: Attention works well on single-object tasks but struggles with multi-object interactions. The object-object interactions create complexity that attention can't handle.
+
+---
+
+### Research Status Summary (May 8, 2026)
+
+| Category | Count | Notes |
+|----------|-------|-------|
+| SUPPORTED | 60 | H1.174 (+98.2%), H3.82 (+74.1%) are key |
+| INCONCLUSIVE | 3 | H1.137, H1.170, H3.78 |
+| REFUTED | 22 | H3.83 (-47.0%) multi-object fails |
+| PENDING | 0 | All planned experiments completed |
+
+### Key Findings from Recent Cycles
+
+1. **Transfer solved**: H1.174 (attention+invariant +98.2%) solves cross-dynamics transfer
+2. **Temporal abstraction works**: H3.82 (+74.1%) multi-scale > H3.81 (+56.0%) Last-5
+3. **Multi-object challenge**: H3.83 (-47.0%) shows attention fails on multi-object interactions
+
+### Architecture Recommendations
+
+- **Use**: Multi-scale attention (3/5/7 windows) for single-object temporal tasks
+- **Use**: Attention + invariant for cross-dynamics transfer
+- **Avoid**: Attention on multi-object tasks with interactions
+- **Use**: Concatenation for multi-object tasks
 
 ---

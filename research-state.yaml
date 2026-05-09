@@ -1368,15 +1368,19 @@ hypotheses:
   priority: medium
   statement: Hierarchical temporal abstraction with attention
   status: supported
-last_direction: "H1.174: attention+invariant +98.2% (SUPPORTED). H3.82: Multi-Scale +74.1% (SUPPORTED) - best so far. H3.81: Last-5 +56.0%. Key insight: multi-scale temporal abstraction (3/5/7 windows) outperforms single-scale."
-cycle: 170
+- evidence: -47.0% avg - concat wins on multi-object with object interactions
+  id: H3.83
+  parent: H3
+  priority: medium
+  statement: Multi-scale attention on multi-object tasks
+  status: refuted
 current_experiments:
   - 'H1.174: attention+invariant +98.2% - SUPPORTED'
-  - 'H3.81: Last-5 attention +56.0% - SUPPORTED'
-  - 'H3.82: Multi-Scale (3/5/7) +74.1% - SUPPORTED'
-  - 'Cycle 170 - Multi-scale temporal abstraction best finding'
+  - 'H3.82: Multi-Scale +74.1% - SUPPORTED'
+  - 'H3.83: multi-object -47.0% - REFUTED'
+  - 'Cycle 171 - Attention fails on multi-object with interactions'
+last_direction: "H1.174: attention+invariant +98.2% (SUPPORTED). H3.82: Multi-Scale +74.1% (SUPPORTED) - best temporal. H3.83: -47.0% (REFUTED) - multi-object interactions hurt attention."
 project:
-  domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated
     architectures (JEPA + LLM alignment) on language-conditioned robotic tasks?
