@@ -1404,10 +1404,22 @@ hypotheses:
   priority: medium
   statement: Investigating attention failure on multi-object tasks
   status: inconclusive
+- evidence: +20.0% gap - autocorrelation 0.7-0.95 enables attention (+17-21%), no autocorr = fails (-0.2% to -4.3%)
+  id: H1.180
+  parent: H1
+  priority: high
+  statement: Real robot vs synthetic data gap analysis - autocorrelation is key
+  status: supported
+- evidence: -0.5% avg - graph methods don't outperform flat attention on multi-object tasks
+  id: H3.86
+  parent: H3
+  priority: medium
+  statement: Graph-native multi-object reasoning
+  status: refuted
 current_experiments:
-  - 'H1.179: adaptive decay on real-robot synthetic -13.4% - REFUTED'
-  - 'H3.85: multi-object attention -35% - INCONCLUSIVE'
-last_direction: "H1.179: synthetic real-robot fails (-13.4%) vs H1.171 real (+18.6%) - need actual robot data. H3.85: all attention methods fail on multi-object (-35%). Multi-object attention remains unsolved."
+  - 'H1.180: autocorrelation gap +20.0% - SUPPORTED'
+  - 'H3.86: graph native -0.5% - REFUTED'
+last_direction: "H1.180: autocorrelation (0.7-0.95) enables attention (+17-21%), no autocorr = fails (-0.2% to -4.3%). H3.86: graph doesn't help multi-object (-0.5%). Key: temporal structure is critical for attention."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated

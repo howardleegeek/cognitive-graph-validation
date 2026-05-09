@@ -1,0 +1,59 @@
+{
+  "hypothesis": "H1.180: Real vs Synthetic Gap Analysis",
+  "timestamp": "2026-05-08T20:02:23.016077",
+  "parent_hypotheses": [
+    "H1.171",
+    "H1.179"
+  ],
+  "data_types": [
+    "low_noise_synthetic",
+    "mid_noise_synthetic",
+    "high_noise_synthetic",
+    "low_autocorr_real",
+    "mid_autocorr_real",
+    "high_autocorr_real"
+  ],
+  "noise_levels": [
+    0.001,
+    0.01,
+    0.1,
+    0.005,
+    0.005,
+    0.005
+  ],
+  "autocorr_levels": [
+    0.0,
+    0.0,
+    0.0,
+    0.3,
+    0.7,
+    0.95
+  ],
+  "concat_mses": [
+    0.018912627247576867,
+    0.01899538686357396,
+    0.02487710780244961,
+    0.004201277429706145,
+    0.0014842781004827236,
+    0.0009411743156500626
+  ],
+  "attn_mses": [
+    0.01969083505716214,
+    0.019813605435755794,
+    0.024938065425013953,
+    0.0035084486307577567,
+    0.001222524236661152,
+    0.0007453757529140909
+  ],
+  "summary": {
+    "avg_synthetic_concat_mse": 0.020928373971200148,
+    "avg_synthetic_attn_mse": 0.021480835305977292,
+    "avg_synthetic_improvement": -2.6397706365546147,
+    "avg_reallike_concat_mse": 0.002208909948612977,
+    "avg_reallike_attn_mse": 0.001825449540111,
+    "avg_reallike_improvement": 17.3596335504489,
+    "gap": 19.999404187003517,
+    "status": "SUPPORTED",
+    "note": "Gap of +20.0% between synthetic (-2.6%) and real (+17.4%)"
+  }
+}
