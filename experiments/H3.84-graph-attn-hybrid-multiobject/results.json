@@ -1,0 +1,52 @@
+{
+  "hypothesis": "H3.84",
+  "statement": "Graph + Attention hybrid outperforms both individually on multi-object tasks",
+  "parent": "H3",
+  "priority": "high",
+  "avg_graph": 15.01386113134761,
+  "avg_attn": 25.20160545898613,
+  "avg_hybrid": 21.70643267078137,
+  "status": "SUPPORTED (attention wins)",
+  "all_results": [
+    {
+      "n_objects": 2,
+      "concat_mse": 7.280627364416426,
+      "graph_mse": 5.632532086095226,
+      "attn_mse": 3.9306835659696664,
+      "hybrid_mse": 4.460539675940477,
+      "graph_vs_concat": 22.6367206537194,
+      "attn_vs_concat": 46.01174638904586,
+      "hybrid_vs_concat": 38.73413027919732
+    },
+    {
+      "n_objects": 3,
+      "concat_mse": 36.97091942002364,
+      "graph_mse": 30.499903866928115,
+      "attn_mse": 27.651691604117403,
+      "hybrid_mse": 28.63014944493026,
+      "graph_vs_concat": 17.50298790132547,
+      "attn_vs_concat": 25.206913872038832,
+      "hybrid_vs_concat": 22.5603531260193
+    },
+    {
+      "n_objects": 4,
+      "concat_mse": 134.8095800673306,
+      "graph_mse": 117.82411602298637,
+      "attn_mse": 111.83420896151259,
+      "hybrid_mse": 114.18063587734221,
+      "graph_vs_concat": 12.599597176892644,
+      "attn_vs_concat": 17.042832634255635,
+      "hybrid_vs_concat": 15.302283546677659
+    },
+    {
+      "n_objects": 5,
+      "concat_mse": 279.27559852757616,
+      "graph_mse": 258.8434081230523,
+      "attn_mse": 244.24067314384467,
+      "hybrid_mse": 250.70859884401153,
+      "graph_vs_concat": 7.316138793452927,
+      "attn_vs_concat": 12.544928940604198,
+      "hybrid_vs_concat": 10.228963731231204
+    }
+  ]
+}

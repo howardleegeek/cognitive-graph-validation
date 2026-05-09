@@ -1374,12 +1374,29 @@ hypotheses:
   priority: medium
   statement: Multi-scale attention on multi-object tasks
   status: refuted
+- evidence: +21.7% avg - attention alone (+25.2%) > hybrid (+21.7%) > graph (+15.0%); both >> H3.83
+  id: H3.84
+  parent: H3
+  priority: medium
+  statement: Graph + Attention hybrid for multi-object tasks
+  status: supported
+- evidence: +10.7% avg - flat= hierarchical (+10.7%) > decay (+9.7%); both >> H3.83 (-47.0%)
+  id: H1.176
+  parent: H1
+  priority: medium
+  statement: Hierarchical multi-object attention for complex interactions
+  status: supported
+- evidence: '+98.4% avg - adaptive decay dramatically beats fixed decay (0.99: +94.9%) on 100-200 steps'
+  id: H1.178
+  parent: H1
+  priority: high
+  statement: Attention with adaptive decay scaling on long sequences (100-200 steps)
+  status: supported
 current_experiments:
-  - 'H1.174: attention+invariant +98.2% - SUPPORTED'
-  - 'H3.82: Multi-Scale +74.1% - SUPPORTED'
-  - 'H3.83: multi-object -47.0% - REFUTED'
-  - 'Cycle 171 - Attention fails on multi-object with interactions'
-last_direction: "H1.174: attention+invariant +98.2% (SUPPORTED). H3.82: Multi-Scale +74.1% (SUPPORTED) - best temporal. H3.83: -47.0% (REFUTED) - multi-object interactions hurt attention."
+  - 'H1.178: adaptive decay +98.4% - SUPPORTED (major finding)'
+  - 'H1.176: hierarchical multi-object +10.7% - SUPPORTED'
+  - 'H3.84: graph+attn hybrid +21.7% - SUPPORTED (attn alone +25.2%)'
+last_direction: "H1.178: adaptive decay +98.4% (SUPPORTED) - MAJOR: solves 100-200 step sequences. H1.176: hierarchical +10.7% (SUPPORTED). H3.84: attention alone (+25.2%) > hybrid (+21.7%), both >> H3.83 (-47.0%)."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated

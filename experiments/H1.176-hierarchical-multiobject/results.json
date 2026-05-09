@@ -1,0 +1,53 @@
+{
+  "hypothesis": "H1.176",
+  "statement": "Hierarchical attention handles complex multi-object interactions",
+  "parent": "H1",
+  "priority": "high",
+  "avg_flat": 10.666121899301501,
+  "avg_hier": 10.651731253092532,
+  "avg_hier_decay": 9.732234139077107,
+  "best_method": "flat",
+  "status": "SUPPORTED",
+  "all_results": [
+    {
+      "n_objects": 2,
+      "concat_mse": 528.8462084850072,
+      "flat_mse": 473.6362055416604,
+      "hier_mse": 473.63620587170016,
+      "hier_decay_mse": 478.3779012203893,
+      "flat_vs_concat": 10.439708568868754,
+      "hier_vs_concat": 10.43970850646124,
+      "hier_decay_vs_concat": 9.543097114980773
+    },
+    {
+      "n_objects": 3,
+      "concat_mse": 597.9498139759561,
+      "flat_mse": 535.1643081203256,
+      "hier_mse": 535.2463030110378,
+      "hier_decay_mse": 540.5878962932198,
+      "flat_vs_concat": 10.500129674453774,
+      "hier_vs_concat": 10.4864170034577,
+      "hier_decay_vs_concat": 9.5930990096508
+    },
+    {
+      "n_objects": 4,
+      "concat_mse": 1369.664033695487,
+      "flat_mse": 1222.2282272390257,
+      "hier_mse": 1221.7395975246736,
+      "hier_decay_mse": 1234.0605012875305,
+      "flat_vs_concat": 10.76437745529939,
+      "hier_vs_concat": 10.800052606455528,
+      "hier_decay_vs_concat": 9.900495966305321
+    },
+    {
+      "n_objects": 5,
+      "concat_mse": 1204.1763123840224,
+      "flat_mse": 1072.1953144083902,
+      "hier_mse": 1073.152935651983,
+      "hier_decay_mse": 1085.0562477688989,
+      "flat_vs_concat": 10.960271898584088,
+      "hier_vs_concat": 10.880746895995653,
+      "hier_decay_vs_concat": 9.892244465371537
+    }
+  ]
+}
