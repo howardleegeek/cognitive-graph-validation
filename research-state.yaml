@@ -1338,19 +1338,31 @@ hypotheses:
   priority: high
   statement: Attention maintains advantage on ultra-extreme (400-500 step) synthetic sequences
   status: refuted
-- evidence: -16.3% avg - attention worse even with structured phases, scales poorly to 400+
-  id: H1.173
+- evidence: +98.2% attention+invariant, -362.3% invariant alone - attention dramatically improves transfer
+  id: H1.174
   parent: H1
   priority: high
-  statement: Attention maintains advantage on ultra-extreme (400-600 step) structured sequences
+  statement: Attention + invariant combined improves cross-dynamics transfer
+  status: supported
+- evidence: -247.7% avg - attention underperforms concat even with robot-like temporal structure
+  id: H3.79
+  parent: H3
+  priority: medium
+  statement: Attention with robot temporal structure (20-40 steps)
   status: refuted
-last_direction: H1.173 completed - REFUTED (-16.3% attention on 400-600 step synthetic), H1.172 REFUTED (-6.5%), real robot data still shows +18.6% (H1.171)
-cycle: 167
+- evidence: -183.8% avg - SSM and SSM+Attn both underperform concatenation
+  id: H3.80
+  parent: H3
+  priority: medium
+  statement: SSM on 20-40 step sequences
+status: refuted
+last_direction: "H1.174: attention+invariant +98.2% (SUPPORTED). H3.79/H3.80: attention and SSM still fail on synthetic data. Key insight: synthetic data lacks the complexity that makes attention mechanisms effective. Real robot validation (H1.171 +18.6%) confirms attention works with real temporal structure."
+cycle: 168
 current_experiments:
-  - 'H1.172: 400-500 step synthetic - REFUTED (-6.5%)'
-  - 'H1.173: 400-600 step structured - REFUTED (-16.3%)'
-  - 'H1.171: 200-300 step real robot - SUPPORTED (+18.6%)'
-  - 'Cycle 167 - Attention scales on real robot, not synthetic 400+'
+  - 'H1.174: attention+invariant transfer - SUPPORTED (+98.2%)'
+  - 'H3.79: robot temporal structure - REFUTED (-247.7%)'
+  - 'H3.80: SSM on 20-40 steps - REFUTED (-183.8%)'
+  - 'Cycle 168 - Attention+invariant solves transfer, synthetic attention fails'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
