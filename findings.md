@@ -5583,3 +5583,42 @@ Next step: Compile all 56+ supported hypotheses into ICRA/RSS paper manuscript.
 ### Updated Status: 57 SUPPORTED, 3 INCONCLUSIVE, 16 REFUTED, 0 PENDING
 
 ---
+
+## Research Update (May 8, 2026 - Cycle 167)
+
+### H1.172: Attention on 400-500 Step Synthetic Sequences
+
+| Sequence Length | Concat MSE | Attention MSE | Delta |
+|-----------------|------------|---------------|-------|
+| 400 | 0.000267 | 0.000278 | -4.1% |
+| 450 | 0.000262 | 0.000281 | -7.5% |
+| 500 | 0.000254 | 0.000273 | -7.8% |
+
+**Average: -6.5%**
+
+**Status: ❌ REFUTED** — Attention does NOT maintain advantage on 400-500 step synthetic sequences. Degradation increases with length.
+
+### H1.173: Attention on 400-600 Step Structured Sequences
+
+| Sequence Length | Concat MSE | Attention MSE | Delta |
+|-----------------|------------|---------------|-------|
+| 400 | 0.000077 | 0.000086 | -12.0% |
+| 500 | 0.000072 | 0.000081 | -13.0% |
+| 600 | 0.000066 | 0.000081 | -24.0% |
+
+**Average: -16.3%**
+
+**Status: ❌ REFUTED** — Even with better temporal structure (12 phases, object permanence), attention still underperforms. Degradation scales with length (-12% → -13% → -24%).
+
+### Key Insight
+
+Attention scales well on REAL ROBOT DATA (H1.171: +18.6% on 200-300 steps) but FAILS on synthetic 400+ steps:
+- H1.171 (real robot, 200-300 steps): +18.6% ✅
+- H1.172 (synthetic, 400-500 steps): -6.5% ❌
+- H1.173 (structured, 400-600 steps): -16.3% ❌
+
+The difference is task structure - real robot manipulation has inherent temporal patterns that attention can exploit, while synthetic data lacks sufficient structure at extreme lengths.
+
+### Updated Status: 57 SUPPORTED, 3 INCONCLUSIVE, 18 REFUTED, 0 PENDING
+
+---

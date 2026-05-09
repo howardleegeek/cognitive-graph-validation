@@ -1332,12 +1332,25 @@ hypotheses:
   priority: medium
   statement: Task complexity-based crossover detection predicts best architecture
   status: refuted
-last_direction: H1.171 completed - SUPPORTED (+18.6% attention on 200-300 steps), H3.78 REFUTED (complexity prediction fails)
-cycle: 166
+- evidence: -6.5% avg - attention worse than concat on 400-500 step synthetic
+  id: H1.172
+  parent: H1
+  priority: high
+  statement: Attention maintains advantage on ultra-extreme (400-500 step) synthetic sequences
+  status: refuted
+- evidence: -16.3% avg - attention worse even with structured phases, scales poorly to 400+
+  id: H1.173
+  parent: H1
+  priority: high
+  statement: Attention maintains advantage on ultra-extreme (400-600 step) structured sequences
+  status: refuted
+last_direction: H1.173 completed - REFUTED (-16.3% attention on 400-600 step synthetic), H1.172 REFUTED (-6.5%), real robot data still shows +18.6% (H1.171)
+cycle: 167
 current_experiments:
-  - 'H1.171: Ultra-long real robot - SUPPORTED (+18.6%)'
-  - 'H3.78: Complexity crossover - REFUTED (41.7% accuracy)'
-  - 'Cycle 166 - Continuing research'
+  - 'H1.172: 400-500 step synthetic - REFUTED (-6.5%)'
+  - 'H1.173: 400-600 step structured - REFUTED (-16.3%)'
+  - 'H1.171: 200-300 step real robot - SUPPORTED (+18.6%)'
+  - 'Cycle 167 - Attention scales on real robot, not synthetic 400+'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical

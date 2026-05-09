@@ -1,0 +1,32 @@
+{
+  "hypothesis": "H1.172",
+  "status": "REFUTED",
+  "avg_attention_delta": -6.464727609845322,
+  "avg_action_gated_delta": -3.9668514436146673,
+  "results": [
+    {
+      "sequence_length": 400,
+      "concat_mse": 0.00026716057133550447,
+      "attention_mse": 0.00027811281809893745,
+      "action_gated_mse": 0.00027170407702215016,
+      "attention_delta": -4.09949967867039,
+      "action_gated_delta": -1.7006647589998907
+    },
+    {
+      "sequence_length": 450,
+      "concat_mse": 0.00026177407319967944,
+      "attention_mse": 0.00028144617681391537,
+      "action_gated_mse": 0.0002746086587042858,
+      "attention_delta": -7.514916727154332,
+      "action_gated_delta": -4.902924627992564
+    },
+    {
+      "sequence_length": 500,
+      "concat_mse": 0.0002535459304150815,
+      "attention_mse": 0.0002732712115782003,
+      "action_gated_mse": 0.0002669761694657306,
+      "attention_delta": -7.779766423711242,
+      "action_gated_delta": -5.296964943851548
+    }
+  ]
+}
