@@ -1452,17 +1452,35 @@ hypotheses:
   priority: high
   statement: SSM + Invariant combined solves both temporal and cross-dynamics transfer
   status: supported
-- evidence: -11.2% graph attn vs concat, -35.7% vs flat attn, enables multi-object
-  id: H3.87
+- evidence: "41.0% accuracy, -0.7% vs H3.78 (41.7%) - no improvement"
+  id: H3.88
   parent: H3
   priority: high
   statement: Graph-structured attention enables attention on multi-object tasks
   status: supported
+- evidence: 41.0% accuracy, -0.7% vs H3.78 (41.7%) - no improvement
+  id: H3.88
+  parent: H3
+  priority: medium
+  statement: Learned crossover predictor achieves >70% accuracy on architecture selection
+  status: refuted
+- evidence: 99.8% recovery in 10 shots, +19.8% over target
+  id: H1.187
+  parent: H1.186
+  priority: high
+  statement: Meta-learning enables fast SSM+Invariant adaptation to new dynamics
+  status: supported
+- evidence: -12.1% hybrid vs concat, -3.2% vs graph alone
+  id: H3.89
+  parent: H3
+  priority: medium
+  statement: Hybrid router+graph architecture improves multi-object tasks
+  status: inconclusive
 current_experiments:
-  - 'H1.185: task-structure router -37.7% vs best fixed - SUPPORTED'
-  - 'H1.186: SSM+Invariant -34.8% combined - SUPPORTED'
-  - 'H3.87: graph-attention multi-object -11.2% vs concat - SUPPORTED'
-last_direction: "H1.185-186 + H3.87: Task-structure router (+37.7%), SSM+Invariant (-34.8% temporal+transfer), graph-attention multi-object (-11.2%). Three new experiments validate: (1) task-type-based routing selects optimal architecture, (2) SSM+Invariant solves BOTH temporal and transfer, (3) graph structure enables attention on multi-object tasks."
+  - 'H3.88: learned crossover predictor 41.0% - REFUTED'
+  - 'H1.187: meta-learning 99.8% recovery - SUPPORTED'
+  - 'H3.89: hybrid router+graph -12.1% - INCONCLUSIVE'
+last_direction: "H1.187: Meta-learning SSM+Invariant achieves 99.8% recovery in 10 shots (+19.8% over target). H3.88: Learned crossover predictor (41.0%) no improvement vs H3.78 (41.7%). H3.89: Hybrid router+graph (-12.1%) marginal, below -15% target."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated
