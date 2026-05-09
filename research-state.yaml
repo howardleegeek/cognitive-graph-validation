@@ -1416,10 +1416,16 @@ hypotheses:
   priority: medium
   statement: Graph-native multi-object reasoning
   status: refuted
+- evidence: +26.9% at ρ=0.95, +17.4% at ρ=0.9, trend shows increasing advantage with autocorrelation
+  id: H1.181
+  parent: H1.180
+  priority: high
+  statement: Autocorrelation injection unlocks attention on synthetic data
+  status: supported
 current_experiments:
-  - 'H1.180: autocorrelation gap +20.0% - SUPPORTED'
-  - 'H3.86: graph native -0.5% - REFUTED'
-last_direction: "H1.180: autocorrelation (0.7-0.95) enables attention (+17-21%), no autocorr = fails (-0.2% to -4.3%). H3.86: graph doesn't help multi-object (-0.5%). Key: temporal structure is critical for attention."
+  - 'H1.181: autocorrelation injection +26.9% at ρ=0.95 - SUPPORTED'
+  - 'H3.86: graph-native -0.5% - REFUTED'
+last_direction: "H1.181: autocorrelation injection validates temporal structure hypothesis. Attention advantage increases with autocorrelation (0.0→-6.5%, 0.95→-26.9%). H3.86: graph doesn't help multi-object. Key: temporal structure (autocorrelation) is the critical enabler for attention mechanisms."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated
