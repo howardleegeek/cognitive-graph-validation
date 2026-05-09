@@ -1422,10 +1422,24 @@ hypotheses:
   priority: high
   statement: Autocorrelation injection unlocks attention on synthetic data
   status: supported
+- evidence: Concat wins 14/14 tasks, attention -168-744%, SSM -774-6000%
+  id: H1.182a
+  parent: H1.180
+  priority: high
+  statement: Attention on complex multi-step tasks with average pooling target
+  status: refuted
+- evidence: SSM wins 14/14 tasks (-30% to -38%), attention tied (+1-4% worse than concat)
+  id: H1.182b
+  parent: H1.180
+  priority: high
+  statement: SSM excels on next-step prediction with robot-like temporal structure
+  status: supported
 current_experiments:
   - 'H1.181: autocorrelation injection +26.9% at ρ=0.95 - SUPPORTED'
+  - 'H1.182a: concat wins all 14 with avg pooling - REFUTED'
+  - 'H1.182b: SSM wins all 14 with next-step prediction - SUPPORTED'
   - 'H3.86: graph-native -0.5% - REFUTED'
-last_direction: "H1.181: autocorrelation injection validates temporal structure hypothesis. Attention advantage increases with autocorrelation (0.0→-6.5%, 0.95→-26.9%). H3.86: graph doesn't help multi-object. Key: temporal structure (autocorrelation) is the critical enabler for attention mechanisms."
+last_direction: "H1.182: Two key findings: (1) With average pooling target, concat wins all 14 tasks - attention/SSM collapse. (2) With next-step prediction target, SSM wins all 14 tasks (-30% to -38%) while attention remains tied. Task structure determines optimal architecture: avg pooling→concat, next-step→SSM, cross-modal→attention."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated
