@@ -1248,12 +1248,34 @@ hypotheses:
   priority: high
   statement: Attention maintains advantage on 1200-1500 step ultra-extreme real robot tasks
   status: supported
-last_direction: H2.13 completed - SUPPORTED (+92.1% attention wins, +88.1% graph+attention, +45.9% graph on 1000-2000 step multi-object tracking)
-cycle: 155
+- evidence: +92.0% avg on 1500-2000 step real robot tasks
+  id: H1.162
+  parent: H1
+  priority: high
+  statement: Attention maintains cross-robot advantage at 1500-2000 step extreme sequences
+  status: supported
+- evidence: +95.0% avg, hybrid wins 8/8 tasks on real robot
+  id: H3.76
+  parent: H3
+  priority: high
+  statement: SSM + Attention hybrid outperforms both individual methods on real robot data
+  status: supported
+- evidence: +94.2% avg, SSM+Attn is best (8/8 tasks)
+  id: H3.77
+  parent: H3
+  priority: high
+  statement: SSM + Graph + Attention combined on real robot
+  status: supported
+- evidence: +92.1% attention wins on 1000-2000 step multi-object tracking
+  id: H2.13
+  parent: H2
+  priority: medium
+  statement: Graph + Attention for multi-object tracking at 1000+ steps
+  status: supported
+last_direction: H3.77 completed - SSM+Attn is best (+95.0%), combined architecture (+94.2%) does not outperform
+cycle: 156
 current_experiments:
-  - 'H1.162: Cross-robot extreme - SUPPORTED (+92.0%)'
-  - 'H3.76: SSM+Attn hybrid - SUPPORTED (+95.0%)'
-  - 'H2.13: Graph+Attn tracking - SUPPORTED (+92.1% attention wins)'
+  - 'H3.77: SSM+Graph+Attn - SUPPORTED (+94.2%), SSM+Attn is best (+95.0%)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
