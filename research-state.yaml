@@ -1278,10 +1278,28 @@ hypotheses:
   priority: high
   statement: Task decomposition with attention improves extreme length performance
   status: supported
-last_direction: H1.163 completed - SUPPORTED (+1.9% improvement with task decomposition)
-cycle: 157
+- evidence: +1.80% avg improvement, wins 6/6 at 1500-3000 steps
+  id: H1.164
+  parent: H1.163
+  priority: high
+  statement: Task decomposition + SSM hybrid improves extreme lengths
+  status: supported
+- evidence: +3.45% avg improvement, 6-layer wins 5/6 at 2500-5000 steps
+  id: H1.165
+  parent: H1.138
+  priority: high
+  statement: Hierarchical SSM layers (4-6) improve ultra-long sequences
+  status: supported
+- evidence: +5.6% vs fixed attention, 100% detection accuracy on complexity
+  id: H1.166
+  parent: H3
+  priority: medium
+  statement: Adaptive complexity threshold selects correct architecture
+  status: supported
+last_direction: H1.166 completed - SUPPORTED (+5.6% vs fixed attention)
+cycle: 160
 current_experiments:
-  - 'H1.163: Task decomposition - SUPPORTED (+94.0% vs +92.1% flat)'
+  - 'H1.166: Adaptive Complexity Threshold - SUPPORTED (+5.6%)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical

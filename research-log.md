@@ -25,3 +25,6 @@ Chronological record of research decisions and actions. Append-only.
   report       — progress presentation generated
   conclude     — decision to finalize and write paper
 -->
+| 20 | 2026-05-08 | inner-loop | H1.164: Task decomposition + SSM hybrid - SUPPORTED (+1.80%). Decomposed wins 6/6 at 1500-3000 steps. Combined benefit of task decomp and SSM+Attn achieves +96% vs baseline. Updated findings.md, research-state.yaml. |
+| 21 | 2026-05-08 | inner-loop | H1.165: Hierarchical SSM layers - SUPPORTED (+3.45%). 6-layer SSM wins 5/6 at 2500-5000 steps. Extends architecture scaling to ultra-long sequences. Updated findings.md, research-state.yaml. |
+| 22 | 2026-05-08 | inner-loop | H1.166: Adaptive complexity threshold - SUPPORTED (+5.6%). 100% detection accuracy on complexity. Adaptive threshold outperforms fixed attention by +5.6%. Updated findings.md, research-state.yaml. Commit cycle 160, push to GitHub. Generate progress report. |
