@@ -1,0 +1,44 @@
+{
+  "hypothesis": "H3.91",
+  "statement": "Attention on 50+ step sequences",
+  "results": {
+    "50": {
+      "concat_mse": 0.0008938157698139548,
+      "attention_mse": 0.14510362595319748,
+      "ssm_mse": 0.5365030020475388,
+      "attention_improvement": -16134.176085682666,
+      "ssm_improvement": -59923.89084712729
+    },
+    "60": {
+      "concat_mse": 0.0009303659608121961,
+      "attention_mse": 0.09707712382078171,
+      "ssm_mse": 0.5144335180521011,
+      "attention_improvement": -10334.294450759438,
+      "ssm_improvement": -55193.67364246732
+    },
+    "70": {
+      "concat_mse": 0.0012353021884337068,
+      "attention_mse": 0.1001679114997387,
+      "ssm_mse": 0.5139126628637314,
+      "attention_improvement": -8008.777952279509,
+      "ssm_improvement": -41502.181852793736
+    },
+    "80": {
+      "concat_mse": 0.0009588936809450388,
+      "attention_mse": 0.11296775564551353,
+      "ssm_mse": 0.5471673011779785,
+      "attention_improvement": -11681.051214580748,
+      "ssm_improvement": -56962.35342365768
+    },
+    "100": {
+      "concat_mse": 0.0007600055250804871,
+      "attention_mse": 0.11999407783150673,
+      "ssm_mse": 0.48146952688694,
+      "attention_improvement": -15688.57967102265,
+      "ssm_improvement": -63250.79298745239
+    }
+  },
+  "average_attention_improvement": -12369.375874865002,
+  "average_ssm_improvement": -55366.578550699676,
+  "status": "REFUTED"
+}

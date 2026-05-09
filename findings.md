@@ -6466,3 +6466,46 @@ Task Analysis
 7. **Section 4.6**: Graph-attention for multi-object tasks (H3.87)
 
 ---
+
+### H1.189: Attention on 2000+ Step Ultra-Extreme Tasks (May 8, 2026)
+
+| Sequence Length | Concat MSE | Attention MSE | Improvement |
+|-----------------|-----------|--------------|-------------|
+| 2000 | 0.004196 | 0.223091 | -5216.6% |
+| 2200 | 0.004025 | 0.230742 | -5632.8% |
+
+**Average: -5424.7%**
+
+**Status: ❌ REFUTED** — Attention collapses on 2000+ step synthetic sequences. Concatenation dramatically outperforms attention on ultra-long sequences in synthetic data.
+
+### H3.91: Attention on 50+ Step Sequences (May 8, 2026)
+
+| Sequence Length | Concat MSE | Attention MSE | SSM MSE | Attn Δ |
+|-----------------|-----------|--------------|---------|--------|
+| 50 | 0.000894 | 0.145104 | 0.536503 | -16134.2% |
+| 60 | 0.000930 | 0.097077 | 0.514434 | -10334.3% |
+| 70 | 0.001235 | 0.100168 | 0.513913 | -8008.8% |
+| 80 | 0.000959 | 0.112968 | 0.547167 | -11681.1% |
+| 100 | 0.000760 | 0.119994 | 0.481470 | -15688.6% |
+
+**Average Attention: -12369.4%**
+**Average SSM: -55366.6%**
+
+**Status: ❌ REFUTED** — Both attention and SSM dramatically underperform concatenation on 50+ step synthetic sequences.
+
+### Key Insight: Synthetic vs Real Robot Gap
+
+These results confirm the pattern observed throughout the research:
+- **Synthetic data**: Concatenation dramatically outperforms attention/SSM
+- **Real robot data**: Attention achieves +94-99% improvement
+
+The key difference is temporal structure:
+- Real robot manipulation tasks have inherent temporal structure that attention can exploit
+- Synthetic random data has no structure for attention to leverage
+
+This explains why:
+1. H1.162 (real robot, 1500-2000 steps): +92.0% attention advantage
+2. H1.189 (synthetic, 2000-2200 steps): -5424% attention collapse
+3. H3.91 (synthetic, 50-100 steps): -12369% attention collapse
+
+---

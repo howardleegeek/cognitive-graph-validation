@@ -1,0 +1,18 @@
+{
+  "hypothesis": "H1.189",
+  "statement": "Attention maintains advantage on 2000+ step ultra-extreme multi-step tasks",
+  "results": {
+    "2000": {
+      "concat_mse": 0.0041961340854565305,
+      "attention_mse": 0.2230906734863917,
+      "improvement": -5216.576375850485
+    },
+    "2200": {
+      "concat_mse": 0.004024930531159043,
+      "attention_mse": 0.23074169953664145,
+      "improvement": -5632.8119765136835
+    }
+  },
+  "average_improvement": -5424.694176182084,
+  "status": "REFUTED"
+}

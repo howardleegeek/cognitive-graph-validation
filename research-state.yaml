@@ -1494,11 +1494,25 @@ hypotheses:
   priority: medium
   statement: Explainable graph achieves >50% improvement with interpretability
   status: supported
+- evidence: -5424.7% avg - attention collapses on 2000+ step synthetic
+  id: H1.189
+  parent: H1
+  priority: high
+  statement: Attention maintains advantage on 2000+ step ultra-extreme multi-step tasks
+  status: refuted
+- evidence: -12369.4% avg - attention and SSM both fail on 50+ step synthetic
+  id: H3.91
+  parent: H3
+  priority: high
+  statement: Attention on 50+ step sequences
+  status: refuted
 current_experiments:
   - 'H1.188: 64k scaling +90.2% - SUPPORTED'
   - 'H3.90: SSM+Graph real robot -95.0% - SUPPORTED'
   - 'H2.14: explainable graph -65.0% - SUPPORTED'
-last_direction: "H1.188: Attention scales to 64k (+90.2%). H3.90: SSM+Graph (+95.0%) on real robot. H2.14: Explainable graph (-65.0%, 7.3/10 interp). Three more validated architectures added to pipeline."
+  - 'H1.189: Attention 2000+ step -5424.7% - REFUTED'
+  - 'H3.91: Attention 50+ step -12369.4% - REFUTED'
+last_direction: "H1.189: Attention collapses on 2000+ step synthetic (-5424.7%). H3.91: Attention/SSM fail on 50+ step synthetic (-12369%). Key insight: synthetic data lacks temporal structure that enables attention on real robot data."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated
