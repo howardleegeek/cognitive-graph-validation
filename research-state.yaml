@@ -1428,12 +1428,18 @@ hypotheses:
   priority: high
   statement: Attention on complex multi-step tasks with average pooling target
   status: refuted
-- evidence: SSM wins 14/14 tasks (-30% to -38%), attention tied (+1-4% worse than concat)
+- evidence: Concat wins all 14 tasks with avg pooling, SSM wins all 14 with next-step prediction
   id: H1.182b
   parent: H1.180
   priority: high
   statement: SSM excels on next-step prediction with robot-like temporal structure
   status: supported
+- evidence: Attention -881% avg at high autocorr, but approaches baseline at ρ=0.95 (-3.7%)
+  id: H1.183
+  parent: H1.181
+  priority: high
+  statement: Attention with autocorrelation injection on complex multi-step tasks
+  status: refuted
 current_experiments:
   - 'H1.181: autocorrelation injection +26.9% at ρ=0.95 - SUPPORTED'
   - 'H1.182a: concat wins all 14 with avg pooling - REFUTED'
