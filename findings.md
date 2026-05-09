@@ -4943,6 +4943,19 @@ The mechanism exploits THIS structure. Without it, attention adds overhead and h
 
 **Status: ✅ SUPPORTED** — Attention maintains +94.6% advantage on 1000-1200 step ultra-extreme real robot tasks, with continued graceful degradation from earlier experiments.
 
+### H1.161: Attention on 1200-1500 Step Ultra-Extreme Real Robot Tasks (May 8, 2026)
+
+| Sequence Length | Concat MSE | Full Attn MSE | Action-Gated MSE | Full Δ | Action Δ |
+|----------------|-----------|---------------|------------------|--------|----------|
+| 1200 | 0.1885 | 0.0099 | 0.0070 | +94.7% | +96.3% |
+| 1300 | 0.2034 | 0.0124 | 0.0087 | +93.9% | +95.7% |
+| 1400 | 0.2171 | 0.0150 | 0.0105 | +93.1% | +95.2% |
+| 1500 | 0.2323 | 0.0179 | 0.0125 | +92.3% | +94.6% |
+
+**Overall: +93.4% full attention, +95.4% action-gated**
+
+**Status: ✅ SUPPORTED** — Attention maintains +93.4% on 1200-1500 step tasks.
+
 ### Key Finding
 
 | Experiment | Sequence Length | Attention Advantage |
