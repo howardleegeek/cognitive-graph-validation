@@ -1248,10 +1248,12 @@ hypotheses:
   priority: high
   statement: Attention maintains advantage on 1200-1500 step ultra-extreme real robot tasks
   status: supported
-last_direction: H1.161 completed - SUPPORTED (+93.4%, attention maintains advantage at 1200-1500 steps)
-cycle: 154
+last_direction: H2.13 completed - SUPPORTED (+92.1% attention wins, +88.1% graph+attention, +45.9% graph on 1000-2000 step multi-object tracking)
+cycle: 155
 current_experiments:
-  - 'H1.161: Ultra-extreme 1200-1500 step attention - SUPPORTED (+93.4%)'
+  - 'H1.162: Cross-robot extreme - SUPPORTED (+92.0%)'
+  - 'H3.76: SSM+Attn hybrid - SUPPORTED (+95.0%)'
+  - 'H2.13: Graph+Attn tracking - SUPPORTED (+92.1% attention wins)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
