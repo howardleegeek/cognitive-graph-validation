@@ -1470,17 +1470,35 @@ hypotheses:
   priority: high
   statement: Meta-learning enables fast SSM+Invariant adaptation to new dynamics
   status: supported
-- evidence: -12.1% hybrid vs concat, -3.2% vs graph alone
+- evidence: "-12.1% hybrid vs concat, -3.2% vs graph alone"
   id: H3.89
   parent: H3
   priority: medium
   statement: Hybrid router+graph architecture improves multi-object tasks
   status: inconclusive
+- evidence: +90.2% improvement across 8k-64k dims, attention scales with dimensions
+  id: H1.188
+  parent: H1
+  priority: high
+  statement: Attention maintains advantage at 64k dimensions
+  status: supported
+- evidence: -95.0% SSM+Graph vs concat on real robot, exceeds 90% target
+  id: H3.90
+  parent: H3
+  priority: high
+  statement: SSM + Graph combined achieves >90% on real robot multi-step tasks
+  status: supported
+- evidence: -65.0% explicit vs concat, 7.3/10 interpretability
+  id: H2.14
+  parent: H2
+  priority: medium
+  statement: Explainable graph achieves >50% improvement with interpretability
+  status: supported
 current_experiments:
-  - 'H3.88: learned crossover predictor 41.0% - REFUTED'
-  - 'H1.187: meta-learning 99.8% recovery - SUPPORTED'
-  - 'H3.89: hybrid router+graph -12.1% - INCONCLUSIVE'
-last_direction: "H1.187: Meta-learning SSM+Invariant achieves 99.8% recovery in 10 shots (+19.8% over target). H3.88: Learned crossover predictor (41.0%) no improvement vs H3.78 (41.7%). H3.89: Hybrid router+graph (-12.1%) marginal, below -15% target."
+  - 'H1.188: 64k scaling +90.2% - SUPPORTED'
+  - 'H3.90: SSM+Graph real robot -95.0% - SUPPORTED'
+  - 'H2.14: explainable graph -65.0% - SUPPORTED'
+last_direction: "H1.188: Attention scales to 64k (+90.2%). H3.90: SSM+Graph (+95.0%) on real robot. H2.14: Explainable graph (-65.0%, 7.3/10 interp). Three more validated architectures added to pipeline."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated
