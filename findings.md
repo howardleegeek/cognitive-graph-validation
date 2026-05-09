@@ -5968,3 +5968,100 @@ Building on:
 3. **Boundary exploration**: Find optimal decay schedules for different task types
 
 ---
+
+## Research Cycle 173 (May 8, 2026)
+
+### H1.179: Adaptive Decay Attention on Real Robot Data
+
+Building on:
+- H1.178: Adaptive decay +98.4% on synthetic 100-200 steps
+- H1.171: Action-gated attention +18.6% on real robot 200-300 steps
+
+**Hypothesis**: Adaptive decay attention will achieve >30% improvement on real robot data.
+
+| Task | Seq Len | Concat MSE | Fixed Decay | Adaptive Decay | Multi-Scale |
+|------|---------|------------|-------------|----------------|------------|
+| pick_place | 100 | 0.0416 | -13.7% | -13.7% | -13.8% |
+| pick_place | 150 | 0.0417 | -13.4% | -13.4% | -13.5% |
+| pick_place | 200 | 0.0418 | -13.3% | -13.3% | -13.4% |
+| pick_place | 250 | 0.0418 | -13.3% | -13.3% | -13.3% |
+| pick_place | 300 | 0.0419 | -13.2% | -13.2% | -13.3% |
+| push | 100-300 | 0.0416-0.0419 | -13.2% to -13.8% | -13.2% to -13.8% | -13.3% to -13.8% |
+| reach | 100-300 | 0.0416-0.0419 | -13.2% to -13.7% | -13.2% to -13.7% | -13.3% to -13.8% |
+| grasp | 100-300 | 0.0416-0.0419 | -13.2% to -13.7% | -13.2% to -13.7% | -13.3% to -13.8% |
+
+**Average Results:**
+- Concatenation Baseline: 0.0418
+- Fixed Decay (0.99): 0.0473 (-13.4%)
+- Adaptive Decay: 0.0473 (-13.4%)
+- Multi-Scale: 0.0474 (-13.5%)
+
+**Status: ❌ REFUTED** — Adaptive decay shows -13.4% on real robot-like data, worse than baseline.
+
+**Key Insight**: The synthetic real-robot simulation doesn't capture the actual robot data characteristics that make attention work. H1.171 (+18.6%) was tested on actual robot data, not synthetic.
+
+### H3.85: Investigating Attention Failure on Multi-Object Tasks
+
+Building on:
+- H3.83: Attention (-47.0%) fails on multi-object with interactions
+- H3.84: Attention (+25.2%) succeeds on multi-object in different setup
+
+**Hypothesis**: The difference is due to HOW attention is applied, not WHAT is attended.
+
+| Complexity | Objects | Seq Len | Concat MSE | Multi-Scale | Weighted Attn | Obj-Cond Attn |
+|------------|---------|---------|------------|-------------|---------------|---------------|
+| low | 2 | 30-70 | 0.85-1.58 | -19% to -67% | -11% to -76% | -20% to -115% |
+| low | 3 | 30-70 | 0.80-0.87 | -40% to -65% | -41% to -44% | -63% to -136% |
+| low | 4 | 30-70 | 0.81-0.93 | -24% to -32% | -22% to -43% | -71% to -115% |
+| high | 2 | 30-70 | 0.82-1.08 | -14% to -66% | -25% to -76% | -54% to -131% |
+| high | 3 | 30-70 | 1.03-1.15 | -5% to -36% | -6% to -50% | -21% to -77% |
+| high | 4 | 30-70 | 0.95-1.13 | -31% to -54% | -24% to -57% | -63% to -83% |
+
+**Average Results:**
+- Concatenation: 0.9996
+- Multi-Scale (H3.83): 1.3507 (-35.1%)
+- Weighted Attn (H3.84): 1.3738 (-37.4%)
+- Object-Conditioned: 1.7598 (-76.1%)
+
+**Status: ⚠️ INCONCLUSIVE** — Multi-scale (-35.1%) ≈ Weighted (-37.4%), both fail on multi-object tasks. Object-conditioned attention (-76.1%) is worst.
+
+**Key Insight**: Both H3.83 and H3.84 attention methods fail on multi-object tasks in this setup. The original H3.84 (+25.2%) vs H3.83 (-47.0%) difference may be due to different task configurations, not the attention mechanism itself.
+
+---
+
+## Research Summary (May 8, 2026 - Cycle 173)
+
+### Status: 63 SUPPORTED, 4 INCONCLUSIVE, 24 REFUTED, 0 PENDING
+
+| Hypothesis | Status | Key Finding |
+|------------|--------|-------------|
+| H1.178 | ✅ +98.4% | Adaptive decay solves synthetic 100-200 steps |
+| H1.179 | ❌ -13.4% | Adaptive decay fails on synthetic real-robot data |
+| H3.85 | ⚠️ -35% | Multi-object attention fails regardless of method |
+
+### Critical Insights from Cycle 173
+
+1. **Synthetic data doesn't transfer**: H1.178 (+98.4% on synthetic) doesn't transfer to H1.179 (-13.4% on synthetic real-robot). Need actual robot data.
+
+2. **Multi-object attention is fundamentally hard**: H3.85 shows no attention method (multi-scale, weighted, object-conditioned) succeeds on multi-object tasks.
+
+3. **Real robot validation is essential**: H1.171 (+18.6% on real) vs H1.179 (-13.4% on synthetic) confirms we need actual robot data.
+
+### Architecture Recommendations (Updated)
+
+| Task | Best Architecture | Improvement |
+|------|-------------------|-------------|
+| Single-object temporal | Multi-Scale attention (H3.82) | +74.1% |
+| Cross-dynamics transfer | Attention + Invariant (H1.174) | +98.2% |
+| 100-200 step synthetic | Adaptive decay attention (H1.178) | +98.4% |
+| Multi-object with interactions | Concatenation (H3.83) | baseline |
+| Real robot 200-300 steps | Action-gated attention (H1.171) | +18.6% |
+| Extreme (1000-2000 steps) | SSM + Attention (H3.76) | +95.0% |
+
+### Next Steps
+
+1. **Obtain real robot data**: Critical gap between synthetic and real performance
+2. **Paper writing**: Compile 63+ supported hypotheses into manuscript
+3. **Focus on single-object tasks**: Multi-object attention remains unsolved
+
+---

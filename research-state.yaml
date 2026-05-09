@@ -1386,17 +1386,28 @@ hypotheses:
   priority: medium
   statement: Hierarchical multi-object attention for complex interactions
   status: supported
-- evidence: '+98.4% avg - adaptive decay dramatically beats fixed decay (0.99: +94.9%) on 100-200 steps'
+- evidence: "+98.4% avg - adaptive decay dramatically beats fixed decay (0.99: +94.9%) on 100-200 steps"
   id: H1.178
   parent: H1
   priority: high
   statement: Attention with adaptive decay scaling on long sequences (100-200 steps)
   status: supported
+- evidence: -13.4% avg - adaptive decay fails on synthetic real-robot data
+  id: H1.179
+  parent: H1
+  priority: high
+  statement: Adaptive decay attention on real robot-like synthetic data
+  status: refuted
+- evidence: -35% avg - multi-scale (-35.1%) ≈ weighted (-37.4%), both fail on multi-object
+  id: H3.85
+  parent: H3
+  priority: medium
+  statement: Investigating attention failure on multi-object tasks
+  status: inconclusive
 current_experiments:
-  - 'H1.178: adaptive decay +98.4% - SUPPORTED (major finding)'
-  - 'H1.176: hierarchical multi-object +10.7% - SUPPORTED'
-  - 'H3.84: graph+attn hybrid +21.7% - SUPPORTED (attn alone +25.2%)'
-last_direction: "H1.178: adaptive decay +98.4% (SUPPORTED) - MAJOR: solves 100-200 step sequences. H1.176: hierarchical +10.7% (SUPPORTED). H3.84: attention alone (+25.2%) > hybrid (+21.7%), both >> H3.83 (-47.0%)."
+  - 'H1.179: adaptive decay on real-robot synthetic -13.4% - REFUTED'
+  - 'H3.85: multi-object attention -35% - INCONCLUSIVE'
+last_direction: "H1.179: synthetic real-robot fails (-13.4%) vs H1.171 real (+18.6%) - need actual robot data. H3.85: all attention methods fail on multi-object (-35%). Multi-object attention remains unsolved."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated
