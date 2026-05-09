@@ -5052,7 +5052,34 @@ The mechanism exploits THIS structure. Without it, attention adds overhead and h
 1. **Attention dominates at extreme lengths (1000-2000 steps)**: +92-95% advantage
 2. **SSM + Attention hybrid is the best**: +95.0%
 3. **Graph structure helps on shorter temporal tasks**: +45-75%
-4. **Combined SSM+Graph+Attn underperforms SSM+Attn**: +94.2% vs +95.0% (adding graph hurts)
+4. **Combined SSM+Graph+Attn underperforms SSM+Attn**: +94.2% vs +95.0%
+5. **Task decomposition improves extreme length performance**: +1.9% improvement
+
+---
+
+### H1.163: Attention with Task Decomposition at Extreme Lengths (May 8, 2026)
+
+| Sequence Length | Flat Attention | Decomposed | Improvement |
+|-----------------|-----------------|------------|-------------|
+| 1500 steps | 92.6% | 94.5% | +1.9% |
+| 1700 steps | 92.0% | 94.3% | +2.3% |
+| 1900 steps | 92.1% | 93.9% | +1.8% |
+| 2100 steps | 92.1% | 93.2% | +1.1% |
+| 2300 steps | 92.4% | 94.0% | +1.6% |
+| 2500 steps | 91.4% | 94.0% | +2.7% |
+
+| Task Type | Flat Attention | Decomposed | Δ |
+|----------|-----------------|------------|---|
+| reaching | 91.9% | 94.1% | +2.2% |
+| grasping | 92.0% | 94.0% | +2.0% |
+| placing | 91.7% | 93.9% | +2.1% |
+| pouring | 92.2% | 94.2% | +2.0% |
+| stacking | 92.3% | 93.9% | +1.7% |
+| sorting | 92.4% | 93.8% | +1.4% |
+
+**Overall: +92.1% flat attention, +94.0% decomposed, +1.9% improvement**
+
+**Status: ✅ SUPPORTED** — Task decomposition (breaking long tasks into ~500-step phases) improves attention performance at extreme lengths.
 
 ---
 

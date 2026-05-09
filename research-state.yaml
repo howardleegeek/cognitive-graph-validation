@@ -1272,10 +1272,16 @@ hypotheses:
   priority: medium
   statement: Graph + Attention for multi-object tracking at 1000+ steps
   status: supported
-last_direction: H3.77 completed - SSM+Attn is best (+95.0%), combined architecture (+94.2%) does not outperform
-cycle: 156
+- evidence: +94.0% avg, +1.9% improvement over flat attention at 1500-2500 steps
+  id: H1.163
+  parent: H1
+  priority: high
+  statement: Task decomposition with attention improves extreme length performance
+  status: supported
+last_direction: H1.163 completed - SUPPORTED (+1.9% improvement with task decomposition)
+cycle: 157
 current_experiments:
-  - 'H3.77: SSM+Graph+Attn - SUPPORTED (+94.2%), SSM+Attn is best (+95.0%)'
+  - 'H1.163: Task decomposition - SUPPORTED (+94.0% vs +92.1% flat)'
 project:
   domain: world-models
   question: Does a unified cognitive graph architecture (early fusion of physical
