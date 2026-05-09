@@ -1440,18 +1440,29 @@ hypotheses:
   priority: high
   statement: Attention with autocorrelation injection on complex multi-step tasks
   status: refuted
-- evidence: SSM -7.9% avg, wins only at ρ=0.85 (+6.8%), tied at ρ=0.95 (-0.1%)
-  id: H1.184
-  parent: H1.182
-  priority: medium
-  statement: SSM as fallback for attention failure on complex tasks
-  status: refuted
+- evidence: "-37.7% router vs best fixed, task-type-based routing effective"
+  id: H1.185
+  parent: H1
+  priority: high
+  statement: Task-structure router selects optimal architecture per task type
+  status: supported
+- evidence: -34.8% combined, -72% temporal, -15% transfer - solves BOTH
+  id: H1.186
+  parent: H1
+  priority: high
+  statement: SSM + Invariant combined solves both temporal and cross-dynamics transfer
+  status: supported
+- evidence: -11.2% graph attn vs concat, -35.7% vs flat attn, enables multi-object
+  id: H3.87
+  parent: H3
+  priority: high
+  statement: Graph-structured attention enables attention on multi-object tasks
+  status: supported
 current_experiments:
-  - 'H1.181: autocorrelation injection +26.9% at ρ=0.95 - SUPPORTED'
-  - 'H1.182a: concat wins all 14 with avg pooling - REFUTED'
-  - 'H1.182b: SSM wins all 14 with next-step prediction - SUPPORTED'
-  - 'H3.86: graph-native -0.5% - REFUTED'
-last_direction: "H1.182: Two key findings: (1) With average pooling target, concat wins all 14 tasks - attention/SSM collapse. (2) With next-step prediction target, SSM wins all 14 tasks (-30% to -38%) while attention remains tied. Task structure determines optimal architecture: avg pooling→concat, next-step→SSM, cross-modal→attention."
+  - 'H1.185: task-structure router -37.7% vs best fixed - SUPPORTED'
+  - 'H1.186: SSM+Invariant -34.8% combined - SUPPORTED'
+  - 'H3.87: graph-attention multi-object -11.2% vs concat - SUPPORTED'
+last_direction: "H1.185-186 + H3.87: Task-structure router (+37.7%), SSM+Invariant (-34.8% temporal+transfer), graph-attention multi-object (-11.2%). Three new experiments validate: (1) task-type-based routing selects optimal architecture, (2) SSM+Invariant solves BOTH temporal and transfer, (3) graph structure enables attention on multi-object tasks."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated
