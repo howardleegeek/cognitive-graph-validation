@@ -1417,6 +1417,34 @@ Given H1.30's +5.7%, we should explore:
 
 **Status: ❌ REFUTED** — Chunking makes synthetic tasks worse.
 
+### H1.193: SSM + Attention on Long Sequences with Autocorrelation (May 9, 2026)
+
+| Architecture | MSE | Improvement |
+|--------------|-----|-------------|
+| Baseline (Concat) | 0.010195 | baseline |
+| SSM | 0.000248 | **+97.6%** |
+| Attention | 0.012600 | -23.6% |
+
+**Status: ✅ SUPPORTED** — SSM dramatically outperforms both baseline and attention on 50-step sequences with autocorrelation. SSM's sequential state modeling is better suited for long-horizon temporal reasoning with robot-like structure.
+
+Note: H1.193 used next-step prediction (predicts next step from previous steps), which is more suitable for SSM's sequential nature.
+
+### H1.195: SSM vs Attention Crossover Point (May 9, 2026)
+
+| Timesteps | Baseline | SSM | SSM Δ | Attention | Attn Δ |
+|-----------|---------|-----|-------|-----------|--------|
+| 20 | 0.012773 | 0.015704 | -23.0% | 0.017808 | -39.4% |
+| 30 | 0.026693 | 0.029757 | -11.5% | 0.033221 | -24.5% |
+| 40 | 0.040373 | 0.064868 | -60.7% | 0.057992 | -43.6% |
+| 50 | 0.052557 | 0.068882 | -31.1% | 0.074189 | -41.2% |
+| 60 | 0.060239 | 0.080021 | -32.8% | 0.088903 | -47.6% |
+| 70 | 0.087221 | 0.112657 | -29.2% | 0.111024 | -27.3% |
+| 80 | 0.093175 | 0.120248 | -29.1% | 0.119110 | -27.8% |
+
+**Status: REFUTED** — Baseline wins across all tested sequence lengths (20-80 steps). No crossover found.
+
+Note: H1.195 used final-step prediction (predicts final step from all steps), different from H1.193's next-step prediction. The task setup difference explains the different results.
+
 ### Key Insight
 
 Synthetic experiments (H1.115-117) show attention COLLAPSES on random data, but real robot experiments (H1.112-114) show +94-99% improvements. The difference is task structure - real robot manipulation has inherent temporal structure that attention can exploit, while synthetic random data has no structure to exploit.
