@@ -3,4 +3,5 @@ __pycache__/
 *.pyc
 *.pyo
 .DS_Store
-*.pkl
+*.pkl*.pyc
+__pycache__/

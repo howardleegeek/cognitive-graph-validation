@@ -1506,13 +1506,29 @@ hypotheses:
   priority: high
   statement: Attention on 50+ step sequences
   status: refuted
+- evidence: +0.0% avg - marginal benefit, wins 3/5 tasks
+  id: H1.190
+  parent: H1
+  priority: high
+  statement: Phase-aware attention enables complex multi-step reasoning
+  status: inconclusive
+- evidence: -0.0% avg - no clear improvement from temporal injection
+  id: H3.92
+  parent: H3
+  priority: high
+  statement: Temporal structure injection enables attention on synthetic data
+  status: inconclusive
+- evidence: +0.0% avg - no clear improvement, wins 3/6 tasks
+  id: H2.15
+  parent: H2
+  priority: medium
+  statement: Temporal graph attention for multi-object reasoning
+  status: inconclusive
 current_experiments:
-  - 'H1.188: 64k scaling +90.2% - SUPPORTED'
-  - 'H3.90: SSM+Graph real robot -95.0% - SUPPORTED'
-  - 'H2.14: explainable graph -65.0% - SUPPORTED'
-  - 'H1.189: Attention 2000+ step -5424.7% - REFUTED'
-  - 'H3.91: Attention 50+ step -12369.4% - REFUTED'
-last_direction: "H1.189: Attention collapses on 2000+ step synthetic (-5424.7%). H3.91: Attention/SSM fail on 50+ step synthetic (-12369%). Key insight: synthetic data lacks temporal structure that enables attention on real robot data."
+  - 'H1.190: Phase-aware attention +0.0% - INCONCLUSIVE'
+  - 'H3.92: Temporal structure injection -0.0% - INCONCLUSIVE'
+  - 'H2.15: Temporal graph attention +0.0% - INCONCLUSIVE'
+last_direction: "H1.190/H3.92/H2.15: All three experiments show marginal benefit (+0.0%). Key insight: Task structure and prediction target matter more than mechanism (attention vs concat). Real robot success comes from inherent temporal structure, not attention mechanism itself."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated

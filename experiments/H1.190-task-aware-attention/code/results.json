@@ -1,0 +1,43 @@
+{
+  "hypothesis": "H1.190",
+  "title": "Task-Aware Temporal Structure Attention",
+  "status": "INCONCLUSIVE",
+  "avg_delta": 0.0010768572731932493,
+  "results": [
+    {
+      "n_steps": 20,
+      "baseline_mse": 0.18441997864977583,
+      "attn_mse": 0.18444712784101153,
+      "delta": 0.014721393763555255,
+      "winner": "BASELINE"
+    },
+    {
+      "n_steps": 30,
+      "baseline_mse": 0.1699364221818048,
+      "attn_mse": 0.1699297676216111,
+      "delta": -0.003915911673468387,
+      "winner": "PHASE-ATTN"
+    },
+    {
+      "n_steps": 40,
+      "baseline_mse": 0.1680561971005703,
+      "attn_mse": 0.16805647561979017,
+      "delta": 0.00016572981222173056,
+      "winner": "BASELINE"
+    },
+    {
+      "n_steps": 50,
+      "baseline_mse": 0.14938314303076353,
+      "attn_mse": 0.14937959998848216,
+      "delta": -0.002371781855358304,
+      "winner": "PHASE-ATTN"
+    },
+    {
+      "n_steps": 60,
+      "baseline_mse": 0.13753636680948655,
+      "attn_mse": 0.13753194481768002,
+      "delta": -0.003215143680984046,
+      "winner": "PHASE-ATTN"
+    }
+  ]
+}

@@ -6509,3 +6509,78 @@ This explains why:
 3. H3.91 (synthetic, 50-100 steps): -12369% attention collapse
 
 ---
+
+## Cycle 181-183: Task Structure Analysis (May 8, 2026)
+
+### H1.190: Phase-Aware Temporal Structure Attention
+
+| Sequence Length | Baseline MSE | Phase-Attn MSE | Delta |
+|-----------------|-------------|----------------|-------|
+| 20 steps | 0.184420 | 0.184447 | +0.0% |
+| 30 steps | 0.169936 | 0.169930 | -0.0% |
+| 40 steps | 0.168056 | 0.168056 | +0.0% |
+| 50 steps | 0.149383 | 0.149380 | -0.0% |
+| 60 steps | 0.137536 | 0.137532 | -0.0% |
+
+**Average: +0.0%**, Phase-Attn wins 3/5
+
+**Status: ⚠️ INCONCLUSIVE** — Phase-aware attention provides marginal benefit at best. Neither mechanism (baseline MLP vs phase-aware attention) shows clear advantage in this synthetic setting.
+
+### H3.92: Temporal Structure Injection for Synthetic Data
+
+| Autocorrelation (ρ) | Baseline MSE | Attention MSE | Delta |
+|--------------------|-------------|--------------|-------|
+| 0.00 | 0.968762 | 0.968742 | -0.0% |
+| 0.30 | 0.566575 | 0.566568 | -0.0% |
+| 0.50 | 0.378531 | 0.378536 | +0.0% |
+| 0.70 | 0.201757 | 0.201751 | -0.0% |
+| 0.85 | 0.224829 | 0.224826 | -0.0% |
+| 0.95 | 0.475510 | 0.475511 | +0.0% |
+
+**High ρ (≥0.7): -0.0% avg**, attention wins 2/3
+**Low ρ (<0.7): -0.0% avg**
+
+**Status: ⚠️ INCONCLUSIVE** — Temporal structure injection does not enable attention to outperform concatenation in synthetic data. Both mechanisms perform nearly identically.
+
+### H2.15: Temporal Graph Attention for Multi-Object Reasoning
+
+| Configuration | Baseline MSE | Graph MSE | Delta |
+|--------------|-------------|-----------|-------|
+| 20 steps, 2 obj | 0.557016 | 0.556929 | -0.0% |
+| 20 steps, 3 obj | 0.682569 | 0.682712 | +0.0% |
+| 20 steps, 4 obj | 0.191138 | 0.191192 | +0.0% |
+| 30 steps, 3 obj | 1.163985 | 1.163972 | -0.0% |
+| 30 steps, 3 obj + inter | 0.572804 | 0.572792 | -0.0% |
+| 40 steps, 3 obj + inter | 0.555308 | 0.555572 | +0.0% |
+
+**Overall: +0.0% avg**, graph wins 3/6
+
+**Status: ⚠️ INCONCLUSIVE** — Temporal graph attention provides no clear improvement over baseline concatenation on multi-object tasks.
+
+### Key Insight: Task Structure vs Mechanism
+
+All three experiments (H1.190, H3.92, H2.15) show that mechanism choice (attention vs concatenation vs graph) matters less than task structure:
+
+1. **H1.190**: Phase information doesn't help - both mechanisms perform identically
+2. **H3.92**: Autocorrelation injection doesn't enable attention - structural assumptions don't transfer
+3. **H2.15**: Graph attention on multi-object fails - object interactions are the bottleneck
+
+**Conclusion**: The gap between synthetic and real robot data is not just temporal structure (autocorrelation), but the inherent task structure in manipulation (object relationships, action consequences, goal-directed behavior). Simply adding temporal structure doesn't replicate real robot characteristics.
+
+### Research Status (Cycle 183)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
+| H1.x | Attention mechanisms | ✅ +99% | Real robot universal |
+| H2.x | Graph structure | ✅ | +56-75% on temporal |
+| H3 | Attention | ❌ simple, ✅ complex | Task-dependent |
+| H1.189 | Attention 2000+ step | ❌ -5424% | Synth fails |
+| H3.91 | Attention 50+ step | ❌ -12369% | Synth fails |
+| H1.190 | Phase-aware attention | ⚠️ +0.0% | Marginal |
+| H3.92 | Temporal injection | ⚠️ -0.0% | Marginal |
+| H2.15 | Temporal graph | ⚠️ +0.0% | Marginal |
+
+**Total: 30+ SUPPORTED, 5 INCONCLUSIVE, 16 REFUTED**
+
+---

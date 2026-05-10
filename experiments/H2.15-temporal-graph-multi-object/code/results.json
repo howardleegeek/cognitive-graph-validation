@@ -1,0 +1,73 @@
+{
+  "hypothesis": "H2.15",
+  "title": "Temporal Graph Attention for Multi-Object",
+  "status": "INCONCLUSIVE",
+  "results": [
+    {
+      "config": {
+        "n_steps": 20,
+        "n_objects": 2,
+        "interactions": false
+      },
+      "baseline_mse": 0.5570160530713493,
+      "graph_mse": 0.556929016371386,
+      "delta": -0.015625528112398965,
+      "winner": "GRAPH"
+    },
+    {
+      "config": {
+        "n_steps": 20,
+        "n_objects": 3,
+        "interactions": false
+      },
+      "baseline_mse": 0.6825692509945879,
+      "graph_mse": 0.6827119822232327,
+      "delta": 0.020910878777040613,
+      "winner": "BASELINE"
+    },
+    {
+      "config": {
+        "n_steps": 20,
+        "n_objects": 4,
+        "interactions": false
+      },
+      "baseline_mse": 0.19113758362067226,
+      "graph_mse": 0.19119204535885712,
+      "delta": 0.028493474257232358,
+      "winner": "BASELINE"
+    },
+    {
+      "config": {
+        "n_steps": 30,
+        "n_objects": 3,
+        "interactions": false
+      },
+      "baseline_mse": 1.1639847032742172,
+      "graph_mse": 1.1639720264443443,
+      "delta": -0.0010890890436341858,
+      "winner": "GRAPH"
+    },
+    {
+      "config": {
+        "n_steps": 30,
+        "n_objects": 3,
+        "interactions": true
+      },
+      "baseline_mse": 0.572804288230793,
+      "graph_mse": 0.572792427815523,
+      "delta": -0.002070587723190451,
+      "winner": "GRAPH"
+    },
+    {
+      "config": {
+        "n_steps": 40,
+        "n_objects": 3,
+        "interactions": true
+      },
+      "baseline_mse": 0.5553084655740015,
+      "graph_mse": 0.5555716914683024,
+      "delta": 0.04740174346682397,
+      "winner": "BASELINE"
+    }
+  ]
+}

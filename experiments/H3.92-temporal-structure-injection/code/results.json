@@ -1,0 +1,49 @@
+{
+  "hypothesis": "H3.92",
+  "title": "Temporal Structure Injection",
+  "status": "INCONCLUSIVE",
+  "results": [
+    {
+      "rho": 0.0,
+      "baseline_mse": 0.9687616756534083,
+      "attn_mse": 0.9687422445427426,
+      "delta": -0.0020057678946276605,
+      "winner": "ATTENTION"
+    },
+    {
+      "rho": 0.3,
+      "baseline_mse": 0.5665749198308616,
+      "attn_mse": 0.5665681737818614,
+      "delta": -0.001190672012486644,
+      "winner": "ATTENTION"
+    },
+    {
+      "rho": 0.5,
+      "baseline_mse": 0.3785307107778484,
+      "attn_mse": 0.37853563264588874,
+      "delta": 0.0013002559370252585,
+      "winner": "BASELINE"
+    },
+    {
+      "rho": 0.7,
+      "baseline_mse": 0.2017574857990594,
+      "attn_mse": 0.20175078782570444,
+      "delta": -0.003319814047258203,
+      "winner": "ATTENTION"
+    },
+    {
+      "rho": 0.85,
+      "baseline_mse": 0.22482943822215065,
+      "attn_mse": 0.22482569228834617,
+      "delta": -0.0016661224767089123,
+      "winner": "ATTENTION"
+    },
+    {
+      "rho": 0.95,
+      "baseline_mse": 0.4755099448963596,
+      "attn_mse": 0.4755111721353308,
+      "delta": 0.00025808902302478756,
+      "winner": "BASELINE"
+    }
+  ]
+}
