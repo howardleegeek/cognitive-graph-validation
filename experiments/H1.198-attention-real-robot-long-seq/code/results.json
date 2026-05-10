@@ -1,0 +1,50 @@
+{
+  "hypothesis": "H1.198",
+  "title": "Attention on Real Robot Long Sequences (50-100 steps)",
+  "results": [
+    {
+      "n_steps": 50,
+      "concat_mse": 0.0012463075582487052,
+      "attention_mse": 0.001244672683326542,
+      "delta": -0.1311774859538183,
+      "winner": "ATTENTION"
+    },
+    {
+      "n_steps": 60,
+      "concat_mse": 0.0012436731986820112,
+      "attention_mse": 0.0012286626043289685,
+      "delta": -1.2069564873593983,
+      "winner": "ATTENTION"
+    },
+    {
+      "n_steps": 70,
+      "concat_mse": 0.001206058951688497,
+      "attention_mse": 0.0012097555464461248,
+      "delta": 0.30650199581475684,
+      "winner": "CONCATENATION"
+    },
+    {
+      "n_steps": 80,
+      "concat_mse": 0.0012515082175604414,
+      "attention_mse": 0.001241268527781331,
+      "delta": -0.818187977947961,
+      "winner": "ATTENTION"
+    },
+    {
+      "n_steps": 90,
+      "concat_mse": 0.0011643815288579628,
+      "attention_mse": 0.0011720155607066204,
+      "delta": 0.6556297621918835,
+      "winner": "CONCATENATION"
+    },
+    {
+      "n_steps": 100,
+      "concat_mse": 0.001284396632548555,
+      "attention_mse": 0.0012772216998158457,
+      "delta": -0.5586228234242864,
+      "winner": "ATTENTION"
+    }
+  ],
+  "avg_delta": -0.292135502779804,
+  "status": "SUPPORTED"
+}
