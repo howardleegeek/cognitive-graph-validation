@@ -1,0 +1,43 @@
+{
+  "hypothesis": "H1.196",
+  "title": "Attention on 20-40 Step Sequences (Next-Step Prediction)",
+  "results": [
+    {
+      "n_steps": 20,
+      "concat_mse": 0.0006049164017218819,
+      "attention_mse": 0.0010565804447571212,
+      "delta": -74.665530931148,
+      "winner": "CONCATENATION"
+    },
+    {
+      "n_steps": 25,
+      "concat_mse": 0.0007608799471433869,
+      "attention_mse": 0.001098565073903062,
+      "delta": -44.380868233873784,
+      "winner": "CONCATENATION"
+    },
+    {
+      "n_steps": 30,
+      "concat_mse": 0.0008781605981858456,
+      "attention_mse": 0.0011377909520580336,
+      "delta": -29.565247451154974,
+      "winner": "CONCATENATION"
+    },
+    {
+      "n_steps": 35,
+      "concat_mse": 0.000948889174440812,
+      "attention_mse": 0.0011447529919672416,
+      "delta": -20.641379710317985,
+      "winner": "CONCATENATION"
+    },
+    {
+      "n_steps": 40,
+      "concat_mse": 0.0009872793088981776,
+      "attention_mse": 0.0011518896405631,
+      "delta": -16.673126863018194,
+      "winner": "CONCATENATION"
+    }
+  ],
+  "avg_delta": -37.185230637902585,
+  "status": "REFUTED"
+}

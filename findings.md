@@ -6707,3 +6707,21 @@ Given the consistent failure to replicate real robot success with synthetic data
 **Status: ✅ SUPPORTED** — SSM scales dramatically better than attention on longer sequences. SSM achieves +97.4% improvement while attention essentially fails (-0.2%) on 50-step sequences.
 
 **Key Insight**: SSM's sequential state modeling is better suited for long-horizon temporal reasoning. Attention fails to maintain advantage at scale even with autocorrelation injection. This explains why H3.8 (SSM outperforms attention on 20+ steps) was supported.
+
+---
+
+### H1.196: Attention on 20-40 Step Sequences (Next-Step Prediction) — REFUTED
+
+| N Steps | Concat MSE | Attention MSE | Delta |
+|---------|-----------|--------------|-------|
+| 20 | 0.000605 | 0.001057 | -74.7% |
+| 25 | 0.000761 | 0.001099 | -44.4% |
+| 30 | 0.000878 | 0.001138 | -29.6% |
+| 35 | 0.000949 | 0.001145 | -20.6% |
+| 40 | 0.000987 | 0.001152 | -16.7% |
+
+**Average: -37.2%**
+
+**Status: ❌ REFUTED** — Concatenation outperforms attention on 20-40 step sequences with next-step prediction.
+
+**Key Insight**: Attention does NOT automatically win on longer sequences. The earlier findings (H3.4, H3.6) that showed attention winning may have been due to specific implementation details or data characteristics. This confirms that concatenation remains a strong baseline for temporal sequence modeling.

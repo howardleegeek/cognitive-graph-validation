@@ -1554,10 +1554,17 @@ hypotheses:
   priority: medium
   statement: SSM vs attention crossover point discovery
   status: refuted
+- evidence: -37.2% avg, concatenation wins on 20-40 step sequences
+  id: H1.196
+  parent: H1
+  priority: high
+  statement: Attention on 20-40 step sequences with next-step prediction
+  status: refuted
 current_experiments:
   - 'H1.193: SSM +97.6% on 50-step - SUPPORTED (next-step prediction)'
   - 'H1.195: Baseline wins 20-80 steps - REFUTED (final-step prediction)'
-last_direction: "H1.193: SSM (+97.6%) wins on 50-step with next-step prediction. H1.195: Baseline wins across 20-80 steps with final-step prediction. Task setup (prediction target) significantly affects results - SSM excels at next-step prediction but baseline wins on final-step prediction."
+  - 'H1.196: Concatenation wins on 20-40 step - REFUTED'
+last_direction: "H1.196: Concatenation outperforms attention on 20-40 step sequences with next-step prediction (-37.2% avg). Attention does NOT automatically win on longer sequences - concatenation remains strong baseline."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated
