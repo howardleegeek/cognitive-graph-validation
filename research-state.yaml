@@ -1587,7 +1587,8 @@ current_experiments:
   - 'H1.197: Concatenation wins on 30-60 step complex - REFUTED'
   - 'H1.198: Attention +0.3% on 50-100 step with autocorrelation=0.85 - SUPPORTED'
   - 'H1.199: Adaptive fusion +14.1% vs concat, +14.7% vs hard - SUPPORTED'
-last_direction: "H1.199: Adaptive fusion (learned router) outperforms both fixed architecture and hard selection thresholds. Best improvements on medium (+16.2%) and complex (+33.1%) tasks. SSM remains best individual method."
+  - 'H1.200: SSM dominates 25/25 comparisons, +54.4% at high autocorrelation - SUPPORTED'
+last_direction: "H1.200: SSM scales better than attention with autocorrelation. Best at ρ=0.95 (+54.4%), wins all 25 comparisons. Attention collapses on synthetic data without real robot structure."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated

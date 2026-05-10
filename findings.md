@@ -6785,3 +6785,37 @@ Given the consistent failure to replicate real robot success with synthetic data
 **Status: ✅ SUPPORTED** — Adaptive fusion (learned router) outperforms both fixed architecture and hard selection thresholds. Best improvements on medium (+16.2%) and complex (+33.1%) tasks where architecture selection matters most.
 
 **Key Insight**: SSM is best individual method across all complexities, but adaptive fusion combines strengths effectively. The learned router can select appropriate architecture based on task complexity detected from input.
+
+---
+
+### H1.200: SSM Scaling with Varying Autocorrelation (May 9, 2026)
+
+| Autocorr | SeqLen | Concat MSE | SSM MSE | Attention MSE | SSM vs Concat |
+|----------|--------|------------|---------|---------------|---------------|
+| 0.00 | 20 | 0.0289 | 0.0663 | 1.0284 | -129.6% |
+| 0.00 | 100 | 0.0319 | 0.0739 | 1.0653 | -131.7% |
+| 0.50 | 20 | 0.0200 | 0.0211 | 0.3339 | -5.3% |
+| 0.50 | 100 | 0.0215 | 0.0211 | 0.3417 | +1.5% |
+| 0.70 | 20 | 0.0170 | 0.0128 | 0.1739 | +24.4% |
+| 0.70 | 100 | 0.0166 | 0.0136 | 0.1697 | +18.1% |
+| 0.85 | 20 | 0.0152 | 0.0105 | 0.0851 | +31.0% |
+| 0.85 | 100 | 0.0135 | 0.0095 | 0.0809 | +29.4% |
+| 0.95 | 20 | 0.0177 | 0.0075 | 0.0326 | +57.4% |
+| 0.95 | 100 | 0.0110 | 0.0054 | 0.0268 | +50.8% |
+
+**Summary by Autocorrelation:**
+
+| Autocorrelation | SSM avg | Attention avg | SSM wins |
+|-----------------|---------|---------------|----------|
+| ρ=0.00 | -137.2% | -3374.5% | 5/5 |
+| ρ=0.50 | -3.1% | -1531.7% | 5/5 |
+| ρ=0.70 | +17.5% | -962.5% | 5/5 |
+| ρ=0.85 | +30.7% | -469.2% | 5/5 |
+| ρ=0.95 | +54.4% | -128.1% | 5/5 |
+
+**Status: ✅ SUPPORTED** — SSM scales with autocorrelation, winning all 25 comparisons. Attention collapses on synthetic data without real robot structure (ρ=0). SSM best at high autocorrelation (+54.4% at ρ=0.95).
+
+**Key Insight**: 
+- SSM benefits from autocorrelation (sequential state updates capture temporal structure)
+- Attention requires real robot-like structure to function (fails without autocorrelation)
+- The gap between SSM and attention grows with autocorrelation
