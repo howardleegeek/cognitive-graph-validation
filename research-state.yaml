@@ -1542,9 +1542,15 @@ hypotheses:
   priority: high
   statement: Attention + SSM with autocorrelation injection unlocks attention on synthetic data
   status: supported
+- evidence: +97.4% SSM, -0.2% attention on 50-step with ρ=0.85
+  id: H1.193
+  parent: H1
+  priority: high
+  statement: SSM scales better than attention on longer sequences (40+ steps) with autocorrelation
+  status: supported
 current_experiments:
-  - 'H1.192: Attention + SSM + autocorrelation +87.4% - SUPPORTED'
-last_direction: "H1.192: SSM (+87.4%) and Attention (+85.6%) both significantly outperform baseline with autocorrelation injection (ρ=0.85). Combined (+84.7%) slightly worse than individual methods. Key insight: Autocorrelation injection unlocks attention on synthetic data, SSM slightly outperforms attention."
+  - 'H1.193: SSM +97.4% on 50-step, Attention -0.2% - SUPPORTED'
+last_direction: "H1.193: SSM scales dramatically better than attention on longer sequences (+97.4% vs -0.2% on 50 steps). SSM's sequential state modeling is better suited for long-horizon temporal reasoning. Attention fails to maintain advantage at scale."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated

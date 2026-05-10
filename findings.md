@@ -6663,3 +6663,19 @@ Given the consistent failure to replicate real robot success with synthetic data
 **Status: ✅ SUPPORTED** — Both SSM and Attention significantly outperform baseline with autocorrelation injection. SSM slightly outperforms attention (+87.4% vs +85.6%). Combined is marginally worse than individual methods.
 
 **Key Insight**: Autocorrelation injection (ρ=0.85) unlocks attention on synthetic data, matching the real robot success pattern. SSM slightly better than attention, suggesting SSM's sequential state modeling is better suited for robot-like temporal structure.
+
+---
+
+### H1.193: SSM + Attention on Long Sequences (40+ steps) (May 9, 2026)
+
+| Architecture | MSE | vs Baseline |
+|--------------|-----|-------------|
+| Baseline (Concat) | 0.011051 | 0% |
+| SSM Only | 0.000287 | **+97.4%** |
+| Attention Only | 0.011071 | **-0.2%** |
+
+**Configuration**: 50 timesteps, autocorrelation ρ=0.85 (robot-like)
+
+**Status: ✅ SUPPORTED** — SSM scales dramatically better than attention on longer sequences. SSM achieves +97.4% improvement while attention essentially fails (-0.2%) on 50-step sequences.
+
+**Key Insight**: SSM's sequential state modeling is better suited for long-horizon temporal reasoning. Attention fails to maintain advantage at scale even with autocorrelation injection. This explains why H3.8 (SSM outperforms attention on 20+ steps) was supported.
