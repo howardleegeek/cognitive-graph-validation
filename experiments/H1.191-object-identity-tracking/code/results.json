@@ -1,0 +1,68 @@
+{
+  "hypothesis": "H1.191",
+  "title": "Object Identity Tracking",
+  "status": "INCONCLUSIVE",
+  "avg_delta": -0.014480930885722313,
+  "results": [
+    {
+      "config": {
+        "n_steps": 20,
+        "n_objects": 2
+      },
+      "unified_mse": 0.5571122798830868,
+      "aware_mse": 0.556954194411259,
+      "delta": -0.028375872788317137,
+      "winner": "OBJECT-AWARE"
+    },
+    {
+      "config": {
+        "n_steps": 20,
+        "n_objects": 3
+      },
+      "unified_mse": 2.3804226434648195,
+      "aware_mse": 2.380343197263272,
+      "delta": -0.0033374830207467993,
+      "winner": "OBJECT-AWARE"
+    },
+    {
+      "config": {
+        "n_steps": 20,
+        "n_objects": 4
+      },
+      "unified_mse": 0.3582126616405398,
+      "aware_mse": 0.35825587969496137,
+      "delta": 0.012064915356051387,
+      "winner": "UNIFIED"
+    },
+    {
+      "config": {
+        "n_steps": 30,
+        "n_objects": 2
+      },
+      "unified_mse": 0.4168491399710697,
+      "aware_mse": 0.41678920253109875,
+      "delta": -0.014378688648636354,
+      "winner": "OBJECT-AWARE"
+    },
+    {
+      "config": {
+        "n_steps": 30,
+        "n_objects": 3
+      },
+      "unified_mse": 0.7235991286912731,
+      "aware_mse": 0.7234793014551124,
+      "delta": -0.016559892267613303,
+      "winner": "OBJECT-AWARE"
+    },
+    {
+      "config": {
+        "n_steps": 40,
+        "n_objects": 3
+      },
+      "unified_mse": 1.1828144331831276,
+      "aware_mse": 1.182385088529747,
+      "delta": -0.036298563945071666,
+      "winner": "OBJECT-AWARE"
+    }
+  ]
+}

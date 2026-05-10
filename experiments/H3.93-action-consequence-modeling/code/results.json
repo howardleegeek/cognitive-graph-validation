@@ -1,0 +1,36 @@
+{
+  "hypothesis": "H3.93",
+  "title": "Action Consequence Modeling",
+  "status": "REFUTED",
+  "avg_delta": 254.67975933945706,
+  "results": [
+    {
+      "n_steps": 20,
+      "sequential_mse": 0.27826493642978345,
+      "causal_mse": 0.4900377312742978,
+      "delta": 76.10473585411738,
+      "winner": "SEQUENTIAL"
+    },
+    {
+      "n_steps": 30,
+      "sequential_mse": 0.14945280464386088,
+      "causal_mse": 0.5485142103589656,
+      "delta": 267.0149995953904,
+      "winner": "SEQUENTIAL"
+    },
+    {
+      "n_steps": 40,
+      "sequential_mse": 0.1350208442616614,
+      "causal_mse": 0.7318893368028735,
+      "delta": 442.0565549009017,
+      "winner": "SEQUENTIAL"
+    },
+    {
+      "n_steps": 50,
+      "sequential_mse": 0.1399234842481262,
+      "causal_mse": 0.46670463306969295,
+      "delta": 233.54274700741868,
+      "winner": "SEQUENTIAL"
+    }
+  ]
+}

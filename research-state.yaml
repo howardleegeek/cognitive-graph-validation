@@ -1524,11 +1524,25 @@ hypotheses:
   priority: medium
   statement: Temporal graph attention for multi-object reasoning
   status: inconclusive
+- evidence: -0.0% avg - marginal benefit, wins 5/6
+  id: H1.191
+  parent: H1
+  priority: high
+  statement: Object identity tracking enables better predictions
+  status: inconclusive
+- evidence: +254.7% avg - causal modeling worse than sequential
+  id: H3.93
+  parent: H3
+  priority: high
+  statement: Action consequence modeling enables learning
+  status: refuted
 current_experiments:
   - 'H1.190: Phase-aware attention +0.0% - INCONCLUSIVE'
   - 'H3.92: Temporal structure injection -0.0% - INCONCLUSIVE'
   - 'H2.15: Temporal graph attention +0.0% - INCONCLUSIVE'
-last_direction: "H1.190/H3.92/H2.15: All three experiments show marginal benefit (+0.0%). Key insight: Task structure and prediction target matter more than mechanism (attention vs concat). Real robot success comes from inherent temporal structure, not attention mechanism itself."
+  - 'H1.191: Object identity tracking -0.0% - INCONCLUSIVE'
+  - 'H3.93: Action consequence modeling +254.7% - REFUTED'
+last_direction: "H1.190/H3.92/H2.15: All marginal (+0.0%). H1.191: Object identity marginal (-0.0%). H3.93: Causal modeling REFUTED (+254.7%). Key insight: Adding explicit structure (temporal, object, causal) doesn't help synthetic data. Real robot success comes from inherent manipulation structure."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated

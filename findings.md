@@ -6581,6 +6581,70 @@ All three experiments (H1.190, H3.92, H2.15) show that mechanism choice (attenti
 | H3.92 | Temporal injection | ⚠️ -0.0% | Marginal |
 | H2.15 | Temporal graph | ⚠️ +0.0% | Marginal |
 
-**Total: 30+ SUPPORTED, 5 INCONCLUSIVE, 16 REFUTED**
+**Total: 30+ SUPPORTED, 6 INCONCLUSIVE, 17 REFUTED**
+
+---
+
+## Cycle 184-187: Structure Analysis Results (May 8, 2026)
+
+### H1.191: Object Identity Tracking
+
+| Config | Unified MSE | Object-Aware MSE | Delta |
+|--------|-------------|------------------|-------|
+| 20s, 2obj | 0.557 | 0.557 | -0.0% |
+| 20s, 3obj | 2.380 | 2.380 | -0.0% |
+| 20s, 4obj | 0.358 | 0.358 | +0.0% |
+| 30s, 2obj | 0.417 | 0.417 | -0.0% |
+| 30s, 3obj | 0.724 | 0.723 | -0.0% |
+| 40s, 3obj | 1.183 | 1.182 | -0.0% |
+
+**Overall: -0.0% avg**, object-aware wins 5/6
+
+**Status: ⚠️ INCONCLUSIVE** — Object identity embeddings provide marginal benefit at best.
+
+### H3.93: Action Consequence Modeling
+
+| Sequence Length | Sequential MSE | Causal MSE | Delta |
+|-----------------|---------------|------------|-------|
+| 20 steps | 0.278 | 0.490 | +76.1% |
+| 30 steps | 0.149 | 0.549 | +267.0% |
+| 40 steps | 0.135 | 0.732 | +442.1% |
+| 50 steps | 0.140 | 0.467 | +233.5% |
+
+**Overall: +254.7% avg**, sequential wins 4/4
+
+**Status: ❌ REFUTED** — Causal modeling significantly worse than sequential prediction. Explicit causal structure doesn't help.
+
+### Key Insight: Explicit Structure Doesn't Help Synthetic Data
+
+All experiments adding explicit structure to synthetic data show no clear benefit:
+- **H1.190**: Phase info - no help (+0.0%)
+- **H3.92**: Temporal autocorrelation - no help (-0.0%)
+- **H2.15**: Temporal graph attention - no help (+0.0%)
+- **H1.191**: Object identity - no help (-0.0%)
+- **H3.93**: Causal modeling - WORSE (+254.7%)
+
+**Conclusion**: The real robot advantage comes from inherent task structure (manipulation constraints, physical laws, goal-directed behavior) that cannot be replicated by adding features to random synthetic data. This is a fundamental limitation of synthetic data evaluation.
+
+### Research Status (Cycle 187)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Real robot |
+| H1.41-52 | Attention +99% | ✅ | Real robot |
+| H2.x | Graph +56-75% | ✅ | Temporal |
+| H3.8-13 | SSM +82-93% | ✅ | Long seq |
+| H1.190-191 | Structure tests | ⚠️ | Marginal |
+| H3.92-93 | Injection tests | ❌ | Fails |
+
+**Total: 30+ SUPPORTED, 6 INCONCLUSIVE, 17 REFUTED**
+
+### Next Steps
+
+Given the consistent failure to replicate real robot success with synthetic data, the research should focus on:
+
+1. **Real robot validation**: Continue validating findings on actual robot data
+2. **Task structure analysis**: Understand what manipulation tasks have that synthetic lacks
+3. **Paper writing**: Consolidate validated results for publication
 
 ---
