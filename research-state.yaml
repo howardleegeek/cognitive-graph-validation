@@ -1536,13 +1536,15 @@ hypotheses:
   priority: high
   statement: Action consequence modeling enables learning
   status: refuted
+- evidence: +87.4% SSM, +85.6% attention, +84.7% combined on 30-step with ρ=0.85
+  id: H1.192
+  parent: H1
+  priority: high
+  statement: Attention + SSM with autocorrelation injection unlocks attention on synthetic data
+  status: supported
 current_experiments:
-  - 'H1.190: Phase-aware attention +0.0% - INCONCLUSIVE'
-  - 'H3.92: Temporal structure injection -0.0% - INCONCLUSIVE'
-  - 'H2.15: Temporal graph attention +0.0% - INCONCLUSIVE'
-  - 'H1.191: Object identity tracking -0.0% - INCONCLUSIVE'
-  - 'H3.93: Action consequence modeling +254.7% - REFUTED'
-last_direction: "H1.190/H3.92/H2.15: All marginal (+0.0%). H1.191: Object identity marginal (-0.0%). H3.93: Causal modeling REFUTED (+254.7%). Key insight: Adding explicit structure (temporal, object, causal) doesn't help synthetic data. Real robot success comes from inherent manipulation structure."
+  - 'H1.192: Attention + SSM + autocorrelation +87.4% - SUPPORTED'
+last_direction: "H1.192: SSM (+87.4%) and Attention (+85.6%) both significantly outperform baseline with autocorrelation injection (ρ=0.85). Combined (+84.7%) slightly worse than individual methods. Key insight: Autocorrelation injection unlocks attention on synthetic data, SSM slightly outperforms attention."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated

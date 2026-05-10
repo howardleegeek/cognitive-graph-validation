@@ -6644,7 +6644,22 @@ All experiments adding explicit structure to synthetic data show no clear benefi
 Given the consistent failure to replicate real robot success with synthetic data, the research should focus on:
 
 1. **Real robot validation**: Continue validating findings on actual robot data
-2. **Task structure analysis**: Understand what manipulation tasks have that synthetic lacks
+2. **Task structure analysis**: Understand what manipulation tasks have synthetic lacks
 3. **Paper writing**: Consolidate validated results for publication
 
 ---
+
+### H1.192: Attention + SSM with Autocorrelation Injection (May 9, 2026)
+
+| Architecture | MSE | vs Baseline |
+|--------------|-----|-------------|
+| Baseline (Concat) | 0.005256 | 0% |
+| SSM Only | 0.000661 | **+87.4%** |
+| Attention Only | 0.000758 | **+85.6%** |
+| Combined (SSM + Attention) | 0.000803 | **+84.7%** |
+
+**Configuration**: 30 timesteps, autocorrelation ρ=0.85 (robot-like)
+
+**Status: ✅ SUPPORTED** — Both SSM and Attention significantly outperform baseline with autocorrelation injection. SSM slightly outperforms attention (+87.4% vs +85.6%). Combined is marginally worse than individual methods.
+
+**Key Insight**: Autocorrelation injection (ρ=0.85) unlocks attention on synthetic data, matching the real robot success pattern. SSM slightly better than attention, suggesting SSM's sequential state modeling is better suited for robot-like temporal structure.
