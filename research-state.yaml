@@ -1560,11 +1560,18 @@ hypotheses:
   priority: high
   statement: Attention on 20-40 step sequences with next-step prediction
   status: refuted
+- evidence: +0.0% avg, concatenation wins on 30-60 step complex multi-step tasks
+  id: H1.197
+  parent: H1
+  priority: high
+  statement: SSM + Attention hybrid on complex multi-step tasks
+  status: refuted
 current_experiments:
   - 'H1.193: SSM +97.6% on 50-step - SUPPORTED (next-step prediction)'
   - 'H1.195: Baseline wins 20-80 steps - REFUTED (final-step prediction)'
   - 'H1.196: Concatenation wins on 20-40 step - REFUTED'
-last_direction: "H1.196: Concatenation outperforms attention on 20-40 step sequences with next-step prediction (-37.2% avg). Attention does NOT automatically win on longer sequences - concatenation remains strong baseline."
+  - 'H1.197: Concatenation wins on 30-60 step complex - REFUTED'
+last_direction: "H1.197: Concatenation wins on 30-60 step complex multi-step tasks (+0.0% avg). SSM+Attention hybrid does NOT outperform concatenation even after H1.193's SSM success. Concatenation remains strongest baseline for temporal modeling."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated

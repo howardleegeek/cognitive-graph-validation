@@ -6725,3 +6725,20 @@ Given the consistent failure to replicate real robot success with synthetic data
 **Status: ❌ REFUTED** — Concatenation outperforms attention on 20-40 step sequences with next-step prediction.
 
 **Key Insight**: Attention does NOT automatically win on longer sequences. The earlier findings (H3.4, H3.6) that showed attention winning may have been due to specific implementation details or data characteristics. This confirms that concatenation remains a strong baseline for temporal sequence modeling.
+
+---
+
+### H1.197: SSM + Attention Hybrid on Complex Multi-Step Tasks — REFUTED
+
+| N Steps | Concat MSE | SSM MSE | Attention MSE | Hybrid MSE | Best |
+|---------|-----------|---------|---------------|------------|------|
+| 30 | 0.005402 | 0.008213 | 0.006309 | 0.006397 | concat |
+| 40 | 0.001329 | 0.005618 | 0.005542 | 0.005309 | concat |
+| 50 | 0.003718 | 0.005072 | 0.005317 | 0.004983 | concat |
+| 60 | 0.003306 | 0.004377 | 0.004532 | 0.004797 | concat |
+
+**Average: +0.0%** — Concatenation wins on all complex multi-step tasks.
+
+**Status: ❌ REFUTED** — SSM, attention, and hybrid all underperform concatenation on 30-60 step complex compositional tasks.
+
+**Key Insight**: Even with the success of SSM on H1.193 (+97.6%), the SSM+Attention hybrid does not transfer to complex multi-step tasks. Concatenation remains the strongest baseline for this task type. This is consistent with H1.196 findings - attention mechanisms do not automatically win on longer sequences.

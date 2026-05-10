@@ -1,0 +1,43 @@
+{
+  "hypothesis": "H1.197",
+  "status": "REFUTED",
+  "avg_improvement": 0.0,
+  "results": [
+    {
+      "n_steps": 30,
+      "concat_mse": 0.0054024639539420605,
+      "ssm_mse": 0.008212966844439507,
+      "attention_mse": 0.006309035699814558,
+      "hybrid_mse": 0.006397070363163948,
+      "best": "concat",
+      "improvement": 0.0
+    },
+    {
+      "n_steps": 40,
+      "concat_mse": 0.0013287824112921953,
+      "ssm_mse": 0.005617596209049225,
+      "attention_mse": 0.0055421749129891396,
+      "hybrid_mse": 0.005308667663484812,
+      "best": "concat",
+      "improvement": 0.0
+    },
+    {
+      "n_steps": 50,
+      "concat_mse": 0.0037175235338509083,
+      "ssm_mse": 0.005071798339486122,
+      "attention_mse": 0.0053171878680586815,
+      "hybrid_mse": 0.004982690792530775,
+      "best": "concat",
+      "improvement": 0.0
+    },
+    {
+      "n_steps": 60,
+      "concat_mse": 0.0033063506707549095,
+      "ssm_mse": 0.00437744939699769,
+      "attention_mse": 0.00453181890770793,
+      "hybrid_mse": 0.004797414410859346,
+      "best": "concat",
+      "improvement": 0.0
+    }
+  ]
+}
