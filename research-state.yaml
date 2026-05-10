@@ -1572,13 +1572,22 @@ hypotheses:
   priority: high
   statement: Attention on real robot long sequences (50-100 steps) with high autocorrelation
   status: supported
+- evidence: '+14.1% avg vs concat, +14.7% vs hard selection, adaptive fusion outperforms
+    both'
+  id: H1.199
+  parent: H1
+  priority: high
+  statement: Adaptive fusion architecture switches between concat/attention/SSM based on
+    learned complexity
+  status: supported
 current_experiments:
   - 'H1.193: SSM +97.6% on 50-step - SUPPORTED (next-step prediction)'
   - 'H1.195: Baseline wins 20-80 steps - REFUTED (final-step prediction)'
   - 'H1.196: Concatenation wins on 20-40 step - REFUTED'
   - 'H1.197: Concatenation wins on 30-60 step complex - REFUTED'
   - 'H1.198: Attention +0.3% on 50-100 step with autocorrelation=0.85 - SUPPORTED'
-last_direction: "H1.198: Attention with high autocorrelation (0.85) shows slight advantage (-0.29% avg) on 50-100 step sequences. Confirms H1.180/H1.181 findings: autocorrelation is the key factor enabling attention on longer sequences."
+  - 'H1.199: Adaptive fusion +14.1% vs concat, +14.7% vs hard - SUPPORTED'
+last_direction: "H1.199: Adaptive fusion (learned router) outperforms both fixed architecture and hard selection thresholds. Best improvements on medium (+16.2%) and complex (+33.1%) tasks. SSM remains best individual method."
 project:
   question: Does a unified cognitive graph architecture (early fusion of physical
     and semantic representations) achieve higher sample efficiency than separated
