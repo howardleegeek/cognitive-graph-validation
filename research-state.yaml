@@ -1,5 +1,5 @@
 experiments:
-  total_runs: 6
+  total_runs: 7
   trajectory:
   - description: Test at 1000+ demonstrations scale
     experiment_id: 150-larger_scale
@@ -46,6 +46,15 @@ experiments:
       status: SUPPORTED
       note: Task structure (goal states, action outcomes) enables SSM/Attention!
     timestamp: '2026-05-10T18:50:00.000000'
+  - description: Attention on 20-40 timesteps WITH task structure
+    experiment_id: H3.91
+    hypothesis: H3.91
+    result:
+      avg_delta: 86.6
+      attn_wins: 5
+      status: SUPPORTED
+      note: Task structure enables attention on long sequences!
+    timestamp: '2026-05-10T19:00:00.000000'
 hypotheses:
 - id: H1
   status: SUPPORTED
@@ -68,3 +77,6 @@ hypotheses:
 - id: H3.90
   status: REFUTED
   key_finding: SSM loses on pure sequence prediction
+- id: H3.91
+  status: SUPPORTED
+  key_finding: Attention wins on long sequences WITH task structure (+86.6%)

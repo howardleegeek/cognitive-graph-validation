@@ -1396,6 +1396,19 @@ Given H1.30's +5.7%, we should explore:
 
 **Status: ❌ REFUTED** — Attention collapses on synthetic 200+ step sequences.
 
+### H3.91: Attention on 20+ Timesteps WITH Task Structure (May 10, 2026)
+
+| Sequence Length | Concat MSE | Attention MSE | Delta |
+|-----------------|-----------|--------------|-------|
+| 20 | 0.000727 | 0.000141 | **+80.6%** |
+| 25 | 0.000853 | 0.000104 | **+87.8%** |
+| 30 | 0.000784 | 0.000135 | **+82.8%** |
+| 35 | 0.001016 | 0.000096 | **+90.6%** |
+| 40 | 0.001245 | 0.000112 | **+91.0%** |
+
+**Average: +86.6%**
+**Status: ✅ SUPPORTED** — Attention dramatically outperforms on longer sequences WITH task structure (goal states, action outcomes). This confirms H1.202's finding that task structure is the key enabler for attention mechanisms.
+
 ### 091-multi_step_tasks (May 10, 2026)
 
 | Configuration | Baseline MSE | CG MSE | Improvement |

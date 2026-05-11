@@ -1,0 +1,49 @@
+{
+  "experiment_id": "H3.91",
+  "hypothesis": "H3.91: Attention on 20+ timesteps WITH task structure",
+  "description": "Test attention on longer sequences (20+ timesteps) WITH task structure (goal states, action outcomes)",
+  "timestamp": "2026-05-10T18:40:44.918919",
+  "results": [
+    {
+      "seq_len": 20,
+      "concat_mse": 0.0007271291688084602,
+      "attn_mse": 0.0001412452693330124,
+      "delta": 80.57494109822747,
+      "attn_wins": true
+    },
+    {
+      "seq_len": 25,
+      "concat_mse": 0.000853387638926506,
+      "attn_mse": 0.00010445099178468809,
+      "delta": 87.760428318826,
+      "attn_wins": true
+    },
+    {
+      "seq_len": 30,
+      "concat_mse": 0.0007837408920750022,
+      "attn_mse": 0.00013457574823405594,
+      "delta": 82.82905108118598,
+      "attn_wins": true
+    },
+    {
+      "seq_len": 35,
+      "concat_mse": 0.001015804591588676,
+      "attn_mse": 9.585368388798088e-05,
+      "delta": 90.56376741336936,
+      "attn_wins": true
+    },
+    {
+      "seq_len": 40,
+      "concat_mse": 0.0012453768867999315,
+      "attn_mse": 0.00011150096543133259,
+      "delta": 91.04680947485376,
+      "attn_wins": true
+    }
+  ],
+  "summary": {
+    "avg_delta": 86.55499947729251,
+    "attn_wins": 5,
+    "total": 5,
+    "status": "SUPPORTED"
+  }
+}
