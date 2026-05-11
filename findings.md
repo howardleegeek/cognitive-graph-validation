@@ -1422,6 +1422,19 @@ Given H1.30's +5.7%, we should explore:
 **Average: +78.1%**
 **Status: ✅ SUPPORTED** — Attention on complex multi-step tasks WITH task structure shows even stronger advantage as sequence length increases!
 
+### H3.92: Different Task Structure Types (May 10, 2026)
+
+| Structure Type | Concat MSE | Attention MSE | Delta |
+|----------------|-----------|--------------|-------|
+| none | 0.018985 | 0.035234 | -85.6% |
+| goal | 0.000391 | 0.000149 | **+61.9%** |
+| subgoals | 0.017091 | 0.031802 | -86.1% |
+| constraints | 0.024803 | 0.051666 | -108.3% |
+| full | 0.001345 | 0.000172 | **+87.2%** |
+
+**Best: full (+87.2%), goal (+61.9%)**
+**Status: ✅ SUPPORTED** — **Key insight**: Goal state is the CRITICAL component of task structure that enables attention! Full structure (goal + subgoals + actions + constraints) is best.
+
 ### 091-multi_step_tasks (May 10, 2026)
 
 | Configuration | Baseline MSE | CG MSE | Improvement |

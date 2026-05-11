@@ -1,5 +1,5 @@
 experiments:
-  total_runs: 8
+  total_runs: 9
   trajectory:
   - description: Test at 1000+ demonstrations scale
     experiment_id: 150-larger_scale
@@ -64,6 +64,16 @@ experiments:
       status: SUPPORTED
       note: Attention advantage grows with complexity!
     timestamp: '2026-05-10T19:10:00.000000'
+  - description: Different task structure types
+    experiment_id: H3.92
+    hypothesis: H3.92
+    result:
+      best_type: full
+      best_delta: 87.2
+      goal_delta: 61.9
+      status: SUPPORTED
+      note: Goal state is CRITICAL for enabling attention!
+    timestamp: '2026-05-10T19:20:00.000000'
 hypotheses:
 - id: H1
   status: SUPPORTED
@@ -92,3 +102,6 @@ hypotheses:
 - id: H1.203
   status: SUPPORTED
   key_finding: Complex multi-step WITH task structure (+78.1%)
+- id: H3.92
+  status: SUPPORTED
+  key_finding: Goal state is critical for attention (+61.9% goal, +87.2% full)

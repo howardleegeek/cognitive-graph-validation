@@ -1,0 +1,51 @@
+{
+  "experiment_id": "H3.92",
+  "hypothesis": "H3.92: Different task structure types",
+  "description": "Test which task structure types enable attention",
+  "timestamp": "2026-05-10T18:42:42.802862",
+  "results": [
+    {
+      "structure_type": "none",
+      "concat_mse": 0.01898486353456974,
+      "attn_mse": 0.03523433208465576,
+      "delta": -85.5917058371117,
+      "attn_wins": false
+    },
+    {
+      "structure_type": "goal",
+      "concat_mse": 0.00039134485996328294,
+      "attn_mse": 0.00014920911053195596,
+      "delta": 61.87273021908217,
+      "attn_wins": true
+    },
+    {
+      "structure_type": "subgoals",
+      "concat_mse": 0.017090974375605583,
+      "attn_mse": 0.03180236369371414,
+      "delta": -86.07694912413261,
+      "attn_wins": false
+    },
+    {
+      "structure_type": "constraints",
+      "concat_mse": 0.024802906438708305,
+      "attn_mse": 0.051665645092725754,
+      "delta": -108.30480177957892,
+      "attn_wins": false
+    },
+    {
+      "structure_type": "full",
+      "concat_mse": 0.0013447458622977138,
+      "attn_mse": 0.0001718163985060528,
+      "delta": 87.22313239079412,
+      "attn_wins": true
+    }
+  ],
+  "summary": {
+    "avg_delta": -26.175518826189393,
+    "attn_wins": 2,
+    "total": 5,
+    "best_structure_type": "full",
+    "best_delta": 87.22313239079412,
+    "status": "SUPPORTED"
+  }
+}
