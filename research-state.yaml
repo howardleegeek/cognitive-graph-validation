@@ -1,3 +1,65 @@
+experiments:
+  total_runs: 260
+  trajectory:
+  - description: Temporal graph attention for multi-object reasoning
+    experiment_id: H2.15
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Object identity tracking enables better predictions
+    experiment_id: H1.191
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Action consequence modeling enables learning
+    experiment_id: H3.93
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Attention + SSM with autocorrelation injection unlocks attention
+      on synthetic da
+    experiment_id: H1.192
+    result:
+      cognitive_graph_wins: true
+      improvement_percent: 0
+  - description: SSM scales better than attention on longer sequences (40+ steps)
+      with autocorrel
+    experiment_id: H1.193
+    result:
+      cognitive_graph_wins: true
+      improvement_percent: 0
+  - description: SSM vs attention crossover point discovery
+    experiment_id: H1.195
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Attention on 20-40 step sequences with next-step prediction
+    experiment_id: H1.196
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: SSM + Attention hybrid on complex multi-step tasks
+    experiment_id: H1.197
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Attention on real robot long sequences (50-100 steps) with high autocorrelation
+    experiment_id: H1.198
+    result:
+      cognitive_graph_wins: true
+      improvement_percent: 0
+  - description: Adaptive fusion architecture switches between concat/attention/SSM
+      based on lear
+    experiment_id: H1.199
+    result:
+      cognitive_graph_wins: true
+      improvement_percent: 0
+  - description: Test attention on complex relational reasoning tasks
+    experiment_id: 009-attention_complexity
+    hypothesis: H3.9
+    result:
+      raw_output: ''
+    timestamp: '2026-05-10T17:00:27.023580'
 hypotheses:
 - evidence: +25.6% improvement with real robot data, +11.8% synthetic
   id: H1
@@ -994,13 +1056,15 @@ hypotheses:
   id: H1.111
   parent: H1
   priority: high
-  statement: Attention maintains advantage on ultra-extreme (100-150 step) multi-step tasks
+  statement: Attention maintains advantage on ultra-extreme (100-150 step) multi-step
+    tasks
   status: supported
 - evidence: +91.4% source, +93.5% target - solves both temporal and transfer
   id: H1.112
   parent: H1.111
   priority: high
-  statement: Attention+Invariant solves both ultra-extreme temporal and cross-dynamics transfer
+  statement: Attention+Invariant solves both ultra-extreme temporal and cross-dynamics
+    transfer
   status: supported
 - evidence: +97.8% avg, +9.5% over standard attention
   id: H1.113
@@ -1078,7 +1142,8 @@ hypotheses:
   id: H1.136
   parent: H1
   priority: high
-  statement: Attention maintains advantage on ultra-complex (50-80 step) multi-step tasks
+  statement: Attention maintains advantage on ultra-complex (50-80 step) multi-step
+    tasks
   status: supported
 - evidence: +19.6% avg improvement with decay scaling
   id: H3.64
@@ -1092,7 +1157,8 @@ hypotheses:
   priority: high
   statement: SSM + Attention hybrid improves continuous control
   status: supported
-- evidence: +27.9% SSM vs baseline, adaptive +20.4%, mode selection learns concat preference
+- evidence: +27.9% SSM vs baseline, adaptive +20.4%, mode selection learns concat
+    preference
   id: H3.66
   parent: H3
   priority: high
@@ -1144,7 +1210,8 @@ hypotheses:
   id: H1.142
   parent: H1
   priority: high
-  statement: Attention maintains advantage on ultra-complex (50-100 step) multi-step tasks
+  statement: Attention maintains advantage on ultra-complex (50-100 step) multi-step
+    tasks
   status: refuted
 - evidence: -41.1% avg - action-gated + decay attention underperforms
   id: H1.143
@@ -1168,21 +1235,25 @@ hypotheses:
   id: H1.148
   parent: H1
   priority: high
-  statement: Attention maintains advantage on 100-150 step ultra-complex multi-step tasks
+  statement: Attention maintains advantage on 100-150 step ultra-complex multi-step
+    tasks
   status: supported
 - evidence: +90.7% full attention, +95.0% linear attention on 150-200 step tasks
   id: H1.149
   parent: H1
   priority: high
-  statement: Attention maintains advantage on 150-200 step ultra-extreme multi-step tasks
+  statement: Attention maintains advantage on 150-200 step ultra-extreme multi-step
+    tasks
   status: supported
 - evidence: -31.4% attention, -34.0% action-gated on 200-250 step synthetic tasks
   id: H1.150
   parent: H1
   priority: high
-  statement: Attention maintains advantage on 200-250 step ultra-extreme multi-step tasks
+  statement: Attention maintains advantage on 200-250 step ultra-extreme multi-step
+    tasks
   status: refuted
-- evidence: +98.7% full attention, +99.1% action-gated on 200-300 step real robot tasks
+- evidence: +98.7% full attention, +99.1% action-gated on 200-300 step real robot
+    tasks
   id: H1.151
   parent: H1
   priority: high
@@ -1204,49 +1275,57 @@ hypotheses:
   id: H1.154
   parent: H1
   priority: high
-  statement: Attention maintains advantage on 300-400 step ultra-complex real robot tasks
+  statement: Attention maintains advantage on 300-400 step ultra-complex real robot
+    tasks
   status: supported
 - evidence: +98.0% avg on 400-500 step real robot tasks
   id: H1.155
   parent: H1
   priority: high
-  statement: Attention maintains advantage on 400-500 step ultra-extreme real robot tasks
+  statement: Attention maintains advantage on 400-500 step ultra-extreme real robot
+    tasks
   status: supported
 - evidence: +97.5% avg on 500-600 step real robot tasks
   id: H1.156
   parent: H1
   priority: high
-  statement: Attention maintains advantage on 500-600 step ultra-extreme real robot tasks
+  statement: Attention maintains advantage on 500-600 step ultra-extreme real robot
+    tasks
   status: supported
 - evidence: +96.9% avg on 600-700 step real robot tasks
   id: H1.157
   parent: H1
   priority: high
-  statement: Attention maintains advantage on 600-700 step ultra-extreme real robot tasks
+  statement: Attention maintains advantage on 600-700 step ultra-extreme real robot
+    tasks
   status: supported
 - evidence: +96.1% avg on 700-800 step real robot tasks
   id: H1.158
   parent: H1
   priority: high
-  statement: Attention maintains advantage on 700-800 step ultra-extreme real robot tasks
+  statement: Attention maintains advantage on 700-800 step ultra-extreme real robot
+    tasks
   status: supported
 - evidence: +95.4% avg on 800-1000 step real robot tasks
   id: H1.159
   parent: H1
   priority: high
-  statement: Attention maintains advantage on 800-1000 step ultra-extreme real robot tasks
+  statement: Attention maintains advantage on 800-1000 step ultra-extreme real robot
+    tasks
   status: supported
 - evidence: +94.6% avg on 1000-1200 step real robot tasks
   id: H1.160
   parent: H1
   priority: high
-  statement: Attention maintains advantage on 1000-1200 step ultra-extreme real robot tasks
+  statement: Attention maintains advantage on 1000-1200 step ultra-extreme real robot
+    tasks
   status: supported
 - evidence: +93.4% avg on 1200-1500 step real robot tasks
   id: H1.161
   parent: H1
   priority: high
-  statement: Attention maintains advantage on 1200-1500 step ultra-extreme real robot tasks
+  statement: Attention maintains advantage on 1200-1500 step ultra-extreme real robot
+    tasks
   status: supported
 - evidence: +92.0% avg on 1500-2000 step real robot tasks
   id: H1.162
@@ -1258,7 +1337,8 @@ hypotheses:
   id: H3.76
   parent: H3
   priority: high
-  statement: SSM + Attention hybrid outperforms both individual methods on real robot data
+  statement: SSM + Attention hybrid outperforms both individual methods on real robot
+    data
   status: supported
 - evidence: +94.2% avg, SSM+Attn is best (8/8 tasks)
   id: H3.77
@@ -1324,7 +1404,8 @@ hypotheses:
   id: H1.171
   parent: H1
   priority: high
-  statement: Attention maintains advantage on ultra-long (200-300 step) real robot tasks
+  statement: Attention maintains advantage on ultra-long (200-300 step) real robot
+    tasks
   status: supported
 - evidence: 41.7% accuracy, attention wins 12/12 - complexity prediction fails
   id: H3.78
@@ -1336,15 +1417,18 @@ hypotheses:
   id: H1.172
   parent: H1
   priority: high
-  statement: Attention maintains advantage on ultra-extreme (400-500 step) synthetic sequences
+  statement: Attention maintains advantage on ultra-extreme (400-500 step) synthetic
+    sequences
   status: refuted
-- evidence: +98.2% attention+invariant, -362.3% invariant alone - attention dramatically improves transfer
+- evidence: +98.2% attention+invariant, -362.3% invariant alone - attention dramatically
+    improves transfer
   id: H1.174
   parent: H1
   priority: high
   statement: Attention + invariant combined improves cross-dynamics transfer
   status: supported
-- evidence: -247.7% avg - attention underperforms concat even with robot-like temporal structure
+- evidence: -247.7% avg - attention underperforms concat even with robot-like temporal
+    structure
   id: H3.79
   parent: H3
   priority: medium
@@ -1362,7 +1446,8 @@ hypotheses:
   priority: medium
   statement: Temporal attention focuses on important timesteps
   status: supported
-- evidence: +74.1% avg - Multi-Scale (3/5/7 windows) best at +74.1%, beats Last-5 (+65.3%)
+- evidence: +74.1% avg - Multi-Scale (3/5/7 windows) best at +74.1%, beats Last-5
+    (+65.3%)
   id: H3.82
   parent: H3
   priority: medium
@@ -1374,19 +1459,22 @@ hypotheses:
   priority: medium
   statement: Multi-scale attention on multi-object tasks
   status: refuted
-- evidence: +21.7% avg - attention alone (+25.2%) > hybrid (+21.7%) > graph (+15.0%); both >> H3.83
+- evidence: +21.7% avg - attention alone (+25.2%) > hybrid (+21.7%) > graph (+15.0%);
+    both >> H3.83
   id: H3.84
   parent: H3
   priority: medium
   statement: Graph + Attention hybrid for multi-object tasks
   status: supported
-- evidence: +10.7% avg - flat= hierarchical (+10.7%) > decay (+9.7%); both >> H3.83 (-47.0%)
+- evidence: +10.7% avg - flat= hierarchical (+10.7%) > decay (+9.7%); both >> H3.83
+    (-47.0%)
   id: H1.176
   parent: H1
   priority: medium
   statement: Hierarchical multi-object attention for complex interactions
   status: supported
-- evidence: "+98.4% avg - adaptive decay dramatically beats fixed decay (0.99: +94.9%) on 100-200 steps"
+- evidence: '+98.4% avg - adaptive decay dramatically beats fixed decay (0.99: +94.9%)
+    on 100-200 steps'
   id: H1.178
   parent: H1
   priority: high
@@ -1398,25 +1486,29 @@ hypotheses:
   priority: high
   statement: Adaptive decay attention on real robot-like synthetic data
   status: refuted
-- evidence: -35% avg - multi-scale (-35.1%) ≈ weighted (-37.4%), both fail on multi-object
+- evidence: "-35% avg - multi-scale (-35.1%) \u2248 weighted (-37.4%), both fail on\
+    \ multi-object"
   id: H3.85
   parent: H3
   priority: medium
   statement: Investigating attention failure on multi-object tasks
   status: inconclusive
-- evidence: +20.0% gap - autocorrelation 0.7-0.95 enables attention (+17-21%), no autocorr = fails (-0.2% to -4.3%)
+- evidence: +20.0% gap - autocorrelation 0.7-0.95 enables attention (+17-21%), no
+    autocorr = fails (-0.2% to -4.3%)
   id: H1.180
   parent: H1
   priority: high
   statement: Real robot vs synthetic data gap analysis - autocorrelation is key
   status: supported
-- evidence: -0.5% avg - graph methods don't outperform flat attention on multi-object tasks
+- evidence: -0.5% avg - graph methods don't outperform flat attention on multi-object
+    tasks
   id: H3.86
   parent: H3
   priority: medium
   statement: Graph-native multi-object reasoning
   status: refuted
-- evidence: +26.9% at ρ=0.95, +17.4% at ρ=0.9, trend shows increasing advantage with autocorrelation
+- evidence: "+26.9% at \u03C1=0.95, +17.4% at \u03C1=0.9, trend shows increasing advantage\
+    \ with autocorrelation"
   id: H1.181
   parent: H1.180
   priority: high
@@ -1428,19 +1520,21 @@ hypotheses:
   priority: high
   statement: Attention on complex multi-step tasks with average pooling target
   status: refuted
-- evidence: Concat wins all 14 tasks with avg pooling, SSM wins all 14 with next-step prediction
+- evidence: Concat wins all 14 tasks with avg pooling, SSM wins all 14 with next-step
+    prediction
   id: H1.182b
   parent: H1.180
   priority: high
   statement: SSM excels on next-step prediction with robot-like temporal structure
   status: supported
-- evidence: Attention -881% avg at high autocorr, but approaches baseline at ρ=0.95 (-3.7%)
+- evidence: "Attention -881% avg at high autocorr, but approaches baseline at \u03C1\
+    =0.95 (-3.7%)"
   id: H1.183
   parent: H1.181
   priority: high
   statement: Attention with autocorrelation injection on complex multi-step tasks
   status: refuted
-- evidence: "-37.7% router vs best fixed, task-type-based routing effective"
+- evidence: -37.7% router vs best fixed, task-type-based routing effective
   id: H1.185
   parent: H1
   priority: high
@@ -1452,7 +1546,7 @@ hypotheses:
   priority: high
   statement: SSM + Invariant combined solves both temporal and cross-dynamics transfer
   status: supported
-- evidence: "41.0% accuracy, -0.7% vs H3.78 (41.7%) - no improvement"
+- evidence: 41.0% accuracy, -0.7% vs H3.78 (41.7%) - no improvement
   id: H3.88
   parent: H3
   priority: high
@@ -1470,7 +1564,7 @@ hypotheses:
   priority: high
   statement: Meta-learning enables fast SSM+Invariant adaptation to new dynamics
   status: supported
-- evidence: "-12.1% hybrid vs concat, -3.2% vs graph alone"
+- evidence: -12.1% hybrid vs concat, -3.2% vs graph alone
   id: H3.89
   parent: H3
   priority: medium
@@ -1498,7 +1592,8 @@ hypotheses:
   id: H1.189
   parent: H1
   priority: high
-  statement: Attention maintains advantage on 2000+ step ultra-extreme multi-step tasks
+  statement: Attention maintains advantage on 2000+ step ultra-extreme multi-step
+    tasks
   status: refuted
 - evidence: -12369.4% avg - attention and SSM both fail on 50+ step synthetic
   id: H3.91
@@ -1536,17 +1631,20 @@ hypotheses:
   priority: high
   statement: Action consequence modeling enables learning
   status: refuted
-- evidence: +87.4% SSM, +85.6% attention, +84.7% combined on 30-step with ρ=0.85
+- evidence: "+87.4% SSM, +85.6% attention, +84.7% combined on 30-step with \u03C1\
+    =0.85"
   id: H1.192
   parent: H1
   priority: high
-  statement: Attention + SSM with autocorrelation injection unlocks attention on synthetic data
+  statement: Attention + SSM with autocorrelation injection unlocks attention on synthetic
+    data
   status: supported
-- evidence: +97.6% SSM, -23.6% attention on 50-step with ρ=0.85 (next-step prediction)
+- evidence: "+97.6% SSM, -23.6% attention on 50-step with \u03C1=0.85 (next-step prediction)"
   id: H1.193
   parent: H1
   priority: high
-  statement: SSM scales better than attention on longer sequences (40+ steps) with autocorrelation
+  statement: SSM scales better than attention on longer sequences (40+ steps) with
+    autocorrelation
   status: supported
 - evidence: Baseline wins 20-80 steps, no crossover found (final-step prediction)
   id: H1.195
@@ -1572,35 +1670,11 @@ hypotheses:
   priority: high
   statement: Attention on real robot long sequences (50-100 steps) with high autocorrelation
   status: supported
-- evidence: '+14.1% avg vs concat, +14.7% vs hard selection, adaptive fusion outperforms
-    both'
+- evidence: +14.1% avg vs concat, +14.7% vs hard selection, adaptive fusion outperforms
+    both
   id: H1.199
   parent: H1
   priority: high
-  statement: Adaptive fusion architecture switches between concat/attention/SSM based on
-    learned complexity
+  statement: Adaptive fusion architecture switches between concat/attention/SSM based
+    on learned complexity
   status: supported
-current_experiments:
-  - 'H1.193: SSM +97.6% on 50-step - SUPPORTED (next-step prediction)'
-  - 'H1.195: Baseline wins 20-80 steps - REFUTED (final-step prediction)'
-  - 'H1.196: Concatenation wins on 20-40 step - REFUTED'
-  - 'H1.197: Concatenation wins on 30-60 step complex - REFUTED'
-  - 'H1.198: Attention +0.3% on 50-100 step with autocorrelation=0.85 - SUPPORTED'
-  - 'H1.199: Adaptive fusion +14.1% vs concat, +14.7% vs hard - SUPPORTED'
-  - 'H1.200: SSM dominates 25/25 comparisons, +54.4% at high autocorrelation - SUPPORTED'
-  - 'H1.201: Adaptive wins 5/5 on real robot-like data, 99% better than individual models - SUPPORTED'
-last_direction: "H1.201: Adaptive fusion validates on real robot-like data with multi-object interactions. Wins 5/5 configs, avg MSE 0.015 vs 2.44 for individual models. Adaptive selection critical for complex scenarios."
-project:
-  question: Does a unified cognitive graph architecture (early fusion of physical
-    and semantic representations) achieve higher sample efficiency than separated
-    architectures (JEPA + LLM alignment) on language-conditioned robotic tasks?
-  started: '2026-04-07'
-  status: active
-  title: 'Cognitive Graph: Unified World Model and LLM Architecture'
-workspace:
-  experiments_dir: experiments/
-  findings: findings.md
-  literature_dir: literature/
-  log: research-log.md
-  paper_dir: paper/
-  to_human_dir: to_human/

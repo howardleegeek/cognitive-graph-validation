@@ -43,7 +43,18 @@ class AutoResearchEngine:
         """Load current research state."""
         if self.state_file.exists():
             with open(self.state_file) as f:
-                self.state = yaml.safe_load(f)
+                raw_state = yaml.safe_load(f)
+                # Convert to internal format
+                self.state = {
+                    "experiments": {
+                        "total_runs": len(raw_state.get("hypotheses", [])),
+                        "trajectory": [
+                            {"experiment_id": h["id"], "description": h["statement"][:80], "result": {"improvement_percent": 0, "cognitive_graph_wins": h["status"] == "supported"}}
+                            for h in raw_state.get("hypotheses", [])[-10:]
+                        ]
+                    },
+                    "hypotheses": raw_state.get("hypotheses", [])
+                }
         else:
             self.state = {"experiments": {"total_runs": 0, "trajectory": []}}
 
@@ -406,8 +417,11 @@ print(json.dumps(results, indent=2))
         results = self.run_experiment(hypothesis)
 
         # Generate progress report
-        report = self.generate_progress_report()
-        print(f"\n📊 Progress report: {report}")
+        try:
+            report = self.generate_progress_report()
+            print(f"\n📊 Progress report: {report}")
+        except Exception as e:
+            print(f"\n⚠️ Report generation failed: {e}")
 
         # Increment counter
         self.experiment_counter += 1
