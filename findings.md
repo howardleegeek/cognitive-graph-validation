@@ -1409,6 +1409,19 @@ Given H1.30's +5.7%, we should explore:
 **Average: +86.6%**
 **Status: ✅ SUPPORTED** — Attention dramatically outperforms on longer sequences WITH task structure (goal states, action outcomes). This confirms H1.202's finding that task structure is the key enabler for attention mechanisms.
 
+### H1.203: Complex Multi-Step (15+) WITH Task Structure (May 10, 2026)
+
+| Sequence Length | Concat MSE | Attention MSE | Delta |
+|-----------------|-----------|--------------|-------|
+| 15 | 0.001947 | 0.000653 | **+66.5%** |
+| 20 | 0.001953 | 0.000453 | **+76.8%** |
+| 25 | 0.002067 | 0.000366 | **+82.3%** |
+| 30 | 0.001771 | 0.000301 | **+83.0%** |
+| 35 | 0.001695 | 0.000304 | **+82.0%** |
+
+**Average: +78.1%**
+**Status: ✅ SUPPORTED** — Attention on complex multi-step tasks WITH task structure shows even stronger advantage as sequence length increases!
+
 ### 091-multi_step_tasks (May 10, 2026)
 
 | Configuration | Baseline MSE | CG MSE | Improvement |

@@ -1,0 +1,49 @@
+{
+  "experiment_id": "H1.203",
+  "hypothesis": "H1.203: Complex multi-step (15+) WITH task structure",
+  "description": "Test complex multi-step tasks (15+ steps) WITH task structure",
+  "timestamp": "2026-05-10T18:41:51.839151",
+  "results": [
+    {
+      "seq_len": 15,
+      "concat_mse": 0.0019474575528874993,
+      "attn_mse": 0.0006533239502459764,
+      "delta": 66.45246776869197,
+      "attn_wins": true
+    },
+    {
+      "seq_len": 20,
+      "concat_mse": 0.0019526778487488627,
+      "attn_mse": 0.0004530087171588093,
+      "delta": 76.8006423871165,
+      "attn_wins": true
+    },
+    {
+      "seq_len": 25,
+      "concat_mse": 0.002067316323518753,
+      "attn_mse": 0.0003660981310531497,
+      "delta": 82.29114108526852,
+      "attn_wins": true
+    },
+    {
+      "seq_len": 30,
+      "concat_mse": 0.0017711945110931993,
+      "attn_mse": 0.0003014696703758091,
+      "delta": 82.97930190683918,
+      "attn_wins": true
+    },
+    {
+      "seq_len": 35,
+      "concat_mse": 0.0016950535355135798,
+      "attn_mse": 0.0003042793832719326,
+      "delta": 82.0489809379537,
+      "attn_wins": true
+    }
+  ],
+  "summary": {
+    "avg_delta": 78.11450681717398,
+    "attn_wins": 5,
+    "total": 5,
+    "status": "SUPPORTED"
+  }
+}
