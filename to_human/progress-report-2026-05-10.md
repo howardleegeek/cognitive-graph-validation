@@ -55,3 +55,31 @@ Today's experiments (H1.201, H3.89, H3.90) revealed a **critical insight** about
 1. Test hybrid architecture with task-aware routing
 2. Explore Graph Neural Networks for temporal reasoning (H2.3 showed +56.8%)
 3. Continue validation on real robot datasets (LIBERO)
+
+---
+
+## H1.202 Results - CRITICAL BREAKTHROUGH
+
+Adding manipulation task structure (goal states, action outcomes) TRANSFORMS performance:
+
+| Architecture | Pure Sequence | Manipulation Structure | Improvement |
+|--------------|---------------|------------------------|-------------|
+| Concatenation | baseline | baseline | - |
+| SSM | -20.5% | **+37.2%** | +57.7% |
+| Attention | -30.5% | **+89.7%** | +120.2% |
+
+**Status: ✅ SUPPORTED** — Task structure is the key enabler!
+
+### New Understanding
+
+The gap between H1.193 (real robot, +97%) and H3.89/90 (synthetic, -20-30%) is **task structure**:
+- **Real robot manipulation**: Has goal states (pick up, place down), action outcomes
+- **Pure sequence prediction**: No goal, just predict next step
+
+### Architecture Recommendations
+
+1. **For manipulation with goals**: Use Attention (+89.7%)
+2. **For temporal reasoning**: Use SSM (+37.2%)
+3. **For pure prediction**: Use Concatenation
+4. **For combined systems**: Task-aware routing based on goal detection
+

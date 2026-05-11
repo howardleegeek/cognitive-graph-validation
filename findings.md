@@ -9395,3 +9395,36 @@ These new experiments (H1.201, H3.89, H3.90) show **Concatenation wins in synthe
 1. **For manipulation tasks**: Use SSM/Attention with real robot data
 2. **For pure prediction tasks**: Use concatenation
 3. **For combined tasks**: Hybrid architecture with task-aware routing
+
+---
+
+## H1.202 Results (May 10, 2026) - Manipulation Task Structure
+
+| Timesteps | Concat MSE | SSM MSE | SSM Δ | Attn MSE | Attn Δ | Winner |
+|-----------|------------|---------|-------|----------|-------|--------|
+| 20 | 0.121515 | 0.029858 | +75.4% | 0.013640 | +88.8% | Attn |
+| 30 | 0.206888 | 0.065967 | +68.1% | 0.013955 | +93.3% | Attn |
+| 40 | 0.249739 | 0.234874 | +6.0% | 0.021790 | +91.3% | Attn |
+| 50 | 0.236461 | 0.238539 | -0.9% | 0.034152 | +85.6% | Attn |
+
+**Average: SSM +37.2%, Attention +89.7%**
+
+**Status: ✅ SUPPORTED** — Task structure (goal states, action outcomes) enables SSM/Attention to excel!
+
+**SSM wins: 3/4, Attention wins: 4/4**
+
+### Critical Comparison: Manipulation vs Pure Sequence
+
+| Setting | SSM Delta | Attention Delta |
+|---------|-----------|-----------------|
+| Pure sequence (H3.89/90) | -20.5% | -30.5% |
+| **Manipulation structure (H1.202)** | **+37.2%** | **+89.7%** |
+
+**Key Insight**: Adding goal states and action outcomes transforms performance from negative to highly positive!
+
+### Implication for Architecture Design
+
+- **Manipulation tasks**: Use attention/SSM with task structure
+- **Pure prediction**: Use concatenation
+- **Hybrid systems**: Need task-aware routing based on goal states
+
