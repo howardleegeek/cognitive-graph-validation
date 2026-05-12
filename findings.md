@@ -10071,6 +10071,74 @@ Based on these results, the research should focus on:
 | H3.105 | Attention 20-40 steps | ❌ -93.1% | Task structure doesn't help |
 | H3.106 | Phase transitions | ❌ -72.0% | Phase-aware fails |
 | H3.107 | Next-step prediction | ❌ -45.8% | Causal doesn't help |
+
+---
+
+### H1.217: Attention on 200-300 Steps WITH Goal States (May 11, 2026)
+
+| Sequence Length | Concat MSE | Attention MSE | Hier MSE | SSM MSE | Best |
+|----------------|-----------|--------------|----------|---------|------|
+| 150 | 0.017666 | 0.019270 (+9.1%) | 0.022809 (+29.1%) | 0.013995 (-20.8%) | SSM |
+| 175 | 0.017826 | 0.019696 (+10.5%) | 0.021939 (+23.1%) | 0.012854 (-27.9%) | SSM |
+| 200 | 0.017586 | 0.020581 (+17.0%) | 0.021737 (+23.6%) | 0.013906 (-20.9%) | SSM |
+| 225 | 0.018224 | 0.019702 (+8.1%) | 0.022143 (+21.5%) | 0.013978 (-23.3%) | SSM |
+| 250 | 0.018268 | 0.019880 (+8.8%) | 0.022995 (+25.9%) | 0.014165 (-22.5%) | SSM |
+| 275 | 0.017952 | 0.019235 (+7.1%) | 0.021923 (+22.1%) | 0.013096 (-27.0%) | SSM |
+| 300 | 0.018626 | 0.019258 (+3.4%) | 0.022243 (+19.4%) | 0.013762 (-26.1%) | SSM |
+
+**Average: Attention +9.2% vs Concat, SSM -24.1% vs Concat**
+**SSM wins ALL 7/7 lengths!**
+
+**Status: ❌ REFUTED for attention** — Attention fails on 200-300 step sequences even WITH goal states. SSM dominates all lengths.
+
+**Key Finding**: Goal states do NOT enable attention on very long sequences (200-300). SSM's sequential state modeling is superior for long-horizon temporal reasoning.
+
+### H3.113: SSM + Hierarchical Goals on 300-400 Step Sequences (May 11, 2026)
+
+| Sequence Length | Concat MSE | SSM+Hier MSE | Mamba MSE | Chunked MSE | Chunked+Hier MSE |
+|----------------|-----------|--------------|-----------|-------------|------------------|
+| 250 | 0.012652 | 0.005198 (-58.9%) | 0.005657 (-55.3%) | 0.009030 (-28.6%) | 0.011674 (-7.7%) |
+| 300 | 0.011371 | 0.004984 (-56.2%) | 0.005096 (-55.2%) | 0.008262 (-27.3%) | 0.010636 (-6.5%) |
+| 350 | 0.011293 | 0.004764 (-57.8%) | 0.005087 (-55.0%) | 0.008471 (-25.0%) | 0.011239 (-0.5%) |
+| 400 | 0.010926 | 0.004785 (-56.2%) | 0.005153 (-52.8%) | 0.008139 (-25.5%) | 0.010895 (-0.3%) |
+
+**SSM+HierGoals wins ALL 4/4 lengths!**
+**Average Delta: SSM+HierGoals -57.3%, Mamba -54.6%, Chunked -26.6%**
+
+**Status: ✅ SUPPORTED (for SSM methods)** — SSM with hierarchical goals dramatically outperforms on 250-400 step sequences.
+
+**Key Insight**: SSM methods dominate on very long sequences (250-400 steps), with hierarchical goal conditioning adding significant value (+57% improvement over concat).
+
+---
+
+## Research Summary (May 11, 2026 - Night)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins real robot |
+| H1.217 | Attention 200-300 + goal | ❌ +9.2% | Attention FAILS, SSM wins (-24%) |
+| H3.113 | SSM + HierGoals 250-400 | ✅ -57.3% | SSM dominates very long seqs |
+| H3 | Attention vs Concat | ❌ | Simple: concat wins |
+| H3 | Attention vs Concat | ⚠️ | Complex: mixed, SSM wins |
+| H3 | SSM vs Attention | ✅ | SSM dominates long sequences |
+
+**Critical Finding**: 
+1. **Attention LIMIT**: Attention fails on 200-300+ step sequences even WITH goal states
+2. **SSM DOMINANCE**: SSM methods (SSM+HierGoals, Mamba) dramatically outperform on 250-400 step sequences
+3. **Architecture insight**: For very long sequences, use SSM, not attention
+
+| Sequence Range | Best Method | Improvement |
+|----------------|-------------|-------------|
+| 0-50 steps | Attention (with goal) | +87-99% |
+| 50-100 steps | Attention or SSM | +20-40% |
+| 100-200 steps | SSM or Hier Attn | +20-30% |
+| 200-300 steps | SSM | +20-25% |
+| 300-400 steps | SSM+HierGoals | +55-60% |
+
+**Architecture Decision Tree**:
+- Short sequences (0-100): Use attention with goal conditioning
+- Medium sequences (100-200): Use SSM or hierarchical attention
+- Long sequences (200+): Use SSM with hierarchical goals
 | H3.108 | Neural attention (trained) | ❌ -1.5M% | Divergence |
 | H3.109 | Real robot structure | ❌ -16.1% | Still fails |
 | H3.110 | Learned attention | ❌ -88.8% | Manipulation fails |

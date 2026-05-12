@@ -1,6 +1,28 @@
 experiments:
-  total_runs: 24
+  total_runs: 26
   trajectory:
+  - description: SSM+HierGoals on 250-400 step sequences
+    experiment_id: H3.113
+    hypothesis: H3.113
+    result:
+      ssm_hier_wins: 4
+      avg_ssm_hier_delta: -57.3
+      avg_mamba_delta: -54.6
+      avg_chunked_delta: -26.6
+    status: SUPPORTED
+    note: SSM+HierGoals dominates all lengths, Mamba 2nd best
+    timestamp: '2026-05-11T23:45:00.000000'
+  - description: Attention on 200-300 step sequences WITH goal states
+    experiment_id: H1.217
+    hypothesis: H1.217
+    result:
+      attn_wins: 0
+      ssm_wins: 7
+      avg_attn_delta: 9.2
+      avg_ssm_delta: -24.1
+    status: REFUTED
+    note: SSM wins all 7 lengths, attention fails even with goals
+    timestamp: '2026-05-11T23:30:00.000000'
   - description: SSM-Cognitive Graph on synthetic manipulation tasks
     experiment_id: H3.112
     hypothesis: H3.112
@@ -473,3 +495,9 @@ hypotheses:
 - id: H3.111
   status: INCONCLUSIVE
   key_finding: Attention helps random (+7.9%), hurts smooth (-91.6%) and robot (-20.2%)
+- id: H1.217
+  status: REFUTED
+  key_finding: Attention fails on 200-300 steps even with goals (+9.2%), SSM wins (-24.1%)
+- id: H3.113
+  status: SUPPORTED
+  key_finding: SSM+HierGoals +57.3% on 250-400 step sequences, Mamba +54.6%
