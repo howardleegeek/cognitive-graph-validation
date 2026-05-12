@@ -1,0 +1,134 @@
+{
+  "experiment_id": "H1.208",
+  "hypothesis": "Ultra-long sequence attention with goal types",
+  "results": [
+    {
+      "goal_type": "endpoint",
+      "seq_length": 300,
+      "baseline_loss": 0.08083181083202362,
+      "attention_loss": 0.05030076205730438,
+      "improvement": 37.77108103907969,
+      "attn_wins": true
+    },
+    {
+      "goal_type": "endpoint",
+      "seq_length": 350,
+      "baseline_loss": 0.07619452476501465,
+      "attention_loss": 0.05498156696557999,
+      "improvement": 27.840527734579123,
+      "attn_wins": true
+    },
+    {
+      "goal_type": "endpoint",
+      "seq_length": 400,
+      "baseline_loss": 0.05467318743467331,
+      "attention_loss": 0.05121821165084839,
+      "improvement": 6.319323869589871,
+      "attn_wins": true
+    },
+    {
+      "goal_type": "endpoint",
+      "seq_length": 450,
+      "baseline_loss": 0.0261006411164999,
+      "attention_loss": 0.0330946184694767,
+      "improvement": -26.796189878092513,
+      "attn_wins": false
+    },
+    {
+      "goal_type": "endpoint",
+      "seq_length": 500,
+      "baseline_loss": 0.05087200552225113,
+      "attention_loss": 0.03937065973877907,
+      "improvement": 22.608398598402882,
+      "attn_wins": true
+    },
+    {
+      "goal_type": "subgoal",
+      "seq_length": 300,
+      "baseline_loss": 0.11833557486534119,
+      "attention_loss": 0.08722399920225143,
+      "improvement": 26.290974373930126,
+      "attn_wins": true
+    },
+    {
+      "goal_type": "subgoal",
+      "seq_length": 350,
+      "baseline_loss": 0.10105942189693451,
+      "attention_loss": 0.05613657832145691,
+      "improvement": 44.45191030411017,
+      "attn_wins": true
+    },
+    {
+      "goal_type": "subgoal",
+      "seq_length": 400,
+      "baseline_loss": 0.0505901537835598,
+      "attention_loss": 0.03969815373420715,
+      "improvement": 21.529881280756655,
+      "attn_wins": true
+    },
+    {
+      "goal_type": "subgoal",
+      "seq_length": 450,
+      "baseline_loss": 0.06231101602315903,
+      "attention_loss": 0.05180208384990692,
+      "improvement": 16.865287783698264,
+      "attn_wins": true
+    },
+    {
+      "goal_type": "subgoal",
+      "seq_length": 500,
+      "baseline_loss": 0.08028217405080795,
+      "attention_loss": 0.04610482603311539,
+      "improvement": 42.5715277666283,
+      "attn_wins": true
+    },
+    {
+      "goal_type": "combined",
+      "seq_length": 300,
+      "baseline_loss": 0.12429116666316986,
+      "attention_loss": 0.06845088303089142,
+      "improvement": 44.92699290819765,
+      "attn_wins": true
+    },
+    {
+      "goal_type": "combined",
+      "seq_length": 350,
+      "baseline_loss": 0.12559275329113007,
+      "attention_loss": 0.06597138196229935,
+      "improvement": 47.471983666625654,
+      "attn_wins": true
+    },
+    {
+      "goal_type": "combined",
+      "seq_length": 400,
+      "baseline_loss": 0.14868329465389252,
+      "attention_loss": 0.06157495453953743,
+      "improvement": 58.586501137957256,
+      "attn_wins": true
+    },
+    {
+      "goal_type": "combined",
+      "seq_length": 450,
+      "baseline_loss": 0.12220099568367004,
+      "attention_loss": 0.0707765445113182,
+      "improvement": 42.081859386374695,
+      "attn_wins": true
+    },
+    {
+      "goal_type": "combined",
+      "seq_length": 500,
+      "baseline_loss": 0.11006926000118256,
+      "attention_loss": 0.06444922834634781,
+      "improvement": 41.44665972528989,
+      "attn_wins": true
+    }
+  ],
+  "summary": {
+    "endpoint_avg": 13.54862827271181,
+    "subgoal_avg": 30.341916301824703,
+    "combined_avg": 46.90279936488903,
+    "status": "SUPPORTED",
+    "note": "Combined provides +33.4% additional benefit over endpoint on ultra-long sequences"
+  },
+  "timestamp": "2026-05-11T18:24:59.862852"
+}

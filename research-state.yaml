@@ -149,6 +149,17 @@ experiments:
       status: SUPPORTED
       note: Subgoal best (+20.1%, 5/5 wins), multi-scale +6.3% over endpoint
     timestamp: '2026-05-11T18:00:00.000000'
+  - description: Ultra-long sequence attention (300-500 steps) with goal types
+    experiment_id: H1.208
+    hypothesis: H1.208
+    result:
+      endpoint_avg: 13.5
+      subgoal_avg: 30.3
+      combined_avg: 46.9
+      attn_wins: 14
+      status: SUPPORTED
+      note: Combined provides +46.9% on 300-500 step sequences, +33.4% over endpoint
+    timestamp: '2026-05-11T18:30:00.000000'
 hypotheses:
 - id: H1
   status: SUPPORTED
@@ -201,6 +212,12 @@ hypotheses:
 - id: H3.99
   status: SUPPORTED
   key_finding: Action-consequence modeling enables attention (+19.0% vs endpoint alone)
+- id: H3.100
+  status: SUPPORTED
+  key_finding: Multi-scale goal decomposition (+6.3% over endpoint), subgoal best (+20.1%)
+- id: H1.208
+  status: SUPPORTED
+  key_finding: Ultra-long attention (300-500 steps) +46.9% with combined goals
 - id: H3.100
   status: SUPPORTED
   key_finding: Multi-scale goal decomposition (+6.3% over endpoint), subgoal best (+20.1%)

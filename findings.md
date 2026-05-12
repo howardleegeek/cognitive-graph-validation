@@ -9724,6 +9724,7 @@ The endpoint goal (final target state) provides:
 | H3.98 | ✅ +16.4% | Hierarchical goal decomposition |
 | H3.99 | ✅ +19.0% | Action-consequence modeling |
 | H3.100 | ✅ +20.1% | Subgoal best, multi-scale +6.3% |
+| H1.208 | ✅ +46.9% | Ultra-long (300-500 steps) combined goals |
 | H4 | 🔸 CLOSE (25%) | 22% physical optimal |
 
 ### H3.100: Multi-Scale Goal Decomposition (May 11, 2026)
@@ -9738,6 +9739,18 @@ The endpoint goal (final target state) provides:
 **Key Finding**: Subgoal (intermediate targets every 5 steps) provides the best performance with +20.1% average improvement and 5/5 wins. Multi-scale combining endpoint + milestones + subgoals provides +6.3% additional benefit over endpoint alone.
 
 **Status: ✅ SUPPORTED** — Multi-scale goal decomposition improves attention, with subgoal being the most effective single approach.
+
+### H1.208: Ultra-Long Sequence Attention (300-500 steps) (May 11, 2026)
+
+| Goal Type | Avg Δ | Wins |
+|-----------|-------|------|
+| endpoint | +13.5% | 4/5 |
+| subgoal | +30.3% | 5/5 |
+| **combined** | **+46.9%** | **5/5** |
+
+**Key Finding**: On ultra-long sequences (300-500 steps), the combined approach (endpoint + multiple subgoals) provides +46.9% average improvement over baseline, +33.4% more than endpoint alone. This is a major breakthrough for very long-horizon tasks!
+
+**Status: ✅ SUPPORTED** — Combined goal representation dramatically improves attention on ultra-long sequences.
 
 **Total: 11+ SUPPORTED, 1 INCONCLUSIVE, 13+ REFUTED**
 
