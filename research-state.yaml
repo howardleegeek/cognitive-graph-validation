@@ -1,6 +1,28 @@
 experiments:
-  total_runs: 29
+  total_runs: 33
   trajectory:
+  - description: Complex multi-step (30-70 steps) with goal conditioning
+    experiment_id: H1.221
+    hypothesis: H1.221
+    result:
+      cg_improvement: -4.6
+      ssm_improvement: -4.8
+      cg_wins: 2
+      ssm_wins: 1
+    status: REFUTED
+    note: Neither CG nor SSM outperform baseline on 30-70 step synthetic tasks
+    timestamp: '2026-05-12T16:04:46'
+  - description: Attention on 30+ steps WITH goal conditioning
+    experiment_id: H3.116
+    hypothesis: H3.116
+    result:
+      attn_improvement: -11.2
+      ssm_improvement: 2.5
+      attn_wins: 1
+      ssm_wins: 3
+    status: REFUTED
+    note: Attention fails on longer sequences even with goal conditioning
+    timestamp: '2026-05-12T16:04:59'
   - description: SSM+HierGoals on 100-200 step sequences
     experiment_id: H1.219
     hypothesis: H1.219
@@ -87,6 +109,34 @@ experiments:
       status: REFUTED
       note: SSM-CG inconsistent, baseline MLP sometimes better
     timestamp: '2026-05-11T22:30:00.000000'
+  - description: Complex multi-step with goal conditioning (30-70 steps)
+    experiment_id: H1.221
+    hypothesis: H1.221
+    result:
+      baseline_avg: 0.00419
+      cg_avg: 0.00439
+      ssm_avg: 0.00439
+      cg_improvement: -4.6
+      ssm_improvement: -4.8
+      cg_wins: 2
+      ssm_wins: 1
+    status: REFUTED
+    note: CG loses -4.6% on 30-70 step complex tasks with goals
+    timestamp: '2026-05-12T16:04:00.000000'
+  - description: Attention on 30-70 steps WITH goal conditioning
+    experiment_id: H3.116
+    hypothesis: H3.116
+    result:
+      attn_avg: 0.00333
+      concat_avg: 0.00300
+      ssm_avg: 0.00292
+      attn_improvement: -11.2
+      ssm_improvement: 2.5
+      attn_wins: 1
+      ssm_wins: 3
+    status: REFUTED
+    note: Attention loses -11.2%, SSM wins 3/5 lengths
+    timestamp: '2026-05-12T16:05:00.000000'
   - description: Different goal representations (endpoint vs trajectory vs subgoals vs combined)
     experiment_id: H1.214
     hypothesis: H1.214
@@ -569,3 +619,9 @@ hypotheses:
 - id: H3.115
   status: INCONCLUSIVE
   key_finding: Attention wins 2/5 lengths (+3.9% avg) on 20-40 steps WITH goal conditioning
+- id: H1.221
+  status: REFUTED
+  key_finding: CG loses -4.6% on 30-70 step complex tasks, baseline slightly better (2/5 wins)
+- id: H3.116
+  status: REFUTED
+  key_finding: Attention loses -11.2% on 30-70 steps with goals, SSM +2.5% (3/5 wins)

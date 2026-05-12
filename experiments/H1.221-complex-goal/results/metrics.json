@@ -1,0 +1,14 @@
+{
+  "hypothesis": "H1.221",
+  "timestamp": "2026-05-12T16:04:46.580512",
+  "metrics": {
+    "baseline_avg": 0.004191987440870365,
+    "cg_avg": 0.004385899136610706,
+    "ssm_avg": 0.004394080475761508,
+    "cg_improvement": -4.625769959369913,
+    "ssm_improvement": -4.820936077260375,
+    "cg_wins": 2,
+    "ssm_wins": 1
+  },
+  "status": "REFUTED"
+}

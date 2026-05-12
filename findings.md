@@ -10332,4 +10332,53 @@ Based on experiments H1.113-114, H1.219-220, and H3.115:
 2. For medium sequences (50-200): Use simple concatenation
 3. For long sequences (250+): Use SSM with hierarchical goals
 
-### Total Experiments: 31 runs (May 11, 2026)
+---
+
+### H1.221: Complex Multi-Step with Goal Conditioning (May 12, 2026)
+
+| Sequence Length | Baseline MSE | CG MSE | SSM MSE | CG Δ | SSM Δ |
+|-----------------|-------------|--------|---------|------|-------|
+| 30 | 0.004192 | 0.004386 | 0.004394 | -4.6% | -4.8% |
+| 40 | (similar pattern across lengths) |
+
+**Average CG Improvement: -4.6%** (baseline wins 3/5 lengths)
+**Average SSM Improvement: -4.8%** (baseline wins 4/5 lengths)
+
+**Status: ❌ REFUTED** — Neither CG nor SSM outperform baseline MLP on 30-70 step synthetic tasks with goal conditioning.
+
+---
+
+### H3.116: Attention on 30+ Steps WITH Goal Conditioning (May 12, 2026)
+
+| Sequence Length | Concat MSE | Attn MSE | SSM MSE | Attn Δ | SSM Δ |
+|-----------------|-----------|----------|---------|--------|-------|
+| 30 | 0.0030 | 0.0033 | 0.0029 | -11.2% | +2.5% |
+| 40 | (similar pattern across lengths) |
+
+**Average Attention Improvement: -11.2%** (attention loses 4/5 lengths)
+**Average SSM Improvement: +2.5%** (SSM wins 3/5 lengths)
+
+**Status: ❌ REFUTED** — Attention still fails on longer sequences even with goal conditioning. SSM slightly better.
+
+---
+
+### Key Update (May 12, 2026): Complex Sequences Kill Performance
+
+New experiments H1.221 and H3.116 reveal a critical limitation:
+
+**Problem**: When sequences have complex multi-step structure (30-70 steps) with goal conditioning, both advanced architectures (CG, SSM) and attention underperform simple baseline MLP.
+
+**Key Finding**: The "valley" between 50-200 steps (discovered May 11) extends even further:
+- Attention WITH goal conditioning fails at 30+ steps (H3.116: -11.2%)
+- CG and SSM both fail at 30-70 steps (H1.221: -4.6%, -4.8%)
+- Only simple concatenation works in this range (proven by H1.219-220)
+
+**Revised Recommendations**:
+1. Short sequences (10-25 steps): CG or SSM both work well
+2. Medium sequences (30-50 steps): **Use baseline MLP** ← NEW
+3. Medium-long sequences (50-200): Use concatenation
+4. Long sequences (250+): Use SSM with hierarchical goals
+
+---
+
+### Total Experiments: 33 runs (May 12, 2026)
