@@ -1,6 +1,17 @@
 experiments:
-  total_runs: 22
+  total_runs: 23
   trajectory:
+  - description: Different goal representations (endpoint vs trajectory vs subgoals vs combined)
+    experiment_id: H1.214
+    hypothesis: H1.214
+    result:
+      endpoint_delta: 95.1
+      trajectory_delta: -133.9
+      subgoals_delta: -21.7
+      combined_delta: 53.7
+      status: SUPPORTED
+      note: Endpoint is best (+95.1%), trajectory hurts (-133.9%)
+    timestamp: '2026-05-11T21:10:00.000000'
   - description: Attention on 500-1000 step ultra-long sequences
     experiment_id: H3.104
     hypothesis: H3.104
@@ -348,3 +359,6 @@ hypotheses:
 - id: H3.104
   status: REFUTED
   key_finding: Flat attention wins on 500-1000 steps (+94.9%), hierarchical doesn't add benefit
+- id: H1.214
+  status: SUPPORTED
+  key_finding: Endpoint goal best (+95.1%), trajectory hurts (-133.9%), subgoals (-21.7%)

@@ -1,0 +1,33 @@
+{
+  "experiment": "H1.214",
+  "description": "Different goal representations",
+  "results": [
+    {
+      "goal_type": "endpoint",
+      "concat_mse": 0.0027226204983890057,
+      "attn_mse": 0.00013468184624798596,
+      "attn_delta": 95.0532273474148
+    },
+    {
+      "goal_type": "trajectory",
+      "concat_mse": 0.007770593278110027,
+      "attn_mse": 0.01817832700908184,
+      "attn_delta": -133.9374402761586
+    },
+    {
+      "goal_type": "subgoals",
+      "concat_mse": 0.01042261440306902,
+      "attn_mse": 0.012686977162957191,
+      "attn_delta": -21.72547762317114
+    },
+    {
+      "goal_type": "combined",
+      "concat_mse": 0.007941213436424732,
+      "attn_mse": 0.0036743569653481245,
+      "attn_delta": 53.73053507799456
+    }
+  ],
+  "best_goal_type": "endpoint",
+  "best_delta": 95.0532273474148,
+  "status": "SUPPORTED"
+}

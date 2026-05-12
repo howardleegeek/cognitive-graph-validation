@@ -8,6 +8,7 @@
 
 | Hypothesis | Status | Finding |
 |------------|--------|---------|
+| H1.214: Goal representations | ✅ SUPPORTED | Endpoint +95.1%, trajectory -133.9% |
 | H3.104: Attention on 500-1000 steps | ❌ REFUTED | Flat wins 3/5, both +95% over concat |
 | H3.103: Adaptive hierarchical on 250-400 steps | ✅ SUPPORTED | +86.7% avg, wins 3/4 lengths |
 | H1.212: Hierarchical on 200-300 steps | ⚠️ PARTIAL | Wins 200-250, loses 275-300 |
@@ -21,8 +22,8 @@
 
 ## Research Trajectory
 
-- Total experiments: 22 runs
-- Supported: H1, H1.208, H1.211, H3.91-100, H3.103
+- Total experiments: 23 runs
+- Supported: H1, H1.208, H1.211, H3.91-100, H3.103, H1.214
 - Refuted: H1.209, H1.210, H3.89-90, H3.102, H3.104
 - Partial: H1.212, H3.101
 

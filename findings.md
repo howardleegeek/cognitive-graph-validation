@@ -9915,5 +9915,18 @@ Based on these results, the research should focus on:
 
 **Status: ❌ REFUTED** — Flat attention wins on 500-1000 step sequences. Hierarchical doesn't add consistent benefit at this scale. Both provide ~95% improvement over concatenation.
 
+### H1.214: Different Goal Representations (May 11, 2026)
+
+| Goal Type | Concat MSE | Attention MSE | Delta | Status |
+|-----------|-----------|---------------|-------|--------|
+| Endpoint | 0.002723 | 0.000135 | **+95.1%** | BEST |
+| Trajectory | 0.007771 | 0.018178 | **-133.9%** | WORST |
+| Subgoals | 0.010423 | 0.012687 | **-21.7%** | HURTS |
+| Combined | 0.007941 | 0.003674 | **+53.7%** | OK |
+
+**Best: Endpoint goal (+95.1%)**
+
+**Status: ✅ SUPPORTED** — Endpoint goal representation is optimal. Trajectory representation actually hurts attention (-133.9%), likely because it provides too much information and dilutes the goal signal. Subgoals also hurt (-21.7%). Combined provides moderate benefit (+53.7%).
+
 4. **H1.214**: Explore different goal representations (trajectory vs endpoint vs subgoals)
 
