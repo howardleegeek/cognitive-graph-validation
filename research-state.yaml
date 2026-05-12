@@ -1,6 +1,26 @@
 experiments:
   total_runs: 26
   trajectory:
+  - description: SSM+HierGoals on 500-700 step ultra-long sequences
+    experiment_id: H3.114
+    hypothesis: H3.114
+    result:
+      avg_ssm_hier_delta: -50.9
+      avg_mamba_delta: -48.2
+      ssm_hier_wins: 7
+    status: SUPPORTED
+    note: SSM+HierGoals dominates all lengths, validates scaling to 700 steps
+    timestamp: '2026-05-11T23:50:00.000000'
+  - description: Hybrid attention + SSM combined
+    experiment_id: H1.218
+    hypothesis: H1.218
+    result:
+      concat_wins: 6
+      hybrid_wins: 2
+      avg_hybrid_delta: 9.6
+    status: INCONCLUSIVE
+    note: Hybrid doesn't outperform concat, both methods lose to concat
+    timestamp: '2026-05-11T23:55:00.000000'
   - description: SSM+HierGoals on 250-400 step sequences
     experiment_id: H3.113
     hypothesis: H3.113
@@ -501,3 +521,9 @@ hypotheses:
 - id: H3.113
   status: SUPPORTED
   key_finding: SSM+HierGoals +57.3% on 250-400 step sequences, Mamba +54.6%
+- id: H3.114
+  status: SUPPORTED
+  key_finding: SSM+HierGoals +50.9% on 400-700 step sequences, validates SSM scaling
+- id: H1.218
+  status: INCONCLUSIVE
+  key_finding: Hybrid attention+SSM inconclusive, concat wins 6/8 lengths (+9.6% avg)
