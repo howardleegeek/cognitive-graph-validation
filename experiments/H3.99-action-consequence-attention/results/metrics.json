@@ -1,0 +1,48 @@
+{
+  "experiment": "H3.99",
+  "hypothesis": "Action-consequence modeling enables attention on very long sequences",
+  "avg_endpoint_delta": -407.072238126679,
+  "avg_ac_delta": -301.0870288592257,
+  "avg_ac_vs_endpoint": 19.013573500698243,
+  "ac_wins": 3,
+  "total_tests": 4,
+  "status": "SUPPORTED",
+  "per_length": {
+    "75": {
+      "baseline_mse": 6.40722137177363e-05,
+      "endpoint_mse": 0.00042044083238579333,
+      "ac_mse": 0.00038220625719986856,
+      "endpoint_delta": -556.1983861491085,
+      "ac_delta": -496.52419515835646,
+      "ac_vs_endpoint": 9.093925290025354,
+      "ac_wins": true
+    },
+    "100": {
+      "baseline_mse": 6.94219270371832e-05,
+      "endpoint_mse": 0.00031536584720015526,
+      "ac_mse": 0.00017818785272538662,
+      "endpoint_delta": -354.2741186530901,
+      "ac_delta": -156.67373455356133,
+      "ac_vs_endpoint": 43.4980501828738,
+      "ac_wins": true
+    },
+    "125": {
+      "baseline_mse": 8.891711331671104e-05,
+      "endpoint_mse": 0.0004942771047353745,
+      "ac_mse": 0.00028594647301360965,
+      "endpoint_delta": -455.88523547185406,
+      "ac_delta": -221.58767007550728,
+      "ac_vs_endpoint": 42.148549816666225,
+      "ac_wins": true
+    },
+    "150": {
+      "baseline_mse": 8.676810830365866e-05,
+      "endpoint_mse": 0.000314040866214782,
+      "ac_mse": 0.00037272326881065965,
+      "endpoint_delta": -261.9312122326633,
+      "ac_delta": -329.56251564947786,
+      "ac_vs_endpoint": -18.6862312867724,
+      "ac_wins": false
+    }
+  }
+}

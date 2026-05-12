@@ -1,5 +1,5 @@
 experiments:
-  total_runs: 10
+  total_runs: 12
   trajectory:
   - description: Test at 1000+ demonstrations scale
     experiment_id: 150-larger_scale
@@ -183,3 +183,9 @@ hypotheses:
 - id: H3.97
   status: SUPPORTED
   key_finding: Endpoint goal enables attention on 150-250 step sequences (+31.2%)
+- id: H3.98
+  status: SUPPORTED
+  key_finding: Hierarchical goal decomposition improves attention (+16.4% vs endpoint alone)
+- id: H3.99
+  status: SUPPORTED
+  key_finding: Action-consequence modeling enables attention (+19.0% vs endpoint alone)

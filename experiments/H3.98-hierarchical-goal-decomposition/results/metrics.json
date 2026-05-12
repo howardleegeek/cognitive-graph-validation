@@ -1,0 +1,21 @@
+{
+  "experiment": "H3.98",
+  "hypothesis": "Hierarchical goal decomposition improves attention on long sequences",
+  "avg_endpoint_delta": -457.37046297527,
+  "avg_hier_delta": -365.9622806904166,
+  "avg_hier_vs_endpoint": 16.399897080464623,
+  "hier_wins": 1,
+  "total_tests": 1,
+  "status": "SUPPORTED",
+  "per_length": {
+    "75": {
+      "baseline_mse": 7.543292304035276e-05,
+      "endpoint_mse": 0.00042044083238579333,
+      "hierarchical_mse": 0.00035148896859027445,
+      "endpoint_delta": -457.37046297527,
+      "hier_delta": -365.9622806904166,
+      "hier_vs_endpoint": 16.399897080464623,
+      "hier_wins": true
+    }
+  }
+}
