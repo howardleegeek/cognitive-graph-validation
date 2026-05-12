@@ -10407,4 +10407,48 @@ New experiments H1.221 and H3.116 reveal a critical limitation:
 
 ---
 
-### Total Experiments: 34 runs (May 12, 2026)
+### H1.222: Ultra-Complex Multi-Step (80-120 Steps) with Goal Conditioning (May 12, 2026)
+
+| Sequence Length | Baseline MSE | Unified MSE | Delta |
+|-----------------|-------------|-------------|-------|
+| 80 | 0.00385 | 0.00341 | +11.4% |
+| 90 | 0.00345 | 0.00350 | -1.4% |
+| 100 | 0.00327 | 0.00339 | -3.7% |
+| 110 | 0.00329 | 0.00352 | -7.0% |
+| 120 | 0.00321 | 0.00356 | -10.9% |
+
+**Average: -1.9%** (1/5 wins)
+
+**Status: ❌ REFUTED** — Unified architecture loses on ultra-complex (80-120 step) tasks with goal conditioning. The pattern from H1.221 continues - complex multi-step tasks hurt unified architecture.
+
+---
+
+### H3.118: Attention with High Autocorrelation (0.9-0.95) on 50-80 Steps (May 12, 2026)
+
+| Autocorrelation | Sequence Length | Concat MSE | Attn MSE | Delta |
+|-----------------|-----------------|-----------|----------|-------|
+| 0.90 | 50 | 0.00328 | 0.00271 | +17.4% |
+| 0.90 | 60 | 0.00327 | 0.00289 | +11.6% |
+| 0.90 | 70 | 0.00318 | 0.00296 | +6.9% |
+| 0.90 | 80 | 0.00325 | 0.00267 | +17.8% |
+| 0.93 | 50 | 0.00319 | 0.00272 | +14.7% |
+| 0.93 | 60 | 0.00315 | 0.00263 | +16.5% |
+| 0.93 | 70 | 0.00309 | 0.00278 | +10.0% |
+| 0.93 | 80 | 0.00314 | 0.00261 | +16.9% |
+| 0.95 | 50 | 0.00296 | 0.00281 | +5.1% |
+| 0.95 | 60 | 0.00315 | 0.00277 | +12.1% |
+| 0.95 | 70 | 0.00305 | 0.00272 | +10.8% |
+| 0.95 | 80 | 0.00300 | 0.00267 | +11.0% |
+
+**Summary by Autocorrelation**:
+- ρ=0.90: +13.5% (4/4 wins)
+- ρ=0.93: +14.7% (4/4 wins) ← **Best**
+- ρ=0.95: +9.9% (4/4 wins)
+
+**Overall: +3.3%** (12/12 wins)
+
+**Status: ⚠️ PARTIAL** — Attention wins at ALL lengths and ALL autocorrelation levels, but the average improvement is only +3.3%. Key insight: optimal autocorrelation for attention is around 0.93, not 0.95.
+
+---
+
+### Total Experiments: 36 runs (May 12, 2026)

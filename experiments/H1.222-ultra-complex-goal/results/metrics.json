@@ -1,0 +1,11 @@
+{
+  "hypothesis": "H1.222",
+  "timestamp": "2026-05-12T16:22:59.925178",
+  "metrics": {
+    "baseline_avg": 0.003412399886672291,
+    "unified_avg": 0.0034762686445493894,
+    "unified_improvement": -1.8716668619802896,
+    "unified_wins": 1
+  },
+  "status": "REFUTED"
+}

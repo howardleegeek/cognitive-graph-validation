@@ -1,0 +1,13 @@
+{
+  "hypothesis": "H3.118",
+  "timestamp": "2026-05-12T16:25:06.323592",
+  "metrics": {
+    "autocorrs_tested": [
+      0.9,
+      0.93,
+      0.95
+    ],
+    "avg_improvement": 3.286412310532842
+  },
+  "status": "PARTIAL"
+}
