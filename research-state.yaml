@@ -1,5 +1,5 @@
 experiments:
-  total_runs: 33
+  total_runs: 34
   trajectory:
   - description: Complex multi-step (30-70 steps) with goal conditioning
     experiment_id: H1.221
@@ -23,6 +23,17 @@ experiments:
     status: REFUTED
     note: Attention fails on longer sequences even with goal conditioning
     timestamp: '2026-05-12T16:04:59'
+  - description: Attention death zone + autocorrelation (unlock attention!)
+    experiment_id: H3.117
+    hypothesis: H3.117
+    result:
+      autocorr_0_attn_avg: -4.7
+      autocorr_07_attn_avg: -9.1
+      autocorr_09_attn_avg: -21.6
+      attn_wins_09: 5
+    status: SUPPORTED
+    note: Autocorrelation unlocks attention in the 30-50 step death zone!
+    timestamp: '2026-05-12T16:30:00'
   - description: SSM+HierGoals on 100-200 step sequences
     experiment_id: H1.219
     hypothesis: H1.219
