@@ -1,0 +1,44 @@
+{
+  "experiment": "H1.204",
+  "description": "Complex multi-step (50-100) WITH task structure",
+  "avg_delta": 94.59778855741797,
+  "attention_wins": 5,
+  "status": "SUPPORTED",
+  "per_length": {
+    "50": {
+      "seq_len": 50,
+      "concat_mse": 0.0009935143170878291,
+      "attention_mse": 4.881354107055813e-05,
+      "delta": 95.08678030794367,
+      "attention_wins": true
+    },
+    "60": {
+      "seq_len": 60,
+      "concat_mse": 0.0009760322282090783,
+      "attention_mse": 4.5934000809211284e-05,
+      "delta": 95.29380286002485,
+      "attention_wins": true
+    },
+    "70": {
+      "seq_len": 70,
+      "concat_mse": 0.0007233256474137306,
+      "attention_mse": 4.6474975533783436e-05,
+      "delta": 93.574819903047,
+      "attention_wins": true
+    },
+    "80": {
+      "seq_len": 80,
+      "concat_mse": 0.0005906150909140706,
+      "attention_mse": 4.3779324187198654e-05,
+      "delta": 92.58750328925,
+      "attention_wins": true
+    },
+    "100": {
+      "seq_len": 100,
+      "concat_mse": 0.0009700226364657283,
+      "attention_mse": 3.447425115155056e-05,
+      "delta": 96.44603642682429,
+      "attention_wins": true
+    }
+  }
+}

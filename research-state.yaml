@@ -74,6 +74,24 @@ experiments:
       status: SUPPORTED
       note: Goal state is CRITICAL for enabling attention!
     timestamp: '2026-05-10T19:20:00.000000'
+  - description: Complex multi-step (50-100) WITH task structure (+94.6%)
+    experiment_id: H1.204
+    hypothesis: H1.204
+    result:
+      avg_delta: 94.6
+      attn_wins: 5
+      status: SUPPORTED
+      note: Attention wins 5/5 tested lengths with task structure
+    timestamp: '2026-05-10T19:30:00.000000'
+  - description: Attention on 50+ steps WITH FULL task structure (+55.6%)
+    experiment_id: H3.93
+    hypothesis: H3.93
+    result:
+      avg_delta: 55.6
+      attn_wins: 5
+      status: SUPPORTED
+      note: Attention wins 5/5 with full task structure (goal+subgoals+actions+constraints)
+    timestamp: '2026-05-10T19:35:00.000000'
 hypotheses:
 - id: H1
   status: SUPPORTED

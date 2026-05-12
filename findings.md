@@ -9467,3 +9467,63 @@ These new experiments (H1.201, H3.89, H3.90) show **Concatenation wins in synthe
 - **Pure prediction**: Use concatenation
 - **Hybrid systems**: Need task-aware routing based on goal states
 
+
+
+---
+
+## NEW RESULTS (May 10, 2026)
+
+### H1.204: Complex Multi-Step (50-100) WITH Task Structure
+
+| Sequence Length | Concat MSE | Attention MSE | Delta |
+|-----------------|-----------|--------------|-------|
+| 50 | 0.000994 | 0.000049 | **+95.1%** |
+| 60 | 0.000976 | 0.000046 | **+95.3%** |
+| 70 | 0.000723 | 0.000046 | **+93.6%** |
+| 80 | 0.000591 | 0.000044 | **+92.6%** |
+| 100 | 0.000970 | 0.000034 | **+96.4%** |
+
+**Average: +94.6%**
+**Status: ✅ SUPPORTED** — Attention dramatically outperforms concatenation on 50-100 step sequences WITH task structure (goal states + action outcomes). This confirms H1.202/H1.203 findings and extends them to longer sequences.
+
+### H3.93: Attention on 50+ Steps WITH FULL Task Structure
+
+| Sequence Length | Concat MSE | Attention MSE | Delta |
+|-----------------|-----------|--------------|-------|
+| 50 | 0.005799 | 0.002369 | **+59.2%** |
+| 60 | 0.005407 | 0.002492 | **+53.9%** |
+| 70 | 0.005347 | 0.002603 | **+51.3%** |
+| 80 | 0.005077 | 0.002230 | **+56.1%** |
+| 100 | 0.004689 | 0.002002 | **+57.3%** |
+
+**Average: +55.6%**
+**Status: ✅ SUPPORTED** — Attention with full task structure (goal + subgoals + actions + constraints) outperforms concatenation on 50-100 step sequences. Confirms H3.92 findings.
+
+---
+
+## KEY INSIGHT
+
+Task structure (especially goal states) is the **critical enabler** for attention mechanisms on long sequences:
+
+1. **Without task structure**: Concatenation wins (H3.89/90: -30.5% attention)
+2. **With goal state**: Attention wins +61.9% (H3.92)
+3. **With full structure**: Attention wins +87.2% (H3.92)
+4. **50-100 steps w/ full structure**: Attention wins +94.6% (H1.204) and +55.6% (H3.93)
+
+**The mechanism**: Goal states provide a "target" that attention can use to weight temporal relationships. Without this, attention collapses on random/long sequences.
+
+## Updated Research Status (May 10, 2026)
+
+| Hypothesis | Status | Key Finding |
+|------------|--------|-------------|
+| H1 | ✅ +25.6% | Early fusion wins |
+| H1.202-203 | ✅ +89.7%/+78.1% | Task structure enables attention |
+| H1.204 | ✅ +94.6% | Attention on 50-100 steps |
+| H2 | ⚠️ INCONCLUSIVE | 1.7% noise |
+| H3.91 | ✅ +86.6% | Task structure on 20-40 steps |
+| H3.92 | ✅ +87.2% | Goal state critical |
+| H3.93 | ✅ +55.6% | Full structure on 50-100 steps |
+| H4 | 🔸 CLOSE (25%) | 22% physical optimal |
+
+**Total: 8+ SUPPORTED, 1 INCONCLUSIVE, 12+ REFUTED**
+

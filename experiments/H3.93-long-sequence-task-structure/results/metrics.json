@@ -1,0 +1,44 @@
+{
+  "experiment": "H3.93",
+  "description": "Attention on 50+ steps WITH FULL task structure",
+  "avg_delta": 55.5535874073683,
+  "attention_wins": 5,
+  "status": "SUPPORTED",
+  "per_length": {
+    "50": {
+      "seq_len": 50,
+      "concat_mse": 0.0057990821078419685,
+      "attention_mse": 0.0023685581982135773,
+      "delta": 59.15632587766555,
+      "attention_wins": true
+    },
+    "60": {
+      "seq_len": 60,
+      "concat_mse": 0.0054072607308626175,
+      "attention_mse": 0.002491994993761182,
+      "delta": 53.913910983840516,
+      "attention_wins": true
+    },
+    "70": {
+      "seq_len": 70,
+      "concat_mse": 0.005347420461475849,
+      "attention_mse": 0.0026025259867310524,
+      "delta": 51.33118845842966,
+      "attention_wins": true
+    },
+    "80": {
+      "seq_len": 80,
+      "concat_mse": 0.005076732486486435,
+      "attention_mse": 0.0022304807789623737,
+      "delta": 56.06463832987837,
+      "attention_wins": true
+    },
+    "100": {
+      "seq_len": 100,
+      "concat_mse": 0.004688809625804424,
+      "attention_mse": 0.002002033870667219,
+      "delta": 57.30187338702741,
+      "attention_wins": true
+    }
+  }
+}
