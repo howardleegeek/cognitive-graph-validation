@@ -97,10 +97,26 @@ With endpoint + actions:  +19.0% additional
 | H3.97 (Endpoint on 150+) | ✅ +31.2% | Stable |
 | H3.98 (Hierarchical helps) | ✅ +16.4% | **NEW** |
 | H3.99 (AC modeling helps) | ✅ +19.0% | **NEW** |
+| H3.100 (Combined structure) | ✅ +50.8% | **NEW - SYNERGISTIC!** |
 | H2 (Explicit graph) | ⚠️ INCONCLUSIVE | Stable |
 | H4 (22% physical) | 🔸 CLOSE | Stable |
 
-**Total: 12+ SUPPORTED, 1 INCONCLUSIVE**
+**Total: 13+ SUPPORTED, 1 INCONCLUSIVE**
+
+---
+
+## KEY DISCOVERY: Synergistic Task Structure
+
+**H3.100 shows that combining ALL structure types produces the best results:**
+
+| Component | Improvement vs Endpoint |
+|-----------|------------------------|
+| Endpoint alone | baseline |
+| + Subgoals (H3.98) | +16.4% |
+| + Actions/Consequences (H3.99) | +19.0% |
+| **+ ALL COMBINED (H3.100)** | **+50.8%** |
+
+**Key insight**: The combination is GREATER than the sum of parts!
 
 ---
 
