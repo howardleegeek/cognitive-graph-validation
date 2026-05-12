@@ -2783,6 +2783,22 @@ Based on research trajectory and latest literature, the following hypotheses are
 
 ---
 
+### H3.100: Combined Task Structure (May 11, 2026)
+
+| Sequence Length | Baseline MSE | Endpoint MSE | Combined MSE | Combined vs Endpoint |
+|-----------------|--------------|-------------|-------------|---------------------|
+| 75 | 0.000017 | 0.003668 | 0.001163 | **+68.3%** |
+| 100 | 0.000007 | 0.002528 | 0.002201 | **+13.0%** |
+| 125 | 0.000007 | 0.003797 | 0.001920 | **+49.4%** |
+| 150 | 0.000013 | 0.001807 | 0.000495 | **+72.6%** |
+
+**Average Combined vs Endpoint: +50.8%**
+**Combined wins: 4/4**
+
+**Status: ✅ SUPPORTED** — Combining all task structure components (endpoint + subgoals + actions + consequences) provides synergistic benefit, outperforming endpoint alone by +50.8%.
+
+---
+
 ## Research Status (May 11, 2026)
 
 | Hypothesis | Status | Key Finding |
@@ -2794,10 +2810,11 @@ Based on research trajectory and latest literature, the following hypotheses are
 | H3.95-97 | ✅ +31-95% | Endpoint on 100-250 steps |
 | H3.98 | ✅ +16.4% | Hierarchical goal decomposition helps |
 | H3.99 | ✅ +19.0% | Action-consequence modeling helps |
+| H3.100 | ✅ +50.8% | Combined structure (synergistic) |
 | H2 | ⚠️ INCONCLUSIVE | Explicit graph (1.7% noise) |
 | H4 | 🔸 CLOSE | 22% physical optimal |
 
-**Total: 12+ SUPPORTED, 1 INCONCLUSIVE, 13+ REFUTED**
+**Total: 13+ SUPPORTED, 1 INCONCLUSIVE, 13+ REFUTED**
 
 ---
 

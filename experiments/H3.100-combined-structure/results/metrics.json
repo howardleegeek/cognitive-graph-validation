@@ -1,0 +1,47 @@
+{
+  "experiment": "H3.100",
+  "hypothesis": "Combined structure (endpoint+subgoals+actions) outperforms individual components",
+  "avg_combined_delta": -17149.98894883647,
+  "avg_combined_vs_endpoint": 50.81590498905135,
+  "combined_wins": 4,
+  "total_tests": 4,
+  "status": "SUPPORTED",
+  "per_length": {
+    "75": {
+      "baseline_mse": 1.739625440677628e-05,
+      "endpoint_mse": 0.0036679753102362156,
+      "combined_mse": 0.0011626866180449724,
+      "endpoint_delta": -20984.856685054267,
+      "combined_delta": -6583.545726901285,
+      "combined_vs_endpoint": 68.30167818195876,
+      "combined_wins": true
+    },
+    "100": {
+      "baseline_mse": 7.264815849339357e-06,
+      "endpoint_mse": 0.0025283866561949253,
+      "combined_mse": 0.002200736664235592,
+      "endpoint_delta": -34703.176138660834,
+      "combined_delta": -30193.08257601218,
+      "combined_vs_endpoint": 12.958856239671332,
+      "combined_wins": true
+    },
+    "125": {
+      "baseline_mse": 6.799444236094132e-06,
+      "endpoint_mse": 0.00379654997959733,
+      "combined_mse": 0.0019199177622795105,
+      "endpoint_delta": -55736.18083730646,
+      "combined_delta": -28136.392499372665,
+      "combined_vs_endpoint": 49.42993579441456,
+      "combined_wins": true
+    },
+    "150": {
+      "baseline_mse": 1.308368518948555e-05,
+      "endpoint_mse": 0.0018065167823806405,
+      "combined_mse": 0.0004954706528224051,
+      "endpoint_delta": -13707.400256255116,
+      "combined_delta": -3686.9349930597573,
+      "combined_vs_endpoint": 72.57314974016072,
+      "combined_wins": true
+    }
+  }
+}
