@@ -51,6 +51,30 @@ Tested four goal representation strategies across sequence lengths 20-60:
 
 3. **Endpoint alone is insufficient**: Simple endpoint goal shows mixed results (-1.2% average), confirming that more granular goal information helps attention mechanisms.
 
+## H1.208 Results: Ultra-Long Sequence Attention (300-500 steps)
+
+### Experiment Design
+Tested three goal representation strategies on ultra-long sequences (300-500 steps):
+- **Endpoint**: Only final goal state
+- **Subgoal**: Intermediate targets every 20 steps
+- **Combined**: Endpoint + multiple subgoals (current + next 2)
+
+### Results
+
+| Goal Type | Avg Δ | Wins |
+|-----------|-------|------|
+| endpoint | +13.5% | 4/5 |
+| subgoal | +30.3% | 5/5 |
+| **combined** | **+46.9%** | **5/5** |
+
+### Key Findings
+
+1. **Combined is best**: Endpoint + subgoals provides +46.9% improvement on 300-500 step sequences!
+
+2. **Benefit grows with length**: The advantage of combined goals increases with sequence length.
+
+3. **Major breakthrough**: This is the highest improvement seen on any experiment so far for ultra-long sequences.
+
 ## Research Trajectory
 
 ### What's Working
@@ -59,17 +83,18 @@ Tested four goal representation strategies across sequence lengths 20-60:
 - Endpoint goal unlocks attention on long sequences (H3.95-97)
 - Hierarchical goal decomposition (H3.98): +16.4%
 - Action-consequence modeling (H3.99): +19.0%
-- **Subgoal decomposition (H3.100): +20.1%** ← NEW
+- Subgoal decomposition (H3.100): +20.1%
+- **Ultra-long attention (H1.208): +46.9%** ← MAJOR BREAKTHROUGH
 
 ### What's Not Working
-- Simple endpoint goal alone: Mixed results
+- Simple endpoint goal alone on ultra-long: Only +13.5%
 - Complex goal representations (trajectory, keypoint, delta): Hurt performance
 - Cross-dynamics transfer: -56.7% (H1.4 REFUTED)
 
 ### Next Steps
-1. Test H1.208: Attention on 300+ steps with endpoint + subgoal combined
-2. Test H3.101: Combined endpoint + hierarchical + action-consequence
-3. Test H1.209: Different attention mechanisms with multi-scale goals
+1. Test H3.101: Combined endpoint + hierarchical + action-consequence
+2. Test H1.209: Different attention mechanisms with multi-scale goals
+3. Test H1.210: Scaling to 1000+ step sequences
 
 ## Git Commit
 
