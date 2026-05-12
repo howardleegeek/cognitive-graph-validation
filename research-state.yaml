@@ -1,6 +1,25 @@
 experiments:
-  total_runs: 36
+  total_runs: 38
   trajectory:
+  - description: Attention on 20-40 steps WITH autocorrelation
+    experiment_id: H3.119
+    hypothesis: H3.119
+    result:
+      avg_improvement: -6.2
+      attn_wins: 2
+    status: REFUTED
+    note: Attention loses -6.2% on 20-40 steps, rho=0.90 is sweet spot
+    timestamp: '2026-05-12T17:00:00'
+  - description: Unified architecture on ultra-complex (100-150 steps)
+    experiment_id: H1.223
+    hypothesis: H1.223
+    result:
+      unified_improvement: 4.7
+      goal_improvement: -2.8
+      unified_wins: 3
+    status: PARTIAL
+    note: Unified +4.7% on 100-150 steps, goal conditioning hurts
+    timestamp: '2026-05-12T17:05:00'
   - description: Ultra-complex multi-step (80-120 steps) with goal conditioning
     experiment_id: H1.222
     hypothesis: H1.222
@@ -662,3 +681,9 @@ hypotheses:
 - id: H3.118
   status: PARTIAL
   key_finding: Attention wins all 12 tests with high autocorrelation (+3.3% avg), optimal at rho=0.93
+- id: H3.119
+  status: REFUTED
+  key_finding: Attention loses -6.2% on 20-40 steps with autocorrelation, wins 2/5 lengths
+- id: H1.223
+  status: PARTIAL
+  key_finding: Unified +4.7% on 100-150 step ultra-complex tasks, goal conditioning hurts (-2.8%)

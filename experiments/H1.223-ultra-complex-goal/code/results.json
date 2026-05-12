@@ -1,0 +1,59 @@
+{
+  "hypothesis": "H1.223",
+  "timestamp": "2026-05-12T16:43:34.085818",
+  "experiments": [
+    {
+      "length": 100,
+      "model": "baseline",
+      "mse": 0.00048562439042143524
+    },
+    {
+      "length": 100,
+      "model": "unified",
+      "mse": 0.00046551847481168807
+    },
+    {
+      "length": 100,
+      "model": "unified_goal",
+      "mse": 0.0005193867837078869
+    },
+    {
+      "length": 120,
+      "model": "baseline",
+      "mse": 0.0004781427269335836
+    },
+    {
+      "length": 120,
+      "model": "unified",
+      "mse": 0.0004635638906620443
+    },
+    {
+      "length": 120,
+      "model": "unified_goal",
+      "mse": 0.0004966728156432509
+    },
+    {
+      "length": 150,
+      "model": "baseline",
+      "mse": 0.0004675892414525151
+    },
+    {
+      "length": 150,
+      "model": "unified",
+      "mse": 0.0004345883789937943
+    },
+    {
+      "length": 150,
+      "model": "unified_goal",
+      "mse": 0.00045522686559706926
+    }
+  ],
+  "summary": {
+    "avg_baseline": 0.000477118786269178,
+    "avg_unified": 0.0004545569148225089,
+    "avg_unified_goal": 0.0004904288216494024,
+    "unified_improvement": 4.728774488862881,
+    "goal_improvement": -2.7896691061573984
+  },
+  "status": "REFUTED"
+}

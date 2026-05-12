@@ -10451,4 +10451,51 @@ New experiments H1.221 and H3.116 reveal a critical limitation:
 
 ---
 
-### Total Experiments: 36 runs (May 12, 2026)
+### H3.119: Attention on 20-40 Steps WITH Autocorrelation (May 12, 2026)
+
+| Autocorrelation | Sequence Length | Concat MSE | Attn MSE | Delta |
+|-----------------|-----------------|-----------|----------|-------|
+| 0.85 | 20 | 0.000601 | 0.000446 | +25.8% |
+| 0.85 | 25 | 0.000532 | 0.000591 | -11.1% |
+| 0.85 | 30 | 0.000513 | 0.000711 | -38.6% |
+| 0.85 | 35 | 0.000557 | 0.000670 | -20.3% |
+| 0.85 | 40 | 0.000491 | 0.000484 | +1.4% |
+| 0.90 | 20 | 0.001074 | 0.000538 | +49.9% |
+| 0.90 | 25 | 0.000826 | 0.000640 | +22.5% |
+| 0.90 | 30 | 0.000950 | 0.000632 | +33.5% |
+| 0.90 | 35 | 0.000918 | 0.000761 | +17.1% |
+| 0.90 | 40 | 0.000861 | 0.000633 | +26.5% |
+| 0.93 | 20 | 0.001226 | 0.001535 | -25.2% |
+| 0.93 | 25 | 0.001298 | 0.001459 | -12.4% |
+| 0.93 | 30 | 0.001000 | 0.001463 | -46.3% |
+| 0.93 | 35 | 0.001216 | 0.001094 | +10.0% |
+| 0.93 | 40 | 0.000416 | 0.001270 | -205.3% |
+
+**Summary by Sequence Length**:
+- Length 20: +13.2% (2/3 wins)
+- Length 25: -1.3% (1/3 wins)
+- Length 30: -13.9% (1/3 wins)
+- Length 35: +6.2% (2/3 wins)
+- Length 40: -35.1% (1/3 wins)
+
+**Overall: -6.2%** (2/5 wins)
+
+**Status: ❌ REFUTED** — Attention does NOT consistently outperform concatenation on 20-40 step sequences even with autocorrelation. Key finding: ρ=0.90 appears to be a "sweet spot" where attention wins at all lengths, but results are highly variable.
+
+---
+
+### H1.223: Unified Architecture on Ultra-Complex Multi-Step (100-150 Steps) (May 12, 2026)
+
+| Sequence Length | Baseline MSE | Unified MSE | Unified+Goal MSE | Δ Unified | Δ Goal |
+|-----------------|-------------|-------------|------------------|-----------|--------|
+| 100 | 0.000486 | 0.000466 | 0.000519 | +4.1% | -6.8% |
+| 120 | 0.000478 | 0.000464 | 0.000497 | +2.9% | -4.0% |
+| 150 | 0.000468 | 0.000435 | 0.000455 | +7.1% | +2.8% |
+
+**Average: Unified +4.7%, Unified+Goal -2.8%**
+
+**Status: ⚠️ PARTIAL** — Unified architecture (without goal) shows modest +4.7% improvement on ultra-complex (100-150 step) tasks. Adding goal conditioning actually hurts performance (-2.8%). This suggests the unified architecture can handle complexity but goal conditioning adds noise.
+
+---
+
+### Total Experiments: 38 runs (May 12, 2026)

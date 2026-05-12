@@ -1,0 +1,192 @@
+{
+  "hypothesis": "H3.119",
+  "timestamp": "2026-05-12T16:42:39.477679",
+  "experiments": [
+    {
+      "rho": 0.85,
+      "length": 20,
+      "model": "concat",
+      "mse": 0.0006014307901470016
+    },
+    {
+      "rho": 0.85,
+      "length": 20,
+      "model": "attention",
+      "mse": 0.00044623441851517396
+    },
+    {
+      "rho": 0.85,
+      "length": 25,
+      "model": "concat",
+      "mse": 0.0005319223157734648
+    },
+    {
+      "rho": 0.85,
+      "length": 25,
+      "model": "attention",
+      "mse": 0.0005912845168877606
+    },
+    {
+      "rho": 0.85,
+      "length": 30,
+      "model": "concat",
+      "mse": 0.0005130534763589609
+    },
+    {
+      "rho": 0.85,
+      "length": 30,
+      "model": "attention",
+      "mse": 0.0007108234418575385
+    },
+    {
+      "rho": 0.85,
+      "length": 35,
+      "model": "concat",
+      "mse": 0.0005574113870316803
+    },
+    {
+      "rho": 0.85,
+      "length": 35,
+      "model": "attention",
+      "mse": 0.0006700351367286804
+    },
+    {
+      "rho": 0.85,
+      "length": 40,
+      "model": "concat",
+      "mse": 0.0004911584676395661
+    },
+    {
+      "rho": 0.85,
+      "length": 40,
+      "model": "attention",
+      "mse": 0.000484240333195905
+    },
+    {
+      "rho": 0.9,
+      "length": 20,
+      "model": "concat",
+      "mse": 0.0010744763835608788
+    },
+    {
+      "rho": 0.9,
+      "length": 20,
+      "model": "attention",
+      "mse": 0.0005382201843169192
+    },
+    {
+      "rho": 0.9,
+      "length": 25,
+      "model": "concat",
+      "mse": 0.0008262348268626784
+    },
+    {
+      "rho": 0.9,
+      "length": 25,
+      "model": "attention",
+      "mse": 0.0006399904607812716
+    },
+    {
+      "rho": 0.9,
+      "length": 30,
+      "model": "concat",
+      "mse": 0.0009504707986852464
+    },
+    {
+      "rho": 0.9,
+      "length": 30,
+      "model": "attention",
+      "mse": 0.000631898403140616
+    },
+    {
+      "rho": 0.9,
+      "length": 35,
+      "model": "concat",
+      "mse": 0.0009179134787681294
+    },
+    {
+      "rho": 0.9,
+      "length": 35,
+      "model": "attention",
+      "mse": 0.000760919422348578
+    },
+    {
+      "rho": 0.9,
+      "length": 40,
+      "model": "concat",
+      "mse": 0.0008610096472698809
+    },
+    {
+      "rho": 0.9,
+      "length": 40,
+      "model": "attention",
+      "mse": 0.0006331134142967967
+    },
+    {
+      "rho": 0.93,
+      "length": 20,
+      "model": "concat",
+      "mse": 0.0012260382029260996
+    },
+    {
+      "rho": 0.93,
+      "length": 20,
+      "model": "attention",
+      "mse": 0.0015346656598889412
+    },
+    {
+      "rho": 0.93,
+      "length": 25,
+      "model": "concat",
+      "mse": 0.0012975186153783539
+    },
+    {
+      "rho": 0.93,
+      "length": 25,
+      "model": "attention",
+      "mse": 0.00145903328716582
+    },
+    {
+      "rho": 0.93,
+      "length": 30,
+      "model": "concat",
+      "mse": 0.0009996325754975928
+    },
+    {
+      "rho": 0.93,
+      "length": 30,
+      "model": "attention",
+      "mse": 0.0014634400232290277
+    },
+    {
+      "rho": 0.93,
+      "length": 35,
+      "model": "concat",
+      "mse": 0.0012156595988204173
+    },
+    {
+      "rho": 0.93,
+      "length": 35,
+      "model": "attention",
+      "mse": 0.0010942312568559976
+    },
+    {
+      "rho": 0.93,
+      "length": 40,
+      "model": "concat",
+      "mse": 0.0004156472023815576
+    },
+    {
+      "rho": 0.93,
+      "length": 40,
+      "model": "attention",
+      "mse": 0.0012701044800778102
+    }
+  ],
+  "summary": {
+    "avg_improvement": -6.185514868890151,
+    "attn_wins": 2,
+    "total_tests": 5
+  },
+  "status": "REFUTED"
+}
