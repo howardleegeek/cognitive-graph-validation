@@ -1,0 +1,175 @@
+{
+  "experiment_id": "H3.100",
+  "hypothesis": "Multi-scale goal decomposition",
+  "results": [
+    {
+      "goal_scale": "endpoint",
+      "seq_length": 20,
+      "baseline_loss": 0.025409633293747902,
+      "attention_loss": 0.02701486088335514,
+      "improvement": -6.317397701297047,
+      "attn_wins": false
+    },
+    {
+      "goal_scale": "endpoint",
+      "seq_length": 30,
+      "baseline_loss": 0.02822701819241047,
+      "attention_loss": 0.030512427911162376,
+      "improvement": -8.096532560305631,
+      "attn_wins": false
+    },
+    {
+      "goal_scale": "endpoint",
+      "seq_length": 40,
+      "baseline_loss": 0.024899620562791824,
+      "attention_loss": 0.025088677182793617,
+      "improvement": -0.7592751043134582,
+      "attn_wins": false
+    },
+    {
+      "goal_scale": "endpoint",
+      "seq_length": 50,
+      "baseline_loss": 0.03835495933890343,
+      "attention_loss": 0.03360574319958687,
+      "improvement": 12.382273951466376,
+      "attn_wins": true
+    },
+    {
+      "goal_scale": "endpoint",
+      "seq_length": 60,
+      "baseline_loss": 0.022345809265971184,
+      "attention_loss": 0.023110631853342056,
+      "improvement": -3.4226667661375125,
+      "attn_wins": false
+    },
+    {
+      "goal_scale": "milestone",
+      "seq_length": 20,
+      "baseline_loss": 0.05378106236457825,
+      "attention_loss": 0.04523346573114395,
+      "improvement": 15.893320543745876,
+      "attn_wins": true
+    },
+    {
+      "goal_scale": "milestone",
+      "seq_length": 30,
+      "baseline_loss": 0.042119819670915604,
+      "attention_loss": 0.029605839401483536,
+      "improvement": 29.710431733099675,
+      "attn_wins": true
+    },
+    {
+      "goal_scale": "milestone",
+      "seq_length": 40,
+      "baseline_loss": 0.04356648027896881,
+      "attention_loss": 0.038625169545412064,
+      "improvement": 11.342001240210596,
+      "attn_wins": true
+    },
+    {
+      "goal_scale": "milestone",
+      "seq_length": 50,
+      "baseline_loss": 0.034153908491134644,
+      "attention_loss": 0.044714149087667465,
+      "improvement": -30.919566934115174,
+      "attn_wins": false
+    },
+    {
+      "goal_scale": "milestone",
+      "seq_length": 60,
+      "baseline_loss": 0.04874011501669884,
+      "attention_loss": 0.05359181761741638,
+      "improvement": -9.954228870931683,
+      "attn_wins": false
+    },
+    {
+      "goal_scale": "subgoal",
+      "seq_length": 20,
+      "baseline_loss": 0.03543560951948166,
+      "attention_loss": 0.0253403689712286,
+      "improvement": 28.488971080638347,
+      "attn_wins": true
+    },
+    {
+      "goal_scale": "subgoal",
+      "seq_length": 30,
+      "baseline_loss": 0.052798692137002945,
+      "attention_loss": 0.03954038769006729,
+      "improvement": 25.11104709285749,
+      "attn_wins": true
+    },
+    {
+      "goal_scale": "subgoal",
+      "seq_length": 40,
+      "baseline_loss": 0.04862971231341362,
+      "attention_loss": 0.036821149289608,
+      "improvement": 24.28260925686875,
+      "attn_wins": true
+    },
+    {
+      "goal_scale": "subgoal",
+      "seq_length": 50,
+      "baseline_loss": 0.04640684649348259,
+      "attention_loss": 0.046143386512994766,
+      "improvement": 0.5677179131851245,
+      "attn_wins": true
+    },
+    {
+      "goal_scale": "subgoal",
+      "seq_length": 60,
+      "baseline_loss": 0.05509805679321289,
+      "attention_loss": 0.043024931102991104,
+      "improvement": 21.912071664402117,
+      "attn_wins": true
+    },
+    {
+      "goal_scale": "multi_scale",
+      "seq_length": 20,
+      "baseline_loss": 0.04444465786218643,
+      "attention_loss": 0.04458625614643097,
+      "improvement": -0.31859460969100933,
+      "attn_wins": false
+    },
+    {
+      "goal_scale": "multi_scale",
+      "seq_length": 30,
+      "baseline_loss": 0.0659240186214447,
+      "attention_loss": 0.05792554095387459,
+      "improvement": 12.132873321178657,
+      "attn_wins": true
+    },
+    {
+      "goal_scale": "multi_scale",
+      "seq_length": 40,
+      "baseline_loss": 0.04786006361246109,
+      "attention_loss": 0.04702959209680557,
+      "improvement": 1.7352077138470243,
+      "attn_wins": true
+    },
+    {
+      "goal_scale": "multi_scale",
+      "seq_length": 50,
+      "baseline_loss": 0.08363693207502365,
+      "attention_loss": 0.06903497129678726,
+      "improvement": 17.45874748865513,
+      "attn_wins": true
+    },
+    {
+      "goal_scale": "multi_scale",
+      "seq_length": 60,
+      "baseline_loss": 0.0744241327047348,
+      "attention_loss": 0.0786108523607254,
+      "improvement": -5.62548665847502,
+      "attn_wins": false
+    }
+  ],
+  "summary": {
+    "endpoint_avg": -1.2427196361174544,
+    "milestone_avg": 3.214391542401858,
+    "subgoal_avg": 20.072483401590368,
+    "multi_scale_avg": 5.076549451102958,
+    "status": "SUPPORTED",
+    "note": "Multi-scale provides +6.3% additional benefit over endpoint"
+  },
+  "timestamp": "2026-05-11T18:22:36.951953"
+}

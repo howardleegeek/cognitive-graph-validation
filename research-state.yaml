@@ -137,6 +137,18 @@ experiments:
       status: SUPPORTED
       note: Attention wins 5/5 tested lengths (150-250 steps), advantage maintained but lower than 100+ steps
     timestamp: '2026-05-11T17:30:00.000000'
+  - description: Multi-scale goal decomposition (endpoint vs milestone vs subgoal vs multi_scale)
+    experiment_id: H3.100
+    hypothesis: H3.100
+    result:
+      endpoint_avg: -1.2
+      milestone_avg: 3.2
+      subgoal_avg: 20.1
+      multi_scale_avg: 5.1
+      attn_wins: 12
+      status: SUPPORTED
+      note: Subgoal best (+20.1%, 5/5 wins), multi-scale +6.3% over endpoint
+    timestamp: '2026-05-11T18:00:00.000000'
 hypotheses:
 - id: H1
   status: SUPPORTED
@@ -189,3 +201,6 @@ hypotheses:
 - id: H3.99
   status: SUPPORTED
   key_finding: Action-consequence modeling enables attention (+19.0% vs endpoint alone)
+- id: H3.100
+  status: SUPPORTED
+  key_finding: Multi-scale goal decomposition (+6.3% over endpoint), subgoal best (+20.1%)

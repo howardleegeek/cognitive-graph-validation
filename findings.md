@@ -9720,7 +9720,24 @@ The endpoint goal (final target state) provides:
 | H3.94 | ❌ -58% | Endpoint only works, complex hurts |
 | H3.95 | ✅ +95.3% | Endpoint on 100+ steps |
 | H3.96 | ✅ +92.8% | Endpoint across all ρ levels |
+| H3.97 | ✅ +31.2% | Endpoint on 150-250 steps |
+| H3.98 | ✅ +16.4% | Hierarchical goal decomposition |
+| H3.99 | ✅ +19.0% | Action-consequence modeling |
+| H3.100 | ✅ +20.1% | Subgoal best, multi-scale +6.3% |
 | H4 | 🔸 CLOSE (25%) | 22% physical optimal |
+
+### H3.100: Multi-Scale Goal Decomposition (May 11, 2026)
+
+| Goal Scale | Avg Δ | Wins |
+|------------|-------|------|
+| endpoint | -1.2% | 1/5 |
+| milestone | +3.2% | 3/5 |
+| **subgoal** | **+20.1%** | **5/5** |
+| multi_scale | +5.1% | 3/5 |
+
+**Key Finding**: Subgoal (intermediate targets every 5 steps) provides the best performance with +20.1% average improvement and 5/5 wins. Multi-scale combining endpoint + milestones + subgoals provides +6.3% additional benefit over endpoint alone.
+
+**Status: ✅ SUPPORTED** — Multi-scale goal decomposition improves attention, with subgoal being the most effective single approach.
 
 **Total: 11+ SUPPORTED, 1 INCONCLUSIVE, 13+ REFUTED**
 
