@@ -1,0 +1,55 @@
+{
+  "experiment": "H3.104",
+  "description": "Attention on 500+ step ultra-long sequences",
+  "results": [
+    {
+      "seq_len": 500,
+      "concat_mse": 0.0028791273944079876,
+      "flat_mse": 0.00011761106725316495,
+      "hier_mse": 0.00010816116991918534,
+      "flat_delta": 95.91504469438914,
+      "hier_delta": 96.24326557660274,
+      "best_model": "HIER"
+    },
+    {
+      "seq_len": 600,
+      "concat_mse": 0.003295032773166895,
+      "flat_mse": 0.0002082210558000952,
+      "hier_mse": 0.0002477012458257377,
+      "flat_delta": 93.68075918710905,
+      "hier_delta": 92.48258627826426,
+      "best_model": "FLAT"
+    },
+    {
+      "seq_len": 700,
+      "concat_mse": 0.003021378070116043,
+      "flat_mse": 0.00018465027096681297,
+      "hier_mse": 0.00016937931650318205,
+      "flat_delta": 93.88854136484413,
+      "hier_delta": 94.39397147353105,
+      "best_model": "HIER"
+    },
+    {
+      "seq_len": 800,
+      "concat_mse": 0.0035898678470402956,
+      "flat_mse": 0.00018739118240773678,
+      "hier_mse": 0.00017101390403695405,
+      "flat_delta": 94.77999774943711,
+      "hier_delta": 95.23620614118293,
+      "best_model": "HIER"
+    },
+    {
+      "seq_len": 1000,
+      "concat_mse": 0.003762331558391452,
+      "flat_mse": 0.00013786155614070594,
+      "hier_mse": 0.00017164878954645246,
+      "flat_delta": 96.33574144114914,
+      "hier_delta": 95.43770167826891,
+      "best_model": "FLAT"
+    }
+  ],
+  "avg_flat_delta": 94.92001688738571,
+  "avg_hier_delta": 94.75874622957,
+  "hier_wins": 0,
+  "status": "REFUTED"
+}

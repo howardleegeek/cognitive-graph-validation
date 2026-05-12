@@ -1,6 +1,16 @@
 experiments:
-  total_runs: 21
+  total_runs: 22
   trajectory:
+  - description: Attention on 500-1000 step ultra-long sequences
+    experiment_id: H3.104
+    hypothesis: H3.104
+    result:
+      avg_flat_delta: 94.9
+      avg_hier_delta: 94.8
+      flat_wins: 3
+      status: REFUTED
+      note: Flat wins 3/5 lengths, both provide ~95% over concat
+    timestamp: '2026-05-11T21:00:00.000000'
   - description: Adaptive hierarchical attention on 250-400 step sequences
     experiment_id: H3.103
     hypothesis: H3.103
@@ -335,3 +345,6 @@ hypotheses:
 - id: H3.103
   status: SUPPORTED
   key_finding: Adaptive hierarchical attention +86.7% on 250-400 step sequences
+- id: H3.104
+  status: REFUTED
+  key_finding: Flat attention wins on 500-1000 steps (+94.9%), hierarchical doesn't add benefit

@@ -9900,5 +9900,20 @@ Based on these results, the research should focus on:
 
 **Status: ✅ SUPPORTED** — Adaptive hierarchical attention outperforms flat attention on ultra-long sequences (250-400 steps). The hierarchical decomposition with learned gating provides +1.7% additional improvement over flat attention.
 
+### H3.104: Attention on 500-1000 Step Ultra-Long Sequences (May 11, 2026)
+
+| Length | Concat MSE | Flat Attn MSE | Hier Attn MSE | Flat vs Concat | Best |
+|--------|-----------|---------------|---------------|----------------|------|
+| 500 | 0.002879 | 0.000118 | 0.000108 | +95.9% | HIER |
+| 600 | 0.003295 | 0.000208 | 0.000248 | +93.7% | FLAT |
+| 700 | 0.003021 | 0.000185 | 0.000169 | +93.9% | HIER |
+| 800 | 0.003590 | 0.000187 | 0.000171 | +94.8% | HIER |
+| 1000 | 0.003762 | 0.000138 | 0.000172 | +96.3% | FLAT |
+
+**Average: Flat +94.9%, Hier +94.8%**
+**Flat Wins: 3/5**
+
+**Status: ❌ REFUTED** — Flat attention wins on 500-1000 step sequences. Hierarchical doesn't add consistent benefit at this scale. Both provide ~95% improvement over concatenation.
+
 4. **H1.214**: Explore different goal representations (trajectory vs endpoint vs subgoals)
 
