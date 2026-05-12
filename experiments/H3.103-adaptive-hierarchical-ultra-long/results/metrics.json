@@ -1,0 +1,8 @@
+{
+  "experiment": "H3.103",
+  "description": "Adaptive hierarchical for long sequences (250-400)",
+  "avg_flat_delta": 85.03220388338396,
+  "avg_hier_delta": 86.66368297089726,
+  "hier_wins": 3,
+  "status": "SUPPORTED"
+}

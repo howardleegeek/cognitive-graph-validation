@@ -1,6 +1,16 @@
 experiments:
-  total_runs: 20
+  total_runs: 21
   trajectory:
+  - description: Adaptive hierarchical attention on 250-400 step sequences
+    experiment_id: H3.103
+    hypothesis: H3.103
+    result:
+      avg_flat_delta: 85.0
+      avg_hier_delta: 86.7
+      hier_wins: 3
+      status: SUPPORTED
+      note: Hierarchical wins 3/4 lengths, +86.7% avg over concat
+    timestamp: '2026-05-11T20:50:00.000000'
   - description: Hierarchical goal reasoning on 200-300 step sequences
     experiment_id: H1.212
     hypothesis: H1.212
@@ -322,3 +332,6 @@ hypotheses:
 - id: H3.102
   status: REFUTED
   key_finding: SSM+Goal doesn't help on short sequences, attention dominates
+- id: H3.103
+  status: SUPPORTED
+  key_finding: Adaptive hierarchical attention +86.7% on 250-400 step sequences

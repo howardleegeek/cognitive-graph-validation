@@ -9885,5 +9885,20 @@ Based on these results, the research should focus on:
 **Average: SSM+Goal vs SSM +48.0%, vs Attn +1606.6%**
 
 **Status: ❌ REFUTED** — SSM+Goal doesn't help on short sequences. Attention dominates across all lengths.
+
+### H3.103: Adaptive Hierarchical Attention on 250-400 Step Sequences (May 11, 2026)
+
+| Length | Concat MSE | Flat Attn MSE | Hier Attn MSE | Hier vs Concat |
+|--------|-----------|---------------|---------------|----------------|
+| 250 | 0.001438 | 0.000194 | 0.000129 | **+91.0%** |
+| 300 | 0.001187 | 0.000201 | 0.000184 | **+84.5%** |
+| 350 | 0.001615 | 0.000157 | 0.000171 | **+89.4%** |
+| 400 | 0.001502 | 0.000297 | 0.000274 | **+81.7%** |
+
+**Average: Flat +85.0%, Hier +86.7%**
+**Hier Wins: 3/4**
+
+**Status: ✅ SUPPORTED** — Adaptive hierarchical attention outperforms flat attention on ultra-long sequences (250-400 steps). The hierarchical decomposition with learned gating provides +1.7% additional improvement over flat attention.
+
 4. **H1.214**: Explore different goal representations (trajectory vs endpoint vs subgoals)
 
