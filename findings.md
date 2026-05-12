@@ -10100,3 +10100,24 @@ The core finding from this research cycle suggests that **attention mechanisms a
 
 4. **H1.214**: Explore different goal representations (trajectory vs endpoint vs subgoals)
 
+### H3.112: SSM-Cognitive Graph on Manipulation Tasks
+
+| Trial | Baseline MSE | SSM-CG MSE | Improvement | Winner |
+|-------|------------|------------|-------------|--------|
+| 1 | 0.010647 | 0.016657 | -56.4% | BASELINE |
+| 2 | 0.014793 | 0.013620 | +7.9% | SSM-CG |
+| 3 | 0.012510 | 0.012039 | +3.8% | SSM-CG |
+
+**Average: -14.9%**
+
+**Status: ❌ REFUTED** — SSM-Cognitive Graph is inconsistent. Sometimes baseline MLP is better (Trial 1: -56.4%), sometimes SSM-CG is marginally better (Trial 2-3: +3.8-7.9%). High variance suggests instability.
+
+### H3.113: Future Directions
+
+Based on 10+ experiments consistently failing to show attention benefits on manipulation tasks, the research should focus on:
+
+1. **Simple concatenation baselines**: These remain the most reliable approach
+2. **Mamba/SSM architectures**: State-space models show more stable training dynamics
+3. **End-to-end vs pre-trained**: Compare learning from scratch vs. pre-trained representations
+4. **Real robot data validation**: Test hypotheses on actual LIBERO dataset if available
+

@@ -1,6 +1,17 @@
 experiments:
-  total_runs: 23
+  total_runs: 24
   trajectory:
+  - description: SSM-Cognitive Graph on synthetic manipulation tasks
+    experiment_id: H3.112
+    hypothesis: H3.112
+    result:
+      avg_improvement: -14.9
+      trial1_improvement: -56.4
+      trial2_improvement: 7.9
+      trial3_improvement: 3.8
+      status: REFUTED
+      note: SSM-CG inconsistent, baseline MLP sometimes better
+    timestamp: '2026-05-11T22:30:00.000000'
   - description: Different goal representations (endpoint vs trajectory vs subgoals vs combined)
     experiment_id: H1.214
     hypothesis: H1.214
