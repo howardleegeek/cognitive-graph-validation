@@ -9527,3 +9527,101 @@ Task structure (especially goal states) is the **critical enabler** for attentio
 
 **Total: 8+ SUPPORTED, 1 INCONCLUSIVE, 12+ REFUTED**
 
+---
+
+### H3.94: Goal Representation Sensitivity Test (May 11, 2026)
+
+| Goal Type | Concat MSE | Attention MSE | Delta |
+|-----------|-----------|--------------|-------|
+| endpoint | 0.000840 | 0.000049 | **+94.1%** |
+| trajectory | 0.012809 | 0.013307 | -3.9% |
+| keypoint | 0.013127 | 0.037206 | -183.4% |
+| delta | 0.011951 | 0.028536 | -138.8% |
+
+**Average: -58.0%**
+**Status: ❌ REFUTED** — BUT key finding: **Endpoint goal representation is the ONLY one that enables attention** (+94.1%). More complex representations (trajectory, keypoint, delta) actually hurt attention performance.
+
+### H3.95: Endpoint Goal on Very Long Sequences (100+ steps) (May 11, 2026)
+
+| Sequence Length | Concat MSE | Attention MSE | Delta |
+|-----------------|-----------|--------------|-------|
+| 60 | 0.000840 | 0.000049 | **+94.1%** |
+| 80 | 0.000831 | 0.000051 | **+93.9%** |
+| 100 | 0.001079 | 0.000047 | **+95.6%** |
+| 120 | 0.000964 | 0.000041 | **+95.7%** |
+| 140 | 0.001204 | 0.000033 | **+97.2%** |
+
+**Average: +95.3%**
+**Status: ✅ SUPPORTED** — Attention wins on ALL 5 sequence lengths, and the advantage GROWS with sequence length (94.1% → 97.2%). Endpoint goal enables attention on very long sequences (100+ steps).
+
+### H1.207: Endpoint Goal with Different Task Complexities (May 11, 2026)
+
+| Complexity | State Dim | Action Dim | Concat MSE | Attention MSE | Delta |
+|------------|-----------|------------|-----------|--------------|-------|
+| simple | 4 | 3 | 0.000190 | 0.000012 | **+93.9%** |
+| medium | 8 | 7 | 0.000882 | 0.000030 | **+96.6%** |
+| complex | 16 | 12 | 0.002071 | 0.000128 | **+93.8%** |
+| very_complex | 24 | 16 | 0.003081 | 0.000308 | **+90.0%** |
+
+**Average: +93.6%**
+**Status: ✅ SUPPORTED** — Attention wins on ALL 4 complexity levels. Endpoint goal enables attention across all task complexities, with a slight decrease at very high complexity (90% vs 94-97% for simpler tasks).
+
+### H3.96: Endpoint Goal with Different Autocorrelation Levels (May 11, 2026)
+
+| ρ (Autocorrelation) | Concat MSE | Attention MSE | Delta |
+|---------------------|-----------|--------------|-------|
+| 0.0 | 0.007142 | 0.000534 | **+92.5%** |
+| 0.3 | 0.003431 | 0.000189 | **+94.5%** |
+| 0.5 | 0.002410 | 0.000169 | **+93.0%** |
+| 0.7 | 0.001132 | 0.000068 | **+94.0%** |
+| 0.85 | 0.000936 | 0.000033 | **+96.5%** |
+| 0.95 | 0.000308 | 0.000042 | **+86.2%** |
+
+**Average: +92.8%**
+**Status: ✅ SUPPORTED** — Attention wins on ALL 6 autocorrelation levels. Endpoint goal enables attention across ALL autocorrelation levels, not just high ones. The advantage is strongest at ρ=0.85 (+96.5%).
+
+---
+
+## CRITICAL FINDINGS (May 11, 2026)
+
+### The Endpoint Goal Discovery
+
+Through systematic testing (H3.94-H3.96), we've discovered that **endpoint goal representation** is the key that unlocks attention mechanisms for sequence modeling:
+
+1. **H3.94**: Endpoint (+94.1%) vs trajectory/keypoint/delta (all negative)
+2. **H3.95**: Works on 100+ step sequences, advantage grows with length
+3. **H1.207**: Works across all complexity levels (4-24 state dims)
+4. **H3.96**: Works across all autocorrelation levels (0.0-0.95)
+
+### Why Endpoint Goal Works
+
+The endpoint goal (final target state) provides:
+- A clear "target" for attention to learn to attend to
+- A fixed reference point that doesn't change with sequence length
+- Simple, compact representation that doesn't add noise
+
+### Why Complex Representations Fail
+
+- **Trajectory**: Too much information (full sequence) adds noise
+- **Keypoint**: Sparse, loses temporal structure
+- **Delta**: Loses absolute position information
+
+### Updated Research Status (May 11, 2026)
+
+| Hypothesis | Status | Key Finding |
+|------------|--------|-------------|
+| H1 | ✅ +25.6% | Early fusion wins |
+| H1.202-203 | ✅ +89.7%/+78.1% | Task structure enables attention |
+| H1.204 | ✅ +94.6% | Attention on 50-100 steps |
+| H1.207 | ✅ +93.6% | Endpoint goal across complexities |
+| H2 | ⚠️ INCONCLUSIVE | 1.7% noise |
+| H3.91 | ✅ +86.6% | Task structure on 20-40 steps |
+| H3.92 | ✅ +87.2% | Goal state critical |
+| H3.93 | ✅ +55.6% | Full structure on 50-100 steps |
+| H3.94 | ❌ -58% | Endpoint only works, complex hurts |
+| H3.95 | ✅ +95.3% | Endpoint on 100+ steps |
+| H3.96 | ✅ +92.8% | Endpoint across all ρ levels |
+| H4 | 🔸 CLOSE (25%) | 22% physical optimal |
+
+**Total: 11+ SUPPORTED, 1 INCONCLUSIVE, 13+ REFUTED**
+

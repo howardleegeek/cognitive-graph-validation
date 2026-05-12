@@ -92,6 +92,42 @@ experiments:
       status: SUPPORTED
       note: Attention wins 5/5 with full task structure (goal+subgoals+actions+constraints)
     timestamp: '2026-05-10T19:35:00.000000'
+  - description: Goal representation sensitivity test
+    experiment_id: H3.94
+    hypothesis: H3.94
+    result:
+      avg_delta: -58.0
+      attn_wins: 1
+      status: REFUTED
+      note: Endpoint goal (+94.1%) enables attention, but trajectory/keypoint/delta hurt
+    timestamp: '2026-05-11T12:00:00.000000'
+  - description: Endpoint goal on very long sequences (100+ steps)
+    experiment_id: H3.95
+    hypothesis: H3.95
+    result:
+      avg_delta: 95.3
+      attn_wins: 5
+      status: SUPPORTED
+      note: Attention wins 5/5 lengths, advantage grows with sequence length!
+    timestamp: '2026-05-11T12:05:00.000000'
+  - description: Endpoint goal with different task complexities
+    experiment_id: H1.207
+    hypothesis: H1.207
+    result:
+      avg_delta: 93.6
+      attn_wins: 4
+      status: SUPPORTED
+      note: Attention wins 4/4 complexities, slight decrease at very high complexity
+    timestamp: '2026-05-11T12:10:00.000000'
+  - description: Endpoint goal with different autocorrelation levels
+    experiment_id: H3.96
+    hypothesis: H3.96
+    result:
+      avg_delta: 92.8
+      attn_wins: 6
+      status: SUPPORTED
+      note: Attention wins 6/6 rho levels, strongest at rho=0.85 (+96.5%)
+    timestamp: '2026-05-11T12:15:00.000000'
 hypotheses:
 - id: H1
   status: SUPPORTED
@@ -123,3 +159,15 @@ hypotheses:
 - id: H3.92
   status: SUPPORTED
   key_finding: Goal state is critical for attention (+61.9% goal, +87.2% full)
+- id: H3.94
+  status: REFUTED
+  key_finding: Endpoint goal enables attention (+94.1%), complex representations hurt
+- id: H3.95
+  status: SUPPORTED
+  key_finding: Endpoint goal enables attention on 100+ steps (+95.3%), advantage grows with length
+- id: H1.207
+  status: SUPPORTED
+  key_finding: Endpoint goal enables attention across all complexities (+93.6%)
+- id: H3.96
+  status: SUPPORTED
+  key_finding: Endpoint goal enables attention across all autocorrelation levels (+92.8%)
