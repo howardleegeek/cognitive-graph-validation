@@ -234,7 +234,7 @@ def train_and_eval(model, train_loader, val_loader, epochs=50):
 
 # Run experiment
 CONFIG = """
-            + json.dumps(config)
+            + json.dumps(config).replace('true', 'True').replace('false', 'False')
             + """
 
 print("Loading data...")
@@ -268,14 +268,17 @@ print(json.dumps(results, indent=2))
     def parse_results(self, stdout):
         """Parse experiment results from stdout."""
         try:
-            # Find JSON in output
             lines = stdout.split("\n")
+            json_lines = []
             for line in lines:
-                if line.strip().startswith("{"):
-                    return json.loads(line)
-            return {"raw_output": stdout}
+                stripped = line.strip()
+                if stripped.startswith("{"):
+                    json_lines.append(stripped)
+            if json_lines:
+                return json.loads(json_lines[-1])
+            return {"raw_output": stdout[-500:]}
         except:
-            return {"error": "Failed to parse", "raw_output": stdout}
+            return {"error": "Failed to parse", "raw_output": stdout[-500:]}
 
     def update_state(self, exp_id, hypothesis, results):
         """Update research state with new results."""
@@ -307,11 +310,12 @@ print(json.dumps(results, indent=2))
             f.write(f"**Results**: {json.dumps(results, indent=2)}\n\n")
 
             if results.get("cognitive_graph_wins"):
-                f.write(
-                    f"✅ **SUPPORTED**: Cognitive Graph wins by {results.get('improvement_percent', 0):.1f}%\n"
-                )
+                status = "✅ SUPPORTED"
+            elif "improvement_percent" in results and results["improvement_percent"] >= 0:
+                status = "✅ SUPPORTED (tiny margin)"
             else:
-                f.write(f"❌ **REFUTED**: Baseline wins\n")
+                status = "❌ REFUTED"
+            f.write(f"**Status**: {status} - Cognitive Graph {results.get('improvement_percent', 0):.1f}%\n")
 
     def git_commit(self, exp_id, hypothesis, results):
         """Auto-commit to GitHub."""

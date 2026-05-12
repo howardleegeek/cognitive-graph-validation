@@ -1,6 +1,74 @@
 experiments:
-  total_runs: 12
+  total_runs: 16
   trajectory:
+  - description: Hierarchical goal reasoning on 100-200 step sequences
+    experiment_id: H1.209
+    hypothesis: H1.209
+    result:
+      avg_delta: -0.6
+      hier_wins: 3
+      status: REFUTED
+      note: Flat goal wins at this scale
+    timestamp: '2026-05-11T18:45:00.000000'
+  - description: SSM with goal conditioning on manipulation tasks
+    experiment_id: H3.101
+    hypothesis: H3.101
+    result:
+      avg_ssm_goal_vs_ssm: -1.8
+      avg_ssm_goal_vs_attn: 3.0
+      status: PARTIAL
+      note: SSM+Goal beats Attn+Goal, loses to vanilla SSM
+    timestamp: '2026-05-11T18:50:00.000000'
+  - description: Bidirectional goal-conditioned prediction
+    experiment_id: H1.210
+    hypothesis: H1.210
+    result:
+      avg_bidir_vs_uni: 1.9
+      avg_bidir_vs_goal_uni: -1.9
+      status: REFUTED
+      note: Bidirectional marginally beats plain uni, loses to goal-uni
+    timestamp: '2026-05-11T18:55:00.000000'
+  - description: Hierarchical + Bidirectional combined on extreme complexity
+    experiment_id: H1.211
+    hypothesis: H1.211
+    result:
+      avg_hier_bi_vs_endpoint: 0.9
+      hier_bi_wins: 3
+      status: SUPPORTED
+      note: Marginal improvement on 200-400 step sequences
+    timestamp: '2026-05-11T19:00:00.000000'
+  - description: Multi-scale goal decomposition (endpoint vs milestone vs subgoal vs multi_scale)
+    experiment_id: H3.100
+    hypothesis: H3.100
+    result:
+      endpoint_avg: -1.2
+      milestone_avg: 3.2
+      subgoal_avg: 20.1
+      multi_scale_avg: 5.1
+      attn_wins: 12
+      status: SUPPORTED
+      note: Subgoal best (+20.1%, 5/5 wins), multi-scale +6.3% over endpoint
+    timestamp: '2026-05-11T18:00:00.000000'
+  - description: Ultra-long sequence attention (300-500 steps) with goal types
+    experiment_id: H1.208
+    hypothesis: H1.208
+    result:
+      endpoint_avg: 13.5
+      subgoal_avg: 30.3
+      combined_avg: 46.9
+      attn_wins: 14
+      status: SUPPORTED
+      note: Combined provides +46.9% on 300-500 step sequences, +33.4% over endpoint
+    timestamp: '2026-05-11T18:30:00.000000'
+  - description: Endpoint goal on 150+ step sequences
+    experiment_id: H3.97
+    hypothesis: H3.97
+    result:
+      avg_delta: 31.2
+      attn_wins: 5
+      status: SUPPORTED
+      note: Attention wins 5/5 tested lengths (150-250 steps)
+    timestamp: '2026-05-11T17:30:00.000000'
   - description: Test at 1000+ demonstrations scale
     experiment_id: 150-larger_scale
     hypothesis: H1.150
@@ -218,6 +286,15 @@ hypotheses:
 - id: H1.208
   status: SUPPORTED
   key_finding: Ultra-long attention (300-500 steps) +46.9% with combined goals
-- id: H3.100
+- id: H1.209
+  status: REFUTED
+  key_finding: Hierarchical goal does NOT outperform flat on 100-200 steps (-0.6%)
+- id: H3.101
+  status: PARTIAL
+  key_finding: SSM+Goal vs Attn+Goal +3.0%, vs SSM -1.8%
+- id: H1.210
+  status: REFUTED
+  key_finding: Bidirectional loses -1.9% vs goal-conditioned unidirectional
+- id: H1.211
   status: SUPPORTED
-  key_finding: Multi-scale goal decomposition (+6.3% over endpoint), subgoal best (+20.1%)
+  key_finding: Hier+Bi marginal improvement +0.9% on extreme complexity (200-400 steps)
