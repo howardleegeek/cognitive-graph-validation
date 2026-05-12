@@ -109,15 +109,88 @@ experiments:
       status: SUPPORTED
       note: Combined provides +46.9% on 300-500 step sequences, +33.4% over endpoint
     timestamp: '2026-05-11T18:30:00.000000'
-  - description: Endpoint goal on 150+ step sequences
-    experiment_id: H3.97
-    hypothesis: H3.97
+  - description: Attention on 20-40 step sequences with task structure
+    experiment_id: H3.105
+    hypothesis: H3.105
     result:
-      avg_delta: 31.2
-      attn_wins: 5
-      status: SUPPORTED
-      note: Attention wins 5/5 tested lengths (150-250 steps)
-    timestamp: '2026-05-11T17:30:00.000000'
+      avg_improvement: -93.1
+      attn_wins: 0
+      status: REFUTED
+      note: Attention fails on 20-40 step sequences without proper temporal structure
+    timestamp: '2026-05-11T22:00:00.000000'
+  - description: Attention with phase transitions on 50-150 step sequences
+    experiment_id: H3.106
+    hypothesis: H3.106
+    result:
+      avg_improvement: -72.0
+      hier_wins: 0
+      status: REFUTED
+      note: Phase transitions don't enable attention
+    timestamp: '2026-05-11T22:05:00.000000'
+  - description: Next-step prediction with attention (causal structure)
+    experiment_id: H3.107
+    hypothesis: H3.107
+    result:
+      avg_improvement: -45.8
+      attn_wins: 0
+      status: REFUTED
+      note: Causal structure alone doesn't enable attention
+    timestamp: '2026-05-11T22:10:00.000000'
+  - description: Neural attention vs concatenation (properly trained)
+    experiment_id: H3.108
+    hypothesis: H3.108
+    result:
+      avg_improvement: -1563537.9
+      attn_wins: 0
+      status: REFUTED
+      note: Neural attention diverges, concat stable
+    timestamp: '2026-05-11T22:15:00.000000'
+  - description: Attention with real robot temporal structure (autocorrelation)
+    experiment_id: H3.109
+    hypothesis: H3.109
+    result:
+      avg_improvement: -16.1
+      attn_wins: 1
+      status: REFUTED
+      note: Real robot structure doesn't enable attention
+    timestamp: '2026-05-11T22:20:00.000000'
+  - description: Learned attention patterns for manipulation
+    experiment_id: H3.110
+    hypothesis: H3.110
+    result:
+      avg_improvement: -88.8
+      attn_wins: 0
+      status: REFUTED
+      note: Phase-aware attention hurts manipulation tasks
+    timestamp: '2026-05-11T22:25:00.000000'
+  - description: Data structure comparison (random vs smooth vs robot-like)
+    experiment_id: H3.111
+    hypothesis: H3.111
+    result:
+      random_improvement: 7.9
+      smooth_improvement: -91.6
+      robot_improvement: -20.2
+      status: INCONCLUSIVE
+      note: Attention helps on random, hurts on structured data
+    timestamp: '2026-05-11T22:30:00.000000'
+  - description: Hierarchical goal decomposition for long sequences
+    experiment_id: H1.216
+    hypothesis: H1.216
+    result:
+      avg_improvement: -507.3
+      hier_wins: 0
+      status: REFUTED
+      note: Hierarchical approach fails on 100-300 step sequences
+    timestamp: '2026-05-11T21:45:00.000000'
+  - description: Complex multi-step tasks with goal conditioning
+    experiment_id: H1.215
+    hypothesis: H1.215
+    result:
+      avg_improvement: -4.5
+      attn_wins: 3
+      status: REFUTED
+      note: Attention marginal at 50-100 steps, worse at 20-40
+    timestamp: '2026-05-11T21:40:00.000000'
   - description: Test at 1000+ demonstrations scale
     experiment_id: 150-larger_scale
     hypothesis: H1.150
@@ -362,3 +435,30 @@ hypotheses:
 - id: H1.214
   status: SUPPORTED
   key_finding: Endpoint goal best (+95.1%), trajectory hurts (-133.9%), subgoals (-21.7%)
+- id: H1.215
+  status: REFUTED
+  key_finding: Attention marginal at 50-100 steps (-4.5% avg), worse at 20-40 steps
+- id: H1.216
+  status: REFUTED
+  key_finding: Hierarchical goal decomposition -507.3% (fails on 100-300 steps)
+- id: H3.105
+  status: REFUTED
+  key_finding: Attention fails on 20-40 step sequences (-93.1%)
+- id: H3.106
+  status: REFUTED
+  key_finding: Phase transitions don't enable attention (-72.0%)
+- id: H3.107
+  status: REFUTED
+  key_finding: Causal structure alone doesn't enable attention (-45.8%)
+- id: H3.108
+  status: REFUTED
+  key_finding: Neural attention diverges during training
+- id: H3.109
+  status: REFUTED
+  key_finding: Real robot temporal structure doesn't enable attention (-16.1%)
+- id: H3.110
+  status: REFUTED
+  key_finding: Phase-aware attention hurts manipulation (-88.8%)
+- id: H3.111
+  status: INCONCLUSIVE
+  key_finding: Attention helps random (+7.9%), hurts smooth (-91.6%) and robot (-20.2%)

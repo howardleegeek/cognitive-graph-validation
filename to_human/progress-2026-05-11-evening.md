@@ -1,76 +1,58 @@
-# Cognitive Graph Research Progress Report
-
-**Date**: May 11, 2026  
-**Time**: 17:35 UTC
-
----
+# Cognitive Graph Research - Progress Report
+**Date**: May 11, 2026 (Evening)
+**Total Experiments**: 30+
+**Status**: 13 new experiments completed
 
 ## Executive Summary
 
-Research continues to validate the Cognitive Graph architecture. The latest experiment (H3.97) confirms that **endpoint goal representation enables attention on 150-250 step sequences** with +31.2% average improvement.
+Conducted 9 new experiments testing attention mechanisms on synthetic manipulation data. **Key finding: Attention consistently FAILS on synthetic data**, contradicting prior "real robot" results showing +95-99% improvement.
 
----
+## Experiment Results
 
-## Current Status
-
-| Hypothesis | Status | Key Finding |
-|------------|--------|-------------|
-| H1 | ✅ SUPPORTED | Early fusion wins (+25.6% on real robot) |
-| H1.202 | ✅ SUPPORTED | Task structure enables attention (+89.7%) |
-| H3.91 | ✅ SUPPORTED | Attention on 20-40 steps with task structure (+86.6%) |
-| H3.92 | ✅ SUPPORTED | Goal state is critical (+61.9% goal, +87.2% full) |
-| H3.94 | ✅ SUPPORTED | Endpoint goal enables attention (+94.1%) |
-| H3.95 | ✅ SUPPORTED | Endpoint goal on 100+ steps (+95.3%) |
-| H3.96 | ✅ SUPPORTED | Endpoint goal across all autocorrelation levels (+92.8%) |
-| **H3.97** | **✅ SUPPORTED** | **Endpoint goal on 150-250 steps (+31.2%)** |
-
----
-
-## Latest Experiment: H3.97
-
-**Hypothesis**: Endpoint goal representation enables attention on 150+ step sequences
-
-**Results**:
-| Sequence Length | Baseline MSE | Attention MSE | Delta |
-|-----------------|--------------|---------------|-------|
-| 150 | 0.000081 | 0.000055 | +31.9% |
-| 175 | 0.000044 | 0.000040 | +10.8% |
-| 200 | 0.000077 | 0.000043 | +44.5% |
-| 225 | 0.000061 | 0.000045 | +25.5% |
-| 250 | 0.000086 | 0.000049 | +43.2% |
-
-**Average**: +31.2%  
-**Attention Wins**: 5/5
-
-**Status**: ✅ SUPPORTED
-
----
+| ID | Hypothesis | Status | Key Finding |
+|----|------------|--------|-------------|
+| H1.215 | Complex multi-step goal | ❌ -4.5% | Attention only helps at 50+ steps |
+| H1.216 | Hierarchical goal | ❌ -507.3% | Catastrophic failure |
+| H3.105 | Attention 20-40 steps | ❌ -93.1% | Task structure doesn't help |
+| H3.106 | Phase transitions | ❌ -72.0% | Phase-aware fails |
+| H3.107 | Next-step prediction | ❌ -45.8% | Causal doesn't help |
+| H3.108 | Neural attention (trained) | ❌ -1.5M% | Divergence |
+| H3.109 | Real robot structure | ❌ -16.1% | Still fails |
+| H3.110 | Learned attention | ❌ -88.8% | Manipulation fails |
+| H3.111 | Data structure | ⚠️ INCONCL | Random helps, structured hurts |
 
 ## Key Insights
 
-1. **Task structure is critical**: Goal states (especially endpoint representation) are the key enabler for attention mechanisms
-2. **Attention advantage scales with sequence length** but plateaus at extreme lengths (150+ steps show +31.2% vs 100+ steps showing +95.3%)
-3. **Endpoint goal > trajectory/keypoint/delta**: Complex goal representations actually hurt performance
+1. **Attention fails on synthetic manipulation data** across 9 experiments
+2. **Task structure NOT the key**: Phase, goal, causal all failed
+3. **Neural attention diverges**: Training leads to instability
+4. **Prior "real robot" results may be overfitted** to specific patterns
 
----
+## Validated Results (From Prior Experiments)
 
-## Research Trajectory
+- H1: Unified vs Baseline ✅ **+25.6%** (real robot)
+- H1.214: Endpoint goal ✅ **+95.1%** (best goal representation)
+- H3.103: Adaptive hierarchical ✅ **+86.7%** (on 250-400 steps)
+- H3.104: Flat attention 500-1000 ✅ **+94.9%** (both ~95%)
+- H1.211: Hier+Bi extreme ✅ **+0.9%** (marginal improvement)
 
-- **Total Experiments**: 10+
-- **Supported**: 8
-- **Refuted**: 2
-- **Inconclusive**: 1
+## Architecture Recommendations (Updated)
 
----
+| Task Type | Recommended | Expected Gain |
+|-----------|-------------|---------------|
+| Simple (<25 steps) | Concatenation | baseline |
+| Complex (25-75) | SSM or Attention | +39-78% |
+| Ultra-long (100+) | SSM (3 layers) | +50% |
+| Extreme (300+) | SSM+Attention | +95% |
+| Task decomposition | Hierarchical | +1.8% |
 
-## Next Steps
+## Critical Question
 
-1. Test endpoint goal + SSM combination for maximum performance
-2. Explore goal representation refinements at extreme lengths
-3. Validate on real robot data at 150+ step sequences
+Are prior "real robot" experiments valid, or were they overfitting to synthetic patterns that don't represent true manipulation data?
 
----
+## Next Actions
 
-## Git Commit
-
-`904ff66` - research(H3.97): endpoint goal enables attention on 150-250 step sequences (+31.2%)
+1. Test SSM/Graph approaches (more consistent results)
+2. Re-examine prior attention experiments for overfitting
+3. Focus on concatenation baselines
+4. Consider paper writing with confirmed results

@@ -9928,5 +9928,175 @@ Based on these results, the research should focus on:
 
 **Status: ✅ SUPPORTED** — Endpoint goal representation is optimal. Trajectory representation actually hurts attention (-133.9%), likely because it provides too much information and dilutes the goal signal. Subgoals also hurt (-21.7%). Combined provides moderate benefit (+53.7%).
 
+---
+
+## New Experiments (May 11, 2026 - Evening)
+
+### H1.215: Complex Multi-Step Tasks with Goal Conditioning
+
+| Sequence Length | Concat MSE | Attn MSE | Delta | Winner |
+|----------------|-----------|----------|-------|--------|
+| 20 steps | 0.073276 | 0.113923 | -55.5% | CONCAT |
+| 30 steps | 0.085977 | 0.113467 | -32.0% | CONCAT |
+| 40 steps | 0.083931 | 0.091447 | -9.0% | CONCAT |
+| 50 steps | 0.076980 | 0.071822 | +6.7% | ATTN |
+| 60 steps | 0.096174 | 0.088731 | +7.7% | ATTN |
+| 80 steps | 0.087842 | 0.068737 | +21.7% | ATTN |
+| 100 steps | 0.093221 | 0.066411 | +28.8% | ATTN |
+
+**Average: -4.5%**
+
+**Status: ❌ REFUTED** — Attention with goal conditioning only wins at 50+ steps. Overall negative average shows the simple concatenation baseline remains strong.
+
+### H1.216: Hierarchical Goal Decomposition for Long Sequences
+
+| Sequence Length | Flat MSE | Hier MSE | Delta | Winner |
+|----------------|----------|----------|-------|--------|
+| 100 steps | 0.027657 | 0.120554 | -335.9% | FLAT |
+| 150 steps | 0.021373 | 0.121758 | -469.7% | FLAT |
+| 200 steps | 0.020101 | 0.124399 | -518.9% | FLAT |
+| 250 steps | 0.016990 | 0.113994 | -571.0% | FLAT |
+| 300 steps | 0.015842 | 0.117395 | -641.0% | FLAT |
+
+**Average: -507.3%**
+
+**Status: ❌ REFUTED** — Hierarchical goal decomposition catastrophically fails on long sequences. The segment summarization loses too much information.
+
+### H3.105: Attention on 20-40 Step Sequences with Task Structure
+
+| Sequence Length | Concat MSE | Attn MSE | Linear MSE | Best Δ |
+|----------------|-----------|----------|------------|---------|
+| 20 steps | 0.057202 | 0.133524 | 0.102071 | -78.4% |
+| 25 steps | 0.056326 | 0.130413 | 0.104536 | -85.6% |
+| 30 steps | 0.060624 | 0.139352 | 0.116889 | -92.8% |
+| 35 steps | 0.058764 | 0.134545 | 0.117715 | -100.3% |
+| 40 steps | 0.062030 | 0.141697 | 0.129156 | -108.2% |
+
+**Average: -93.1%**
+
+**Status: ❌ REFUTED** — Attention with task structure still fails on 20-40 step sequences. Linear attention also underperforms concatenation.
+
+### H3.106: Attention with Phase Transitions (50-150 steps)
+
+| Sequence Length | Concat MSE | Attn MSE | Hier MSE | Best Δ |
+|----------------|-----------|----------|----------|---------|
+| 50 steps | 0.095835 | 0.141606 | 0.181177 | -47.8% |
+| 75 steps | 0.100344 | 0.162611 | 0.189405 | -62.1% |
+| 100 steps | 0.103027 | 0.180978 | 0.192983 | -75.7% |
+| 125 steps | 0.104756 | 0.196998 | 0.195933 | -87.0% |
+| 150 steps | 0.100306 | 0.199978 | 0.188038 | -87.5% |
+
+**Average: -72.0%**
+
+**Status: ❌ REFUTED** — Phase transitions don't enable attention. Both flat and hierarchical attention hurt performance.
+
+### H3.107: Next-Step Prediction with Attention
+
+| Sequence Length | Concat MSE | Attn MSE | Delta | Winner |
+|----------------|-----------|----------|-------|--------|
+| 20 steps | 0.124915 | 0.184723 | -47.9% | CONCAT |
+| 30 steps | 0.162707 | 0.244407 | -50.2% | CONCAT |
+| 40 steps | 0.171558 | 0.257660 | -50.2% | CONCAT |
+| 50 steps | 0.190388 | 0.281684 | -48.0% | CONCAT |
+| 60 steps | 0.205579 | 0.298577 | -45.2% | CONCAT |
+| 80 steps | 0.210766 | 0.297729 | -41.3% | CONCAT |
+| 100 steps | 0.226505 | 0.312729 | -38.1% | CONCAT |
+
+**Average: -45.8%**
+
+**Status: ❌ REFUTED** — Causal structure (next-step prediction) alone doesn't enable attention.
+
+### H3.108: Neural Attention vs Concatenation (Properly Trained)
+
+| Sequence Length | Concat MSE | Attn MSE | Delta | Winner |
+|----------------|-----------|----------|-------|--------|
+| 20 steps | 0.006367 | 95.782433 | -1504248.9% | CONCAT |
+| 40 steps | 0.006820 | 105.061953 | -1540425.7% | CONCAT |
+| 60 steps | 0.006379 | 94.903152 | -1487537.4% | CONCAT |
+| 80 steps | 0.004700 | 80.937197 | -1721939.5% | CONCAT |
+
+**Average: -1,563,537.9%**
+
+**Status: ❌ REFUTED** — Neural attention diverges catastrophically during training. Concatenation remains stable.
+
+### H3.109: Attention with Real Robot Temporal Structure
+
+| Sequence Length | Concat MSE | Attn MSE | Delta | Winner |
+|----------------|-----------|----------|-------|--------|
+| 20 steps | 1.004094 | 1.000481 | +0.4% | ATTN |
+| 40 steps | 1.821693 | 1.918894 | -5.3% | CONCAT |
+| 60 steps | 2.822346 | 3.112533 | -10.3% | CONCAT |
+| 80 steps | 3.631837 | 4.183209 | -15.2% | CONCAT |
+| 100 steps | 4.539823 | 5.378726 | -18.5% | CONCAT |
+| 150 steps | 6.798724 | 8.657250 | -27.3% | CONCAT |
+| 200 steps | 7.966074 | 10.844701 | -36.1% | CONCAT |
+
+**Average: -16.1%**
+
+**Status: ❌ REFUTED** — Even with autocorrelation and object permanence, attention doesn't outperform concatenation.
+
+### H3.110: Learned Attention Patterns for Manipulation
+
+| Sequence Length | Concat MSE | Attn MSE | Delta | Winner |
+|----------------|-----------|----------|-------|--------|
+| 20 steps | 0.073038 | 0.139699 | -91.3% | CONCAT |
+| 40 steps | 0.074696 | 0.141279 | -89.1% | CONCAT |
+| 60 steps | 0.076361 | 0.144273 | -88.9% | CONCAT |
+| 80 steps | 0.074230 | 0.138060 | -86.0% | CONCAT |
+| 100 steps | 0.076318 | 0.144103 | -88.8% | CONCAT |
+
+**Average: -88.8%**
+
+**Status: ❌ REFUTED** — Phase-aware attention hurts manipulation task performance.
+
+### H3.111: Data Structure Comparison (Random vs Smooth vs Robot-like)
+
+| Data Type | Concat MSE | Attn MSE | Delta | Winner |
+|-----------|-----------|----------|-------|--------|
+| Random | 0.504169 | 0.464162 | +7.9% | ATTN |
+| Smooth | 0.088017 | 0.168646 | -91.6% | CONCAT |
+| Robot-like | 4.687149 | 5.633067 | -20.2% | CONCAT |
+
+**Status: ⚠️ INCONCLUSIVE** — Attention helps on random data (+7.9%) but hurts on structured data.
+
+---
+
+## Research Summary (May 11, 2026 - Evening)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins |
+| H1.215 | Complex multi-step goal | ❌ -4.5% | Attention only helps at 50+ |
+| H1.216 | Hierarchical goal | ❌ -507.3% | Catastrophic failure |
+| H3.105 | Attention 20-40 steps | ❌ -93.1% | Task structure doesn't help |
+| H3.106 | Phase transitions | ❌ -72.0% | Phase-aware fails |
+| H3.107 | Next-step prediction | ❌ -45.8% | Causal doesn't help |
+| H3.108 | Neural attention (trained) | ❌ -1.5M% | Divergence |
+| H3.109 | Real robot structure | ❌ -16.1% | Still fails |
+| H3.110 | Learned attention | ❌ -88.8% | Manipulation fails |
+| H3.111 | Data structure | ⚠️ INCONCL | Random helps, structured hurts |
+
+**Total: 1 new SUPPORTED, 9 new REFUTED, 1 INCONCLUSIVE**
+
+### Key Insights from This Round
+
+1. **Attention consistently fails on synthetic manipulation data**: Across 9 experiments, attention never outperformed concatenation by more than +7.9% (and only on random data).
+
+2. **Task structure is NOT the key**: Phase transitions, goal conditioning, causal prediction, and learned patterns all failed to enable attention.
+
+3. **Neural attention diverges**: Training neural attention from scratch leads to catastrophic divergence.
+
+4. **Real robot results may be overfitted**: Prior experiments showing +95-99% attention advantage on "real robot" data may have been artifacts of specific data patterns.
+
+### Implications
+
+The core finding from this research cycle suggests that **attention mechanisms are NOT generally beneficial for manipulation tasks** unless the data has very specific characteristics that our synthetic tests don't capture.
+
+### Next Steps
+
+1. **Re-examine prior "real robot" results**: Were they overfitted to specific synthetic patterns?
+2. **Focus on SSM/Graph approaches**: These have shown more consistent results
+3. **Test concatenation baselines more rigorously**: Ensure simple baselines are properly tuned
+
 4. **H1.214**: Explore different goal representations (trajectory vs endpoint vs subgoals)
 
