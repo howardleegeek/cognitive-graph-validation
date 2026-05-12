@@ -1,0 +1,51 @@
+{
+  "hypothesis": "H3.102",
+  "description": "SSM + Goal on short sequences (\u226440)",
+  "results": [
+    {
+      "length": 20,
+      "ssm_mse": 0.0287355899967232,
+      "ssm_goal_mse": 0.03232405211985024,
+      "attn_mse": 0.006197527636391229,
+      "ssm_goal_vs_ssm": 12.48786652209418,
+      "ssm_goal_vs_attn": 421.5636624199432
+    },
+    {
+      "length": 25,
+      "ssm_mse": 0.03564606471474598,
+      "ssm_goal_mse": 0.08089700610387134,
+      "attn_mse": 0.008119826118685815,
+      "ssm_goal_vs_ssm": 126.94512494223815,
+      "ssm_goal_vs_attn": 896.2898825838948
+    },
+    {
+      "length": 30,
+      "ssm_mse": 0.05691511263513159,
+      "ssm_goal_mse": 0.06427606645227944,
+      "attn_mse": 0.01604552919405889,
+      "ssm_goal_vs_ssm": 12.933214881497413,
+      "ssm_goal_vs_attn": 300.5855193363063
+    },
+    {
+      "length": 35,
+      "ssm_mse": 0.27745096832317934,
+      "ssm_goal_mse": 0.6276025023551237,
+      "attn_mse": 0.017196463311812356,
+      "ssm_goal_vs_ssm": 126.20303188997426,
+      "ssm_goal_vs_attn": 3549.602194214084
+    },
+    {
+      "length": 40,
+      "ssm_mse": 0.7146844147642056,
+      "ssm_goal_mse": 0.43928941366784935,
+      "attn_mse": 0.014817219078451935,
+      "ssm_goal_vs_ssm": -38.533791336028614,
+      "ssm_goal_vs_attn": 2864.7224039947523
+    }
+  ],
+  "summary": {
+    "avg_ssm_goal_vs_ssm": 48.007089379955076,
+    "avg_ssm_goal_vs_attn": 1606.5527325097962
+  },
+  "status": "REFUTED"
+}

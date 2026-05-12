@@ -1,6 +1,24 @@
 experiments:
-  total_runs: 16
+  total_runs: 20
   trajectory:
+  - description: Hierarchical goal reasoning on 200-300 step sequences
+    experiment_id: H1.212
+    hypothesis: H1.212
+    result:
+      avg_delta: 0.8
+      hier_wins: 3
+      status: PARTIAL
+      note: Wins at 200-250, loses at 275-300
+    timestamp: '2026-05-11T19:15:00.000000'
+  - description: SSM + Goal conditioning on short sequences (≤40 steps)
+    experiment_id: H3.102
+    hypothesis: H3.102
+    result:
+      avg_ssm_goal_vs_ssm: 48.0
+      avg_ssm_goal_vs_attn: 1606.6
+      status: REFUTED
+      note: Attention dominates all lengths
+    timestamp: '2026-05-11T19:20:00.000000'
   - description: Hierarchical goal reasoning on 100-200 step sequences
     experiment_id: H1.209
     hypothesis: H1.209
@@ -298,3 +316,9 @@ hypotheses:
 - id: H1.211
   status: SUPPORTED
   key_finding: Hier+Bi marginal improvement +0.9% on extreme complexity (200-400 steps)
+- id: H1.212
+  status: PARTIAL
+  key_finding: Hier wins at 200-250 steps, flat wins at 275-300
+- id: H3.102
+  status: REFUTED
+  key_finding: SSM+Goal doesn't help on short sequences, attention dominates

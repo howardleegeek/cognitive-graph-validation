@@ -9830,6 +9830,8 @@ The endpoint goal (final target state) provides:
 | H1.211 | Hier+Bi extreme complexity | ✅ +0.9% | Marginal improvement |
 | H3.100 | Multi-scale goal | ✅ +6.3% | Subgoal best (+20.1%) |
 | H1.208 | Ultra-long combined goals | ✅ +46.9% | Combined wins 5/5 |
+| H1.212 | Hierarchical 200-300 steps | ⚠️ PARTIAL | Wins at 200-250, loses at 275-300 |
+| H3.102 | SSM + Goal on short sequences | ❌ REFUTED | Attention dominates all lengths |
 
 **Total: 4 new experiments completed**
 **Results: 1 SUPPORTED (marginal), 1 PARTIAL, 2 REFUTED**
@@ -9847,8 +9849,41 @@ The endpoint goal (final target state) provides:
 ### Next Directions
 
 Based on these results, the research should focus on:
-1. **H1.212**: Test hierarchical goals on 200-300 step range (between the two findings)
+1. **H1.212**: Test hierarchical goals on 200-300 step range (between the two findings) — ✅ COMPLETED (PARTIAL)
 2. **H1.213**: Optimal number of subgoals - how many milestones before diminishing returns?
-3. **H3.102**: Test if SSM benefits from goal conditioning ONLY at short sequences
+3. **H3.102**: Test if SSM benefits from goal conditioning ONLY at short sequences — ✅ COMPLETED (REFUTED)
+
+---
+
+## New Experiments Results (May 11, 2026 Evening)
+
+### H1.212: Hierarchical on 200-300 Step Sequences
+
+| Length | Flat MSE | Hier MSE | Delta | Winner |
+|--------|----------|----------|-------|--------|
+| 200 | 0.0744 | 0.0740 | -0.6% | HIERARCHICAL |
+| 225 | 0.0699 | 0.0678 | -3.0% | HIERARCHICAL |
+| 250 | 0.0696 | 0.0674 | -3.2% | HIERARCHICAL |
+| 275 | 0.0731 | 0.0750 | +2.6% | FLAT |
+| 300 | 0.0599 | 0.0649 | +8.4% | FLAT |
+
+**Average: Flat MSE 0.0694, Hier MSE 0.0698, +0.8%**
+**Hier Wins: 3/5**
+
+**Status: ⚠️ PARTIAL** — Hierarchical wins at 200-250 steps, flat wins at 275-300. Sweet spot in the 200-250 range.
+
+### H3.102: SSM + Goal on Short Sequences (≤40)
+
+| Length | SSM MSE | SSM+Goal MSE | Attn MSE | SSM+Goal vs SSM |
+|--------|---------|--------------|----------|-----------------|
+| 20 | 0.0287 | 0.0323 | 0.0062 | +12.5% |
+| 25 | 0.0356 | 0.0809 | 0.0081 | +126.9% |
+| 30 | 0.0569 | 0.0643 | 0.0160 | +12.9% |
+| 35 | 0.2775 | 0.6276 | 0.0172 | +126.2% |
+| 40 | 0.7147 | 0.4393 | 0.0148 | -38.5% |
+
+**Average: SSM+Goal vs SSM +48.0%, vs Attn +1606.6%**
+
+**Status: ❌ REFUTED** — SSM+Goal doesn't help on short sequences. Attention dominates across all lengths.
 4. **H1.214**: Explore different goal representations (trajectory vs endpoint vs subgoals)
 
