@@ -1,6 +1,39 @@
 experiments:
-  total_runs: 26
+  total_runs: 29
   trajectory:
+  - description: SSM+HierGoals on 100-200 step sequences
+    experiment_id: H1.219
+    hypothesis: H1.219
+    result:
+      avg_ssm_delta: -8.8
+      avg_hier_delta: -8.8
+      ssm_wins: 0
+      hier_wins: 0
+    status: REFUTED
+    note: Concatenation wins on 100-200 step sequences
+    timestamp: '2026-05-11T23:57:00.000000'
+  - description: SSM+HierGoals on 50-100 step sequences
+    experiment_id: H1.220
+    hypothesis: H1.220
+    result:
+      avg_ssm_delta: -1.8
+      avg_hier_delta: -1.9
+      ssm_wins: 0
+      hier_wins: 0
+    status: REFUTED
+    note: Concatenation competitive on 50-100 step sequences
+    timestamp: '2026-05-11T23:58:00.000000'
+  - description: Attention on 20-40 step sequences WITH goal conditioning
+    experiment_id: H3.115
+    hypothesis: H3.115
+    result:
+      avg_attn_delta: 3.9
+      avg_ssm_delta: -35.7
+      attn_wins: 2
+      ssm_wins: 0
+    status: INCONCLUSIVE
+    note: Attention wins 2/5 lengths on 20-40 steps with goal states
+    timestamp: '2026-05-11T23:59:00.000000'
   - description: SSM+HierGoals on 500-700 step ultra-long sequences
     experiment_id: H3.114
     hypothesis: H3.114
@@ -527,3 +560,12 @@ hypotheses:
 - id: H1.218
   status: INCONCLUSIVE
   key_finding: Hybrid attention+SSM inconclusive, concat wins 6/8 lengths (+9.6% avg)
+- id: H1.219
+  status: REFUTED
+  key_finding: SSM+HierGoals loses -8.8% on 100-200 step sequences, concat wins
+- id: H1.220
+  status: REFUTED
+  key_finding: SSM+HierGoals loses -1.8% on 50-100 step sequences, close to concat
+- id: H3.115
+  status: INCONCLUSIVE
+  key_finding: Attention wins 2/5 lengths (+3.9% avg) on 20-40 steps WITH goal conditioning

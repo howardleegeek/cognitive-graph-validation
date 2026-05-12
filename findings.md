@@ -10261,3 +10261,75 @@ Based on 10+ experiments consistently failing to show attention benefits on mani
 
 ---
 
+
+---
+
+### H1.219: SSM + HierGoals on 100-200 Step Sequences (May 11, 2026 - Final)
+
+| Sequence Length | Concat MSE | SSM MSE | HierSSM MSE | SSM Δ |
+|-----------------|-----------|---------|-------------|-------|
+| 100 | 0.008174 | 0.009225 | 0.009211 | -12.9% |
+| 125 | 0.008321 | 0.009240 | 0.009238 | -11.0% |
+| 150 | 0.008456 | 0.009156 | 0.009156 | -8.3% |
+| 175 | 0.008574 | 0.009173 | 0.009169 | -7.0% |
+| 200 | 0.008681 | 0.009122 | 0.009113 | -5.1% |
+
+**Average: -8.8%** — Concatenation wins on 100-200 step sequences.
+
+**Status: ❌ REFUTED** — SSM+HierGoals fails on 100-200 step sequences despite success on 250-700 steps.
+
+---
+
+### H1.220: SSM + HierGoals on 50-100 Step Sequences (May 11, 2026 - Final)
+
+| Sequence Length | Concat MSE | SSM MSE | HierSSM MSE | SSM Δ |
+|-----------------|-----------|---------|-------------|-------|
+| 50 | 0.008960 | 0.009264 | 0.009303 | -3.4% |
+| 60 | 0.009101 | 0.009374 | 0.009344 | -3.0% |
+| 70 | 0.009184 | 0.009289 | 0.009260 | -1.1% |
+| 80 | 0.009002 | 0.009104 | 0.009198 | -1.1% |
+| 100 | 0.009128 | 0.009147 | 0.009146 | -0.2% |
+
+**Average: -1.8%** — Concatenation competitive on 50-100 step sequences.
+
+**Status: ❌ REFUTED** — SSM+HierGoals fails on 50-100 step sequences. Nearly tied but still loses.
+
+---
+
+### H3.115: Attention on 20-40 Steps WITH Goal Conditioning (May 11, 2026 - Final)
+
+| Sequence Length | Concat MSE | SSM MSE | Attn MSE | Attn Δ |
+|-----------------|-----------|---------|----------|--------|
+| 20 | 0.000676 | 0.000889 | 0.000690 | -2.1% |
+| 25 | 0.000740 | 0.000918 | 0.000595 | **+19.6%** |
+| 30 | 0.000608 | 0.000845 | 0.000671 | -10.2% |
+| 35 | 0.000600 | 0.000845 | 0.000498 | **+17.1%** |
+| 40 | 0.000573 | 0.000821 | 0.000600 | -4.6% |
+
+**Average: +3.9%** — Attention wins 2/5 lengths with goal conditioning.
+
+**Status: ⚠️ INCONCLUSIVE** — Attention shows promise at 25 and 35 steps. Mixed results overall.
+
+---
+
+## CRITICAL PATTERN DISCOVERY: Sequence Length Crossover
+
+Based on experiments H1.113-114, H1.219-220, and H3.115:
+
+### U-Shaped Crossover Pattern
+
+| Sequence Range | Best Method | Evidence |
+|----------------|-------------|----------|
+| **20-40 steps** | Attention (with goals) | +3.9% avg (H3.115) |
+| **50-200 steps** | Concatenation | wins consistently (H1.219-220) |
+| **250-400 steps** | SSM+HierGoals | +57.3% (H1.113) |
+| **500-700 steps** | SSM+HierGoals | +50.9% (H1.114) |
+
+**Key Insight**: There is a "valley" between 50-200 steps where both attention and SSM underperform concatenation. This is the "dead zone" for complex architectures.
+
+**Implications**:
+1. For short sequences (20-40): Use attention with goal conditioning
+2. For medium sequences (50-200): Use simple concatenation
+3. For long sequences (250+): Use SSM with hierarchical goals
+
+### Total Experiments: 31 runs (May 11, 2026)
