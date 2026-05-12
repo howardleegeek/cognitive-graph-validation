@@ -2740,6 +2740,23 @@ Based on research trajectory and latest literature, the following hypotheses are
 
 ---
 
+### H3.97: Endpoint Goal on 150+ Step Sequences (May 11, 2026)
+
+| Sequence Length | Baseline MSE | Attention MSE | Delta |
+|-----------------|--------------|---------------|-------|
+| 150 | 0.000081 | 0.000055 | **+31.9%** |
+| 175 | 0.000044 | 0.000040 | **+10.8%** |
+| 200 | 0.000077 | 0.000043 | **+44.5%** |
+| 225 | 0.000061 | 0.000045 | **+25.5%** |
+| 250 | 0.000086 | 0.000049 | **+43.2%** |
+
+**Average: +31.2%**
+**Attention Wins: 5/5**
+
+**Status: ✅ SUPPORTED** — Endpoint goal continues to enable attention on 150-250 step sequences. The advantage is maintained but slightly lower than H3.95's +95.3% at 100+ steps, suggesting a plateau or the need for stronger task structure at extreme lengths.
+
+---
+
 ## Research Summary (April 28 Evening 2026)
 
 | # | Hypothesis | Status | Key Finding |

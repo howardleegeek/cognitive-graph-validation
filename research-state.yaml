@@ -1,5 +1,5 @@
 experiments:
-  total_runs: 9
+  total_runs: 10
   trajectory:
   - description: Test at 1000+ demonstrations scale
     experiment_id: 150-larger_scale
@@ -128,6 +128,15 @@ experiments:
       status: SUPPORTED
       note: Attention wins 6/6 rho levels, strongest at rho=0.85 (+96.5%)
     timestamp: '2026-05-11T12:15:00.000000'
+  - description: Endpoint goal on 150+ step sequences
+    experiment_id: H3.97
+    hypothesis: H3.97
+    result:
+      avg_delta: 31.2
+      attn_wins: 5
+      status: SUPPORTED
+      note: Attention wins 5/5 tested lengths (150-250 steps), advantage maintained but lower than 100+ steps
+    timestamp: '2026-05-11T17:30:00.000000'
 hypotheses:
 - id: H1
   status: SUPPORTED
@@ -171,3 +180,6 @@ hypotheses:
 - id: H3.96
   status: SUPPORTED
   key_finding: Endpoint goal enables attention across all autocorrelation levels (+92.8%)
+- id: H3.97
+  status: SUPPORTED
+  key_finding: Endpoint goal enables attention on 150-250 step sequences (+31.2%)
