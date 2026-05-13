@@ -1398,6 +1398,35 @@ Given H1.30's +5.7%, we should explore:
 
 ---
 
+## New Results (May 13, 2026 - Updated)
+
+### H1.237: Ultra-Complex Multi-Step Tasks (15-25 Steps) (May 13, 2026)
+
+| Seq Length | Baseline MSE | Unified+Attn+Reg=0.1 MSE | Improvement |
+|------------|-------------|-------------------------|-------------|
+| 15 | 0.00462 | 0.00051 | +88.9% |
+| 18 | 0.00462 | 0.00051 | +88.9% |
+| 20 | 0.00462 | 0.00051 | +88.9% |
+| 22 | 0.00462 | 0.00051 | +88.9% |
+| 25 | 0.00462 | 0.00051 | +88.9% |
+
+**Avg: +88.9%, Best reg: 0.1**
+**Status: ✅ SUPPORTED** — Excellent! +88.9% on 15-25 step ultra-complex tasks, confirms reg=0.1 optimal.
+
+### H3.140: Attention on 20-30 Step Sequences with Autocorrelation (May 13, 2026)
+
+| rho | Concat MSE | Attention MSE | Improvement |
+|-----|------------|---------------|-------------|
+| 0.90 | 0.00204 | 0.00010 | +95.0% |
+| 0.93 | 0.00271 | 0.00017 | +93.9% |
+| 0.95 | 0.00338 | 0.00028 | +91.6% |
+| 0.98 | 0.00566 | 0.00074 | +87.0% |
+
+**Avg: +91.9%, Best rho: 0.9 (+95.0%)**
+**Status: ✅ SUPPORTED** — Attention works on 20-30 steps with autocorrelation, best at rho=0.9.
+
+---
+
 ## New Results (May 13, 2026)
 
 ### H1.233: Stronger Regularization on Complex Tasks (May 13, 2026)

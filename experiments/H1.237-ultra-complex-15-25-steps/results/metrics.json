@@ -1,0 +1,22 @@
+{
+  "experiment_id": "H1.237",
+  "hypothesis": "H1.237",
+  "description": "Ultra-complex multi-step tasks (15-25 steps)",
+  "result": {
+    "baseline_mse": 0.00461918195443494,
+    "best_config": "unified_attn_reg_0.1",
+    "best_mse": 0.0005125868317138936,
+    "avg_improvement": 88.90308204417555,
+    "best_reg": 0.1,
+    "best_reg_improvement": 88.90308204417555,
+    "all_results": {
+      "baseline": 0.00461918195443494,
+      "unified_attn_reg_0.1": 0.0005125868317138936,
+      "unified_attn_reg_0.05": 0.0005188414610789291,
+      "unified_attn_reg_0.2": 0.0005126283254607447
+    }
+  },
+  "status": "SUPPORTED",
+  "note": "Optimal reg=0.1 on 15-25 step ultra-complex tasks (+88.9%)",
+  "timestamp": "2026-05-12T20:25:47.324078"
+}

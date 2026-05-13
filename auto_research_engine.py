@@ -49,7 +49,7 @@ class AutoResearchEngine:
                     "experiments": {
                         "total_runs": len(raw_state.get("hypotheses", [])),
                         "trajectory": [
-                            {"experiment_id": h["id"], "description": h["statement"][:80], "result": {"improvement_percent": 0, "cognitive_graph_wins": h["status"] == "supported"}}
+                            {"experiment_id": h["id"], "description": h.get("key_finding", "")[:80], "result": {"improvement_percent": 0, "cognitive_graph_wins": h["status"] == "supported"}}
                             for h in raw_state.get("hypotheses", [])[-10:]
                         ]
                     },

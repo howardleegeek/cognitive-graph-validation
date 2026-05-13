@@ -1,0 +1,27 @@
+{
+  "experiment_id": "H3.140",
+  "hypothesis": "H3.140",
+  "description": "Attention on 20-30 step sequences with autocorrelation",
+  "result": {
+    "avg_improvement": 91.86497924770057,
+    "best_rho": 0.9,
+    "best_improvement": 95.0029143583446,
+    "all_results": {
+      "concat_rho_0.9": 0.0020385869179985355,
+      "attn_rho_0.9": 0.00010186993417197041,
+      "improvement_rho_0.9": 95.0029143583446,
+      "concat_rho_0.93": 0.002705645398236811,
+      "attn_rho_0.93": 0.00016631127800792456,
+      "improvement_rho_0.93": 93.85317536007103,
+      "concat_rho_0.95": 0.003376512821497662,
+      "attn_rho_0.95": 0.0002836445429628449,
+      "improvement_rho_0.95": 91.59948272202818,
+      "concat_rho_0.98": 0.005661390455705779,
+      "attn_rho_0.98": 0.0007357347972824105,
+      "improvement_rho_0.98": 87.00434455035852
+    }
+  },
+  "status": "SUPPORTED",
+  "note": "Attention on 20-30 steps with autocorrelation: best at rho=0.9 (+95.0%)",
+  "timestamp": "2026-05-12T20:26:58.597598"
+}
