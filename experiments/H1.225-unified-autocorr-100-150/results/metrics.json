@@ -1,0 +1,57 @@
+{
+  "hypothesis": "H1.225",
+  "rho": 0.95,
+  "timestamp": "2026-05-12T17:07:56.270821",
+  "experiments": [
+    {
+      "seq_len": 100,
+      "baseline_mse": 0.007648668614856433,
+      "unified_mse": 0.008657522495923331,
+      "improvement": -13.189927971351054,
+      "unified_wins": false
+    },
+    {
+      "seq_len": 110,
+      "baseline_mse": 0.007346569895003499,
+      "unified_mse": 0.008077485950515521,
+      "improvement": -9.949079175155303,
+      "unified_wins": false
+    },
+    {
+      "seq_len": 120,
+      "baseline_mse": 0.007243555596748289,
+      "unified_mse": 0.007376727438071005,
+      "improvement": -1.838487184146116,
+      "unified_wins": false
+    },
+    {
+      "seq_len": 130,
+      "baseline_mse": 0.007738395968425231,
+      "unified_mse": 0.007892586133138348,
+      "improvement": -1.9925339223045009,
+      "unified_wins": false
+    },
+    {
+      "seq_len": 140,
+      "baseline_mse": 0.007582087939205979,
+      "unified_mse": 0.008058305740705691,
+      "improvement": -6.280826670939184,
+      "unified_wins": false
+    },
+    {
+      "seq_len": 150,
+      "baseline_mse": 0.007128316172224004,
+      "unified_mse": 0.007697962284185148,
+      "improvement": -7.991313771698434,
+      "unified_wins": false
+    }
+  ],
+  "summary": {
+    "baseline_avg": 0.007447932364410572,
+    "unified_avg": 0.007960098340423175,
+    "avg_improvement": -6.87661958988715,
+    "unified_wins": 0,
+    "total_tests": 6
+  },
+  "status": "REFUTED"
+}

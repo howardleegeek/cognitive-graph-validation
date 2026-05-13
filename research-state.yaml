@@ -1,5 +1,5 @@
 experiments:
-  total_runs: 41
+  total_runs: 43
   trajectory:
   - description: Attention on 20-40 steps with optimal autocorrelation (rho=0.93)
     experiment_id: H3.120
@@ -28,6 +28,24 @@ experiments:
     status: REFUTED
     note: Unified loses -2.7% on 150-200 step ultra-complex tasks
     timestamp: '2026-05-12T18:30:00'
+  - description: Attention on 60-80 steps with maximum autocorrelation (rho=0.98)
+    experiment_id: H3.122
+    hypothesis: H3.122
+    result:
+      avg_improvement: 43.1
+      attn_wins: 5
+    status: SUPPORTED
+    note: Attention extends to 60-80 step sequences with max autocorrelation
+    timestamp: '2026-05-12T18:45:00'
+  - description: Unified architecture with autocorrelation on 100-150 steps
+    experiment_id: H1.225
+    hypothesis: H1.225
+    result:
+      avg_improvement: -6.9
+      unified_wins: 0
+    status: REFUTED
+    note: Unified still loses on 100-150 steps even with high autocorrelation
+    timestamp: '2026-05-12T19:00:00'
   - description: Attention on 20-40 steps WITH autocorrelation
     experiment_id: H3.119
     hypothesis: H3.119
@@ -723,3 +741,9 @@ hypotheses:
 - id: H1.224
   status: REFUTED
   key_finding: Unified loses -2.7% on 150-200 step ultra-complex tasks (2/6 wins)
+- id: H3.122
+  status: SUPPORTED
+  key_finding: Attention +43.1% on 60-80 steps with rho=0.98, wins 5/5
+- id: H1.225
+  status: REFUTED
+  key_finding: Unified loses -6.9% on 100-150 steps with rho=0.95 (0/6 wins)

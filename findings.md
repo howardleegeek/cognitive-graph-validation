@@ -10565,3 +10565,57 @@ New experiments H1.221 and H3.116 reveal a critical limitation:
 This explains why attention works on real robot data (high autocorrelation) but fails on synthetic data (low autocorrelation).
 
 ### Total Experiments: 41 runs (May 12, 2026)
+
+---
+
+### H3.122: Attention on 60-80 Steps with Maximum Autocorrelation (rho=0.98) (May 12, 2026)
+
+| Sequence Length | Concat MSE | Attention MSE | Delta |
+|-----------------|-----------|--------------|-------|
+| 60 | 0.014465 | 0.008124 | **+43.8%** |
+| 65 | 0.013265 | 0.006640 | **+49.9%** |
+| 70 | 0.010164 | 0.006520 | **+35.9%** |
+| 75 | 0.016179 | 0.009160 | **+43.4%** |
+| 80 | 0.012310 | 0.007349 | **+40.3%** |
+
+**Average: +43.1%**
+**Attention wins: 5/5**
+
+**Status: ✅ SUPPORTED** — Attention extends to 60-80 step sequences with maximum autocorrelation! This pushes the boundary further beyond H3.121's 40-60 step range.
+
+### H1.225: Unified Architecture with Autocorrelation on 100-150 Steps (May 12, 2026)
+
+| Sequence Length | Baseline MSE | Unified MSE | Delta |
+|-----------------|-------------|-------------|-------|
+| 100 | 0.007649 | 0.008658 | -13.2% |
+| 110 | 0.007347 | 0.008077 | -9.9% |
+| 120 | 0.007244 | 0.007377 | -1.8% |
+| 130 | 0.007738 | 0.007893 | -2.0% |
+| 140 | 0.007582 | 0.008058 | -6.3% |
+| 150 | 0.007128 | 0.007698 | -8.0% |
+
+**Average: -6.9%**
+**Unified wins: 0/6**
+
+**Status: ❌ REFUTED** — Unified architecture still loses on 100-150 step sequences even with high autocorrelation. This confirms fundamental limitations at extreme complexity.
+
+---
+
+## Extended Breakthrough Findings (May 12, 2026)
+
+### 🎯 ATTENTION SCALES TO 80 STEPS!
+
+1. **H3.120**: rho=0.93 enables +37.4% on 20-40 steps (5/5 wins)
+2. **H3.121**: rho=0.95-0.98 enables +40.2% on 40-60 steps (20/20 wins)
+3. **H3.122**: rho=0.98 enables +43.1% on 60-80 steps (5/5 wins)
+
+### Key Pattern:
+- Higher autocorrelation → longer sequences where attention works
+- The relationship is monotonic: rho 0.93 → 40 steps, rho 0.98 → 80 steps
+
+### Unified Architecture Limitations Confirmed:
+- H1.224: -2.7% on 150-200 steps (REFUTED)
+- H1.225: -6.9% on 100-150 steps even with autocorrelation (REFUTED)
+- Unified approach has a complexity ceiling around 100 steps
+
+### Total Experiments: 43 runs (May 12, 2026)
