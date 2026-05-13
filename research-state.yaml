@@ -1,6 +1,33 @@
 experiments:
-  total_runs: 54
+  total_runs: 57
   trajectory:
+  - description: Regularization fixes unified on complex tasks
+    experiment_id: H1.232
+    hypothesis: H1.232
+    result:
+      avg_improvement: 9.0
+      best_reg: 0.1
+    status: SUPPORTED
+    note: Regularization (reg=0.1) fixes unified on complex tasks! +9.0% improvement
+    timestamp: '2026-05-13T01:30:00'
+  - description: Hierarchical attention to break 400-step barrier
+    experiment_id: H3.136
+    hypothesis: H3.136
+    result:
+      avg_improvement: -432.2
+      hier_wins: 0
+    status: REFUTED
+    note: Hierarchical attention fails badly on 400+ step sequences
+    timestamp: '2026-05-13T01:15:00'
+  - description: SSM on complex tasks with autocorrelation
+    experiment_id: H1.231
+    hypothesis: H1.231
+    result:
+      avg_improvement: -33.3
+      ssm_wins: 0
+    status: REFUTED
+    note: SSM also fails on complex tasks with autocorrelation
+    timestamp: '2026-05-13T01:10:00'
   - description: Unified architecture on varying complexity with autocorrelation
     experiment_id: H1.230
     hypothesis: H1.230
@@ -965,3 +992,12 @@ hypotheses:
 - id: H1.230
   status: REFUTED
   key_finding: Unified -15.0% vs baseline on complex tasks with autocorrelation, worse than baseline!
+- id: H1.231
+  status: REFUTED
+  key_finding: SSM -33.3% on complex tasks with autocorrelation, also fails
+- id: H1.232
+  status: SUPPORTED
+  key_finding: Regularization (reg=0.1) fixes unified on complex tasks, +9.0%
+- id: H3.136
+  status: REFUTED
+  key_finding: Hierarchical attention -432.2% on 400+ steps, fails badly

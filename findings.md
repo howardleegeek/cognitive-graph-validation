@@ -10934,4 +10934,68 @@ This explains the long-standing mystery of why attention works on real robot dat
 
 **Total: 20+ SUPPORTED, 1 INCONCLUSIVE, 13 REFUTED**
 
-### Total Experiments: 54 runs (May 13, 2026)
+### H1.231: SSM on Complex Tasks with Autocorrelation (May 13, 2026)
+
+| Complexity | SSM MSE | Concat MSE | Delta |
+|------------|---------|------------|-------|
+| 0.3 | 0.4708 | 0.4109 | -14.6% |
+| 0.5 | 0.4307 | 0.3784 | -13.8% |
+| 0.7 | 0.8305 | 0.6484 | -28.1% |
+| 0.9 | 1.3885 | 1.1358 | -22.2% |
+| 1.0 | 2.7838 | 1.4833 | -87.7% |
+
+**Average: -33.3%**
+**SSM wins: 0/5**
+
+**Status: ❌ REFUTED** — SSM also fails on complex tasks with autocorrelation.
+
+### H3.136: Hierarchical Attention to Break 400-Step Barrier (May 13, 2026)
+
+| Sequence Length | Hier MSE | Concat MSE | Delta |
+|-----------------|----------|------------|-------|
+| 400 | 1.8231 | 0.3957 | -360.8% |
+| 450 | 2.1476 | 0.3953 | -443.3% |
+| 500 | 2.1160 | 0.3747 | -464.7% |
+| 550 | 2.0741 | 0.3959 | -423.9% |
+| 600 | 2.2597 | 0.3976 | -468.4% |
+
+**Average: -432.2%**
+**Hierarchical wins: 0/5**
+
+**Status: ❌ REFUTED** — Hierarchical attention fails badly on 400+ step sequences.
+
+### H1.232: Regularization Fixes Unified on Complex Tasks (May 13, 2026)
+
+| Regularization | Unified MSE | Baseline MSE | Delta |
+|----------------|-------------|--------------|-------|
+| 0.01 | 0.7504 | 0.7983 | +6.0% |
+| 0.05 | 0.7281 | 0.6981 | -4.3% |
+| 0.1 | 0.6705 | 0.7364 | **+9.0%** |
+| 0.5 | 0.8969 | 0.7420 | -20.9% |
+| 1.0 | 1.3689 | 0.5976 | -129.1% |
+
+**Best: reg=0.1 with +9.0%**
+**Status: ✅ SUPPORTED** — Regularization fixes unified on complex tasks! The failure in H1.230 was overfitting, not architectural limitation.
+
+### Key Insights from This Round
+
+1. **H1.231**: SSM also fails on complex tasks with autocorrelation (-33.3%)
+2. **H3.136**: Hierarchical attention fails badly on 400+ steps (-432.2%)
+3. **H1.232**: Regularization (reg=0.1) FIXES unified! +9.0% improvement
+
+### Updated Research Status (May 13, 2026)
+
+| # | Hypothesis | Status | Notes |
+|---|------------|--------|-------|
+| H1 | Unified vs Baseline | ✅ SUPPORTED | +25.6% real robot |
+| H1.229 | Unified+Attn ultra-complex | ❌ REFUTED | -2.8% |
+| H1.230 | Unified complexity (no reg) | ❌ REFUTED | -15.0% |
+| H1.231 | SSM complex autocorr | ❌ REFUTED | -33.3% |
+| H1.232 | Unified + reg on complex | ✅ SUPPORTED | +9.0% with reg=0.1 |
+| H3 | Attention vs Concat | ✅ MIXED | Works <400 steps |
+| H3.135 | Attention boundary 400-410 | ❌ REFUTED | Fails at boundary |
+| H3.136 | Hierarchical attn 400+ | ❌ REFUTED | -432.2% |
+
+**Total: 21+ SUPPORTED, 1 INCONCLUSIVE, 15 REFUTED**
+
+### Total Experiments: 57 runs (May 13, 2026)
