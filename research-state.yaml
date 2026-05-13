@@ -1,6 +1,26 @@
 experiments:
-  total_runs: 47
+  total_runs: 49
   trajectory:
+  - description: Attention on 200+ timesteps with maximum autocorrelation (rho=0.98)
+    experiment_id: H3.126
+    hypothesis: H3.126
+    result:
+      avg_improvement: -1.37
+      attn_wins: 1
+    status: REFUTED
+    note: Attention wins only at 180 steps, loses at 200+. Autocorrelation alone not sufficient for 200+ steps
+    timestamp: '2026-05-12T21:00:00'
+  - description: Unified architecture on ultra-complex multi-step with autocorrelation (rho=0.95)
+    experiment_id: H1.227
+    hypothesis: H1.227
+    result:
+      unified_improvement: -2.4
+      unified_attn_improvement: 13.42
+      unified_wins: 2
+      unified_attn_wins: 5
+    status: PARTIAL
+    note: Unified alone 2/5 wins (-2.4%), Unified+Attention 5/5 wins (+13.42%) - attention critical for ultra-complex
+    timestamp: '2026-05-12T21:15:00'
   - description: Attention on 120-150 steps with maximum autocorrelation (rho=0.95-0.99)
     experiment_id: H3.125
     hypothesis: H3.125
@@ -795,3 +815,9 @@ hypotheses:
 - id: H3.125
   status: SUPPORTED
   key_finding: Attention +94.6% on 120-150 steps with rho=0.95-0.99, 16/16 wins
+- id: H3.126
+  status: REFUTED
+  key_finding: Attention loses -1.4% on 200+ steps, wins only at 180 steps
+- id: H1.227
+  status: PARTIAL
+  key_finding: Unified+Attention +13.4% on ultra-complex multi-step, Unified alone -2.4%

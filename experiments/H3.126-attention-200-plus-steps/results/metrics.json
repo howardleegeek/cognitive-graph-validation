@@ -1,0 +1,15 @@
+{
+  "experiment": "H3.126",
+  "status": "REFUTED",
+  "description": "Attention on 200+ timesteps with max autocorrelation (rho=0.98)",
+  "results": {
+    "180": {"concat_mse": 0.01419, "attn_mse": 0.013408, "improvement": 5.51, "attn_wins": true},
+    "200": {"concat_mse": 0.01233, "attn_mse": 0.012851, "improvement": -4.22, "attn_wins": false},
+    "220": {"concat_mse": 0.011899, "attn_mse": 0.012105, "improvement": -1.73, "attn_wins": false},
+    "240": {"concat_mse": 0.010895, "attn_mse": 0.010947, "improvement": -0.47, "attn_wins": false},
+    "260": {"concat_mse": 0.010084, "attn_mse": 0.01068, "improvement": -5.91, "attn_wins": false}
+  },
+  "attn_wins": 1,
+  "avg_improvement": -1.37,
+  "note": "Attention wins only at 180 steps, loses at 200+. Autocorrelation alone not sufficient for 200+ steps."
+}

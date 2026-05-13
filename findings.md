@@ -1425,6 +1425,32 @@ Given H1.30's +5.7%, we should explore:
 **Wins: 16/16, Avg: +94.6%**
 **Status: ✅ SUPPORTED** — Attention extends to 150-step sequences with high autocorrelation!
 
+### H3.126: Attention on 200+ Step Sequences with Max Autocorrelation (May 12, 2026)
+
+| Seq Length | Concat MSE | Attn MSE | Improvement |
+|------------|-----------|----------|-------------|
+| 180 | 0.0142 | 0.0134 | +5.5% |
+| 200 | 0.0123 | 0.0129 | -4.2% |
+| 220 | 0.0119 | 0.0121 | -1.7% |
+| 240 | 0.0109 | 0.0109 | -0.5% |
+| 260 | 0.0101 | 0.0107 | -5.9% |
+
+**Wins: 1/5, Avg: -1.4%**
+**Status: ❌ REFUTED** — Attention wins only at 180 steps, loses at 200+. Autocorrelation alone not sufficient for 200+ steps.
+
+### H1.227: Unified Architecture on Ultra-Complex Multi-Step with Autocorrelation (May 12, 2026)
+
+| Steps | Baseline MSE | Unified MSE | Unified+Attn MSE | Unified Δ | Unified+Attn Δ |
+|-------|-------------|------------|-----------------|----------|----------------|
+| 5 | 0.0109 | 0.0106 (+2.4%) | 0.0093 (+14.3%) | +2.4% | +14.3% |
+| 8 | 0.0099 | 0.0100 (-0.4%) | 0.0086 (+13.3%) | -0.4% | +13.3% |
+| 12 | 0.0119 | 0.0109 (+8.5%) | 0.0098 (+18.0%) | +8.5% | +18.0% |
+| 15 | 0.0112 | 0.0131 (-7.6%) | 0.0096 (+13.9%) | -7.6% | +13.9% |
+| 20 | 0.0099 | 0.0114 (-15.0%) | 0.0091 (+7.4%) | -15.0% | +7.4% |
+
+**Unified wins: 2/5 (avg: -2.4%), Unified+Attention wins: 5/5 (avg: +13.4%)**
+**Status: ⚠️ PARTIAL** — Unified alone is marginal, but Unified+Attention strongly supported!
+
 ### Key Insights from This Round
 
 1. **H3.125 is a major breakthrough**: Attention now works on 120-150 step sequences with rho >= 0.95

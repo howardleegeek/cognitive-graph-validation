@@ -1,0 +1,55 @@
+{
+  "experiment": "H1.227",
+  "status": "PARTIAL",
+  "results": {
+    "5": {
+      "baseline_mse": 0.010884882416576147,
+      "unified_mse": 0.010619352222420275,
+      "unified_attn_mse": 0.009314113296568394,
+      "unified_improvement": 2.439440170263178,
+      "unified_attn_improvement": 14.43074035981953,
+      "unified_wins": true,
+      "unified_attn_wins": true
+    },
+    "8": {
+      "baseline_mse": 0.009869830100797117,
+      "unified_mse": 0.009906585328280926,
+      "unified_attn_mse": 0.008555539534427226,
+      "unified_improvement": -0.3723997992715248,
+      "unified_attn_improvement": 13.316243065458089,
+      "unified_wins": false,
+      "unified_attn_wins": true
+    },
+    "12": {
+      "baseline_mse": 0.011904103215783834,
+      "unified_mse": 0.010893252561800182,
+      "unified_attn_mse": 0.009764213697053492,
+      "unified_improvement": 8.49161533347048,
+      "unified_attn_improvement": 17.976066570836092,
+      "unified_wins": true,
+      "unified_attn_wins": true
+    },
+    "15": {
+      "baseline_mse": 0.011203678091987967,
+      "unified_mse": 0.01205206080339849,
+      "unified_attn_mse": 0.009643414057791233,
+      "unified_improvement": -7.572358866836974,
+      "unified_attn_improvement": 13.92635544672172,
+      "unified_wins": false,
+      "unified_attn_wins": true
+    },
+    "20": {
+      "baseline_mse": 0.00987856462597847,
+      "unified_mse": 0.011360951233655214,
+      "unified_attn_mse": 0.009143313043750823,
+      "unified_improvement": -15.006093129951198,
+      "unified_attn_improvement": 7.442898943983178,
+      "unified_wins": false,
+      "unified_attn_wins": true
+    }
+  },
+  "unified_wins": 2,
+  "unified_attn_wins": 5,
+  "avg_unified_improvement": -2.403959258465208,
+  "avg_unified_attn_improvement": 13.418460877363723
+}
