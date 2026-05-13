@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cognitive Graph Validation - Progress Report May 13, 2026</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-bottom: 20px; }
+        .section { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1 { margin: 0; font-size: 28px; }
+        h2 { color: #333; border-bottom: 2px solid #667eea; padding-bottom: 10px; }
+        .status { display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 14px; }
+        .supported { background: #d4edda; color: #155724; }
+        .refuted { background: #f8d7da; color: #721c24; }
+        .partial { background: #fff3cd; color: #856404; }
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #f8f9fa; font-weight: 600; }
+        .metric { font-size: 24px; font-weight: bold; color: #667eea; }
+        .positive { color: #28a745; }
+        .negative { color: #dc3545; }
+        .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; }
+        .summary-card { background: #f8f9fa; padding: 15px; border-radius: 8px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cognitive Graph Validation</h1>
+        <p>Progress Report - May 13, 2026</p>
+    </div>
+
+    <div class="section">
+        <h2>Research Summary</h2>
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="metric">61</div>
+                <div>Total Experiments</div>
+            </div>
+            <div class="summary-card">
+                <div class="metric">20+</div>
+                <div>Supported Hypotheses</div>
+            </div>
+            <div class="summary-card">
+                <div class="metric">+54.3%</div>
+                <div>Best New Result</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>New Experiments (May 13, 2026)</h2>
+        
+        <h3>H1.234: Unified + Attention + Regularization</h3>
+        <span class="status supported">SUPPORTED</span>
+        <p><strong>Result: +54.3% average improvement</strong></p>
+        <table>
+            <tr><th>Sequence Length</th><th>Baseline</th><th>Unified+Attn+Reg</th><th>Improvement</th></tr>
+            <tr><td>50 steps</td><td>0.00338</td><td>0.00168</td><td class="positive">+50.4%</td></tr>
+            <tr><td>80 steps</td><td>0.00321</td><td>0.00163</td><td class="positive">+49.0%</td></tr>
+            <tr><td>100 steps</td><td>0.00418</td><td>0.00153</td><td class="positive">+63.4%</td></tr>
+        </table>
+        <p><strong>Key Finding:</strong> Combining unified architecture with attention and regularization (reg=0.1) achieves excellent results on complex multi-step tasks!</p>
+        
+        <h3>H3.138: Linear Attention on 400+ Steps</h3>
+        <span class="status partial">PARTIAL</span>
+        <p><strong>Result: +0.7% average improvement (2/3 wins)</strong></p>
+        <p>Linear attention shows marginal benefit over concatenation on longer sequences, but not a breakthrough.</p>
+        
+        <h3>H1.233: Stronger Regularization</h3>
+        <span class="status refuted">REFUTED</span>
+        <p><strong>Result: -0.2% average improvement</strong></p>
+        <p>Stronger regularization (reg=0.2-0.5) doesn't help on these tasks. The original reg=0.1 from H1.232 remains optimal.</p>
+    </div>
+
+    <div class="section">
+        <h2>Key Findings from Research</h2>
+        <ul>
+            <li><strong>H1 (SUPPORTED):</strong> Unified architecture achieves +25.6% improvement on real robot data</li>
+            <li><strong>H1.232 (SUPPORTED):</strong> Regularization (reg=0.1) fixes unified on complex tasks (+9.0%)</li>
+            <li><strong>H1.234 (SUPPORTED):</strong> Unified+Attention+Reg achieves +54.3% on complex multi-step!</li>
+            <li><strong>H3 (REFUTED):</strong> Concatenation wins over attention for simple tasks</li>
+            <li><strong>H3.127-132 (SUPPORTED):</strong> Attention works on 150-400 steps with high autocorrelation</li>
+            <li><strong>H3.133-137 (REFUTED):</strong> Attention FAILS at 400+ steps even with regularization</li>
+            <li><strong>H2 (INCONCLUSIVE):</strong> Explicit graph shows +1.7% (within noise)</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Next Steps</h2>
+        <ol>
+            <li>Test H1.234 on even longer sequences (150-200 steps)</li>
+            <li>Explore attention mechanisms that work at 400+ steps</li>
+            <li>Combine H1.234 insights with H3.127-132 findings</li>
+            <li>Test on real robot data with the new architecture</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>Research Trajectory</h2>
+        <p>Total experiments: <strong>61</strong> | Supported: <strong>20+</strong> | Refuted: <strong>11</strong> | Inconclusive: <strong>1</strong></p>
+    </div>
+</body>
+</html>
