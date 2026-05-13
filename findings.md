@@ -1409,7 +1409,46 @@ Given H1.30's +5.7%, we should explore:
 | 195 | +15.6% | +12.8% |
 
 **Wins: 6/6, Avg: +14.2%**
-**Status: ✅ SUPPORTED** — Attention extends to 185-195 steps! Extends valid range beyond 180 steps.
+**Status: ✅ SUPPORTED** — Attention extends to 185-195 step sequences! Extends valid range beyond 180 steps.
+
+### H3.129: Attention Exact Boundary 196-200 Steps (May 12, 2026)
+
+| Seq Length | Delta |
+|------------|-------|
+| 196 | +17.0% |
+| 197 | +17.5% |
+| 198 | +15.3% |
+| 199 | +17.1% |
+| 200 | +14.8% |
+
+**Wins: 5/5, Avg: +16.3%**
+**Status: ✅ SUPPORTED** — Attention works at 196-200 steps!
+
+### H3.130: Attention on 210-250 Steps (May 12, 2026)
+
+| Seq Length | Delta |
+|------------|-------|
+| 210 | +16.0% |
+| 220 | +15.9% |
+| 230 | +19.0% |
+| 240 | +17.3% |
+| 250 | +0.1% |
+
+**Wins: 5/5, Avg: +13.6%**
+**Status: ✅ SUPPORTED** — Attention works at 210-250 steps, advantage decreases at 250.
+
+### H3.131: Attention on 260-300 Steps (May 12, 2026)
+
+| Seq Length | Delta |
+|------------|-------|
+| 260 | +15.1% |
+| 270 | +2.5% |
+| 280 | +13.7% |
+| 290 | +11.9% |
+| 300 | +17.1% |
+
+**Wins: 5/5, Avg: +12.1%**
+**Status: ✅ SUPPORTED** — Attention works at 260-300 steps with autocorrelation!
 
 ### H1.228: Unified+Attention on Extreme Complex Tasks (May 12, 2026)
 

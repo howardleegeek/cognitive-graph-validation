@@ -10,6 +10,33 @@ experiments:
     status: SUPPORTED
     note: Attention extends to 185-195 step sequences, 6/6 wins (+14.2% avg). Extends valid range beyond 180 steps.
     timestamp: '2026-05-12T23:00:00'
+  - description: Attention exact boundary at 196-200 steps
+    experiment_id: H3.129
+    hypothesis: H3.129
+    result:
+      avg_improvement: 16.3
+      attn_wins: 5
+    status: SUPPORTED
+    note: Attention works at 196-200 steps, 5/5 wins (+16.3% avg).
+    timestamp: '2026-05-12T23:30:00'
+  - description: Attention on 210-250 step sequences
+    experiment_id: H3.130
+    hypothesis: H3.130
+    result:
+      avg_improvement: 13.6
+      attn_wins: 5
+    status: SUPPORTED
+    note: Attention works at 210-250 steps, advantage decreases at 250 (+0.1%).
+    timestamp: '2026-05-12T23:45:00'
+  - description: Attention on 260-300 step sequences
+    experiment_id: H3.131
+    hypothesis: H3.131
+    result:
+      avg_improvement: 12.1
+      attn_wins: 5
+    status: SUPPORTED
+    note: Attention works at 260-300 steps with autocorrelation (+12.1% avg).
+    timestamp: '2026-05-12T23:50:00'
   - description: Unified+Attention on extreme complex tasks (100-200 steps)
     experiment_id: H1.228
     hypothesis: H1.228
@@ -854,6 +881,15 @@ hypotheses:
 - id: H3.128
   status: SUPPORTED
   key_finding: Attention +14.2% on 185-195 steps, extends valid range beyond 180
+- id: H3.129
+  status: SUPPORTED
+  key_finding: Attention +16.3% on 196-200 steps, works at exact boundary
+- id: H3.130
+  status: SUPPORTED
+  key_finding: Attention +13.6% on 210-250 steps, advantage decreases at 250
+- id: H3.131
+  status: SUPPORTED
+  key_finding: Attention +12.1% on 260-300 steps, works with autocorrelation
 - id: H1.228
   status: REFUTED
   key_finding: Unified+Attention -212.1% on extreme complex tasks, combination fails without autocorrelation
