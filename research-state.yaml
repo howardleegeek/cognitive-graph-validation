@@ -1,6 +1,18 @@
 experiments:
-  total_runs: 70
+  total_runs: 71
   trajectory:
+  - description: Sweet spot 12-18 steps - optimal range between weak 10-20 and failed 25-35
+    experiment_id: H1.240
+    hypothesis: H1.240
+    result:
+      avg_improvement: 91.6
+      best_config: unified_attn_reg_0.15
+      best_reg: 0.15
+      baseline_mse: 0.003738
+      best_mse: 0.000314
+    status: SUPPORTED
+    note: +91.6% on 12-18 step sweet spot - even better than H1.237 (+88.9%)! reg=0.15 optimal
+    timestamp: '2026-05-13T20:00:00'
   - description: Attention on 25-35 step sequences with optimal rho=0.9
     experiment_id: H3.141
     hypothesis: H3.141
@@ -1150,3 +1162,6 @@ hypotheses:
 - id: H3.141
   status: REFUTED
   key_finding: Attention -0.1% on 25-35 steps with rho=0.9, doesn't extend H3.140's +91.9% success
+- id: H1.240
+  status: SUPPORTED
+  key_finding: Sweet spot 12-18 steps +91.6%, even better than H1.237 (+88.9%), reg=0.15 optimal

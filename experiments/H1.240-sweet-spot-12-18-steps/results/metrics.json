@@ -1,0 +1,22 @@
+{
+  "experiment_id": "H1.240",
+  "hypothesis": "H1.240",
+  "description": "Sweet spot 12-18 steps",
+  "result": {
+    "baseline_mse": 0.003737890494189092,
+    "best_config": "unified_attn_reg_0.15",
+    "best_mse": 0.0003135027935578754,
+    "avg_improvement": 91.6128416804814,
+    "best_reg": 0.15,
+    "best_reg_improvement": 91.6128416804814,
+    "all_results": {
+      "baseline": 0.003737890494189092,
+      "unified_attn_reg_0.1": 0.000314268130750861,
+      "unified_attn_reg_0.05": 0.00031465700781804377,
+      "unified_attn_reg_0.15": 0.0003135027935578754
+    }
+  },
+  "status": "SUPPORTED",
+  "note": "Optimal reg=0.15 on 12-18 step sweet spot (+91.6%)",
+  "timestamp": "2026-05-12T21:22:28.373625"
+}
