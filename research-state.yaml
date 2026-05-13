@@ -1,6 +1,15 @@
 experiments:
-  total_runs: 49
+  total_runs: 50
   trajectory:
+  - description: Attention on 150-180 timesteps with optimal autocorrelation (rho=0.95-0.98)
+    experiment_id: H3.127
+    hypothesis: H3.127
+    result:
+      avg_improvement: 33.13
+      attn_wins: 16
+    status: SUPPORTED
+    note: Attention extends to 150-180 step sequences, 16/16 wins (+33.1% avg). Confirms H3.125 and extends valid range.
+    timestamp: '2026-05-12T22:00:00'
   - description: Attention on 200+ timesteps with maximum autocorrelation (rho=0.98)
     experiment_id: H3.126
     hypothesis: H3.126
@@ -821,3 +830,6 @@ hypotheses:
 - id: H1.227
   status: PARTIAL
   key_finding: Unified+Attention +13.4% on ultra-complex multi-step, Unified alone -2.4%
+- id: H3.127
+  status: SUPPORTED
+  key_finding: Attention +33.1% on 150-180 steps with rho=0.95-0.98, 16/16 wins

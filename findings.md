@@ -1438,6 +1438,18 @@ Given H1.30's +5.7%, we should explore:
 **Wins: 1/5, Avg: -1.4%**
 **Status: ❌ REFUTED** — Attention wins only at 180 steps, loses at 200+. Autocorrelation alone not sufficient for 200+ steps.
 
+### H3.127: Attention on 150-180 Step Sequences with Optimal Autocorrelation (May 12, 2026)
+
+| Seq Length | rho=0.95 | rho=0.96 | rho=0.97 | rho=0.98 |
+|------------|----------|----------|----------|----------|
+| 150 | +50% | +30% | +33% | +43% |
+| 160 | +24% | +34% | +32% | +39% |
+| 170 | +71% | +41% | +26% | +19% |
+| 180 | +46% | +36% | +0.1% | +5% |
+
+**Wins: 16/16, Avg: +33.1%**
+**Status: ✅ SUPPORTED** — Attention extends to 150-180 step sequences with high autocorrelation (rho=0.95-0.98). Confirms H3.125 findings and extends the valid range.
+
 ### H1.227: Unified Architecture on Ultra-Complex Multi-Step with Autocorrelation (May 12, 2026)
 
 | Steps | Baseline MSE | Unified MSE | Unified+Attn MSE | Unified Δ | Unified+Attn Δ |
