@@ -1400,6 +1400,32 @@ Given H1.30's +5.7%, we should explore:
 
 ## New Results (May 12, 2026)
 
+### H3.128: Attention Boundary at 185-195 Steps (May 12, 2026)
+
+| Seq Length | rho=0.95 | rho=0.97 |
+|------------|----------|----------|
+| 185 | +15.8% | +13.2% |
+| 190 | +15.0% | +12.8% |
+| 195 | +15.6% | +12.8% |
+
+**Wins: 6/6, Avg: +14.2%**
+**Status: ✅ SUPPORTED** — Attention extends to 185-195 steps! Extends valid range beyond 180 steps.
+
+### H1.228: Unified+Attention on Extreme Complex Tasks (May 12, 2026)
+
+| Seq Length | Unified MSE | Baseline MSE | Delta |
+|------------|-------------|--------------|-------|
+| 100 | 0.1787 | 0.0938 | -90.5% |
+| 150 | 0.1426 | 0.0883 | -61.5% |
+| 200 | 0.5487 | 0.0939 | -484.4% |
+
+**Wins: 0/3, Avg: -212.1%**
+**Status: ❌ REFUTED** — Unified+Attention combination performs WORSE than baseline on complex tasks without autocorrelation.
+
+---
+
+## New Results (May 12, 2026)
+
 ### H1.226: Unified + Autocorrelation on Complex Multi-Step (May 12, 2026)
 
 | Steps | rho=0.85 | rho=0.90 | rho=0.93 | rho=0.95 | rho=0.98 |

@@ -1,6 +1,24 @@
 experiments:
   total_runs: 50
   trajectory:
+  - description: Attention boundary at 185-195 steps with autocorrelation
+    experiment_id: H3.128
+    hypothesis: H3.128
+    result:
+      avg_improvement: 14.2
+      attn_wins: 6
+    status: SUPPORTED
+    note: Attention extends to 185-195 step sequences, 6/6 wins (+14.2% avg). Extends valid range beyond 180 steps.
+    timestamp: '2026-05-12T23:00:00'
+  - description: Unified+Attention on extreme complex tasks (100-200 steps)
+    experiment_id: H1.228
+    hypothesis: H1.228
+    result:
+      avg_improvement: -212.1
+      unified_wins: 0
+    status: REFUTED
+    note: Unified+Attention combination performs WORSE than baseline on complex tasks without autocorrelation.
+    timestamp: '2026-05-12T23:15:00'
   - description: Attention on 150-180 timesteps with optimal autocorrelation (rho=0.95-0.98)
     experiment_id: H3.127
     hypothesis: H3.127
@@ -833,3 +851,9 @@ hypotheses:
 - id: H3.127
   status: SUPPORTED
   key_finding: Attention +33.1% on 150-180 steps with rho=0.95-0.98, 16/16 wins
+- id: H3.128
+  status: SUPPORTED
+  key_finding: Attention +14.2% on 185-195 steps, extends valid range beyond 180
+- id: H1.228
+  status: REFUTED
+  key_finding: Unified+Attention -212.1% on extreme complex tasks, combination fails without autocorrelation
