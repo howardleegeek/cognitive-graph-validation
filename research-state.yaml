@@ -1,6 +1,16 @@
 experiments:
-  total_runs: 66
+  total_runs: 67
   trajectory:
+  - description: Ultra-complex multi-step tasks (30-40 steps) with optimal config
+    experiment_id: H1.238
+    hypothesis: H1.238
+    result:
+      avg_improvement: 0.2
+      unified_wins: 2
+      total: 3
+    status: PARTIAL
+    note: Marginal +0.2% on 30-40 steps, advantage diminishes vs 15-25 steps (+88.9%)
+    timestamp: '2026-05-13T18:00:00'
   - description: Attention on 20-30 step sequences with autocorrelation
     experiment_id: H3.140
     hypothesis: H3.140
@@ -1111,3 +1121,6 @@ hypotheses:
 - id: H3.140
   status: SUPPORTED
   key_finding: Attention +91.9% on 20-30 steps with autocorrelation, best at rho=0.9 (+95.0%)
+- id: H1.238
+  status: PARTIAL
+  key_finding: Ultra-complex multi-step (30-40 steps) +0.2% avg, advantage diminishes vs 15-25 steps

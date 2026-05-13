@@ -1398,6 +1398,23 @@ Given H1.30's +5.7%, we should explore:
 
 ---
 
+## New Results (May 13, 2026 - Evening)
+
+### H1.238: Ultra-Complex Multi-Step Tasks (30-40 Steps) (May 13, 2026)
+
+| Seq Length | Baseline MSE | Unified+Attn+Reg=0.1 MSE | Improvement |
+|------------|-------------|-------------------------|-------------|
+| 30 | 0.0654 | 0.0651 | +0.4% |
+| 35 | 0.0664 | 0.0660 | +0.6% |
+| 40 | 0.0657 | 0.0659 | -0.3% |
+
+**Avg: +0.2%, Wins: 2/3**
+**Status: ⚠️ PARTIAL** — Marginal improvement on 30-40 step sequences. Advantage diminishes significantly compared to 15-25 steps (+88.9% → +0.2%).
+
+**Key Finding**: The unified+attention+reg advantage DECREASES dramatically at 30+ steps. This suggests a complexity ceiling around 25-30 steps for this configuration.
+
+---
+
 ## New Results (May 13, 2026 - Updated)
 
 ### H1.237: Ultra-Complex Multi-Step Tasks (15-25 Steps) (May 13, 2026)
