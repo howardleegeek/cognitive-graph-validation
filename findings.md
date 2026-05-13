@@ -1459,6 +1459,17 @@ Given H1.30's +5.7%, we should explore:
 **Avg Best: +27.7%**
 **Status: ✅ SUPPORTED** — Standard attention works at most lengths, chunked attention shows promise at 550-600 steps.
 
+### H1.236: Regularization Strengths on Ultra-Complex Tasks (May 13, 2026)
+
+| Seq Length | n_steps | complexity | Baseline | Best Reg (0.1) | Improvement |
+|------------|---------|------------|----------|----------------|-------------|
+| 80 | 12 | 1.2 | 0.00381 | 0.00063 | +83.5% |
+| 100 | 15 | 1.5 | 0.00537 | 0.00115 | +78.6% |
+| 120 | 18 | 1.8 | 0.00527 | 0.00039 | +92.7% |
+
+**Avg: +84.9%, Most common best reg: 0.1**
+**Status: ✅ SUPPORTED** — Optimal regularization is consistently 0.1 across all complexity levels!
+
 ---
 
 ## New Results (May 12, 2026)

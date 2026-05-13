@@ -1,6 +1,15 @@
 experiments:
-  total_runs: 63
+  total_runs: 64
   trajectory:
+  - description: Regularization strengths on ultra-complex tasks
+    experiment_id: H1.236
+    hypothesis: H1.236
+    result:
+      avg_improvement: 84.9
+      best_config: reg_0.1
+    status: SUPPORTED
+    note: Optimal regularization is consistently 0.1 across all complexity levels (+84.9%)
+    timestamp: '2026-05-13T04:00:00'
   - description: Chunked attention on 500+ step sequences
     experiment_id: H3.139
     hypothesis: H3.139
@@ -1073,3 +1082,6 @@ hypotheses:
 - id: H3.139
   status: SUPPORTED
   key_finding: Chunked attention +27.7% on 500+ steps, standard attention works at most lengths
+- id: H1.236
+  status: SUPPORTED
+  key_finding: Optimal reg=0.1 consistently across complexity levels, +84.9% on ultra-complex

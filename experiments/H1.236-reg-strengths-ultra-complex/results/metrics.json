@@ -1,0 +1,27 @@
+{
+  "experiment": "H1.236",
+  "hypothesis": "Regularization strengths on ultra-complex tasks",
+  "results": {
+    "seq80_steps12_comp1.2": {
+      "baseline": 0.0038052473682910204,
+      "best_reg": 0.1,
+      "best_loss": 0.0006290614255703986,
+      "best_improvement": 83.4685799716375
+    },
+    "seq100_steps15_comp1.5": {
+      "baseline": 0.005367008037865162,
+      "best_reg": 0.1,
+      "best_loss": 0.001150652882643044,
+      "best_improvement": 78.56062680500959
+    },
+    "seq120_steps18_comp1.8": {
+      "baseline": 0.005271585658192635,
+      "best_reg": 0.1,
+      "best_loss": 0.0003862053563352674,
+      "best_improvement": 92.67382944380196
+    }
+  },
+  "avg_improvement": 84.90101207348302,
+  "most_common_best_reg": 0.1,
+  "status": "SUPPORTED"
+}
