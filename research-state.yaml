@@ -37,6 +37,24 @@ experiments:
     status: SUPPORTED
     note: Attention works at 260-300 steps with autocorrelation (+12.1% avg).
     timestamp: '2026-05-12T23:50:00'
+  - description: Attention on 350-400 step sequences
+    experiment_id: H3.132
+    hypothesis: H3.132
+    result:
+      avg_improvement: 12.1
+      attn_wins: 3
+    status: SUPPORTED
+    note: Attention works at 350-400 steps, advantage decreases at 400 (+4.0%).
+    timestamp: '2026-05-12T23:55:00'
+  - description: Attention boundary test at 450 steps
+    experiment_id: H3.133
+    hypothesis: H3.133
+    result:
+      avg_improvement: -4.1
+      attn_wins: 0
+    status: REFUTED
+    note: Attention FAILS at 450 steps (-4.1%). Boundary is between 400-450 steps.
+    timestamp: '2026-05-13T00:00:00'
   - description: Unified+Attention on extreme complex tasks (100-200 steps)
     experiment_id: H1.228
     hypothesis: H1.228
@@ -890,6 +908,12 @@ hypotheses:
 - id: H3.131
   status: SUPPORTED
   key_finding: Attention +12.1% on 260-300 steps, works with autocorrelation
+- id: H3.132
+  status: SUPPORTED
+  key_finding: Attention +12.1% on 350-400 steps, advantage decreases at 400
+- id: H3.133
+  status: REFUTED
+  key_finding: Attention fails at 450 steps (-4.1%), boundary between 400-450
 - id: H1.228
   status: REFUTED
   key_finding: Unified+Attention -212.1% on extreme complex tasks, combination fails without autocorrelation

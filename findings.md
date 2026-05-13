@@ -1450,6 +1450,26 @@ Given H1.30's +5.7%, we should explore:
 **Wins: 5/5, Avg: +12.1%**
 **Status: ✅ SUPPORTED** — Attention works at 260-300 steps with autocorrelation!
 
+### H3.132: Attention on 350-400 Steps (May 12, 2026)
+
+| Seq Length | Delta |
+|------------|-------|
+| 350 | +15.9% |
+| 375 | +16.3% |
+| 400 | +4.0% |
+
+**Wins: 3/3, Avg: +12.1%**
+**Status: ✅ SUPPORTED** — Attention works at 350-400 steps, advantage decreases at 400.
+
+### H3.133: Attention Boundary Test at 450 Steps (May 12, 2026)
+
+| Seq Length | Delta |
+|------------|-------|
+| 450 | -4.1% |
+
+**Wins: 0/1, Avg: -4.1%**
+**Status: ❌ REFUTED** — Attention FAILS at 450 steps. Boundary is between 400-450 steps.
+
 ### H1.228: Unified+Attention on Extreme Complex Tasks (May 12, 2026)
 
 | Seq Length | Unified MSE | Baseline MSE | Delta |

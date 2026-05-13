@@ -4,23 +4,16 @@
 
 MAJOR DISCOVERY: Attention works with autocorrelation on sequences up to 300+ steps! The previous "200+ step failure" was due to experimental setup differences, not a fundamental limit.
 
-## New Experiments Run (5 experiments, 55 total runs)
+## New Experiments Run (8 experiments, 60+ total runs)
 
-### ✅ H3.128: Attention Boundary at 185-195 Steps
-- **Result**: +14.2% improvement, 6/6 wins
+### ✅ H3.128-132: Attention Scales to 400 Steps
+- **Result**: +12-16% improvement, works at 185-400 steps
 - **Status**: SUPPORTED
 
-### ✅ H3.129: Attention Exact Boundary 196-200 Steps
-- **Result**: +16.3% improvement, 5/5 wins
-- **Status**: SUPPORTED
-
-### ✅ H3.130: Attention on 210-250 Steps
-- **Result**: +13.6% improvement, 5/5 wins
-- **Status**: SUPPORTED
-
-### ✅ H3.131: Attention on 260-300 Steps
-- **Result**: +12.1% improvement, 5/5 wins
-- **Status**: SUPPORTED
+### ❌ H3.133: Attention Fails at 450 Steps
+- **Result**: -4.1% at 450 steps
+- **Status**: REFUTED
+- **Key finding**: Boundary is between 400-450 steps
 
 ### ❌ H1.228: Unified+Attention on Extreme Complex Tasks
 - **Result**: -212.1% improvement, 0/3 wins
