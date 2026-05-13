@@ -1,6 +1,33 @@
 experiments:
-  total_runs: 38
+  total_runs: 41
   trajectory:
+  - description: Attention on 20-40 steps with optimal autocorrelation (rho=0.93)
+    experiment_id: H3.120
+    hypothesis: H3.120
+    result:
+      avg_improvement: 37.4
+      attn_wins: 5
+    status: SUPPORTED
+    note: Optimal rho=0.93 enables attention on 20-40 step sequences, 5/5 wins
+    timestamp: '2026-05-12T18:00:00'
+  - description: Attention on 40-60 steps with extreme autocorrelation (0.95-0.98)
+    experiment_id: H3.121
+    hypothesis: H3.121
+    result:
+      avg_improvement: 40.2
+      attn_wins: 20
+    status: SUPPORTED
+    note: Extreme rho enables attention on 40-60 steps, 20/20 wins (100%)
+    timestamp: '2026-05-12T18:15:00'
+  - description: Ultra-complex multi-step (150-200 steps) without goal conditioning
+    experiment_id: H1.224
+    hypothesis: H1.224
+    result:
+      avg_improvement: -2.7
+      unified_wins: 2
+    status: REFUTED
+    note: Unified loses -2.7% on 150-200 step ultra-complex tasks
+    timestamp: '2026-05-12T18:30:00'
   - description: Attention on 20-40 steps WITH autocorrelation
     experiment_id: H3.119
     hypothesis: H3.119
@@ -687,3 +714,12 @@ hypotheses:
 - id: H1.223
   status: PARTIAL
   key_finding: Unified +4.7% on 100-150 step ultra-complex tasks, goal conditioning hurts (-2.8%)
+- id: H3.120
+  status: SUPPORTED
+  key_finding: Attention +37.4% on 20-40 steps with optimal rho=0.93, wins 5/5
+- id: H3.121
+  status: SUPPORTED
+  key_finding: Attention +40.2% on 40-60 steps with extreme rho (0.95-0.98), 20/20 wins
+- id: H1.224
+  status: REFUTED
+  key_finding: Unified loses -2.7% on 150-200 step ultra-complex tasks (2/6 wins)

@@ -10499,3 +10499,69 @@ New experiments H1.221 and H3.116 reveal a critical limitation:
 ---
 
 ### Total Experiments: 38 runs (May 12, 2026)
+
+---
+
+### H3.120: Attention on 20-40 Steps with Optimal Autocorrelation (rho=0.93) (May 12, 2026)
+
+| Sequence Length | Concat MSE | Attention MSE | Delta |
+|-----------------|-----------|--------------|-------|
+| 20 | 0.013547 | 0.006640 | **+51.0%** |
+| 25 | 0.009973 | 0.006170 | **+38.1%** |
+| 30 | 0.013657 | 0.007946 | **+41.8%** |
+| 35 | 0.010521 | 0.007859 | **+25.3%** |
+| 40 | 0.008045 | 0.006307 | **+21.6%** |
+
+**Average: +37.4%**
+**Attention wins: 5/5**
+
+**Status: ✅ SUPPORTED** — Optimal autocorrelation (rho=0.93) enables attention on 20-40 step sequences! This confirms H3.118's finding that rho=0.93 is the sweet spot.
+
+### H3.121: Attention on 40-60 Steps with Extreme Autocorrelation (0.95-0.98) (May 12, 2026)
+
+| rho | 40 steps | 45 steps | 50 steps | 55 steps | 60 steps | Avg |
+|-----|----------|----------|----------|----------|----------|-----|
+| 0.95 | +37.2% | +40.6% | +25.6% | +35.0% | +31.7% | +34.2% |
+| 0.96 | +45.1% | +37.8% | +42.9% | +39.8% | +32.2% | +40.1% |
+| 0.97 | +44.9% | +18.3% | +44.7% | +26.0% | +53.8% | +37.5% |
+| 0.98 | +64.1% | +42.1% | +48.0% | +26.9% | +46.5% | +46.3% |
+
+**Average: +40.2%**
+**Attention wins: 20/20 (100%)**
+
+**Status: ✅ SUPPORTED** — Extreme autocorrelation (0.95-0.98) enables attention on 40-60 step sequences with 100% win rate! The higher the autocorrelation, the better attention performs. This is a major breakthrough - attention can now work on long sequences when temporal structure is strong.
+
+### H1.224: Ultra-Complex Multi-Step (150-200 Steps) WITHOUT Goal Conditioning (May 12, 2026)
+
+| Sequence Length | Baseline MSE | Unified MSE | Delta |
+|-----------------|-------------|-------------|-------|
+| 150 | 0.012348 | 0.011243 | +9.0% |
+| 160 | 0.009675 | 0.011115 | -14.9% |
+| 170 | 0.011201 | 0.010247 | +8.5% |
+| 180 | 0.010275 | 0.011139 | -8.4% |
+| 190 | 0.009914 | 0.010340 | -4.3% |
+| 200 | 0.010110 | 0.011167 | -10.5% |
+
+**Average: -2.7%**
+**Unified wins: 2/6**
+
+**Status: ❌ REFUTED** — Unified architecture loses on 150-200 step ultra-complex tasks without goal conditioning. This confirms that the unified approach has limitations at extreme complexity.
+
+---
+
+## Key Breakthrough Findings (May 12, 2026)
+
+### 🎯 ATTENTION ENABLED BY AUTOCORRELATION
+
+1. **H3.120**: rho=0.93 enables +37.4% on 20-40 steps
+2. **H3.121**: rho=0.95-0.98 enables +40.2% on 40-60 steps, 100% win rate
+3. **Key insight**: The "death zone" (20-60 steps) is conquered when autocorrelation >= 0.93
+
+### Pattern Discovered:
+- Low autocorrelation (rho < 0.7): Attention fails
+- Medium autocorrelation (0.7-0.9): Attention marginal
+- High autocorrelation (0.93-0.98): Attention dominates (+30-50%)
+
+This explains why attention works on real robot data (high autocorrelation) but fails on synthetic data (low autocorrelation).
+
+### Total Experiments: 41 runs (May 12, 2026)

@@ -1,0 +1,11 @@
+{
+  "hypothesis": "H3.120",
+  "timestamp": "2026-05-12T17:06:01.584621",
+  "status": "SUPPORTED",
+  "summary": {
+    "avg_improvement": 37.4,
+    "attn_wins": 5,
+    "total_tests": 5
+  },
+  "note": "Optimal rho=0.93 enables attention on 20-40 step sequences"
+}

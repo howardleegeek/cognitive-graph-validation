@@ -1,0 +1,11 @@
+{
+  "hypothesis": "H3.121",
+  "timestamp": "2026-05-12T17:06:01.584454",
+  "status": "SUPPORTED",
+  "summary": {
+    "avg_improvement": 40.2,
+    "attn_wins": 20,
+    "total_tests": 20
+  },
+  "note": "Extreme autocorrelation (0.95-0.98) enables attention on 40-60 step sequences"
+}

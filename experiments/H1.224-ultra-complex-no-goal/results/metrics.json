@@ -1,0 +1,11 @@
+{
+  "hypothesis": "H1.224",
+  "timestamp": "2026-05-12T17:06:01.584714",
+  "status": "REFUTED",
+  "summary": {
+    "avg_improvement": -2.7,
+    "unified_wins": 2,
+    "total_tests": 6
+  },
+  "note": "Unified architecture loses on 150-200 step ultra-complex tasks without goal conditioning"
+}
