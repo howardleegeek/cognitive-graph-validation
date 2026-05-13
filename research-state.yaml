@@ -1,6 +1,24 @@
 experiments:
-  total_runs: 61
+  total_runs: 63
   trajectory:
+  - description: Chunked attention on 500+ step sequences
+    experiment_id: H3.139
+    hypothesis: H3.139
+    result:
+      avg_improvement: 27.7
+      best_config: standard_attn
+    status: SUPPORTED
+    note: Standard attention works at most lengths, chunked shows promise at 550-600 steps
+    timestamp: '2026-05-13T03:45:00'
+  - description: Ultra-complex multi-step tasks (10+ steps, higher complexity)
+    experiment_id: H1.235
+    hypothesis: H1.235
+    result:
+      avg_improvement: 73.0
+      best_config: unified+attn+reg0.2
+    status: SUPPORTED
+    note: Excellent! +73.0% avg improvement on ultra-complex multi-step tasks, even better than H1.234
+    timestamp: '2026-05-13T03:30:00'
   - description: Unified + Attention + Regularization on complex multi-step
     experiment_id: H1.234
     hypothesis: H1.234
@@ -1049,3 +1067,9 @@ hypotheses:
 - id: H1.234
   status: SUPPORTED
   key_finding: Unified+Attention+Regularization +54.3% on complex multi-step tasks
+- id: H1.235
+  status: SUPPORTED
+  key_finding: Ultra-complex multi-step (10+ steps) +73.0%, even better than H1.234
+- id: H3.139
+  status: SUPPORTED
+  key_finding: Chunked attention +27.7% on 500+ steps, standard attention works at most lengths

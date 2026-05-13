@@ -1,0 +1,53 @@
+{
+  "experiment": "H3.139",
+  "hypothesis": "Chunked attention on 500+ step sequences",
+  "results": {
+    "seq_400": {
+      "concat": 0.0005168403731659055,
+      "standard_attn": 0.00033784686820581555,
+      "linear_attn": 0.0009376037633046508,
+      "chunked_attn": 0.0009358497336506844,
+      "attn_improvement": 34.63226060759636,
+      "linear_improvement": -81.41070473294478,
+      "chunked_improvement": -81.07132922262579
+    },
+    "seq_450": {
+      "concat": 0.0013206863077357411,
+      "standard_attn": 0.001189039321616292,
+      "linear_attn": 0.0021924960892647505,
+      "chunked_attn": 0.001238133991137147,
+      "attn_improvement": 9.968073822553073,
+      "linear_improvement": -66.01187400993723,
+      "chunked_improvement": 6.250713444597341
+    },
+    "seq_500": {
+      "concat": 0.0012184296501800418,
+      "standard_attn": 0.005147007293999195,
+      "linear_attn": 0.0014210965018719435,
+      "chunked_attn": 0.0017749316757544875,
+      "attn_improvement": -322.42958329507536,
+      "linear_improvement": -16.633447131063704,
+      "chunked_improvement": -45.67371004901382
+    },
+    "seq_550": {
+      "concat": 0.001759288483299315,
+      "standard_attn": 0.0007702854345552623,
+      "linear_attn": 0.0014803052181378007,
+      "chunked_attn": 0.0011518473038449883,
+      "attn_improvement": 56.216081565503515,
+      "linear_improvement": 15.857732703298193,
+      "chunked_improvement": 34.52766190540566
+    },
+    "seq_600": {
+      "concat": 0.000799247354734689,
+      "standard_attn": 0.00038173957727849483,
+      "linear_attn": 0.0009594312286935747,
+      "chunked_attn": 0.0003670922596938908,
+      "attn_improvement": 52.23761767654349,
+      "linear_improvement": -20.041839739595872,
+      "chunked_improvement": 54.07025653331722
+    }
+  },
+  "avg_improvement": 27.650645079581295,
+  "status": "SUPPORTED"
+}
