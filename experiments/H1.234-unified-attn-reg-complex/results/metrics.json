@@ -1,0 +1,35 @@
+{
+  "experiment": "H1.234",
+  "hypothesis": "Unified + Attention + Regularization on complex multi-step",
+  "results": {
+    "seq_50": {
+      "baseline": 0.003378065535798669,
+      "unified": 0.0025399806909263134,
+      "unified_attn": 0.0024215022567659616,
+      "reg_0.1": 0.0016752879600971937,
+      "unified_improvement": 24.809608812820407,
+      "uniattn_improvement": 28.316895243613118,
+      "reg01_improvement": 50.40688398897184
+    },
+    "seq_80": {
+      "baseline": 0.0032053752802312374,
+      "unified": 0.003640957409515977,
+      "unified_attn": 0.0019481941126286983,
+      "reg_0.1": 0.001634450745768845,
+      "unified_improvement": -13.58911488371235,
+      "uniattn_improvement": 39.221028980788965,
+      "reg01_improvement": 49.0090674920618
+    },
+    "seq_100": {
+      "baseline": 0.004180962219834328,
+      "unified": 0.004320087842643261,
+      "unified_attn": 0.001529074739664793,
+      "reg_0.1": 0.0022996130865067244,
+      "unified_improvement": -3.3275981817995515,
+      "uniattn_improvement": 63.42768340716116,
+      "reg01_improvement": 44.99799410773323
+    }
+  },
+  "avg_best_improvement": 54.281211629398264,
+  "status": "SUPPORTED"
+}

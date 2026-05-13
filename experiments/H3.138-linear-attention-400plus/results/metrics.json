@@ -1,0 +1,24 @@
+{
+  "experiment": "H3.138",
+  "hypothesis": "Linear attention on 400+ step sequences",
+  "results": {
+    "seq_100": {
+      "concat": 0.013574638403952122,
+      "linear_attn": 0.013186299242079258,
+      "linear_improvement": 2.8607698438567812
+    },
+    "seq_150": {
+      "concat": 0.048440657556056976,
+      "linear_attn": 0.04891178756952286,
+      "linear_improvement": -0.9725921100899088
+    },
+    "seq_200": {
+      "concat": 0.06709223240613937,
+      "linear_attn": 0.06686770915985107,
+      "linear_improvement": 0.3346486444647715
+    }
+  },
+  "avg_linear_improvement": 0.7409421260772145,
+  "linear_wins": 2,
+  "status": "PARTIAL"
+}

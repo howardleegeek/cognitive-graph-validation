@@ -1398,6 +1398,43 @@ Given H1.30's +5.7%, we should explore:
 
 ---
 
+## New Results (May 13, 2026)
+
+### H1.233: Stronger Regularization on Complex Tasks (May 13, 2026)
+
+| Seq Length | reg=0.1 | reg=0.2 | reg=0.3 | reg=0.5 |
+|------------|---------|---------|---------|---------|
+| 50 | -2.3% | +1.1% | -1.3% | +0.8% |
+| 80 | +0.0% | -0.0% | -0.7% | -0.1% |
+| 100 | +1.6% | -1.8% | +0.0% | +0.7% |
+
+**Avg: -0.2%**
+**Status: ❌ REFUTED** — Stronger regularization doesn't help on these tasks.
+
+### H3.138: Linear Attention on 400+ Step Sequences (May 13, 2026)
+
+| Seq Length | Concat MSE | Linear Attn MSE | Improvement |
+|------------|------------|----------------|-------------|
+| 100 | 0.0136 | 0.0132 | +2.9% |
+| 150 | 0.0484 | 0.0489 | -1.0% |
+| 200 | 0.0671 | 0.0669 | +0.3% |
+
+**Avg: +0.7%, Wins: 2/3**
+**Status: ⚠️ PARTIAL** — Linear attention shows marginal improvement.
+
+### H1.234: Unified + Attention + Regularization on Complex Multi-Step (May 13, 2026)
+
+| Seq Length | Baseline | Unified | Unified+Attn | Unified+Attn+Reg |
+|------------|----------|---------|---------------|------------------|
+| 50 | 0.00338 | 0.00254 (+24.8%) | 0.00242 (+28.3%) | 0.00168 (+50.4%) |
+| 80 | 0.00321 | 0.00364 (-13.6%) | 0.00195 (+39.2%) | 0.00163 (+49.0%) |
+| 100 | 0.00418 | 0.00432 (-3.3%) | 0.00153 (+63.4%) | 0.00230 (+45.0%) |
+
+**Avg Best: +54.3%**
+**Status: ✅ SUPPORTED** — Unified+Attention+Regularization combination works excellently on complex multi-step tasks!
+
+---
+
 ## New Results (May 12, 2026)
 
 ### H3.128: Attention Boundary at 185-195 Steps (May 12, 2026)

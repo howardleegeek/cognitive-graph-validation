@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cognitive Graph Research Progress - May 12, 2026</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 40px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #333; border-bottom: 2px solid #4CAF50; padding-bottom: 10px; }
+        h2 { color: #555; margin-top: 30px; }
+        .metric { display: inline-block; margin: 10px; padding: 20px; background: linear-gradient(135deg, #4CAF50, #45a049); color: white; border-radius: 8px; min-width: 120px; text-align: center; }
+        .metric h3 { margin: 0; font-size: 2em; }
+        .metric p { margin: 5px 0 0 0; opacity: 0.9; }
+        .experiment { margin: 15px 0; padding: 15px; background: #f9f9f9; border-left: 4px solid #4CAF50; border-radius: 4px; }
+        .experiment.supported { border-left-color: #4CAF50; }
+        .experiment.refuted { border-left-color: #f44336; }
+        .experiment.inconclusive { border-left-color: #ff9800; }
+        .status-supported { color: #4CAF50; font-weight: bold; }
+        .status-refuted { color: #f44336; font-weight: bold; }
+        .status-inconclusive { color: #ff9800; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #4CAF50; color: white; }
+        .highlight { background: #e8f5e9; padding: 15px; border-radius: 8px; margin: 20px 0; }
+        .key-finding { font-size: 1.1em; color: #2e7d32; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 Cognitive Graph Research Progress</h1>
+        <p>Last updated: May 12, 2026, 00:15 UTC</p>
+        
+        <div class="metric">
+            <h3>51</h3>
+            <p>Total Experiments</p>
+        </div>
+        <div class="metric">
+            <h3>25.6%</h3>
+            <p>Avg Improvement (H1)</p>
+        </div>
+        <div class="metric">
+            <h3>~400</h3>
+            <p>Attention Boundary</p>
+        </div>
+        
+        <h2>📊 Summary</h2>
+        <div class="highlight">
+            <p class="key-finding"><strong>Key Finding:</strong> Attention boundary refined to ~400 steps. Attention works on sequences up to 400 steps with autocorrelation (rho>=0.95), then fails at 420+ steps.</p>
+        </div>
+        
+        <h2>📈 Hypothesis Status</h2>
+        <table>
+            <tr>
+                <th>Hypothesis</th>
+                <th>Status</th>
+                <th>Key Finding</th>
+            </tr>
+            <tr>
+                <td>H1 (Unified vs Baseline)</td>
+                <td class="status-supported">✅ SUPPORTED</td>
+                <td>+25.6% on real robot data</td>
+            </tr>
+            <tr>
+                <td>H2 (Explicit Graph)</td>
+                <td class="status-inconclusive">⚠️ INCONCLUSIVE</td>
+                <td>1.7% difference (noise)</td>
+            </tr>
+            <tr>
+                <td>H3 (Attention vs Concat)</td>
+                <td class="status-supported">✅ MIXED</td>
+                <td>Works with autocorrelation, fails without</td>
+            </tr>
+            <tr>
+                <td>H4 (Dimension Allocation)</td>
+                <td class="status-supported">✅ CLOSE</td>
+                <td>25% optimal (vs 28% hypothesis)</td>
+            </tr>
+        </table>
+        
+        <h2>🔬 Latest Experiments</h2>
+        <div class="experiment supported">
+            <strong>H3.132</strong> — Attention on 350-400 step sequences<br>
+            Result: +12.1% avg improvement, 3/5 wins<br>
+            <span class="status-supported">✅ SUPPORTED</span>
+        </div>
+        <div class="experiment refuted">
+            <strong>H3.133</strong> — Attention at 450 steps<br>
+            Result: -4.1% avg, 0/1 wins<br>
+            <span class="status-refuted">❌ REFUTED</span> — Boundary found
+        </div>
+        <div class="experiment refuted">
+            <strong>H3.134</strong> — Attention boundary at 420-440 steps<br>
+            Result: -6.7% avg, 0/3 wins<br>
+            <span class="status-refuted">❌ REFUTED</span> — Boundary between 400-420
+        </div>
+        
+        <h2>🎯 Attention Boundary Discovery</h2>
+        <table>
+            <tr>
+                <th>Experiment</th>
+                <th>Sequence Range</th>
+                <th>Result</th>
+            </tr>
+            <tr>
+                <td>H3.124</td>
+                <td>100-120 steps</td>
+                <td class="status-supported">+37.9% ✅</td>
+            </tr>
+            <tr>
+                <td>H3.127</td>
+                <td>150-180 steps</td>
+                <td class="status-supported">+33.1% ✅</td>
+            </tr>
+            <tr>
+                <td>H3.132</td>
+                <td>350-400 steps</td>
+                <td class="status-supported">+12.1% ✅</td>
+            </tr>
+            <tr>
+                <td>H3.134</td>
+                <td>420-440 steps</td>
+                <td class="status-refuted">-6.7% ❌</td>
+            </tr>
+        </table>
+        
+        <h2>📝 Key Insights</h2>
+        <ul>
+            <li><strong>Autocorrelation enables attention:</strong> High autocorrelation (rho>=0.93) is the key that unlocks attention on long sequences</li>
+            <li><strong>Boundary at ~400 steps:</strong> Attention works up to ~400 steps with autocorrelation, then fails</li>
+            <li><strong>Real robot advantage:</strong> Real robot data has high autocorrelation (0.7-0.95), explaining why attention works on real data but fails on synthetic</li>
+            <li><strong>Unified architecture:</strong> Early fusion achieves +25.6% sample efficiency on real robot data</li>
+        </ul>
+        
+        <h2>🚀 Next Steps</h2>
+        <ol>
+            <li>Test exact boundary between 400-420 steps</li>
+            <li>Explore SSM as alternative to attention for >400 step sequences</li>
+            <li>Test Unified+Attention combination on more complex tasks</li>
+            <li>Investigate ways to extend attention beyond 400 steps</li>
+        </ol>
+        
+        <hr>
+        <p style="color: #888; font-size: 0.9em;">
+            Research continues autonomously. See <a href="../findings.md">findings.md</a> for full details.
+        </p>
+    </div>
+</body>
+</html>

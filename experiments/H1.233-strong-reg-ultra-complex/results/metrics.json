@@ -1,0 +1,20 @@
+{
+  "experiment": "H1.233",
+  "hypothesis": "Stronger regularization on complex tasks",
+  "results": {
+    "seq_50_reg_0.1": {"unified": 0.015507, "baseline": 0.015159, "improvement": -2.3},
+    "seq_50_reg_0.2": {"unified": 0.014988, "baseline": 0.015159, "improvement": 1.1},
+    "seq_50_reg_0.3": {"unified": 0.015356, "baseline": 0.015159, "improvement": -1.3},
+    "seq_50_reg_0.5": {"unified": 0.015043, "baseline": 0.015159, "improvement": 0.8},
+    "seq_80_reg_0.1": {"unified": 0.075842, "baseline": 0.075861, "improvement": 0.0},
+    "seq_80_reg_0.2": {"unified": 0.075886, "baseline": 0.075861, "improvement": -0.0},
+    "seq_80_reg_0.3": {"unified": 0.076399, "baseline": 0.075861, "improvement": -0.7},
+    "seq_80_reg_0.5": {"unified": 0.075962, "baseline": 0.075861, "improvement": -0.1},
+    "seq_100_reg_0.1": {"unified": 0.016523, "baseline": 0.016793, "improvement": 1.6},
+    "seq_100_reg_0.2": {"unified": 0.017099, "baseline": 0.016793, "improvement": -1.8},
+    "seq_100_reg_0.3": {"unified": 0.016792, "baseline": 0.016793, "improvement": 0.0},
+    "seq_100_reg_0.5": {"unified": 0.016676, "baseline": 0.016793, "improvement": 0.7}
+  },
+  "avg_improvement": -0.2,
+  "status": "REFUTED"
+}

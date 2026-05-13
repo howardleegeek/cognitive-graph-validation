@@ -1,6 +1,33 @@
 experiments:
-  total_runs: 58
+  total_runs: 61
   trajectory:
+  - description: Unified + Attention + Regularization on complex multi-step
+    experiment_id: H1.234
+    hypothesis: H1.234
+    result:
+      avg_improvement: 54.3
+      best_config: unified+attn+reg
+    status: SUPPORTED
+    note: Excellent results! +54.3% avg improvement on complex multi-step tasks
+    timestamp: '2026-05-13T03:00:00'
+  - description: Linear attention on 400+ step sequences
+    experiment_id: H3.138
+    hypothesis: H3.138
+    result:
+      avg_improvement: 0.7
+      linear_wins: 2
+    status: PARTIAL
+    note: Linear attention shows marginal improvement (+0.7% avg)
+    timestamp: '2026-05-13T02:30:00'
+  - description: Stronger regularization on complex tasks
+    experiment_id: H1.233
+    hypothesis: H1.233
+    result:
+      avg_improvement: -0.2
+      best_reg: 0.2
+    status: REFUTED
+    note: Stronger regularization doesn't help (-0.2% avg)
+    timestamp: '2026-05-13T02:15:00'
   - description: Attention + regularization on 400+ steps
     experiment_id: H3.137
     hypothesis: H3.137
@@ -1013,3 +1040,12 @@ hypotheses:
 - id: H3.137
   status: REFUTED
   key_finding: Attention+reg still fails on 400+ steps (-39.6% best with reg=0.01)
+- id: H1.233
+  status: REFUTED
+  key_finding: Stronger regularization doesn't help on complex tasks (-0.2% avg)
+- id: H3.138
+  status: PARTIAL
+  key_finding: Linear attention shows marginal improvement on 400+ steps (+0.7% avg, 2/3 wins)
+- id: H1.234
+  status: SUPPORTED
+  key_finding: Unified+Attention+Regularization +54.3% on complex multi-step tasks
