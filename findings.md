@@ -10998,4 +10998,16 @@ This explains the long-standing mystery of why attention works on real robot dat
 
 **Total: 21+ SUPPORTED, 1 INCONCLUSIVE, 15 REFUTED**
 
-### Total Experiments: 57 runs (May 13, 2026)
+### H3.137: Attention + Regularization on 400+ Steps (May 13, 2026)
+
+| Regularization | Attention MSE | Concat MSE | Delta |
+|----------------|---------------|------------|-------|
+| 0.01 | 0.5516 | 0.3952 | -39.6% |
+| 0.05 | 0.7542 | 0.3969 | -90.0% |
+| 0.1 | 0.7363 | 0.3830 | -92.3% |
+| 0.5 | 3.8502 | 0.3966 | -870.8% |
+
+**Best: reg=0.01 with -39.6%**
+**Status: ❌ REFUTED** — Even with regularization, attention fails on 400+ steps.
+
+### Total Experiments: 58 runs (May 13, 2026)

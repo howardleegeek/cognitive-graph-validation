@@ -1,6 +1,15 @@
 experiments:
-  total_runs: 57
+  total_runs: 58
   trajectory:
+  - description: Attention + regularization on 400+ steps
+    experiment_id: H3.137
+    hypothesis: H3.137
+    result:
+      avg_improvement: -39.6
+      best_reg: 0.01
+    status: REFUTED
+    note: Even with regularization, attention fails on 400+ steps
+    timestamp: '2026-05-13T02:00:00'
   - description: Regularization fixes unified on complex tasks
     experiment_id: H1.232
     hypothesis: H1.232
@@ -1001,3 +1010,6 @@ hypotheses:
 - id: H3.136
   status: REFUTED
   key_finding: Hierarchical attention -432.2% on 400+ steps, fails badly
+- id: H3.137
+  status: REFUTED
+  key_finding: Attention+reg still fails on 400+ steps (-39.6% best with reg=0.01)

@@ -126,4 +126,18 @@ Research continues on Cognitive Graph validation. Six new experiments completed,
 
 ---
 
-## Total Experiments: 57 runs
+### H3.137: Attention + Regularization on 400+ Steps
+**Status: ❌ REFUTED**
+
+| Reg | Attention | Concat | Delta |
+|-----|-----------|--------|-------|
+| 0.01 | 0.5516 | 0.3952 | -39.6% |
+| 0.05 | 0.7542 | 0.3969 | -90.0% |
+| 0.1 | 0.7363 | 0.3830 | -92.3% |
+| 0.5 | 3.8502 | 0.3966 | -870.8% |
+
+**Finding**: Even with regularization, attention fails on 400+ step sequences.
+
+---
+
+## Total Experiments: 58 runs
