@@ -55,6 +55,15 @@ experiments:
     status: REFUTED
     note: Attention FAILS at 450 steps (-4.1%). Boundary is between 400-450 steps.
     timestamp: '2026-05-13T00:00:00'
+  - description: Attention boundary test at 420-440 steps
+    experiment_id: H3.134
+    hypothesis: H3.134
+    result:
+      avg_improvement: -6.7
+      attn_wins: 0
+    status: REFUTED
+    note: Attention FAILS at 420-440 steps (-6.7%). Boundary is between 400-420 steps.
+    timestamp: '2026-05-13T00:15:00'
   - description: Unified+Attention on extreme complex tasks (100-200 steps)
     experiment_id: H1.228
     hypothesis: H1.228
@@ -914,6 +923,9 @@ hypotheses:
 - id: H3.133
   status: REFUTED
   key_finding: Attention fails at 450 steps (-4.1%), boundary between 400-450
+- id: H3.134
+  status: REFUTED
+  key_finding: Attention fails at 420-440 steps (-6.7%), boundary between 400-420
 - id: H1.228
   status: REFUTED
   key_finding: Unified+Attention -212.1% on extreme complex tasks, combination fails without autocorrelation

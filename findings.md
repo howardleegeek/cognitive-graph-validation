@@ -10847,3 +10847,30 @@ This explains why attention works on real robot data (high autocorrelation) but 
 This explains the long-standing mystery of why attention works on real robot data but fails on synthetic data. Real robot trajectories have high autocorrelation (0.7-0.95), while synthetic data typically has low autocorrelation (~0).
 
 ### Total Experiments: 45 runs (May 12, 2026)
+
+---
+
+### H3.134: Attention Boundary Refined - 420-440 Steps (May 12, 2026)
+
+| Sequence Length | Concat MSE | Attention MSE | Delta |
+|-----------------|-----------|--------------|-------|
+| 420 | 0.3948 | 0.4147 | **-5.0%** |
+| 430 | 0.3943 | 0.4079 | **-3.5%** |
+| 440 | 0.3965 | 0.4423 | **-11.5%** |
+
+**Average: -6.7%**
+**Attention wins: 0/3**
+
+**Status: ❌ REFUTED** — Attention FAILS at 420-440 steps. The boundary is between 400-420 steps.
+
+### Key Finding: Attention Boundary is 400-420 Steps
+
+| Experiment | Sequence Range | Result |
+|------------|----------------|--------|
+| H3.132 | 350-400 steps | +12.1% ✅ |
+| H3.133 | 450 steps | -4.1% ❌ |
+| H3.134 | 420-440 steps | -6.7% ❌ |
+
+**Boundary: ~400 steps** — Attention works up to ~400 steps with autocorrelation, then fails.
+
+### Total Experiments: 51 runs (May 12, 2026)
