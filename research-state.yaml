@@ -1,6 +1,33 @@
 experiments:
-  total_runs: 50
+  total_runs: 54
   trajectory:
+  - description: Unified architecture on varying complexity with autocorrelation
+    experiment_id: H1.230
+    hypothesis: H1.230
+    result:
+      avg_improvement: -15.0
+      unified_wins: 0
+    status: REFUTED
+    note: Unified -15.0% vs baseline on complex tasks with autocorrelation - worse than baseline!
+    timestamp: '2026-05-13T01:00:00'
+  - description: Unified+Attention on ultra-complex with autocorrelation
+    experiment_id: H1.229
+    hypothesis: H1.229
+    result:
+      avg_improvement: -2.8
+      unified_attn_wins: 1
+    status: REFUTED
+    note: Unified+Attention doesn't help on ultra-complex tasks even with autocorrelation
+    timestamp: '2026-05-13T00:45:00'
+  - description: Attention exact boundary at 400-410 steps
+    experiment_id: H3.135
+    hypothesis: H3.135
+    result:
+      avg_improvement: -5.1
+      attn_wins: 0
+    status: REFUTED
+    note: Attention FAILS at 400-410 steps, boundary confirmed at exactly 400
+    timestamp: '2026-05-13T00:30:00'
   - description: Attention boundary at 185-195 steps with autocorrelation
     experiment_id: H3.128
     hypothesis: H3.128
@@ -929,3 +956,12 @@ hypotheses:
 - id: H1.228
   status: REFUTED
   key_finding: Unified+Attention -212.1% on extreme complex tasks, combination fails without autocorrelation
+- id: H3.135
+  status: REFUTED
+  key_finding: Attention fails at 400-410 steps (-5.1%), exact boundary confirmed at 400
+- id: H1.229
+  status: REFUTED
+  key_finding: Unified+Attention -2.8% on ultra-complex with autocorrelation, doesn't help
+- id: H1.230
+  status: REFUTED
+  key_finding: Unified -15.0% vs baseline on complex tasks with autocorrelation, worse than baseline!

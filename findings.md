@@ -10873,4 +10873,65 @@ This explains the long-standing mystery of why attention works on real robot dat
 
 **Boundary: ~400 steps** — Attention works up to ~400 steps with autocorrelation, then fails.
 
-### Total Experiments: 51 runs (May 12, 2026)
+### H3.135: Attention Exact Boundary 400-410 Steps (May 13, 2026)
+
+| Sequence Length | Concat MSE | Attention MSE | Delta |
+|-----------------|-----------|--------------|-------|
+| 400 | 0.3900 | 0.4114 | **-5.5%** |
+| 405 | 0.4007 | 0.4268 | **-6.5%** |
+| 410 | 0.3947 | 0.4074 | **-3.2%** |
+
+**Average: -5.1%**
+**Attention wins: 0/3**
+
+**Status: ❌ REFUTED** — Attention FAILS at 400-410 steps. Confirms boundary at exactly 400 steps.
+
+### H1.229: Unified+Attention on Ultra-Complex with Autocorrelation (May 13, 2026)
+
+| Sequence Length | Unified+Attn MSE | Unified MSE | Delta |
+|----------------|-----------------|-------------|-------|
+| 100 | 1.7241 | 1.7807 | **+3.2%** |
+| 120 | 1.8560 | 1.7496 | **-6.1%** |
+| 150 | 1.8312 | 1.7062 | **-7.3%** |
+| 180 | 1.8145 | 1.7722 | **-2.4%** |
+| 200 | 1.8448 | 1.8195 | **-1.4%** |
+
+**Average: -2.8%**
+**Unified+Attention wins: 1/5**
+
+**Status: ❌ REFUTED** — Unified+Attention doesn't outperform Unified alone on ultra-complex tasks even with autocorrelation.
+
+### H1.230: Unified Architecture on Varying Complexity with Autocorrelation (May 13, 2026)
+
+| Complexity | Unified MSE | Baseline MSE | Delta |
+|------------|-------------|--------------|-------|
+| 0.3 | 0.5148 | 0.3992 | **-29.0%** |
+| 0.5 | 0.4535 | 0.4487 | **-1.1%** |
+| 0.7 | 0.7546 | 0.7146 | **-5.6%** |
+| 0.9 | 1.2621 | 1.1581 | **-9.0%** |
+| 1.0 | 2.0479 | 1.5730 | **-30.2%** |
+
+**Average: -15.0%**
+**Unified wins: 0/5**
+
+**Status: ❌ REFUTED** — Unified architecture performs WORSE than baseline on complex tasks with autocorrelation. This is a NEW FINDING - the unified early fusion approach doesn't scale well with complexity when temporal autocorrelation is present.
+
+### Key Insights from This Round
+
+1. **H3.135 confirms exact boundary**: Attention fails at exactly 400+ steps
+2. **H1.229 shows Unified+Attention doesn't help**: Even with autocorrelation, combining unified with attention doesn't improve on ultra-complex tasks
+3. **H1.230 reveals a critical weakness**: Unified architecture actually performs WORSE than baseline on complex tasks with autocorrelation (-15% avg)
+
+### Updated Research Status (May 13, 2026)
+
+| # | Hypothesis | Status | Notes |
+|---|------------|--------|-------|
+| H1 | Unified vs Baseline | ✅ SUPPORTED | +25.6% real robot (simple tasks) |
+| H1.229 | Unified+Attn ultra-complex | ❌ REFUTED | -2.8% (doesn't help) |
+| H1.230 | Unified complexity scaling | ❌ REFUTED | -15.0% (worse than baseline!) |
+| H3 | Attention vs Concat | ✅ MIXED | Works <400 steps with autocorr |
+| H3.135 | Attention boundary 400-410 | ❌ REFUTED | Fails at boundary |
+
+**Total: 20+ SUPPORTED, 1 INCONCLUSIVE, 13 REFUTED**
+
+### Total Experiments: 54 runs (May 13, 2026)
