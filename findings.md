@@ -11130,4 +11130,69 @@ This explains the long-standing mystery of why attention works on real robot dat
 **Best: reg=0.01 with -39.6%**
 **Status: ❌ REFUTED** — Even with regularization, attention fails on 400+ steps.
 
-### Total Experiments: 58 runs (May 13, 2026)
+### Total Experiments: 70 runs (May 13, 2026)
+
+---
+
+## New Results (May 13, 2026 - Late Evening)
+
+### H1.238: Ultra-Complex Multi-Step Tasks (30-40 Steps) - REFUTED
+
+| Seq Length | Baseline MSE | Unified+Attn+Reg=0.1 MSE | Improvement |
+|------------|-------------|-------------------------|-------------|
+| 30 | 0.0666 | 0.0663 | +0.5% |
+| 35 | 0.0664 | 0.0666 | -0.3% |
+| 40 | 0.0686 | 0.0689 | -0.5% |
+
+**Avg: -0.1%, Wins: 1/3**
+**Status: ❌ REFUTED** — Advantage completely diminishes at 30-40 steps. Confirms complexity ceiling around 25-30 steps.
+
+### H1.239: Sweet Spot Verification (10-20 Steps) - REFUTED
+
+| Seq Length | reg=0.1 | reg=0.15 |
+|------------|---------|----------|
+| 10 | +2.0% | +0.8% |
+| 15 | +2.3% | +0.9% |
+| 20 | +1.9% | +0.9% |
+
+**Avg: +1.4%, Best: 15 steps with reg=0.1 (+2.3%)**
+**Status: ❌ REFUTED** — Much lower than H1.237 (+88.9%). Results inconsistent across experiments.
+
+### H3.141: Attention on 25-35 Steps with rho=0.9 - REFUTED
+
+| Seq Length | Concat MSE | Attention MSE | Improvement |
+|------------|------------|---------------|-------------|
+| 25 | 0.0636 | 0.0634 | +0.2% |
+| 28 | 0.0629 | 0.0633 | -0.6% |
+| 30 | 0.0665 | 0.0663 | +0.3% |
+| 32 | 0.0661 | 0.0661 | +0.0% |
+| 35 | 0.0646 | 0.0649 | -0.3% |
+
+**Avg: -0.1%, Wins: 3/5**
+**Status: ❌ REFUTED** — Attention doesn't extend H3.140's +91.9% success to 25-35 steps.
+
+### Key Insights from This Round
+
+1. **H1.238**: Confirms complexity ceiling at 25-30 steps for unified+attn+reg
+2. **H1.239**: Results highly inconsistent - earlier H1.237 showed +88.9%, this shows +1.4%
+3. **H3.141**: Attention advantage doesn't extend beyond 20-30 steps even with optimal rho=0.9
+
+### Critical Observation
+
+The results are highly variable across experiments. H1.237 showed +88.9% but H1.239 shows only +1.4%. This suggests:
+- High variance in the data generation
+- Possible overfitting to specific random seeds
+- Need for more robust experimental design
+
+### Updated Research Status (May 13, 2026 - Late)
+
+| # | Hypothesis | Status | Notes |
+|---|------------|--------|-------|
+| H1 | Unified vs Baseline | ✅ SUPPORTED | +25.6% real robot |
+| H1.237 | Ultra-complex 15-25 steps | ✅ SUPPORTED | +88.9% |
+| H1.238 | Ultra-complex 30-40 steps | ❌ REFUTED | -0.1% (ceiling reached) |
+| H1.239 | Sweet spot 10-20 steps | ❌ REFUTED | +1.4% (inconsistent) |
+| H3.140 | Attention 20-30 steps rho=0.9 | ✅ SUPPORTED | +91.9% |
+| H3.141 | Attention 25-35 steps rho=0.9 | ❌ REFUTED | -0.1% (doesn't extend) |
+
+**Total: 21+ SUPPORTED, 1 INCONCLUSIVE, 18 REFUTED**

@@ -1,15 +1,35 @@
 experiments:
-  total_runs: 67
+  total_runs: 70
   trajectory:
+  - description: Attention on 25-35 step sequences with optimal rho=0.9
+    experiment_id: H3.141
+    hypothesis: H3.141
+    result:
+      avg_improvement: -0.1
+      attn_wins: 3
+      total: 5
+    status: REFUTED
+    note: REFUTED -0.1% on 25-35 steps, doesn't extend H3.140's +91.9% success
+    timestamp: '2026-05-13T19:30:00'
+  - description: Sweet spot verification - 10-20 steps with different regularization
+    experiment_id: H1.239
+    hypothesis: H1.239
+    result:
+      avg_improvement: 1.4
+      best_config: n_steps_15_reg_0.1
+      best_improvement: 2.3
+    status: REFUTED
+    note: Only +1.4% avg on 10-20 steps, much lower than H1.237 (+88.9%). reg=0.1 still best.
+    timestamp: '2026-05-13T19:00:00'
   - description: Ultra-complex multi-step tasks (30-40 steps) with optimal config
     experiment_id: H1.238
     hypothesis: H1.238
     result:
-      avg_improvement: 0.2
-      unified_wins: 2
+      avg_improvement: -0.1
+      unified_wins: 1
       total: 3
-    status: PARTIAL
-    note: Marginal +0.2% on 30-40 steps, advantage diminishes vs 15-25 steps (+88.9%)
+    status: REFUTED
+    note: REFUTED -0.1% on 30-40 steps, advantage diminishes vs 15-25 steps (+88.9%)
     timestamp: '2026-05-13T18:00:00'
   - description: Attention on 20-30 step sequences with autocorrelation
     experiment_id: H3.140
@@ -1122,5 +1142,11 @@ hypotheses:
   status: SUPPORTED
   key_finding: Attention +91.9% on 20-30 steps with autocorrelation, best at rho=0.9 (+95.0%)
 - id: H1.238
-  status: PARTIAL
-  key_finding: Ultra-complex multi-step (30-40 steps) +0.2% avg, advantage diminishes vs 15-25 steps
+  status: REFUTED
+  key_finding: Ultra-complex multi-step (30-40 steps) -0.1% avg, advantage diminishes vs 15-25 steps
+- id: H1.239
+  status: REFUTED
+  key_finding: Sweet spot 10-20 steps only +1.4% avg, much lower than H1.237 (+88.9%), reg=0.1 still best
+- id: H3.141
+  status: REFUTED
+  key_finding: Attention -0.1% on 25-35 steps with rho=0.9, doesn't extend H3.140's +91.9% success
