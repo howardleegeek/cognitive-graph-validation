@@ -1,0 +1,50 @@
+{
+  "hypothesis": "H3.124",
+  "rho": 0.98,
+  "timestamp": "2026-05-12T17:09:22.972934",
+  "experiments": [
+    {
+      "seq_len": 100,
+      "concat_mse": 0.010402609498007222,
+      "attn_mse": 0.006689430833648658,
+      "improvement": 35.69468473338234,
+      "attn_wins": true
+    },
+    {
+      "seq_len": 105,
+      "concat_mse": 0.009239468306380635,
+      "attn_mse": 0.0060738774147882525,
+      "improvement": 34.26161318618598,
+      "attn_wins": true
+    },
+    {
+      "seq_len": 110,
+      "concat_mse": 0.012353270488833501,
+      "attn_mse": 0.006703840849540112,
+      "improvement": 45.73225887347064,
+      "attn_wins": true
+    },
+    {
+      "seq_len": 115,
+      "concat_mse": 0.01022976202584054,
+      "attn_mse": 0.006115012342975799,
+      "improvement": 40.22331773183792,
+      "attn_wins": true
+    },
+    {
+      "seq_len": 120,
+      "concat_mse": 0.009464842271942569,
+      "attn_mse": 0.006499698556848064,
+      "improvement": 31.32797810993988,
+      "attn_wins": true
+    }
+  ],
+  "summary": {
+    "concat_avg": 0.010337990518200894,
+    "attn_avg": 0.006416371999560177,
+    "avg_improvement": 37.93405025605682,
+    "attn_wins": 5,
+    "total_tests": 5
+  },
+  "status": "SUPPORTED"
+}
