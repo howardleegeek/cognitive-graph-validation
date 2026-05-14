@@ -1,6 +1,23 @@
 experiments:
-  total_runs: 78
+  total_runs: 79
   trajectory:
+  - description: Extreme regularization (0.6-0.9) on 50-65 step sequences - marginal improvement
+    experiment_id: H1.245
+    hypothesis: H1.245
+    result:
+      avg_improvement: 6.1
+      best_config: unified_attn_reg_0.9
+      best_seq: seq_60
+      best_improvement: 9.1
+      seq_50_improvement: 6.5
+      seq_52_improvement: 7.3
+      seq_55_improvement: 7.5
+      seq_58_improvement: -0.9
+      seq_60_improvement: 9.1
+      seq_65_improvement: 6.9
+    status: INCONCLUSIVE
+    note: INCONCLUSIVE +6.1% avg on 50-65 steps - extreme reg doesn't significantly extend beyond 45-step boundary
+    timestamp: '2026-05-13T23:00:00'
   - description: Chunked attention on 50+ step sequences - worse than baseline
     experiment_id: H3.144
     hypothesis: H3.144
@@ -1287,3 +1304,6 @@ hypotheses:
 - id: H3.144
   status: REFUTED
   key_finding: Chunked attention -7.4% on 50+ steps, worse than standard attention (+5.2%)
+- id: H1.245
+  status: INCONCLUSIVE
+  key_finding: Extreme regularization (0.6-0.9) +6.1% avg on 50-65 steps, doesn't significantly extend boundary

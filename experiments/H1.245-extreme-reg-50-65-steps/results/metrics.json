@@ -1,0 +1,57 @@
+{
+  "experiment_id": "H1.245",
+  "hypothesis": "H1.245",
+  "description": "Extreme regularization (0.6-0.9) on 50-65 step sequences",
+  "status": "INCONCLUSIVE",
+  "result": {
+    "avg_improvement": 6.1,
+    "best_config": "unified_attn_reg_0.9",
+    "best_seq": "seq_60",
+    "best_improvement": 9.1,
+    "per_sequence": {
+      "seq_50": {
+        "baseline_mse": 0.13269042827188968,
+        "model_mse": 0.1240673167258501,
+        "best_reg": 0.8,
+        "improvement": 6.498668862813803,
+        "best_config": "unified_attn_reg_0.8"
+      },
+      "seq_52": {
+        "baseline_mse": 0.1416076792833897,
+        "model_mse": 0.13129056044496024,
+        "best_reg": 0.9,
+        "improvement": 7.285705754546343,
+        "best_config": "unified_attn_reg_0.9"
+      },
+      "seq_55": {
+        "baseline_mse": 0.13684907325289467,
+        "model_mse": 0.1266374797983603,
+        "best_reg": 0.6,
+        "improvement": 7.461938332357962,
+        "best_config": "unified_attn_reg_0.6"
+      },
+      "seq_58": {
+        "baseline_mse": 0.1155585546753016,
+        "model_mse": 0.11662538580853364,
+        "best_reg": 0.9,
+        "improvement": -0.9231952893748464,
+        "best_config": "unified_attn_reg_0.9"
+      },
+      "seq_60": {
+        "baseline_mse": 0.1439737878118952,
+        "model_mse": 0.13080487990130982,
+        "best_reg": 0.9,
+        "improvement": 9.146739910594592,
+        "best_config": "unified_attn_reg_0.9"
+      },
+      "seq_65": {
+        "baseline_mse": 0.1471687132349381,
+        "model_mse": 0.13705281907549272,
+        "best_reg": 0.8,
+        "improvement": 6.873671677278657,
+        "best_config": "unified_attn_reg_0.8"
+      }
+    }
+  },
+  "timestamp": "2026-05-13T23:00:00"
+}

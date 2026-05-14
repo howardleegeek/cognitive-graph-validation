@@ -1443,6 +1443,22 @@ Given H1.30's +5.7%, we should explore:
 
 **Key Finding**: Chunked attention does NOT help extend attention beyond the 45-step boundary. Standard attention still provides marginal benefit (+5.2%) but chunked makes it worse.
 
+### H1.245: Extreme Regularization (0.6-0.9) on 50-65 Step Sequences (May 13, 2026)
+
+| Seq Length | Baseline MSE | Best Reg | Improvement |
+|------------|-------------|----------|-------------|
+| 50 | 0.1327 | 0.80 | +6.5% |
+| 52 | 0.1416 | 0.90 | +7.3% |
+| 55 | 0.1368 | 0.60 | +7.5% |
+| 58 | 0.1156 | 0.90 | -0.9% |
+| 60 | 0.1440 | 0.90 | +9.1% |
+| 65 | 0.1472 | 0.80 | +6.9% |
+
+**Avg: +6.1%, Best: reg=0.9 at seq=60 (+9.1%)**
+**Status: ⚠️ INCONCLUSIVE** — Extreme regularization (0.6-0.9) provides marginal improvement but doesn't significantly extend the 45-step boundary.
+
+**Key Finding**: Even with extreme regularization (0.6-0.9), attention performance remains low (+6% avg) compared to the sweet spot (12-30 steps at +70-90%). The boundary appears to be a fundamental limitation, not just a regularization issue.
+
 ---
 
 ## Research Status Summary (May 13, 2026)
@@ -1452,6 +1468,7 @@ Given H1.30's +5.7%, we should explore:
 | H1 | Unified vs Baseline | ✅ SUPPORTED | +25.6% real robot |
 | H1.240-243 | Sweet spot 12-30 steps | ✅ SUPPORTED | +73-92% |
 | H1.244 | Beyond 45 steps | ⚠️ PARTIAL | +7% (drops significantly) |
+| H1.245 | Extreme reg 50-65 steps | ⚠️ INCONCLUSIVE | +6.1% (no significant extension) |
 | H3.140-143 | Attention with autocorrelation | ✅ SUPPORTED | +51-91% on 20-45 steps |
 | H3.144 | Chunked attention | ❌ REFUTED | -7.4% (worse than baseline) |
 
