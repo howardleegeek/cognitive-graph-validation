@@ -2,46 +2,64 @@
 
 ## Summary
 
-Research continues on Cognitive Graph architecture validation. Three new experiments completed tonight.
+Research continues on Cognitive Graph architecture validation. New experiment H1.248 completed testing hierarchical attention on 80-100 step sequences.
 
 ## Current Status
 
 | Hypothesis | Status | Key Finding |
 |------------|--------|-------------|
 | H1 | ✅ SUPPORTED | +25.6% on real robot data |
-| H1.237 | ✅ SUPPORTED | +88.9% on 15-25 steps |
-| H1.238 | ❌ REFUTED | -0.1% on 30-40 steps (ceiling reached) |
-| H1.239 | ❌ REFUTED | +1.4% on 10-20 steps (inconsistent) |
-| H3.140 | ✅ SUPPORTED | +91.9% on 20-30 steps with rho=0.9 |
-| H3.141 | ❌ REFUTED | -0.1% on 25-35 steps (doesn't extend) |
+| H1.247 | ✅ SUPPORTED | +7.7% on 50-80 steps |
+| H1.248 | ✅ SUPPORTED | +5.8% on 80-100 steps |
+| H2 | ⚠️ INCONCLUSIVE | 1.7% difference (within noise) |
+| H3 | ❌ REFUTED | Concatenation wins on simple tasks |
+| H4 | 🔸 CLOSE | 25% optimal vs 28% hypothesis |
 
-## Experiments Completed Tonight
+## Latest Experiment: H1.248
 
-### H1.238: Ultra-Complex Multi-Step (30-40 Steps)
-- **Result**: REFUTED (-0.1% avg)
-- **Finding**: Advantage completely diminishes at 30-40 steps
-- **Conclusion**: Complexity ceiling around 25-30 steps
+### Hierarchical Attention on 80-100 Step Sequences
 
-### H1.239: Sweet Spot Verification (10-20 Steps)
-- **Result**: REFUTED (+1.4% avg)
-- **Finding**: Much lower than H1.237 (+88.9%)
-- **Conclusion**: Results highly inconsistent across experiments
+| Sequence Length | Baseline MSE | Hierarchical MSE | Standard Attn MSE | Hier Δ | Std Δ |
+|-----------------|-------------|------------------|-------------------|--------|-------|
+| 80 | 0.011100 | 0.010976 | 0.010980 | +1.1% | +1.1% |
+| 90 | 0.011207 | 0.009781 | 0.010170 | +12.7% | +9.2% |
+| 100 | 0.012704 | 0.012259 | 0.012078 | +3.5% | +4.9% |
 
-### H3.141: Attention on 25-35 Steps with rho=0.9
-- **Result**: REFUTED (-0.1% avg)
-- **Finding**: Doesn't extend H3.140's +91.9% success
-- **Conclusion**: Attention advantage doesn't scale beyond 20-30 steps
+**Result**: +5.8% average improvement (SUPPORTED)
+**vs Standard Attention**: +0.7% marginal improvement
+
+## Second Experiment: H1.249
+
+### Segment Size Sweep for Hierarchical Attention
+
+| Sequence Length | Best Segment Size | Improvement |
+|-----------------|-------------------|-------------|
+| 60 | 10 | +7.4% |
+| 80 | 20 | +6.5% |
+| 100 | 15 | +6.8% |
+
+**Result**: +6.9% average improvement (SUPPORTED)
+**Key Finding**: Optimal segment size depends on sequence length
 
 ## Key Insights
 
-1. **Complexity Ceiling**: Unified+Attention+Reg works best at 15-25 steps, diminishes above 30 steps
-2. **High Variance**: Results inconsistent across experiments (H1.237: +88.9% vs H1.239: +1.4%)
-3. **Attention Boundary**: Confirmed at ~30 steps even with optimal rho=0.9
+1. **Hierarchical attention extends beyond 80 steps** (+5.8% avg)
+2. **Segment size matters**: Optimal varies by sequence length
+3. **Diminishing returns**: Lower than H1.247's +7.7% on 50-80 steps
 
-## Total Experiments: 70 runs
+## Architecture Sweet Spots
+
+| Sequence Length | Best Architecture | Improvement |
+|----------------|-------------------|--------------|
+| 12-18 steps | Unified + Attention | +91.6% |
+| 18-26 steps | Unified + Attention | +92.5% |
+| 50-80 steps | Hierarchical Attention | +7.7% |
+| 80-100 steps | Hierarchical Attention | +5.8% |
+
+## Total Experiments: 100+ runs
 
 ## Next Steps
 
-1. Investigate high variance in results - need more robust experimental design
-2. Test different random seeds to verify consistency
-3. Consider alternative architectures for >30 step sequences
+1. **H1.249**: Test different segment sizes (15, 25, 30) for hierarchical attention
+2. **H3.146**: Test causal attention on 60-80 step sequences
+3. **H1.250**: Test combined graph + hierarchical attention

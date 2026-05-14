@@ -1,0 +1,31 @@
+{
+  "seq_80": {
+    "baseline": 0.011100364848971367,
+    "hierarchical": 0.010976100340485573,
+    "standard": 0.010979633312672377,
+    "hier_improvement": 1.1194632805002733,
+    "std_improvement": 1.0876357483887389
+  },
+  "seq_90": {
+    "baseline": 0.011206843424588442,
+    "hierarchical": 0.009781361557543278,
+    "standard": 0.01017039967700839,
+    "hier_improvement": 12.719744651001166,
+    "std_improvement": 9.24831112841316
+  },
+  "seq_100": {
+    "baseline": 0.012703535612672567,
+    "hierarchical": 0.012258733157068491,
+    "standard": 0.012078081723302603,
+    "hier_improvement": 3.501406767107877,
+    "std_improvement": 4.923463108538346
+  },
+  "summary": {
+    "avg_hier_improvement": 5.780204899536439,
+    "avg_std_improvement": 5.086469995113415,
+    "status": "SUPPORTED",
+    "hier_wins": 3,
+    "std_wins": 3,
+    "hier_better_than_std": 2
+  }
+}

@@ -11615,7 +11615,58 @@ The results are highly variable across experiments. H1.237 showed +88.9% but H1.
 
 **Results**: {
   "error": "Failed to parse",
-  "raw_output": "e/libero_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.013745219446718693,\n  \"cognitive_graph_loss\": 0.010533829452469945,\n  \"improvement_percent\": 23.363686601710693,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n    \"n_train\": 800,\n    \"n_val\": 200\n  }\n}\n"
+  "raw_output": "e/libero_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:   0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  "baseline_loss": 0.013745219446718693,\n  "cognitive_graph_loss": 0.010533829452469945,\n  "improvement_percent": 23.363686601710693,\n  "cognitive_graph_wins": true,\n  "config": {\n    "n_train": 800,\n    "n_val": 200\n  }\n}\n"
 }
 
 **Status**: ❌ REFUTED - Cognitive Graph 0.0%
+
+
+---
+
+## H1.248: Hierarchical Attention on 80-100 Step Sequences (May 13, 2026)
+
+**Hypothesis**: Hierarchical attention can extend further beyond 80 steps with optimized segment size and regularization.
+
+**Prediction**: Hierarchical attention extends beyond 80 steps with segment_size=20 and reg=0.35
+
+**Results**:
+
+| Sequence Length | Baseline MSE | Hierarchical MSE | Standard Attn MSE | Hier Δ | Std Δ |
+|-----------------|-------------|------------------|-------------------|--------|-------|
+| 80 | 0.011100 | 0.010976 | 0.010980 | +1.1% | +1.1% |
+| 90 | 0.011207 | 0.009781 | 0.010170 | +12.7% | +9.2% |
+| 100 | 0.012704 | 0.012259 | 0.012078 | +3.5% | +4.9% |
+
+**Average Hierarchical Improvement: +5.8%**
+**Average Standard Attention Improvement: +5.1%**
+**Hierarchical vs Standard: +0.7%**
+
+**Status**: ✅ SUPPORTED — Hierarchical attention extends marginally beyond 80 steps
+
+
+---
+
+## H1.249: Segment Size Sweep for Hierarchical Attention (May 13, 2026)
+
+**Hypothesis**: Different segment sizes may optimize hierarchical attention for different sequence lengths.
+
+**Prediction**: Optimal segment size depends on sequence length
+
+**Results**:
+
+| Sequence Length | Best Segment Size | Improvement |
+|-----------------|-------------------|-------------|
+| 60 | 10 | +7.4% |
+| 80 | 20 | +6.5% |
+| 100 | 15 | +6.8% |
+
+**Segment Size Performance**:
+- segment_size=10: avg improvement +4.7%
+- segment_size=15: avg improvement +1.9%
+- segment_size=20: avg improvement +5.8%
+- segment_size=25: avg improvement +3.6%
+- segment_size=30: avg improvement +2.7%
+
+**Average Best Improvement: +6.9%**
+
+**Status**: ✅ SUPPORTED — Optimal segment size depends on sequence length (60→10, 80→20, 100→15)
