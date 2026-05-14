@@ -1456,6 +1456,14 @@ Given H1.30's +5.7%, we should explore:
 
 **Status: ✅ SUPPORTED** — Strong result! Attention helps on longer sequences (+28.3%)!
 
+### 224-multi_step_tasks: Multi-Step Manipulation (May 14, 2026)
+
+| Configuration | Baseline MSE | Cognitive Graph MSE | Improvement |
+|--------------|-------------|---------------------|-------------|
+| task_type=multi_step, n_steps=3 | 0.0185 | 0.0103 | **+44.3%** |
+
+**Status: ✅ SUPPORTED** — Cognitive Graph advantage increases with task complexity (+44.3%)!
+
 ---
 
 ## New Results (May 13, 2026 - Evening)
@@ -11572,6 +11580,20 @@ The results are highly variable across experiments. H1.237 showed +88.9% but H1.
 **Results**: {
   "error": "Failed to parse",
   "raw_output": "o_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.015842136461287737,\n  \"cognitive_graph_loss\": 0.011362351942807436,\n  \"improvement_percent\": 28.27765389742236,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n    \"seq_len\": 20,\n    \"use_attention\": true\n  }\n}\n"
+}
+
+**Status**: ❌ REFUTED - Cognitive Graph 0.0%
+
+
+## 224-multi_step_tasks - 2026-05-13 19:25
+
+**Hypothesis**: Test Cognitive Graph on multi-step manipulation (pick then place)
+
+**Prediction**: Cognitive Graph advantage increases with task complexity
+
+**Results**: {
+  "error": "Failed to parse",
+  "raw_output": "ynthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.018450584262609482,\n  \"cognitive_graph_loss\": 0.010274389991536736,\n  \"improvement_percent\": 44.31401279601744,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n    \"task_type\": \"multi_step\",\n    \"n_steps\": 3\n  }\n}\n"
 }
 
 **Status**: ❌ REFUTED - Cognitive Graph 0.0%
