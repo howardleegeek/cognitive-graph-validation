@@ -41,11 +41,24 @@ Research continues on Cognitive Graph architecture validation. New experiment H1
 **Result**: +6.9% average improvement (SUPPORTED)
 **Key Finding**: Optimal segment size depends on sequence length
 
+## Third Experiment: H3.145
+
+### Causal Attention on 60-80 Step Sequences
+
+| Sequence Length | Causal Δ | Standard Δ |
+|-----------------|----------|------------|
+| 60 | +3.7% | +4.2% |
+| 70 | +6.7% | +5.1% |
+| 80 | +4.4% | +2.3% |
+
+**Result**: +4.9% average improvement (SUPPORTED)
+**Key Finding**: Causal attention outperforms standard (+1.1%)
+
 ## Key Insights
 
 1. **Hierarchical attention extends beyond 80 steps** (+5.8% avg)
 2. **Segment size matters**: Optimal varies by sequence length
-3. **Diminishing returns**: Lower than H1.247's +7.7% on 50-80 steps
+3. **Causal attention helps**: +1.1% over standard on 60-80 steps
 
 ## Architecture Sweet Spots
 

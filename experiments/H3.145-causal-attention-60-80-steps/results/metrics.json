@@ -1,0 +1,31 @@
+{
+  "seq_60": {
+    "baseline": 0.01220448687672615,
+    "causal": 0.011755731422454119,
+    "standard": 0.011689931619912386,
+    "causal_improvement": 3.676971091081301,
+    "std_improvement": 4.216115450089237
+  },
+  "seq_70": {
+    "baseline": 0.010975242126733065,
+    "causal": 0.010235865600407124,
+    "standard": 0.01041825721040368,
+    "causal_improvement": 6.736767333132421,
+    "std_improvement": 5.074921444992104
+  },
+  "seq_80": {
+    "baseline": 0.011243478395044804,
+    "causal": 0.010751332622021437,
+    "standard": 0.010989563539624214,
+    "causal_improvement": 4.377166529178942,
+    "std_improvement": 2.258330086999537
+  },
+  "summary": {
+    "avg_causal_improvement": 4.930301651130889,
+    "avg_std_improvement": 3.849788994026959,
+    "status": "SUPPORTED",
+    "causal_wins": 3,
+    "std_wins": 3,
+    "causal_better_than_std": 2
+  }
+}
