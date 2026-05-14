@@ -1,0 +1,45 @@
+{
+  "experiment_id": "H1.244",
+  "hypothesis": "H1.244",
+  "description": "Attention beyond 45 steps with higher regularization",
+  "status": "PARTIAL",
+  "result": {
+    "avg_improvement": 7.041330299644248,
+    "best_config": "unified_attn_reg_0.5",
+    "best_seq": "seq_52",
+    "best_improvement": 12.236444791835712,
+    "per_sequence": {
+      "seq_46": {
+        "baseline_mse": 0.12395664863288403,
+        "best_reg": 0.45,
+        "improvement": 4.063542759063347,
+        "best_config": "unified_attn_reg_0.45"
+      },
+      "seq_48": {
+        "baseline_mse": 0.13395421102177352,
+        "best_reg": 0.35,
+        "improvement": 8.862171402855228,
+        "best_config": "unified_attn_reg_0.35"
+      },
+      "seq_50": {
+        "baseline_mse": 0.12072372786700726,
+        "best_reg": 0.35,
+        "improvement": 3.7360209797279276,
+        "best_config": "unified_attn_reg_0.35"
+      },
+      "seq_52": {
+        "baseline_mse": 0.1413235034292134,
+        "best_reg": 0.5,
+        "improvement": 12.236444791835712,
+        "best_config": "unified_attn_reg_0.5"
+      },
+      "seq_55": {
+        "baseline_mse": 0.1284803714264523,
+        "best_reg": 0.35,
+        "improvement": 6.308471564739026,
+        "best_config": "unified_attn_reg_0.35"
+      }
+    }
+  },
+  "timestamp": "2026-05-13T22:30:00"
+}

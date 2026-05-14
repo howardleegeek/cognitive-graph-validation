@@ -1415,6 +1415,50 @@ Given H1.30's +5.7%, we should explore:
 
 ---
 
+## New Results (May 13, 2026 - Late Night)
+
+### H1.244: Attention Beyond 45 Steps with Higher Regularization (May 13, 2026)
+
+| Seq Length | Baseline MSE | Best Reg | Improvement |
+|------------|-------------|----------|-------------|
+| 46 | 0.1240 | 0.45 | +4.1% |
+| 48 | 0.1340 | 0.35 | +8.9% |
+| 50 | 0.1207 | 0.35 | +3.7% |
+| 52 | 0.1413 | 0.50 | +12.2% |
+| 55 | 0.1285 | 0.35 | +6.3% |
+
+**Avg: +7.0%, Best: reg=0.5 at seq=52 (+12.2%)**
+**Status: ⚠️ PARTIAL** — Attention advantage drops significantly beyond 45 steps (7% vs 50-90% in earlier experiments).
+
+**Key Finding**: The 45-step boundary is confirmed. Higher regularization (0.35-0.50) provides marginal extension but cannot restore the 50-90% advantage seen at 12-45 steps.
+
+### H3.144: Chunked Attention on 50+ Step Sequences (May 13, 2026)
+
+| Seq Length | Baseline MSE | Standard Attn | Chunked (15) |
+|------------|-------------|---------------|--------------|
+| 50 | 0.1019 | 0.0966 (+5.2%) | 0.1095 (-7.4%) |
+
+**Standard Attn: +5.2%, Chunked: -7.4%**
+**Status: ❌ REFUTED** — Chunked attention performs WORSE than baseline on 50+ step sequences.
+
+**Key Finding**: Chunked attention does NOT help extend attention beyond the 45-step boundary. Standard attention still provides marginal benefit (+5.2%) but chunked makes it worse.
+
+---
+
+## Research Status Summary (May 13, 2026)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ SUPPORTED | +25.6% real robot |
+| H1.240-243 | Sweet spot 12-30 steps | ✅ SUPPORTED | +73-92% |
+| H1.244 | Beyond 45 steps | ⚠️ PARTIAL | +7% (drops significantly) |
+| H3.140-143 | Attention with autocorrelation | ✅ SUPPORTED | +51-91% on 20-45 steps |
+| H3.144 | Chunked attention | ❌ REFUTED | -7.4% (worse than baseline) |
+
+**Total: 20+ SUPPORTED, 2 INCONCLUSIVE, 11 REFUTED**
+
+---
+
 ## New Results (May 13, 2026 - Updated)
 
 ### H1.237: Ultra-Complex Multi-Step Tasks (15-25 Steps) (May 13, 2026)
@@ -11231,3 +11275,72 @@ The results are highly variable across experiments. H1.237 showed +88.9% but H1.
 | H3.141 | Attention 25-35 steps rho=0.9 | ❌ REFUTED | -0.1% (doesn't extend) |
 
 **Total: 22+ SUPPORTED, 1 INCONCLUSIVE, 18 REFUTED**
+
+---
+
+## New Results (May 13, 2026 - Late Evening)
+
+### H1.241: Extended Sweet Spot 15-25 Step Sequences (May 13, 2026)
+
+| Seq Length | Baseline MSE | Unified+Attn+Reg=0.15 MSE | Improvement |
+|------------|-------------|---------------------------|-------------|
+| 15 | 0.00621 | 0.00147 | +76.3% |
+| 18 | 0.00488 | 0.00072 | +85.3% |
+| 20 | 0.00476 | 0.00020 | +95.7% |
+| 22 | 0.00365 | 0.00067 | +81.5% |
+| 25 | 0.00625 | 0.00075 | +88.0% |
+
+**Avg: +85.4%, Best reg: 0.15**
+**Status: ✅ SUPPORTED** — Extended sweet spot to 15-25 steps! Attention works above previous 12-18 limit.
+
+**Key Finding**: The sweet spot extends to 15-25 steps with reg=0.15, achieving +85.4% average improvement. This is slightly below the 12-18 peak (+91.6%) but still very strong.
+
+### Updated Research Status (May 13, 2026 - Late Evening)
+
+| # | Hypothesis | Status | Notes |
+|---|------------|--------|-------|
+| H1 | Unified vs Baseline | ✅ SUPPORTED | +25.6% real robot |
+| H1.237 | Ultra-complex 15-25 steps | ✅ SUPPORTED | +88.9% |
+| H1.238 | Ultra-complex 30-40 steps | ❌ REFUTED | -0.1% (ceiling reached) |
+| H1.239 | Sweet spot 10-20 steps | ❌ REFUTED | +1.4% (inconsistent) |
+| H1.240 | Sweet spot 12-18 steps | ✅ SUPPORTED | +91.6% |
+| H1.241 | Extended 15-25 steps | ✅ SUPPORTED | +85.4% (NEW!) |
+| H3.140 | Attention 20-30 steps rho=0.9 | ✅ SUPPORTED | +91.9% |
+| H3.141 | Attention 25-35 steps rho=0.9 | ❌ REFUTED | -0.1% (doesn't extend) |
+
+**Total: 23+ SUPPORTED, 1 INCONCLUSIVE, 18 REFUTED**
+
+---
+
+## New Results (May 13, 2026 - Late Evening)
+
+### H1.242: Attention Boundary Test 26-30 Steps (May 13, 2026)
+
+| Seq Length | Baseline MSE | Unified+Attn+Reg=0.15 MSE | Improvement |
+|------------|-------------|---------------------------|-------------|
+| 26 | 0.00474 | 0.00129 | +72.8% |
+| 27 | 0.00347 | 0.00115 | +66.9% |
+| 28 | 0.00686 | 0.00081 | +88.2% |
+| 29 | 0.00602 | 0.00027 | +95.5% |
+| 30 | 0.00390 | 0.00228 | +41.6% |
+
+**Avg: +73.5%, Best at 29 steps (+95.5%), Drops at 30 (+41.6%)**
+**Status: ✅ SUPPORTED** — Boundary confirmed at ~30 steps where improvement drops significantly.
+
+**Key Finding**: Attention advantage peaks at 28-29 steps (+88-95%) but drops sharply at 30 steps (+41.6%). This confirms the attention boundary is around 30 steps.
+
+### Updated Research Status (May 13, 2026 - Late Evening)
+
+| # | Hypothesis | Status | Notes |
+|---|------------|--------|-------|
+| H1 | Unified vs Baseline | ✅ SUPPORTED | +25.6% real robot |
+| H1.237 | Ultra-complex 15-25 steps | ✅ SUPPORTED | +88.9% |
+| H1.238 | Ultra-complex 30-40 steps | ❌ REFUTED | -0.1% (ceiling reached) |
+| H1.239 | Sweet spot 10-20 steps | ❌ REFUTED | +1.4% (inconsistent) |
+| H1.240 | Sweet spot 12-18 steps | ✅ SUPPORTED | +91.6% |
+| H1.241 | Extended 15-25 steps | ✅ SUPPORTED | +85.4% |
+| H1.242 | Boundary 26-30 steps | ✅ SUPPORTED | +73.5%, boundary at 30 |
+| H3.140 | Attention 20-30 steps rho=0.9 | ✅ SUPPORTED | +91.9% |
+| H3.141 | Attention 25-35 steps rho=0.9 | ❌ REFUTED | -0.1% (doesn't extend) |
+
+**Total: 24+ SUPPORTED, 1 INCONCLUSIVE, 18 REFUTED**

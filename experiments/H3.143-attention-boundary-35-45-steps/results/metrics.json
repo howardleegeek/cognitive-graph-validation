@@ -1,0 +1,26 @@
+{
+  "experiment_id": "H3.143",
+  "hypothesis": "H3.143",
+  "description": "Attention boundary test 35-45 steps",
+  "result": {
+    "baseline_mse": 0.0015153088274278811,
+    "best_config": "unified_attn_reg_0.30",
+    "best_mse": 0.0002388398809541416,
+    "avg_improvement": 51.09992893787465,
+    "step_improvements": {
+      "35": 56.36736380337598,
+      "38": 55.742528928348214,
+      "40": 50.69628352653744,
+      "42": 50.08380532928452,
+      "45": 42.609663101827074
+    },
+    "all_results": {
+      "baseline": 0.0015153088274278811,
+      "unified_attn_reg_0.30": 0.0002388398809541416,
+      "unified_attn_reg_0.40": 0.00024076677592737333
+    }
+  },
+  "status": "SUPPORTED",
+  "note": "Attention on 35-45 steps: +51.1% avg, boundary test",
+  "timestamp": "2026-05-12T22:06:52.857170"
+}

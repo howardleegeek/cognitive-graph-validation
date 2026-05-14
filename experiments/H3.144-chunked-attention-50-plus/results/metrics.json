@@ -1,0 +1,22 @@
+{
+  "experiment_id": "H3.144",
+  "hypothesis": "H3.144",
+  "description": "Chunked attention on 50+ step sequences",
+  "status": "REFUTED",
+  "result": {
+    "avg_standard_improvement": 5.204269203846415,
+    "avg_chunked_improvement": -7.40890830063922,
+    "chunked_vs_standard": -12.613177504485634,
+    "per_sequence": {
+      "seq_50": {
+        "baseline_mse": 0.1019020777195692,
+        "standard_attn_mse": 0.09659881927073002,
+        "standard_improvement": 5.204269203846415,
+        "best_chunk_size": 15,
+        "chunked_improvement": -7.40890830063922,
+        "best_config": "chunked_15"
+      }
+    }
+  },
+  "timestamp": "2026-05-13T22:45:00"
+}

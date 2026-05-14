@@ -1,0 +1,26 @@
+{
+  "experiment_id": "H3.142",
+  "hypothesis": "H3.142",
+  "description": "Attention on longer sequences 27-35 steps",
+  "result": {
+    "baseline_mse": 0.001861808987866555,
+    "best_config": "unified_attn_reg_0.30",
+    "best_mse": 0.00013763745703597254,
+    "avg_improvement": 70.05745730666915,
+    "step_improvements": {
+      "27": 64.4967286149971,
+      "28": 71.58860788835332,
+      "30": 76.25224704478059,
+      "32": 68.79026793739403,
+      "35": 69.15943504782072
+    },
+    "all_results": {
+      "baseline": 0.001861808987866555,
+      "unified_attn_reg_0.25": 0.00013884983205311334,
+      "unified_attn_reg_0.30": 0.00013763745703597254
+    }
+  },
+  "status": "SUPPORTED",
+  "note": "Attention on 27-35 steps: +70.1% avg, boundary test",
+  "timestamp": "2026-05-12T22:04:47.355822"
+}

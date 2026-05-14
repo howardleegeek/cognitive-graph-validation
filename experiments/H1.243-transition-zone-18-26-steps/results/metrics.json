@@ -1,0 +1,30 @@
+{
+  "experiment_id": "H1.243",
+  "hypothesis": "H1.243",
+  "description": "Transition zone 18-26 steps",
+  "result": {
+    "baseline_mse": 0.002649165124499372,
+    "best_config": "unified_attn_reg_0.25",
+    "best_mse": 0.00019875936257968924,
+    "avg_improvement": 75.0557478195648,
+    "best_reg": 0.25,
+    "best_reg_improvement": 92.49728298392688,
+    "step_improvements": {
+      "18": 71.42687998914937,
+      "20": 74.11007953327432,
+      "22": 71.39574069111487,
+      "24": 79.79105825230218,
+      "26": 78.55498063198326
+    },
+    "all_results": {
+      "baseline": 0.002649165124499372,
+      "unified_attn_reg_0.10": 0.00020150957893097905,
+      "unified_attn_reg_0.15": 0.00020408685928227248,
+      "unified_attn_reg_0.20": 0.00020218312316241542,
+      "unified_attn_reg_0.25": 0.00019875936257968924
+    }
+  },
+  "status": "SUPPORTED",
+  "note": "Transition zone 18-26 steps: reg=0.25 optimal, +75.1% avg",
+  "timestamp": "2026-05-12T22:02:43.063111"
+}

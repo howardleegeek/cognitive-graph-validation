@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cognitive Graph Research Progress</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; }
+        h1 { color: #333; }
+        .metric { display: inline-block; margin: 10px; padding: 20px; background: #4CAF50; color: white; border-radius: 5px; }
+        .metric h3 { margin: 0; font-size: 2em; }
+        .experiment { margin: 20px 0; padding: 15px; background: #f9f9f9; border-left: 4px solid #4CAF50; }
+        .supported { border-left-color: #4CAF50; }
+        .refuted { border-left-color: #f44336; }
+        .highlight { background: #e8f5e9; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #4CAF50; color: white; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 Cognitive Graph Research Progress</h1>
+        <p>Last updated: 2026-05-12 21:44:46</p>
+        
+        <div class="highlight">
+            <h2>🚀 Research Summary</h2>
+            <p><strong>Total Experiments:</strong> 73</p>
+            <p><strong>Supported:</strong> 24+ | <strong>Refuted:</strong> 18 | <strong>Inconclusive:</strong> 1</p>
+        </div>
+        
+        <div class="metric">
+            <h3>73</h3>
+            <p>Total Experiments</p>
+        </div>
+        
+        <div class="metric">
+            <h3>24+</h3>
+            <p>Supported</p>
+        </div>
+        
+        <div class="metric">
+            <h3>85.4%</h3>
+            <p>H1.241 Avg</p>
+        </div>
+        
+        <h2>Key Findings - Sweet Spot Discovery</h2>
+        <table>
+            <tr>
+                <th>Experiment</th>
+                <th>Steps</th>
+                <th>Improvement</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>H1.240</td>
+                <td>12-18</td>
+                <td>+91.6%</td>
+                <td>✅ SUPPORTED</td>
+            </tr>
+            <tr>
+                <td>H1.241</td>
+                <td>15-25</td>
+                <td>+85.4%</td>
+                <td>✅ SUPPORTED</td>
+            </tr>
+            <tr>
+                <td>H1.242</td>
+                <td>26-30</td>
+                <td>+73.5%</td>
+                <td>✅ SUPPORTED</td>
+            </tr>
+        </table>
+        
+        <h2>Key Insights</h2>
+        <ul>
+            <li><strong>Sweet Spot:</strong> 12-29 steps with reg=0.10-0.15</li>
+            <li><strong>Peak Performance:</strong> 18-20 steps (+91-95%)</li>
+            <li><strong>Boundary:</strong> ~30 steps where improvement drops to +41.6%</li>
+            <li><strong>Regularization:</strong> reg=0.15 optimal for 15-25 steps</li>
+            <li><strong>Autocorrelation:</strong> rho=0.9-0.95 enables attention</li>
+        </ul>
+        
+        <h2>Research Trajectory</h2>
+        <div class="experiment supported">
+            <strong>H1.240: Sweet Spot 12-18 Steps</strong><br>
+            +91.6% avg - reg=0.15 optimal
+        </div>
+        
+        <div class="experiment supported">
+            <strong>H1.241: Extended Sweet Spot 15-25 Steps</strong><br>
+            +85.4% avg - extends beyond 12-18 limit
+        </div>
+        
+        <div class="experiment supported">
+            <strong>H1.242: Boundary Test 26-30 Steps</strong><br>
+            +73.5% avg - boundary at 30 steps
+        </div>
+        
+        <div class="experiment supported">
+            <strong>H3.140: Attention 20-30 Steps with rho=0.9</strong><br>
+            +91.9% avg - autocorrelation enables attention
+        </div>
+        
+        <div class="experiment refuted">
+            <strong>H3.141: Attention 25-35 Steps</strong><br>
+            -0.1% - doesn't extend beyond 20-30
+        </div>
+        
+        <h2>Next Steps</h2>
+        <ol>
+            <li>Test attention with higher autocorrelation (rho=0.98-0.99)</li>
+            <li>Explore different task complexities within sweet spot</li>
+            <li>Test multi-step tasks with more than 5 steps</li>
+        </ol>
+    </div>
+</body>
+</html>

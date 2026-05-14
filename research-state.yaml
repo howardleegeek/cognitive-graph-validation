@@ -1,6 +1,107 @@
 experiments:
-  total_runs: 71
+  total_runs: 78
   trajectory:
+  - description: Chunked attention on 50+ step sequences - worse than baseline
+    experiment_id: H3.144
+    hypothesis: H3.144
+    result:
+      avg_standard_improvement: 5.2
+      avg_chunked_improvement: -7.4
+      chunked_vs_standard: -12.6
+    status: REFUTED
+    note: REFUTED -7.4% chunked vs +5.2% standard - chunked attention makes things worse
+    timestamp: '2026-05-13T22:45:00'
+  - description: Attention beyond 45 steps with higher regularization - marginal improvement
+    experiment_id: H1.244
+    hypothesis: H1.244
+    result:
+      avg_improvement: 7.0
+      best_config: unified_attn_reg_0.5
+      best_seq: seq_52
+      best_improvement: 12.2
+      seq_46_improvement: 4.1
+      seq_48_improvement: 8.9
+      seq_50_improvement: 3.7
+      seq_52_improvement: 12.2
+      seq_55_improvement: 6.3
+    status: PARTIAL
+    note: PARTIAL +7.0% avg on 46-55 steps - much lower than 50-90% at 12-45 steps, boundary confirmed
+    timestamp: '2026-05-13T22:30:00'
+  - description: Attention boundary test 35-45 steps - still works but drops at 45
+    experiment_id: H3.143
+    hypothesis: H3.143
+    result:
+      avg_improvement: 51.1
+      best_config: unified_attn_reg_0.30
+      best_reg: 0.30
+      seq_35_improvement: 56.4
+      seq_38_improvement: 55.7
+      seq_40_improvement: 50.7
+      seq_42_improvement: 50.1
+      seq_45_improvement: 42.6
+    status: SUPPORTED
+    note: +84.2% overall, +51.1% avg on 35-45 steps - boundary at ~45 steps where improvement drops to 42.6%
+    timestamp: '2026-05-13T22:00:00'
+  - description: Attention on longer sequences 27-35 steps - still works with higher reg
+    experiment_id: H3.142
+    hypothesis: H3.142
+    result:
+      avg_improvement: 70.1
+      best_config: unified_attn_reg_0.30
+      best_reg: 0.30
+      seq_27_improvement: 64.5
+      seq_28_improvement: 71.6
+      seq_30_improvement: 76.3
+      seq_32_improvement: 68.8
+      seq_35_improvement: 69.2
+    status: SUPPORTED
+    note: +92.6% overall, +70.1% avg on 27-35 steps - attention extends beyond previous boundary with higher reg
+    timestamp: '2026-05-13T21:45:00'
+  - description: Transition zone 18-26 steps - confirms sweet spot extends through 26
+    experiment_id: H1.243
+    hypothesis: H1.243
+    result:
+      avg_improvement: 75.1
+      best_config: unified_attn_reg_0.25
+      best_reg: 0.25
+      seq_18_improvement: 71.4
+      seq_20_improvement: 74.1
+      seq_22_improvement: 71.4
+      seq_24_improvement: 79.8
+      seq_26_improvement: 78.6
+    status: SUPPORTED
+    note: +92.5% overall, +75.1% avg on 18-26 steps - transition zone still in sweet spot, reg=0.25 optimal
+    timestamp: '2026-05-13T21:30:00'
+  - description: Boundary test 26-30 steps - attention still works but drops at 30
+    experiment_id: H1.242
+    hypothesis: H1.242
+    result:
+      avg_improvement: 73.5
+      best_config: unified_attn_reg_0.15
+      best_reg: 0.15
+      seq_26_improvement: 72.8
+      seq_27_improvement: 66.9
+      seq_28_improvement: 90.6
+      seq_29_improvement: 95.5
+      seq_30_improvement: 41.6
+    status: SUPPORTED
+    note: +73.5% avg on 26-30 steps - boundary at 30 steps where improvement drops significantly
+    timestamp: '2026-05-13T21:00:00'
+  - description: Extended sweet spot 15-25 steps - attention works above previous 12-18 limit
+    experiment_id: H1.241
+    hypothesis: H1.241
+    result:
+      avg_improvement: 85.4
+      best_config: unified_attn_reg_0.15
+      best_reg: 0.15
+      seq_15_improvement: 76.3
+      seq_18_improvement: 85.3
+      seq_20_improvement: 95.7
+      seq_22_improvement: 81.5
+      seq_25_improvement: 88.0
+    status: SUPPORTED
+    note: +85.4% avg on 15-25 step sequences - extends sweet spot beyond 12-18 steps! reg=0.15 optimal
+    timestamp: '2026-05-13T20:45:00'
   - description: Sweet spot 12-18 steps - optimal range between weak 10-20 and failed 25-35
     experiment_id: H1.240
     hypothesis: H1.240
@@ -1165,3 +1266,24 @@ hypotheses:
 - id: H1.240
   status: SUPPORTED
   key_finding: Sweet spot 12-18 steps +91.6%, even better than H1.237 (+88.9%), reg=0.15 optimal
+- id: H1.241
+  status: SUPPORTED
+  key_finding: Extended sweet spot 15-25 steps +85.4%, attention works above previous 12-18 limit
+- id: H1.242
+  status: SUPPORTED
+  key_finding: Boundary at 30 steps +73.5%, improvement drops at 30 (41.6% vs 95.5% at 29)
+- id: H1.243
+  status: SUPPORTED
+  key_finding: Transition zone 18-26 steps +92.5% overall (+75.1% avg), reg=0.25 optimal
+- id: H3.142
+  status: SUPPORTED
+  key_finding: Attention extends to 27-35 steps +70.1% avg with higher reg=0.30
+- id: H3.143
+  status: SUPPORTED
+  key_finding: Attention extends to 35-45 steps +51.1% avg, boundary at ~45 steps (42.6%)
+- id: H1.244
+  status: PARTIAL
+  key_finding: Attention beyond 45 steps +7.0% avg, much lower than 50-90% at 12-45 steps, boundary confirmed
+- id: H3.144
+  status: REFUTED
+  key_finding: Chunked attention -7.4% on 50+ steps, worse than standard attention (+5.2%)

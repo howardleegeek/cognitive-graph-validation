@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cognitive Graph Research Progress</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; }
+        h1 { color: #333; }
+        .metric { display: inline-block; margin: 10px; padding: 20px; background: #4CAF50; color: white; border-radius: 5px; }
+        .metric h3 { margin: 0; font-size: 2em; }
+        .experiment { margin: 20px 0; padding: 15px; background: #f9f9f9; border-left: 4px solid #4CAF50; }
+        .supported { border-left-color: #4CAF50; }
+        .refuted { border-left-color: #f44336; }
+        .partial { border-left-color: #FF9800; }
+        .highlight { background: #e8f5e9; padding: 15px; border-radius: 5px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 Cognitive Graph Research Progress</h1>
+        <p>Last updated: 2026-05-12 21:43:01</p>
+        
+        <div class="highlight">
+            <h2>🚀 Latest Breakthrough: H1.241</h2>
+            <p><strong>Extended sweet spot to 15-25 steps!</strong></p>
+            <p>Average improvement: <strong>+85.4%</strong></p>
+            <p>Best config: Unified + Attention + Reg=0.15</p>
+        </div>
+        
+        <div class="metric">
+            <h3>72</h3>
+            <p>Total Experiments</p>
+        </div>
+        
+        <div class="metric">
+            <h3>23+</h3>
+            <p>Supported</p>
+        </div>
+        
+        <div class="metric">
+            <h3>85.4%</h3>
+            <p>Latest Avg Improvement</p>
+        </div>
+        
+        <h2>Key Findings</h2>
+        <div class="experiment supported">
+            <strong>H1.241: Extended Sweet Spot 15-25 Steps</strong><br>
+            +85.4% avg improvement - extends attention benefit beyond 12-18 step limit
+        </div>
+        
+        <div class="experiment supported">
+            <strong>H1.240: Sweet Spot 12-18 Steps</strong><br>
+            +91.6% avg improvement - reg=0.15 optimal
+        </div>
+        
+        <div class="experiment supported">
+            <strong>H3.140: Attention 20-30 Steps with rho=0.9</strong><br>
+            +91.9% avg improvement - autocorrelation enables attention
+        </div>
+        
+        <div class="experiment refuted">
+            <strong>H3.141: Attention 25-35 Steps</strong><br>
+            -0.1% - boundary issue, doesn't extend beyond 20-30
+        </div>
+        
+        <h2>Research Trajectory</h2>
+        <ul>
+            <li><strong>Sweet Spot Confirmed:</strong> 12-25 steps with reg=0.10-0.15</li>
+            <li><strong>Attention Boundary:</strong> ~20-25 steps (works at 20-30, fails at 25-35)</li>
+            <li><strong>Key Enabler:</strong> Autocorrelation (rho=0.9-0.95)</li>
+            <li><strong>Regularization:</strong> reg=0.10-0.15 optimal</li>
+        </ul>
+        
+        <h2>Next Steps</h2>
+        <ol>
+            <li>Test attention on 26-30 step sequences (boundary exploration)</li>
+            <li>Test with higher autocorrelation (rho=0.98)</li>
+            <li>Explore different task complexities within sweet spot</li>
+        </ol>
+    </div>
+</body>
+</html>
