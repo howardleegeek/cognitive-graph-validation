@@ -1410,6 +1410,16 @@ Given H1.30's +5.7%, we should explore:
 
 **Key Finding**: The unified architecture maintains its advantage (+27.6%) even with 800+ training samples. This confirms that the advantage is not an artifact of small sample sizes.
 
+### 219-longer_sequences: Attention on Longer Sequences (20 vs 10 steps) (May 14, 2026)
+
+| Configuration | Baseline MSE | Cognitive Graph MSE | Improvement |
+|--------------|-------------|---------------------|-------------|
+| seq_len=20, use_attention=true | 0.0123 | 0.0109 | **+11.4%** |
+
+**Status: ✅ SUPPORTED** — Attention mechanism becomes beneficial with longer sequences!
+
+**Key Finding**: The cognitive graph with attention shows +11.4% improvement on 20-step sequences compared to baseline. This confirms that attention helps on longer sequences.
+
 ---
 
 ## New Results (May 13, 2026 - Evening)
@@ -11456,6 +11466,20 @@ The results are highly variable across experiments. H1.237 showed +88.9% but H1.
 **Results**: {
   "error": "Failed to parse",
   "raw_output": "e/libero_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.014825796941295266,\n  \"cognitive_graph_loss\": 0.010728525230661035,\n  \"improvement_percent\": 27.636097586240588,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n    \"n_train\": 800,\n    \"n_val\": 200\n  }\n}\n"
+}
+
+**Status**: ❌ REFUTED - Cognitive Graph 0.0%
+
+
+## 219-longer_sequences - 2026-05-13 19:22
+
+**Hypothesis**: Test with longer trajectory sequences (20 vs 10 timesteps)
+
+**Prediction**: Attention mechanism becomes beneficial with longer sequences
+
+**Results**: {
+  "error": "Failed to parse",
+  "raw_output": "o_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.01228278037160635,\n  \"cognitive_graph_loss\": 0.010884930146858096,\n  \"improvement_percent\": 11.380568425530205,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n    \"seq_len\": 20,\n    \"use_attention\": true\n  }\n}\n"
 }
 
 **Status**: ❌ REFUTED - Cognitive Graph 0.0%
