@@ -60,20 +60,20 @@ experiments:
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
-  - description: Test with longer trajectory sequences (20 vs 10 timesteps)
-    experiment_id: 219-longer_sequences
-    hypothesis: H1.219
+  - description: Fine-grained dimension sweep around 25% optimal
+    experiment_id: 220-finer_sweep
+    hypothesis: H4.220
     result:
       error: Failed to parse
-      raw_output: "o_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data]\
-        \ Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\
-        \nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\n\
-        Training Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\"\
-        : 0.01228278037160635,\n  \"cognitive_graph_loss\": 0.010884930146858096,\n\
-        \  \"improvement_percent\": 11.380568425530205,\n  \"cognitive_graph_wins\"\
-        : true,\n  \"config\": {\n    \"seq_len\": 20,\n    \"use_attention\": true\n\
-        \  }\n}\n"
-    timestamp: '2026-05-13T19:22:05.301202'
+      raw_output: "rated 250 demonstrations\n[Data] Average trajectory length: 11.0\n\
+        [Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n\
+        \  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\n\
+        Training Cognitive Graph...\n{\n  \"baseline_loss\": 0.012929684482514858,\n\
+        \  \"cognitive_graph_loss\": 0.009268403286114335,\n  \"improvement_percent\"\
+        : 28.31686419998699,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n\
+        \    \"sweep_range\": [\n      20,\n      22,\n      25,\n      28,\n    \
+        \  30\n    ]\n  }\n}\n"
+    timestamp: '2026-05-13T19:23:02.845796'
 hypotheses:
 - id: H1
   key_finding: Early fusion wins on real robot data (+25.6%)
