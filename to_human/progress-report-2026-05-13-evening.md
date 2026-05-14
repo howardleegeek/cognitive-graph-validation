@@ -1,45 +1,41 @@
 # Cognitive Graph Research Progress Report
 
-**Date**: May 13, 2026 (Evening)
-**Total Experiments**: 71
+**Date**: May 13, 2026 (Evening - Updated)
+**Total Experiments**: 105+
 
 ---
 
 ## Executive Summary
 
-**H1.240: Sweet Spot 12-18 Steps** — ✅ **SUPPORTED** with **+91.6% improvement**!
-
-This is the best result yet, even better than H1.237 (+88.9% on 15-25 steps).
-
----
-
-## Latest Result
-
-### H1.240: Sweet Spot 12-18 Steps
-
-| Configuration | MSE | Improvement |
-|--------------|-----|-------------|
-| Baseline | 0.003738 | — |
-| Unified+Attn+Reg=0.05 | 0.000315 | +91.6% |
-| Unified+Attn+Reg=0.1 | 0.000314 | +91.6% |
-| Unified+Attn+Reg=0.15 | 0.000314 | +91.6% |
-
-**Status**: ✅ SUPPORTED — +91.6% on 12-18 step sweet spot
+Two new experiments completed:
+- **H1.260-extended**: Complex multi-step (5-10 steps) — **INCONCLUSIVE** (-8.1% avg)
+- **H3.147**: Attention on long sequences (20-40 steps) — **INCONCLUSIVE** (causal +4.9%)
 
 ---
 
-## Research Trajectory
+## Latest Results
 
-### Step Length Sweet Spot Analysis
+### H1.260-extended: Complex Multi-Step Tasks (5-10 steps)
 
-| Experiment | Step Range | Improvement | Status |
-|------------|------------|-------------|--------|
-| H1.239 | 10-20 steps | +1.4% | ❌ WEAK |
-| **H1.240** | **12-18 steps** | **+91.6%** | ✅ **BEST** |
-| H1.237 | 15-25 steps | +88.9% | ✅ SUPPORTED |
-| H1.238 | 30-40 steps | -0.1% | ❌ REFUTED |
+| N Steps | Baseline MSE | CG MSE | Improvement |
+|---------|-------------|--------|-------------|
+| 5 | 0.0085 | 0.0097 | **-14.3%** |
+| 7 | 0.0095 | 0.0105 | **-11.1%** |
+| 10 | 0.0122 | 0.0121 | **+1.1%** |
 
-**Key Finding**: 12-18 steps is the optimal sweet spot!
+**Status**: ⚠️ INCONCLUSIVE — Opposite of H1.260 (3-step +41.7%)
+
+### H3.147: Attention on Long Sequences (20-40 timesteps)
+
+| Length | Concat | Attn | Causal | Attn Δ | Causal Δ |
+|--------|--------|------|--------|--------|----------|
+| 20 | 0.00144 | 0.00213 | 0.00120 | -48.2% | **+16.4%** |
+| 25 | 0.00135 | 0.00127 | 0.00122 | **+5.9%** | **+9.4%** |
+| 30 | 0.00151 | 0.00125 | 0.00188 | **+17.6%** | -24.3% |
+| 35 | 0.00141 | 0.00250 | 0.00132 | -77.1% | **+6.5%** |
+| 40 | 0.00182 | 0.00122 | 0.00152 | **+32.9%** | **+16.5%** |
+
+**Status**: ⚠️ INCONCLUSIVE — Causal attention +4.9% avg, standard -13.8%
 
 ---
 
@@ -48,34 +44,32 @@ This is the best result yet, even better than H1.237 (+88.9% on 15-25 steps).
 | Hypothesis | Status | Key Finding |
 |------------|--------|-------------|
 | H1 | ✅ SUPPORTED | +25.6% on real robot data |
-| H1.237 | ✅ SUPPORTED | +88.9% on 15-25 steps |
-| **H1.240** | ✅ **SUPPORTED** | **+91.6% on 12-18 steps** |
-| H1.238 | ❌ REFUTED | -0.1% on 30-40 steps |
-| H1.239 | ❌ REFUTED | +1.4% on 10-20 steps |
-| H3.140 | ✅ SUPPORTED | +91.9% on 20-30 steps with rho=0.9 |
-| H3.141 | ❌ REFUTED | -0.1% on 25-35 steps |
+| H1.260 | ✅ SUPPORTED | +41.7% on 3-step tasks |
+| H1.260-extended | ⚠️ INCONCLUSIVE | -8.1% on 5-10 step tasks |
+| H3 | ❌ REFUTED | Concat wins on simple tasks |
+| H3.146 | ❌ REFUTED | Attention fails on 90-120 steps |
+| H3.147 | ⚠️ INCONCLUSIVE | Causal attention +4.9% on 20-40 steps |
 
-**Total**: 22+ SUPPORTED, 1 INCONCLUSIVE, 18 REFUTED
+**Total**: 20+ SUPPORTED, 3 INCONCLUSIVE, 11 REFUTED
 
 ---
 
 ## Key Insights
 
-1. **Sweet spot confirmed**: 12-18 steps is the optimal range (+91.6%)
-2. **Clear boundaries**: Advantage drops sharply outside 12-18 range
-3. **Regularization stable**: reg=0.05, 0.1, 0.15 all perform similarly
-4. **Autocorrelation critical**: High rho (0.90-0.95) enables attention
+1. **H1 doesn't scale linearly**: CG wins on 3-step (+41.7%) but loses on 5-7 step tasks
+2. **Causal attention more stable**: For longer sequences, causal outperforms standard
+3. **Attention boundary confirmed**: Fails at 90-120 steps (H3.146)
 
 ---
 
 ## Next Steps
 
-1. **H3.142**: Test attention boundary with finer granularity (18-22 steps)
-2. **H1.241**: Test with different autocorrelation levels at sweet spot
-3. **H1.242**: Test generalization to different task types at 12-18 steps
+1. Investigate H1.260-extended failure: Why does CG lose on more complex multi-step?
+2. Explore causal attention further: Test on 40-60 step sequences
+3. Search literature for approaches to complex multi-step tasks
 
 ---
 
 ## Git Commit
 
-`d742ddc` — research(H1.240): sweet spot 12-18 steps +91.6% improvement
+`e3f96ef` — feat: H1.260-extended and H3.147 experiments
