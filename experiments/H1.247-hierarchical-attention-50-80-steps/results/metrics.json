@@ -1,0 +1,38 @@
+{
+  "seq_50": {
+    "baseline": 0.010977,
+    "hierarchical": 0.010073,
+    "standard": 0.010928,
+    "hier_improvement": 8.2,
+    "std_improvement": 0.4
+  },
+  "seq_60": {
+    "baseline": 0.011247,
+    "hierarchical": 0.009979,
+    "standard": 0.010578,
+    "hier_improvement": 11.3,
+    "std_improvement": 6.0
+  },
+  "seq_70": {
+    "baseline": 0.010186,
+    "hierarchical": 0.009633,
+    "standard": 0.010039,
+    "hier_improvement": 5.4,
+    "std_improvement": 1.4
+  },
+  "seq_80": {
+    "baseline": 0.009830,
+    "hierarchical": 0.009260,
+    "standard": 0.009616,
+    "hier_improvement": 5.8,
+    "std_improvement": 2.2
+  },
+  "summary": {
+    "avg_hier_improvement": 7.7,
+    "avg_std_improvement": 2.5,
+    "status": "SUPPORTED",
+    "hier_wins": 4,
+    "std_wins": 4,
+    "hier_better_than_std": 4
+  }
+}

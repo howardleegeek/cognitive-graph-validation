@@ -1,6 +1,20 @@
 experiments:
-  total_runs: 80
+  total_runs: 81
   trajectory:
+  - description: Hierarchical attention on 50-80 step sequences - outperforms standard attention
+    experiment_id: H1.247
+    hypothesis: H1.247
+    result:
+      avg_hier_improvement: 7.7
+      avg_std_improvement: 2.5
+      hier_vs_std: 5.2
+      seq_50_improvement: 8.2
+      seq_60_improvement: 11.3
+      seq_70_improvement: 5.4
+      seq_80_improvement: 5.8
+    status: SUPPORTED
+    note: SUPPORTED +7.7% hierarchical vs +2.5% standard - hierarchical attention extends beyond 45-step boundary
+    timestamp: '2026-05-14T00:00:00'
   - description: Task decomposition to extend attention boundary on 50-70 step sequences
     experiment_id: H1.246
     hypothesis: H1.246
@@ -1327,3 +1341,6 @@ hypotheses:
 - id: H1.246
   status: PARTIAL
   key_finding: Task decomposition +4.8% vs standard +3.8% on 50-70 steps, marginal improvement
+- id: H1.247
+  status: SUPPORTED
+  key_finding: Hierarchical attention +7.7% vs standard +2.5% on 50-80 steps, extends beyond 45-step boundary
