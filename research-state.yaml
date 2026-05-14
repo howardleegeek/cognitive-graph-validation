@@ -59,20 +59,20 @@ experiments:
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
-  - description: Test with longer trajectory sequences (20 vs 10 timesteps)
-    experiment_id: 226-longer_sequences
-    hypothesis: H1.226
+  - description: Test Cognitive Graph on multi-step manipulation (pick then place)
+    experiment_id: 260-multi_step_tasks
+    hypothesis: H1.260
     result:
       error: Failed to parse
-      raw_output: "o_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data]\
-        \ Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\
+      raw_output: "ynthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average\
+        \ trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\
         \nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\n\
         Training Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\"\
-        : 0.017261944012716413,\n  \"cognitive_graph_loss\": 0.011469095712527633,\n\
-        \  \"improvement_percent\": 33.55849315651437,\n  \"cognitive_graph_wins\"\
-        : true,\n  \"config\": {\n    \"seq_len\": 20,\n    \"use_attention\": true\n\
-        \  }\n}\n"
-    timestamp: '2026-05-13T20:21:10.111859'
+        : 0.017406158847734332,\n  \"cognitive_graph_loss\": 0.010149343404918909,\n\
+        \  \"improvement_percent\": 41.69107903872774,\n  \"cognitive_graph_wins\"\
+        : true,\n  \"config\": {\n    \"task_type\": \"multi_step\",\n    \"n_steps\"\
+        : 3\n  }\n}\n"
+    timestamp: '2026-05-13T20:48:57.772949'
 hypotheses:
 - id: H1
   key_finding: Early fusion wins on real robot data (+25.6%)
@@ -419,3 +419,9 @@ hypotheses:
   key_finding: Attention fails on 90-120 steps (-2682% standard, -1609% causal), concat
     wins
   status: REFUTED
+- id: H1.260-extended
+  key_finding: Complex multi-step (5-10 steps) -8.1% avg, CG loses on 5-7 steps, wins on 10
+  status: INCONCLUSIVE
+- id: H3.147
+  key_finding: Attention on 20-40 steps -13.8% avg, causal attention +4.9% avg, more stable
+  status: INCONCLUSIVE
