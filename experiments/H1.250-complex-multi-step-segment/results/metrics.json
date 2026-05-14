@@ -1,0 +1,56 @@
+{
+  "baseline_loss": 0.0012524740213848418,
+  "cognitive_graph_loss": 0.000526331304172345,
+  "improvement_percent": 57.97666896193277,
+  "cognitive_graph_wins": true,
+  "config": {
+    "test_configs": [
+      {
+        "seq_len": 15,
+        "complexity": 0.5,
+        "segment_size": 10
+      },
+      {
+        "seq_len": 20,
+        "complexity": 0.6,
+        "segment_size": 15
+      },
+      {
+        "seq_len": 25,
+        "complexity": 0.7,
+        "segment_size": 20
+      },
+      {
+        "seq_len": 30,
+        "complexity": 0.8,
+        "segment_size": 25
+      }
+    ]
+  },
+  "detailed_results": {
+    "seq_15_complex_0.5": {
+      "baseline_loss": 0.0018631734710652381,
+      "cg_loss": 0.0007876890158513561,
+      "improvement_percent": 57.72325936988529,
+      "cognitive_graph_wins": 1.0
+    },
+    "seq_20_complex_0.6": {
+      "baseline_loss": 0.0008053481797105633,
+      "cg_loss": 0.0003047188984055538,
+      "improvement_percent": 62.16308596921797,
+      "cognitive_graph_wins": 1.0
+    },
+    "seq_25_complex_0.7": {
+      "baseline_loss": 0.0014694714627694339,
+      "cg_loss": 0.000508907571202144,
+      "improvement_percent": 65.3679854222529,
+      "cognitive_graph_wins": 1.0
+    },
+    "seq_30_complex_0.8": {
+      "baseline_loss": 0.0008719029719941318,
+      "cg_loss": 0.000504009731230326,
+      "improvement_percent": 42.194286816386935,
+      "cognitive_graph_wins": 1.0
+    }
+  }
+}

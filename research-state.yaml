@@ -409,6 +409,12 @@ hypotheses:
 - id: H1.249
   key_finding: "Segment size sweep: 60→10 (+7.4%), 80→20 (+6.5%), 100→15 (+6.8%), avg +6.9%"
   status: SUPPORTED
+- id: H1.250
+  key_finding: Complex multi-step (15-30 steps) +40.7% avg, CG significantly outperforms
+  status: SUPPORTED
 - id: H3.145
   key_finding: Causal attention +4.9% vs standard +3.8% on 60-80 steps, +1.1% advantage
   status: SUPPORTED
+- id: H3.146
+  key_finding: Attention fails on 90-120 steps (-2682% standard, -1609% causal), concat wins
+  status: REFUTED

@@ -1,0 +1,59 @@
+{
+  "concat_loss": 0.00019830062592518516,
+  "attention_loss": 0.006311704986728728,
+  "causal_attention_loss": 0.004644157423172146,
+  "attention_improvement_percent": -3082.8971579292984,
+  "causal_improvement_percent": -2241.978196742704,
+  "attention_wins": false,
+  "causal_wins": false,
+  "config": {
+    "test_configs": [
+      {
+        "seq_len": 90,
+        "autocorrelation": 0.9
+      },
+      {
+        "seq_len": 100,
+        "autocorrelation": 0.92
+      },
+      {
+        "seq_len": 110,
+        "autocorrelation": 0.95
+      },
+      {
+        "seq_len": 120,
+        "autocorrelation": 0.98
+      }
+    ]
+  },
+  "detailed_results": {
+    "seq_90": {
+      "concat_loss": 0.0003042641910724342,
+      "attn_loss": 0.008534933440387249,
+      "causal_loss": 0.0067542605102062225,
+      "attn_improvement": -2705.106118568975,
+      "causal_improvement": -2119.8670459378113
+    },
+    "seq_100": {
+      "concat_loss": 0.0002171036903746426,
+      "attn_loss": 0.007820571772754192,
+      "causal_loss": 0.004312538541853428,
+      "attn_improvement": -3502.228851687739,
+      "causal_improvement": -1886.3957790913378
+    },
+    "seq_110": {
+      "concat_loss": 0.00015265721594914794,
+      "attn_loss": 0.004548057448118925,
+      "causal_loss": 0.004428344313055277,
+      "attn_improvement": -2879.261360061709,
+      "causal_improvement": -2800.8417882652952
+    },
+    "seq_120": {
+      "concat_loss": 0.0001191774063045159,
+      "attn_loss": 0.004343257285654545,
+      "causal_loss": 0.003081486327573657,
+      "attn_improvement": -3544.362988196672,
+      "causal_improvement": -2485.629628236751
+    }
+  }
+}
