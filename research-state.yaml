@@ -1,36 +1,6 @@
 experiments:
-  total_runs: 107
+  total_runs: 112
   trajectory:
-  - description: Extreme regularization (0.6-0.9) +6.1% avg on 50-65 steps, doesn't
-      significantly
-    experiment_id: H1.245
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: Task decomposition +4.8% vs standard +3.8% on 50-70 steps, marginal
-      improvement
-    experiment_id: H1.246
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: Hierarchical attention +7.7% vs standard +2.5% on 50-80 steps, extends
-      beyond 45
-    experiment_id: H1.247
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: Hierarchical attention +5.8% vs standard +5.1% on 80-100 steps, marginal
-      extensi
-    experiment_id: H1.248
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: "Segment size sweep: 60\u219210 (+7.4%), 80\u219220 (+6.5%), 100\u2192\
-      15 (+6.8%), avg +6.9%"
-    experiment_id: H1.249
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
   - description: Complex multi-step (15-30 steps) +40.7% avg, CG significantly outperforms
     experiment_id: H1.250
     result:
@@ -59,30 +29,49 @@ experiments:
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
-  - description: Test Cognitive Graph on multi-step manipulation (pick then place)
-    experiment_id: 332-multi_step_tasks
-    hypothesis: H1.332
-    result:
-      error: Failed to parse
-      raw_output: "ynthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average\
-        \ trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\
-        \nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\n\
-        Training Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\"\
-        : 0.016000751638785005,\n  \"cognitive_graph_loss\": 0.011099479859694839,\n\
-        \  \"improvement_percent\": 30.63150962989597,\n  \"cognitive_graph_wins\"\
-        : true,\n  \"config\": {\n    \"task_type\": \"multi_step\",\n    \"n_steps\"\
-        : 3\n  }\n}\n"
-    timestamp: '2026-05-13T22:07:39.366173'
-  - description: Complex multi-step (15-30 steps) CG -0.1%, attention -22.9%
-    experiment_id: 333-complex-multi-step-attention
+  - description: Complex multi-step (15-30 steps) CG -0.1%, attention -22.9%, concat
+      wins
+    experiment_id: H1.333
     result:
       cognitive_graph_wins: false
-      improvement_percent: -0.1
-  - description: Attention on 20-40 steps +30% (standard), +21% (causal)
-    experiment_id: 334-attention-long-sequences
+      improvement_percent: 0
+  - description: Attention on 20-40 steps +30% (standard), +21% (causal), significant
+      win
+    experiment_id: H3.334
     result:
-      cognitive_graph_wins: true
-      improvement_percent: 30
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Fine-grained dimension sweep 20% physical +12.4%, confirms optimal
+      below 25%
+    experiment_id: H1.335
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Complex multi-step (15-30 steps) CG +2.4%, advantage diminishes vs
+      3-step (+30.6
+    experiment_id: H1.336
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Attention on 20+ timesteps +13.9%, confirms boundary hypothesis
+    experiment_id: H3.337
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Fine-grained dimension sweep around 25% optimal
+    experiment_id: 339-finer_sweep
+    hypothesis: H4.339
+    result:
+      error: Failed to parse
+      raw_output: "rated 250 demonstrations\n[Data] Average trajectory length: 11.0\n\
+        [Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n\
+        \  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\n\
+        Training Cognitive Graph...\n{\n  \"baseline_loss\": 0.011288723908364773,\n\
+        \  \"cognitive_graph_loss\": 0.009508791146799922,\n  \"improvement_percent\"\
+        : 15.76735135001351,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n\
+        \    \"sweep_range\": [\n      20,\n      22,\n      25,\n      28,\n    \
+        \  30\n    ]\n  }\n}\n"
+    timestamp: '2026-05-14T16:22:33.146350'
 hypotheses:
 - id: H1
   key_finding: Early fusion wins on real robot data (+25.6%)
@@ -434,11 +423,37 @@ hypotheses:
     on 10
   status: INCONCLUSIVE
 - id: H3.147
-  key_finding: Attention on 20-40 steps -13.8% avg, causal attention +4.9% avg, more stable
+  key_finding: Attention on 20-40 steps -13.8% avg, causal attention +4.9% avg, more
+    stable
   status: INCONCLUSIVE
 - id: H1.333
-  key_finding: Complex multi-step (15-30 steps) CG -0.1%, attention -22.9%, concat wins
+  key_finding: Complex multi-step (15-30 steps) CG -0.1%, attention -22.9%, concat
+    wins
   status: REFUTED
 - id: H3.334
-  key_finding: Attention on 20-40 steps +30% (standard), +21% (causal), significant win
+  key_finding: Attention on 20-40 steps +30% (standard), +21% (causal), significant
+    win
+  status: SUPPORTED
+- id: H1.335
+  key_finding: Fine-grained dimension sweep 20% physical +12.4%, confirms optimal
+    below 25%
+  status: SUPPORTED
+- id: H1.336
+  key_finding: Complex multi-step (15-30 steps) CG +2.4%, advantage diminishes vs
+    3-step (+30.6%)
+  status: SUPPORTED
+- id: H3.337
+  key_finding: Attention on 20+ timesteps +13.9%, confirms boundary hypothesis
+  status: SUPPORTED
+- id: H1.338
+  key_finding: Complex multi-step (larger model) CG -4.7%, larger model hurts complex tasks
+  status: REFUTED
+- id: H3.338
+  key_finding: Causal attention +10.1% vs standard +4.9% vs concat, causal wins
+  status: SUPPORTED
+- id: H1.339
+  key_finding: Fine-grained dimension sweep 20% physical +42.2%, strong win
+  status: SUPPORTED
+- id: H1.340
+  key_finding: Fine-grained dimension sweep 20% physical +15.8%, consistent win
   status: SUPPORTED
