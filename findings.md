@@ -1459,6 +1459,21 @@ Given H1.30's +5.7%, we should explore:
 
 **Key Finding**: Even with extreme regularization (0.6-0.9), attention performance remains low (+6% avg) compared to the sweet spot (12-30 steps at +70-90%). The boundary appears to be a fundamental limitation, not just a regularization issue.
 
+### H1.246: Task Decomposition to Extend Attention Boundary (May 13, 2026)
+
+| Seq Length | Standard Attn | Task Decomposition (3 segments) |
+|------------|---------------|--------------------------------|
+| 50 | +5.4% | +5.2% |
+| 55 | +3.2% | +2.3% |
+| 60 | -2.8% | +6.0% |
+| 65 | +3.7% | +0.9% |
+| 70 | +9.8% | +9.5% |
+
+**Avg: Decomposition +4.8%, Standard +3.8%**
+**Status: ⚠️ PARTIAL** — Task decomposition provides marginal improvement (+1%) over standard attention on 50-70 step sequences.
+
+**Key Finding**: Hierarchical/segment-based attention provides slight improvement over standard attention on longer sequences, but doesn't dramatically extend the boundary.
+
 ---
 
 ## Research Status Summary (May 13, 2026)
@@ -1469,6 +1484,7 @@ Given H1.30's +5.7%, we should explore:
 | H1.240-243 | Sweet spot 12-30 steps | ✅ SUPPORTED | +73-92% |
 | H1.244 | Beyond 45 steps | ⚠️ PARTIAL | +7% (drops significantly) |
 | H1.245 | Extreme reg 50-65 steps | ⚠️ INCONCLUSIVE | +6.1% (no significant extension) |
+| H1.246 | Task decomp 50-70 steps | ⚠️ PARTIAL | +4.8% (+1% over standard) |
 | H3.140-143 | Attention with autocorrelation | ✅ SUPPORTED | +51-91% on 20-45 steps |
 | H3.144 | Chunked attention | ❌ REFUTED | -7.4% (worse than baseline) |
 

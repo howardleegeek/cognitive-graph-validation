@@ -1,0 +1,61 @@
+{
+  "experiment_id": "H1.246",
+  "hypothesis": "H1.246",
+  "description": "Task decomposition to extend attention boundary on 50-70 step sequences",
+  "status": "PARTIAL",
+  "result": {
+    "avg_decomp_improvement": 4.8,
+    "avg_standard_improvement": 3.8,
+    "best_config": "decomp_3_subtasks",
+    "best_seq": "seq_70",
+    "best_improvement": 9.5,
+    "per_sequence": {
+      "seq_50": {
+        "baseline_mse": 0.13269042827188968,
+        "standard_mse": 0.1255550742149353,
+        "standard_improvement": 5.377444439574535,
+        "decomp_mse": 0.1257416308298707,
+        "best_n_subtasks": 3,
+        "improvement": 5.2368490572511615,
+        "best_config": "decomp_3_subtasks"
+      },
+      "seq_55": {
+        "baseline_mse": 0.13766335787420922,
+        "standard_mse": 0.13328374631025575,
+        "standard_improvement": 3.181392370187113,
+        "decomp_mse": 0.13452962264418603,
+        "best_n_subtasks": 2,
+        "improvement": 2.2763757025937608,
+        "best_config": "decomp_2_subtasks"
+      },
+      "seq_60": {
+        "baseline_mse": 0.13903609716023008,
+        "standard_mse": 0.14297839558372896,
+        "standard_improvement": -2.8354495731821663,
+        "decomp_mse": 0.1307210396354397,
+        "best_n_subtasks": 3,
+        "improvement": 5.980502685721825,
+        "best_config": "decomp_3_subtasks"
+      },
+      "seq_65": {
+        "baseline_mse": 0.12961901002205334,
+        "standard_mse": 0.1248876391695096,
+        "standard_improvement": 3.650213692990518,
+        "decomp_mse": 0.12839290276169776,
+        "best_n_subtasks": 3,
+        "improvement": 0.9459316655380757,
+        "best_config": "decomp_3_subtasks"
+      },
+      "seq_70": {
+        "baseline_mse": 0.15223453255104166,
+        "standard_mse": 0.13726442120969296,
+        "standard_improvement": 9.83358446371521,
+        "decomp_mse": 0.13773114042622703,
+        "best_n_subtasks": 3,
+        "improvement": 9.527005392125398,
+        "best_config": "decomp_3_subtasks"
+      }
+    }
+  },
+  "timestamp": "2026-05-13T23:30:00"
+}

@@ -1,6 +1,23 @@
 experiments:
-  total_runs: 79
+  total_runs: 80
   trajectory:
+  - description: Task decomposition to extend attention boundary on 50-70 step sequences
+    experiment_id: H1.246
+    hypothesis: H1.246
+    result:
+      avg_decomp_improvement: 4.8
+      avg_standard_improvement: 3.8
+      best_config: decomp_3_subtasks
+      best_seq: seq_70
+      best_improvement: 9.5
+      seq_50_improvement: 5.2
+      seq_55_improvement: 2.3
+      seq_60_improvement: 6.0
+      seq_65_improvement: 0.9
+      seq_70_improvement: 9.5
+    status: PARTIAL
+    note: PARTIAL +4.8% decomp vs +3.8% standard - marginal improvement over baseline on 50-70 steps
+    timestamp: '2026-05-13T23:30:00'
   - description: Extreme regularization (0.6-0.9) on 50-65 step sequences - marginal improvement
     experiment_id: H1.245
     hypothesis: H1.245
@@ -1307,3 +1324,6 @@ hypotheses:
 - id: H1.245
   status: INCONCLUSIVE
   key_finding: Extreme regularization (0.6-0.9) +6.1% avg on 50-65 steps, doesn't significantly extend boundary
+- id: H1.246
+  status: PARTIAL
+  key_finding: Task decomposition +4.8% vs standard +3.8% on 50-70 steps, marginal improvement
