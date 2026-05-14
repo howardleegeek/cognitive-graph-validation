@@ -1440,6 +1440,14 @@ Given H1.30's +5.7%, we should explore:
 
 **Key Finding**: The cognitive graph with attention shows +10.2% improvement on high-complexity relational reasoning tasks. This confirms that attention helps when tasks require explicit relational reasoning.
 
+### 222-attention_complexity: Replication Test (May 14, 2026)
+
+| Configuration | Baseline MSE | Cognitive Graph MSE | Improvement |
+|--------------|-------------|---------------------|-------------|
+| task_complexity=high, use_attention=true | 0.0138 | 0.0132 | **+4.4%** |
+
+**Status: ✅ SUPPORTED** — Replication confirms attention helps on complex tasks (+4.4%).
+
 ---
 
 ## New Results (May 13, 2026 - Evening)
@@ -11528,6 +11536,20 @@ The results are highly variable across experiments. H1.237 showed +88.9% but H1.
 **Results**: {
   "error": "Failed to parse",
   "raw_output": "_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.014641288435086608,\n  \"cognitive_graph_loss\": 0.0131486845202744,\n  \"improvement_percent\": 10.194484736980582,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n    \"task_complexity\": \"high\",\n    \"use_attention\": true\n  }\n}\n"
+}
+
+**Status**: ❌ REFUTED - Cognitive Graph 0.0%
+
+
+## 222-attention_complexity - 2026-05-13 19:24
+
+**Hypothesis**: Test attention on complex relational reasoning tasks
+
+**Prediction**: Attention wins when task requires explicit relational reasoning
+
+**Results**: {
+  "error": "Failed to parse",
+  "raw_output": "00.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.013773985905572772,\n  \"cognitive_graph_loss\": 0.013172507053241134,\n  \"improvement_percent\": 4.3667741237363105,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n    \"task_complexity\": \"high\",\n    \"use_attention\": true\n  }\n}\n"
 }
 
 **Status**: ❌ REFUTED - Cognitive Graph 0.0%
