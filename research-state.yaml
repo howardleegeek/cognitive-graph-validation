@@ -1,1346 +1,404 @@
 experiments:
-  total_runs: 81
+  total_runs: 100
   trajectory:
-  - description: Hierarchical attention on 50-80 step sequences - outperforms standard attention
-    experiment_id: H1.247
-    hypothesis: H1.247
-    result:
-      avg_hier_improvement: 7.7
-      avg_std_improvement: 2.5
-      hier_vs_std: 5.2
-      seq_50_improvement: 8.2
-      seq_60_improvement: 11.3
-      seq_70_improvement: 5.4
-      seq_80_improvement: 5.8
-    status: SUPPORTED
-    note: SUPPORTED +7.7% hierarchical vs +2.5% standard - hierarchical attention extends beyond 45-step boundary
-    timestamp: '2026-05-14T00:00:00'
-  - description: Task decomposition to extend attention boundary on 50-70 step sequences
-    experiment_id: H1.246
-    hypothesis: H1.246
-    result:
-      avg_decomp_improvement: 4.8
-      avg_standard_improvement: 3.8
-      best_config: decomp_3_subtasks
-      best_seq: seq_70
-      best_improvement: 9.5
-      seq_50_improvement: 5.2
-      seq_55_improvement: 2.3
-      seq_60_improvement: 6.0
-      seq_65_improvement: 0.9
-      seq_70_improvement: 9.5
-    status: PARTIAL
-    note: PARTIAL +4.8% decomp vs +3.8% standard - marginal improvement over baseline on 50-70 steps
-    timestamp: '2026-05-13T23:30:00'
-  - description: Extreme regularization (0.6-0.9) on 50-65 step sequences - marginal improvement
-    experiment_id: H1.245
-    hypothesis: H1.245
-    result:
-      avg_improvement: 6.1
-      best_config: unified_attn_reg_0.9
-      best_seq: seq_60
-      best_improvement: 9.1
-      seq_50_improvement: 6.5
-      seq_52_improvement: 7.3
-      seq_55_improvement: 7.5
-      seq_58_improvement: -0.9
-      seq_60_improvement: 9.1
-      seq_65_improvement: 6.9
-    status: INCONCLUSIVE
-    note: INCONCLUSIVE +6.1% avg on 50-65 steps - extreme reg doesn't significantly extend beyond 45-step boundary
-    timestamp: '2026-05-13T23:00:00'
-  - description: Chunked attention on 50+ step sequences - worse than baseline
-    experiment_id: H3.144
-    hypothesis: H3.144
-    result:
-      avg_standard_improvement: 5.2
-      avg_chunked_improvement: -7.4
-      chunked_vs_standard: -12.6
-    status: REFUTED
-    note: REFUTED -7.4% chunked vs +5.2% standard - chunked attention makes things worse
-    timestamp: '2026-05-13T22:45:00'
-  - description: Attention beyond 45 steps with higher regularization - marginal improvement
-    experiment_id: H1.244
-    hypothesis: H1.244
-    result:
-      avg_improvement: 7.0
-      best_config: unified_attn_reg_0.5
-      best_seq: seq_52
-      best_improvement: 12.2
-      seq_46_improvement: 4.1
-      seq_48_improvement: 8.9
-      seq_50_improvement: 3.7
-      seq_52_improvement: 12.2
-      seq_55_improvement: 6.3
-    status: PARTIAL
-    note: PARTIAL +7.0% avg on 46-55 steps - much lower than 50-90% at 12-45 steps, boundary confirmed
-    timestamp: '2026-05-13T22:30:00'
-  - description: Attention boundary test 35-45 steps - still works but drops at 45
-    experiment_id: H3.143
-    hypothesis: H3.143
-    result:
-      avg_improvement: 51.1
-      best_config: unified_attn_reg_0.30
-      best_reg: 0.30
-      seq_35_improvement: 56.4
-      seq_38_improvement: 55.7
-      seq_40_improvement: 50.7
-      seq_42_improvement: 50.1
-      seq_45_improvement: 42.6
-    status: SUPPORTED
-    note: +84.2% overall, +51.1% avg on 35-45 steps - boundary at ~45 steps where improvement drops to 42.6%
-    timestamp: '2026-05-13T22:00:00'
-  - description: Attention on longer sequences 27-35 steps - still works with higher reg
-    experiment_id: H3.142
-    hypothesis: H3.142
-    result:
-      avg_improvement: 70.1
-      best_config: unified_attn_reg_0.30
-      best_reg: 0.30
-      seq_27_improvement: 64.5
-      seq_28_improvement: 71.6
-      seq_30_improvement: 76.3
-      seq_32_improvement: 68.8
-      seq_35_improvement: 69.2
-    status: SUPPORTED
-    note: +92.6% overall, +70.1% avg on 27-35 steps - attention extends beyond previous boundary with higher reg
-    timestamp: '2026-05-13T21:45:00'
-  - description: Transition zone 18-26 steps - confirms sweet spot extends through 26
-    experiment_id: H1.243
-    hypothesis: H1.243
-    result:
-      avg_improvement: 75.1
-      best_config: unified_attn_reg_0.25
-      best_reg: 0.25
-      seq_18_improvement: 71.4
-      seq_20_improvement: 74.1
-      seq_22_improvement: 71.4
-      seq_24_improvement: 79.8
-      seq_26_improvement: 78.6
-    status: SUPPORTED
-    note: +92.5% overall, +75.1% avg on 18-26 steps - transition zone still in sweet spot, reg=0.25 optimal
-    timestamp: '2026-05-13T21:30:00'
-  - description: Boundary test 26-30 steps - attention still works but drops at 30
-    experiment_id: H1.242
-    hypothesis: H1.242
-    result:
-      avg_improvement: 73.5
-      best_config: unified_attn_reg_0.15
-      best_reg: 0.15
-      seq_26_improvement: 72.8
-      seq_27_improvement: 66.9
-      seq_28_improvement: 90.6
-      seq_29_improvement: 95.5
-      seq_30_improvement: 41.6
-    status: SUPPORTED
-    note: +73.5% avg on 26-30 steps - boundary at 30 steps where improvement drops significantly
-    timestamp: '2026-05-13T21:00:00'
-  - description: Extended sweet spot 15-25 steps - attention works above previous 12-18 limit
+  - description: Extended sweet spot 15-25 steps +85.4%, attention works above previous
+      12-18 lim
     experiment_id: H1.241
-    hypothesis: H1.241
     result:
-      avg_improvement: 85.4
-      best_config: unified_attn_reg_0.15
-      best_reg: 0.15
-      seq_15_improvement: 76.3
-      seq_18_improvement: 85.3
-      seq_20_improvement: 95.7
-      seq_22_improvement: 81.5
-      seq_25_improvement: 88.0
-    status: SUPPORTED
-    note: +85.4% avg on 15-25 step sequences - extends sweet spot beyond 12-18 steps! reg=0.15 optimal
-    timestamp: '2026-05-13T20:45:00'
-  - description: Sweet spot 12-18 steps - optimal range between weak 10-20 and failed 25-35
-    experiment_id: H1.240
-    hypothesis: H1.240
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Boundary at 30 steps +73.5%, improvement drops at 30 (41.6% vs 95.5%
+      at 29)
+    experiment_id: H1.242
     result:
-      avg_improvement: 91.6
-      best_config: unified_attn_reg_0.15
-      best_reg: 0.15
-      baseline_mse: 0.003738
-      best_mse: 0.000314
-    status: SUPPORTED
-    note: +91.6% on 12-18 step sweet spot - even better than H1.237 (+88.9%)! reg=0.15 optimal
-    timestamp: '2026-05-13T20:00:00'
-  - description: Attention on 25-35 step sequences with optimal rho=0.9
-    experiment_id: H3.141
-    hypothesis: H3.141
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Transition zone 18-26 steps +92.5% overall (+75.1% avg), reg=0.25
+      optimal
+    experiment_id: H1.243
     result:
-      avg_improvement: -0.1
-      attn_wins: 3
-      total: 5
-    status: REFUTED
-    note: REFUTED -0.1% on 25-35 steps, doesn't extend H3.140's +91.9% success
-    timestamp: '2026-05-13T19:30:00'
-  - description: Sweet spot verification - 10-20 steps with different regularization
-    experiment_id: H1.239
-    hypothesis: H1.239
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Attention extends to 27-35 steps +70.1% avg with higher reg=0.30
+    experiment_id: H3.142
     result:
-      avg_improvement: 1.4
-      best_config: n_steps_15_reg_0.1
-      best_improvement: 2.3
-    status: REFUTED
-    note: Only +1.4% avg on 10-20 steps, much lower than H1.237 (+88.9%). reg=0.1 still best.
-    timestamp: '2026-05-13T19:00:00'
-  - description: Ultra-complex multi-step tasks (30-40 steps) with optimal config
-    experiment_id: H1.238
-    hypothesis: H1.238
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Attention extends to 35-45 steps +51.1% avg, boundary at ~45 steps
+      (42.6%)
+    experiment_id: H3.143
     result:
-      avg_improvement: -0.1
-      unified_wins: 1
-      total: 3
-    status: REFUTED
-    note: REFUTED -0.1% on 30-40 steps, advantage diminishes vs 15-25 steps (+88.9%)
-    timestamp: '2026-05-13T18:00:00'
-  - description: Attention on 20-30 step sequences with autocorrelation
-    experiment_id: H3.140
-    hypothesis: H3.140
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Attention beyond 45 steps +7.0% avg, much lower than 50-90% at 12-45
+      steps, boun
+    experiment_id: H1.244
     result:
-      avg_improvement: 91.9
-      best_rho: 0.9
-      best_improvement: 95.0
-    status: SUPPORTED
-    note: Attention works on 20-30 steps with autocorrelation, best at rho=0.9 (+95.0%)
-    timestamp: '2026-05-13T05:00:00'
-  - description: Ultra-complex multi-step tasks (15-25 steps) with optimal config
-    experiment_id: H1.237
-    hypothesis: H1.237
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Chunked attention -7.4% on 50+ steps, worse than standard attention
+      (+5.2%)
+    experiment_id: H3.144
     result:
-      avg_improvement: 88.9
-      best_config: unified_attn_reg_0.1
-      best_reg: 0.1
-    status: SUPPORTED
-    note: Excellent! +88.9% on 15-25 step ultra-complex tasks, confirms reg=0.1 optimal
-    timestamp: '2026-05-13T04:30:00'
-  - description: Regularization strengths on ultra-complex tasks
-    experiment_id: H1.236
-    hypothesis: H1.236
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Extreme regularization (0.6-0.9) +6.1% avg on 50-65 steps, doesn't
+      significantly
+    experiment_id: H1.245
     result:
-      avg_improvement: 84.9
-      best_config: reg_0.1
-    status: SUPPORTED
-    note: Optimal regularization is consistently 0.1 across all complexity levels (+84.9%)
-    timestamp: '2026-05-13T04:00:00'
-  - description: Chunked attention on 500+ step sequences
-    experiment_id: H3.139
-    hypothesis: H3.139
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Task decomposition +4.8% vs standard +3.8% on 50-70 steps, marginal
+      improvement
+    experiment_id: H1.246
     result:
-      avg_improvement: 27.7
-      best_config: standard_attn
-    status: SUPPORTED
-    note: Standard attention works at most lengths, chunked shows promise at 550-600 steps
-    timestamp: '2026-05-13T03:45:00'
-  - description: Ultra-complex multi-step tasks (10+ steps, higher complexity)
-    experiment_id: H1.235
-    hypothesis: H1.235
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Hierarchical attention +7.7% vs standard +2.5% on 50-80 steps, extends
+      beyond 45
+    experiment_id: H1.247
     result:
-      avg_improvement: 73.0
-      best_config: unified+attn+reg0.2
-    status: SUPPORTED
-    note: Excellent! +73.0% avg improvement on ultra-complex multi-step tasks, even better than H1.234
-    timestamp: '2026-05-13T03:30:00'
-  - description: Unified + Attention + Regularization on complex multi-step
-    experiment_id: H1.234
-    hypothesis: H1.234
-    result:
-      avg_improvement: 54.3
-      best_config: unified+attn+reg
-    status: SUPPORTED
-    note: Excellent results! +54.3% avg improvement on complex multi-step tasks
-    timestamp: '2026-05-13T03:00:00'
-  - description: Linear attention on 400+ step sequences
-    experiment_id: H3.138
-    hypothesis: H3.138
-    result:
-      avg_improvement: 0.7
-      linear_wins: 2
-    status: PARTIAL
-    note: Linear attention shows marginal improvement (+0.7% avg)
-    timestamp: '2026-05-13T02:30:00'
-  - description: Stronger regularization on complex tasks
-    experiment_id: H1.233
-    hypothesis: H1.233
-    result:
-      avg_improvement: -0.2
-      best_reg: 0.2
-    status: REFUTED
-    note: Stronger regularization doesn't help (-0.2% avg)
-    timestamp: '2026-05-13T02:15:00'
-  - description: Attention + regularization on 400+ steps
-    experiment_id: H3.137
-    hypothesis: H3.137
-    result:
-      avg_improvement: -39.6
-      best_reg: 0.01
-    status: REFUTED
-    note: Even with regularization, attention fails on 400+ steps
-    timestamp: '2026-05-13T02:00:00'
-  - description: Regularization fixes unified on complex tasks
-    experiment_id: H1.232
-    hypothesis: H1.232
-    result:
-      avg_improvement: 9.0
-      best_reg: 0.1
-    status: SUPPORTED
-    note: Regularization (reg=0.1) fixes unified on complex tasks! +9.0% improvement
-    timestamp: '2026-05-13T01:30:00'
-  - description: Hierarchical attention to break 400-step barrier
-    experiment_id: H3.136
-    hypothesis: H3.136
-    result:
-      avg_improvement: -432.2
-      hier_wins: 0
-    status: REFUTED
-    note: Hierarchical attention fails badly on 400+ step sequences
-    timestamp: '2026-05-13T01:15:00'
-  - description: SSM on complex tasks with autocorrelation
-    experiment_id: H1.231
-    hypothesis: H1.231
-    result:
-      avg_improvement: -33.3
-      ssm_wins: 0
-    status: REFUTED
-    note: SSM also fails on complex tasks with autocorrelation
-    timestamp: '2026-05-13T01:10:00'
-  - description: Unified architecture on varying complexity with autocorrelation
-    experiment_id: H1.230
-    hypothesis: H1.230
-    result:
-      avg_improvement: -15.0
-      unified_wins: 0
-    status: REFUTED
-    note: Unified -15.0% vs baseline on complex tasks with autocorrelation - worse than baseline!
-    timestamp: '2026-05-13T01:00:00'
-  - description: Unified+Attention on ultra-complex with autocorrelation
-    experiment_id: H1.229
-    hypothesis: H1.229
-    result:
-      avg_improvement: -2.8
-      unified_attn_wins: 1
-    status: REFUTED
-    note: Unified+Attention doesn't help on ultra-complex tasks even with autocorrelation
-    timestamp: '2026-05-13T00:45:00'
-  - description: Attention exact boundary at 400-410 steps
-    experiment_id: H3.135
-    hypothesis: H3.135
-    result:
-      avg_improvement: -5.1
-      attn_wins: 0
-    status: REFUTED
-    note: Attention FAILS at 400-410 steps, boundary confirmed at exactly 400
-    timestamp: '2026-05-13T00:30:00'
-  - description: Attention boundary at 185-195 steps with autocorrelation
-    experiment_id: H3.128
-    hypothesis: H3.128
-    result:
-      avg_improvement: 14.2
-      attn_wins: 6
-    status: SUPPORTED
-    note: Attention extends to 185-195 step sequences, 6/6 wins (+14.2% avg). Extends valid range beyond 180 steps.
-    timestamp: '2026-05-12T23:00:00'
-  - description: Attention exact boundary at 196-200 steps
-    experiment_id: H3.129
-    hypothesis: H3.129
-    result:
-      avg_improvement: 16.3
-      attn_wins: 5
-    status: SUPPORTED
-    note: Attention works at 196-200 steps, 5/5 wins (+16.3% avg).
-    timestamp: '2026-05-12T23:30:00'
-  - description: Attention on 210-250 step sequences
-    experiment_id: H3.130
-    hypothesis: H3.130
-    result:
-      avg_improvement: 13.6
-      attn_wins: 5
-    status: SUPPORTED
-    note: Attention works at 210-250 steps, advantage decreases at 250 (+0.1%).
-    timestamp: '2026-05-12T23:45:00'
-  - description: Attention on 260-300 step sequences
-    experiment_id: H3.131
-    hypothesis: H3.131
-    result:
-      avg_improvement: 12.1
-      attn_wins: 5
-    status: SUPPORTED
-    note: Attention works at 260-300 steps with autocorrelation (+12.1% avg).
-    timestamp: '2026-05-12T23:50:00'
-  - description: Attention on 350-400 step sequences
-    experiment_id: H3.132
-    hypothesis: H3.132
-    result:
-      avg_improvement: 12.1
-      attn_wins: 3
-    status: SUPPORTED
-    note: Attention works at 350-400 steps, advantage decreases at 400 (+4.0%).
-    timestamp: '2026-05-12T23:55:00'
-  - description: Attention boundary test at 450 steps
-    experiment_id: H3.133
-    hypothesis: H3.133
-    result:
-      avg_improvement: -4.1
-      attn_wins: 0
-    status: REFUTED
-    note: Attention FAILS at 450 steps (-4.1%). Boundary is between 400-450 steps.
-    timestamp: '2026-05-13T00:00:00'
-  - description: Attention boundary test at 420-440 steps
-    experiment_id: H3.134
-    hypothesis: H3.134
-    result:
-      avg_improvement: -6.7
-      attn_wins: 0
-    status: REFUTED
-    note: Attention FAILS at 420-440 steps (-6.7%). Boundary is between 400-420 steps.
-    timestamp: '2026-05-13T00:15:00'
-  - description: Unified+Attention on extreme complex tasks (100-200 steps)
-    experiment_id: H1.228
-    hypothesis: H1.228
-    result:
-      avg_improvement: -212.1
-      unified_wins: 0
-    status: REFUTED
-    note: Unified+Attention combination performs WORSE than baseline on complex tasks without autocorrelation.
-    timestamp: '2026-05-12T23:15:00'
-  - description: Attention on 150-180 timesteps with optimal autocorrelation (rho=0.95-0.98)
-    experiment_id: H3.127
-    hypothesis: H3.127
-    result:
-      avg_improvement: 33.13
-      attn_wins: 16
-    status: SUPPORTED
-    note: Attention extends to 150-180 step sequences, 16/16 wins (+33.1% avg). Confirms H3.125 and extends valid range.
-    timestamp: '2026-05-12T22:00:00'
-  - description: Attention on 200+ timesteps with maximum autocorrelation (rho=0.98)
-    experiment_id: H3.126
-    hypothesis: H3.126
-    result:
-      avg_improvement: -1.37
-      attn_wins: 1
-    status: REFUTED
-    note: Attention wins only at 180 steps, loses at 200+. Autocorrelation alone not sufficient for 200+ steps
-    timestamp: '2026-05-12T21:00:00'
-  - description: Unified architecture on ultra-complex multi-step with autocorrelation (rho=0.95)
-    experiment_id: H1.227
-    hypothesis: H1.227
-    result:
-      unified_improvement: -2.4
-      unified_attn_improvement: 13.42
-      unified_wins: 2
-      unified_attn_wins: 5
-    status: PARTIAL
-    note: Unified alone 2/5 wins (-2.4%), Unified+Attention 5/5 wins (+13.42%) - attention critical for ultra-complex
-    timestamp: '2026-05-12T21:15:00'
-  - description: Attention on 120-150 steps with maximum autocorrelation (rho=0.95-0.99)
-    experiment_id: H3.125
-    hypothesis: H3.125
-    result:
-      avg_improvement: 94.6
-      attn_wins: 16
-    status: SUPPORTED
-    note: Attention extends to 150-step sequences, 16/16 wins (100%)
-    timestamp: '2026-05-12T20:00:00'
-  - description: Unified + autocorrelation on complex multi-step (3-15 steps)
-    experiment_id: H1.226
-    hypothesis: H1.226
-    result:
-      avg_improvement: -622.0
-      unified_wins: 12
-    status: INCONCLUSIVE
-    note: High variance, works at rho=0.90/0.95 but not at other levels
-    timestamp: '2026-05-12T19:30:00'
-  - description: Attention on 20-40 steps with optimal autocorrelation (rho=0.93)
-    experiment_id: H3.120
-    hypothesis: H3.120
-    result:
-      avg_improvement: 37.4
-      attn_wins: 5
-    status: SUPPORTED
-    note: Optimal rho=0.93 enables attention on 20-40 step sequences, 5/5 wins
-    timestamp: '2026-05-12T18:00:00'
-  - description: Attention on 40-60 steps with extreme autocorrelation (0.95-0.98)
-    experiment_id: H3.121
-    hypothesis: H3.121
-    result:
-      avg_improvement: 40.2
-      attn_wins: 20
-    status: SUPPORTED
-    note: Extreme rho enables attention on 40-60 steps, 20/20 wins (100%)
-    timestamp: '2026-05-12T18:15:00'
-  - description: Ultra-complex multi-step (150-200 steps) without goal conditioning
-    experiment_id: H1.224
-    hypothesis: H1.224
-    result:
-      avg_improvement: -2.7
-      unified_wins: 2
-    status: REFUTED
-    note: Unified loses -2.7% on 150-200 step ultra-complex tasks
-    timestamp: '2026-05-12T18:30:00'
-  - description: Attention on 60-80 steps with maximum autocorrelation (rho=0.98)
-    experiment_id: H3.122
-    hypothesis: H3.122
-    result:
-      avg_improvement: 43.1
-      attn_wins: 5
-    status: SUPPORTED
-    note: Attention extends to 60-80 step sequences with max autocorrelation
-    timestamp: '2026-05-12T18:45:00'
-  - description: Unified architecture with autocorrelation on 100-150 steps
-    experiment_id: H1.225
-    hypothesis: H1.225
-    result:
-      avg_improvement: -6.9
-      unified_wins: 0
-    status: REFUTED
-    note: Unified still loses on 100-150 steps even with high autocorrelation
-    timestamp: '2026-05-12T19:00:00'
-  - description: Attention on 80-100 steps with maximum autocorrelation (rho=0.98)
-    experiment_id: H3.123
-    hypothesis: H3.123
-    result:
-      avg_improvement: 38.2
-      attn_wins: 5
-    status: SUPPORTED
-    note: Attention extends to 100 step sequences
-    timestamp: '2026-05-12T19:15:00'
-  - description: Attention on 100-120 steps with maximum autocorrelation (rho=0.98)
-    experiment_id: H3.124
-    hypothesis: H3.124
-    result:
-      avg_improvement: 37.9
-      attn_wins: 5
-    status: SUPPORTED
-    note: Attention works on 100-120 step sequences - MASSIVE breakthrough
-    timestamp: '2026-05-12T19:30:00'
-  - description: Attention on 20-40 steps WITH autocorrelation
-    experiment_id: H3.119
-    hypothesis: H3.119
-    result:
-      avg_improvement: -6.2
-      attn_wins: 2
-    status: REFUTED
-    note: Attention loses -6.2% on 20-40 steps, rho=0.90 is sweet spot
-    timestamp: '2026-05-12T17:00:00'
-  - description: Unified architecture on ultra-complex (100-150 steps)
-    experiment_id: H1.223
-    hypothesis: H1.223
-    result:
-      unified_improvement: 4.7
-      goal_improvement: -2.8
-      unified_wins: 3
-    status: PARTIAL
-    note: Unified +4.7% on 100-150 steps, goal conditioning hurts
-    timestamp: '2026-05-12T17:05:00'
-  - description: Ultra-complex multi-step (80-120 steps) with goal conditioning
-    experiment_id: H1.222
-    hypothesis: H1.222
-    result:
-      unified_improvement: -1.9
-      unified_wins: 1
-    status: REFUTED
-    note: Unified loses -1.9% on 80-120 step ultra-complex tasks
-    timestamp: '2026-05-12T16:22:59'
-  - description: Attention with high autocorrelation (0.9-0.95) on 50-80 steps
-    experiment_id: H3.118
-    hypothesis: H3.118
-    result:
-      rho_09_improvement: 13.5
-      rho_093_improvement: 14.7
-      rho_095_improvement: 9.9
-      attn_wins: 12
-    status: PARTIAL
-    note: Attention wins all 12 tests, but avg improvement only +3.3%
-    timestamp: '2026-05-12T16:25:06'
-  - description: Complex multi-step (30-70 steps) with goal conditioning
-    experiment_id: H1.221
-    hypothesis: H1.221
-    result:
-      cg_improvement: -4.6
-      ssm_improvement: -4.8
-      cg_wins: 2
-      ssm_wins: 1
-    status: REFUTED
-    note: Neither CG nor SSM outperform baseline on 30-70 step synthetic tasks
-    timestamp: '2026-05-12T16:04:46'
-  - description: Attention on 30+ steps WITH goal conditioning
-    experiment_id: H3.116
-    hypothesis: H3.116
-    result:
-      attn_improvement: -11.2
-      ssm_improvement: 2.5
-      attn_wins: 1
-      ssm_wins: 3
-    status: REFUTED
-    note: Attention fails on longer sequences even with goal conditioning
-    timestamp: '2026-05-12T16:04:59'
-  - description: Attention death zone + autocorrelation (unlock attention!)
-    experiment_id: H3.117
-    hypothesis: H3.117
-    result:
-      autocorr_0_attn_avg: -4.7
-      autocorr_07_attn_avg: -9.1
-      autocorr_09_attn_avg: -21.6
-      attn_wins_09: 5
-    status: SUPPORTED
-    note: Autocorrelation unlocks attention in the 30-50 step death zone!
-    timestamp: '2026-05-12T16:30:00'
-  - description: SSM+HierGoals on 100-200 step sequences
-    experiment_id: H1.219
-    hypothesis: H1.219
-    result:
-      avg_ssm_delta: -8.8
-      avg_hier_delta: -8.8
-      ssm_wins: 0
-      hier_wins: 0
-    status: REFUTED
-    note: Concatenation wins on 100-200 step sequences
-    timestamp: '2026-05-11T23:57:00.000000'
-  - description: SSM+HierGoals on 50-100 step sequences
-    experiment_id: H1.220
-    hypothesis: H1.220
-    result:
-      avg_ssm_delta: -1.8
-      avg_hier_delta: -1.9
-      ssm_wins: 0
-      hier_wins: 0
-    status: REFUTED
-    note: Concatenation competitive on 50-100 step sequences
-    timestamp: '2026-05-11T23:58:00.000000'
-  - description: Attention on 20-40 step sequences WITH goal conditioning
-    experiment_id: H3.115
-    hypothesis: H3.115
-    result:
-      avg_attn_delta: 3.9
-      avg_ssm_delta: -35.7
-      attn_wins: 2
-      ssm_wins: 0
-    status: INCONCLUSIVE
-    note: Attention wins 2/5 lengths on 20-40 steps with goal states
-    timestamp: '2026-05-11T23:59:00.000000'
-  - description: SSM+HierGoals on 500-700 step ultra-long sequences
-    experiment_id: H3.114
-    hypothesis: H3.114
-    result:
-      avg_ssm_hier_delta: -50.9
-      avg_mamba_delta: -48.2
-      ssm_hier_wins: 7
-    status: SUPPORTED
-    note: SSM+HierGoals dominates all lengths, validates scaling to 700 steps
-    timestamp: '2026-05-11T23:50:00.000000'
-  - description: Hybrid attention + SSM combined
-    experiment_id: H1.218
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Test at 1000+ demonstrations scale
+    experiment_id: 218-larger_scale
     hypothesis: H1.218
     result:
-      concat_wins: 6
-      hybrid_wins: 2
-      avg_hybrid_delta: 9.6
-    status: INCONCLUSIVE
-    note: Hybrid doesn't outperform concat, both methods lose to concat
-    timestamp: '2026-05-11T23:55:00.000000'
-  - description: SSM+HierGoals on 250-400 step sequences
-    experiment_id: H3.113
-    hypothesis: H3.113
-    result:
-      ssm_hier_wins: 4
-      avg_ssm_hier_delta: -57.3
-      avg_mamba_delta: -54.6
-      avg_chunked_delta: -26.6
-    status: SUPPORTED
-    note: SSM+HierGoals dominates all lengths, Mamba 2nd best
-    timestamp: '2026-05-11T23:45:00.000000'
-  - description: Attention on 200-300 step sequences WITH goal states
-    experiment_id: H1.217
-    hypothesis: H1.217
-    result:
-      attn_wins: 0
-      ssm_wins: 7
-      avg_attn_delta: 9.2
-      avg_ssm_delta: -24.1
-    status: REFUTED
-    note: SSM wins all 7 lengths, attention fails even with goals
-    timestamp: '2026-05-11T23:30:00.000000'
-  - description: SSM-Cognitive Graph on synthetic manipulation tasks
-    experiment_id: H3.112
-    hypothesis: H3.112
-    result:
-      avg_improvement: -14.9
-      trial1_improvement: -56.4
-      trial2_improvement: 7.9
-      trial3_improvement: 3.8
-      status: REFUTED
-      note: SSM-CG inconsistent, baseline MLP sometimes better
-    timestamp: '2026-05-11T22:30:00.000000'
-  - description: Complex multi-step with goal conditioning (30-70 steps)
-    experiment_id: H1.221
-    hypothesis: H1.221
-    result:
-      baseline_avg: 0.00419
-      cg_avg: 0.00439
-      ssm_avg: 0.00439
-      cg_improvement: -4.6
-      ssm_improvement: -4.8
-      cg_wins: 2
-      ssm_wins: 1
-    status: REFUTED
-    note: CG loses -4.6% on 30-70 step complex tasks with goals
-    timestamp: '2026-05-12T16:04:00.000000'
-  - description: Attention on 30-70 steps WITH goal conditioning
-    experiment_id: H3.116
-    hypothesis: H3.116
-    result:
-      attn_avg: 0.00333
-      concat_avg: 0.00300
-      ssm_avg: 0.00292
-      attn_improvement: -11.2
-      ssm_improvement: 2.5
-      attn_wins: 1
-      ssm_wins: 3
-    status: REFUTED
-    note: Attention loses -11.2%, SSM wins 3/5 lengths
-    timestamp: '2026-05-12T16:05:00.000000'
-  - description: Different goal representations (endpoint vs trajectory vs subgoals vs combined)
-    experiment_id: H1.214
-    hypothesis: H1.214
-    result:
-      endpoint_delta: 95.1
-      trajectory_delta: -133.9
-      subgoals_delta: -21.7
-      combined_delta: 53.7
-      status: SUPPORTED
-      note: Endpoint is best (+95.1%), trajectory hurts (-133.9%)
-    timestamp: '2026-05-11T21:10:00.000000'
-  - description: Attention on 500-1000 step ultra-long sequences
-    experiment_id: H3.104
-    hypothesis: H3.104
-    result:
-      avg_flat_delta: 94.9
-      avg_hier_delta: 94.8
-      flat_wins: 3
-      status: REFUTED
-      note: Flat wins 3/5 lengths, both provide ~95% over concat
-    timestamp: '2026-05-11T21:00:00.000000'
-  - description: Adaptive hierarchical attention on 250-400 step sequences
-    experiment_id: H3.103
-    hypothesis: H3.103
-    result:
-      avg_flat_delta: 85.0
-      avg_hier_delta: 86.7
-      hier_wins: 3
-      status: SUPPORTED
-      note: Hierarchical wins 3/4 lengths, +86.7% avg over concat
-    timestamp: '2026-05-11T20:50:00.000000'
-  - description: Hierarchical goal reasoning on 200-300 step sequences
-    experiment_id: H1.212
-    hypothesis: H1.212
-    result:
-      avg_delta: 0.8
-      hier_wins: 3
-      status: PARTIAL
-      note: Wins at 200-250, loses at 275-300
-    timestamp: '2026-05-11T19:15:00.000000'
-  - description: SSM + Goal conditioning on short sequences (≤40 steps)
-    experiment_id: H3.102
-    hypothesis: H3.102
-    result:
-      avg_ssm_goal_vs_ssm: 48.0
-      avg_ssm_goal_vs_attn: 1606.6
-      status: REFUTED
-      note: Attention dominates all lengths
-    timestamp: '2026-05-11T19:20:00.000000'
-  - description: Hierarchical goal reasoning on 100-200 step sequences
-    experiment_id: H1.209
-    hypothesis: H1.209
-    result:
-      avg_delta: -0.6
-      hier_wins: 3
-      status: REFUTED
-      note: Flat goal wins at this scale
-    timestamp: '2026-05-11T18:45:00.000000'
-  - description: SSM with goal conditioning on manipulation tasks
-    experiment_id: H3.101
-    hypothesis: H3.101
-    result:
-      avg_ssm_goal_vs_ssm: -1.8
-      avg_ssm_goal_vs_attn: 3.0
-      status: PARTIAL
-      note: SSM+Goal beats Attn+Goal, loses to vanilla SSM
-    timestamp: '2026-05-11T18:50:00.000000'
-  - description: Bidirectional goal-conditioned prediction
-    experiment_id: H1.210
-    hypothesis: H1.210
-    result:
-      avg_bidir_vs_uni: 1.9
-      avg_bidir_vs_goal_uni: -1.9
-      status: REFUTED
-      note: Bidirectional marginally beats plain uni, loses to goal-uni
-    timestamp: '2026-05-11T18:55:00.000000'
-  - description: Hierarchical + Bidirectional combined on extreme complexity
-    experiment_id: H1.211
-    hypothesis: H1.211
-    result:
-      avg_hier_bi_vs_endpoint: 0.9
-      hier_bi_wins: 3
-      status: SUPPORTED
-      note: Marginal improvement on 200-400 step sequences
-    timestamp: '2026-05-11T19:00:00.000000'
-  - description: Multi-scale goal decomposition (endpoint vs milestone vs subgoal vs multi_scale)
-    experiment_id: H3.100
-    hypothesis: H3.100
-    result:
-      endpoint_avg: -1.2
-      milestone_avg: 3.2
-      subgoal_avg: 20.1
-      multi_scale_avg: 5.1
-      attn_wins: 12
-      status: SUPPORTED
-      note: Subgoal best (+20.1%, 5/5 wins), multi-scale +6.3% over endpoint
-    timestamp: '2026-05-11T18:00:00.000000'
-  - description: Ultra-long sequence attention (300-500 steps) with goal types
-    experiment_id: H1.208
-    hypothesis: H1.208
-    result:
-      endpoint_avg: 13.5
-      subgoal_avg: 30.3
-      combined_avg: 46.9
-      attn_wins: 14
-      status: SUPPORTED
-      note: Combined provides +46.9% on 300-500 step sequences, +33.4% over endpoint
-    timestamp: '2026-05-11T18:30:00.000000'
-  - description: Attention on 20-40 step sequences with task structure
-    experiment_id: H3.105
-    hypothesis: H3.105
-    result:
-      avg_improvement: -93.1
-      attn_wins: 0
-      status: REFUTED
-      note: Attention fails on 20-40 step sequences without proper temporal structure
-    timestamp: '2026-05-11T22:00:00.000000'
-  - description: Attention with phase transitions on 50-150 step sequences
-    experiment_id: H3.106
-    hypothesis: H3.106
-    result:
-      avg_improvement: -72.0
-      hier_wins: 0
-      status: REFUTED
-      note: Phase transitions don't enable attention
-    timestamp: '2026-05-11T22:05:00.000000'
-  - description: Next-step prediction with attention (causal structure)
-    experiment_id: H3.107
-    hypothesis: H3.107
-    result:
-      avg_improvement: -45.8
-      attn_wins: 0
-      status: REFUTED
-      note: Causal structure alone doesn't enable attention
-    timestamp: '2026-05-11T22:10:00.000000'
-  - description: Neural attention vs concatenation (properly trained)
-    experiment_id: H3.108
-    hypothesis: H3.108
-    result:
-      avg_improvement: -1563537.9
-      attn_wins: 0
-      status: REFUTED
-      note: Neural attention diverges, concat stable
-    timestamp: '2026-05-11T22:15:00.000000'
-  - description: Attention with real robot temporal structure (autocorrelation)
-    experiment_id: H3.109
-    hypothesis: H3.109
-    result:
-      avg_improvement: -16.1
-      attn_wins: 1
-      status: REFUTED
-      note: Real robot structure doesn't enable attention
-    timestamp: '2026-05-11T22:20:00.000000'
-  - description: Learned attention patterns for manipulation
-    experiment_id: H3.110
-    hypothesis: H3.110
-    result:
-      avg_improvement: -88.8
-      attn_wins: 0
-      status: REFUTED
-      note: Phase-aware attention hurts manipulation tasks
-    timestamp: '2026-05-11T22:25:00.000000'
-  - description: Data structure comparison (random vs smooth vs robot-like)
-    experiment_id: H3.111
-    hypothesis: H3.111
-    result:
-      random_improvement: 7.9
-      smooth_improvement: -91.6
-      robot_improvement: -20.2
-      status: INCONCLUSIVE
-      note: Attention helps on random, hurts on structured data
-    timestamp: '2026-05-11T22:30:00.000000'
-  - description: Hierarchical goal decomposition for long sequences
-    experiment_id: H1.216
-    hypothesis: H1.216
-    result:
-      avg_improvement: -507.3
-      hier_wins: 0
-      status: REFUTED
-      note: Hierarchical approach fails on 100-300 step sequences
-    timestamp: '2026-05-11T21:45:00.000000'
-  - description: Complex multi-step tasks with goal conditioning
-    experiment_id: H1.215
-    hypothesis: H1.215
-    result:
-      avg_improvement: -4.5
-      attn_wins: 3
-      status: REFUTED
-      note: Attention marginal at 50-100 steps, worse at 20-40
-    timestamp: '2026-05-11T21:40:00.000000'
-  - description: Test at 1000+ demonstrations scale
-    experiment_id: 150-larger_scale
-    hypothesis: H1.150
-    result:
-      improvement_percent: 33.85606659303305
-      cognitive_graph_wins: true
-    timestamp: '2026-05-10T17:44:26.977714'
-  - description: Complex multi-step with real robot temporal dynamics (ρ=0.85)
-    experiment_id: H1.201
-    hypothesis: H1.201
-    result:
-      avg_improvement: -7.2
-      status: REFUTED
-      note: Cognitive Graph loses on synthetic complex multi-step tasks
-    timestamp: '2026-05-10T18:30:00.000000'
-  - description: Attention on longer sequences with autocorrelation
-    experiment_id: H3.89
-    hypothesis: H3.89
-    result:
-      avg_delta: -30.5
-      attn_wins: 1
-      status: REFUTED
-      note: Concatenation wins across 6/7 tested sequence lengths
-    timestamp: '2026-05-10T18:35:00.000000'
-  - description: SSM on long sequences with autocorrelation
-    experiment_id: H3.90
-    hypothesis: H3.90
-    result:
-      avg_ssm_delta: -20.5
-      avg_attn_delta: -19.8
-      ssm_wins: 0
-      status: REFUTED
-      note: Concatenation wins across all 7 tested sequence lengths
-    timestamp: '2026-05-10T18:40:00.000000'
-  - description: SSM/Attention on manipulation tasks with goal states
-    experiment_id: H1.202
-    hypothesis: H1.202
-    result:
-      avg_ssm_delta: 37.2
-      avg_attn_delta: 89.7
-      ssm_wins: 3
-      attn_wins: 4
-      status: SUPPORTED
-      note: Task structure (goal states, action outcomes) enables SSM/Attention!
-    timestamp: '2026-05-10T18:50:00.000000'
-  - description: Attention on 20-40 timesteps WITH task structure
-    experiment_id: H3.91
-    hypothesis: H3.91
-    result:
-      avg_delta: 86.6
-      attn_wins: 5
-      status: SUPPORTED
-      note: Task structure enables attention on long sequences!
-    timestamp: '2026-05-10T19:00:00.000000'
-  - description: Complex multi-step (15-35) WITH task structure
-    experiment_id: H1.203
-    hypothesis: H1.203
-    result:
-      avg_delta: 78.1
-      attn_wins: 5
-      status: SUPPORTED
-      note: Attention advantage grows with complexity!
-    timestamp: '2026-05-10T19:10:00.000000'
-  - description: Different task structure types
-    experiment_id: H3.92
-    hypothesis: H3.92
-    result:
-      best_type: full
-      best_delta: 87.2
-      goal_delta: 61.9
-      status: SUPPORTED
-      note: Goal state is CRITICAL for enabling attention!
-    timestamp: '2026-05-10T19:20:00.000000'
-  - description: Complex multi-step (50-100) WITH task structure (+94.6%)
-    experiment_id: H1.204
-    hypothesis: H1.204
-    result:
-      avg_delta: 94.6
-      attn_wins: 5
-      status: SUPPORTED
-      note: Attention wins 5/5 tested lengths with task structure
-    timestamp: '2026-05-10T19:30:00.000000'
-  - description: Attention on 50+ steps WITH FULL task structure (+55.6%)
-    experiment_id: H3.93
-    hypothesis: H3.93
-    result:
-      avg_delta: 55.6
-      attn_wins: 5
-      status: SUPPORTED
-      note: Attention wins 5/5 with full task structure (goal+subgoals+actions+constraints)
-    timestamp: '2026-05-10T19:35:00.000000'
-  - description: Goal representation sensitivity test
-    experiment_id: H3.94
-    hypothesis: H3.94
-    result:
-      avg_delta: -58.0
-      attn_wins: 1
-      status: REFUTED
-      note: Endpoint goal (+94.1%) enables attention, but trajectory/keypoint/delta hurt
-    timestamp: '2026-05-11T12:00:00.000000'
-  - description: Endpoint goal on very long sequences (100+ steps)
-    experiment_id: H3.95
-    hypothesis: H3.95
-    result:
-      avg_delta: 95.3
-      attn_wins: 5
-      status: SUPPORTED
-      note: Attention wins 5/5 lengths, advantage grows with sequence length!
-    timestamp: '2026-05-11T12:05:00.000000'
-  - description: Endpoint goal with different task complexities
-    experiment_id: H1.207
-    hypothesis: H1.207
-    result:
-      avg_delta: 93.6
-      attn_wins: 4
-      status: SUPPORTED
-      note: Attention wins 4/4 complexities, slight decrease at very high complexity
-    timestamp: '2026-05-11T12:10:00.000000'
-  - description: Endpoint goal with different autocorrelation levels
-    experiment_id: H3.96
-    hypothesis: H3.96
-    result:
-      avg_delta: 92.8
-      attn_wins: 6
-      status: SUPPORTED
-      note: Attention wins 6/6 rho levels, strongest at rho=0.85 (+96.5%)
-    timestamp: '2026-05-11T12:15:00.000000'
-  - description: Endpoint goal on 150+ step sequences
-    experiment_id: H3.97
-    hypothesis: H3.97
-    result:
-      avg_delta: 31.2
-      attn_wins: 5
-      status: SUPPORTED
-      note: Attention wins 5/5 tested lengths (150-250 steps), advantage maintained but lower than 100+ steps
-    timestamp: '2026-05-11T17:30:00.000000'
-  - description: Multi-scale goal decomposition (endpoint vs milestone vs subgoal vs multi_scale)
-    experiment_id: H3.100
-    hypothesis: H3.100
-    result:
-      endpoint_avg: -1.2
-      milestone_avg: 3.2
-      subgoal_avg: 20.1
-      multi_scale_avg: 5.1
-      attn_wins: 12
-      status: SUPPORTED
-      note: Subgoal best (+20.1%, 5/5 wins), multi-scale +6.3% over endpoint
-    timestamp: '2026-05-11T18:00:00.000000'
-  - description: Ultra-long sequence attention (300-500 steps) with goal types
-    experiment_id: H1.208
-    hypothesis: H1.208
-    result:
-      endpoint_avg: 13.5
-      subgoal_avg: 30.3
-      combined_avg: 46.9
-      attn_wins: 14
-      status: SUPPORTED
-      note: Combined provides +46.9% on 300-500 step sequences, +33.4% over endpoint
-    timestamp: '2026-05-11T18:30:00.000000'
+      error: Failed to parse
+      raw_output: "e/libero_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n\
+        [Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\
+        \nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\n\
+        Training Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\"\
+        : 0.014825796941295266,\n  \"cognitive_graph_loss\": 0.010728525230661035,\n\
+        \  \"improvement_percent\": 27.636097586240588,\n  \"cognitive_graph_wins\"\
+        : true,\n  \"config\": {\n    \"n_train\": 800,\n    \"n_val\": 200\n  }\n\
+        }\n"
+    timestamp: '2026-05-13T19:20:48.038843'
 hypotheses:
 - id: H1
-  status: SUPPORTED
   key_finding: Early fusion wins on real robot data (+25.6%)
+  status: SUPPORTED
 - id: H1.201
-  status: REFUTED
   key_finding: CG loses on synthetic complex (-7.2%)
+  status: REFUTED
 - id: H1.202
-  status: SUPPORTED
   key_finding: Task structure enables SSM (+37.2%) and Attention (+89.7%)
+  status: SUPPORTED
 - id: H2
-  status: INCONCLUSIVE
   key_finding: Explicit graph shows +56-75% on temporal reasoning
+  status: INCONCLUSIVE
 - id: H3
-  status: MIXED
   key_finding: Attention works on manipulation tasks, fails on pure prediction
+  status: MIXED
 - id: H3.89
-  status: REFUTED
   key_finding: Concatenation wins on pure sequence prediction
+  status: REFUTED
 - id: H3.90
-  status: REFUTED
   key_finding: SSM loses on pure sequence prediction
+  status: REFUTED
 - id: H3.91
-  status: SUPPORTED
   key_finding: Attention wins on long sequences WITH task structure (+86.6%)
+  status: SUPPORTED
 - id: H1.203
-  status: SUPPORTED
   key_finding: Complex multi-step WITH task structure (+78.1%)
+  status: SUPPORTED
 - id: H3.92
-  status: SUPPORTED
   key_finding: Goal state is critical for attention (+61.9% goal, +87.2% full)
+  status: SUPPORTED
 - id: H3.94
-  status: REFUTED
   key_finding: Endpoint goal enables attention (+94.1%), complex representations hurt
+  status: REFUTED
 - id: H3.95
+  key_finding: Endpoint goal enables attention on 100+ steps (+95.3%), advantage grows
+    with length
   status: SUPPORTED
-  key_finding: Endpoint goal enables attention on 100+ steps (+95.3%), advantage grows with length
 - id: H1.207
-  status: SUPPORTED
   key_finding: Endpoint goal enables attention across all complexities (+93.6%)
+  status: SUPPORTED
 - id: H3.96
-  status: SUPPORTED
   key_finding: Endpoint goal enables attention across all autocorrelation levels (+92.8%)
+  status: SUPPORTED
 - id: H3.97
-  status: SUPPORTED
   key_finding: Endpoint goal enables attention on 150-250 step sequences (+31.2%)
+  status: SUPPORTED
 - id: H3.98
+  key_finding: Hierarchical goal decomposition improves attention (+16.4% vs endpoint
+    alone)
   status: SUPPORTED
-  key_finding: Hierarchical goal decomposition improves attention (+16.4% vs endpoint alone)
 - id: H3.99
-  status: SUPPORTED
   key_finding: Action-consequence modeling enables attention (+19.0% vs endpoint alone)
+  status: SUPPORTED
 - id: H3.100
+  key_finding: Multi-scale goal decomposition (+6.3% over endpoint), subgoal best
+    (+20.1%)
   status: SUPPORTED
-  key_finding: Multi-scale goal decomposition (+6.3% over endpoint), subgoal best (+20.1%)
 - id: H1.208
-  status: SUPPORTED
   key_finding: Ultra-long attention (300-500 steps) +46.9% with combined goals
+  status: SUPPORTED
 - id: H1.209
-  status: REFUTED
   key_finding: Hierarchical goal does NOT outperform flat on 100-200 steps (-0.6%)
+  status: REFUTED
 - id: H3.101
-  status: PARTIAL
   key_finding: SSM+Goal vs Attn+Goal +3.0%, vs SSM -1.8%
+  status: PARTIAL
 - id: H1.210
-  status: REFUTED
   key_finding: Bidirectional loses -1.9% vs goal-conditioned unidirectional
+  status: REFUTED
 - id: H1.211
-  status: SUPPORTED
   key_finding: Hier+Bi marginal improvement +0.9% on extreme complexity (200-400 steps)
+  status: SUPPORTED
 - id: H1.212
-  status: PARTIAL
   key_finding: Hier wins at 200-250 steps, flat wins at 275-300
+  status: PARTIAL
 - id: H3.102
-  status: REFUTED
   key_finding: SSM+Goal doesn't help on short sequences, attention dominates
+  status: REFUTED
 - id: H3.103
-  status: SUPPORTED
   key_finding: Adaptive hierarchical attention +86.7% on 250-400 step sequences
+  status: SUPPORTED
 - id: H3.104
+  key_finding: Flat attention wins on 500-1000 steps (+94.9%), hierarchical doesn't
+    add benefit
   status: REFUTED
-  key_finding: Flat attention wins on 500-1000 steps (+94.9%), hierarchical doesn't add benefit
 - id: H1.214
-  status: SUPPORTED
   key_finding: Endpoint goal best (+95.1%), trajectory hurts (-133.9%), subgoals (-21.7%)
+  status: SUPPORTED
 - id: H1.215
-  status: REFUTED
   key_finding: Attention marginal at 50-100 steps (-4.5% avg), worse at 20-40 steps
+  status: REFUTED
 - id: H1.216
-  status: REFUTED
   key_finding: Hierarchical goal decomposition -507.3% (fails on 100-300 steps)
+  status: REFUTED
 - id: H3.105
-  status: REFUTED
   key_finding: Attention fails on 20-40 step sequences (-93.1%)
+  status: REFUTED
 - id: H3.106
-  status: REFUTED
   key_finding: Phase transitions don't enable attention (-72.0%)
+  status: REFUTED
 - id: H3.107
-  status: REFUTED
   key_finding: Causal structure alone doesn't enable attention (-45.8%)
+  status: REFUTED
 - id: H3.108
-  status: REFUTED
   key_finding: Neural attention diverges during training
+  status: REFUTED
 - id: H3.109
-  status: REFUTED
   key_finding: Real robot temporal structure doesn't enable attention (-16.1%)
+  status: REFUTED
 - id: H3.110
-  status: REFUTED
   key_finding: Phase-aware attention hurts manipulation (-88.8%)
+  status: REFUTED
 - id: H3.111
-  status: INCONCLUSIVE
   key_finding: Attention helps random (+7.9%), hurts smooth (-91.6%) and robot (-20.2%)
+  status: INCONCLUSIVE
 - id: H1.217
+  key_finding: Attention fails on 200-300 steps even with goals (+9.2%), SSM wins
+    (-24.1%)
   status: REFUTED
-  key_finding: Attention fails on 200-300 steps even with goals (+9.2%), SSM wins (-24.1%)
 - id: H3.113
-  status: SUPPORTED
   key_finding: SSM+HierGoals +57.3% on 250-400 step sequences, Mamba +54.6%
+  status: SUPPORTED
 - id: H3.114
-  status: SUPPORTED
   key_finding: SSM+HierGoals +50.9% on 400-700 step sequences, validates SSM scaling
+  status: SUPPORTED
 - id: H1.218
-  status: INCONCLUSIVE
   key_finding: Hybrid attention+SSM inconclusive, concat wins 6/8 lengths (+9.6% avg)
+  status: INCONCLUSIVE
 - id: H1.219
-  status: REFUTED
   key_finding: SSM+HierGoals loses -8.8% on 100-200 step sequences, concat wins
+  status: REFUTED
 - id: H1.220
-  status: REFUTED
   key_finding: SSM+HierGoals loses -1.8% on 50-100 step sequences, close to concat
+  status: REFUTED
 - id: H3.115
-  status: INCONCLUSIVE
   key_finding: Attention wins 2/5 lengths (+3.9% avg) on 20-40 steps WITH goal conditioning
+  status: INCONCLUSIVE
 - id: H1.221
+  key_finding: CG loses -4.6% on 30-70 step complex tasks, baseline slightly better
+    (2/5 wins)
   status: REFUTED
-  key_finding: CG loses -4.6% on 30-70 step complex tasks, baseline slightly better (2/5 wins)
 - id: H3.116
-  status: REFUTED
   key_finding: Attention loses -11.2% on 30-70 steps with goals, SSM +2.5% (3/5 wins)
+  status: REFUTED
 - id: H1.222
-  status: REFUTED
   key_finding: Unified loses -1.9% on 80-120 step ultra-complex tasks (1/5 wins)
+  status: REFUTED
 - id: H3.118
+  key_finding: Attention wins all 12 tests with high autocorrelation (+3.3% avg),
+    optimal at rho=0.93
   status: PARTIAL
-  key_finding: Attention wins all 12 tests with high autocorrelation (+3.3% avg), optimal at rho=0.93
 - id: H3.119
+  key_finding: Attention loses -6.2% on 20-40 steps with autocorrelation, wins 2/5
+    lengths
   status: REFUTED
-  key_finding: Attention loses -6.2% on 20-40 steps with autocorrelation, wins 2/5 lengths
 - id: H1.223
+  key_finding: Unified +4.7% on 100-150 step ultra-complex tasks, goal conditioning
+    hurts (-2.8%)
   status: PARTIAL
-  key_finding: Unified +4.7% on 100-150 step ultra-complex tasks, goal conditioning hurts (-2.8%)
 - id: H3.120
-  status: SUPPORTED
   key_finding: Attention +37.4% on 20-40 steps with optimal rho=0.93, wins 5/5
+  status: SUPPORTED
 - id: H3.121
+  key_finding: Attention +40.2% on 40-60 steps with extreme rho (0.95-0.98), 20/20
+    wins
   status: SUPPORTED
-  key_finding: Attention +40.2% on 40-60 steps with extreme rho (0.95-0.98), 20/20 wins
 - id: H1.224
-  status: REFUTED
   key_finding: Unified loses -2.7% on 150-200 step ultra-complex tasks (2/6 wins)
+  status: REFUTED
 - id: H3.122
-  status: SUPPORTED
   key_finding: Attention +43.1% on 60-80 steps with rho=0.98, wins 5/5
+  status: SUPPORTED
 - id: H1.225
-  status: REFUTED
   key_finding: Unified loses -6.9% on 100-150 steps with rho=0.95 (0/6 wins)
+  status: REFUTED
 - id: H3.123
-  status: SUPPORTED
   key_finding: Attention +38.2% on 80-100 steps with rho=0.98, wins 5/5
+  status: SUPPORTED
 - id: H3.124
-  status: SUPPORTED
   key_finding: Attention +37.9% on 100-120 steps with rho=0.98, wins 5/5
+  status: SUPPORTED
 - id: H1.226
-  status: INCONCLUSIVE
   key_finding: Unified + autocorr 12/25 wins, high variance, works at rho=0.90/0.95
-- id: H3.125
-  status: SUPPORTED
-  key_finding: Attention +94.6% on 120-150 steps with rho=0.95-0.99, 16/16 wins
-- id: H3.126
-  status: REFUTED
-  key_finding: Attention loses -1.4% on 200+ steps, wins only at 180 steps
-- id: H1.227
-  status: PARTIAL
-  key_finding: Unified+Attention +13.4% on ultra-complex multi-step, Unified alone -2.4%
-- id: H3.127
-  status: SUPPORTED
-  key_finding: Attention +33.1% on 150-180 steps with rho=0.95-0.98, 16/16 wins
-- id: H3.128
-  status: SUPPORTED
-  key_finding: Attention +14.2% on 185-195 steps, extends valid range beyond 180
-- id: H3.129
-  status: SUPPORTED
-  key_finding: Attention +16.3% on 196-200 steps, works at exact boundary
-- id: H3.130
-  status: SUPPORTED
-  key_finding: Attention +13.6% on 210-250 steps, advantage decreases at 250
-- id: H3.131
-  status: SUPPORTED
-  key_finding: Attention +12.1% on 260-300 steps, works with autocorrelation
-- id: H3.132
-  status: SUPPORTED
-  key_finding: Attention +12.1% on 350-400 steps, advantage decreases at 400
-- id: H3.133
-  status: REFUTED
-  key_finding: Attention fails at 450 steps (-4.1%), boundary between 400-450
-- id: H3.134
-  status: REFUTED
-  key_finding: Attention fails at 420-440 steps (-6.7%), boundary between 400-420
-- id: H1.228
-  status: REFUTED
-  key_finding: Unified+Attention -212.1% on extreme complex tasks, combination fails without autocorrelation
-- id: H3.135
-  status: REFUTED
-  key_finding: Attention fails at 400-410 steps (-5.1%), exact boundary confirmed at 400
-- id: H1.229
-  status: REFUTED
-  key_finding: Unified+Attention -2.8% on ultra-complex with autocorrelation, doesn't help
-- id: H1.230
-  status: REFUTED
-  key_finding: Unified -15.0% vs baseline on complex tasks with autocorrelation, worse than baseline!
-- id: H1.231
-  status: REFUTED
-  key_finding: SSM -33.3% on complex tasks with autocorrelation, also fails
-- id: H1.232
-  status: SUPPORTED
-  key_finding: Regularization (reg=0.1) fixes unified on complex tasks, +9.0%
-- id: H3.136
-  status: REFUTED
-  key_finding: Hierarchical attention -432.2% on 400+ steps, fails badly
-- id: H3.137
-  status: REFUTED
-  key_finding: Attention+reg still fails on 400+ steps (-39.6% best with reg=0.01)
-- id: H1.233
-  status: REFUTED
-  key_finding: Stronger regularization doesn't help on complex tasks (-0.2% avg)
-- id: H3.138
-  status: PARTIAL
-  key_finding: Linear attention shows marginal improvement on 400+ steps (+0.7% avg, 2/3 wins)
-- id: H1.234
-  status: SUPPORTED
-  key_finding: Unified+Attention+Regularization +54.3% on complex multi-step tasks
-- id: H1.235
-  status: SUPPORTED
-  key_finding: Ultra-complex multi-step (10+ steps) +73.0%, even better than H1.234
-- id: H3.139
-  status: SUPPORTED
-  key_finding: Chunked attention +27.7% on 500+ steps, standard attention works at most lengths
-- id: H1.236
-  status: SUPPORTED
-  key_finding: Optimal reg=0.1 consistently across complexity levels, +84.9% on ultra-complex
-- id: H1.237
-  status: SUPPORTED
-  key_finding: Ultra-complex multi-step (15-25 steps) +88.9%, confirms reg=0.1 optimal
-- id: H3.140
-  status: SUPPORTED
-  key_finding: Attention +91.9% on 20-30 steps with autocorrelation, best at rho=0.9 (+95.0%)
-- id: H1.238
-  status: REFUTED
-  key_finding: Ultra-complex multi-step (30-40 steps) -0.1% avg, advantage diminishes vs 15-25 steps
-- id: H1.239
-  status: REFUTED
-  key_finding: Sweet spot 10-20 steps only +1.4% avg, much lower than H1.237 (+88.9%), reg=0.1 still best
-- id: H3.141
-  status: REFUTED
-  key_finding: Attention -0.1% on 25-35 steps with rho=0.9, doesn't extend H3.140's +91.9% success
-- id: H1.240
-  status: SUPPORTED
-  key_finding: Sweet spot 12-18 steps +91.6%, even better than H1.237 (+88.9%), reg=0.15 optimal
-- id: H1.241
-  status: SUPPORTED
-  key_finding: Extended sweet spot 15-25 steps +85.4%, attention works above previous 12-18 limit
-- id: H1.242
-  status: SUPPORTED
-  key_finding: Boundary at 30 steps +73.5%, improvement drops at 30 (41.6% vs 95.5% at 29)
-- id: H1.243
-  status: SUPPORTED
-  key_finding: Transition zone 18-26 steps +92.5% overall (+75.1% avg), reg=0.25 optimal
-- id: H3.142
-  status: SUPPORTED
-  key_finding: Attention extends to 27-35 steps +70.1% avg with higher reg=0.30
-- id: H3.143
-  status: SUPPORTED
-  key_finding: Attention extends to 35-45 steps +51.1% avg, boundary at ~45 steps (42.6%)
-- id: H1.244
-  status: PARTIAL
-  key_finding: Attention beyond 45 steps +7.0% avg, much lower than 50-90% at 12-45 steps, boundary confirmed
-- id: H3.144
-  status: REFUTED
-  key_finding: Chunked attention -7.4% on 50+ steps, worse than standard attention (+5.2%)
-- id: H1.245
   status: INCONCLUSIVE
-  key_finding: Extreme regularization (0.6-0.9) +6.1% avg on 50-65 steps, doesn't significantly extend boundary
-- id: H1.246
-  status: PARTIAL
-  key_finding: Task decomposition +4.8% vs standard +3.8% on 50-70 steps, marginal improvement
-- id: H1.247
+- id: H3.125
+  key_finding: Attention +94.6% on 120-150 steps with rho=0.95-0.99, 16/16 wins
   status: SUPPORTED
-  key_finding: Hierarchical attention +7.7% vs standard +2.5% on 50-80 steps, extends beyond 45-step boundary
+- id: H3.126
+  key_finding: Attention loses -1.4% on 200+ steps, wins only at 180 steps
+  status: REFUTED
+- id: H1.227
+  key_finding: Unified+Attention +13.4% on ultra-complex multi-step, Unified alone
+    -2.4%
+  status: PARTIAL
+- id: H3.127
+  key_finding: Attention +33.1% on 150-180 steps with rho=0.95-0.98, 16/16 wins
+  status: SUPPORTED
+- id: H3.128
+  key_finding: Attention +14.2% on 185-195 steps, extends valid range beyond 180
+  status: SUPPORTED
+- id: H3.129
+  key_finding: Attention +16.3% on 196-200 steps, works at exact boundary
+  status: SUPPORTED
+- id: H3.130
+  key_finding: Attention +13.6% on 210-250 steps, advantage decreases at 250
+  status: SUPPORTED
+- id: H3.131
+  key_finding: Attention +12.1% on 260-300 steps, works with autocorrelation
+  status: SUPPORTED
+- id: H3.132
+  key_finding: Attention +12.1% on 350-400 steps, advantage decreases at 400
+  status: SUPPORTED
+- id: H3.133
+  key_finding: Attention fails at 450 steps (-4.1%), boundary between 400-450
+  status: REFUTED
+- id: H3.134
+  key_finding: Attention fails at 420-440 steps (-6.7%), boundary between 400-420
+  status: REFUTED
+- id: H1.228
+  key_finding: Unified+Attention -212.1% on extreme complex tasks, combination fails
+    without autocorrelation
+  status: REFUTED
+- id: H3.135
+  key_finding: Attention fails at 400-410 steps (-5.1%), exact boundary confirmed
+    at 400
+  status: REFUTED
+- id: H1.229
+  key_finding: Unified+Attention -2.8% on ultra-complex with autocorrelation, doesn't
+    help
+  status: REFUTED
+- id: H1.230
+  key_finding: Unified -15.0% vs baseline on complex tasks with autocorrelation, worse
+    than baseline!
+  status: REFUTED
+- id: H1.231
+  key_finding: SSM -33.3% on complex tasks with autocorrelation, also fails
+  status: REFUTED
+- id: H1.232
+  key_finding: Regularization (reg=0.1) fixes unified on complex tasks, +9.0%
+  status: SUPPORTED
+- id: H3.136
+  key_finding: Hierarchical attention -432.2% on 400+ steps, fails badly
+  status: REFUTED
+- id: H3.137
+  key_finding: Attention+reg still fails on 400+ steps (-39.6% best with reg=0.01)
+  status: REFUTED
+- id: H1.233
+  key_finding: Stronger regularization doesn't help on complex tasks (-0.2% avg)
+  status: REFUTED
+- id: H3.138
+  key_finding: Linear attention shows marginal improvement on 400+ steps (+0.7% avg,
+    2/3 wins)
+  status: PARTIAL
+- id: H1.234
+  key_finding: Unified+Attention+Regularization +54.3% on complex multi-step tasks
+  status: SUPPORTED
+- id: H1.235
+  key_finding: Ultra-complex multi-step (10+ steps) +73.0%, even better than H1.234
+  status: SUPPORTED
+- id: H3.139
+  key_finding: Chunked attention +27.7% on 500+ steps, standard attention works at
+    most lengths
+  status: SUPPORTED
+- id: H1.236
+  key_finding: Optimal reg=0.1 consistently across complexity levels, +84.9% on ultra-complex
+  status: SUPPORTED
+- id: H1.237
+  key_finding: Ultra-complex multi-step (15-25 steps) +88.9%, confirms reg=0.1 optimal
+  status: SUPPORTED
+- id: H3.140
+  key_finding: Attention +91.9% on 20-30 steps with autocorrelation, best at rho=0.9
+    (+95.0%)
+  status: SUPPORTED
+- id: H1.238
+  key_finding: Ultra-complex multi-step (30-40 steps) -0.1% avg, advantage diminishes
+    vs 15-25 steps
+  status: REFUTED
+- id: H1.239
+  key_finding: Sweet spot 10-20 steps only +1.4% avg, much lower than H1.237 (+88.9%),
+    reg=0.1 still best
+  status: REFUTED
+- id: H3.141
+  key_finding: Attention -0.1% on 25-35 steps with rho=0.9, doesn't extend H3.140's
+    +91.9% success
+  status: REFUTED
+- id: H1.240
+  key_finding: Sweet spot 12-18 steps +91.6%, even better than H1.237 (+88.9%), reg=0.15
+    optimal
+  status: SUPPORTED
+- id: H1.241
+  key_finding: Extended sweet spot 15-25 steps +85.4%, attention works above previous
+    12-18 limit
+  status: SUPPORTED
+- id: H1.242
+  key_finding: Boundary at 30 steps +73.5%, improvement drops at 30 (41.6% vs 95.5%
+    at 29)
+  status: SUPPORTED
+- id: H1.243
+  key_finding: Transition zone 18-26 steps +92.5% overall (+75.1% avg), reg=0.25 optimal
+  status: SUPPORTED
+- id: H3.142
+  key_finding: Attention extends to 27-35 steps +70.1% avg with higher reg=0.30
+  status: SUPPORTED
+- id: H3.143
+  key_finding: Attention extends to 35-45 steps +51.1% avg, boundary at ~45 steps
+    (42.6%)
+  status: SUPPORTED
+- id: H1.244
+  key_finding: Attention beyond 45 steps +7.0% avg, much lower than 50-90% at 12-45
+    steps, boundary confirmed
+  status: PARTIAL
+- id: H3.144
+  key_finding: Chunked attention -7.4% on 50+ steps, worse than standard attention
+    (+5.2%)
+  status: REFUTED
+- id: H1.245
+  key_finding: Extreme regularization (0.6-0.9) +6.1% avg on 50-65 steps, doesn't
+    significantly extend boundary
+  status: INCONCLUSIVE
+- id: H1.246
+  key_finding: Task decomposition +4.8% vs standard +3.8% on 50-70 steps, marginal
+    improvement
+  status: PARTIAL
+- id: H1.247
+  key_finding: Hierarchical attention +7.7% vs standard +2.5% on 50-80 steps, extends
+    beyond 45-step boundary
+  status: SUPPORTED
