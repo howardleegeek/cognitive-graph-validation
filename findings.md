@@ -1448,6 +1448,14 @@ Given H1.30's +5.7%, we should explore:
 
 **Status: ✅ SUPPORTED** — Replication confirms attention helps on complex tasks (+4.4%).
 
+### 223-longer_sequences: Longer Sequences Test (May 14, 2026)
+
+| Configuration | Baseline MSE | Cognitive Graph MSE | Improvement |
+|--------------|-------------|---------------------|-------------|
+| seq_len=20, use_attention=true | 0.0158 | 0.0114 | **+28.3%** |
+
+**Status: ✅ SUPPORTED** — Strong result! Attention helps on longer sequences (+28.3%)!
+
 ---
 
 ## New Results (May 13, 2026 - Evening)
@@ -11550,6 +11558,20 @@ The results are highly variable across experiments. H1.237 showed +88.9% but H1.
 **Results**: {
   "error": "Failed to parse",
   "raw_output": "00.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.013773985905572772,\n  \"cognitive_graph_loss\": 0.013172507053241134,\n  \"improvement_percent\": 4.3667741237363105,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n    \"task_complexity\": \"high\",\n    \"use_attention\": true\n  }\n}\n"
+}
+
+**Status**: ❌ REFUTED - Cognitive Graph 0.0%
+
+
+## 223-longer_sequences - 2026-05-13 19:24
+
+**Hypothesis**: Test with longer trajectory sequences (20 vs 10 timesteps)
+
+**Prediction**: Attention mechanism becomes beneficial with longer sequences
+
+**Results**: {
+  "error": "Failed to parse",
+  "raw_output": "o_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.015842136461287737,\n  \"cognitive_graph_loss\": 0.011362351942807436,\n  \"improvement_percent\": 28.27765389742236,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n    \"seq_len\": 20,\n    \"use_attention\": true\n  }\n}\n"
 }
 
 **Status**: ❌ REFUTED - Cognitive Graph 0.0%

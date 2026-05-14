@@ -60,19 +60,20 @@ experiments:
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
-  - description: Test attention on complex relational reasoning tasks
-    experiment_id: 222-attention_complexity
-    hypothesis: H3.222
+  - description: Test with longer trajectory sequences (20 vs 10 timesteps)
+    experiment_id: 223-longer_sequences
+    hypothesis: H1.223
     result:
       error: Failed to parse
-      raw_output: "00.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory\
-        \ length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset\
-        \ splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining\
-        \ Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.013773985905572772,\n\
-        \  \"cognitive_graph_loss\": 0.013172507053241134,\n  \"improvement_percent\"\
-        : 4.3667741237363105,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n\
-        \    \"task_complexity\": \"high\",\n    \"use_attention\": true\n  }\n}\n"
-    timestamp: '2026-05-13T19:24:01.539473'
+      raw_output: "o_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data]\
+        \ Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\
+        \nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\n\
+        Training Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\"\
+        : 0.015842136461287737,\n  \"cognitive_graph_loss\": 0.011362351942807436,\n\
+        \  \"improvement_percent\": 28.27765389742236,\n  \"cognitive_graph_wins\"\
+        : true,\n  \"config\": {\n    \"seq_len\": 20,\n    \"use_attention\": true\n\
+        \  }\n}\n"
+    timestamp: '2026-05-13T19:24:33.728716'
 hypotheses:
 - id: H1
   key_finding: Early fusion wins on real robot data (+25.6%)
