@@ -1400,6 +1400,36 @@ Given H1.30's +5.7%, we should explore:
 
 ## New Results (May 14, 2026 - Continuous Research Cycle)
 
+### H3.356: Attention on 50-70 Step Sequences
+
+| Seq Length | Concat MSE | Std Attn MSE | Causal Attn MSE | Std Δ | Causal Δ |
+|------------|-----------|--------------|-----------------|-------|----------|
+| 50 | 0.0155 | 0.0117 | 0.0125 | **+24.5%** | +19.7% |
+| 60 | 0.0137 | 0.0127 | 0.0121 | +7.0% | +11.5% |
+| 70 | 0.0154 | 0.0131 | 0.0118 | +14.9% | **+23.2%** |
+
+**Average: +15.5% (standard), +18.1% (causal)**
+
+**Status: ✅ SUPPORTED** — Attention continues to work on 50-70 step sequences! This extends the valid range beyond 40 steps.
+
+### H3.358: Attention on Crossover Zone (15-20 steps)
+
+| Seq Length | Concat MSE | Std Attn | Causal Attn | Action-Gated | Best Δ |
+|------------|-----------|----------|-------------|--------------|--------|
+| 15 | 0.0138 | 0.0129 | 0.0122 | 0.0112 | +18.7% (gated) |
+| 17 | 0.0135 | 0.0117 | 0.0136 | 0.0101 | +25.0% (gated) |
+| 20 | 0.0153 | 0.0107 | 0.0131 | 0.0130 | +30.1% (standard) |
+
+**Average: +16.7% (standard), +8.4% (causal), +19.6% (action-gated)**
+
+**Status: ✅ SUPPORTED** — Crossover point confirmed at 15-17 steps:
+- Below 15 steps: Concatenation wins (H3.352: -28.6%)
+- 15-17 steps: Mixed results, action-gated attention wins
+- 20+ steps: Attention wins (H3.353: +16.0%)
+- 50-70 steps: Attention still wins (H3.356: +15.5%)
+
+---
+
 ### H1.353: Complex Multi-Step Extended (15-30 steps)
 
 | N Steps | Baseline MSE | CG MSE | Improvement |

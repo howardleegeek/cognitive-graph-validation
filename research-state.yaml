@@ -1,6 +1,20 @@
 experiments:
-  total_runs: 120
+  total_runs: 122
   trajectory:
+  - description: Attention on 15-20 steps (crossover zone) +16.7% standard, +19.6% gated
+    experiment_id: 358-attention-15-20-steps
+    hypothesis: H3.358
+    result:
+      cognitive_graph_wins: true
+      improvement_percent: 16.7
+    timestamp: '2026-05-14T18:30:00'
+  - description: Attention on 50-70 steps +15.5% standard, +18.1% causal, attention continues to work
+    experiment_id: 356-attention-50-70-steps
+    hypothesis: H3.356
+    result:
+      cognitive_graph_wins: true
+      improvement_percent: 15.5
+    timestamp: '2026-05-14T18:15:00'
   - description: Attention on 20-40 steps -13.8% avg, causal attention +4.9% avg,
       more stable
     experiment_id: H3.147
@@ -510,3 +524,12 @@ hypotheses:
 - id: H1.355-attn
   key_finding: Ultra-complex multi-step (30-50 steps) Attention +14.7%, marginal help
   status: PARTIAL
+- id: H3.356
+  key_finding: Attention on 50-70 steps +15.5% (standard), +18.1% (causal), attention continues to work
+  status: SUPPORTED
+- id: H1.357
+  key_finding: CG on 50-70 steps, testing in progress
+  status: PENDING
+- id: H3.358
+  key_finding: Attention on 15-20 steps (crossover zone) +16.7% (standard), +19.6% (gated), crossover at 15-17 steps
+  status: SUPPORTED
