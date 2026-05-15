@@ -99,6 +99,13 @@ experiments:
       cognitive_graph_wins: true
       improvement_percent: 16.0
     timestamp: '2026-05-14T17:35:00'
+  - description: Ultra-complex multi-step (30-50 steps) CG +33.0%, strong win
+    experiment_id: 355-ultra-complex-multi-step
+    hypothesis: H1.355
+    result:
+      cognitive_graph_wins: true
+      improvement_percent: 33.0
+    timestamp: '2026-05-14T18:00:00'
 hypotheses:
 - id: H1
   key_finding: Early fusion wins on real robot data (+25.6%)
@@ -497,3 +504,9 @@ hypotheses:
 - id: H3.353
   key_finding: Attention on 20-40 steps +16.0%, crossover point found (~15-20 steps)
   status: SUPPORTED
+- id: H1.355
+  key_finding: Ultra-complex multi-step (30-50 steps) CG +33.0%, strong win, advantage diminishes at 50
+  status: SUPPORTED
+- id: H1.355-attn
+  key_finding: Ultra-complex multi-step (30-50 steps) Attention +14.7%, marginal help
+  status: PARTIAL

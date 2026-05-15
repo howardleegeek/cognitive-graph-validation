@@ -1422,6 +1422,25 @@ This reveals a **crossover point** where attention becomes beneficial around 15-
 
 ---
 
+### H1.355: Ultra-Complex Multi-Step (30-50 steps)
+
+| Seq Length | Baseline MSE | CG MSE | Attn MSE | CG Δ | Attn Δ |
+|------------|-------------|--------|----------|------|--------|
+| 30 | 0.0155 | 0.0097 | 0.0136 | **+37.6%** | +12.0% |
+| 40 | 0.0146 | 0.0095 | 0.0123 | **+35.0%** | +15.6% |
+| 50 | 0.0137 | 0.0101 | 0.0115 | **+26.5%** | +16.5% |
+
+**Average CG: +33.0%**, **Average Attention: +14.7%**
+
+**Status: ✅ SUPPORTED** — CG maintains strong advantage on ultra-complex tasks (30-50 steps), though the advantage diminishes as sequence length increases:
+- 30 steps: +37.6%
+- 40 steps: +35.0%
+- 50 steps: +26.5%
+
+Key insight: CG advantage is robust across complexity levels (5-50 steps), but gradually decreases from +37% to +26% as tasks become more complex.
+
+---
+
 ### Experiment 335: Fine-Grained Dimension Sweep (20-30%)
 
 | Physical % | MSE | Status |
