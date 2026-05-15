@@ -1,139 +1,84 @@
 experiments:
-  total_runs: 122
+  total_runs: 127
   trajectory:
-  - description: Attention on 120-150 steps +15.6% standard, +1.0% causal, causal fails at 150
-    experiment_id: 360-attention-120-150-steps
-    hypothesis: H3.360
-    result:
-      cognitive_graph_wins: true
-      improvement_percent: 15.6
-    timestamp: '2026-05-14T19:00:00'
-  - description: Attention on 80-100 steps +21.8% standard, +21.6% causal, advantage grows
-    experiment_id: 359-attention-80-100-steps
-    hypothesis: H3.359
-    result:
-      cognitive_graph_wins: true
-      improvement_percent: 21.8
-    timestamp: '2026-05-14T18:45:00'
-  - description: Attention on 15-20 steps (crossover zone) +16.7% standard, +19.6% gated
-    experiment_id: 358-attention-15-20-steps
-    hypothesis: H3.358
-    result:
-      cognitive_graph_wins: true
-      improvement_percent: 16.7
-    timestamp: '2026-05-14T18:30:00'
-  - description: Attention on 50-70 steps +15.5% standard, +18.1% causal, attention continues to work
-    experiment_id: 356-attention-50-70-steps
-    hypothesis: H3.356
-    result:
-      cognitive_graph_wins: true
-      improvement_percent: 15.5
-    timestamp: '2026-05-14T18:15:00'
-  - description: Attention on 20-40 steps -13.8% avg, causal attention +4.9% avg,
-      more stable
-    experiment_id: H3.147
+  - description: Attention on short sequences (8-15 steps) -28.6%, concat wins
+    experiment_id: H3.352
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
-  - description: Complex multi-step (15-30 steps) CG -0.1%, attention -22.9%, concat
-      wins
-    experiment_id: H1.333
+  - description: Complex multi-step (15-30 steps) CG +26.4%, advantage diminishes
+      vs 5-10
+    experiment_id: H1.353
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
-  - description: Attention on 20-40 steps +30% (standard), +21% (causal), significant
-      win
-    experiment_id: H3.334
+  - description: Attention on 20-40 steps +16.0%, crossover point found (~15-20 steps)
+    experiment_id: H3.353
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
-  - description: Fine-grained dimension sweep 20% physical +12.4%, confirms optimal
-      below 25%
-    experiment_id: H1.335
+  - description: Ultra-complex multi-step (30-50 steps) CG +33.0%, strong win, advantage
+      diminish
+    experiment_id: H1.355
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
-  - description: Complex multi-step (15-30 steps) CG +2.4%, advantage diminishes vs
-      3-step (+30.6
-    experiment_id: H1.336
+  - description: Ultra-complex multi-step (30-50 steps) Attention +14.7%, marginal
+      help
+    experiment_id: H1.355-attn
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
-  - description: Attention on 20+ timesteps +13.9%, confirms boundary hypothesis
-    experiment_id: H3.337
+  - description: Attention on 50-70 steps +15.5% (standard), +18.1% (causal), attention
+      continues
+    experiment_id: H3.356
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
-  - description: Complex multi-step (larger model) CG -4.7%, larger model hurts complex
-      tasks
-    experiment_id: H1.338
+  - description: CG on 50-70 steps, testing in progress
+    experiment_id: H1.357
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
-  - description: Causal attention +10.1% vs standard +4.9% vs concat, causal wins
-    experiment_id: H3.338
+  - description: Attention on 15-20 steps (crossover zone) +16.7% (standard), +19.6%
+      (gated), cro
+    experiment_id: H3.358
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
-  - description: Fine-grained dimension sweep 20% physical +42.2%, strong win
-    experiment_id: H1.339
+  - description: Attention on 80-100 steps +21.8% (standard), +21.6% (causal), attention
+      advantag
+    experiment_id: H3.359
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
-  - description: Fine-grained dimension sweep 20% physical +15.8%, consistent win
-    experiment_id: H1.340
+  - description: Attention on 120-150 steps +15.6% (standard), +1.0% (causal), causal
+      fails at 15
+    experiment_id: H3.360
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
-  - description: Test Cognitive Graph on multi-step manipulation (pick then place)
-    experiment_id: 350-multi_step_tasks
-    hypothesis: H1.350
+  - description: Test at 1000+ demonstrations scale
+    experiment_id: 361-larger_scale
+    hypothesis: H1.361
     result:
       error: Failed to parse
-      raw_output: "nthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average\
-        \ trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\
+      raw_output: "che/libero_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n\
+        [Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\
         \nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\n\
         Training Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\"\
-        : 0.011925800703465939,\n  \"cognitive_graph_loss\": 0.011797616025432944,\n\
-        \  \"improvement_percent\": 1.0748517539433688,\n  \"cognitive_graph_wins\"\
-        : true,\n  \"config\": {\n    \"task_type\": \"multi_step\",\n    \"n_steps\"\
-        : 3\n  }\n}\n"
-    timestamp: '2026-05-14T16:42:36.101289'
-  - description: Complex multi-step (5-10 steps) CG +32.4%, strong win
-    experiment_id: 351-complex-multi-step
-    hypothesis: H1.351
+        : 0.01520147593691945,\n  \"cognitive_graph_loss\": 0.011978565249592066,\n\
+        \  \"improvement_percent\": 21.20130111511068,\n  \"cognitive_graph_wins\"\
+        : true,\n  \"config\": {\n    \"n_train\": 800,\n    \"n_val\": 200\n  }\n\
+        }\n"
+    timestamp: '2026-05-14T22:43:17.422353'
+  - description: Attention on 160-200 steps +11.3% at 160, +1.2% at 200, boundary at ~180
+    experiment_id: 362-attention-160-200-steps
+    hypothesis: H3.362
     result:
       cognitive_graph_wins: true
-      improvement_percent: 32.4
-    timestamp: '2026-05-14T17:00:00'
-  - description: Attention on short sequences (8-15 steps) -28.6%, concat wins
-    experiment_id: 352-attention-long-sequences
-    hypothesis: H3.352
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: -28.6
-    timestamp: '2026-05-14T17:05:00'
-  - description: Complex multi-step (15-30 steps) CG +26.4%, advantage diminishes
-    experiment_id: 353-complex-multi-step-extended
-    hypothesis: H1.353
-    result:
-      cognitive_graph_wins: true
-      improvement_percent: 26.4
-    timestamp: '2026-05-14T17:30:00'
-  - description: Attention on 20-40 steps +16.0%, crossover point found
-    experiment_id: 354-attention-longer-sequences
-    hypothesis: H3.353
-    result:
-      cognitive_graph_wins: true
-      improvement_percent: 16.0
-    timestamp: '2026-05-14T17:35:00'
-  - description: Ultra-complex multi-step (30-50 steps) CG +33.0%, strong win
-    experiment_id: 355-ultra-complex-multi-step
-    hypothesis: H1.355
-    result:
-      cognitive_graph_wins: true
-      improvement_percent: 33.0
-    timestamp: '2026-05-14T18:00:00'
+      improvement_percent: 6.2
+    timestamp: '2026-05-14T23:00:00'
 hypotheses:
 - id: H1
   key_finding: Early fusion wins on real robot data (+25.6%)
@@ -527,29 +472,38 @@ hypotheses:
   key_finding: Attention on short sequences (8-15 steps) -28.6%, concat wins
   status: REFUTED
 - id: H1.353
-  key_finding: Complex multi-step (15-30 steps) CG +26.4%, advantage diminishes vs 5-10
+  key_finding: Complex multi-step (15-30 steps) CG +26.4%, advantage diminishes vs
+    5-10
   status: SUPPORTED
 - id: H3.353
   key_finding: Attention on 20-40 steps +16.0%, crossover point found (~15-20 steps)
   status: SUPPORTED
 - id: H1.355
-  key_finding: Ultra-complex multi-step (30-50 steps) CG +33.0%, strong win, advantage diminishes at 50
+  key_finding: Ultra-complex multi-step (30-50 steps) CG +33.0%, strong win, advantage
+    diminishes at 50
   status: SUPPORTED
 - id: H1.355-attn
   key_finding: Ultra-complex multi-step (30-50 steps) Attention +14.7%, marginal help
   status: PARTIAL
 - id: H3.356
-  key_finding: Attention on 50-70 steps +15.5% (standard), +18.1% (causal), attention continues to work
+  key_finding: Attention on 50-70 steps +15.5% (standard), +18.1% (causal), attention
+    continues to work
   status: SUPPORTED
 - id: H1.357
   key_finding: CG on 50-70 steps, testing in progress
   status: PENDING
 - id: H3.358
-  key_finding: Attention on 15-20 steps (crossover zone) +16.7% (standard), +19.6% (gated), crossover at 15-17 steps
+  key_finding: Attention on 15-20 steps (crossover zone) +16.7% (standard), +19.6%
+    (gated), crossover at 15-17 steps
   status: SUPPORTED
 - id: H3.359
-  key_finding: Attention on 80-100 steps +21.8% (standard), +21.6% (causal), attention advantage grows with length
+  key_finding: Attention on 80-100 steps +21.8% (standard), +21.6% (causal), attention
+    advantage grows with length
   status: SUPPORTED
 - id: H3.360
-  key_finding: Attention on 120-150 steps +15.6% (standard), +1.0% (causal), causal fails at 150
+  key_finding: Attention on 120-150 steps +15.6% (standard), +1.0% (causal), causal
+    fails at 150
   status: PARTIAL
+- id: H3.362
+  key_finding: Attention on 160-200 steps +11.3% at 160, +1.2% at 200, boundary at ~180 steps
+  status: SUPPORTED

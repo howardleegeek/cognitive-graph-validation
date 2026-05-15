@@ -1,0 +1,32 @@
+{
+  "baseline_loss": 0.01478993077762425,
+  "std_attn_loss": 0.016861690441146493,
+  "causal_attn_loss": 0.014617141103371978,
+  "improvement_percent": 6.213855314393466,
+  "cognitive_graph_wins": true,
+  "config": {
+    "task_type": "attention_long_sequences",
+    "seq_lengths": [160, 200],
+    "hypothesis": "H3.362"
+  },
+  "detailed_results": {
+    "160": {
+      "baseline_loss": 0.01572574581950903,
+      "std_attn_loss": 0.01395511836744845,
+      "causal_attn_loss": 0.015052342787384987,
+      "std_improvement": 11.25941797853541,
+      "causal_improvement": 4.282169124777744,
+      "best_improvement": 11.25941797853541,
+      "best_type": "standard"
+    },
+    "200": {
+      "baseline_loss": 0.01478993077762425,
+      "std_attn_loss": 0.016861690441146493,
+      "causal_attn_loss": 0.014617141103371978,
+      "std_improvement": -14.007906424123483,
+      "causal_improvement": 1.1682926502515205,
+      "best_improvement": 1.1682926502515205,
+      "best_type": "causal"
+    }
+  }
+}

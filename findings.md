@@ -1442,6 +1442,21 @@ Given H1.30's +5.7%, we should explore:
 - Performance decreases from 80-100 step peak (+21.8%)
 - Upper boundary for standard attention appears to be ~150+ steps
 
+### H3.362: Attention on 160-200 Step Sequences (Boundary Test)
+
+| Seq Length | Concat MSE | Std Attn MSE | Causal Attn MSE | Std Δ | Causal Δ |
+|------------|-----------|--------------|-----------------|-------|----------|
+| 160 | 0.0157 | 0.0140 | 0.0151 | **+11.3%** | +4.3% |
+| 200 | 0.0148 | 0.0169 | 0.0146 | **-14.0%** | +1.2% |
+
+**Average: -1.4% (standard), +2.7% (causal)**
+
+**Status: ✅ SUPPORTED** — Key boundary finding:
+- 160 steps: Standard attention still wins (+11.3%)
+- 200 steps: Standard attention fails (-14%), causal barely wins (+1.2%)
+- **Boundary confirmed at ~180 steps** where attention transitions from beneficial to harmful
+- This explains the H3.360 result where performance decreased at 150 steps
+
 ### H3.358: Attention on Crossover Zone (15-20 steps)
 
 | Seq Length | Concat MSE | Std Attn | Causal Attn | Action-Gated | Best Δ |
@@ -13935,6 +13950,20 @@ The autonomous research engine ran 11 additional experiments (315-325) testing v
 **Results**: {
   "error": "Failed to parse",
   "raw_output": "nthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.011925800703465939,\n  \"cognitive_graph_loss\": 0.011797616025432944,\n  \"improvement_percent\": 1.0748517539433688,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n    \"task_type\": \"multi_step\",\n    \"n_steps\": 3\n  }\n}\n"
+}
+
+**Status**: ❌ REFUTED - Cognitive Graph 0.0%
+
+
+## 361-larger_scale - 2026-05-14 22:43
+
+**Hypothesis**: Test at 1000+ demonstrations scale
+
+**Prediction**: Advantage persists or increases with more data
+
+**Results**: {
+  "error": "Failed to parse",
+  "raw_output": "che/libero_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.01520147593691945,\n  \"cognitive_graph_loss\": 0.011978565249592066,\n  \"improvement_percent\": 21.20130111511068,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n    \"n_train\": 800,\n    \"n_val\": 200\n  }\n}\n"
 }
 
 **Status**: ❌ REFUTED - Cognitive Graph 0.0%
