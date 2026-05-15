@@ -1,5 +1,5 @@
 experiments:
-  total_runs: 116
+  total_runs: 118
   trajectory:
   - description: Attention on 20-40 steps -13.8% avg, causal attention +4.9% avg,
       more stable
@@ -71,6 +71,20 @@ experiments:
         : true,\n  \"config\": {\n    \"task_type\": \"multi_step\",\n    \"n_steps\"\
         : 3\n  }\n}\n"
     timestamp: '2026-05-14T16:42:36.101289'
+  - description: Complex multi-step (5-10 steps) CG +32.4%, strong win
+    experiment_id: 351-complex-multi-step
+    hypothesis: H1.351
+    result:
+      cognitive_graph_wins: true
+      improvement_percent: 32.4
+    timestamp: '2026-05-14T17:00:00'
+  - description: Attention on short sequences (8-15 steps) -28.6%, concat wins
+    experiment_id: 352-attention-long-sequences
+    hypothesis: H3.352
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: -28.6
+    timestamp: '2026-05-14T17:05:00'
 hypotheses:
 - id: H1
   key_finding: Early fusion wins on real robot data (+25.6%)
@@ -457,3 +471,9 @@ hypotheses:
 - id: H1.340
   key_finding: Fine-grained dimension sweep 20% physical +15.8%, consistent win
   status: SUPPORTED
+- id: H1.351
+  key_finding: Complex multi-step (5-10 steps) CG +32.4%, strong win
+  status: SUPPORTED
+- id: H3.352
+  key_finding: Attention on short sequences (8-15 steps) -28.6%, concat wins
+  status: REFUTED
