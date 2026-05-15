@@ -1400,6 +1400,28 @@ Given H1.30's +5.7%, we should explore:
 
 ## New Results (May 14, 2026 - Continuous Research Cycle)
 
+### H1.353: Complex Multi-Step Extended (15-30 steps)
+
+| N Steps | Baseline MSE | CG MSE | Improvement |
+|--------|-------------|-------|--------------|
+| 15-30 | 0.0137 | 0.0101 | **+26.4%** |
+
+**Status: ✅ SUPPORTED** — CG maintains advantage on 15-30 step tasks, though slightly lower than 5-10 step (+32.4%).
+
+### H3.353: Attention on Longer Sequences (20-40 steps)
+
+| Seq Length | Concat MSE | Attention MSE | Improvement |
+|------------|-----------|--------------|-------------|
+| 20-40 | 0.0138 | 0.0116 | **+16.0%** |
+
+**Status: ✅ SUPPORTED** — Attention WINS on longer sequences! Key finding:
+- H3.352 (8-15 steps): Attention LOST -28.6%
+- H3.353 (20-40 steps): Attention WON +16.0%
+
+This reveals a **crossover point** where attention becomes beneficial around 15-20 timesteps.
+
+---
+
 ### Experiment 335: Fine-Grained Dimension Sweep (20-30%)
 
 | Physical % | MSE | Status |
