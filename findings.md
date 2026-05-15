@@ -1412,6 +1412,21 @@ Given H1.30's +5.7%, we should explore:
 
 **Status: ✅ SUPPORTED** — Attention continues to work on 50-70 step sequences! This extends the valid range beyond 40 steps.
 
+### H3.359: Attention on 80-100 Step Sequences (Upper Boundary)
+
+| Seq Length | Concat MSE | Std Attn MSE | Causal Attn MSE | Std Δ | Causal Δ |
+|------------|-----------|--------------|-----------------|-------|----------|
+| 80 | 0.0162 | 0.0132 | 0.0119 | +18.5% | **+26.3%** |
+| 90 | 0.0164 | 0.0125 | 0.0126 | **+24.0%** | +23.0% |
+| 100 | 0.0151 | 0.0116 | 0.0128 | **+23.1%** | +15.4% |
+
+**Average: +21.8% (standard), +21.6% (causal)**
+
+**Status: ✅ SUPPORTED** — Attention advantage actually INCREASES at 80-100 steps! This suggests:
+- Attention scales well with sequence length
+- No upper boundary found yet (tested up to 100 steps)
+- Causal attention particularly effective at 80 steps (+26.3%)
+
 ### H3.358: Attention on Crossover Zone (15-20 steps)
 
 | Seq Length | Concat MSE | Std Attn | Causal Attn | Action-Gated | Best Δ |

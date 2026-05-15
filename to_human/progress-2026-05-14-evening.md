@@ -39,6 +39,21 @@ Key insight:
 
 ---
 
+### 3. H3.359: Attention on 80-100 Step Sequences ✅
+**Finding: Attention advantage INCREASES at longer sequences!**
+
+| Seq Length | Concat | Std Attn | Causal | Best |
+|------------|--------|----------|--------|------|
+| 80 | 0.0162 | 0.0132 | 0.0119 | +26.3% |
+| 90 | 0.0164 | 0.0125 | 0.0126 | +24.0% |
+| 100 | 0.0151 | 0.0116 | 0.0128 | +23.1% |
+
+**Average: +21.8% (standard), +21.6% (causal)**
+
+Key insight: Attention advantage actually grows at 80-100 steps! No upper boundary found yet.
+
+---
+
 ## Research Trajectory
 
 ### Sequence Length Boundary Map
@@ -49,6 +64,7 @@ Key insight:
 | 15-17 steps | Action-Gated Attn | +19.6% |
 | 20-40 steps | Standard Attention | +16.0% |
 | 50-70 steps | Causal Attention | +18.1% |
+| 80-100 steps | Standard Attention | +21.8% (advantage grows!) |
 
 ### Hypothesis Status
 

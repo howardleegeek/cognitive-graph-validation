@@ -1,6 +1,13 @@
 experiments:
   total_runs: 122
   trajectory:
+  - description: Attention on 80-100 steps +21.8% standard, +21.6% causal, advantage grows
+    experiment_id: 359-attention-80-100-steps
+    hypothesis: H3.359
+    result:
+      cognitive_graph_wins: true
+      improvement_percent: 21.8
+    timestamp: '2026-05-14T18:45:00'
   - description: Attention on 15-20 steps (crossover zone) +16.7% standard, +19.6% gated
     experiment_id: 358-attention-15-20-steps
     hypothesis: H3.358
@@ -532,4 +539,7 @@ hypotheses:
   status: PENDING
 - id: H3.358
   key_finding: Attention on 15-20 steps (crossover zone) +16.7% (standard), +19.6% (gated), crossover at 15-17 steps
+  status: SUPPORTED
+- id: H3.359
+  key_finding: Attention on 80-100 steps +21.8% (standard), +21.6% (causal), attention advantage grows with length
   status: SUPPORTED
