@@ -86,9 +86,8 @@ Key insight: Attention advantage actually grows at 80-100 steps! No upper bounda
 ## Next Steps
 
 1. **H1.357**: Test CG on 50-70 step sequences (timed out, need to rerun)
-2. **H1.359**: Test CG + Attention combined on 50-70 steps
-3. **H3.359**: Test attention on 80-100 steps to find upper boundary
-4. **H1.360**: Test CG on ultra-complex (50-70 steps) with hierarchical structure
+2. **H1.361**: Test CG on 100-150 step sequences
+3. **H3.361**: Test chunked attention on 150+ steps to extend boundary
 
 ---
 

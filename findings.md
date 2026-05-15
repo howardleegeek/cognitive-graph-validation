@@ -1427,6 +1427,21 @@ Given H1.30's +5.7%, we should explore:
 - No upper boundary found yet (tested up to 100 steps)
 - Causal attention particularly effective at 80 steps (+26.3%)
 
+### H3.360: Attention on 120-150 Step Sequences (Upper Boundary Search)
+
+| Seq Length | Concat MSE | Std Attn MSE | Causal Attn MSE | Std Δ | Causal Δ |
+|------------|-----------|--------------|-----------------|-------|----------|
+| 120 | 0.0145 | 0.0137 | 0.0141 | +5.1% | +2.5% |
+| 135 | 0.0156 | 0.0121 | 0.0134 | **+22.4%** | +14.0% |
+| 150 | 0.0147 | 0.0118 | 0.0167 | **+19.5%** | **-13.6%** |
+
+**Average: +15.6% (standard), +1.0% (causal)**
+
+**Status: ⚠️ PARTIAL** — Standard attention continues to work at 120-150 steps (+15.6%), but:
+- Causal attention fails at 150 steps (-13.6%)
+- Performance decreases from 80-100 step peak (+21.8%)
+- Upper boundary for standard attention appears to be ~150+ steps
+
 ### H3.358: Attention on Crossover Zone (15-20 steps)
 
 | Seq Length | Concat MSE | Std Attn | Causal Attn | Action-Gated | Best Δ |
