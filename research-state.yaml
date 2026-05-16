@@ -1,7 +1,22 @@
-current_round: 144
+current_round: 145
 experiments:
-  total_runs: 144
+  total_runs: 145
   trajectory:
+  - description: Hierarchical Temporal Memory - 2-layer LSTM best (+3.6%)
+    experiment_id: H1.374
+    result:
+      cognitive_graph_wins: true
+      conclusion: SUPPORTED
+      improvement_percent: 3.6
+      key_finding: 2-layer LSTM temporal memory is optimal for CG on multi-step tasks
+      best_config: CG + LSTM 2-layer
+      all_configs:
+        lstm_1layer: 2.9
+        gru_1layer: 0.1
+        lstm_2layer: 3.6
+        gru_2layer: 2.0
+        lstm_3layer: 3.3
+        gru_3layer: 2.7
   - description: CG + Temporal Memory on 3-step tasks - LSTM/GRU help but dont fully
       solve
     experiment_id: H1.373
@@ -117,5 +132,10 @@ hypotheses:
   key_finding: CG struggles with multi-step coordinated interactions (-106.6%), despite
     winning on single-step coordinated interactions
   status: REFUTED
-last_action: 'Ran H1.373: CG + Temporal Memory experiment'
-next_action: Analyze temporal memory results, consider deeper temporal stacking
+- id: H1.374
+  key_finding: 2-layer LSTM temporal memory optimal (+3.6%), hierarchical helps but
+    small margin
+  status: SUPPORTED
+last_action: 'Ran H1.374: Hierarchical Temporal Memory experiment'
+next_action: Test CG with attention-based temporal reasoning or explore sub-hypothesis
+  H1.1/H1.2

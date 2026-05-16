@@ -109,3 +109,26 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 - Try deeper temporal stacking (2+ LSTM layers)
 - Test on 2-step tasks where CG already wins (should amplify the win)
 - Consider attention over time instead of recurrence
+
+### H1.374: Hierarchical Temporal Memory (May 16, 2026)
+
+**Hypothesis**: Based on H1.373 (temporal memory improves CG but doesn't fully solve), hierarchical (multi-layer) temporal stacking will better capture longer-range dependencies in multi-step tasks.
+
+**Prediction**: 2-layer LSTM temporal memory will outperform 1-layer, showing that deeper temporal hierarchies help CG on 3-step tasks.
+
+**Results**:
+
+| Configuration | Baseline MSE | CG MSE | CG Improvement | CG Wins |
+|---------------|--------------|--------|----------------|---------|
+| CG + LSTM 1-layer | 0.962 | 0.935 | +2.9% | ✓ |
+| CG + GRU 1-layer | 0.962 | 0.961 | +0.1% | ✓ |
+| CG + LSTM 2-layer | 0.962 | 0.928 | **+3.6%** | ✓ |
+| CG + GRU 2-layer | 0.962 | 0.943 | +2.0% | ✓ |
+| CG + LSTM 3-layer | 0.962 | 0.931 | +3.3% | ✓ |
+| CG + GRU 3-layer | 0.962 | 0.937 | +2.7% | ✓ |
+
+**Status: ✅ SUPPORTED** — CG + LSTM 2-layer wins with +3.6% improvement. Key findings:
+- 2-layer LSTM is optimal (3.6%), slightly better than 1-layer (2.9%) and 3-layer (3.3%)
+- All configurations beat baseline, but margins are small (+0.1% to +3.6%)
+- Hierarchical temporal memory helps but doesn't solve the fundamental 3-step limitation
+- LSTM consistently outperforms GRU across all layer counts
