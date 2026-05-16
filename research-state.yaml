@@ -535,3 +535,9 @@ hypotheses:
 - id: H3.365
   key_finding: Attention+Goal on 20-40 steps +5.8% avg, helps at 35 steps (+21.2%)
   status: SUPPORTED
+- id: H1.366
+  key_finding: Transition zone (25-35 steps) CG +25.0%, CG+Attn +29.2%, still in sweet spot
+  status: SUPPORTED
+- id: H3.366
+  key_finding: Boundary zone (40-50 steps) Concat +18.2%, Attn +15.4%, concat still wins
+  status: PARTIAL

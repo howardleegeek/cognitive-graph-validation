@@ -1430,6 +1430,36 @@ Given H1.30's +5.7%, we should explore:
 
 ---
 
+### H1.366: Transition Zone (25-35 Steps)
+
+| Steps | Baseline MSE | CG MSE | CG Δ | CG+Attn MSE | CG+Attn Δ |
+|-------|-------------|--------|------|-------------|-----------|
+| 25 | 0.0130 | 0.0110 | **+15.3%** | 0.0110 | +14.9% |
+| 28 | 0.0153 | 0.0145 | +5.0% | 0.0102 | **+33.0%** |
+| 30 | 0.0173 | 0.0103 | **+40.3%** | 0.0129 | +25.4% |
+| 32 | 0.0169 | 0.0117 | +30.8% | 0.0097 | **+42.4%** |
+| 35 | 0.0179 | 0.0119 | **+33.6%** | 0.0125 | +30.3% |
+
+**CG Average: +25.0%** | **CG+Attn Average: +29.2%**
+
+**Status: ✅ SUPPORTED** — Transition zone (25-35 steps) still in sweet spot! CG+Attention combination provides additional benefit (+29.2% vs +25.0%).
+
+### H3.366: Boundary Zone (40-50 Steps)
+
+| Steps | Baseline MSE | Concat MSE | Concat Δ | Attn MSE | Attn Δ | Attn+Goal Δ |
+|-------|-------------|------------|----------|----------|--------|-------------|
+| 40 | 0.0157 | 0.0116 | **+26.5%** | 0.0144 | +8.2% | +29.4% |
+| 42 | 0.0135 | 0.0118 | +13.1% | 0.0106 | **+21.5%** | -9.9% |
+| 45 | 0.0144 | 0.0107 | **+25.4%** | 0.0115 | +20.0% | +15.4% |
+| 48 | 0.0126 | 0.0116 | +8.4% | 0.0132 | -4.7% | -22.3% |
+| 50 | 0.0183 | 0.0151 | +17.4% | 0.0124 | **+32.0%** | +33.1% |
+
+**Concat Average: +18.2%** | **Attn Average: +15.4%** | **Attn+Goal Average: +9.1%**
+
+**Status: ⚠️ PARTIAL** — Concatenation still wins at 40-50 steps, but attention is competitive. This is the boundary zone where advantage starts to diminish.
+
+---
+
 ## New Results (May 14, 2026 - Continuous Research Cycle)
 
 ### H3.356: Attention on 50-70 Step Sequences
