@@ -1,46 +1,6 @@
 experiments:
-  total_runs: 129
+  total_runs: 132
   trajectory:
-  - description: Simpler multi-step (10-15 steps) CG -23.6%, goal-conditioned attention +13.0% on 250-275 steps
-    experiment_id: H1.364 / H3.364
-    result:
-      cognitive_graph_wins: true
-      improvement_percent: 13.0
-    timestamp: '2026-05-15T01:00:00'
-  - description: Ultra-complex multi-step (50-70 steps) CG -40.8%, attention +11.0% on 200-250 steps
-    experiment_id: H1.363 / H3.363
-    result:
-      cognitive_graph_wins: true
-      improvement_percent: 11.0
-    timestamp: '2026-05-15T00:00:00'
-  - description: Attention on short sequences (8-15 steps) -28.6%, concat wins
-    experiment_id: H3.352
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: Complex multi-step (15-30 steps) CG +26.4%, advantage diminishes
-      vs 5-10
-    experiment_id: H1.353
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: Attention on 20-40 steps +16.0%, crossover point found (~15-20 steps)
-    experiment_id: H3.353
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: Ultra-complex multi-step (30-50 steps) CG +33.0%, strong win, advantage
-      diminish
-    experiment_id: H1.355
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: Ultra-complex multi-step (30-50 steps) Attention +14.7%, marginal
-      help
-    experiment_id: H1.355-attn
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
   - description: Attention on 50-70 steps +15.5% (standard), +18.1% (causal), attention
       continues
     experiment_id: H3.356
@@ -70,27 +30,50 @@ experiments:
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
+  - description: Attention on 160-200 steps +11.3% at 160, +1.2% at 200, boundary
+      at ~180 steps
+    experiment_id: H3.362
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Ultra-complex multi-step (50-70 steps) CG -40.8%, CG loses on extreme
+      complexity
+    experiment_id: H1.363
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Attention on 200-250 steps +11.0% avg, attention continues to work
+      at longer len
+    experiment_id: H3.363
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Simpler multi-step (10-15 steps) CG -23.6%, CG loses even on simpler
+      tasks
+    experiment_id: H1.364
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: 0
+  - description: Goal-conditioned attention on 250-275 steps +13.0%, goal conditioning
+      helps at l
+    experiment_id: H3.364
+    result:
+      cognitive_graph_wins: false
+      improvement_percent: 0
   - description: Test at 1000+ demonstrations scale
-    experiment_id: 361-larger_scale
-    hypothesis: H1.361
+    experiment_id: 412-larger_scale
+    hypothesis: H1.412
     result:
       error: Failed to parse
-      raw_output: "che/libero_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n\
+      raw_output: "e/libero_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n\
         [Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\
         \nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\n\
         Training Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\"\
-        : 0.01520147593691945,\n  \"cognitive_graph_loss\": 0.011978565249592066,\n\
-        \  \"improvement_percent\": 21.20130111511068,\n  \"cognitive_graph_wins\"\
+        : 0.013321059523150325,\n  \"cognitive_graph_loss\": 0.009752564248628914,\n\
+        \  \"improvement_percent\": 26.788374215427947,\n  \"cognitive_graph_wins\"\
         : true,\n  \"config\": {\n    \"n_train\": 800,\n    \"n_val\": 200\n  }\n\
         }\n"
-    timestamp: '2026-05-14T22:43:17.422353'
-  - description: Attention on 160-200 steps +11.3% at 160, +1.2% at 200, boundary at ~180
-    experiment_id: 362-attention-160-200-steps
-    hypothesis: H3.362
-    result:
-      cognitive_graph_wins: true
-      improvement_percent: 6.2
-    timestamp: '2026-05-14T23:00:00'
+    timestamp: '2026-05-15T17:43:43.727993'
 hypotheses:
 - id: H1
   key_finding: Early fusion wins on real robot data (+25.6%)
@@ -517,17 +500,22 @@ hypotheses:
     fails at 150
   status: PARTIAL
 - id: H3.362
-  key_finding: Attention on 160-200 steps +11.3% at 160, +1.2% at 200, boundary at ~180 steps
+  key_finding: Attention on 160-200 steps +11.3% at 160, +1.2% at 200, boundary at
+    ~180 steps
   status: SUPPORTED
 - id: H1.363
-  key_finding: Ultra-complex multi-step (50-70 steps) CG -40.8%, CG loses on extreme complexity
+  key_finding: Ultra-complex multi-step (50-70 steps) CG -40.8%, CG loses on extreme
+    complexity
   status: REFUTED
 - id: H3.363
-  key_finding: Attention on 200-250 steps +11.0% avg, attention continues to work at longer lengths
+  key_finding: Attention on 200-250 steps +11.0% avg, attention continues to work
+    at longer lengths
   status: SUPPORTED
 - id: H1.364
-  key_finding: Simpler multi-step (10-15 steps) CG -23.6%, CG loses even on simpler tasks
+  key_finding: Simpler multi-step (10-15 steps) CG -23.6%, CG loses even on simpler
+    tasks
   status: REFUTED
 - id: H3.364
-  key_finding: Goal-conditioned attention on 250-275 steps +13.0%, goal conditioning helps at long lengths
+  key_finding: Goal-conditioned attention on 250-275 steps +13.0%, goal conditioning
+    helps at long lengths
   status: SUPPORTED

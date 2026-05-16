@@ -1,0 +1,4 @@
+{
+  "error": "Failed to parse",
+  "raw_output": "che/libero_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.01692792633548379,\n  \"cognitive_graph_loss\": 0.011990522034466267,\n  \"improvement_percent\": 29.16721282433685,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n    \"n_train\": 800,\n    \"n_val\": 200\n  }\n}\n"
+}
