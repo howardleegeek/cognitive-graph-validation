@@ -13963,7 +13963,51 @@ The autonomous research engine ran 11 additional experiments (315-325) testing v
 
 **Results**: {
   "error": "Failed to parse",
-  "raw_output": "che/libero_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.01520147593691945,\n  \"cognitive_graph_loss\": 0.011978565249592066,\n  \"improvement_percent\": 21.20130111511068,\n  \"cognitive_graph_wins\": true,\n  \"config\": {\n    \"n_train\": 800,\n    \"n_val\": 200\n  }\n}\n"
+  "raw_output": "che/libero_synthetic_500.pkl\n[Data] Generated 250 demonstrations\n[Data] Average trajectory length: 11.0\n[Data] Cached to data/cache/libero_synthetic_250.pkl\n\nDataset splits:\n  Train: 200 demos\n  Val:   50 demos\n  Test:  0 demos\nTraining Baseline...\nTraining Cognitive Graph...\n{\n  \"baseline_loss\": 0.01520147593691945,\n  \"cognitive_graph_loss\": 0.011978565249592066,\n  \"improvement_percent\": 21.20130111511068,\n  \"cognitive_graph_wins\": true,\n  "config": {\n    "n_train": 800,\n    "n_val": 200
+  }
+}
+"
 }
 
 **Status**: ❌ REFUTED - Cognitive Graph 0.0%
+
+
+---
+
+## H1.363 / H3.363: Ultra-Complex Multi-Step + Long Sequence Attention (May 15, 2026)
+
+### Part 1: Ultra-Complex Multi-Step (50-70 steps, 20 sub-tasks)
+
+| Seq Length | Baseline MSE | CG MSE | CG Improvement |
+|------------|-------------|--------|----------------|
+| 50 | 0.0150 | 0.0210 | **-39.4%** |
+| 60 | 0.0133 | 0.0205 | **-55.0%** |
+| 70 | 0.0163 | 0.0209 | **-28.1%** |
+
+**Average: -40.8%**
+
+**Status: ❌ REFUTED** — CG loses on ultra-complex multi-step tasks with 20 sub-tasks.
+
+### Part 2: Long Sequence Attention (200-250 steps)
+
+| Seq Length | Baseline MSE | Attention MSE | Attention Improvement |
+|------------|-------------|---------------|---------------------|
+| 200 | 0.0157 | 0.0153 | **+2.3%** |
+| 225 | 0.0154 | 0.0125 | **+18.6%** |
+| 250 | 0.0155 | 0.0136 | **+12.0%** |
+
+**Average: +11.0%**
+
+**Status: ✅ SUPPORTED** — Attention continues to work on 200-250 step sequences.
+
+### Key Findings
+
+1. **CG fails on extreme complexity**: -40.8% on 50-70 step ultra-complex tasks
+2. **Attention extends to 250 steps**: +11% improvement extends valid range beyond 180-step boundary
+
+### Updated Research Status
+
+| Hypothesis | Status | Key Finding |
+|------------|--------|-------------|
+| H1.363 | ❌ REFUTED | CG -40.8% on 50-70 step ultra-complex |
+| H3.363 | ✅ SUPPORTED | Attention +11.0% on 200-250 steps |

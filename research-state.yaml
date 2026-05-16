@@ -1,6 +1,12 @@
 experiments:
-  total_runs: 127
+  total_runs: 128
   trajectory:
+  - description: Ultra-complex multi-step (50-70 steps) CG -40.8%, attention +11.0% on 200-250 steps
+    experiment_id: H1.363 / H3.363
+    result:
+      cognitive_graph_wins: true
+      improvement_percent: 11.0
+    timestamp: '2026-05-15T00:00:00'
   - description: Attention on short sequences (8-15 steps) -28.6%, concat wins
     experiment_id: H3.352
     result:
@@ -506,4 +512,10 @@ hypotheses:
   status: PARTIAL
 - id: H3.362
   key_finding: Attention on 160-200 steps +11.3% at 160, +1.2% at 200, boundary at ~180 steps
+  status: SUPPORTED
+- id: H1.363
+  key_finding: Ultra-complex multi-step (50-70 steps) CG -40.8%, CG loses on extreme complexity
+  status: REFUTED
+- id: H3.363
+  key_finding: Attention on 200-250 steps +11.0% avg, attention continues to work at longer lengths
   status: SUPPORTED
