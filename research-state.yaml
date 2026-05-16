@@ -1,7 +1,27 @@
-current_round: 146
+current_round: 147
+last_action: "H1.376 - External Memory (Key-Value Store) test - CG wins on 3-step tasks (+15.7%)"
+next_intended_action: "H1.377 - Test external memory with larger memory size (32 slots) or different attention mechanisms"
+
 experiments:
-  total_runs: 146
+  total_runs: 147
   trajectory:
+  - experiment_id: H1.376
+    description: External Memory (Key-Value Store) for 3+ step tasks
+    result:
+      cognitive_graph_wins: true
+      conclusion: SUPPORTED
+      improvement_percent: 15.7
+      key_finding: External memory (16-slot KV store + 4-head attention) enables CG to handle 3-step tasks (+15.7%), addressing H1.371 failure
+      baseline_3step_mse: 1.237484
+      cg_3step_mse: 1.043234
+      baseline_2step_mse: 1.251588
+      cg_2step_mse: 1.105903
+      improvement_2step: 11.6
+      config:
+        memory_size: 16
+        num_heads: 4
+        hidden_dim: 128
+        temporal_layers: 2
   - experiment_id: H1.375
     description: Hierarchical Temporal Memory - 4-layer test - 2-layer LSTM best (+14.0%)
     result:
@@ -17,8 +37,8 @@ experiments:
         gru_2layer: 10.5
         gru_3layer: -3.3
         gru_4layer: -346.3
-  - description: Hierarchical Temporal Memory - 2-layer LSTM best (+3.6%)
-    experiment_id: H1.374
+  - experiment_id: H1.374
+    description: Hierarchical Temporal Memory - 2-layer LSTM best (+3.6%)
     result:
       cognitive_graph_wins: true
       conclusion: SUPPORTED
@@ -32,119 +52,27 @@ experiments:
         gru_2layer: 2.0
         lstm_3layer: 3.3
         gru_3layer: 2.7
-  - description: CG + Temporal Memory on 3-step tasks - LSTM/GRU help but dont fully
-      solve
-    experiment_id: H1.373
+  - experiment_id: H1.373
+    description: CG + Temporal Memory on 3-step tasks - LSTM/GRU help but dont fully solve
     result:
-      cg_gru_improvement: -31.2
-      cg_lstm_improvement: -29.0
-      cg_vanilla_improvement: -33.6
       cognitive_graph_wins: false
       conclusion: PARTIAL_SUPPORT
       improvement_percent: -29.0
-      key_finding: Temporal memory improves CG on 3-step tasks but still loses to
-        baseline
-  - description: Multi-step coordinated interactions test - CG loses on multi-step
-      coordinated tasks (-106.6%)
-    experiment_id: H1.371
+      key_finding: Temporal memory improves CG on 3-step tasks but still loses to baseline
+      cg_gru_improvement: -31.2
+      cg_lstm_improvement: -29.0
+      cg_vanilla_improvement: -33.6
+  - experiment_id: H1.371
+    description: Multi-step coordinated interactions test - CG loses on multi-step coordinated tasks (-106.6%)
     result:
       cognitive_graph_wins: false
       conclusion: REFUTED
       improvement_percent: -106.6
-      key_finding: CG struggles with multi-step coordinated interactions despite winning
-        on single-step coordinated interactions
-  - description: Multi-object interaction test - CG shows advantage with 3 objects
-      in coordinated interactions (+38.9%)
-    experiment_id: H1.370
+      key_finding: CG struggles with multi-step coordinated interactions despite winning on single-step coordinated interactions
+  - experiment_id: H1.370
+    description: Multi-object interaction test - CG shows advantage with 3 objects in coordinated interactions (+38.9%)
     result:
       cognitive_graph_wins: true
       conclusion: SUPPORTED
       improvement_percent: 38.9
-      key_finding: CG wins with 3 objects in coordinated interactions, loses with
-        5 objects
-  - description: "Autocorrelation threshold test - CG gap closes from -22.2% at \u03C1\
-      =0 to 0% at \u03C1=0.9, monotonic trend but no crossover"
-    experiment_id: H1.369
-    result:
-      cognitive_graph_wins: false
-      conclusion: PARTIAL_SUPPORT
-      improvement_percent: 0
-      trend_slope: 24.7
-  - description: Simpler multi-step (10-15 steps) CG -23.6%, CG loses even on simpler
-      tasks
-    experiment_id: H1.364
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: Goal-conditioned attention on 250-275 steps +13.0%, goal conditioning
-      helps at l
-    experiment_id: H3.364
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: Medium complexity (20-40 steps) CG +17.4% avg, sweet spot confirmed
-      between 10-1
-    experiment_id: H1.365
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: Attention+Goal on 20-40 steps +5.8% avg, helps at 35 steps (+21.2%)
-    experiment_id: H3.365
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: Transition zone (25-35 steps) CG +25.0%, CG+Attn +29.2%, still in
-      sweet spot
-    experiment_id: H1.366
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: Boundary zone (40-50 steps) Concat +18.2%, Attn +15.4%, concat still
-      wins
-    experiment_id: H3.366
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: CG on 20-40 steps with autocorr +85.7%, strong win with temporal
-      structure
-    experiment_id: H1.367
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: Attention on 40-60 steps with autocorr +95.6%, best at medium lengths
-    experiment_id: H3.367
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: CG on 30-50 steps high autocorr +90.5%, higher autocorr = better
-      CG
-    experiment_id: H1.368
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-hypotheses:
-- id: H1
-  key_finding: Early fusion wins on real robot data (+25.6%)
-  status: SUPPORTED
-- id: H1.181
-  key_finding: Attention advantage increases with autocorrelation (-6.5% to -26.9%)
-  status: SUPPORTED
-- id: H1.369
-  key_finding: CG gap closes with autocorrelation (-22.2% to 0%), monotonic trend
-    but no crossover
-  status: PARTIAL_SUPPORT
-- id: H1.370
-  key_finding: CG wins with 3 objects in coordinated interactions (+38.9%), loses
-    with 5 objects
-  status: SUPPORTED
-- id: H1.371
-  key_finding: CG struggles with multi-step coordinated interactions (-106.6%), despite
-    winning on single-step coordinated interactions
-  status: REFUTED
-- id: H1.374
-  key_finding: 2-layer LSTM temporal memory optimal (+3.6%), hierarchical helps but
-    small margin
-  status: SUPPORTED
-last_action: 'Ran H1.374: Hierarchical Temporal Memory experiment'
-next_action: Test CG with attention-based temporal reasoning or explore sub-hypothesis
-  H1.1/H1.2
+      key_finding: CG wins with 3 objects in coordinated interactions, loses with 5 objects

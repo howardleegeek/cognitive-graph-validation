@@ -1,0 +1,22 @@
+{
+  "experiment_id": "H1.376",
+  "description": "External Memory (Key-Value Store) for 3+ step tasks",
+  "config": {
+    "memory_size": 16,
+    "num_heads": 4,
+    "hidden_dim": 128,
+    "temporal_layers": 2
+  },
+  "results": {
+    "baseline_3step_mse": 1.23748379945755,
+    "cg_3step_mse": 1.0432335883378983,
+    "improvement_3step": 15.697192254541125,
+    "cg_wins_3step": true,
+    "baseline_2step_mse": 1.2515875697135925,
+    "cg_2step_mse": 1.1059034168720245,
+    "improvement_2step": 11.63994884312455,
+    "cg_wins_2step": true
+  },
+  "conclusion": "SUPPORTED",
+  "key_finding": "External memory improves CG on 3-step tasks (+15.7%)"
+}
