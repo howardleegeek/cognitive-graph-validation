@@ -1,0 +1,48 @@
+{
+  "experiment": "H1.369",
+  "hypothesis": "Autocorrelation threshold for CG effectiveness (sequence prediction)",
+  "results": [
+    {
+      "autocorr": 0.0,
+      "baseline_loss": 1.0808081924915314,
+      "cg_loss": 1.3203350454568863,
+      "improvement_percent": -22.17726562591517,
+      "improvement_std": 0.7311747978705174,
+      "n_runs": 2
+    },
+    {
+      "autocorr": 0.3,
+      "baseline_loss": 1.0723889619112015,
+      "cg_loss": 1.2088586390018463,
+      "improvement_percent": -12.790649492270244,
+      "improvement_std": 2.68855146948495,
+      "n_runs": 2
+    },
+    {
+      "autocorr": 0.5,
+      "baseline_loss": 1.1736070364713669,
+      "cg_loss": 1.2738873362541199,
+      "improvement_percent": -8.544432055396097,
+      "improvement_std": 0.3103204631375007,
+      "n_runs": 2
+    },
+    {
+      "autocorr": 0.7,
+      "baseline_loss": 1.1869821846485138,
+      "cg_loss": 1.2511755377054214,
+      "improvement_percent": -5.588906459121526,
+      "improvement_std": 2.699594935330476,
+      "n_runs": 2
+    },
+    {
+      "autocorr": 0.9,
+      "baseline_loss": 1.3028982505202293,
+      "cg_loss": 1.2945031374692917,
+      "improvement_percent": -0.03670849748343974,
+      "improvement_std": 6.85880765805725,
+      "n_runs": 2
+    }
+  ],
+  "threshold_found": null,
+  "conclusion": "REFUTED"
+}

@@ -1,0 +1,48 @@
+{
+  "experiment": "H1.369",
+  "hypothesis": "Autocorrelation threshold for CG effectiveness",
+  "results": [
+    {
+      "autocorr": 0.0,
+      "baseline_loss": 1.0361881852149963,
+      "cg_loss": 1.3289678394794464,
+      "improvement_percent": -28.24993946317825,
+      "improvement_std": 0.3101289105173155,
+      "n_runs": 2
+    },
+    {
+      "autocorr": 0.3,
+      "baseline_loss": 1.3086349070072174,
+      "cg_loss": 1.5038749277591705,
+      "improvement_percent": -14.939101945018162,
+      "improvement_std": 2.6272259197386285,
+      "n_runs": 2
+    },
+    {
+      "autocorr": 0.5,
+      "baseline_loss": 1.1608867049217224,
+      "cg_loss": 1.4469203054904938,
+      "improvement_percent": -24.765234123554144,
+      "improvement_std": 1.7202999003816686,
+      "n_runs": 2
+    },
+    {
+      "autocorr": 0.7,
+      "baseline_loss": 1.0778138786554337,
+      "cg_loss": 1.3421193063259125,
+      "improvement_percent": -24.51967619007423,
+      "improvement_std": 1.1156500412051056,
+      "n_runs": 2
+    },
+    {
+      "autocorr": 0.9,
+      "baseline_loss": 1.1726564466953278,
+      "cg_loss": 1.343683809041977,
+      "improvement_percent": -14.745952330441394,
+      "improvement_std": 2.2575717812419294,
+      "n_runs": 2
+    }
+  ],
+  "threshold_found": null,
+  "conclusion": "REFUTED"
+}
