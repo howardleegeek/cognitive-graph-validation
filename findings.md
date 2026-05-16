@@ -14011,3 +14011,45 @@ The autonomous research engine ran 11 additional experiments (315-325) testing v
 |------------|--------|-------------|
 | H1.363 | ❌ REFUTED | CG -40.8% on 50-70 step ultra-complex |
 | H3.363 | ✅ SUPPORTED | Attention +11.0% on 200-250 steps |
+
+
+---
+
+## H1.364 / H3.364: Simpler Multi-Step + Goal-Conditioned Attention (May 15, 2026)
+
+### Part 1: Simpler Multi-Step (10-15 steps, 3-5 sub-tasks)
+
+| Seq Length | Baseline MSE | CG MSE | CG Improvement |
+|------------|-------------|--------|----------------|
+| 10 | 0.0159 | 0.0186 | **-16.7%** |
+| 15 | 0.0158 | 0.0206 | **-30.5%** |
+
+**Average: -23.6%**
+
+**Status: ❌ REFUTED** — CG loses on simpler multi-step tasks too. This is surprising given H1.351's success.
+
+### Part 2: Goal-Conditioned Attention (250-275 steps)
+
+| Seq Length | Baseline MSE | Std Attn MSE | Goal Attn MSE | Best Improvement |
+|------------|-------------|--------------|---------------|-----------------|
+| 250 | 0.0145 | 0.0173 (-19.5%) | 0.0129 (+10.7%) | **+10.7%** |
+| 275 | 0.0173 | 0.0154 (+11.1%) | 0.0146 (+15.3%) | **+15.3%** |
+
+**Average Best: +13.0%**
+
+**Status: ✅ SUPPORTED** — Goal-conditioned attention works on 250-275 step sequences, outperforming standard attention.
+
+### Key Findings
+
+1. **CG fails on simpler multi-step too**: -23.6% on 10-15 step tasks. This contradicts H1.351's +32.4% result - possible data or task configuration difference.
+
+2. **Goal conditioning helps at long lengths**: Goal-conditioned attention provides +13% improvement vs baseline, extending the valid range to 275 steps.
+
+3. **Standard attention can hurt**: At 250 steps, standard attention actually hurt (-19.5%) while goal-conditioned helped (+10.7%).
+
+### Updated Research Status
+
+| Hypothesis | Status | Key Finding |
+|------------|--------|-------------|
+| H1.364 | ❌ REFUTED | CG -23.6% on 10-15 step simpler tasks |
+| H3.364 | ✅ SUPPORTED | Goal-conditioned attention +13.0% on 250-275 steps |

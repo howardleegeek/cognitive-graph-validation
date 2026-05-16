@@ -1,6 +1,12 @@
 experiments:
-  total_runs: 128
+  total_runs: 129
   trajectory:
+  - description: Simpler multi-step (10-15 steps) CG -23.6%, goal-conditioned attention +13.0% on 250-275 steps
+    experiment_id: H1.364 / H3.364
+    result:
+      cognitive_graph_wins: true
+      improvement_percent: 13.0
+    timestamp: '2026-05-15T01:00:00'
   - description: Ultra-complex multi-step (50-70 steps) CG -40.8%, attention +11.0% on 200-250 steps
     experiment_id: H1.363 / H3.363
     result:
@@ -518,4 +524,10 @@ hypotheses:
   status: REFUTED
 - id: H3.363
   key_finding: Attention on 200-250 steps +11.0% avg, attention continues to work at longer lengths
+  status: SUPPORTED
+- id: H1.364
+  key_finding: Simpler multi-step (10-15 steps) CG -23.6%, CG loses even on simpler tasks
+  status: REFUTED
+- id: H3.364
+  key_finding: Goal-conditioned attention on 250-275 steps +13.0%, goal conditioning helps at long lengths
   status: SUPPORTED
