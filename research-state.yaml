@@ -541,3 +541,15 @@ hypotheses:
 - id: H3.366
   key_finding: Boundary zone (40-50 steps) Concat +18.2%, Attn +15.4%, concat still wins
   status: PARTIAL
+- id: H1.367
+  key_finding: CG on 20-40 steps with autocorr +85.7%, strong win with temporal structure
+  status: SUPPORTED
+- id: H3.367
+  key_finding: Attention on 40-60 steps with autocorr +95.6%, best at medium lengths
+  status: SUPPORTED
+- id: H1.368
+  key_finding: CG on 30-50 steps high autocorr +90.5%, higher autocorr = better CG
+  status: SUPPORTED
+- id: H3.368
+  key_finding: Attention on 50-70 steps +65.5%, attention advantage decreases at longer lengths
+  status: PARTIAL

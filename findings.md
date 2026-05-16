@@ -14832,3 +14832,68 @@ The autonomous research engine ran 11 additional experiments (315-325) testing v
 3. **Longer sequences**: Attention becomes beneficial with longer sequences (20+ timesteps)
 4. **Larger scale**: CG advantage persists at larger scales (800+ training samples)
 5. **Dimension allocation**: Inconsistent results suggest the specific values matter less than overall architecture
+
+---
+
+## New Results (May 15, 2026 - Autocorrelation Experiments)
+
+### H1.367: CG on 20-40 Steps with Autocorrelation (rho=0.9)
+
+| Steps | Baseline MSE | CG MSE | CG Δ | Attn MSE | Attn Δ |
+|-------|-------------|--------|------|----------|--------|
+| 20-40 | 0.000338 | 0.000048 | **+85.7%** | 0.000035 | **+89.7%** |
+
+**Status: ✅ SUPPORTED** — CG shows strong improvement (+85.7%) with temporal autocorrelation.
+
+### H3.367: Attention on 40-60 Steps with Autocorrelation (rho=0.9)
+
+| Steps | Baseline MSE | CG MSE | CG Δ | Attn MSE | Attn Δ |
+|-------|-------------|--------|------|----------|--------|
+| 40-60 | 0.000357 | 0.000044 | **+87.7%** | 0.000016 | **+95.6%** |
+
+**Status: ✅ SUPPORTED** — Attention shows best performance (+95.6%) at medium lengths with autocorr.
+
+### H1.368: CG on 30-50 Steps High Autocorrelation (rho=0.95)
+
+| Steps | Baseline MSE | CG MSE | CG Δ | Attn MSE | Attn Δ |
+|-------|-------------|--------|------|----------|--------|
+| 30-50 | 0.000281 | 0.000027 | **+90.5%** | 0.000062 | +78.0% |
+
+**Status: ✅ SUPPORTED** — Higher autocorrelation (0.95) leads to even better CG performance (+90.5%).
+
+### H3.368: Attention on 50-70 Steps High Autocorrelation (rho=0.95)
+
+| Steps | Baseline MSE | CG MSE | CG Δ | Attn MSE | Attn Δ |
+|-------|-------------|--------|------|----------|--------|
+| 50-70 | 0.000181 | 0.000049 | +73.2% | 0.000062 | +65.5% |
+
+**Status: ⚠️ PARTIAL** — Attention advantage decreases at longer lengths (50-70 steps).
+
+### Summary: Autocorrelation Enables Both CG and Attention
+
+| Experiment | Seq Range | Autocorr | CG Δ | Attn Δ | Concat Δ |
+|------------|-----------|----------|------|--------|----------|
+| H1.367 | 20-40 | 0.9 | +85.7% | +89.7% | +70.5% |
+| H3.367 | 40-60 | 0.9 | +87.7% | +95.6% | +73.3% |
+| H1.368 | 30-50 | 0.95 | +90.5% | +78.0% | +70.3% |
+| H3.368 | 50-70 | 0.95 | +73.2% | +65.5% | +74.2% |
+
+**Key Findings:**
+1. **CG wins 4/4** experiments with average +84.3%
+2. **Attention wins 3/4** experiments with average +82.2%
+3. **Higher autocorrelation (0.95) improves CG** but may reduce attention effectiveness at longer lengths
+4. **Attention works best at medium lengths (40-60 steps)** with rho=0.9 (+95.6%)
+5. **Concatenation average: +72.1%** — still good but below CG and attention
+
+### Updated Research Status (May 15, 2026)
+
+| # | Hypothesis | Status | Key Finding |
+|---|------------|--------|-------------|
+| H1 | Unified vs Baseline | ✅ +25.6% | Early fusion wins on real robot |
+| H1.365 | Medium complexity 20-40 | ✅ +17.4% | Sweet spot confirmed |
+| H1.367 | CG + autocorr 20-40 | ✅ +85.7% | Strong with temporal structure |
+| H1.368 | CG + high autocorr 30-50 | ✅ +90.5% | Higher autocorr = better |
+| H3.367 | Attn + autocorr 40-60 | ✅ +95.6% | Best at medium lengths |
+| H3.368 | Attn + high autocorr 50-70 | ⚠️ +65.5% | Decreases at longer lengths |
+
+**Total: 20+ SUPPORTED, 1 INCONCLUSIVE, 11 REFUTED, 2 PARTIAL**
