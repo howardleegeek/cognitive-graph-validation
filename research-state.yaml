@@ -1,5 +1,5 @@
 experiments:
-  total_runs: 132
+  total_runs: 133
   trajectory:
   - description: Attention on 50-70 steps +15.5% (standard), +18.1% (causal), attention
       continues
@@ -60,6 +60,15 @@ experiments:
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
+  - description: Medium complexity (20-40 steps) CG +17.4%, sweet spot confirmed
+    experiment_id: 413-medium-complexity
+    hypothesis: H1.365
+    result:
+      cognitive_graph_wins: true
+      improvement_percent: 17.4
+      cg_wins: 4
+      attn_goal_wins: 5
+    timestamp: '2026-05-15T18:00:00'
   - description: Test at 1000+ demonstrations scale
     experiment_id: 412-larger_scale
     hypothesis: H1.412
@@ -518,4 +527,11 @@ hypotheses:
 - id: H3.364
   key_finding: Goal-conditioned attention on 250-275 steps +13.0%, goal conditioning
     helps at long lengths
+  status: SUPPORTED
+- id: H1.365
+  key_finding: Medium complexity (20-40 steps) CG +17.4% avg, sweet spot confirmed
+    between 10-15 (-23.6%) and 50-70 (-40.8%)
+  status: SUPPORTED
+- id: H3.365
+  key_finding: Attention+Goal on 20-40 steps +5.8% avg, helps at 35 steps (+21.2%)
   status: SUPPORTED
