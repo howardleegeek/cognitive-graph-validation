@@ -1,0 +1,25 @@
+{
+  "experiment_id": "H1.373",
+  "hypothesis": "CG + Temporal Memory on 3-step tasks",
+  "config": {
+    "n_steps": 3,
+    "n_samples": 500,
+    "epochs": 50,
+    "obs_dim": 8,
+    "lang_dim": 32,
+    "action_dim": 7
+  },
+  "results": {
+    "baseline_mse": 1.0264893770217896,
+    "cg_vanilla_mse": 1.3710068464279175,
+    "cg_vanilla_improvement": -33.56269213478814,
+    "cg_lstm_mse": 1.3237398465474446,
+    "cg_lstm_improvement": -28.957968409579095,
+    "cg_gru_mse": 1.3463379542032878,
+    "cg_gru_improvement": -31.159462956108975,
+    "best_model": "baseline",
+    "best_improvement": 0.0
+  },
+  "conclusion": "REFUTED",
+  "key_finding": "Temporal memory improves CG on 3-step tasks"
+}

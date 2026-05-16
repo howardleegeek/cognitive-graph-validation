@@ -1,0 +1,130 @@
+[
+  {
+    "num_objects": 1,
+    "interaction_type": "independent",
+    "baseline_mse": 0.002415876602753997,
+    "cg_mse": 0.0002679799508769065,
+    "improvement_percent": 88.90754806882849,
+    "cognitive_graph_wins": true
+  },
+  {
+    "num_objects": 1,
+    "interaction_type": "collision",
+    "baseline_mse": 0.002415876602753997,
+    "cg_mse": 0.0002679799508769065,
+    "improvement_percent": 88.90754806882849,
+    "cognitive_graph_wins": true
+  },
+  {
+    "num_objects": 1,
+    "interaction_type": "coordinated",
+    "baseline_mse": 0.002415876602753997,
+    "cg_mse": 0.0002679799508769065,
+    "improvement_percent": 88.90754806882849,
+    "cognitive_graph_wins": true
+  },
+  {
+    "num_objects": 1,
+    "interaction_type": "stacking",
+    "baseline_mse": 0.002415876602753997,
+    "cg_mse": 0.0002679799508769065,
+    "improvement_percent": 88.90754806882849,
+    "cognitive_graph_wins": true
+  },
+  {
+    "num_objects": 2,
+    "interaction_type": "independent",
+    "baseline_mse": 0.0005776717443950474,
+    "cg_mse": 0.0005186072667129338,
+    "improvement_percent": 10.22457446728115,
+    "cognitive_graph_wins": true
+  },
+  {
+    "num_objects": 2,
+    "interaction_type": "collision",
+    "baseline_mse": 0.0005776717443950474,
+    "cg_mse": 0.0005186072667129338,
+    "improvement_percent": 10.22457446728115,
+    "cognitive_graph_wins": true
+  },
+  {
+    "num_objects": 2,
+    "interaction_type": "coordinated",
+    "baseline_mse": 0.3507348299026489,
+    "cg_mse": 0.40745028853416443,
+    "improvement_percent": -16.170466630661583,
+    "cognitive_graph_wins": false
+  },
+  {
+    "num_objects": 2,
+    "interaction_type": "stacking",
+    "baseline_mse": 0.0006554862484335899,
+    "cg_mse": 0.0003993738500867039,
+    "improvement_percent": 39.0721237797003,
+    "cognitive_graph_wins": true
+  },
+  {
+    "num_objects": 3,
+    "interaction_type": "independent",
+    "baseline_mse": 0.0423457957804203,
+    "cg_mse": 0.048588693141937256,
+    "improvement_percent": -14.742661571148277,
+    "cognitive_graph_wins": false
+  },
+  {
+    "num_objects": 3,
+    "interaction_type": "collision",
+    "baseline_mse": 0.02206367626786232,
+    "cg_mse": 0.09074512124061584,
+    "improvement_percent": -311.2874035085172,
+    "cognitive_graph_wins": false
+  },
+  {
+    "num_objects": 3,
+    "interaction_type": "coordinated",
+    "baseline_mse": 0.13065247237682343,
+    "cg_mse": 0.07988975197076797,
+    "improvement_percent": 38.85324133755949,
+    "cognitive_graph_wins": true
+  },
+  {
+    "num_objects": 3,
+    "interaction_type": "stacking",
+    "baseline_mse": 0.043538451194763184,
+    "cg_mse": 0.05353624373674393,
+    "improvement_percent": -22.963133202090756,
+    "cognitive_graph_wins": false
+  },
+  {
+    "num_objects": 5,
+    "interaction_type": "independent",
+    "baseline_mse": 0.024853698909282684,
+    "cg_mse": 0.09593188762664795,
+    "improvement_percent": -285.9863595225983,
+    "cognitive_graph_wins": false
+  },
+  {
+    "num_objects": 5,
+    "interaction_type": "collision",
+    "baseline_mse": 0.07233215123414993,
+    "cg_mse": 0.11656031012535095,
+    "improvement_percent": -61.14591939624178,
+    "cognitive_graph_wins": false
+  },
+  {
+    "num_objects": 5,
+    "interaction_type": "coordinated",
+    "baseline_mse": 0.1007891595363617,
+    "cg_mse": 0.18381625413894653,
+    "improvement_percent": -82.37700858357803,
+    "cognitive_graph_wins": false
+  },
+  {
+    "num_objects": 5,
+    "interaction_type": "stacking",
+    "baseline_mse": 0.02382846362888813,
+    "cg_mse": 0.11162285506725311,
+    "improvement_percent": -368.4433575143661,
+    "cognitive_graph_wins": false
+  }
+]

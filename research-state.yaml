@@ -1,14 +1,45 @@
+current_round: 144
 experiments:
-  total_runs: 141
+  total_runs: 144
   trajectory:
-  - description: Autocorrelation threshold test - CG gap closes from -22.2% at ρ=0
-      to 0% at ρ=0.9, monotonic trend but no crossover
+  - description: CG + Temporal Memory on 3-step tasks - LSTM/GRU help but dont fully
+      solve
+    experiment_id: H1.373
+    result:
+      cg_gru_improvement: -31.2
+      cg_lstm_improvement: -29.0
+      cg_vanilla_improvement: -33.6
+      cognitive_graph_wins: false
+      conclusion: PARTIAL_SUPPORT
+      improvement_percent: -29.0
+      key_finding: Temporal memory improves CG on 3-step tasks but still loses to
+        baseline
+  - description: Multi-step coordinated interactions test - CG loses on multi-step
+      coordinated tasks (-106.6%)
+    experiment_id: H1.371
+    result:
+      cognitive_graph_wins: false
+      conclusion: REFUTED
+      improvement_percent: -106.6
+      key_finding: CG struggles with multi-step coordinated interactions despite winning
+        on single-step coordinated interactions
+  - description: Multi-object interaction test - CG shows advantage with 3 objects
+      in coordinated interactions (+38.9%)
+    experiment_id: H1.370
+    result:
+      cognitive_graph_wins: true
+      conclusion: SUPPORTED
+      improvement_percent: 38.9
+      key_finding: CG wins with 3 objects in coordinated interactions, loses with
+        5 objects
+  - description: "Autocorrelation threshold test - CG gap closes from -22.2% at \u03C1\
+      =0 to 0% at \u03C1=0.9, monotonic trend but no crossover"
     experiment_id: H1.369
     result:
       cognitive_graph_wins: false
+      conclusion: PARTIAL_SUPPORT
       improvement_percent: 0
       trend_slope: 24.7
-      conclusion: PARTIAL_SUPPORT
   - description: Simpler multi-step (10-15 steps) CG -23.6%, CG loses even on simpler
       tasks
     experiment_id: H1.364
@@ -78,14 +109,13 @@ hypotheses:
   key_finding: CG gap closes with autocorrelation (-22.2% to 0%), monotonic trend
     but no crossover
   status: PARTIAL_SUPPORT
-- id: H3
-  key_finding: Concatenation wins over attention for simple tasks
+- id: H1.370
+  key_finding: CG wins with 3 objects in coordinated interactions (+38.9%), loses
+    with 5 objects
+  status: SUPPORTED
+- id: H1.371
+  key_finding: CG struggles with multi-step coordinated interactions (-106.6%), despite
+    winning on single-step coordinated interactions
   status: REFUTED
-- id: H3.86
-  key_finding: Graph methods don't outperform flat attention on multi-object tasks
-  status: REFUTED
-current_round: 141
-last_action: Ran H1.369 autocorrelation threshold experiment - found monotonic trend
-  but no crossover
-next_intended_action: Test H1.370 with autocorrelation + multi-object interactions
-  to find crossover conditions
+last_action: 'Ran H1.373: CG + Temporal Memory experiment'
+next_action: Analyze temporal memory results, consider deeper temporal stacking

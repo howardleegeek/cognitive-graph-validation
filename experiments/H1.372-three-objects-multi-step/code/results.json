@@ -1,0 +1,14 @@
+{
+  "experiment_id": "H1.372",
+  "description": "3 objects + 2-step coordinated interactions",
+  "baseline_mse": 0.0024019959778524935,
+  "cognitive_graph_mse": 0.0022617411124520002,
+  "improvement_percent": 5.839096596901392,
+  "cognitive_graph_wins": true,
+  "training_samples": 400,
+  "test_samples": 100,
+  "num_steps": 2,
+  "num_objects": 3,
+  "interaction_type": "coordinated_2step",
+  "timestamp": "2026-05-16T11:00:00"
+}
