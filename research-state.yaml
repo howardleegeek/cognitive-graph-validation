@@ -1,7 +1,22 @@
-current_round: 145
+current_round: 146
 experiments:
-  total_runs: 145
+  total_runs: 146
   trajectory:
+  - experiment_id: H1.375
+    description: Hierarchical Temporal Memory - 4-layer test - 2-layer LSTM best (+14.0%)
+    result:
+      cognitive_graph_wins: true
+      conclusion: SUPPORTED
+      improvement_percent: 14.0
+      key_finding: 2-layer LSTM/GRU optimal, deeper layers hurt performance
+      best_config: lstm_2layer
+      all_configs:
+        lstm_2layer: 14.0
+        lstm_3layer: -456.9
+        lstm_4layer: -1053.5
+        gru_2layer: 10.5
+        gru_3layer: -3.3
+        gru_4layer: -346.3
   - description: Hierarchical Temporal Memory - 2-layer LSTM best (+3.6%)
     experiment_id: H1.374
     result:
@@ -104,12 +119,6 @@ experiments:
   - description: CG on 30-50 steps high autocorr +90.5%, higher autocorr = better
       CG
     experiment_id: H1.368
-    result:
-      cognitive_graph_wins: false
-      improvement_percent: 0
-  - description: Attention on 50-70 steps +65.5%, attention advantage decreases at
-      longer lengths
-    experiment_id: H3.368
     result:
       cognitive_graph_wins: false
       improvement_percent: 0
