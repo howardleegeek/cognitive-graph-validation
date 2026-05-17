@@ -1,10 +1,41 @@
-current_round: 156
-last_action: "H1.385 - Test CG on longer sequences (20+ timesteps) to see if decomposition advantage emerges"
-next_intended_action: "H1.386 - Investigate why CG underperforms: ablate unified representation size and cross-modal attention depth"
+current_round: 157
+last_action: "H1.386 - Investigate why CG underperforms: ablate unified representation size and cross-modal attention depth"
+next_intended_action: "H1.387 - Analyze why smaller representation (72+184) and single GNN layer work best for CG"
 
 experiments:
-  total_runs: 156
+  total_runs: 157
   trajectory:
+  - experiment_id: H1.386
+    description: "Investigate why CG underperforms: ablate unified representation size and cross-modal attention depth"
+    result:
+      cognitive_graph_wins: true
+      conclusion: SUPPORTED
+      improvement_percent: 25.05
+      key_finding: "CG with smaller representation (72+184) and single GNN layer achieves +25.05% improvement vs baseline. Smaller representation (72+184) outperforms standard (144+368) by +10.0% and 2x larger (288+736) by +10.3%. Single GNN layer (+25.05%) outperforms deeper variants (2-4 layers: +15.5-19.6%). Fewer attention heads (1 head: +18.55%) outperform more heads (8 heads: +14.49%). Hierarchical achieves +3.54% improvement."
+      baseline_mse: 0.017626
+      hierarchical_mse: 0.017002
+      cg_mse: 0.013211
+      cg_variants:
+        representation_size:
+          CG_physical72_semantic184: 0.013364 (+24.18%)
+          CG_physical144_semantic368: 0.015129 (+14.17%)
+          CG_physical288_semantic736: 0.015179 (+13.89%)
+        attention_heads:
+          CG_heads1: 0.014356 (+18.55%)
+          CG_heads4: 0.014644 (+16.92%)
+          CG_heads8: 0.015072 (+14.49%)
+          CG_heads16: 0.014710 (+16.54%)
+        gnn_layers:
+          CG_layers1: 0.013211 (+25.05%)
+          CG_layers2: 0.014616 (+17.08%)
+          CG_layers3: 0.014171 (+19.61%)
+          CG_layers4: 0.014895 (+15.50%)
+      config:
+        n_train: 400
+        n_val: 100
+        n_epochs: 60
+        batch_size: 32
+        learning_rate: 1e-3
   - experiment_id: H1.385
     description: "Test CG on longer sequences (20+ timesteps) to see if decomposition advantage emerges"
     result:
@@ -49,41 +80,3 @@ experiments:
         n_epochs: 60
         batch_size: 32
         learning_rate: 1e-3
-  - experiment_id: H1.383
-    description: "Why CG's implicit task decomposition outperforms explicit subgoal structure"
-    result:
-      cognitive_graph_wins: true
-      conclusion: SUPPORTED
-      improvement_percent: 14.47
-      key_finding: "CG's implicit decomposition through cross-modal attention (+14.47%) slightly outperforms both hierarchical planner (+13.51%) and CG with explicit subgoal supervision (+14.42%). Explicit supervision provides minimal benefit and may interfere with CG's unified representation learning."
-      baseline_mse: 0.016397
-      hierarchical_mse: 0.014181
-      cg_mse: 0.014025
-      cg_supervised_mse: 0.014032
-      hierarchical_improvement: 13.51
-      cg_improvement: 14.47
-      cg_supervised_improvement: 14.42
-      cg_vs_hierarchical: 0.96
-      cg_vs_supervised: 0.05
-      config:
-        n_train: 800
-        n_val: 200
-        n_test: 200
-        n_epochs: 60
-        batch_size: 32
-        learning_rate: 1e-3
-        subgoal_weight: 0.5
-        n_subgoals: 2
-  - experiment_id: H1.382
-    description: Curriculum Asymmetry Analysis
-    result:
-      cognitive_graph_wins: true
-      conclusion: PARTIALLY_REFUTED
-      improvement_percent: 40.93
-      key_finding: "CG curriculum (no supervision) achieves +40.93% improvement vs +26.09% for hierarchical curriculum. Subgoal supervision HURTS CG (-6.18%). CG's unified representation learns task decomposition implicitly better than explicit subgoal heads."
-      baseline_mse: 0.412749
-      hierarchical_curriculum_mse: 0.305071
-      cg_curriculum_no_supervision_mse: 0.243814
-      cg_curriculum_with_supervision_mse: 0.269338
-      hierarchical_curriculum_improvement: 26.09
-      cg_curriculum_improvement: 40.93

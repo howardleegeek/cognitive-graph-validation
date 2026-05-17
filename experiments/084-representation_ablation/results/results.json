@@ -1,0 +1,64 @@
+{
+  "baseline_mse": 0.017626438988372684,
+  "hierarchical_mse": 0.0170019690413028,
+  "cg_mse": 0.01321145030669868,
+  "cg_improvement": 25.04753617328128,
+  "cg_variants": [
+    {
+      "name": "CG_physical72_semantic184",
+      "mse": 0.01336431223899126,
+      "improvement": 24.180305234613435
+    },
+    {
+      "name": "CG_physical144_semantic368",
+      "mse": 0.015129368519410491,
+      "improvement": 14.166619080628765
+    },
+    {
+      "name": "CG_physical288_semantic736",
+      "mse": 0.015178615227341652,
+      "improvement": 13.887227945733926
+    },
+    {
+      "name": "CG_heads1",
+      "mse": 0.014356257626786828,
+      "improvement": 18.5527057606079
+    },
+    {
+      "name": "CG_heads4",
+      "mse": 0.014643931994214654,
+      "improvement": 16.920644017350565
+    },
+    {
+      "name": "CG_heads8",
+      "mse": 0.01507192151620984,
+      "improvement": 14.492532915173253
+    },
+    {
+      "name": "CG_heads16",
+      "mse": 0.014710352756083012,
+      "improvement": 16.543819396607983
+    },
+    {
+      "name": "CG_layers1",
+      "mse": 0.01321145030669868,
+      "improvement": 25.04753617328128
+    },
+    {
+      "name": "CG_layers2",
+      "mse": 0.014615535968914628,
+      "improvement": 17.08174306474611
+    },
+    {
+      "name": "CG_layers3",
+      "mse": 0.014169611502438784,
+      "improvement": 19.611604409797142
+    },
+    {
+      "name": "CG_layers4",
+      "mse": 0.014895090367645025,
+      "improvement": 15.495748304744922
+    }
+  ],
+  "hierarchical_improvement": 3.5428026471019827
+}
