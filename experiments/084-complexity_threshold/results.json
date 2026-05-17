@@ -1,0 +1,132 @@
+{
+  "experiment_id": "H1.389",
+  "description": "Complexity Threshold: Find crossover point where CG starts winning",
+  "timestamp": "2026-05-17T15:24:07.444251",
+  "config": {
+    "n_train": 300,
+    "n_val": 75,
+    "n_epochs": 30,
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "seq_len": 10,
+    "object_counts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "results": [
+    {
+      "n_objects": 1,
+      "complexity_score": 2,
+      "baseline_mse": 0.04898257181048393,
+      "cg_small_mse": 0.0715341567993164,
+      "cg_large_mse": 0.07091561704874039,
+      "cg_small_improvement_pct": -46.040018225432725,
+      "cg_large_improvement_pct": -44.77724306334205,
+      "best_model": "baseline"
+    },
+    {
+      "n_objects": 2,
+      "complexity_score": 6,
+      "baseline_mse": 0.04123997688293457,
+      "cg_small_mse": 0.051247164607048035,
+      "cg_large_mse": 0.05000478774309158,
+      "cg_small_improvement_pct": -24.265745231914806,
+      "cg_large_improvement_pct": -21.25319052684523,
+      "best_model": "baseline"
+    },
+    {
+      "n_objects": 3,
+      "complexity_score": 12,
+      "baseline_mse": 0.037408486008644104,
+      "cg_small_mse": 0.04276428744196892,
+      "cg_large_mse": 0.04179900884628296,
+      "cg_small_improvement_pct": -14.317076163112377,
+      "cg_large_improvement_pct": -11.736702834282902,
+      "best_model": "baseline"
+    },
+    {
+      "n_objects": 4,
+      "complexity_score": 20,
+      "baseline_mse": 0.03733271732926369,
+      "cg_small_mse": 0.04312627390027046,
+      "cg_large_mse": 0.04373234510421753,
+      "cg_small_improvement_pct": -15.518711161336835,
+      "cg_large_improvement_pct": -17.142142958710963,
+      "best_model": "baseline"
+    },
+    {
+      "n_objects": 5,
+      "complexity_score": 30,
+      "baseline_mse": 0.03973116725683212,
+      "cg_small_mse": 0.045692555606365204,
+      "cg_large_mse": 0.04408859834074974,
+      "cg_small_improvement_pct": -15.00431213358819,
+      "cg_large_improvement_pct": -10.967286855052865,
+      "best_model": "baseline"
+    },
+    {
+      "n_objects": 6,
+      "complexity_score": 42,
+      "baseline_mse": 0.038464710116386414,
+      "cg_small_mse": 0.043500132858753204,
+      "cg_large_mse": 0.04050425812602043,
+      "cg_small_improvement_pct": -13.091019605062984,
+      "cg_large_improvement_pct": -5.302387574123812,
+      "best_model": "baseline"
+    },
+    {
+      "n_objects": 7,
+      "complexity_score": 56,
+      "baseline_mse": 0.04301172494888306,
+      "cg_small_mse": 0.043476544320583344,
+      "cg_large_mse": 0.0431404747068882,
+      "cg_small_improvement_pct": -1.0806806103514746,
+      "cg_large_improvement_pct": -0.29933642084374396,
+      "best_model": "baseline"
+    },
+    {
+      "n_objects": 8,
+      "complexity_score": 72,
+      "baseline_mse": 0.04667946696281433,
+      "cg_small_mse": 0.04421266168355942,
+      "cg_large_mse": 0.04468854144215584,
+      "cg_small_improvement_pct": 5.2845617993453375,
+      "cg_large_improvement_pct": 4.265099090022812,
+      "best_model": "cg_small"
+    },
+    {
+      "n_objects": 9,
+      "complexity_score": 90,
+      "baseline_mse": 0.048149798065423965,
+      "cg_small_mse": 0.04895637556910515,
+      "cg_large_mse": 0.048772018402814865,
+      "cg_small_improvement_pct": -1.6751420277718267,
+      "cg_large_improvement_pct": -1.2922594951394235,
+      "best_model": "baseline"
+    },
+    {
+      "n_objects": 10,
+      "complexity_score": 110,
+      "baseline_mse": 0.051467493176460266,
+      "cg_small_mse": 0.049898941069841385,
+      "cg_large_mse": 0.046238113194704056,
+      "cg_small_improvement_pct": 3.047655927676484,
+      "cg_large_improvement_pct": 10.160549230223587,
+      "best_model": "cg_large"
+    }
+  ],
+  "analysis": {
+    "crossover_point": 8,
+    "complexity_correlation": 0.8371044818382798,
+    "conclusion": "SUPPORTED"
+  }
+}

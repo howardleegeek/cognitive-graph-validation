@@ -1,0 +1,46 @@
+{
+  "config": {
+    "n_samples": 1000,
+    "n_epochs": 30,
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "obs_dim": 64,
+    "lang_dim": 32,
+    "action_dim": 7,
+    "device": "cpu"
+  },
+  "results": {
+    "simple": {
+      "baseline": {
+        "val_mse": 0.02785150660201907,
+        "test_mse": 0.03125010151416063
+      },
+      "cg_small": {
+        "val_mse": 0.03177355509251356,
+        "test_mse": 0.03469994617626071,
+        "improvement_percent": -11.039467057528816
+      },
+      "cg_large": {
+        "val_mse": 0.027076770551502705,
+        "test_mse": 0.03237485559657216,
+        "improvement_percent": -3.59920137187989
+      }
+    },
+    "complex": {
+      "baseline": {
+        "val_mse": 0.026042534038424492,
+        "test_mse": 0.036519117653369904
+      },
+      "cg_small": {
+        "val_mse": 0.028690062928944826,
+        "test_mse": 0.03641452640295029,
+        "improvement_percent": 0.2864013621916335
+      },
+      "cg_large": {
+        "val_mse": 0.027210045140236616,
+        "test_mse": 0.027209247928112745,
+        "improvement_percent": 25.49313982233649
+      }
+    }
+  }
+}

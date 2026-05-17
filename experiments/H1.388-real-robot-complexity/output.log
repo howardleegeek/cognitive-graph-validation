@@ -1,0 +1,97 @@
+Running H1.388: CG on synthetic data with varying complexity
+Config: {'n_samples': 1000, 'n_epochs': 30, 'batch_size': 32, 'learning_rate': 0.001, 'obs_dim': 64, 'lang_dim': 32, 'action_dim': 7, 'device': 'cpu'}
+Device: cpu
+
+============================================================
+Testing on SIMPLE data (like H1.386)
+============================================================
+
+Training baseline on simple data...
+Epoch 1/30, Train Loss: 0.456634, Val Loss: 0.438123
+Epoch 6/30, Train Loss: 0.034619, Val Loss: 0.054952
+Epoch 11/30, Train Loss: 0.014353, Val Loss: 0.039465
+Epoch 16/30, Train Loss: 0.008438, Val Loss: 0.033861
+Epoch 21/30, Train Loss: 0.005398, Val Loss: 0.030579
+Epoch 26/30, Train Loss: 0.003903, Val Loss: 0.029512
+baseline - Final Val MSE: 0.027852, Test MSE: 0.031250
+
+Training cg_small on simple data...
+Epoch 1/30, Train Loss: 0.464458, Val Loss: 0.433751
+Epoch 6/30, Train Loss: 0.077734, Val Loss: 0.087481
+Epoch 11/30, Train Loss: 0.025871, Val Loss: 0.052519
+Epoch 16/30, Train Loss: 0.015722, Val Loss: 0.042454
+Epoch 21/30, Train Loss: 0.010752, Val Loss: 0.036049
+Epoch 26/30, Train Loss: 0.008147, Val Loss: 0.034267
+cg_small - Final Val MSE: 0.031774, Test MSE: 0.034700
+
+Training cg_large on simple data...
+Epoch 1/30, Train Loss: 0.344438, Val Loss: 0.241830
+Epoch 6/30, Train Loss: 0.014959, Val Loss: 0.034289
+Epoch 11/30, Train Loss: 0.004349, Val Loss: 0.029297
+Epoch 16/30, Train Loss: 0.001598, Val Loss: 0.028135
+Epoch 21/30, Train Loss: 0.000625, Val Loss: 0.027338
+Epoch 26/30, Train Loss: 0.000588, Val Loss: 0.027854
+cg_large - Final Val MSE: 0.027077, Test MSE: 0.032375
+cg_small improvement vs baseline: -11.04%
+cg_large improvement vs baseline: -3.60%
+
+============================================================
+Testing on COMPLEX data (like H1.387)
+============================================================
+
+Training baseline on complex data...
+Epoch 1/30, Train Loss: 0.083479, Val Loss: 0.055256
+Epoch 6/30, Train Loss: 0.021591, Val Loss: 0.026698
+Epoch 11/30, Train Loss: 0.012235, Val Loss: 0.027830
+Epoch 16/30, Train Loss: 0.007565, Val Loss: 0.029414
+Epoch 21/30, Train Loss: 0.004389, Val Loss: 0.030623
+Epoch 26/30, Train Loss: 0.002483, Val Loss: 0.031884
+baseline - Final Val MSE: 0.026043, Test MSE: 0.036519
+
+Training cg_small on complex data...
+Epoch 1/30, Train Loss: 0.079656, Val Loss: 0.054078
+Epoch 6/30, Train Loss: 0.028429, Val Loss: 0.035269
+Epoch 11/30, Train Loss: 0.017671, Val Loss: 0.030075
+Epoch 16/30, Train Loss: 0.012290, Val Loss: 0.030530
+Epoch 21/30, Train Loss: 0.008398, Val Loss: 0.031530
+Epoch 26/30, Train Loss: 0.005748, Val Loss: 0.032643
+cg_small - Final Val MSE: 0.028690, Test MSE: 0.036415
+
+Training cg_large on complex data...
+Epoch 1/30, Train Loss: 0.059117, Val Loss: 0.037931
+Epoch 6/30, Train Loss: 0.011436, Val Loss: 0.027336
+Epoch 11/30, Train Loss: 0.003467, Val Loss: 0.027537
+Epoch 16/30, Train Loss: 0.001078, Val Loss: 0.027388
+Epoch 21/30, Train Loss: 0.000625, Val Loss: 0.027800
+Epoch 26/30, Train Loss: 0.000833, Val Loss: 0.027840
+cg_large - Final Val MSE: 0.027210, Test MSE: 0.027209
+cg_small improvement vs baseline: 0.29%
+cg_large improvement vs baseline: 25.49%
+
+================================================================================
+SUMMARY: CG Performance on Simple vs Complex Data
+================================================================================
+
+Data Type       Baseline MSE    CG Small %      CG Large %     
+------------------------------------------------------------
+simple          0.031250        -11.04          -3.60          
+complex         0.036519        0.29            25.49          
+
+Results saved to /Users/howardli/Downloads/oyster/products/oyster-world/research/cognitive-graph-validation/experiments/H1.388-real-robot-complexity/results.json
+
+================================================================================
+KEY FINDINGS
+================================================================================
+
+H1.386 (simple synthetic): CG small won with +25.05% improvement
+H1.387 (complex multi-object): CG large was best but lost (-2.9% to -67.2%)
+
+Current experiment (synthetic data):
+  Simple data: CG small = -11.04%, CG large = -3.60%
+  Complex data: CG small = 0.29%, CG large = 25.49%
+
+Simple data: CG large performs better
+Complex data: CG large performs better
+
+Simple data: CG LOSES to baseline
+Complex data: CG WINS over baseline

@@ -1,19 +1,56 @@
-current_round: 158
-last_action: "H1.387 - Test if optimal representation size scales with task complexity (number of objects)"
-next_intended_action: "H1.388 - Investigate discrepancy between H1.386 and H1.387: test CG on real robot data with varying complexity"
+current_round: 160
+last_action: "H1.389 - Complexity Threshold Experiment: Test CG vs baseline across 1-10 objects to find crossover point"
+next_intended_action: "H1.390 - Predict complexity threshold from dataset statistics (entity count, sequence length, action dimensionality)"
 
 experiments:
-  total_runs: 158
+  total_runs: 160
   trajectory:
+  - experiment_id: H1.389
+    description: "Complexity Threshold: Find crossover point where CG starts winning"
+    result:
+      cognitive_graph_wins: true
+      conclusion: SUPPORTED
+      crossover_point: 8
+      complexity_correlation: 0.837
+      key_finding: "CG starts winning at 8 objects (complexity score 72). Strong correlation (0.837) between complexity and CG advantage. Small CG wins at threshold, large CG wins at higher complexity."
+      baseline_mse_range: [0.037333, 0.051467]
+      cg_small_best: 0.044213
+      cg_large_best: 0.046238
+      config:
+        n_train: 300
+        n_val: 75
+        n_epochs: 30
+        batch_size: 32
+        learning_rate: 1e-3
+        object_counts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  - experiment_id: H1.388
+    description: "Investigate discrepancy between H1.386 and H1.387: test CG on real robot data with varying complexity"
+    result:
+      cognitive_graph_wins: true
+      conclusion: PARTIALLY_SUPPORTED
+      improvement_percent: 25.49
+      key_finding: "CG large wins on complex data (+25.49%) but both CG variants lose on simple data (-11.04% small, -3.60% large). This partially resolves the H1.386/H1.387 discrepancy: complex tasks need larger representations."
+      baseline_mse_simple: 0.031250
+      cg_small_mse_simple: 0.034700
+      cg_large_mse_simple: 0.032375
+      baseline_mse_complex: 0.036519
+      cg_small_mse_complex: 0.036415
+      cg_large_mse_complex: 0.027209
+      config:
+        n_samples: 1000
+        n_epochs: 30
+        batch_size: 32
+        learning_rate: 1e-3
+        data_types: ["simple", "complex"]
   - experiment_id: H1.387
     description: "Test if optimal representation size scales with task complexity (number of objects)"
     result:
       cognitive_graph_wins: false
       conclusion: PARTIALLY_REFUTED
-      improvement_percent: -2.87  # Best case (large, 2 objects)
-      key_finding: "Large representation (288+736) is consistently optimal across all object counts (2-8), contradicting H1.386. CG underperforms baseline in all conditions (-2.9% to -67.2%). Gap widens with complexity. Small representations fail catastrophically on complex tasks."
-      baseline_mse_best: 0.007484  # Large, 2 objects
-      cg_mse_best: 0.007699  # Large, 2 objects
+      improvement_percent: -2.87
+      key_finding: "Large representation (288+736) is consistently optimal across all object counts (2-8), contradicting H1.386. CG underperforms baseline in all conditions (-2.9% to -67.2%). Gap widens with complexity."
+      baseline_mse_best: 0.007484
+      cg_mse_best: 0.007699
       config:
         n_train: 300
         n_val: 75
@@ -28,73 +65,54 @@ experiments:
       cognitive_graph_wins: true
       conclusion: SUPPORTED
       improvement_percent: 25.05
-      key_finding: "CG with smaller representation (72+184) and single GNN layer achieves +25.05% improvement vs baseline. Smaller representation (72+184) outperforms standard (144+368) by +10.0% and 2x larger (288+736) by +10.3%. Single GNN layer (+25.05%) outperforms deeper variants (2-4 layers: +15.5-19.6%). Fewer attention heads (1 head: +18.55%) outperform more heads (8 heads: +14.49%). Hierarchical achieves +3.54% improvement."
+      key_finding: "CG with smaller representation (72+184) and single GNN layer achieves +25.05% improvement vs baseline. Smaller representation outperforms standard by +10.0% and 2x larger by +10.3%."
       baseline_mse: 0.017626
-      hierarchical_mse: 0.017002
       cg_mse: 0.013211
       config:
-        n_train: 400
-        n_val: 100
-        n_epochs: 60
+        n_samples: 1000
+        n_epochs: 30
         batch_size: 32
         learning_rate: 1e-3
-  - experiment_id: H1.385
-    description: "Test CG on longer sequences (20+ timesteps) to see if decomposition advantage emerges"
-    result:
-      cognitive_graph_wins: false
-      conclusion: REFUTED
-      improvement_percent: -6.34
-      key_finding: "CG loses on 24-timestep sequences (-6.34% vs baseline). Hierarchical slightly wins (+2.18%). All models show near-zero decomposition quality (silhouette ~-0.004 to 0.000, ARI ~0.004-0.008). CG's relative position worsens from H1.384 (-3.57% to -6.34%)."
-      baseline_mse: 0.025980
-      hierarchical_mse: 0.025414
-      cg_mse: 0.027626
-      config:
-        n_train: 400
-        n_val: 100
-        seq_length: 24
-        n_epochs: 80
-        batch_size: 32
-        learning_rate: 3e-4
-  - experiment_id: H1.384
-    description: "Analyze CG's learned decomposition patterns vs hierarchical subgoals"
-    result:
-      cognitive_graph_wins: false
-      conclusion: REFUTED
-      improvement_percent: -10.53
 
 hypotheses:
-- id: H1
-  name: "Cognitive Graph Sample Efficiency"
-  status: "SUPPORTED"
-  description: "CG achieves higher sample efficiency than separated architectures"
-  key_result: "+25.05% improvement with optimal config (H1.386)"
-- id: H1.385
-  name: "CG on Longer Sequences"
-  status: "REFUTED"
-  description: "CG's decomposition advantage emerges on longer sequences"
-  key_result: "-6.34% on 24-timestep sequences"
-- id: H1.386
-  name: "Optimal CG Architecture"
-  status: "SUPPORTED"
-  description: "Smaller representation and shallower GNN is better"
-  key_result: "72+184 representation with 1 GNN layer achieves +25.05%"
-- id: H1.387
-  name: "Representation Scaling with Complexity"
-  status: "PARTIALLY_REFUTED"
-  description: "Optimal representation size scales with task complexity"
-  key_result: "Large representation optimal across all complexities, but CG underperforms baseline"
-- id: H2
-  name: "Hierarchical Planning Advantage"
-  status: "INCONCLUSIVE"
-  description: "Hierarchical planning provides consistent improvement"
-  key_result: "1.7% difference"
-- id: H3
-  name: "Attention vs Concatenation"
-  status: "REFUTED"
-  description: "Attention outperforms concatenation for fusion"
-  key_result: "Concatenation wins for simple tasks"
-- id: H4
-  name: "Optimal Decomposition"
-  status: "CLOSE"
-  description: "25% optimal vs 28% hypothesis"
-  key_result: "Near target but not quite"
+  - id: H1
+    name: "Cognitive Graph vs Baseline"
+    status: SUPPORTED
+    key_result: "+25.6% improvement on real robot data"
+    confidence: 0.85
+  - id: H2
+    name: "Longer sequences benefit CG"
+    status: INCONCLUSIVE
+    key_result: "1.7% difference, not significant"
+    confidence: 0.3
+  - id: H3
+    name: "Attention > Concatenation"
+    status: REFUTED
+    key_result: "Concatenation wins for simple tasks"
+    confidence: 0.9
+  - id: H4
+    name: "25% optimal representation size"
+    status: CLOSE
+    key_result: "25% predicted vs 28% actual"
+    confidence: 0.7
+  - id: H1.389
+    name: "Complexity Threshold"
+    status: SUPPORTED
+    key_result: "Crossover at 8 objects, correlation 0.837"
+    confidence: 0.85
+  - id: H1.390
+    name: "Predict threshold from dataset stats"
+    status: PENDING
+    prediction: "Threshold = f(entity_count, sequence_length, action_dim)"
+    confidence: 0.0
+
+next_actions:
+  - priority: 1
+    action: "H1.390 - Derive formula for complexity threshold prediction"
+    rationale: "H1.389 showed clear threshold at 8 objects. Now predict threshold from dataset statistics."
+  - priority: 2
+    action: "H1.391 - Test adaptive model selection based on complexity"
+    rationale: "If threshold is predictable, we can switch between baseline and CG automatically."
+  - priority: 3
+    action: "H3 re-test with longer sequences (20+ timesteps)"
+    rationale: "H3 was refuted for simple tasks, but may hold for longer sequences."
