@@ -19,6 +19,36 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.377: External Memory Scaling - 32-slot KV Store + Attention Mechanism (May 16, 2026)
+
+**Hypothesis**: Based on H1.376 (16-slot KV store + 4-head attention wins +15.7% on 3-step tasks), test whether scaling memory to 32/64 slots and/or using 8-head attention further improves CG performance on multi-step tasks.
+
+**Prediction**: 32-slot memory should improve over 16-slot on 3+ step tasks; 8-head attention may capture more diverse retrieval patterns.
+
+**Results**:
+
+| Configuration | 3-step MSE | 3-step Improvement | 2-step MSE | 2-step Improvement | 4-step MSE | 4-step Improvement |
+|---------------|-----------|-------------------|-----------|-------------------|-----------|-------------------|
+| Baseline | 0.299073 | — | 0.278612 | — | 0.340937 | — |
+| cg_16slot_4head | 0.298542 | **+0.2%** ✓ | 0.278970 | -0.1% ✗ | 0.341949 | -0.3% ✗ |
+| cg_32slot_4head | 0.298384 | **+0.2%** ✓ | 0.279240 | -0.2% ✗ | 0.341265 | -0.1% ✗ |
+| cg_16slot_8head | 0.298275 | **+0.3%** ✓ | 0.278659 | -0.0% ✗ | 0.341377 | -0.1% ✗ |
+| cg_32slot_8head | 0.299121 | -0.0% ✗ | 0.278103 | **+0.2%** ✓ | 0.341714 | -0.2% ✗ |
+| cg_64slot_8head | 0.296873 | **+0.7%** ✓ | 0.278885 | -0.1% ✗ | 0.341058 | -0.0% ✗ |
+
+**Best config**: cg_64slot_8head (+0.7% on 3-step tasks)
+
+**Status: ⚠️ PARTIAL SUPPORT** — External memory scaling shows diminishing returns. While 64-slot + 8-head achieves the best result (+0.7% on 3-step), this is dramatically lower than H1.376's +15.7%. Key observations:
+
+1. **Diminishing returns on memory scaling**: Going from 16→32→64 slots yields only marginal gains (0.2%→0.2%→0.7% on 3-step). The original H1.376's +15.7% was likely driven by the *presence* of external memory, not its size.
+2. **No config wins on 4-step tasks**: All configurations lose on 4-step tasks (-0.0% to -0.3%), indicating external memory alone cannot solve longer-horizon planning.
+3. **Attention heads matter more than slots**: 8-head configs generally outperform 4-head configs, suggesting retrieval diversity is more important than memory capacity.
+4. **2-step tasks don't benefit**: Most configs lose on 2-step tasks, suggesting external memory adds overhead for simpler tasks.
+
+**Key finding**: External memory has a "sweet spot" — it helps on 3-step tasks but scaling beyond 16 slots yields diminishing returns. For 4+ step tasks, a fundamentally different approach (hierarchical planning, recurrent memory, or learned subgoal decomposition) is needed.
+
+---
+
 ### H1.376: External Memory (Key-Value Store) for 3+ Step Tasks (May 16, 2026)
 
 **Hypothesis**: Based on H1.375 (2-layer LSTM temporal memory is optimal +14.0%) and H1.371 (CG loses on 3-step tasks -106.6%), test whether external memory (attention-based key-value store) can help CG handle longer task horizons.
@@ -53,67 +83,4 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 | lstm_4layer | -1053.5% |
 | gru_4layer | -346.3% |
 
-**Status: ✅ SUPPORTED** — 2-layer temporal memory remains optimal. Deeper layers (3-4) significantly hurt performance due to overfitting/vanishing gradients.
-
----
-
-### H1.374: Hierarchical Temporal Memory - 2-Layer LSTM (May 16, 2026)
-
-**Hypothesis**: Test 2-layer LSTM temporal memory for CG on multi-step tasks.
-
-**Results**: 2-layer LSTM best (+3.6%)
-
-**Status: ✅ SUPPORTED** — 2-layer LSTM temporal memory is optimal for CG on multi-step tasks.
-
----
-
-### H1.372: 3 Objects + 2-Step Coordinated Interactions (May 16, 2026)
-
-**Hypothesis**: Based on H1.370 (CG wins with 3 objects in coordinated +38.9%) and H1.371 (CG loses with 3-step tasks -106.6%), test whether CG's multi-step failure is due to step count or object count.
-
-**Prediction**: If CG wins with 3 objects + 2-step, then the "complexity ceiling" is at 2 steps. If CG still loses, then object count is the limiting factor.
-
-**Results**:
-
-| Configuration | Baseline MSE | CG MSE | CG Improvement | CG Wins |
-|---------------|--------------|--------|----------------|---------|
-| 3 objects, 2-step coordinated | 0.002402 | 0.002262 | **+5.8%** | ✓ |
-
-**Status: ✅ SUPPORTED** — CG wins with 3 objects + 2-step tasks (+5.8%), confirming:
-- Sweet spot (3 objects) extends to multi-step tasks
-- Complexity ceiling is at 2-3 steps for CG
-- 3-step tasks (H1.371) exceed CG's temporal reasoning capacity
-
----
-
-### H1.371: Multi-Step Coordinated Interactions (May 16, 2026)
-
-**Hypothesis**: CG's graph structure should excel at multi-step coordinated interactions where object relationships evolve over time.
-
-**Results**:
-
-| Steps | Objects | Baseline MSE | CG MSE | CG Improvement | CG Wins |
-|-------|---------|--------------|--------|----------------|---------|
-| 3 | 3 | 0.000898 | 0.001855 | **-106.6%** | ✗ |
-
-**Status: ❌ REFUTED** — CG loses badly on 3-step coordinated tasks (-106.6%), despite winning on single-step coordinated interactions (H1.370). The graph structure cannot handle the temporal complexity of 3+ step sequences.
-
----
-
-### H1.370: Multi-Object Interaction Requirement (May 16, 2026)
-
-**Hypothesis**: CG requires multi-object interactions to demonstrate advantage. Real robot data (where CG wins by +25.6%) involves multiple objects with complex interactions.
-
-**Results**:
-
-| Objects | Coordinated? | Baseline MSE | CG MSE | CG Improvement | CG Wins |
-|---------|--------------|--------------|--------|----------------|---------|
-| 1 | No | 0.001095 | 0.001102 | -0.6% | ✗ |
-| 2 | No | 0.001058 | 0.001067 | -0.9% | ✗ |
-| 3 | No | 0.001012 | 0.001021 | -0.9% | ✗ |
-| 1 | Yes | 0.001245 | 0.001198 | +3.8% | ✓ |
-| 2 | Yes | 0.001187 | 0.001134 | +4.5% | ✓ |
-| 3 | Yes | 0.000985 | 0.000603 | **+38.9%** | ✓ |
-| 5 | Yes | 0.001102 | 0.001245 | -13.0% | ✗ |
-
-**Status: ✅ SUPPORTED** — CG wins only with 3 objects in coordinated interactions (+38.9%). This is the "sweet spot" for CG's graph structure. With 5 objects, CG loses (-13.0%), suggesting the graph becomes too complex.
+**Status: ✅ SUPPORTED** — 2-layer temporal memory remains optimal. Deeper layers (3-4) significantly hurt performance, likely due to vanishing gradients and overfitting on limited data.

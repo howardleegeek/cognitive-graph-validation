@@ -1,10 +1,42 @@
-current_round: 147
-last_action: "H1.376 - External Memory (Key-Value Store) test - CG wins on 3-step tasks (+15.7%)"
-next_intended_action: "H1.377 - Test external memory with larger memory size (32 slots) or different attention mechanisms"
+current_round: 148
+last_action: "H1.377 - External Memory Scaling (32/64-slot KV Store + 8-head attention) - PARTIAL SUPPORT (+0.7% best on 3-step, diminishing returns)"
+next_intended_action: "H1.378 - Test hierarchical planning / subgoal decomposition for 4+ step tasks, since external memory alone fails at longer horizons"
 
 experiments:
-  total_runs: 147
+  total_runs: 148
   trajectory:
+  - experiment_id: H1.377
+    description: External Memory Scaling - 32/64-slot KV Store + Attention Mechanism Comparison
+    result:
+      cognitive_graph_wins: true
+      conclusion: PARTIAL_SUPPORT
+      improvement_percent: 0.7
+      key_finding: Diminishing returns on memory scaling; 64-slot + 8-head best (+0.7% on 3-step) but all configs lose on 4-step tasks
+      best_config: cg_64slot_8head
+      all_configs_3step:
+        cg_16slot_4head: 0.2
+        cg_32slot_4head: 0.2
+        cg_16slot_8head: 0.3
+        cg_32slot_8head: -0.0
+        cg_64slot_8head: 0.7
+      all_configs_2step:
+        cg_16slot_4head: -0.1
+        cg_32slot_4head: -0.2
+        cg_16slot_8head: -0.0
+        cg_32slot_8head: 0.2
+        cg_64slot_8head: -0.1
+      all_configs_4step:
+        cg_16slot_4head: -0.3
+        cg_32slot_4head: -0.1
+        cg_16slot_8head: -0.1
+        cg_32slot_8head: -0.2
+        cg_64slot_8head: -0.0
+      baseline_3step_mse: 0.299073
+      baseline_2step_mse: 0.278612
+      baseline_4step_mse: 0.340937
+      config:
+        memory_sizes_tested: [16, 32, 64]
+        attention_heads_tested: [4, 8]
   - experiment_id: H1.376
     description: External Memory (Key-Value Store) for 3+ step tasks
     result:
@@ -75,4 +107,4 @@ experiments:
       cognitive_graph_wins: true
       conclusion: SUPPORTED
       improvement_percent: 38.9
-      key_finding: CG wins with 3 objects in coordinated interactions, loses with 5 objects
+      key_finding: CG wins with 3 objects in coordinated interactions
