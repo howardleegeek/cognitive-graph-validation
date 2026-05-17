@@ -1,10 +1,32 @@
-current_round: 155
-last_action: "H1.384 - Analyze CG's learned decomposition patterns vs hierarchical subgoals"
-next_intended_action: "H1.385 - Test CG on longer sequences (20+ timesteps) to see if decomposition advantage emerges"
+current_round: 156
+last_action: "H1.385 - Test CG on longer sequences (20+ timesteps) to see if decomposition advantage emerges"
+next_intended_action: "H1.386 - Investigate why CG underperforms: ablate unified representation size and cross-modal attention depth"
 
 experiments:
-  total_runs: 155
+  total_runs: 156
   trajectory:
+  - experiment_id: H1.385
+    description: "Test CG on longer sequences (20+ timesteps) to see if decomposition advantage emerges"
+    result:
+      cognitive_graph_wins: false
+      conclusion: REFUTED
+      improvement_percent: -6.34
+      key_finding: "CG loses on 24-timestep sequences (-6.34% vs baseline). Hierarchical slightly wins (+2.18%). All models show near-zero decomposition quality (silhouette ~-0.004 to 0.000, ARI ~0.004-0.008). CG's relative position worsens from H1.384 (-3.57% to -6.34%)."
+      baseline_mse: 0.025980
+      hierarchical_mse: 0.025414
+      cg_mse: 0.027626
+      baseline_phase_silhouette: -0.0043
+      baseline_subgoal_silhouette: -0.0043
+      cg_phase_silhouette: -0.0002
+      cg_subgoal_silhouette: -0.0002
+      hierarchical_phase_silhouette: -0.0035
+      config:
+        n_train: 400
+        n_val: 100
+        seq_length: 24
+        n_epochs: 80
+        batch_size: 32
+        learning_rate: 3e-4
   - experiment_id: H1.384
     description: "Analyze CG's learned decomposition patterns vs hierarchical subgoals"
     result:
@@ -65,42 +87,3 @@ experiments:
       cg_curriculum_with_supervision_mse: 0.269338
       hierarchical_curriculum_improvement: 26.09
       cg_curriculum_improvement: 40.93
-      cg_supervision_benefit: -6.18
-      config:
-        n_samples: 800
-        val_samples: 200
-        n_epochs_phase1: 30
-        n_epochs_phase2: 30
-        batch_size: 32
-        learning_rate: 1e-3
-        subgoal_weight: 0.5
-
-hypotheses:
-  - id: H1
-    name: "Cognitive Graph Superiority"
-    status: "SUPPORTED"
-    evidence: "+25.6% improvement with real robot data"
-  - id: H2
-    name: "Attention vs Concatenation"
-    status: "INCONCLUSIVE"
-    evidence: "1.7% difference, needs more testing"
-  - id: H3
-    name: "Attention for Long Sequences"
-    status: "REFUTED"
-    evidence: "Concatenation wins for simple tasks"
-  - id: H4
-    name: "25% Optimal Threshold"
-    status: "CLOSE"
-    evidence: "25% optimal vs 28% hypothesis"
-  - id: H1.382
-    name: "Curriculum Asymmetry"
-    status: "PARTIALLY_REFUTED"
-    evidence: "Subgoal supervision hurts CG (-6.18%)"
-  - id: H1.383
-    name: "Implicit Decomposition"
-    status: "SUPPORTED"
-    evidence: "CG +14.47% vs hierarchical +13.51%"
-  - id: H1.384
-    name: "Decomposition Quality"
-    status: "REFUTED"
-    evidence: "Baseline has best decomposition metrics, CG underperforms"

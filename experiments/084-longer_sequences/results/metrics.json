@@ -1,3 +1,38 @@
 {
-  "raw_output": ""
+  "experiment_id": "H1.385",
+  "description": "Test CG on longer sequences (20+ timesteps) to see if decomposition advantage emerges",
+  "config": {
+    "seq_length": 24,
+    "n_train": 400,
+    "n_val": 100,
+    "n_epochs": 80,
+    "batch_size": 32,
+    "learning_rate": 0.0003
+  },
+  "results": {
+    "baseline_mse": 0.02598,
+    "hierarchical_mse": 0.025414,
+    "cg_mse": 0.027626,
+    "hierarchical_improvement": 2.18,
+    "cg_improvement": -6.34,
+    "cognitive_graph_wins": false,
+    "baseline_decomposition": {
+      "phase_silhouette": -0.0043,
+      "subgoal_silhouette": -0.0043,
+      "ari_phase": 0.0076,
+      "ari_subgoal": 0.0076
+    },
+    "hierarchical_decomposition": {
+      "phase_silhouette": -0.0035,
+      "subgoal_silhouette": -0.0035,
+      "ari_phase": 0.0038,
+      "ari_subgoal": 0.0038
+    },
+    "cg_decomposition": {
+      "phase_silhouette": -0.0002,
+      "subgoal_silhouette": -0.0002,
+      "ari_phase": 0.0045,
+      "ari_subgoal": 0.0045
+    }
+  }
 }

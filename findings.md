@@ -19,6 +19,38 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.385: CG on Longer Sequences (20+ timesteps) — Round 156
+
+**Hypothesis**: CG's decomposition advantage emerges on longer sequences (24 timesteps, 3 phases) where explicit subgoal structure becomes more valuable for managing complexity.
+
+**Prediction**: On 20+ timestep sequences, CG will show improved relative performance vs baseline due to its ability to decompose long trajectories into coherent phases.
+
+**Results**:
+
+| Model | Val MSE | Improvement vs Baseline | Phase Silhouette | Subgoal Silhouette | ARI (Phase) | ARI (Subgoal) |
+|-------|---------|------------------------|------------------|--------------------|-------------|---------------|
+| Baseline (LSTM) | 0.025980 | — | -0.0043 | -0.0043 | 0.0076 | 0.0076 |
+| Hierarchical Planner | **0.025414** | **+2.18%** | -0.0035 | -0.0035 | 0.0038 | 0.0038 |
+| Cognitive Graph | 0.027626 | **-6.34%** | -0.0002 | -0.0002 | 0.0045 | 0.0045 |
+
+**Status: ⚠️ REFUTED** — Key observations:
+
+1. **CG loses on longer sequences**: -6.34% vs baseline, confirming CG does NOT gain advantage from longer horizons
+2. **Hierarchical planner slightly wins**: +2.18% vs baseline, consistent with H1.384 finding
+3. **All models show near-zero decomposition quality**: Phase/subgoal silhouettes are all negative (~-0.004 to ~0.000), ARI near zero (0.004-0.008)
+4. **No model learns meaningful phase structure**: Unlike H1.384 (12-timestep) where baseline showed silhouette 0.0465, here all models fail to cluster by phase
+
+**Comparison with H1.384 (12-timestep)**:
+- H1.384 baseline: silhouette 0.0465, ARI 0.4455 → H1.385 baseline: silhouette -0.0043, ARI 0.0076
+- This dramatic drop suggests the 24-timestep task is fundamentally harder to decompose
+- CG's relative position worsens: from -3.57% behind baseline (H1.384) to -6.34% (H1.385)
+
+**Implications**:
+- CG's unified representation does NOT provide advantage on longer sequences
+- The hypothesis that decomposition advantage emerges with complexity is refuted
+- Longer sequences may require explicit architectural mechanisms (not just unified representations)
+- The near-zero decomposition scores across all models suggest the task may need different synthetic data generation (more distinct phase boundaries)
+
 ### H1.384: Decomposition Pattern Analysis (Round 155)
 
 **Hypothesis**: CG's implicit decomposition through cross-modal attention creates more coherent task representations than explicit hierarchical subgoal structure.
@@ -43,71 +75,4 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 **Implications**: The hypothesis that CG's implicit decomposition is superior is refuted. Surprisingly, the simple baseline achieves the best decomposition quality despite worse MSE than hierarchical. This suggests:
 - Explicit subgoal structure (hierarchical) improves prediction but not representation quality
 - CG's unified representation does NOT automatically yield better task decomposition
-- The relationship between representation quality and prediction accuracy is non-trivial
-
-**Critical Finding**: CG's advantage in prior experiments may be task-specific, not due to superior decomposition.
-
----
-
-### H1.383: Implicit vs Explicit Task Decomposition (Round 154)
-
-**Hypothesis**: CG's implicit task decomposition through cross-modal attention outperforms explicit subgoal structure because the unified representation learns more flexible decompositions.
-
-**Prediction**: CG without explicit subgoal supervision will match or exceed hierarchical planner with explicit subgoals.
-
-**Results**:
-
-| Model | MSE | Improvement vs Baseline |
-|-------|-----|------------------------|
-| Flat Baseline | 0.016397 | — |
-| Hierarchical Planner | 0.014181 | +13.51% |
-| Cognitive Graph (no supervision) | 0.014025 | **+14.47%** |
-| Cognitive Graph (with supervision) | 0.014032 | +14.42% |
-
-**Status: ✅ SUPPORTED** — CG's implicit decomposition (+14.47%) slightly outperforms hierarchical (+13.51%). Explicit supervision provides minimal benefit (+0.05% difference).
-
----
-
-### H1.382: Curriculum Asymmetry Analysis (Round 153)
-
-**Hypothesis**: The hierarchical planner's explicit subgoal decomposition structure naturally benefits from curriculum learning because it has modular structure.
-
-**Results**:
-
-| Model | 4-step MSE | Improvement vs Baseline | Curriculum Benefit |
-|-------|-----------|------------------------|-------------------|
-| Flat Baseline (LSTM) | 0.412749 | — | — |
-| Hierarchical Planner (Direct) | 0.343173 | +16.86% | — |
-| Hierarchical Planner (Curriculum) | 0.305071 | +26.09% | +9.23% |
-| Cognitive Graph (Direct) | 0.272718 | +33.93% | — |
-| Cognitive Graph (Curriculum, no supervision) | 0.243814 | **+40.93%** | +7.00% |
-| Cognitive Graph (Curriculum + supervision) | 0.269338 | +34.75% | -6.18% (harmful!) |
-
-**Status: ⚠️ PARTIALLY REFUTED** — Subgoal supervision HURTS CG (-6.18%). CG curriculum without supervision achieves best results (+40.93%).
-
----
-
-## Summary Status
-
-| Hypothesis | Status | Key Evidence |
-|------------|--------|--------------|
-| H1: CG > Separated | SUPPORTED | +25.6% improvement with real robot data |
-| H2: Attention vs Concat | INCONCLUSIVE | 1.7% difference |
-| H3: Attention for long sequences | REFUTED | Concatenation wins for simple tasks |
-| H4: 25% optimal threshold | CLOSE | 25% optimal vs 28% hypothesis |
-| H1.382: Curriculum asymmetry | PARTIALLY REFUTED | Supervision hurts CG |
-| H1.383: Implicit decomposition | SUPPORTED | +14.47% vs +13.51% |
-| H1.384: Decomposition quality | REFUTED | Baseline has best decomposition metrics |
-
-## Open Questions
-
-1. Why does baseline have better decomposition quality but worse prediction than hierarchical?
-2. Why does CG underperform on decomposition metrics despite competitive MSE?
-3. Is CG's advantage specific to certain task types (e.g., longer horizons, more complex language)?
-4. What is the relationship between representation quality and prediction accuracy?
-
-## Next Actions
-
-1. **H1.385**: Test CG on longer sequences (20+ timesteps) to see if decomposition advantage emerges
-2. **H1.386**: Analyze attention patterns in CG to understand what it learns instead of phase decomposition
-3. **H1.387**: Test with more complex multi-step tasks (3+ subgoals) where explicit decomposition may help
+- The relationship between representation quality and prediction accuracy is complex
