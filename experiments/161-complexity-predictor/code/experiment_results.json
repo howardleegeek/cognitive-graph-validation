@@ -1,0 +1,106 @@
+{
+  "experiment_id": "H1.390",
+  "description": "Complexity Threshold Predictor from Dataset Statistics",
+  "result": {
+    "conclusion": "SUPPORTED",
+    "correlation": 0.8386492481788864,
+    "predicted_crossover": 24.292978309926852,
+    "h1_389_crossover": 72,
+    "key_finding": "Strong correlation (0.839) between predicted complexity and CG advantage. Crossover at complexity ~24.",
+    "configs_tested": 7,
+    "cg_wins_count": 5
+  },
+  "detailed_results": [
+    {
+      "name": "simple",
+      "n_objects": 3,
+      "seq_len": 5,
+      "action_dim": 3,
+      "complexity": 9.437629905951825,
+      "baseline_mse": 0.0030425103614106774,
+      "cg_small_mse": 0.00333674147259444,
+      "cg_large_mse": 0.0032152486965060234,
+      "winner": "baseline",
+      "improvement": 0,
+      "cg_wins": false
+    },
+    {
+      "name": "simple2",
+      "n_objects": 4,
+      "seq_len": 8,
+      "action_dim": 5,
+      "complexity": 16.42890979579134,
+      "baseline_mse": 0.0018023558077402413,
+      "cg_small_mse": 0.001959595421794802,
+      "cg_large_mse": 0.001854593283496797,
+      "winner": "baseline",
+      "improvement": 0,
+      "cg_wins": false
+    },
+    {
+      "name": "medium",
+      "n_objects": 5,
+      "seq_len": 10,
+      "action_dim": 7,
+      "complexity": 24.292978309926852,
+      "baseline_mse": 0.0013522300869226456,
+      "cg_small_mse": 0.001341498747933656,
+      "cg_large_mse": 0.001292461936827749,
+      "winner": "cg_large",
+      "improvement": 4.419968958900675,
+      "cg_wins": true
+    },
+    {
+      "name": "threshold",
+      "n_objects": 7,
+      "seq_len": 10,
+      "action_dim": 7,
+      "complexity": 39.89297830992685,
+      "baseline_mse": 0.0017666530911810696,
+      "cg_small_mse": 0.001433839148376137,
+      "cg_large_mse": 0.0013691020430997014,
+      "winner": "cg_large",
+      "improvement": 22.503062432907605,
+      "cg_wins": true
+    },
+    {
+      "name": "crossover",
+      "n_objects": 8,
+      "seq_len": 10,
+      "action_dim": 7,
+      "complexity": 49.492978309926855,
+      "baseline_mse": 0.0010341759771108627,
+      "cg_small_mse": 0.0009336541988886893,
+      "cg_large_mse": 0.0009754238126333803,
+      "winner": "cg_small",
+      "improvement": 9.719987743575057,
+      "cg_wins": true
+    },
+    {
+      "name": "complex",
+      "n_objects": 10,
+      "seq_len": 15,
+      "action_dim": 7,
+      "complexity": 76.26377434864096,
+      "baseline_mse": 0.000912271614652127,
+      "cg_small_mse": 0.0006874590471852571,
+      "cg_large_mse": 0.0007101936207618564,
+      "winner": "cg_small",
+      "improvement": 24.643161516386417,
+      "cg_wins": true
+    },
+    {
+      "name": "very_complex",
+      "n_objects": 12,
+      "seq_len": 20,
+      "action_dim": 9,
+      "complexity": 109.11139938978447,
+      "baseline_mse": 0.0007685034652240574,
+      "cg_small_mse": 0.0005840387602802366,
+      "cg_large_mse": 0.0006594976293854415,
+      "winner": "cg_small",
+      "improvement": 24.00310646485375,
+      "cg_wins": true
+    }
+  ]
+}
