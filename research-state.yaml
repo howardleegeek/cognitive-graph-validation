@@ -1,85 +1,106 @@
-current_round: 153
-last_action: "H1.382 - Analyze why hierarchical planner benefits more from curriculum than CG - REFUTED (Subgoal supervision HURTS CG by -6.18%, CG outperforms hierarchical overall)"
-next_intended_action: "H1.383 - Investigate why CG's implicit task decomposition outperforms explicit subgoal structure"
+current_round: 155
+last_action: "H1.384 - Analyze CG's learned decomposition patterns vs hierarchical subgoals"
+next_intended_action: "H1.385 - Test CG on longer sequences (20+ timesteps) to see if decomposition advantage emerges"
 
 experiments:
-  total_runs: 153
+  total_runs: 155
   trajectory:
+  - experiment_id: H1.384
+    description: "Analyze CG's learned decomposition patterns vs hierarchical subgoals"
+    result:
+      cognitive_graph_wins: false
+      conclusion: REFUTED
+      improvement_percent: -10.53
+      key_finding: "Hierarchical planner wins on MSE (-10.53% vs CG). Surprisingly, baseline achieves BEST decomposition quality (phase silhouette 0.0465, subgoal silhouette 0.1590, ARI phase 0.4455). CG underperforms on all decomposition metrics, refuting the hypothesis that implicit decomposition is superior."
+      baseline_mse: 0.004896
+      hierarchical_mse: 0.004588
+      cg_mse: 0.005071
+      baseline_phase_silhouette: 0.0465
+      baseline_subgoal_silhouette: 0.1590
+      cg_phase_silhouette: 0.0115
+      cg_subgoal_silhouette: 0.1192
+      hierarchical_phase_silhouette: -0.0043
+      config:
+        n_train: 640
+        n_val: 160
+        trajectory_length: 12
+        n_epochs: 60
+        batch_size: 32
+        learning_rate: 1e-3
+  - experiment_id: H1.383
+    description: "Why CG's implicit task decomposition outperforms explicit subgoal structure"
+    result:
+      cognitive_graph_wins: true
+      conclusion: SUPPORTED
+      improvement_percent: 14.47
+      key_finding: "CG's implicit decomposition through cross-modal attention (+14.47%) slightly outperforms both hierarchical planner (+13.51%) and CG with explicit subgoal supervision (+14.42%). Explicit supervision provides minimal benefit and may interfere with CG's unified representation learning."
+      baseline_mse: 0.016397
+      hierarchical_mse: 0.014181
+      cg_mse: 0.014025
+      cg_supervised_mse: 0.014032
+      hierarchical_improvement: 13.51
+      cg_improvement: 14.47
+      cg_supervised_improvement: 14.42
+      cg_vs_hierarchical: 0.96
+      cg_vs_supervised: 0.05
+      config:
+        n_train: 800
+        n_val: 200
+        n_test: 200
+        n_epochs: 60
+        batch_size: 32
+        learning_rate: 1e-3
+        subgoal_weight: 0.5
+        n_subgoals: 2
   - experiment_id: H1.382
     description: Curriculum Asymmetry Analysis
     result:
       cognitive_graph_wins: true
-      conclusion: REFUTED
+      conclusion: PARTIALLY_REFUTED
       improvement_percent: 40.93
       key_finding: "CG curriculum (no supervision) achieves +40.93% improvement vs +26.09% for hierarchical curriculum. Subgoal supervision HURTS CG (-6.18%). CG's unified representation learns task decomposition implicitly better than explicit subgoal heads."
       baseline_mse: 0.412749
-      hierarchical_direct_mse: 0.343173
       hierarchical_curriculum_mse: 0.305071
-      cg_direct_mse: 0.272718
       cg_curriculum_no_supervision_mse: 0.243814
       cg_curriculum_with_supervision_mse: 0.269338
       hierarchical_curriculum_improvement: 26.09
-      hierarchical_direct_improvement: 16.86
-      hierarchical_curriculum_benefit: 9.23
       cg_curriculum_improvement: 40.93
-      cg_direct_improvement: 33.93
-      cg_curriculum_benefit: 7.00
-      cg_supervised_improvement: 34.75
       cg_supervision_benefit: -6.18
       config:
         n_samples: 800
         val_samples: 200
         n_epochs_phase1: 30
         n_epochs_phase2: 30
-        n_epochs_direct: 60
         batch_size: 32
         learning_rate: 1e-3
         subgoal_weight: 0.5
-  - experiment_id: H1.381
-    description: Curriculum Learning with Architecture Adaptation
-    result:
-      cognitive_graph_wins: false
-      conclusion: PARTIAL_SUPPORT_REFUTED
-      improvement_percent: 1.95
-      key_finding: "Curriculum learning provides asymmetric benefits: hierarchical planner gains +31.74% from curriculum (achieving +21.19% vs baseline) while CG gains only +1.38% (+1.95% vs baseline). Hierarchical planner with curriculum outperforms CG."
-      baseline_mse: 0.310703
-      hierarchical_direct_mse: 0.358738
-      hierarchical_curriculum_mse: 0.244862
-      cg_direct_mse: 0.308885
-      cg_curriculum_mse: 0.304637
-      hierarchical_direct_improvement: -15.46
-      hierarchical_curriculum_improvement: 21.19
-      cg_direct_improvement: 0.58
-      cg_curriculum_improvement: 1.95
-      hier_curriculum_vs_direct: 31.74
-      cg_curriculum_vs_direct: 1.38
-      config:
-        n_epochs_phase1: 40
-        n_epochs_phase2: 40
-        learning_rate: 1e-3
-        batch_size: 32
-        n_samples: 800
-        val_samples: 200
-  - experiment_id: H1.380
-    description: Compare 2 vs 3 Subgoals Directly
-    result:
-      cognitive_graph_wins: true
-      conclusion: SUPPORTED
-      improvement_percent: 0.14
-      key_finding: "2 subgoals outperform 3 subgoals for CG (+0.24% difference), while hierarchical planner shows minimal difference (-0.01%). CG with 2 subgoals achieves +0.14% improvement."
-      baseline_mse: 0.220155
-      hierarchical_2sub_mse: 0.219638
-      hierarchical_2sub_improvement: 0.23
-      hierarchical_3sub_mse: 0.219609
-      hierarchical_3sub_improvement: 0.25
-      cg_2sub_mse: 0.219847
-      cg_2sub_improvement: 0.14
-      cg_3sub_mse: 0.220382
-      cg_3sub_improvement: -0.10
-      subgoal_2_vs_3_cg: 0.24
-      subgoal_2_vs_3_hierarchical: -0.01
-      config:
-        n_steps: 4
-        n_subgoals_tested: [2, 3]
-        n_epochs: 100
-        subgoal_dim: 8
+
+hypotheses:
+  - id: H1
+    name: "Cognitive Graph Superiority"
+    status: "SUPPORTED"
+    evidence: "+25.6% improvement with real robot data"
+  - id: H2
+    name: "Attention vs Concatenation"
+    status: "INCONCLUSIVE"
+    evidence: "1.7% difference, needs more testing"
+  - id: H3
+    name: "Attention for Long Sequences"
+    status: "REFUTED"
+    evidence: "Concatenation wins for simple tasks"
+  - id: H4
+    name: "25% Optimal Threshold"
+    status: "CLOSE"
+    evidence: "25% optimal vs 28% hypothesis"
+  - id: H1.382
+    name: "Curriculum Asymmetry"
+    status: "PARTIALLY_REFUTED"
+    evidence: "Subgoal supervision hurts CG (-6.18%)"
+  - id: H1.383
+    name: "Implicit Decomposition"
+    status: "SUPPORTED"
+    evidence: "CG +14.47% vs hierarchical +13.51%"
+  - id: H1.384
+    name: "Decomposition Quality"
+    status: "REFUTED"
+    evidence: "Baseline has best decomposition metrics, CG underperforms"

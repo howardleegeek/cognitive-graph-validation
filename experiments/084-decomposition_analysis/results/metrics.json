@@ -1,0 +1,54 @@
+{
+  "experiment_id": "H1.384",
+  "description": "Analyze CG's learned decomposition patterns vs hierarchical subgoals",
+  "validation_mse": {
+    "baseline": 0.004896188647087131,
+    "hierarchical": 0.004587712634487876,
+    "cognitive_graph": 0.00507078974374703
+  },
+  "improvement_percent": {
+    "cg_vs_baseline": -3.5660614662748635,
+    "cg_vs_hierarchical": -10.52980314476649
+  },
+  "cognitive_graph_wins": false,
+  "decomposition_quality": {
+    "baseline": {
+      "phase_silhouette": 0.04651699587702751,
+      "subgoal_silhouette": 0.1590316891670227,
+      "ari_phase": 0.44546974100717496,
+      "ari_subgoal": 0.3595054154002546,
+      "intra_cluster_variance": 0.23957155644893646,
+      "inter_cluster_distance": 12.313666343688965
+    },
+    "hierarchical": {
+      "phase_silhouette": -0.004338043741881847,
+      "subgoal_silhouette": 0.1244967058300972,
+      "ari_phase": 0.23507241864508194,
+      "ari_subgoal": 0.08931290042389084,
+      "intra_cluster_variance": 0.0013327416963875294,
+      "inter_cluster_distance": 0.27764567732810974
+    },
+    "cognitive_graph": {
+      "phase_silhouette": 0.011539038270711899,
+      "subgoal_silhouette": 0.11921902745962143,
+      "ari_phase": 0.30160797434703884,
+      "ari_subgoal": 0.1774851446549626,
+      "intra_cluster_variance": 0.3162776529788971,
+      "inter_cluster_distance": 18.801355361938477
+    }
+  },
+  "key_findings": {
+    "phase_clustering": "Other",
+    "subgoal_clustering": "Other",
+    "phase_alignment": "Other",
+    "subgoal_alignment": "Other"
+  },
+  "config": {
+    "n_train": 640,
+    "n_val": 160,
+    "trajectory_length": 12,
+    "epochs": 60,
+    "batch_size": 32,
+    "learning_rate": 0.001
+  }
+}

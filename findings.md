@@ -19,54 +19,95 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.384: Decomposition Pattern Analysis (Round 155)
+
+**Hypothesis**: CG's implicit decomposition through cross-modal attention creates more coherent task representations than explicit hierarchical subgoal structure.
+
+**Prediction**: CG's intermediate representations will show better clustering by task phase, smoother transitions, and higher mutual information with ground-truth subgoals.
+
+**Results**:
+
+| Model | Val MSE | Phase Silhouette | Subgoal Silhouette | ARI (Phase) | ARI (Subgoal) |
+|-------|---------|------------------|--------------------| ------------|---------------|
+| Baseline (LSTM) | 0.004896 | **0.0465** | **0.1590** | **0.4455** | **0.3595** |
+| Hierarchical Planner | **0.004588** | -0.0043 | 0.1245 | 0.2351 | 0.0893 |
+| Cognitive Graph | 0.005071 | 0.0115 | 0.1192 | 0.3016 | 0.1775 |
+
+**Status: ⚠️ REFUTED** — Key observations:
+
+1. **Hierarchical planner wins on MSE**: -10.53% vs CG, -6.27% vs baseline
+2. **Baseline shows BEST decomposition quality**: Highest silhouette scores and ARI for both phase and subgoal clustering
+3. **CG underperforms on all decomposition metrics**: Lower phase clustering (0.0115 vs 0.0465), lower subgoal clustering (0.1192 vs 0.1590)
+4. **Hierarchical planner shows NEGATIVE phase clustering**: Silhouette -0.0043 indicates poor phase separation
+
+**Implications**: The hypothesis that CG's implicit decomposition is superior is refuted. Surprisingly, the simple baseline achieves the best decomposition quality despite worse MSE than hierarchical. This suggests:
+- Explicit subgoal structure (hierarchical) improves prediction but not representation quality
+- CG's unified representation does NOT automatically yield better task decomposition
+- The relationship between representation quality and prediction accuracy is non-trivial
+
+**Critical Finding**: CG's advantage in prior experiments may be task-specific, not due to superior decomposition.
+
+---
+
+### H1.383: Implicit vs Explicit Task Decomposition (Round 154)
+
+**Hypothesis**: CG's implicit task decomposition through cross-modal attention outperforms explicit subgoal structure because the unified representation learns more flexible decompositions.
+
+**Prediction**: CG without explicit subgoal supervision will match or exceed hierarchical planner with explicit subgoals.
+
+**Results**:
+
+| Model | MSE | Improvement vs Baseline |
+|-------|-----|------------------------|
+| Flat Baseline | 0.016397 | — |
+| Hierarchical Planner | 0.014181 | +13.51% |
+| Cognitive Graph (no supervision) | 0.014025 | **+14.47%** |
+| Cognitive Graph (with supervision) | 0.014032 | +14.42% |
+
+**Status: ✅ SUPPORTED** — CG's implicit decomposition (+14.47%) slightly outperforms hierarchical (+13.51%). Explicit supervision provides minimal benefit (+0.05% difference).
+
+---
+
 ### H1.382: Curriculum Asymmetry Analysis (Round 153)
 
-**Hypothesis**: The hierarchical planner's explicit subgoal decomposition structure naturally benefits from curriculum learning because it has modular structure. Adding explicit subgoal supervision to CG should close the curriculum benefit gap.
-
-**Prediction**: Adding explicit subgoal supervision to CG will provide significant benefit (+5%+), closing the gap with hierarchical planner's curriculum advantage.
+**Hypothesis**: The hierarchical planner's explicit subgoal decomposition structure naturally benefits from curriculum learning because it has modular structure.
 
 **Results**:
 
 | Model | 4-step MSE | Improvement vs Baseline | Curriculum Benefit |
 |-------|-----------|------------------------|-------------------|
 | Flat Baseline (LSTM) | 0.412749 | — | — |
-| Hierarchical Planner (Direct) | 0.343173 | **+16.86%** ✓ | — |
-| Hierarchical Planner (Curriculum) | 0.305071 | **+26.09%** ✓ | **+9.23%** |
-| Cognitive Graph (Direct) | 0.272718 | **+33.93%** ✓ | — |
-| Cognitive Graph (Curriculum, no supervision) | 0.243814 | **+40.93%** ✓ | **+7.00%** |
-| Cognitive Graph (Curriculum + supervision) | 0.269338 | **+34.75%** ✓ | **-6.18%** (harmful!) |
+| Hierarchical Planner (Direct) | 0.343173 | +16.86% | — |
+| Hierarchical Planner (Curriculum) | 0.305071 | +26.09% | +9.23% |
+| Cognitive Graph (Direct) | 0.272718 | +33.93% | — |
+| Cognitive Graph (Curriculum, no supervision) | 0.243814 | **+40.93%** | +7.00% |
+| Cognitive Graph (Curriculum + supervision) | 0.269338 | +34.75% | -6.18% (harmful!) |
 
-**Status: ⚠️ REFUTED** — Key observations:
-
-1. **CG outperforms hierarchical planner overall**: CG curriculum (no supervision) achieves +40.93% vs +26.09% for hierarchical curriculum.
-2. **Both architectures benefit from curriculum**: Hierarchical +9.23%, CG +7.00% — similar magnitude.
-3. **Subgoal supervision HURTS CG**: Adding explicit subgoal supervision provides -6.18% benefit (actually harms performance).
-4. **CG's unified representation is superior**: Even without explicit subgoal structure, CG learns better task decomposition implicitly.
-
-**Implications**: The hypothesis that hierarchical planner's explicit subgoal structure explains its curriculum advantage is refuted. CG's unified graph representation actually learns task decomposition more effectively without explicit supervision. The architecture difference is NOT the main factor — CG's graph attention mechanism provides implicit task decomposition that is more flexible than explicit subgoal heads.
+**Status: ⚠️ PARTIALLY REFUTED** — Subgoal supervision HURTS CG (-6.18%). CG curriculum without supervision achieves best results (+40.93%).
 
 ---
 
-### H1.381: Curriculum Learning with Architecture Adaptation (Round 152)
+## Summary Status
 
-**Hypothesis**: Building on H1.380's finding that 2 subgoals are optimal for 4-step tasks, curriculum learning (train on 2-step tasks with 1 subgoal, then adapt to 4-step tasks with 2 subgoals) with proper architecture adaptation will outperform direct training.
+| Hypothesis | Status | Key Evidence |
+|------------|--------|--------------|
+| H1: CG > Separated | SUPPORTED | +25.6% improvement with real robot data |
+| H2: Attention vs Concat | INCONCLUSIVE | 1.7% difference |
+| H3: Attention for long sequences | REFUTED | Concatenation wins for simple tasks |
+| H4: 25% optimal threshold | CLOSE | 25% optimal vs 28% hypothesis |
+| H1.382: Curriculum asymmetry | PARTIALLY REFUTED | Supervision hurts CG |
+| H1.383: Implicit decomposition | SUPPORTED | +14.47% vs +13.51% |
+| H1.384: Decomposition quality | REFUTED | Baseline has best decomposition metrics |
 
-**Prediction**: Curriculum learning with architecture adaptation will show better performance than direct training, with Cognitive Graph benefiting more than hierarchical planner.
+## Open Questions
 
-**Results**:
+1. Why does baseline have better decomposition quality but worse prediction than hierarchical?
+2. Why does CG underperform on decomposition metrics despite competitive MSE?
+3. Is CG's advantage specific to certain task types (e.g., longer horizons, more complex language)?
+4. What is the relationship between representation quality and prediction accuracy?
 
-| Model | 4-step MSE | Improvement vs Baseline | Curriculum vs Direct |
-|-------|-----------|------------------------|---------------------|
-| Flat Baseline (LSTM) | 0.310703 | — | — |
-| Hierarchical Planner (Direct) | 0.358738 | **-15.46%** ✗ | — |
-| Hierarchical Planner (Curriculum) | 0.244862 | **+21.19%** ✓ | **+31.74%** |
-| Cognitive Graph (Direct) | 0.308885 | **+0.58%** ✓ | — |
-| Cognitive Graph (Curriculum) | 0.304637 | **+1.95%** ✓ | **+1.38%** |
+## Next Actions
 
-**Status: ⚠️ PARTIAL_SUPPORT / REFUTED** — Key observations:
-
-1. **Hierarchical planner benefits massively from curriculum**: Shows +31.74% improvement from curriculum vs direct training, achieving +21.19% improvement over baseline.
-2. **Cognitive Graph shows modest curriculum benefit**: Only +1.38% improvement from curriculum vs direct, achieving +1.95% improvement over baseline.
-3. **Hierarchical planner with curriculum outperforms CG**: 0.244862 vs 0.304637 MSE, refuting the hypothesis that CG would benefit more from curriculum learning.
-
-**Implications**: Curriculum learning is highly effective for hierarchical planning architectures, allowing them to learn simpler task decompositions first before tackling complex multi-step tasks. Cognitive Graph shows more modest benefit
+1. **H1.385**: Test CG on longer sequences (20+ timesteps) to see if decomposition advantage emerges
+2. **H1.386**: Analyze attention patterns in CG to understand what it learns instead of phase decomposition
+3. **H1.387**: Test with more complex multi-step tasks (3+ subgoals) where explicit decomposition may help

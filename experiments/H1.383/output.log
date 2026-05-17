@@ -1,0 +1,73 @@
+Preparing datasets...
+============================================================
+Preparing LIBERO-style Robot Manipulation Dataset
+============================================================
+[Data] No real data found at None
+[Data] Generating high-quality synthetic LIBERO-style data...
+[Data] Generated 500 demonstrations
+[Data] Average trajectory length: 11.0
+[Data] Cached to data/cache/libero_synthetic_500.pkl
+[Data] Generated 1200 demonstrations
+[Data] Average trajectory length: 11.0
+[Data] Cached to data/cache/libero_synthetic_1200.pkl
+
+Dataset splits:
+  Train: 800 demos
+  Val:   200 demos
+  Test:  200 demos
+Initializing models...
+
+Training baseline...
+Epoch 10/60, Train Loss: 0.007037, Val Loss: 0.012365
+Epoch 20/60, Train Loss: 0.003980, Val Loss: 0.013711
+Epoch 30/60, Train Loss: 0.002595, Val Loss: 0.015369
+Epoch 40/60, Train Loss: 0.002080, Val Loss: 0.015789
+Epoch 50/60, Train Loss: 0.001471, Val Loss: 0.015758
+Epoch 60/60, Train Loss: 0.001318, Val Loss: 0.016584
+baseline - Final Val MSE: 0.016584, Test MSE: 0.016397
+
+Training hierarchical...
+Epoch 10/60, Train Loss: 0.005559, Val Loss: 0.013390
+Epoch 20/60, Train Loss: 0.003831, Val Loss: 0.014735
+Epoch 30/60, Train Loss: 0.002973, Val Loss: 0.014765
+Epoch 40/60, Train Loss: 0.002394, Val Loss: 0.015013
+Epoch 50/60, Train Loss: 0.001911, Val Loss: 0.015721
+Epoch 60/60, Train Loss: 0.001740, Val Loss: 0.015433
+hierarchical - Final Val MSE: 0.015433, Test MSE: 0.014181
+
+Training cg...
+Epoch 10/60, Train Loss: 0.009349, Val Loss: 0.011537
+Epoch 20/60, Train Loss: 0.007438, Val Loss: 0.012494
+Epoch 30/60, Train Loss: 0.004989, Val Loss: 0.012765
+Epoch 40/60, Train Loss: 0.003103, Val Loss: 0.014119
+Epoch 50/60, Train Loss: 0.001864, Val Loss: 0.013926
+Epoch 60/60, Train Loss: 0.001362, Val Loss: 0.013938
+cg - Final Val MSE: 0.013938, Test MSE: 0.014025
+
+Training cg_supervised...
+Epoch 10/60, Train Loss: 0.023058, Val Loss: 0.011327
+Epoch 20/60, Train Loss: 0.020358, Val Loss: 0.011921
+Epoch 30/60, Train Loss: 0.019020, Val Loss: 0.012815
+Epoch 40/60, Train Loss: 0.016948, Val Loss: 0.013172
+Epoch 50/60, Train Loss: 0.015442, Val Loss: 0.013258
+Epoch 60/60, Train Loss: 0.014500, Val Loss: 0.014994
+cg_supervised - Final Val MSE: 0.014994, Test MSE: 0.014032
+hierarchical improvement vs baseline: 13.51%
+cg improvement vs baseline: 14.47%
+cg_supervised improvement vs baseline: 14.42%
+
+Analyzing representations...
+Traceback (most recent call last):
+  File "/Users/howardli/Downloads/oyster/products/oyster-world/research/cognitive-graph-validation/experiments/H1.383/code/simple_experiment.py", line 683, in <module>
+    main()
+    ~~~~^^
+  File "/Users/howardli/Downloads/oyster/products/oyster-world/research/cognitive-graph-validation/experiments/H1.383/code/simple_experiment.py", line 493, in main
+    representation_results = analyze_representations(
+        {'cg': cg, 'hierarchical': hierarchical, 'cg_supervised': cg_supervised},
+        val_loader,
+        save_dir=save_dir
+    )
+  File "/Users/howardli/Downloads/oyster/products/oyster-world/research/cognitive-graph-validation/experiments/H1.383/code/simple_experiment.py", line 372, in analyze_representations
+    'cosine_similarity': np.mean(np.sum(z_phys * z_sem, axis=1) /
+                                        ~~~~~~~^~~~~~~
+ValueError: operands could not be broadcast together with shapes (200,144) (200,368) 
