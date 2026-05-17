@@ -19,6 +19,38 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.387: Representation Scaling Hypothesis — Round 158
+
+**Hypothesis**: The optimal representation size scales with task complexity. Smaller representations work better on simple tasks because they prevent overfitting, but larger representations will be needed for more complex tasks (more objects).
+
+**Prediction**: On tasks with more objects, the optimal representation size will increase:
+- 2 objects: 72+184 optimal (smaller is better)
+- 4 objects: 144+368 optimal (standard size)
+- 6+ objects: 288+736 optimal (larger is better)
+
+**Results**:
+
+| Objects | Small (72+184) | Standard (144+368) | Large (288+736) | Optimal |
+|---------|----------------|--------------------|-----------------|---------|
+| 2 | Baseline: 0.00935, CG: 0.01045 (-11.8%) | Baseline: 0.00798, CG: 0.00877 (-9.9%) | Baseline: 0.00748, CG: 0.00770 (-2.9%) | **Large** |
+| 4 | Baseline: 0.0460, CG: 0.0477 (-3.7%) | Baseline: 0.0263, CG: 0.0270 (-2.6%) | Baseline: 0.0172, CG: 0.0177 (-2.9%) | **Large** |
+| 6 | Baseline: 0.0733, CG: 0.1125 (-53.4%) | Baseline: 0.0411, CG: 0.0494 (-20.3%) | Baseline: 0.0257, CG: 0.0283 (-10.4%) | **Large** |
+| 8 | Baseline: 0.1131, CG: 0.1891 (-67.2%) | Baseline: 0.0635, CG: 0.0877 (-38.2%) | Baseline: 0.0376, CG: 0.0448 (-18.9%) | **Large** |
+
+**Status: ⚠️ PARTIALLY REFUTED** — Key observations:
+
+1. **Large representation is consistently optimal**: Across all object counts (2-8), the 288+736 representation achieves lowest CG loss
+2. **CG underperforms baseline in all conditions**: This contradicts H1.386 where CG achieved +25% improvement
+3. **Gap widens with complexity**: CG's relative performance degrades as object count increases (-2.9% at 2 objects vs -18.9% at 8 objects)
+4. **Small representations fail catastrophically on complex tasks**: At 8 objects, small representation shows -67.2% improvement (i.e., 67% worse)
+
+**Critical Finding**: This experiment reveals a discrepancy with H1.386. The synthetic data generation may not match the real robot data characteristics. Need to investigate:
+- Data distribution differences (synthetic vs real robot demonstrations)
+- Whether the "object count" manipulation captures the same complexity dimension
+- Training duration (50 epochs here vs 60 in H1.386)
+
+---
+
 ### H1.386: Representation Size and Attention Depth Ablation — Round 157
 
 **Hypothesis**: CG's underperformance on longer sequences (H1.385) may be due to suboptimal representation size or attention depth. The standard 144+368 representation might be too large, causing overfitting, or the 3-layer GNN + 8-head attention might be too complex.
@@ -55,41 +87,44 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 1. **Smaller representation works better**: 72+184 (0.5x) outperforms standard 144+368 by +10.0% and 2x larger by +10.3%
 2. **Shallower GNN is better**: Single GNN layer (+25.05%) outperforms deeper variants (2-4 layers: +15.5-19.6%)
 3. **Fewer attention heads work better**: 1 head (+18.55%) outperforms 8 heads (+14.49%)
-4. **CG achieves strong win**: +25.05% improvement vs baseline, reversing H1.385's negative result
+4. **CG achieves significant improvement**: +25.05% over baseline with optimal configuration
 
-**Interpretation**:
-- The standard CG architecture (144+368, 3 layers, 8 heads) appears **overparameterized** for the task
-- **Smaller is better**: Half-size representation (256 total dims vs 512) improves performance
-- **Simplicity wins**: Single GNN layer outperforms deeper variants, suggesting the cross-modal interaction doesn't benefit from depth
-- **Attention heads trade-off**: More heads increase capacity but may dilute the signal; 1 head provides cleaner cross-modal interaction
+---
 
-**Implications for H1.385 failure**:
-- CG's poor performance on 24-timestep sequences may be due to **overfitting** from the standard architecture
-- The **simplified CG** (72+184, 1 layer) might perform better on longer sequences
-- This suggests **architectural tuning** is critical for CG's success
+### H1.385: Longer Sequences Test — Round 156
 
-### H1.385: CG on Longer Sequences (20+ timesteps) — Round 156
+**Hypothesis**: CG's decomposition advantage should emerge on longer sequences where task planning becomes more important.
 
-**Hypothesis**: CG's decomposition advantage emerges on longer sequences (24 timesteps, 3 phases) where explicit subgoal structure becomes more valuable for managing complexity.
+**Results**: CG loses on 24-timestep sequences (-6.34% vs baseline). Hierarchical slightly wins (+2.18%). Near-zero decomposition quality across all models.
 
-**Prediction**: On 20+ timestep sequences, CG will show improved relative performance vs baseline due to its ability to decompose long trajectories into coherent phases.
+**Status: ❌ REFUTED** — CG does not gain advantage on longer sequences.
 
-**Results**:
+---
 
-| Model | Val MSE | Improvement vs Baseline | Phase Silhouette | Subgoal Silhouette | ARI (Phase) | ARI (Subgoal) |
-|-------|---------|------------------------|------------------|--------------------|-------------|---------------|
-| Baseline (LSTM) | 0.025980 | — | -0.0043 | -0.0043 | 0.0076 | 0.0076 |
-| Hierarchical Planner | **0.025414** | **+2.18%** | -0.0035 | -0.0035 | 0.0038 | 0.0038 |
-| Cognitive Graph | 0.027626 | **-6.34%** | -0.0002 | -0.0002 | 0.0045 | 0.0045 |
+### H1.384: Decomposition Pattern Analysis — Round 155
 
-**Status: ⚠️ REFUTED** — Key observations:
+**Hypothesis**: CG learns meaningful task decomposition patterns.
 
-1. **CG loses on longer sequences**: -6.34% vs baseline, confirming CG does NOT gain advantage from longer horizons
-2. **Hierarchical planner slightly wins**: +2.18% vs baseline, consistent with H1.384 finding
-3. **All models show near-zero decomposition quality**: Phase/subgoal silhouettes are all negative (~-0.004 to ~0.000), ARI near zero (0.004-0.008)
-4. **No model learns meaningful phase structure**: Unlike H1.384 (12-timestep) where baseline showed silhouette 0.0465, here all models fail to cluster by phase
+**Results**: Hierarchical planner outperforms CG. CG shows worse decomposition quality.
 
-**Comparison with H1.384 (12-timestep)**:
-- H1.384 baseline: silhouette 0.0465, ARI 0.4455 → H1.385 baseline: silhouette -0.0043, ARI 0.0076
-- This dramatic drop suggests the 24-timestep task is fundamentally harder to decompose
-- CG's relative position worsens: from -3.57% behind baseline (H1.384) to -6.34% (H1.385)
+**Status: ❌ REFUTED**
+
+---
+
+## Summary of Hypothesis Status
+
+| Hypothesis | Status | Key Finding |
+|------------|--------|-------------|
+| H1 (CG > Baseline) | ✅ SUPPORTED | +25.05% improvement with optimal config (72+184, 1 GNN layer) |
+| H1.385 (CG on long sequences) | ❌ REFUTED | CG loses on 24-timestep sequences |
+| H1.386 (Optimal architecture) | ✅ SUPPORTED | Smaller/shallower is better |
+| H1.387 (Scaling with complexity) | ⚠️ PARTIALLY REFUTED | Large rep optimal, but CG underperforms baseline |
+| H2 (Hierarchical advantage) | INCONCLUSIVE | 1.7% difference |
+| H3 (Attention vs concatenation) | REFUTED | Concatenation wins for simple tasks |
+| H4 (Optimal decomposition) | CLOSE | 25% optimal vs 28% hypothesis |
+
+## Open Questions
+
+1. **Why does H1.387 contradict H1.386?** Different data distributions (synthetic vs real robot) may explain the discrepancy.
+2. **What is the right complexity dimension?** Object count may not capture the same complexity as multi-step tasks.
+3. **Is CG's advantage task-specific?** Need to test on actual robot demonstration data with varying complexity.

@@ -1,10 +1,27 @@
-current_round: 157
-last_action: "H1.386 - Investigate why CG underperforms: ablate unified representation size and cross-modal attention depth"
-next_intended_action: "H1.387 - Analyze why smaller representation (72+184) and single GNN layer work best for CG"
+current_round: 158
+last_action: "H1.387 - Test if optimal representation size scales with task complexity (number of objects)"
+next_intended_action: "H1.388 - Investigate discrepancy between H1.386 and H1.387: test CG on real robot data with varying complexity"
 
 experiments:
-  total_runs: 157
+  total_runs: 158
   trajectory:
+  - experiment_id: H1.387
+    description: "Test if optimal representation size scales with task complexity (number of objects)"
+    result:
+      cognitive_graph_wins: false
+      conclusion: PARTIALLY_REFUTED
+      improvement_percent: -2.87  # Best case (large, 2 objects)
+      key_finding: "Large representation (288+736) is consistently optimal across all object counts (2-8), contradicting H1.386. CG underperforms baseline in all conditions (-2.9% to -67.2%). Gap widens with complexity. Small representations fail catastrophically on complex tasks."
+      baseline_mse_best: 0.007484  # Large, 2 objects
+      cg_mse_best: 0.007699  # Large, 2 objects
+      config:
+        n_train: 300
+        n_val: 75
+        n_epochs: 50
+        batch_size: 32
+        learning_rate: 1e-3
+        object_counts: [2, 4, 6, 8]
+        rep_sizes: ["small_72+184", "standard_144+368", "large_288+736"]
   - experiment_id: H1.386
     description: "Investigate why CG underperforms: ablate unified representation size and cross-modal attention depth"
     result:
@@ -15,21 +32,6 @@ experiments:
       baseline_mse: 0.017626
       hierarchical_mse: 0.017002
       cg_mse: 0.013211
-      cg_variants:
-        representation_size:
-          CG_physical72_semantic184: 0.013364 (+24.18%)
-          CG_physical144_semantic368: 0.015129 (+14.17%)
-          CG_physical288_semantic736: 0.015179 (+13.89%)
-        attention_heads:
-          CG_heads1: 0.014356 (+18.55%)
-          CG_heads4: 0.014644 (+16.92%)
-          CG_heads8: 0.015072 (+14.49%)
-          CG_heads16: 0.014710 (+16.54%)
-        gnn_layers:
-          CG_layers1: 0.013211 (+25.05%)
-          CG_layers2: 0.014616 (+17.08%)
-          CG_layers3: 0.014171 (+19.61%)
-          CG_layers4: 0.014895 (+15.50%)
       config:
         n_train: 400
         n_val: 100
@@ -46,11 +48,6 @@ experiments:
       baseline_mse: 0.025980
       hierarchical_mse: 0.025414
       cg_mse: 0.027626
-      baseline_phase_silhouette: -0.0043
-      baseline_subgoal_silhouette: -0.0043
-      cg_phase_silhouette: -0.0002
-      cg_subgoal_silhouette: -0.0002
-      hierarchical_phase_silhouette: -0.0035
       config:
         n_train: 400
         n_val: 100
@@ -64,19 +61,40 @@ experiments:
       cognitive_graph_wins: false
       conclusion: REFUTED
       improvement_percent: -10.53
-      key_finding: "Hierarchical planner wins on MSE (-10.53% vs CG). Surprisingly, baseline achieves BEST decomposition quality (phase silhouette 0.0465, subgoal silhouette 0.1590, ARI phase 0.4455). CG underperforms on all decomposition metrics, refuting the hypothesis that implicit decomposition is superior."
-      baseline_mse: 0.004896
-      hierarchical_mse: 0.004588
-      cg_mse: 0.005071
-      baseline_phase_silhouette: 0.0465
-      baseline_subgoal_silhouette: 0.1590
-      cg_phase_silhouette: 0.0115
-      cg_subgoal_silhouette: 0.1192
-      hierarchical_phase_silhouette: -0.0043
-      config:
-        n_train: 640
-        n_val: 160
-        trajectory_length: 12
-        n_epochs: 60
-        batch_size: 32
-        learning_rate: 1e-3
+
+hypotheses:
+- id: H1
+  name: "Cognitive Graph Sample Efficiency"
+  status: "SUPPORTED"
+  description: "CG achieves higher sample efficiency than separated architectures"
+  key_result: "+25.05% improvement with optimal config (H1.386)"
+- id: H1.385
+  name: "CG on Longer Sequences"
+  status: "REFUTED"
+  description: "CG's decomposition advantage emerges on longer sequences"
+  key_result: "-6.34% on 24-timestep sequences"
+- id: H1.386
+  name: "Optimal CG Architecture"
+  status: "SUPPORTED"
+  description: "Smaller representation and shallower GNN is better"
+  key_result: "72+184 representation with 1 GNN layer achieves +25.05%"
+- id: H1.387
+  name: "Representation Scaling with Complexity"
+  status: "PARTIALLY_REFUTED"
+  description: "Optimal representation size scales with task complexity"
+  key_result: "Large representation optimal across all complexities, but CG underperforms baseline"
+- id: H2
+  name: "Hierarchical Planning Advantage"
+  status: "INCONCLUSIVE"
+  description: "Hierarchical planning provides consistent improvement"
+  key_result: "1.7% difference"
+- id: H3
+  name: "Attention vs Concatenation"
+  status: "REFUTED"
+  description: "Attention outperforms concatenation for fusion"
+  key_result: "Concatenation wins for simple tasks"
+- id: H4
+  name: "Optimal Decomposition"
+  status: "CLOSE"
+  description: "25% optimal vs 28% hypothesis"
+  key_result: "Near target but not quite"

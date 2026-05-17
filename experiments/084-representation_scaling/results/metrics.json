@@ -1,0 +1,112 @@
+{
+  "hypothesis": "H1.387",
+  "description": "Test if optimal representation size scales with task complexity (number of objects)",
+  "prediction": "Larger representations become optimal as number of objects increases",
+  "config": {
+    "n_epochs": 50,
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "n_train": 300,
+    "n_val": 75
+  },
+  "results": {
+    "2": {
+      "small": {
+        "physical_dim": 72,
+        "semantic_dim": 184,
+        "baseline_loss": 0.00935202557593584,
+        "cg_loss": 0.01045250054448843,
+        "improvement_percent": -11.767236515950898
+      },
+      "standard": {
+        "physical_dim": 144,
+        "semantic_dim": 368,
+        "baseline_loss": 0.007976489141583443,
+        "cg_loss": 0.008766455575823784,
+        "improvement_percent": -9.90368594776927
+      },
+      "large": {
+        "physical_dim": 288,
+        "semantic_dim": 736,
+        "baseline_loss": 0.00748401740565896,
+        "cg_loss": 0.007698915898799896,
+        "improvement_percent": -2.8714323002301234
+      },
+      "optimal_size": "large"
+    },
+    "4": {
+      "small": {
+        "physical_dim": 72,
+        "semantic_dim": 184,
+        "baseline_loss": 0.04598423093557358,
+        "cg_loss": 0.04768036678433418,
+        "improvement_percent": -3.688516289718934
+      },
+      "standard": {
+        "physical_dim": 144,
+        "semantic_dim": 368,
+        "baseline_loss": 0.026320939883589745,
+        "cg_loss": 0.027008505538105965,
+        "improvement_percent": -2.612238231450447
+      },
+      "large": {
+        "physical_dim": 288,
+        "semantic_dim": 736,
+        "baseline_loss": 0.01720341295003891,
+        "cg_loss": 0.017708057537674904,
+        "improvement_percent": -2.9333980943290245
+      },
+      "optimal_size": "large"
+    },
+    "6": {
+      "small": {
+        "physical_dim": 72,
+        "semantic_dim": 184,
+        "baseline_loss": 0.07333460450172424,
+        "cg_loss": 0.11250438541173935,
+        "improvement_percent": -53.412411747709285
+      },
+      "standard": {
+        "physical_dim": 144,
+        "semantic_dim": 368,
+        "baseline_loss": 0.04106377437710762,
+        "cg_loss": 0.049381058663129807,
+        "improvement_percent": -20.254553830441207
+      },
+      "large": {
+        "physical_dim": 288,
+        "semantic_dim": 736,
+        "baseline_loss": 0.025667043402791023,
+        "cg_loss": 0.02833665907382965,
+        "improvement_percent": -10.40094735160784
+      },
+      "optimal_size": "large"
+    },
+    "8": {
+      "small": {
+        "physical_dim": 72,
+        "semantic_dim": 184,
+        "baseline_loss": 0.11311325430870056,
+        "cg_loss": 0.18914996087551117,
+        "improvement_percent": -67.22174782390815
+      },
+      "standard": {
+        "physical_dim": 144,
+        "semantic_dim": 368,
+        "baseline_loss": 0.06345687806606293,
+        "cg_loss": 0.08770953118801117,
+        "improvement_percent": -38.219108568025646
+      },
+      "large": {
+        "physical_dim": 288,
+        "semantic_dim": 736,
+        "baseline_loss": 0.037648919969797134,
+        "cg_loss": 0.04474997892975807,
+        "improvement_percent": -18.861255424212906
+      },
+      "optimal_size": "large"
+    }
+  },
+  "trend_correlation": NaN,
+  "conclusion": "INCONCLUSIVE - No clear trend between representation size and task complexity"
+}
