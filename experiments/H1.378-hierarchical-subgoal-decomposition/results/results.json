@@ -1,0 +1,20 @@
+{
+  "experiment_id": "H1.378",
+  "description": "Hierarchical Subgoal Decomposition for 4+ Step Tasks",
+  "config": {
+    "n_steps": 4,
+    "n_epochs": 100,
+    "batch_size": 32,
+    "learning_rate": 0.001
+  },
+  "results": {
+    "baseline_mse": 0.3662493288516998,
+    "hierarchical_mse": 0.37672781705856323,
+    "hierarchical_improvement_percent": -2.8610259136082483,
+    "cg_hierarchical_mse": 0.35715577721595765,
+    "cg_hierarchical_improvement_percent": 2.482885542549153,
+    "cg_wins": true
+  },
+  "conclusion": "PARTIAL_SUPPORT",
+  "key_finding": "CG with hierarchical subgoal decomposition shows modest improvement on 4-step tasks (+2.5%)"
+}

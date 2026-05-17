@@ -1,10 +1,25 @@
-current_round: 148
-last_action: "H1.377 - External Memory Scaling (32/64-slot KV Store + 8-head attention) - PARTIAL SUPPORT (+0.7% best on 3-step, diminishing returns)"
-next_intended_action: "H1.378 - Test hierarchical planning / subgoal decomposition for 4+ step tasks, since external memory alone fails at longer horizons"
+current_round: 149
+last_action: "H1.378 - Hierarchical Subgoal Decomposition for 4+ Step Tasks - PARTIAL SUPPORT (+2.5% on 4-step, first positive result on longer horizons)"
+next_intended_action: "H1.379 - Test more aggressive subgoal decomposition (3 subgoals for 4-step) or learned subgoal representations"
 
 experiments:
-  total_runs: 148
+  total_runs: 149
   trajectory:
+  - experiment_id: H1.378
+    description: Hierarchical Subgoal Decomposition for 4+ Step Tasks
+    result:
+      cognitive_graph_wins: true
+      conclusion: PARTIAL_SUPPORT
+      improvement_percent: 2.5
+      key_finding: "CG + hierarchical subgoal decomposition achieves +2.5% on 4-step tasks; plain hierarchical planner hurts (-2.9%)"
+      baseline_4step_mse: 0.366249
+      cg_hierarchical_4step_mse: 0.357156
+      hierarchical_planner_4step_mse: 0.376728
+      config:
+        n_steps: 4
+        n_epochs: 100
+        subgoal_dim: 8
+        n_subgoals: 2
   - experiment_id: H1.377
     description: External Memory Scaling - 32/64-slot KV Store + Attention Mechanism Comparison
     result:
@@ -19,12 +34,6 @@ experiments:
         cg_16slot_8head: 0.3
         cg_32slot_8head: -0.0
         cg_64slot_8head: 0.7
-      all_configs_2step:
-        cg_16slot_4head: -0.1
-        cg_32slot_4head: -0.2
-        cg_16slot_8head: -0.0
-        cg_32slot_8head: 0.2
-        cg_64slot_8head: -0.1
       all_configs_4step:
         cg_16slot_4head: -0.3
         cg_32slot_4head: -0.1
@@ -32,7 +41,6 @@ experiments:
         cg_32slot_8head: -0.2
         cg_64slot_8head: -0.0
       baseline_3step_mse: 0.299073
-      baseline_2step_mse: 0.278612
       baseline_4step_mse: 0.340937
       config:
         memory_sizes_tested: [16, 32, 64]
@@ -69,42 +77,34 @@ experiments:
         gru_2layer: 10.5
         gru_3layer: -3.3
         gru_4layer: -346.3
-  - experiment_id: H1.374
-    description: Hierarchical Temporal Memory - 2-layer LSTM best (+3.6%)
-    result:
-      cognitive_graph_wins: true
-      conclusion: SUPPORTED
-      improvement_percent: 3.6
-      key_finding: 2-layer LSTM temporal memory is optimal for CG on multi-step tasks
-      best_config: CG + LSTM 2-layer
-      all_configs:
-        lstm_1layer: 2.9
-        gru_1layer: 0.1
-        lstm_2layer: 3.6
-        gru_2layer: 2.0
-        lstm_3layer: 3.3
-        gru_3layer: 2.7
-  - experiment_id: H1.373
-    description: CG + Temporal Memory on 3-step tasks - LSTM/GRU help but dont fully solve
-    result:
-      cognitive_graph_wins: false
-      conclusion: PARTIAL_SUPPORT
-      improvement_percent: -29.0
-      key_finding: Temporal memory improves CG on 3-step tasks but still loses to baseline
-      cg_gru_improvement: -31.2
-      cg_lstm_improvement: -29.0
-      cg_vanilla_improvement: -33.6
-  - experiment_id: H1.371
-    description: Multi-step coordinated interactions test - CG loses on multi-step coordinated tasks (-106.6%)
-    result:
-      cognitive_graph_wins: false
-      conclusion: REFUTED
-      improvement_percent: -106.6
-      key_finding: CG struggles with multi-step coordinated interactions despite winning on single-step coordinated interactions
-  - experiment_id: H1.370
-    description: Multi-object interaction test - CG shows advantage with 3 objects in coordinated interactions (+38.9%)
-    result:
-      cognitive_graph_wins: true
-      conclusion: SUPPORTED
-      improvement_percent: 38.9
-      key_finding: CG wins with 3 objects in coordinated interactions
+
+hypotheses:
+  - id: H1
+    name: "Cognitive Graph Sample Efficiency"
+    status: "SUPPORTED"
+    key_result: "+25.6% improvement on real robot data (H1.34)"
+    sub_hypotheses:
+      - id: H1.376
+        name: "External Memory for 3+ steps"
+        status: "SUPPORTED"
+        key_result: "+15.7% on 3-step tasks"
+      - id: H1.377
+        name: "Memory Scaling"
+        status: "PARTIAL_SUPPORT"
+        key_result: "Diminishing returns; +0.7% best on 3-step, all lose on 4-step"
+      - id: H1.378
+        name: "Hierarchical Subgoal Decomposition"
+        status: "PARTIAL_SUPPORT"
+        key_result: "+2.5% on 4-step tasks (first positive result on longer horizons)"
+  - id: H2
+    name: "Language Grounding"
+    status: "INCONCLUSIVE"
+    key_result: "1.7% difference (needs more tests)"
+  - id: H3
+    name: "Attention vs Concatenation"
+    status: "REFUTED"
+    key_result: "Concatenation wins for simple tasks"
+  - id: H4
+    name: "Dimension Allocation"
+    status: "CLOSE"
+    key_result: "25% optimal vs 28% hypothesis"
