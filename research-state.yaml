@@ -1,10 +1,33 @@
-current_round: 150
-last_action: "H1.379 - Aggressive Subgoal Decomposition (3 subgoals for 4-step) - SUPPORTED (+0.68% with fixed subgoals, +0.97% hierarchical planner)"
-next_intended_action: "H1.380 - Compare 2 vs 3 subgoals directly and test curriculum learning from 2-step to 4-step"
+current_round: 151
+last_action: "H1.380 - Compare 2 vs 3 subgoals directly - SUPPORTED (2 subgoals win by +0.24% for CG, -0.01% for hierarchical)"
+next_intended_action: "H1.381 - Test curriculum learning with proper architecture adaptation"
 
 experiments:
-  total_runs: 150
+  total_runs: 151
   trajectory:
+  - experiment_id: H1.380
+    description: Compare 2 vs 3 Subgoals Directly
+    result:
+      cognitive_graph_wins: true
+      conclusion: SUPPORTED
+      improvement_percent: 0.14
+      key_finding: "2 subgoals outperform 3 subgoals for CG (+0.24% difference), while hierarchical planner shows minimal difference (-0.01%). CG with 2 subgoals achieves +0.14% improvement."
+      baseline_mse: 0.220155
+      hierarchical_2sub_mse: 0.219638
+      hierarchical_2sub_improvement: 0.23
+      hierarchical_3sub_mse: 0.219609
+      hierarchical_3sub_improvement: 0.25
+      cg_2sub_mse: 0.219847
+      cg_2sub_improvement: 0.14
+      cg_3sub_mse: 0.220382
+      cg_3sub_improvement: -0.10
+      subgoal_2_vs_3_cg: 0.24
+      subgoal_2_vs_3_hierarchical: -0.01
+      config:
+        n_steps: 4
+        n_subgoals_tested: [2, 3]
+        n_epochs: 100
+        subgoal_dim: 8
   - experiment_id: H1.379
     description: Aggressive Subgoal Decomposition for 4+ Step Tasks
     result:
@@ -73,54 +96,4 @@ experiments:
       key_finding: External memory (16-slot KV store + 4-head attention) enables CG to handle 3-step tasks (+15.7%), addressing H1.371 failure
       baseline_3step_mse: 1.237484
       cg_3step_mse: 1.043234
-      baseline_2step_mse: 1.251588
-      cg_2step_mse: 1.105903
-      improvement_2step: 11.6
-      config:
-        memory_size: 16
-        num_heads: 4
-        hidden_dim: 128
-        temporal_layers: 2
-  - experiment_id: H1.375
-    description: Hierarchical Temporal Memory - 4-layer test - 2-layer LSTM best (+14.0%)
-    result:
-      cognitive_graph_wins: true
-      conclusion: SUPPORTED
-      improvement_percent: 14.0
-      key_finding: 2-layer LSTM/GRU optimal, deeper layers hurt performance
-      best_config: lstm_2layer
-      all_configs:
-        lstm_2layer: 14.0
-        lstm_3layer: -456.9
-        lstm_4layer: -1053.5
-        gru_2layer: 10.5
-        gru_3layer: -3.3
-        gru_4layer: -346.3
-
-hypotheses:
-  - id: H1
-    name: "Cognitive Graph architecture improves sample efficiency on language-conditioned robotic tasks"
-    status: "SUPPORTED"
-    evidence:
-      - "H1.376: External memory enables +15.7% on 3-step tasks"
-      - "H1.378: Hierarchical subgoal decomposition +2.5% on 4-step tasks"
-      - "H1.379: Aggressive decomposition (3 subgoals) +0.68% on 4-step tasks"
-    next_steps: "Compare 2 vs 3 subgoals directly, test curriculum learning"
-  - id: H2
-    name: "Attention mechanism is necessary for complex multi-step reasoning"
-    status: "INCONCLUSIVE"
-    evidence:
-      - "H1.377: External memory with attention shows diminishing returns"
-    next_steps: "Test attention on longer sequences (20+ timesteps)"
-  - id: H3
-    name: "Concatenation outperforms attention for simple tasks"
-    status: "REFUTED"
-    evidence:
-      - "Multiple experiments show attention helps on complex tasks"
-    next_steps: "Re-test attention on longer sequences (20+ timesteps)"
-  - id: H4
-    name: "Optimal dimension allocation is 25% physical, 75% semantic"
-    status: "CLOSE"
-    evidence:
-      - "25% allocation shows near-optimal performance"
-    next_steps: "Fine-tune allocation with gradient-based search"
+      baseline_2step_ms

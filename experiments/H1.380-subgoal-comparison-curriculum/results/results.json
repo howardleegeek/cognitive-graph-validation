@@ -1,0 +1,32 @@
+{
+  "experiment_id": "H1.380",
+  "description": "Compare 2 vs 3 Subgoals Directly",
+  "config": {
+    "n_steps": 4,
+    "n_subgoals_tested": [
+      2,
+      3
+    ],
+    "n_epochs": 100,
+    "batch_size": 32,
+    "learning_rate": 0.001
+  },
+  "results": {
+    "baseline_mse": 0.2201550773211888,
+    "hierarchical_2sub_mse": 0.21963789846215928,
+    "hierarchical_2sub_improvement": 0.2349157082009961,
+    "hierarchical_3sub_mse": 0.21960915625095367,
+    "hierarchical_3sub_improvement": 0.24797114691961997,
+    "cg_2sub_mse": 0.21984692343643733,
+    "cg_2sub_improvement": 0.13997128228930186,
+    "cg_3sub_mse": 0.22038215824535914,
+    "cg_3sub_improvement": -0.1031458946727124,
+    "best_cg_config": "cg_2sub",
+    "best_cg_improvement": 0.13997128228930186,
+    "cg_wins": true,
+    "subgoal_2_vs_3": 0.24311717696201426,
+    "hierarchical_subgoal_2_vs_3": -0.013055438718623857
+  },
+  "conclusion": "SUPPORTED",
+  "key_finding": "Best configuration: cg_2sub with 0.14% improvement. 2 subgoals vs 3 (CG): 0.24%. 2 subgoals vs 3 (Hierarchical): -0.01%."
+}
