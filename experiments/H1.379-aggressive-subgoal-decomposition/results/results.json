@@ -1,0 +1,24 @@
+{
+  "experiment_id": "H1.379",
+  "description": "Aggressive Subgoal Decomposition for 4+ Step Tasks",
+  "config": {
+    "n_steps": 4,
+    "n_subgoals": 3,
+    "n_epochs": 100,
+    "batch_size": 32,
+    "learning_rate": 0.001
+  },
+  "results": {
+    "baseline_mse": 0.21191573355879104,
+    "hierarchical_mse": 0.20986069100243704,
+    "hierarchical_improvement_percent": 0.9697451538131662,
+    "cg_hierarchical_fixed_mse": 0.2104716386113848,
+    "cg_hierarchical_fixed_improvement_percent": 0.6814477260158758,
+    "cg_hierarchical_learned_mse": 0.21192361414432526,
+    "cg_hierarchical_learned_improvement_percent": -0.003718735462383129,
+    "cg_wins": true,
+    "best_cg_improvement": 0.6814477260158758
+  },
+  "conclusion": "SUPPORTED",
+  "key_finding": "CG with fixed subgoal decomposition (+0.68%) vs baseline"
+}

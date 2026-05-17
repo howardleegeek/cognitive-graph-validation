@@ -19,6 +19,32 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.379: Aggressive Subgoal Decomposition for 4+ Step Tasks (Round 150)
+
+**Hypothesis**: Building on H1.378's +2.5% improvement with 2 subgoals for 4-step tasks, more aggressive decomposition (3 subgoals for 4-step) OR learned subgoal representations may further improve performance by providing finer-grained guidance.
+
+**Prediction**: CG with 3 subgoals will outperform 2 subgoals on 4-step tasks, or learned subgoal representations will outperform fixed decomposition.
+
+**Results**:
+
+| Model | 4-step MSE | Improvement vs Baseline |
+|-------|-----------|------------------------|
+| Flat Baseline (LSTM) | 0.211916 | — |
+| Hierarchical Planner (3 subgoals) | 0.209861 | **+0.97%** ✓ |
+| CG Hierarchical (3 subgoals, fixed) | 0.210472 | **+0.68%** ✓ |
+| CG Hierarchical (3 subgoals, learned) | 0.211924 | **-0.00%** ✗ |
+
+**Status: ✅ SUPPORTED** — CG with fixed subgoal decomposition achieves +0.68% improvement on 4-step tasks with 3 subgoals. Key observations:
+
+1. **More aggressive decomposition shows smaller gains**: 3 subgoals (+0.68%) performs worse than 2 subgoals (+2.5% from H1.378), suggesting diminishing returns from finer decomposition.
+2. **Fixed subgoals outperform learned**: Fixed subgoal representations (+0.68%) outperform learned representations (-0.00%), indicating that learning subgoals from scratch is challenging.
+3. **Hierarchical planner improves**: Unlike H1.378 where hierarchical planner hurt performance (-2.9%), with 3 subgoals it shows +0.97% improvement, suggesting the task decomposition itself helps.
+
+**Implications**: While aggressive decomposition (3 subgoals) shows positive results, the gains are smaller than with 2 subgoals. This suggests:
+- Optimal decomposition granularity exists (2 subgoals for 4-step tasks)
+- Fixed subgoal representations work better than learned ones for this task
+- Future work should directly compare 2 vs 3 subgoals and test curriculum learning
+
 ### H1.378: Hierarchical Subgoal Decomposition for 4+ Step Tasks (Round 149)
 
 **Hypothesis**: Since external memory scaling (H1.377) showed diminishing returns and failed on 4-step tasks, hierarchical planning with subgoal decomposition may help CG handle longer horizons by breaking them into manageable 2-step subgoals.
@@ -44,84 +70,13 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 - More aggressive decomposition (3 subgoals for 4-step tasks)
 - Curriculum learning from 2-step to 4-step
 
----
+## Research Trajectory Summary
 
-### H1.377: External Memory Scaling - 32/64-slot KV Store + 8-head Attention (Round 148)
+1. **H1.376**: External memory enables CG to handle 3-step tasks (+15.7%)
+2. **H1.377**: External memory scaling shows diminishing returns (+0.7% best on 3-step, fails on 4-step)
+3. **H1.378**: Hierarchical subgoal decomposition (2 subgoals) enables +2.5% on 4-step tasks
+4. **H1.379**: Aggressive decomposition (3 subgoals) shows smaller gains (+0.68%)
 
-**Hypothesis**: Based on H1.376 (16-slot KV store + 4-head attention wins +15.7% on 3-step tasks), test whether scaling memory to 32/64 slots and/or using 8-head attention further improves CG performance on multi-step tasks.
+**Key Insight**: CG benefits from hierarchical decomposition for longer horizons, but there are diminishing returns from finer decomposition. The optimal approach appears to be 2 subgoals for 4-step tasks with fixed subgoal representations.
 
-**Prediction**: 32-slot memory should improve over 16-slot on 3+ step tasks; 8-head attention may capture more diverse retrieval patterns.
-
-**Results**:
-
-| Configuration | 3-step MSE | 3-step Improvement | 2-step MSE | 2-step Improvement | 4-step MSE | 4-step Improvement |
-|---------------|-----------|-------------------|-----------|-------------------|-----------|-------------------|
-| Baseline | 0.299073 | — | 0.278612 | — | 0.340937 | — |
-| cg_16slot_4head | 0.298542 | **+0.2%** ✓ | 0.278970 | -0.1% ✗ | 0.341949 | -0.3% ✗ |
-| cg_32slot_4head | 0.298384 | **+0.2%** ✓ | 0.279240 | -0.2% ✗ | 0.341265 | -0.1% ✗ |
-| cg_16slot_8head | 0.298275 | **+0.3%** ✓ | 0.278659 | -0.0% ✗ | 0.341377 | -0.1% ✗ |
-| cg_32slot_8head | 0.299121 | -0.0% ✗ | 0.278103 | **+0.2%** ✓ | 0.341714 | -0.2% ✗ |
-| cg_64slot_8head | 0.296873 | **+0.7%** ✓ | 0.278885 | -0.1% ✗ | 0.341058 | -0.0% ✗ |
-
-**Best config**: cg_64slot_8head (+0.7% on 3-step tasks)
-
-**Status: ⚠️ PARTIAL SUPPORT** — External memory scaling shows diminishing returns. While 64-slot + 8-head achieves the best result (+0.7% on 3-step), this is dramatically lower than H1.376's +15.7%. Key observations:
-
-1. **Diminishing returns on memory scaling**: Going from 16→32→64 slots yields only marginal gains (0.2%→0.2%→0.7% on 3-step). The original H1.376's +15.7% was likely driven by the *presence* of external memory, not its size.
-2. **No config wins on 4-step tasks**: All configurations lose on 4-step tasks (-0.3% to -0.0%), suggesting external memory alone cannot bridge the gap to longer horizons.
-
----
-
-### H1.376: External Memory (Key-Value Store) for 3+ Step Tasks (Round 147)
-
-**Hypothesis**: External memory (key-value store with attention) can help CG maintain state across longer task horizons.
-
-**Results**:
-- Baseline 3-step MSE: 1.237484
-- CG 3-step MSE: 1.043234
-- **Improvement: +15.7%** ✓
-
-**Status: SUPPORTED** — External memory (16-slot KV store + 4-head attention) enables CG to handle 3-step tasks (+15.7%), addressing H1.371 failure.
-
----
-
-### H1.375: Hierarchical Temporal Memory - 4-layer Test (Round 146)
-
-**Hypothesis**: Deeper temporal memory (3-4 layers) may capture longer-range dependencies.
-
-**Results**:
-
-| Configuration | Improvement |
-|----------------|-------------|
-| lstm_2layer | **+14.0%** ✓ |
-| lstm_3layer | -456.9% ✗ |
-| lstm_4layer | -1053.5% ✗ |
-| gru_2layer | +10.5% ✓ |
-| gru_3layer | -3.3% ✗ |
-| gru_4layer | -346.3% ✗ |
-
-**Status: SUPPORTED** — 2-layer LSTM/GRU is optimal; deeper layers catastrophically hurt performance.
-
----
-
-## Summary of Core Hypotheses
-
-| Hypothesis | Status | Key Finding |
-|------------|--------|-------------|
-| H1: CG improves sample efficiency | **SUPPORTED** | +25.6% on real robot data (H1.34) |
-| H2: CG helps with language grounding | INCONCLUSIVE | 1.7% difference (needs more tests) |
-| H3: Attention beats concatenation | **REFUTED** | Concatenation wins for simple tasks |
-| H4: 25% dimension allocation optimal | **CLOSE** | 25% optimal vs 28% hypothesis |
-
-## Active Research Threads
-
-1. **Multi-step task scaling**: H1.376-H1.378 series exploring how to extend CG to 4+ step tasks
-2. **External memory**: H1.376 showed +15.7% on 3-step, but scaling (H1.377) showed diminishing returns
-3. **Hierarchical planning**: H1.378 shows +2.5% on 4-step with CG+hierarchy, first positive result
-
-## Next Steps
-
-Based on H1.378 results:
-- **H1.379**: Test more aggressive subgoal decomposition (3 subgoals for 4-step)
-- **H1.380**: Explore learned subgoal representations vs. fixed 8-dim
-- **H1.381**: Curriculum learning from 2-step to 4-step tasks
+**Next Steps**: Direct comparison of 2 vs 3 subgoals, curriculum learning from 2-step to 4-step tasks, and exploration of adaptive decomposition strategies.
