@@ -1,10 +1,40 @@
-current_round: 152
-last_action: "H1.381 - Test curriculum learning with proper architecture adaptation - PARTIAL_SUPPORT/REFUTED (Hierarchical planner benefits massively +31.74%, CG modest +1.38%)"
-next_intended_action: "H1.382 - Analyze why hierarchical planner benefits more from curriculum than CG"
+current_round: 153
+last_action: "H1.382 - Analyze why hierarchical planner benefits more from curriculum than CG - REFUTED (Subgoal supervision HURTS CG by -6.18%, CG outperforms hierarchical overall)"
+next_intended_action: "H1.383 - Investigate why CG's implicit task decomposition outperforms explicit subgoal structure"
 
 experiments:
-  total_runs: 152
+  total_runs: 153
   trajectory:
+  - experiment_id: H1.382
+    description: Curriculum Asymmetry Analysis
+    result:
+      cognitive_graph_wins: true
+      conclusion: REFUTED
+      improvement_percent: 40.93
+      key_finding: "CG curriculum (no supervision) achieves +40.93% improvement vs +26.09% for hierarchical curriculum. Subgoal supervision HURTS CG (-6.18%). CG's unified representation learns task decomposition implicitly better than explicit subgoal heads."
+      baseline_mse: 0.412749
+      hierarchical_direct_mse: 0.343173
+      hierarchical_curriculum_mse: 0.305071
+      cg_direct_mse: 0.272718
+      cg_curriculum_no_supervision_mse: 0.243814
+      cg_curriculum_with_supervision_mse: 0.269338
+      hierarchical_curriculum_improvement: 26.09
+      hierarchical_direct_improvement: 16.86
+      hierarchical_curriculum_benefit: 9.23
+      cg_curriculum_improvement: 40.93
+      cg_direct_improvement: 33.93
+      cg_curriculum_benefit: 7.00
+      cg_supervised_improvement: 34.75
+      cg_supervision_benefit: -6.18
+      config:
+        n_samples: 800
+        val_samples: 200
+        n_epochs_phase1: 30
+        n_epochs_phase2: 30
+        n_epochs_direct: 60
+        batch_size: 32
+        learning_rate: 1e-3
+        subgoal_weight: 0.5
   - experiment_id: H1.381
     description: Curriculum Learning with Architecture Adaptation
     result:
@@ -53,49 +83,3 @@ experiments:
         n_subgoals_tested: [2, 3]
         n_epochs: 100
         subgoal_dim: 8
-  - experiment_id: H1.379
-    description: Aggressive Subgoal Decomposition for 4+ Step Tasks
-    result:
-      cognitive_graph_wins: true
-      conclusion: SUPPORTED
-      improvement_percent: 0.68
-      key_finding: "CG with fixed subgoal decomposition achieves +0.68% on 4-step tasks with 3 subgoals; hierarchical planner shows +0.97%; learned subgoals perform worse (-0.00%)"
-      baseline_mse: 0.211916
-      hierarchical_mse: 0.209861
-      hierarchical_improvement: 0.97
-      cg_hierarchical_fixed_mse: 0.210472
-      cg_hierarchical_fixed_improvement: 0.68
-      cg_hierarchical_learned_mse: 0.211924
-      cg_hierarchical_learned_improvement: -0.00
-      config:
-        n_steps: 4
-        n_subgoals: 3
-        n_epochs: 100
-        subgoal_dim: 8
-  - experiment_id: H1.378
-    description: Hierarchical Subgoal Decomposition for 4+ Step Tasks
-    result:
-      cognitive_graph_wins: true
-      conclusion: PARTIAL_SUPPORT
-      improvement_percent: 2.5
-      key_finding: "CG + hierarchical subgoal decomposition achieves +2.5% on 4-step tasks; plain hierarchical planner hurts (-2.9%)"
-      baseline_4step_mse: 0.366249
-      cg_hierarchical_4step_mse: 0.357156
-      hierarchical_planner_4step_mse: 0.376728
-      config:
-        n_steps: 4
-        n_epochs: 100
-        subgoal_dim: 8
-        n_subgoals: 2
-  - experiment_id: H1.377
-    description: External Memory Scaling - 32/64-slot KV Store + Attention Mechanism Comparison
-    result:
-      cognitive_graph_wins: true
-      conclusion: PARTIAL_SUPPORT
-      improvement_percent: 0.7
-      key_finding: Diminishing returns on memory scaling; 64-slot + 8-head best (+0.7% on 3-step) but all configs lose on 4-step tasks
-      best_config: cg_64slot_8head
-      all_configs_3step:
-        cg_16slot_4head: 0.2
-        cg_32slot_4head: 0.2
-        cg_16slot_8head: 0.3

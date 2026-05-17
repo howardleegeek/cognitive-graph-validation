@@ -1,0 +1,33 @@
+{
+  "config": {
+    "n_samples": 800,
+    "val_samples": 200,
+    "n_steps": 4,
+    "n_subgoals": 2,
+    "n_epochs_phase1": 30,
+    "n_epochs_phase2": 30,
+    "n_epochs_direct": 60,
+    "batch_size": 32,
+    "learning_rate": 0.001,
+    "subgoal_weight": 0.5
+  },
+  "results": {
+    "hierarchical_curriculum_mse": 0.30507143480437143,
+    "hierarchical_direct_mse": 0.34317331654684885,
+    "cg_curriculum_no_supervision_mse": 0.24381369139466966,
+    "cg_curriculum_with_supervision_mse": 0.2693375732217516,
+    "cg_direct_mse": 0.2727182188204357,
+    "baseline_mse": 0.4127488945211683,
+    "hierarchical_curriculum_improvement": 26.087885672404752,
+    "hierarchical_direct_improvement": 16.856635813654783,
+    "hierarchical_curriculum_benefit": 9.231249858749969,
+    "cg_curriculum_improvement": 40.92929269319572,
+    "cg_direct_improvement": 33.92635996352765,
+    "cg_curriculum_benefit": 7.002932729668068,
+    "cg_supervised_improvement": 34.74541620899767,
+    "cg_supervision_benefit": -6.183876484198052,
+    "cognitive_graph_wins": true
+  },
+  "conclusion": "REFUTED",
+  "key_finding": "Adding explicit subgoal supervision to CG provides minimal +-6.18% benefit. The architecture difference is not the main factor."
+}
