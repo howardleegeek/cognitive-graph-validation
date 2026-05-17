@@ -1,10 +1,35 @@
-current_round: 151
-last_action: "H1.380 - Compare 2 vs 3 subgoals directly - SUPPORTED (2 subgoals win by +0.24% for CG, -0.01% for hierarchical)"
-next_intended_action: "H1.381 - Test curriculum learning with proper architecture adaptation"
+current_round: 152
+last_action: "H1.381 - Test curriculum learning with proper architecture adaptation - PARTIAL_SUPPORT/REFUTED (Hierarchical planner benefits massively +31.74%, CG modest +1.38%)"
+next_intended_action: "H1.382 - Analyze why hierarchical planner benefits more from curriculum than CG"
 
 experiments:
-  total_runs: 151
+  total_runs: 152
   trajectory:
+  - experiment_id: H1.381
+    description: Curriculum Learning with Architecture Adaptation
+    result:
+      cognitive_graph_wins: false
+      conclusion: PARTIAL_SUPPORT_REFUTED
+      improvement_percent: 1.95
+      key_finding: "Curriculum learning provides asymmetric benefits: hierarchical planner gains +31.74% from curriculum (achieving +21.19% vs baseline) while CG gains only +1.38% (+1.95% vs baseline). Hierarchical planner with curriculum outperforms CG."
+      baseline_mse: 0.310703
+      hierarchical_direct_mse: 0.358738
+      hierarchical_curriculum_mse: 0.244862
+      cg_direct_mse: 0.308885
+      cg_curriculum_mse: 0.304637
+      hierarchical_direct_improvement: -15.46
+      hierarchical_curriculum_improvement: 21.19
+      cg_direct_improvement: 0.58
+      cg_curriculum_improvement: 1.95
+      hier_curriculum_vs_direct: 31.74
+      cg_curriculum_vs_direct: 1.38
+      config:
+        n_epochs_phase1: 40
+        n_epochs_phase2: 40
+        learning_rate: 1e-3
+        batch_size: 32
+        n_samples: 800
+        val_samples: 200
   - experiment_id: H1.380
     description: Compare 2 vs 3 Subgoals Directly
     result:
@@ -74,26 +99,3 @@ experiments:
         cg_16slot_4head: 0.2
         cg_32slot_4head: 0.2
         cg_16slot_8head: 0.3
-        cg_32slot_8head: -0.0
-        cg_64slot_8head: 0.7
-      all_configs_4step:
-        cg_16slot_4head: -0.3
-        cg_32slot_4head: -0.1
-        cg_16slot_8head: -0.1
-        cg_32slot_8head: -0.2
-        cg_64slot_8head: -0.0
-      baseline_3step_mse: 0.299073
-      baseline_4step_mse: 0.340937
-      config:
-        memory_sizes_tested: [16, 32, 64]
-        attention_heads_tested: [4, 8]
-  - experiment_id: H1.376
-    description: External Memory (Key-Value Store) for 3+ step tasks
-    result:
-      cognitive_graph_wins: true
-      conclusion: SUPPORTED
-      improvement_percent: 15.7
-      key_finding: External memory (16-slot KV store + 4-head attention) enables CG to handle 3-step tasks (+15.7%), addressing H1.371 failure
-      baseline_3step_mse: 1.237484
-      cg_3step_mse: 1.043234
-      baseline_2step_ms
