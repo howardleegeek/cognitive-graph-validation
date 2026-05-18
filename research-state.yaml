@@ -1,10 +1,40 @@
-current_round: 179
-last_action: "H1.410 - Tested CG on multi-object manipulation with varying object counts (2, 3, 4, 5). KEY FINDING: Hypothesis REFUTED. CG only wins at 2 objects (+3.19%) and loses at 3, 4, 5 objects. Win rate: 25%. CG benefits require task-relevant relational structure, not just more objects/relations. This aligns with H1.408's finding about the 'right complexity level' for relational data."
-next_intended_action: "H1.411 - Investigate what makes relational structure 'task-relevant' vs 'geometric-only'. Generate datasets with varying degrees of task-relevant relational structure (e.g., relations that encode task affordances vs pure geometry) to identify the specific properties that enable CG benefits."
+current_round: 180
+last_action: "H1.411 - Tested CG on task-relevant vs geometric relational structure. INCONCLUSIVE: CG wins on all relation types (geometric +77%, task-relevant +84%, mixed +80%). The baseline is too weak to differentiate - need harder task."
+next_intended_action: "H1.412 - Design harder task where baseline struggles but CG can leverage relational structure. Consider: (1) multi-step prediction requiring reasoning about object interactions, (2) action-conditioned prediction where relations determine outcomes, (3) use actual LIBERO-style task structure."
 
 experiments:
-  total_rounds: 179
+  total_rounds: 180
   trajectory:
+    - experiment_id: H1.411
+      description: "Test CG on task-relevant vs geometric relational structure"
+      result:
+        conclusion: INCONCLUSIVE
+        total_configs: 3
+        cg_wins: 3
+        win_rate: "100.0%"
+        lr: 1e-4
+        epochs: 30
+        n_train: 400
+        n_val: 100
+        seq_len: 5
+        n_objects: 3
+        tests:
+          - name: "geometric"
+            baseline_loss: 0.002358
+            cg_loss: 0.000543
+            improvement: "+76.96%"
+            cg_wins: true
+          - name: "task_relevant"
+            baseline_loss: 0.002059
+            cg_loss: 0.000325
+            improvement: "+84.20%"
+            cg_wins: true
+          - name: "mixed"
+            baseline_loss: 0.001933
+            cg_loss: 0.000394
+            improvement: "+79.59%"
+            cg_wins: true
+        key_finding: "CG wins on all relation types with large margins. Baseline too weak to differentiate - need harder task."
     - experiment_id: H1.410
       description: "Test CG on multi-object manipulation with varying object counts (2,3,4,5)"
       result:
@@ -51,50 +81,3 @@ experiments:
             cg_with_gnn_loss: 0.058647
             best_cg_improvement: "-2.01%"
         key_finding: "CG does NOT scale with object count. Only wins at 2 objects. Benefits require task-relevant relational structure, not just more objects/relations."
-    - experiment_id: H1.409
-      description: "Test CG on LIBERO-style relational data"
-      result:
-        conclusion: STRONGLY_SUPPORTED
-        baseline_loss: 0.001757
-        cg_no_gnn_loss: 0.000441
-        cg_with_gnn_loss: 0.000405
-        cg_no_gnn_improvement: "+74.90%"
-        cg_with_gnn_improvement: "+76.96%"
-        best_cg_improvement: "+76.96%"
-        lr: 1e-4
-        epochs: 30
-        n_train: 400
-        n_val: 100
-        obs_dim: 27
-        data_type: relational_libero
-        key_finding: "CG achieves massive improvement on LIBERO-style relational data. First time GNN provides additional benefit, suggesting rich relational structure enables GNN message passing."
-    - experiment_id: H1.408
-      description: "Investigate what data properties enable CG benefits"
-      result:
-        conclusion: SUPPORTED
-        total_data_types: 3
-        total_configs: 3
-        cg_wins: 1
-        win_rate: "33.3%"
-        lr: 1e-4
-        epochs: 30
-        tests:
-          - name: "unstructured"
-            obs_dim: 8
-            baseline_loss: 0.103136
-            cg_no_gnn_loss: 0.141822
-            cg_with_gnn_loss: 0.115099
-            best_cg_improvement: "-37.51%"
-          - name: "relational"
-            obs_dim: 27
-            baseline_loss: 0.008490
-            cg_no_gnn_loss: 0.004836
-            cg_with_gnn_loss: 0.005833
-            best_cg_improvement: "+43.05%"
-          - name: "structured_multi_object"
-            obs_dim: 40
-            baseline_loss: 0.021499
-            cg_no_gnn_loss: 0.028447
-            cg_with_gnn_loss: 0.028216
-            best_cg_improvement: "-32.32%"
-        key_finding: "CG benefits require data with explicit relational structure at the right complexity level. Sweet spot: relational data with clear object-entity relationships but not overly complex."

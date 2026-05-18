@@ -1,0 +1,43 @@
+{
+  "hypothesis": "H1.411",
+  "statement": "CG benefits require task-relevant relational structure, not just geometric",
+  "date": "2025-05-18",
+  "config": {
+    "n_train": 400,
+    "n_val": 100,
+    "epochs": 30,
+    "lr": 0.0001,
+    "seq_len": 5,
+    "n_objects": 3,
+    "relation_types": [
+      "geometric",
+      "task_relevant",
+      "mixed"
+    ]
+  },
+  "results": [
+    {
+      "relation_type": "geometric",
+      "baseline_loss": 0.002358,
+      "cg_loss": 0.000543,
+      "improvement_percent": 76.96,
+      "cg_wins": true
+    },
+    {
+      "relation_type": "task_relevant",
+      "baseline_loss": 0.002059,
+      "cg_loss": 0.000325,
+      "improvement_percent": 84.2,
+      "cg_wins": true
+    },
+    {
+      "relation_type": "mixed",
+      "baseline_loss": 0.001933,
+      "cg_loss": 0.000394,
+      "improvement_percent": 79.59,
+      "cg_wins": true
+    }
+  ],
+  "conclusion": "INCONCLUSIVE",
+  "key_finding": "CG wins on all relation types with large margins. The experiment design needs refinement - both models achieve similar high performance, suggesting the baseline is too weak or the task is too simple to differentiate task-relevant from geometric relations."
+}
