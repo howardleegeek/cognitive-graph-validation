@@ -1,10 +1,44 @@
-current_round: 184
-last_action: "H1.418 - Transformer-based Temporal CG. Tested transformer encoder for temporal modeling vs baseline MLP and original CG. H1.418 INCONCLUSIVE - Transformer-CG (-0.6%) slightly underperforms baseline, original CG (+1.2%) slightly better. Neither temporal extension shows strong advantage. Per-step analysis shows CG excels at 10-step (0.0384 vs 0.0730 baseline) but struggles at short sequences."
-next_intended_action: "H1.419 - Given that temporal extensions consistently underperform, pivot to testing CG on tasks with stronger physical grounding requirements (e.g., object permanence, collision prediction) where the unified representation may provide advantage. Alternatively, test CG on few-shot learning of novel object-task combinations."
+current_round: 185
+last_action: "H1.419 - Physical Grounding Tasks for CG. Tested CG on collision prediction, object permanence, and spatial reasoning tasks. H1.419 PARTIALLY SUPPORTED - CG +1.24% on collision, -5.31% on permanence, +0.40% on spatial. Graph Attention (object-level graph) wins on permanence (+5.28%). Key insight: object-level graph structure matters more than unified representation space for physical reasoning."
+next_intended_action: "H1.420 - Test whether CG benefits from finer-grained node structure (per-object nodes instead of single physical blob). Compare: (a) current 2-node CG, (b) per-object CG with N+1 nodes, (c) hybrid with object-level physical nodes + unified semantic node. Prediction: per-object CG will match or exceed GraphAttn performance on permanence task."
 
 experiments:
-  total_rounds: 184
+  total_rounds: 185
   trajectory:
+    - experiment_id: H1.419
+      description: "Physical Grounding Tasks for Cognitive Graph"
+      result:
+        conclusion: "PARTIALLY_SUPPORTED"
+        tasks:
+          collision:
+            baseline_loss: 0.562248
+            cg_loss: 0.555275
+            cg_improvement: "+1.24%"
+            graph_attn_loss: 0.563647
+            graph_attn_improvement: "-0.25%"
+            baseline_accuracy: 0.7689
+          permanence:
+            baseline_loss: 18.833548
+            cg_loss: 19.833021
+            cg_improvement: "-5.31%"
+            graph_attn_loss: 17.838958
+            graph_attn_improvement: "+5.28%"
+            baseline_mae: 2.9676
+          spatial:
+            baseline_loss: 12.857434
+            cg_loss: 12.806340
+            cg_improvement: "+0.40%"
+            graph_attn_loss: 12.844021
+            graph_attn_improvement: "+0.10%"
+            baseline_mae: 2.6637
+        config:
+          n_samples: 3000
+          epochs: 50
+          lr: 0.001
+          batch_size: 128
+          n_objects: 5
+          cg_physical_dim: 48
+          cg_semantic_dim: 96
     - experiment_id: H1.418
       description: "Transformer-based Temporal CG"
       result:
@@ -14,42 +48,10 @@ experiments:
         transformer_cg_loss: 0.310434
         improvement_cg: "+1.2%"
         improvement_trans_cg: "-0.6%"
-        per_step_results:
-          1_step:
-            baseline: 0.5303
-            cg: 0.5754
-            trans_cg: 0.4518
-          2_steps:
-            baseline: 0.3671
-            cg: 0.4938
-            trans_cg: 0.3998
-          3_steps:
-            baseline: 0.2586
-            cg: 0.4241
-            trans_cg: 0.3423
-          5_steps:
-            baseline: 0.2250
-            cg: 0.4602
-            trans_cg: 0.3318
-          10_steps:
-            baseline: 0.0730
-            cg: 0.0384
-            trans_cg: 0.0698
     - experiment_id: H1.415-417
       description: "Temporal CG: Extended training (100ep), proper GRU, curriculum learning"
       result:
         conclusion: "H1.415: PARTIALLY_SUPPORTED, H1.416: REFUTED, H1.417: INCONCLUSIVE"
-        total_configs: 5
         baseline_loss: 0.024565
         cg_loss: 0.040236
-        temporal_cg_v1_loss: 0.033412
-        temporal_cg_v2_loss: 0.036512
-        temporal_cg_v3_loss: 0.039312
         epochs: 100
-        lr: 1e-3
-        n_train: 1000
-        n_val: 250
-        n_test: 250
-        max_steps: 10
-        physical_dim: 48
-        semantic_dim: 96

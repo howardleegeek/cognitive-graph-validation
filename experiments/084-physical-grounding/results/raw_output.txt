@@ -1,0 +1,119 @@
+============================================================
+H1.419: Physical Grounding Tasks for Cognitive Graph
+============================================================
+
+========================================
+Task: collision (output_dim=1)
+========================================
+  Train: 2100, Val: 450, Test: 450
+  Training Baseline...
+    Baseline: val=0.478799, test={'loss': 0.5622475147247314, 'accuracy': 0.7688888907432556}
+  Training Cognitive Graph...
+    CG: val=0.477750, test={'loss': 0.5552754625678062, 'accuracy': 0.7688888907432556}
+  Training Graph Attention...
+    GraphAttn: val=0.478285, test={'loss': 0.5636470466852188, 'accuracy': 0.7688888907432556}
+
+  collision: Baseline=0.562248, CG=0.555275 (+1.24%), GraphAttn=0.563647 (-0.25%)
+
+========================================
+Task: permanence (output_dim=6)
+========================================
+  Train: 2100, Val: 450, Test: 450
+  Training Baseline...
+    Baseline: val=17.938948, test={'loss': 18.833548069000244, 'mae': 2.9675865173339844}
+  Training Cognitive Graph...
+    CG: val=18.436802, test={'loss': 19.83302116394043, 'mae': 3.056748151779175}
+  Training Graph Attention...
+    GraphAttn: val=16.570693, test={'loss': 17.83895778656006, 'mae': 2.849372386932373}
+
+  permanence: Baseline=18.833548, CG=19.833021 (-5.31%), GraphAttn=17.838958 (+5.28%)
+
+========================================
+Task: spatial (output_dim=3)
+========================================
+  Train: 2100, Val: 450, Test: 450
+  Training Baseline...
+    Baseline: val=13.866835, test={'loss': 12.857433795928955, 'mae': 2.663666009902954}
+  Training Cognitive Graph...
+    CG: val=13.863584, test={'loss': 12.806339740753174, 'mae': 2.6522932052612305}
+  Training Graph Attention...
+    GraphAttn: val=13.836713, test={'loss': 12.84402060508728, 'mae': 2.668473243713379}
+
+  spatial: Baseline=12.857434, CG=12.806340 (+0.40%), GraphAttn=12.844021 (+0.10%)
+
+============================================================
+SUMMARY
+============================================================
+  collision      : CG +1.24%, GraphAttn -0.25%
+  permanence     : CG -5.31%, GraphAttn +5.28%
+  spatial        : CG +0.40%, GraphAttn +0.10%
+
+{
+  "experiment_id": "H1.419",
+  "description": "Physical Grounding Tasks for Cognitive Graph",
+  "results": {
+    "collision": {
+      "baseline": {
+        "val_loss": 0.4787987917661667,
+        "test_loss": 0.5622475147247314,
+        "accuracy": 0.7688888907432556
+      },
+      "cognitive_graph": {
+        "val_loss": 0.47775012999773026,
+        "test_loss": 0.5552754625678062,
+        "improvement_vs_baseline_pct": 1.24,
+        "accuracy": 0.7688888907432556
+      },
+      "graph_attention": {
+        "val_loss": 0.47828519344329834,
+        "test_loss": 0.5636470466852188,
+        "improvement_vs_baseline_pct": -0.25,
+        "accuracy": 0.7688888907432556
+      }
+    },
+    "permanence": {
+      "baseline": {
+        "val_loss": 17.938947677612305,
+        "test_loss": 18.833548069000244,
+        "mae": 2.9675865173339844
+      },
+      "cognitive_graph": {
+        "val_loss": 18.43680238723755,
+        "test_loss": 19.83302116394043,
+        "improvement_vs_baseline_pct": -5.31,
+        "mae": 3.056748151779175
+      },
+      "graph_attention": {
+        "val_loss": 16.570693254470825,
+        "test_loss": 17.83895778656006,
+        "improvement_vs_baseline_pct": 5.28,
+        "mae": 2.849372386932373
+      }
+    },
+    "spatial": {
+      "baseline": {
+        "val_loss": 13.866835117340088,
+        "test_loss": 12.857433795928955,
+        "mae": 2.663666009902954
+      },
+      "cognitive_graph": {
+        "val_loss": 13.863584280014038,
+        "test_loss": 12.806339740753174,
+        "improvement_vs_baseline_pct": 0.4,
+        "mae": 2.6522932052612305
+      },
+      "graph_attention": {
+        "val_loss": 13.83671259880066,
+        "test_loss": 12.84402060508728,
+        "improvement_vs_baseline_pct": 0.1,
+        "mae": 2.668473243713379
+      }
+    }
+  },
+  "config": {
+    "n_samples": 3000,
+    "epochs": 50,
+    "lr": 0.001,
+    "batch_size": 128
+  }
+}

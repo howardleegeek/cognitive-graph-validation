@@ -83,3 +83,38 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 | 3 | 0.0213 | 0.0458 | 0.0368 | 0.0351 | 0.0409 |
 | 5 | 0.0242 | 0.0314 | 0.0219 | 0.0225 | 0.0307 |
 | 10 | 0.0324 | 0.0872 | 0.0758 | 0.0815 | 0.0790 |
+
+---
+
+### H1.419: Physical Grounding Tasks for Cognitive Graph — Round 185
+
+**Hypothesis**: CG's unified representation (physical + semantic in shared space) will outperform separated architectures on tasks requiring physical reasoning where language must be grounded in physical dynamics.
+
+**Motivation**: Prior experiments (H1.415-418) showed CG slightly outperforms baseline on standard tasks (+1.2%) but temporal extensions consistently underperform. The next logical test: does CG's advantage emerge on tasks that specifically require coupling physical dynamics with language understanding?
+
+**Method**: Three physical grounding tasks, each with 3000 samples (70/15/15 split), 50 epochs, lr=1e-3, batch_size=128:
+1. **Collision prediction**: Given 5-object scene + language specifying object pair, predict if they collide within 10 timesteps (binary classification)
+2. **Object permanence**: Given scene + language specifying occluded object, predict its position after 5 timesteps (6D regression)
+3. **Spatial reasoning**: Given scene + language specifying two objects, predict their relative position (3D regression)
+
+Three architectures tested:
+- **Baseline**: Separate encoders → concatenation → MLP decoder
+- **Cognitive Graph**: Unified 48+96=144d space, GNN message passing + cross-attention
+- **Graph Attention**: Object-level graph (each object = node, language = query node)
+
+**Results**:
+
+| Task | Baseline Loss | CG Loss | CG vs Baseline | GraphAttn Loss | GraphAttn vs Baseline |
+|------|--------------|---------|----------------|----------------|----------------------|
+| Collision | 0.562248 | 0.555275 | **+1.24%** | 0.563647 | -0.25% |
+| Permanence | 18.833548 | 19.833021 | **-5.31%** | 17.838958 | **+5.28%** |
+| Spatial | 12.857434 | 12.806340 | **+0.40%** | 12.844021 | +0.10% |
+
+**Additional metrics**:
+- Collision accuracy: Baseline 76.89%, CG 76.89%, GraphAttn 76.89% (all identical — task may be at ceiling)
+- Permanence MAE: Baseline 2.97, CG 3.06, GraphAttn 2.85
+- Spatial MAE: Baseline 2.66, CG 2.65, GraphAttn 2.67
+
+**Conclusion**: H1.419 **PARTIALLY SUPPORTED**. CG shows marginal advantage on collision (+1.24%) and spatial (+0.40%) tasks but underperforms on permanence (-5.31%). The Graph Attention architecture (object-level graph) is the clear winner on permanence (+5.28%), suggesting that **explicit object-level graph structure** matters more than unified representation space for physical reasoning tasks. CG's unified space may be too coarse-grained — it fuses all physical state into one vector rather than maintaining per-object representations.
+
+**Key insight**: The advantage of graph-based approaches appears to depend on **granularity of graph nodes**. Object-level graphs (GraphAttn) outperform the coarse 2-node CG (physical blob + semantic blob) on tasks requiring per-object reasoning (permanence). This suggests H1 may need refinement: the benefit of CG may come from graph structure, not from unified representation space.

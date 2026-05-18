@@ -1,0 +1,74 @@
+{
+  "experiment_id": "H1.419",
+  "description": "Physical Grounding Tasks for Cognitive Graph",
+  "results": {
+    "collision": {
+      "baseline": {
+        "val_loss": 0.478799,
+        "test_loss": 0.562248,
+        "accuracy": 0.7689
+      },
+      "cognitive_graph": {
+        "val_loss": 0.477750,
+        "test_loss": 0.555275,
+        "improvement_vs_baseline_pct": 1.24,
+        "accuracy": 0.7689
+      },
+      "graph_attention": {
+        "val_loss": 0.478285,
+        "test_loss": 0.563647,
+        "improvement_vs_baseline_pct": -0.25,
+        "accuracy": 0.7689
+      }
+    },
+    "permanence": {
+      "baseline": {
+        "val_loss": 17.938948,
+        "test_loss": 18.833548,
+        "mae": 2.9676
+      },
+      "cognitive_graph": {
+        "val_loss": 18.436802,
+        "test_loss": 19.833021,
+        "improvement_vs_baseline_pct": -5.31,
+        "mae": 3.0567
+      },
+      "graph_attention": {
+        "val_loss": 16.570693,
+        "test_loss": 17.838958,
+        "improvement_vs_baseline_pct": 5.28,
+        "mae": 2.8494
+      }
+    },
+    "spatial": {
+      "baseline": {
+        "val_loss": 13.866835,
+        "test_loss": 12.857434,
+        "mae": 2.6637
+      },
+      "cognitive_graph": {
+        "val_loss": 13.863584,
+        "test_loss": 12.806340,
+        "improvement_vs_baseline_pct": 0.40,
+        "mae": 2.6523
+      },
+      "graph_attention": {
+        "val_loss": 13.836713,
+        "test_loss": 12.844021,
+        "improvement_vs_baseline_pct": 0.10,
+        "mae": 2.6685
+      }
+    }
+  },
+  "config": {
+    "n_samples": 3000,
+    "epochs": 50,
+    "lr": 1e-3,
+    "batch_size": 128,
+    "n_objects": 5,
+    "physical_dim": 30,
+    "lang_dim": 32,
+    "cg_physical_dim": 48,
+    "cg_semantic_dim": 96
+  }
+}
