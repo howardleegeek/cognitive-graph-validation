@@ -1,0 +1,67 @@
+{
+  "experiment_id": "H1.410",
+  "description": "Test CG on multi-object manipulation with varying object counts (2,3,4,5)",
+  "hypothesis": "CG improvement will increase with object count as relational structure becomes more important",
+  "n_train": 400,
+  "n_val": 100,
+  "epochs": 30,
+  "lr": 0.0001,
+  "seq_len": 5,
+  "action_dim": 7,
+  "obs_dim_per_object": 13,
+  "rel_dim": 5,
+  "lang_dim": 32,
+  "total_configs": 4,
+  "cg_wins": 1,
+  "win_rate": "25.0%",
+  "results": {
+    "n_obj_2": {
+      "n_objects": 2,
+      "obs_dim": 63,
+      "n_relation_pairs": 1,
+      "baseline_loss": 0.049909,
+      "cg_no_gnn_loss": 0.048926,
+      "cg_with_gnn_loss": 0.048319,
+      "cg_no_gnn_improvement": "+1.97%",
+      "cg_with_gnn_improvement": "+3.19%",
+      "best_cg_improvement": "+3.19%",
+      "cg_wins_baseline": true
+    },
+    "n_obj_3": {
+      "n_objects": 3,
+      "obs_dim": 86,
+      "n_relation_pairs": 3,
+      "baseline_loss": 0.052621,
+      "cg_no_gnn_loss": 0.052798,
+      "cg_with_gnn_loss": 0.053419,
+      "cg_no_gnn_improvement": "-0.34%",
+      "cg_with_gnn_improvement": "-1.52%",
+      "best_cg_improvement": "-0.34%",
+      "cg_wins_baseline": false
+    },
+    "n_obj_4": {
+      "n_objects": 4,
+      "obs_dim": 114,
+      "n_relation_pairs": 6,
+      "baseline_loss": 0.053482,
+      "cg_no_gnn_loss": 0.055954,
+      "cg_with_gnn_loss": 0.057854,
+      "cg_no_gnn_improvement": "-4.62%",
+      "cg_with_gnn_improvement": "-8.18%",
+      "best_cg_improvement": "-4.62%",
+      "cg_wins_baseline": false
+    },
+    "n_obj_5": {
+      "n_objects": 5,
+      "obs_dim": 147,
+      "n_relation_pairs": 10,
+      "baseline_loss": 0.057451,
+      "cg_no_gnn_loss": 0.058604,
+      "cg_with_gnn_loss": 0.058647,
+      "cg_no_gnn_improvement": "-2.01%",
+      "cg_with_gnn_improvement": "-2.08%",
+      "best_cg_improvement": "-2.01%",
+      "cg_wins_baseline": false
+    }
+  }
+}

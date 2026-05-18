@@ -1,10 +1,56 @@
-current_round: 178
-last_action: "H1.409 - Tested CG on LIBERO-style relational data. Created dataset with explicit object-entity relationships (objects with position/velocity/type/color, relations with distance/contact/relative_position). KEY FINDING: CG achieves +74.90% (no GNN) and +76.96% (with GNN) improvement over baseline. This strongly validates H1.408's finding that CG benefits require relational data structure. First time GNN provides additional benefit (+2% over cross-attention alone), suggesting rich relational structure enables GNN message passing."
-next_intended_action: "H1.410 - Test CG on multi-object manipulation with varying object counts (2, 3, 4, 5 objects) to determine the scalability of CG benefits. Hypothesis: CG improvement will increase with object count as relational structure becomes more important."
+current_round: 179
+last_action: "H1.410 - Tested CG on multi-object manipulation with varying object counts (2, 3, 4, 5). KEY FINDING: Hypothesis REFUTED. CG only wins at 2 objects (+3.19%) and loses at 3, 4, 5 objects. Win rate: 25%. CG benefits require task-relevant relational structure, not just more objects/relations. This aligns with H1.408's finding about the 'right complexity level' for relational data."
+next_intended_action: "H1.411 - Investigate what makes relational structure 'task-relevant' vs 'geometric-only'. Generate datasets with varying degrees of task-relevant relational structure (e.g., relations that encode task affordances vs pure geometry) to identify the specific properties that enable CG benefits."
 
 experiments:
-  total_rounds: 178
+  total_rounds: 179
   trajectory:
+    - experiment_id: H1.410
+      description: "Test CG on multi-object manipulation with varying object counts (2,3,4,5)"
+      result:
+        conclusion: REFUTED
+        total_configs: 4
+        cg_wins: 1
+        win_rate: "25.0%"
+        lr: 1e-4
+        epochs: 30
+        n_train: 400
+        n_val: 100
+        seq_len: 5
+        tests:
+          - name: "2_objects"
+            n_objects: 2
+            obs_dim: 63
+            n_relation_pairs: 1
+            baseline_loss: 0.049909
+            cg_no_gnn_loss: 0.048926
+            cg_with_gnn_loss: 0.048319
+            best_cg_improvement: "+3.19%"
+          - name: "3_objects"
+            n_objects: 3
+            obs_dim: 86
+            n_relation_pairs: 3
+            baseline_loss: 0.052621
+            cg_no_gnn_loss: 0.052798
+            cg_with_gnn_loss: 0.053419
+            best_cg_improvement: "-0.34%"
+          - name: "4_objects"
+            n_objects: 4
+            obs_dim: 114
+            n_relation_pairs: 6
+            baseline_loss: 0.053482
+            cg_no_gnn_loss: 0.055954
+            cg_with_gnn_loss: 0.057854
+            best_cg_improvement: "-4.62%"
+          - name: "5_objects"
+            n_objects: 5
+            obs_dim: 147
+            n_relation_pairs: 10
+            baseline_loss: 0.057451
+            cg_no_gnn_loss: 0.058604
+            cg_with_gnn_loss: 0.058647
+            best_cg_improvement: "-2.01%"
+        key_finding: "CG does NOT scale with object count. Only wins at 2 objects. Benefits require task-relevant relational structure, not just more objects/relations."
     - experiment_id: H1.409
       description: "Test CG on LIBERO-style relational data"
       result:
@@ -52,60 +98,3 @@ experiments:
             cg_with_gnn_loss: 0.028216
             best_cg_improvement: "-32.32%"
         key_finding: "CG benefits require data with explicit relational structure at the right complexity level. Sweet spot: relational data with clear object-entity relationships but not overly complex."
-    - experiment_id: H1.407
-      description: "CG with cross-attention only (no GNN) on longer sequences and multi-step tasks"
-      result:
-        conclusion: REFUTED
-        total_conditions: 3
-        total_configs: 4
-        cg_wins: 0
-        win_rate: "0%"
-        lr: 1e-4
-        epochs: 30
-        tests:
-          - name: "seq_len=20"
-            baseline_loss: 0.090596
-            full_cg_loss: 0.113172
-            cg_no_gnn_loss: 0.131798
-            cg_no_cross_attn_loss: 0.110079
-            best_cg_improvement: "-45.48%"
-          - name: "multi_step (n=3)"
-            baseline_loss: 0.028725
-            full_cg_loss: 0.034235
-            cg_no_gnn_loss: 0.036209
-            cg_no_cross_attn_loss: 0.037663
-            best_cg_improvement: "-31.11%"
-          - name: "seq_len=30"
-            baseline_loss: 0.109083
-            full_cg_loss: 0.128759
-            cg_no_gnn_loss: 0.146295
-            cg_no_cross_attn_loss: 0.123961
-            best_cg_improvement: "-34.11%"
-        key_finding: "CG underperforms on synthetic data without relational structure. Data properties are critical for CG benefits."
-
-hypotheses:
-  - id: H1
-    status: SUPPORTED
-    description: "Cognitive Graph achieves higher sample efficiency than separated architectures"
-    key_evidence: "H1.409: +76.96% improvement on relational LIBERO data; H1.408: +43.05% on relational synthetic data"
-    confidence: 0.95
-  - id: H1.1
-    status: SUPPORTED
-    description: "CG benefits require data with explicit relational structure"
-    key_evidence: "H1.408: CG wins on relational data (+43%), loses on unstructured (-37%) and overly complex (-32%)"
-    confidence: 0.90
-  - id: H1.2
-    status: SUPPORTED
-    description: "GNN provides additional benefit when data has rich relational structure"
-    key_evidence: "H1.409: CG with GNN (+76.96%) outperforms CG without GNN (+74.90%) on LIBERO relational data"
-    confidence: 0.75
-  - id: H2
-    status: INCONCLUSIVE
-    description: "CG advantage grows with task complexity"
-    key_evidence: "H1.407: No improvement on longer sequences/multi-step tasks with synthetic data"
-    confidence: 0.40
-  - id: H3
-    status: REFUTED
-    description: "Attention-based fusion outperforms concatenation"
-    key_evidence: "H1.406: Cross-attention is key driver, but concatenation works better on simple tasks"
-    confidence: 0.30
