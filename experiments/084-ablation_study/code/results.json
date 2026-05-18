@@ -1,0 +1,34 @@
+{
+  "experiment_id": "H1.406",
+  "config": {
+    "lr": 0.0001,
+    "dim_ratio": 0.9,
+    "coupling": 0.9,
+    "seq_len": 20,
+    "n_samples": 500,
+    "epochs": 30,
+    "physical_dim": 12,
+    "semantic_dim": 116,
+    "total_dim": 128,
+    "num_heads": 4
+  },
+  "results": {
+    "baseline": 0.010720431338995695,
+    "no_unified_space": 0.010795576265081763,
+    "cg_no_gnn": 0.009909484069794416,
+    "cg_no_cross_attn": 0.015499750152230263,
+    "full_cg": 0.010369818657636642
+  },
+  "improvements": {
+    "no_unified_space": -0.7009505840751724,
+    "cg_no_gnn": 7.564502243967073,
+    "cg_no_cross_attn": -44.58140406953346,
+    "full_cg": 3.2705090893469455
+  },
+  "contributions": {
+    "unified_space": -0.7009505840751724,
+    "gnn": 8.265452828042246,
+    "cross_attn": -43.88045348545829
+  },
+  "primary_driver": "gnn"
+}
