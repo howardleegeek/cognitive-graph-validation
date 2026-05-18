@@ -122,3 +122,45 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 **Method**: Train on one task type, evaluate on another. Measure transfer performance.
 
 **Conclusion**: Per-Object CG transfers best across task types, suggesting it does NOT overfit to task-specific features.
+
+### H1.431: Testing CG on Tasks with Explicit Relational Structure — Round 197
+
+**Hypothesis**: Baseline MLP wins on synthetic tasks because they lack explicit relational structure. When tasks require modeling physical interactions between objects (collisions, stacking, pushing), the graph inductive bias of CG should provide an advantage.
+
+**Prediction**: On tasks with explicit multi-object physical interactions, CG will outperform Baseline MLP by >5% on validation MSE.
+
+**Context**: H1.430 showed Baseline MLP (0.033725) beats all CG variants (0.035+). H1.429 showed GRU helps multi-stage tasks slightly (+2.9%). This tests whether CG's graph structure helps when tasks explicitly require relational reasoning.
+
+**Method**: Generate 3 relational tasks (300 demos each, 10 timesteps, 3 objects):
+1. **Collision avoidance**: Navigate to target object while avoiding obstacles
+2. **Stacking**: Place object A on top of object B  
+3. **Pushing**: Push object A into object B
+
+Train Baseline MLP vs Cognitive Graph (with explicit object nodes and pair-wise relations). Compare validation MSE on predicting final action. 3 runs each, 20 epochs.
+
+**Results**:
+
+| Task | Baseline MLP MSE | Cognitive Graph MSE | Δ (CG vs MLP) |
+|------|------------------|---------------------|---------------|
+| Collision avoidance | 0.005362 ± 0.000426 | 0.006859 ± 0.000340 | **+27.93%** |
+| Stacking | 0.002405 ± 0.000149 | 0.002946 ± 0.000066 | **+22.51%** |
+| Pushing | 0.019028 ± 0.000507 | 0.025266 ± 0.001474 | **+32.78%** |
+
+**Key Findings**:
+1. **CG consistently underperforms even on relational tasks**: Baseline MLP beats CG by 22.5-32.8% across all three relational tasks.
+2. **Graph inductive bias does NOT provide advantage**: Despite tasks explicitly requiring modeling of object interactions (collisions, stacking, pushing), the CG architecture performs worse.
+3. **Worst performance on pushing task**: CG performs 32.8% worse on pushing, which requires understanding force transfer between objects — exactly the kind of physical interaction CG should excel at.
+4. **CG has lower variance on stacking**: CG shows more consistent performance (σ=0.000066 vs MLP's σ=0.000149) on stacking, suggesting the graph structure provides regularization, but not better accuracy.
+
+**Analysis**:
+- The prediction of CG outperforming MLP by >5% on relational tasks is decisively refuted (actual: CG performs 22.5-32.8% worse).
+- This suggests the failure of CG is not due to task simplicity — even tasks designed to benefit from relational reasoning show CG underperformance.
+- Possible explanations:
+  1. **Architectural limitations**: The graph construction or message passing may be suboptimal
+  2. **Optimization issues**: CG may be harder to train than MLP
+  3. **Capacity mismatch**: CG may have insufficient capacity relative to its parameter count
+  4. **Representation mismatch**: The object-centric representation may not align with task requirements
+
+**Implication**: The CG advantage hypothesized in the core research question may not manifest even under ideal conditions (explicit relational tasks). This raises fundamental questions about whether the unified graph representation is actually beneficial for sample efficiency.
+
+**Conclusion**: H1.431 **REFUTED**. Cognitive Graph underperforms Baseline MLP even on tasks explicitly designed to benefit from relational reasoning. The graph inductive bias does not provide the expected advantage.

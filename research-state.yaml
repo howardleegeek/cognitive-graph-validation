@@ -1,10 +1,36 @@
-current_round: 196
-last_action: "H1.430 - Attention-Based Temporal Aggregation (Transformer) vs RNN-based (GRU). Tested 5 architectures: Baseline MLP, Per-Object CG, Per-Object CG + GRU, Per-Object CG + Transformer, Full Transformer CG. Found Transformer does NOT outperform GRU (+0.51% worse). Full Transformer CG is most stable (σ=0.000019) but not better. Baseline MLP still wins all CG variants by 3.9-5.0%. Hypothesis REFUTED."
-next_intended_action: "H1.431 - Investigate why Baseline MLP consistently outperforms all CG variants on synthetic tasks. Test CG on tasks with explicit relational structure (multi-object physical interactions) where graph inductive bias should help."
+current_round: 197
+last_action: "H1.431 - Investigate why Baseline MLP consistently outperforms all CG variants on synthetic tasks. Test CG on tasks with explicit relational structure (multi-object physical interactions) where graph inductive bias should help. Found Baseline MLP still outperforms CG by 22.5-32.8% on relational tasks. Hypothesis REFUTED."
+next_intended_action: "H1.432 - Analyze failure modes: Why does CG underperform even on relational tasks? Investigate architectural limitations (graph construction, message passing) vs optimization issues (training dynamics, capacity mismatch)."
 
 experiments:
-  total_rounds: 196
+  total_rounds: 197
   trajectory:
+    - experiment_id: H1.431
+      description: "Test CG on tasks with explicit relational structure (collision avoidance, stacking, pushing)"
+      result:
+        conclusion: "REFUTED"
+        task: "relational_structure_tasks"
+        results:
+          collision_mlp_mse: 0.005362
+          collision_cg_mse: 0.006859
+          collision_cg_vs_mlp_percent: +27.93
+          stacking_mlp_mse: 0.002405
+          stacking_cg_mse: 0.002946
+          stacking_cg_vs_mlp_percent: +22.51
+          pushing_mlp_mse: 0.019028
+          pushing_cg_mse: 0.025266
+          pushing_cg_vs_mlp_percent: +32.78
+          cg_wins: 0
+          cg_losses: 3
+        key_insight: "Baseline MLP consistently outperforms CG even on tasks designed to benefit from relational reasoning. CG performs 22.5-32.8% worse across all relational tasks. Graph inductive bias does NOT provide advantage even when tasks explicitly require modeling object interactions."
+        config:
+          n_demos: 300
+          seq_len: 10
+          n_objects: 3
+          epochs: 20
+          n_runs: 3
+          task_types: ["collision", "stacking", "pushing"]
+          architectures: ["Baseline MLP", "Cognitive Graph"]
     - experiment_id: H1.430
       description: "Attention-Based Temporal Aggregation (Transformer) vs RNN-based (GRU)"
       result:
@@ -52,41 +78,4 @@ experiments:
           epochs: 30
           n_runs: 3
           architectures: ["Baseline MLP", "Per-Object CG", "Per-Object CG + LSTM", "Per-Object CG + GRU"]
-          task_types: ["spatial_relations", "multi_stage"]
-    - experiment_id: H1.428
-      description: "Hybrid Architecture - Combining Per-Object CG with 2-Node CG"
-      result:
-        conclusion: "NOT_SUPPORTED"
-        task: "hybrid_architecture"
-        results:
-          baseline_avg_mse: 1.085781
-          per_object_avg_mse: 1.113304
-          two_node_avg_mse: 1.132485
-          hybrid_avg_mse: 1.139827
-          spatial_relations:
-            baseline: 1.111649
-            per_object: 1.138354
-            two_node: 1.139350
-            hybrid: 1.133744
-          multi_stage:
-            baseline: 1.059912
-            per_object: 1.088253
-            two_node: 1.125620
-            hybrid: 1.145911
-        key_insight: "Hybrid architecture does not outperform individual architectures. Per-Object CG remains the best CG variant. Additional complexity adds overhead without benefit on synthetic data."
-        config:
-          n_demos: 500
-          n_runs: 3
-          epochs: 30
-          architectures: ["Baseline", "Per-Object CG", "2-Node CG", "Hybrid"]
-          task_types: ["spatial_relations", "multi_stage"]
-    - experiment_id: H1.427
-      description: "Task Type Transfer Learning - Testing if Per-Object CG overfits to task-specific features"
-      result:
-        conclusion: "NOT_SUPPORTED"
-        task: "transfer_learning"
-        key_insight: "Per-Object CG transfers best across task types, suggesting it does NOT overfit to task-specific features."
-        config:
-          n_demos: 500
-          n_runs: 3
-          epochs: 30
+          task_types: ["spatial_relations", "mult
