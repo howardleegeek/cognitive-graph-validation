@@ -1,0 +1,46 @@
+{
+  "experiment_id": "H1.418",
+  "hypothesis": "Transformer-based temporal modeling for Cognitive Graph",
+  "results": {
+    "baseline": {
+      "best_val_loss": 0.308591,
+      "test_loss": 0.308591,
+      "final_train_loss": 0.308591
+    },
+    "cognitive_graph": {
+      "best_val_loss": 0.305024,
+      "test_loss": 0.305024,
+      "final_train_loss": 0.305024
+    },
+    "transformer_cg": {
+      "best_val_loss": 0.310434,
+      "test_loss": 0.310434,
+      "final_train_loss": 0.310434
+    }
+  },
+  "per_step_results": {
+    "baseline": {
+      "1": 0.5303,
+      "2": 0.3671,
+      "3": 0.2586,
+      "5": 0.225,
+      "10": 0.073
+    },
+    "cognitive_graph": {
+      "1": 0.5754,
+      "2": 0.4938,
+      "3": 0.4241,
+      "5": 0.4602,
+      "10": 0.0384
+    },
+    "transformer_cg": {
+      "1": 0.4518,
+      "2": 0.3998,
+      "3": 0.3423,
+      "5": 0.3318,
+      "10": 0.0698
+    }
+  },
+  "baseline_loss": 0.308591,
+  "conclusion": "H1.418 INCONCLUSIVE - Transformer-CG (-0.6%) underperforms baseline slightly. Original CG (+1.2%) slightly better than baseline. Neither shows strong advantage. Transformer temporal modeling does not solve the temporal CG problem."
+}

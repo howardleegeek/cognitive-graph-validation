@@ -1,10 +1,40 @@
-current_round: 183
-last_action: "H1.415-417 - Temporal CG: Extended training (100ep), proper GRU, curriculum learning. H1.415 PARTIALLY SUPPORTED (extended training recovers from catastrophic failure but still loses to baseline). H1.416 REFUTED (proper GRU worse than self-recurrent). H1.417 INCONCLUSIVE (curriculum worst overall but best at 5-step). All Temp-CG variants underperform simple MLP baseline. Temporal CG architecture fundamentally mismatched for this prediction task."
-next_intended_action: "H1.418 - Test whether Temp-CG helps on tasks with stronger temporal dependencies (e.g., physics simulation with momentum/inertia). Also consider abandoning Temp-CG and exploring transformer-based temporal modeling instead."
+current_round: 184
+last_action: "H1.418 - Transformer-based Temporal CG. Tested transformer encoder for temporal modeling vs baseline MLP and original CG. H1.418 INCONCLUSIVE - Transformer-CG (-0.6%) slightly underperforms baseline, original CG (+1.2%) slightly better. Neither temporal extension shows strong advantage. Per-step analysis shows CG excels at 10-step (0.0384 vs 0.0730 baseline) but struggles at short sequences."
+next_intended_action: "H1.419 - Given that temporal extensions consistently underperform, pivot to testing CG on tasks with stronger physical grounding requirements (e.g., object permanence, collision prediction) where the unified representation may provide advantage. Alternatively, test CG on few-shot learning of novel object-task combinations."
 
 experiments:
-  total_rounds: 183
+  total_rounds: 184
   trajectory:
+    - experiment_id: H1.418
+      description: "Transformer-based Temporal CG"
+      result:
+        conclusion: "INCONCLUSIVE"
+        baseline_loss: 0.308591
+        cg_loss: 0.305024
+        transformer_cg_loss: 0.310434
+        improvement_cg: "+1.2%"
+        improvement_trans_cg: "-0.6%"
+        per_step_results:
+          1_step:
+            baseline: 0.5303
+            cg: 0.5754
+            trans_cg: 0.4518
+          2_steps:
+            baseline: 0.3671
+            cg: 0.4938
+            trans_cg: 0.3998
+          3_steps:
+            baseline: 0.2586
+            cg: 0.4241
+            trans_cg: 0.3423
+          5_steps:
+            baseline: 0.2250
+            cg: 0.4602
+            trans_cg: 0.3318
+          10_steps:
+            baseline: 0.0730
+            cg: 0.0384
+            trans_cg: 0.0698
     - experiment_id: H1.415-417
       description: "Temporal CG: Extended training (100ep), proper GRU, curriculum learning"
       result:
@@ -23,96 +53,3 @@ experiments:
         max_steps: 10
         physical_dim: 48
         semantic_dim: 96
-        tests:
-          - name: "baseline"
-            final_val_loss: 0.024565
-            best_val_loss: 0.024562
-            best_epoch: 91
-          - name: "cognitive_graph"
-            final_val_loss: 0.040236
-            best_val_loss: 0.039302
-            best_epoch: 41
-            improvement_vs_baseline: "-63.79%"
-          - name: "temporal_cg_v1_self_recurrent"
-            final_val_loss: 0.033412
-            best_val_loss: 0.032596
-            best_epoch: 60
-            improvement_vs_baseline: "-36.01%"
-          - name: "temporal_cg_v2_proper_gru"
-            final_val_loss: 0.036512
-            best_val_loss: 0.035929
-            best_epoch: 58
-            improvement_vs_baseline: "-48.63%"
-          - name: "temporal_cg_v3_curriculum"
-            final_val_loss: 0.039312
-            best_val_loss: 0.038454
-            best_epoch: 49
-            improvement_vs_baseline: "-60.03%"
-        per_step_results:
-          1_step:
-            baseline: 0.0238
-            cg: 0.0656
-            temporal_cg_v1: 0.0606
-            temporal_cg_v2: 0.0529
-            temporal_cg_v3: 0.0595
-          2_steps:
-            baseline: 0.0204
-            cg: 0.0468
-            temporal_cg_v1: 0.0492
-            temporal_cg_v2: 0.0579
-            temporal_cg_v3: 0.0499
-          3_steps:
-            baseline: 0.0213
-            cg: 0.0458
-            temporal_cg_v1: 0.0368
-            temporal_cg_v2: 0.0351
-            temporal_cg_v3: 0.0409
-          5_steps:
-            baseline: 0.0242
-            cg: 0.0314
-            temporal_cg_v1: 0.0219
-            temporal_cg_v2: 0.0225
-            temporal_cg_v3: 0.0307
-          10_steps:
-            baseline: 0.0324
-            cg: 0.0872
-            temporal_cg_v1: 0.0758
-            temporal_cg_v2: 0.0815
-            temporal_cg_v3: 0.0790
-        key_finding: "All Temp-CG variants underperform baseline. Extended training (H1.415) recovers from catastrophic failure but doesn't beat baseline. Proper GRU (H1.416) worse than self-recurrent. Curriculum (H1.417) worst overall but best at 5-step. Temporal CG architecture fundamentally mismatched."
-    - experiment_id: H1.414
-      description: "Temporal CG with recurrent message passing for multi-step prediction"
-      result:
-        conclusion: REFUTED
-        total_configs: 3
-        cg_wins: 0
-        win_rate: "0.0%"
-        lr: 1e-3
-        epochs: 40
-        n_train: 1000
-        n_val: 500
-        n_objects: 5
-        max_steps: 10
-        tests:
-          - name: "1_step"
-            n_steps: 1
-            baseline_loss: 0.029011
-            cg_loss: 0.018440
-            temporal_cg_loss: 0.257649
-            cg_improvement_vs_baseline: "+36.4%"
-            temporal_cg_improvement_vs_baseline: "-788.1%"
-          - name: "5_steps"
-            n_steps: 5
-            baseline_loss: 0.009584
-            cg_loss: 0.011841
-            temporal_cg_loss: 0.271031
-            cg_improvement_vs_baseline: "-23.5%"
-            temporal_cg_improvement_vs_baseline: "-2727.8%"
-          - name: "10_steps"
-            n_steps: 10
-            baseline_loss: 0.005338
-            cg_loss: 0.010713
-            temporal_cg_loss: 0.013712
-            cg_improvement_vs_baseline: "-100.7%"
-            temporal_cg_improvement_vs_baseline: "-157.0%"
-        key_finding: "REFUTED. Temp-CG performs worse than both baselines. Inverse loss scaling pattern: Temp-CG loss decreases with sequence length (0.258→0.014). Suggests training difficulty or architecture mismatch."
