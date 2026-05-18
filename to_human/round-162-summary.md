@@ -1,0 +1,5 @@
+# Round 162 Summary
+
+**Experiment**: H1.391 - LIBERO-style complexity validation
+
+**Result**: ❌ REFUTED — The complexity threshold predictor from H1.390 does NOT generalize to classification tasks. Tested 7 configurations with LIBERO-style robot manipulation data (predicting target object from trajectory + language). Found negative correlation (-0.805) between complexity and CG advantage, opposite of H1.390's positive 0.839. Baseline MLP won 6/7 configs, CG only won at the simplest setting (3 objects). This reveals that task type (classification vs regression) is a critical factor for CG advantage — the complexity formula only applies to action prediction tasks, not object selection tasks. Next: investigate task-type dependency to understand when CG excels vs when simpler architectures suffice.

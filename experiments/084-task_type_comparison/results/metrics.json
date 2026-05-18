@@ -1,0 +1,167 @@
+{
+  "experiment_id": "H1.392",
+  "description": "Task type dependency: Compare action prediction (regression) vs classification",
+  "timestamp": "2026-05-17T20:03:50.570562",
+  "config": {
+    "n_train": 150,
+    "n_val": 50,
+    "epochs": 30,
+    "batch_size": 32,
+    "learning_rate": 0.001
+  },
+  "regression_results": [
+    {
+      "config": "simple",
+      "n_objects": 3,
+      "seq_len": 10,
+      "complexity": 21.292978309926852,
+      "baseline_loss": 0.016589775681495667,
+      "cg_loss": 0.014696963131427765,
+      "improvement_percent": 11.409512620349387,
+      "winner": "cg"
+    },
+    {
+      "config": "simple2",
+      "n_objects": 4,
+      "seq_len": 15,
+      "complexity": 32.66377434864097,
+      "baseline_loss": 0.015522756613790989,
+      "cg_loss": 0.016024228185415268,
+      "improvement_percent": -3.230557458968036,
+      "winner": "baseline"
+    },
+    {
+      "config": "medium",
+      "n_objects": 5,
+      "seq_len": 20,
+      "complexity": 45.96596968467302,
+      "baseline_loss": 0.01812928542494774,
+      "cg_loss": 0.016942203044891357,
+      "improvement_percent": 6.5478718671549805,
+      "winner": "cg"
+    },
+    {
+      "config": "threshold",
+      "n_objects": 6,
+      "seq_len": 25,
+      "complexity": 61.09956181967428,
+      "baseline_loss": 0.014031168073415756,
+      "cg_loss": 0.01487105805426836,
+      "improvement_percent": -5.985887821014039,
+      "winner": "baseline"
+    },
+    {
+      "config": "crossover",
+      "n_objects": 7,
+      "seq_len": 30,
+      "complexity": 77.99707690740676,
+      "baseline_loss": 0.015484604053199291,
+      "cg_loss": 0.017687954008579254,
+      "improvement_percent": -14.229294774409981,
+      "winner": "baseline"
+    },
+    {
+      "config": "complex",
+      "n_objects": 8,
+      "seq_len": 35,
+      "complexity": 96.60898068094727,
+      "baseline_loss": 0.017698660492897034,
+      "cg_loss": 0.017485883086919785,
+      "improvement_percent": 1.2022232194500972,
+      "winner": "cg"
+    },
+    {
+      "config": "very_complex",
+      "n_objects": 10,
+      "seq_len": 40,
+      "complexity": 131.49689374169483,
+      "baseline_loss": 0.015574087388813496,
+      "cg_loss": 0.014783307909965515,
+      "improvement_percent": 5.077533335378477,
+      "winner": "cg"
+    }
+  ],
+  "classification_results": [
+    {
+      "config": "simple",
+      "n_objects": 3,
+      "seq_len": 10,
+      "complexity": 21.292978309926852,
+      "baseline_acc": 0.4399999976158142,
+      "cg_acc": 0.4399999976158142,
+      "improvement_percent": 0.0,
+      "winner": "baseline"
+    },
+    {
+      "config": "simple2",
+      "n_objects": 4,
+      "seq_len": 15,
+      "complexity": 32.66377434864097,
+      "baseline_acc": 0.2199999988079071,
+      "cg_acc": 0.3400000035762787,
+      "improvement_percent": 54.54545700845641,
+      "winner": "cg"
+    },
+    {
+      "config": "medium",
+      "n_objects": 5,
+      "seq_len": 20,
+      "complexity": 45.96596968467302,
+      "baseline_acc": 0.23999999463558197,
+      "cg_acc": 0.20000000298023224,
+      "improvement_percent": -16.666663562258016,
+      "winner": "baseline"
+    },
+    {
+      "config": "threshold",
+      "n_objects": 6,
+      "seq_len": 25,
+      "complexity": 61.09956181967428,
+      "baseline_acc": 0.14000000059604645,
+      "cg_acc": 0.10000000149011612,
+      "improvement_percent": -28.57142781116525,
+      "winner": "baseline"
+    },
+    {
+      "config": "crossover",
+      "n_objects": 7,
+      "seq_len": 30,
+      "complexity": 77.99707690740676,
+      "baseline_acc": 0.11999999731779099,
+      "cg_acc": 0.2199999988079071,
+      "improvement_percent": 83.33333643774199,
+      "winner": "cg"
+    },
+    {
+      "config": "complex",
+      "n_objects": 8,
+      "seq_len": 35,
+      "complexity": 96.60898068094727,
+      "baseline_acc": 0.14000000059604645,
+      "cg_acc": 0.1599999964237213,
+      "improvement_percent": 14.285711244660995,
+      "winner": "cg"
+    },
+    {
+      "config": "very_complex",
+      "n_objects": 10,
+      "seq_len": 40,
+      "complexity": 131.49689374169483,
+      "baseline_acc": 0.05999999865889549,
+      "cg_acc": 0.11999999731779099,
+      "improvement_percent": 100.0,
+      "winner": "cg"
+    }
+  ],
+  "analysis": {
+    "regression_complexity_correlation": -0.15314947379117802,
+    "classification_complexity_correlation": 0.5598141300325117,
+    "regression_cg_wins": 4,
+    "classification_cg_wins": 4,
+    "regression_avg_improvement": 0.113057283991555,
+    "classification_avg_improvement": 29.560916188205162,
+    "correlation_difference": -0.7129636038236897,
+    "key_finding": "Neither task type shows strong positive correlation. Regression: -0.153, Classification: 0.560. CG advantage may depend on other factors."
+  },
+  "conclusion": "INCONCLUSIVE"
+}

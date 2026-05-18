@@ -1,10 +1,84 @@
-current_round: 162
-last_action: "H1.391 - LIBERO-style complexity validation: Tested if complexity predictor generalizes to robot manipulation classification task"
-next_intended_action: "H1.392 - Investigate task-type dependency: Compare action prediction vs classification tasks to understand why complexity predictor fails for classification"
+current_round: 163
+last_action: "H1.392 - Task type dependency investigation: Compared regression (action prediction) vs classification (target object prediction) on identical data configurations"
+next_intended_action: "H1.393 - Investigate discrepancy between H1.390 (+0.839 correlation) and H1.392 regression (-0.153): Test if data generation, model capacity, or random seeds explain the difference"
 
 experiments:
-  total_runs: 162
+  total_runs: 163
   trajectory:
+  - experiment_id: H1.392
+    description: "Task type dependency: Compare regression vs classification on identical data"
+    result:
+      conclusion: INCONCLUSIVE
+      regression_correlation: -0.153
+      classification_correlation: 0.560
+      regression_cg_wins: 4
+      classification_cg_wins: 4
+      regression_avg_improvement: 0.11
+      classification_avg_improvement: 29.56
+      key_finding: "Task type alone does NOT explain H1.390 vs H1.391 discrepancy. Regression shows weak negative correlation (-0.153), classification shows moderate positive (0.560). Neither matches H1.390's +0.839. CG shows stronger advantage in classification at higher complexity."
+      config:
+        n_train: 150
+        n_val: 50
+        n_epochs: 30
+        batch_size: 32
+        learning_rate: 1e-3
+        test_configs:
+          - name: simple
+            n_objects: 3
+            seq_len: 10
+            complexity: 21.3
+            regression_winner: cg
+            regression_improvement: 11.4
+            classification_winner: baseline
+            classification_improvement: 0.0
+          - name: simple2
+            n_objects: 4
+            seq_len: 15
+            complexity: 32.7
+            regression_winner: baseline
+            regression_improvement: -3.2
+            classification_winner: cg
+            classification_improvement: 54.5
+          - name: medium
+            n_objects: 5
+            seq_len: 20
+            complexity: 46.0
+            regression_winner: cg
+            regression_improvement: 6.5
+            classification_winner: baseline
+            classification_improvement: -16.7
+          - name: threshold
+            n_objects: 6
+            seq_len: 25
+            complexity: 61.1
+            regression_winner: baseline
+            regression_improvement: -6.0
+            classification_winner: baseline
+            classification_improvement: -28.6
+          - name: crossover
+            n_objects: 7
+            seq_len: 30
+            complexity: 78.0
+            regression_winner: baseline
+            regression_improvement: -14.2
+            classification_winner: cg
+            classification_improvement: 83.3
+          - name: complex
+            n_objects: 8
+            seq_len: 35
+            complexity: 96.6
+            regression_winner: cg
+            regression_improvement: 1.2
+            classification_winner: cg
+            classification_improvement: 14.3
+          - name: very_complex
+            n_objects: 10
+            seq_len: 40
+            complexity: 131.5
+            regression_winner: cg
+            regression_improvement: 5.1
+            classification_winner: cg
+            classification_improvement: 100.0
   - experiment_id: H1.391
     description: "LIBERO-style complexity validation: Test if predictor generalizes to robot manipulation"
     result:
@@ -85,61 +159,3 @@ experiments:
         test_configs:
           - name: simple
             n_objects: 3
-            seq_len: 5
-            action_dim: 3
-            complexity: 9.4
-            winner: baseline
-          - name: simple2
-            n_objects: 4
-            seq_len: 8
-            action_dim: 5
-            complexity: 16.4
-            winner: baseline
-          - name: medium
-            n_objects: 5
-            seq_len: 10
-            action_dim: 7
-            complexity: 24.3
-            winner: cg_large
-          - name: threshold
-            n_objects: 7
-            seq_len: 10
-            action_dim: 7
-            complexity: 39.9
-            winner: cg_large
-          - name: crossover
-            n_objects: 8
-            seq_len: 10
-            action_dim: 7
-            complexity: 49.5
-            winner: cg_small
-          - name: complex
-            n_objects: 10
-            seq_len: 15
-            action_dim: 7
-            complexity: 76.3
-            winner: cg_small
-          - name: very_complex
-            n_objects: 12
-            seq_len: 20
-            action_dim: 9
-            complexity: 109.1
-            winner: cg_small
-  - experiment_id: H1.389
-    description: "Complexity Threshold: Find crossover point where CG starts winning"
-    result:
-      cognitive_graph_wins: true
-      conclusion: SUPPORTED
-      crossover_point: 8
-      complexity_correlation: 0.837
-      key_finding: "CG starts winning at 8 objects (complexity score 72). Strong correlation (0.837) between complexity and CG advantage. Small CG wins at threshold, large CG wins at higher complexity."
-      baseline_mse_range: [0.037333, 0.051467]
-      cg_small_best: 0.044213
-      cg_large_best: 0.046238
-      config:
-        n_train: 300
-        n_val: 75
-        n_epochs: 30
-        batch_size: 32
-        learning_rate: 1e-3
-        object_counts: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

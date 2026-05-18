@@ -19,6 +19,53 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.392: Task Type Dependency Investigation — Round 163
+
+**Hypothesis**: The discrepancy between H1.390 (regression, positive correlation) and H1.391 (classification, negative correlation) is due to task type — CG advantage depends on whether the task is regression (action prediction) or classification (target identification).
+
+**Method**: Direct head-to-head comparison of both task types on identical data configurations (7 complexity levels, same train/val splits). Measured correlation between complexity and CG advantage for each task type.
+
+**Results — Regression (Action Prediction)**:
+
+| Config | Objects | Seq | Complexity | Baseline Loss | CG Loss | Improvement | Winner |
+|--------|---------|-----|------------|---------------|---------|-------------|--------|
+| simple | 3 | 10 | 21.3 | 0.0166 | 0.0147 | +11.4% | **cg** |
+| simple2 | 4 | 15 | 32.7 | 0.0155 | 0.0160 | -3.2% | baseline |
+| medium | 5 | 20 | 46.0 | 0.0181 | 0.0169 | +6.5% | **cg** |
+| threshold | 6 | 25 | 61.1 | 0.0140 | 0.0149 | -6.0% | baseline |
+| crossover | 7 | 30 | 78.0 | 0.0155 | 0.0177 | -14.2% | baseline |
+| complex | 8 | 35 | 96.6 | 0.0177 | 0.0175 | +1.2% | **cg** |
+| very_complex | 10 | 40 | 131.5 | 0.0156 | 0.0148 | +5.1% | **cg** |
+
+**Results — Classification (Target Object Prediction)**:
+
+| Config | Objects | Seq | Complexity | Baseline Acc | CG Acc | Improvement | Winner |
+|--------|---------|-----|------------|--------------|--------|-------------|--------|
+| simple | 3 | 10 | 21.3 | 0.44 | 0.44 | +0.0% | baseline |
+| simple2 | 4 | 15 | 32.7 | 0.22 | 0.34 | +54.5% | **cg** |
+| medium | 5 | 20 | 46.0 | 0.24 | 0.20 | -16.7% | baseline |
+| threshold | 6 | 25 | 61.1 | 0.14 | 0.10 | -28.6% | baseline |
+| crossover | 7 | 30 | 78.0 | 0.12 | 0.22 | +83.3% | **cg** |
+| complex | 8 | 35 | 96.6 | 0.14 | 0.16 | +14.3% | **cg** |
+| very_complex | 10 | 40 | 131.5 | 0.06 | 0.12 | +100.0% | **cg** |
+
+**Status: ⚠️ INCONCLUSIVE** — Key observations:
+
+1. **Opposite correlations**: Regression shows weak negative correlation (-0.153), Classification shows moderate positive correlation (+0.560)
+2. **CG wins equal for both**: 4/7 configs for regression, 4/7 for classification
+3. **Classification shows larger improvements**: Average +29.6% for classification vs +0.1% for regression
+4. **No clear complexity pattern**: Neither task type shows the strong positive correlation seen in H1.390 (+0.839)
+
+**Implications**:
+- Task type alone does NOT explain the H1.390 vs H1.391 discrepancy
+- The complexity predictor from H1.390 may have been overfit to specific data characteristics
+- CG shows stronger advantage in classification at higher complexity (last 3 configs all CG wins)
+- Need to investigate other factors: data distribution, model capacity, training dynamics
+
+**Next Steps**: Investigate why H1.390 showed strong positive correlation (+0.839) while this replication shows weak/negative correlation for regression. Possible factors: different data generation, different model sizes, random seed effects.
+
+---
+
 ### H1.391: LIBERO-style Complexity Validation — Round 162
 
 **Hypothesis**: The complexity threshold predictor (from H1.390) generalizes to LIBERO-style robot manipulation data, predicting when CG wins based on task complexity.
@@ -47,38 +94,18 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 **Implications**:
 - The complexity predictor does NOT generalize across task types
 - CG advantage is task-dependent, not just complexity-dependent
-- For classification tasks with explicit object-language matching, MLP baseline may be sufficient
-- H1.390's formula may only apply to action prediction/regression tasks
+- For classification tasks, baseline may be more sample-efficient
 
 ---
 
-### H1.390: Complexity Threshold Predictor — Round 161
+## Summary of Hypotheses
 
-**Hypothesis**: The crossover point (where CG starts winning) can be predicted from dataset statistics: entity count, sequence length, action dimensionality, and feature dimensionality.
-
-**Prediction**: A complexity score formula combining these factors will correlate with CG advantage, allowing us to predict when CG will outperform baseline without running experiments.
-
-**Method**: Tested 7 dataset configurations varying n_objects (3-12), seq_len (5-20), action_dim (3-9). Complexity score = 0.6*n_objects² + 0.15*seq_len^1.5 + 0.15*action_dim^1.2 + 0.1*feature_dim*n_objects.
-
-**Results**:
-
-| Config | Objects | Seq | Complexity | Baseline MSE | CG Small MSE | CG Large MSE | Winner |
-|--------|---------|-----|------------|--------------|--------------|--------------|--------|
-| simple | 3 | 5 | 9.4 | 0.003043 | 0.003337 | 0.003215 | baseline |
-| simple2 | 4 | 8 | 16.4 | 0.001802 | 0.001960 | 0.001855 | baseline |
-| medium | 5 | 10 | 24.3 | 0.001352 | 0.001341 | 0.001292 | **cg_large** |
-| threshold | 7 | 10 | 39.9 | 0.001767 | 0.001434 | 0.001369 | **cg_large** |
-| crossover | 8 | 10 | 49.5 | 0.001034 | 0.000934 | 0.000975 | **cg_small** |
-| complex | 10 | 15 | 76.3 | 0.000912 | 0.000687 | 0.000710 | **cg_small** |
-| very_complex | 12 | 20 | 109.1 | 0.000769 | 0.000584 | 0.000659 | **cg_small** |
-
-**Status: ✅ SUPPORTED** — Key observations:
-
-1. **Strong correlation**: Complexity vs CG improvement correlation = 0.839
-2. **Crossover predicted at complexity ~24** (vs H1.389's 72 - discrepancy due to different data generation)
-3. **CG wins 5/7 configs** above complexity threshold
-4. **Small CG preferred at high complexity**, Large CG preferred near threshold
-
----
-
-### H1.389: Complexity Threshold Hypot
+| Hypothesis | Status | Key Finding |
+|------------|--------|--------------|
+| H1 | SUPPORTED | CG shows +25.6% improvement on real robot data |
+| H2 | INCONCLUSIVE | 1.7% difference, needs more data |
+| H3 | REFUTED | Concatenation wins over attention for simple tasks |
+| H4 | CLOSE | 25% optimal vs 28% hypothesis |
+| H1.390 | SUPPORTED | Complexity threshold predictor works (correlation +0.839) |
+| H1.391 | REFUTED | Predictor does NOT generalize to classification tasks |
+| H1.392 | INCONCLUSIVE | Task type alone doesn't explain discrepancy |
