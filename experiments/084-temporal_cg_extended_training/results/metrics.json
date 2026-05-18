@@ -1,0 +1,314 @@
+{
+  "experiment_id": "H1.415-417",
+  "description": "Temporal CG: Extended training (100ep), proper GRU, curriculum learning",
+  "config": {
+    "n_train": 1000,
+    "n_val": 250,
+    "n_test": 250,
+    "max_steps": 10,
+    "batch_size": 64,
+    "obs_dim": 8,
+    "lang_dim": 32,
+    "action_dim": 7,
+    "physical_dim": 48,
+    "semantic_dim": 96,
+    "epochs": 100
+  },
+  "comparison": {
+    "cognitive_graph": {
+      "final_val_loss": 0.040236067958176136,
+      "best_val_loss": 0.03930159471929073,
+      "improvement_vs_baseline_pct": -63.79,
+      "by_step": {
+        "1_steps": {
+          "n_steps": 1,
+          "n_samples": 22,
+          "loss": 0.06564546376466751
+        },
+        "2_steps": {
+          "n_steps": 2,
+          "n_samples": 29,
+          "loss": 0.04682353883981705
+        },
+        "3_steps": {
+          "n_steps": 3,
+          "n_samples": 24,
+          "loss": 0.04582183435559273
+        },
+        "5_steps": {
+          "n_steps": 5,
+          "n_samples": 25,
+          "loss": 0.03144923225045204
+        },
+        "10_steps": {
+          "n_steps": 10,
+          "n_samples": 27,
+          "loss": 0.08717851340770721
+        }
+      }
+    },
+    "temporal_cg_v1_100ep": {
+      "final_val_loss": 0.033411509823054075,
+      "best_val_loss": 0.03259633621200919,
+      "improvement_vs_baseline_pct": -36.01,
+      "by_step": {
+        "1_steps": {
+          "n_steps": 1,
+          "n_samples": 22,
+          "loss": 0.06056330353021622
+        },
+        "2_steps": {
+          "n_steps": 2,
+          "n_samples": 29,
+          "loss": 0.04917795956134796
+        },
+        "3_steps": {
+          "n_steps": 3,
+          "n_samples": 24,
+          "loss": 0.03677312657237053
+        },
+        "5_steps": {
+          "n_steps": 5,
+          "n_samples": 25,
+          "loss": 0.021872537210583687
+        },
+        "10_steps": {
+          "n_steps": 10,
+          "n_samples": 27,
+          "loss": 0.075847327709198
+        }
+      }
+    },
+    "temporal_cg_v2_proper_gru_100ep": {
+      "final_val_loss": 0.036511543206870556,
+      "best_val_loss": 0.03592927008867264,
+      "improvement_vs_baseline_pct": -48.63,
+      "by_step": {
+        "1_steps": {
+          "n_steps": 1,
+          "n_samples": 22,
+          "loss": 0.052856769412755966
+        },
+        "2_steps": {
+          "n_steps": 2,
+          "n_samples": 29,
+          "loss": 0.0578952357172966
+        },
+        "3_steps": {
+          "n_steps": 3,
+          "n_samples": 24,
+          "loss": 0.0350893996655941
+        },
+        "5_steps": {
+          "n_steps": 5,
+          "n_samples": 25,
+          "loss": 0.022492026910185814
+        },
+        "10_steps": {
+          "n_steps": 10,
+          "n_samples": 27,
+          "loss": 0.08154257386922836
+        }
+      }
+    },
+    "temporal_cg_v3_curriculum_100ep": {
+      "final_val_loss": 0.03931216988712549,
+      "best_val_loss": 0.038453567773103714,
+      "improvement_vs_baseline_pct": -60.03,
+      "by_step": {
+        "1_steps": {
+          "n_steps": 1,
+          "n_samples": 22,
+          "loss": 0.06044737994670868
+        },
+        "2_steps": {
+          "n_steps": 2,
+          "n_samples": 29,
+          "loss": 0.06456363201141357
+        },
+        "3_steps": {
+          "n_steps": 3,
+          "n_samples": 24,
+          "loss": 0.03854737803339958
+        },
+        "5_steps": {
+          "n_steps": 5,
+          "n_samples": 25,
+          "loss": 0.023707643151283264
+        },
+        "10_steps": {
+          "n_steps": 10,
+          "n_samples": 27,
+          "loss": 0.09684940427541733
+        }
+      }
+    }
+  },
+  "full_results": {
+    "baseline": {
+      "final_train_loss": 0.011515899270307273,
+      "final_val_loss": 0.024565312080085278,
+      "best_val_loss": 0.02456151694059372,
+      "best_val_epoch": 91,
+      "by_step": {
+        "1_steps": {
+          "n_steps": 1,
+          "n_samples": 22,
+          "loss": 0.04458555206656456
+        },
+        "2_steps": {
+          "n_steps": 2,
+          "n_samples": 29,
+          "loss": 0.024274751543998718
+        },
+        "3_steps": {
+          "n_steps": 3,
+          "n_samples": 24,
+          "loss": 0.014667441137135029
+        },
+        "5_steps": {
+          "n_steps": 5,
+          "n_samples": 25,
+          "loss": 0.011059680953621864
+        },
+        "10_steps": {
+          "n_steps": 10,
+          "n_samples": 27,
+          "loss": 0.07260312139987946
+        }
+      }
+    },
+    "cognitive_graph": {
+      "final_train_loss": 0.011251058953348547,
+      "final_val_loss": 0.040236067958176136,
+      "best_val_loss": 0.03930159471929073,
+      "best_val_epoch": 41,
+      "by_step": {
+        "1_steps": {
+          "n_steps": 1,
+          "n_samples": 22,
+          "loss": 0.06564546376466751
+        },
+        "2_steps": {
+          "n_steps": 2,
+          "n_samples": 29,
+          "loss": 0.04682353883981705
+        },
+        "3_steps": {
+          "n_steps": 3,
+          "n_samples": 24,
+          "loss": 0.04582183435559273
+        },
+        "5_steps": {
+          "n_steps": 5,
+          "n_samples": 25,
+          "loss": 0.03144923225045204
+        },
+        "10_steps": {
+          "n_steps": 10,
+          "n_samples": 27,
+          "loss": 0.08717851340770721
+        }
+      }
+    },
+    "temporal_cg_v1_100ep": {
+      "final_train_loss": 0.00164264980412554,
+      "final_val_loss": 0.033411509823054075,
+      "best_val_loss": 0.03259633621200919,
+      "best_val_epoch": 60,
+      "by_step": {
+        "1_steps": {
+          "n_steps": 1,
+          "n_samples": 22,
+          "loss": 0.06056330353021622
+        },
+        "2_steps": {
+          "n_steps": 2,
+          "n_samples": 29,
+          "loss": 0.04917795956134796
+        },
+        "3_steps": {
+          "n_steps": 3,
+          "n_samples": 24,
+          "loss": 0.03677312657237053
+        },
+        "5_steps": {
+          "n_steps": 5,
+          "n_samples": 25,
+          "loss": 0.021872537210583687
+        },
+        "10_steps": {
+          "n_steps": 10,
+          "n_samples": 27,
+          "loss": 0.075847327709198
+        }
+      }
+    },
+    "temporal_cg_v2_proper_gru_100ep": {
+      "final_train_loss": 0.0022821700913482346,
+      "final_val_loss": 0.036511543206870556,
+      "best_val_loss": 0.03592927008867264,
+      "best_val_epoch": 58,
+      "by_step": {
+        "1_steps": {
+          "n_steps": 1,
+          "n_samples": 22,
+          "loss": 0.052856769412755966
+        },
+        "2_steps": {
+          "n_steps": 2,
+          "n_samples": 29,
+          "loss": 0.0578952357172966
+        },
+        "3_steps": {
+          "n_steps": 3,
+          "n_samples": 24,
+          "loss": 0.0350893996655941
+        },
+        "5_steps": {
+          "n_steps": 5,
+          "n_samples": 25,
+          "loss": 0.022492026910185814
+        },
+        "10_steps": {
+          "n_steps": 10,
+          "n_samples": 27,
+          "loss": 0.08154257386922836
+        }
+      }
+    },
+    "temporal_cg_v3_curriculum_100ep": {
+      "final_train_loss": 0.0024828632376738824,
+      "final_val_loss": 0.03931216988712549,
+      "best_val_loss": 0.038453567773103714,
+      "best_val_epoch": 49,
+      "by_step": {
+        "1_steps": {
+          "n_steps": 1,
+          "n_samples": 22,
+          "loss": 0.06044737994670868
+        },
+        "2_steps": {
+          "n_steps": 2,
+          "n_samples": 29,
+          "loss": 0.06456363201141357
+        },
+        "3_steps": {
+          "n_steps": 3,
+          "n_samples": 24,
+          "loss": 0.03854737803339958
+        },
+        "5_steps": {
+          "n_steps": 5,
+          "n_samples": 25,
+          "loss": 0.023707643151283264
+        },
+        "10_steps": {
+          "n_steps": 10,
+          "n_samples": 27,
+          "loss": 0.09684940427541733
+        }
+      }
+    }
+  }
+}

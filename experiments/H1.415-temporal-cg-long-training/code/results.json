@@ -1,0 +1,180 @@
+{
+  "experiment_id": "H1.415",
+  "config": {
+    "n_objects": 5,
+    "max_steps": 10,
+    "n_train": 500,
+    "n_val": 200,
+    "epochs": 100,
+    "lr": 0.001
+  },
+  "baseline": {
+    "best_val_loss": 4.400360163891805e-11,
+    "eval_by_length": {
+      "1": {
+        "avg_loss": 0.0,
+        "std_loss": 0.0,
+        "n_samples": 26
+      },
+      "2": {
+        "avg_loss": 1.113141913713922e-11,
+        "std_loss": 4.0587996414815805e-11,
+        "n_samples": 16
+      },
+      "3": {
+        "avg_loss": 0.0,
+        "std_loss": 0.0,
+        "n_samples": 14
+      },
+      "4": {
+        "avg_loss": 8.328439500548956e-12,
+        "std_loss": 3.225590748552212e-11,
+        "n_samples": 16
+      },
+      "5": {
+        "avg_loss": 0.0,
+        "std_loss": 0.0,
+        "n_samples": 18
+      },
+      "6": {
+        "avg_loss": 3.6837108114906525e-11,
+        "std_loss": 1.3615997771816824e-10,
+        "n_samples": 25
+      },
+      "7": {
+        "avg_loss": 1.3643724838487458e-11,
+        "std_loss": 6.791181912351404e-11,
+        "n_samples": 26
+      },
+      "8": {
+        "avg_loss": 2.62615396842454e-10,
+        "std_loss": 7.734481978632475e-10,
+        "n_samples": 19
+      },
+      "9": {
+        "avg_loss": 5.212916875940721e-11,
+        "std_loss": 1.4436606934472242e-10,
+        "n_samples": 25
+      },
+      "10": {
+        "avg_loss": 6.139282970885062e-11,
+        "std_loss": 1.2594783281658025e-10,
+        "n_samples": 15
+      }
+    }
+  },
+  "cognitive_graph": {
+    "best_val_loss": 8.34304844991661e-16,
+    "eval_by_length": {
+      "1": {
+        "avg_loss": 1.667619036921584e-14,
+        "std_loss": 2.9795371326865317e-15,
+        "n_samples": 26
+      },
+      "2": {
+        "avg_loss": 2.0160609007233637e-14,
+        "std_loss": 6.6730971218194714e-15,
+        "n_samples": 16
+      },
+      "3": {
+        "avg_loss": 1.7625187108850734e-14,
+        "std_loss": 2.3226664954657093e-15,
+        "n_samples": 14
+      },
+      "4": {
+        "avg_loss": 2.0468002345989906e-14,
+        "std_loss": 6.4520660858050655e-15,
+        "n_samples": 16
+      },
+      "5": {
+        "avg_loss": 2.0918760522695844e-14,
+        "std_loss": 4.867340416461998e-15,
+        "n_samples": 18
+      },
+      "6": {
+        "avg_loss": 2.2132962305900124e-14,
+        "std_loss": 6.584352254640685e-15,
+        "n_samples": 25
+      },
+      "7": {
+        "avg_loss": 2.2213214252231102e-14,
+        "std_loss": 6.60394107393771e-15,
+        "n_samples": 26
+      },
+      "8": {
+        "avg_loss": 2.099928420516748e-14,
+        "std_loss": 6.9984525394485676e-15,
+        "n_samples": 19
+      },
+      "9": {
+        "avg_loss": 2.3287150202958017e-14,
+        "std_loss": 7.594575481010219e-15,
+        "n_samples": 25
+      },
+      "10": {
+        "avg_loss": 2.437790711167142e-14,
+        "std_loss": 7.854569438998627e-15,
+        "n_samples": 15
+      }
+    }
+  },
+  "temporal_cg": {
+    "best_val_loss": 1.141644503163674e-08,
+    "eval_by_length": {
+      "1": {
+        "avg_loss": 2.9461375772704207e-10,
+        "std_loss": 4.2661182519790446e-10,
+        "n_samples": 26
+      },
+      "2": {
+        "avg_loss": 1.6082299647252431e-07,
+        "std_loss": 4.363057949085371e-07,
+        "n_samples": 16
+      },
+      "3": {
+        "avg_loss": 3.549462485463133e-10,
+        "std_loss": 3.584888516941339e-10,
+        "n_samples": 14
+      },
+      "4": {
+        "avg_loss": 3.1877984494189764e-10,
+        "std_loss": 4.601522385564925e-10,
+        "n_samples": 16
+      },
+      "5": {
+        "avg_loss": 2.7658302654564045e-10,
+        "std_loss": 3.33245521256482e-10,
+        "n_samples": 18
+      },
+      "6": {
+        "avg_loss": 2.7426356449811173e-10,
+        "std_loss": 2.9482999568081936e-10,
+        "n_samples": 25
+      },
+      "7": {
+        "avg_loss": 3.061779918538755e-10,
+        "std_loss": 3.0854782712604646e-10,
+        "n_samples": 26
+      },
+      "8": {
+        "avg_loss": 3.0955872742713535e-10,
+        "std_loss": 3.60099996945693e-10,
+        "n_samples": 19
+      },
+      "9": {
+        "avg_loss": 2.515000984033844e-10,
+        "std_loss": 3.8061915297939017e-10,
+        "n_samples": 25
+      },
+      "10": {
+        "avg_loss": 2.7047323915294783e-10,
+        "std_loss": 3.791589875742232e-10,
+        "n_samples": 15
+      }
+    }
+  },
+  "conclusion": "PARTIALLY_SUPPORTED - Temp-CG shows convergence but underperforms",
+  "cg_wins": 7,
+  "tcg_wins": 0,
+  "total_tests": 10
+}

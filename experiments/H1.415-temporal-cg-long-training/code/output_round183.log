@@ -1,0 +1,98 @@
+======================================================================
+H1.415: Temporal CG with Extended Training (200 epochs)
+======================================================================
+
+Config: n_objects=5, max_steps=10, n_train=1000, n_val=500, epochs=200, lr=0.001
+Key changes from H1.414:
+  - epochs: 40 → 200
+  - Added ReduceLROnPlateau scheduler
+  - Added gradient clipping (max_norm=1.0)
+
+[1/5] Generating dataset...
+
+[2/5] Training baseline...
+  Parameters: 155,914
+  Epoch   0: train_loss=0.118504, val_loss=0.047187, best=0.047187 @ 0
+  Epoch  20: train_loss=0.000495, val_loss=0.011920, best=0.011920 @ 20
+  Epoch  40: train_loss=0.000476, val_loss=0.011545, best=0.011545 @ 40
+  Epoch  60: train_loss=0.000448, val_loss=0.010321, best=0.010321 @ 60
+  Epoch  80: train_loss=0.000358, val_loss=0.009712, best=0.009665 @ 79
+  Epoch 100: train_loss=0.000438, val_loss=0.008729, best=0.008729 @ 100
+  Epoch 120: train_loss=0.000494, val_loss=0.008742, best=0.008321 @ 116
+  Epoch 140: train_loss=0.000335, val_loss=0.007702, best=0.007702 @ 140
+  Epoch 160: train_loss=0.000152, val_loss=0.007195, best=0.007195 @ 160
+  Epoch 180: train_loss=0.000577, val_loss=0.007513, best=0.007144 @ 179
+  Epoch 199: train_loss=0.000168, val_loss=0.006457, best=0.006457 @ 199
+
+[3/5] Evaluating baseline by sequence length...
+  baseline results by sequence length:
+    1 steps: loss=0.049123 ± 0.022104
+    2 steps: loss=0.036191 ± 0.016069
+    3 steps: loss=0.030914 ± 0.015329
+    4 steps: loss=0.025883 ± 0.011335
+    5 steps: loss=0.018969 ± 0.007955
+    6 steps: loss=0.019075 ± 0.007066
+    7 steps: loss=0.014532 ± 0.007680
+    8 steps: loss=0.013860 ± 0.006259
+    9 steps: loss=0.013881 ± 0.005270
+    10 steps: loss=0.015208 ± 0.008426
+
+[2/5] Training cognitive_graph...
+  Parameters: 192,258
+  Epoch   0: train_loss=0.167997, val_loss=0.020654, best=0.020654 @ 0
+  Epoch  20: train_loss=0.000667, val_loss=0.002476, best=0.002476 @ 20
+  Epoch  40: train_loss=0.000514, val_loss=0.002130, best=0.002130 @ 40
+  Epoch  60: train_loss=0.000639, val_loss=0.002197, best=0.002068 @ 46
+  Epoch  80: train_loss=0.000336, val_loss=0.001918, best=0.001885 @ 78
+  Epoch 100: train_loss=0.000316, val_loss=0.001908, best=0.001872 @ 85
+  Epoch 120: train_loss=0.000389, val_loss=0.001838, best=0.001836 @ 117
+  Epoch 140: train_loss=0.000369, val_loss=0.001902, best=0.001717 @ 130
+  Epoch 160: train_loss=0.000237, val_loss=0.001653, best=0.001629 @ 154
+  Epoch 180: train_loss=0.000192, val_loss=0.001634, best=0.001610 @ 176
+  Epoch 199: train_loss=0.000168, val_loss=0.001704, best=0.001610 @ 176
+
+[3/5] Evaluating cognitive_graph by sequence length...
+  cognitive_graph results by sequence length:
+    1 steps: loss=0.008016 ± 0.006808
+    2 steps: loss=0.005550 ± 0.005121
+    3 steps: loss=0.004056 ± 0.003670
+    4 steps: loss=0.002785 ± 0.001584
+    5 steps: loss=0.003858 ± 0.002679
+    6 steps: loss=0.003794 ± 0.002518
+    7 steps: loss=0.004438 ± 0.003224
+    8 steps: loss=0.004991 ± 0.004449
+    9 steps: loss=0.004285 ± 0.003087
+    10 steps: loss=0.004299 ± 0.002307
+
+[2/5] Training temporal_cg...
+  Parameters: 283,266
+  Epoch   0: train_loss=2.259648, val_loss=0.166186, best=0.166186 @ 0
+  Epoch  20: train_loss=0.001117, val_loss=0.001475, best=0.001475 @ 20
+  Epoch  40: train_loss=0.000693, val_loss=0.001094, best=0.001081 @ 34
+  Epoch  60: train_loss=0.000645, val_loss=0.001045, best=0.001023 @ 54
+  Epoch  80: train_loss=0.000657, val_loss=0.001138, best=0.000960 @ 77
+  Epoch 100: train_loss=0.000732, val_loss=0.001269, best=0.000893 @ 86
+  Epoch 120: train_loss=0.000350, val_loss=0.000871, best=0.000854 @ 119
+  Epoch 140: train_loss=0.000354, val_loss=0.000883, best=0.000854 @ 119
+  Epoch 160: train_loss=0.000311, val_loss=0.000874, best=0.000854 @ 119
+  Epoch 180: train_loss=0.000303, val_loss=0.000876, best=0.000854 @ 119
+  Epoch 199: train_loss=0.000298, val_loss=0.000880, best=0.000854 @ 119
+
+[3/5] Evaluating temporal_cg by sequence length...
+Traceback (most recent call last):
+  File "/Users/howardli/Downloads/oyster/products/oyster-world/research/cognitive-graph-validation/experiments/H1.415-temporal-cg-long-training/code/experiment.py", line 647, in <module>
+    main()
+    ~~~~^^
+  File "/Users/howardli/Downloads/oyster/products/oyster-world/research/cognitive-graph-validation/experiments/H1.415-temporal-cg-long-training/code/experiment.py", line 526, in main
+    eval_results = evaluate_by_sequence_length(model, val_data, max_steps, device)
+  File "/Users/howardli/Downloads/oyster/products/oyster-world/research/cognitive-graph-validation/experiments/H1.415-temporal-cg-long-training/code/experiment.py", line 446, in evaluate_by_sequence_length
+    pred = model(init_pos, actions, action_indices, max_steps=max_steps)
+  File "/opt/homebrew/lib/python3.14/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.14/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/Users/howardli/Downloads/oyster/products/oyster-world/research/cognitive-graph-validation/experiments/H1.415-temporal-cg-long-training/code/experiment.py", line 272, in forward
+    action_t = actions[:, t, :]  # [B, action_dim]
+               ~~~~~~~^^^^^^^^^
+IndexError: index 1 is out of bounds for dimension 1 with size 1

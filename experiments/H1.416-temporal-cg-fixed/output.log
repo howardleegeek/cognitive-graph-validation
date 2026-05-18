@@ -1,0 +1,131 @@
+======================================================================
+H1.416: Temporal CG with Fixed Sequence Handling
+======================================================================
+
+Config: n_objects=5, max_steps=10, n_train=1000, n_val=500, epochs=200, lr=0.001
+
+Key fix from H1.415:
+  - TemporalCG now uses actual sequence length (actions.shape[1])
+  - Not padded max_steps, avoiding out-of-bounds access
+
+[1/5] Generating dataset...
+
+[2/5] Training baseline...
+  Parameters: 154,890
+  Epoch   0: train_loss=0.171286, val_loss=0.133214, best=0.133214 @ 0
+  Epoch  20: train_loss=0.000709, val_loss=0.002600, best=0.002600 @ 20
+  Epoch  40: train_loss=0.000347, val_loss=0.002423, best=0.002415 @ 38
+  Epoch  60: train_loss=0.000142, val_loss=0.002351, best=0.002342 @ 57
+  Epoch  80: train_loss=0.000116, val_loss=0.002328, best=0.002316 @ 75
+  Epoch 100: train_loss=0.000075, val_loss=0.002322, best=0.002314 @ 93
+  Epoch 120: train_loss=0.000065, val_loss=0.002331, best=0.002309 @ 111
+  Epoch 140: train_loss=0.000050, val_loss=0.002328, best=0.002309 @ 111
+  Epoch 160: train_loss=0.000047, val_loss=0.002325, best=0.002309 @ 111
+  Epoch 180: train_loss=0.000046, val_loss=0.002323, best=0.002309 @ 111
+  Epoch 199: train_loss=0.000045, val_loss=0.002323, best=0.002309 @ 111
+
+[3/5] Evaluating baseline by sequence length...
+  baseline results by sequence length:
+    1 steps: loss=0.025490 ± 0.009918
+    2 steps: loss=0.022279 ± 0.008336
+    3 steps: loss=0.016110 ± 0.008166
+    4 steps: loss=0.011055 ± 0.005452
+    5 steps: loss=0.011245 ± 0.005666
+    6 steps: loss=0.007406 ± 0.003918
+    7 steps: loss=0.009149 ± 0.004102
+    8 steps: loss=0.007367 ± 0.004205
+    9 steps: loss=0.005914 ± 0.003178
+    10 steps: loss=0.006742 ± 0.004224
+
+[2/5] Training cognitive_graph...
+  Parameters: 192,258
+  Epoch   0: train_loss=0.164485, val_loss=0.020519, best=0.020519 @ 0
+  Epoch  20: train_loss=0.000652, val_loss=0.002306, best=0.002306 @ 20
+  Epoch  40: train_loss=0.000533, val_loss=0.002160, best=0.002153 @ 34
+  Epoch  60: train_loss=0.000409, val_loss=0.002278, best=0.001994 @ 56
+  Epoch  80: train_loss=0.000285, val_loss=0.002001, best=0.001950 @ 71
+  Epoch 100: train_loss=0.000270, val_loss=0.002019, best=0.001950 @ 71
+  Epoch 120: train_loss=0.000263, val_loss=0.002031, best=0.001950 @ 71
+  Epoch 140: train_loss=0.000267, val_loss=0.002034, best=0.001950 @ 71
+  Epoch 160: train_loss=0.000265, val_loss=0.002035, best=0.001950 @ 71
+  Epoch 180: train_loss=0.000264, val_loss=0.002036, best=0.001950 @ 71
+  Epoch 199: train_loss=0.000261, val_loss=0.002036, best=0.001950 @ 71
+
+[3/5] Evaluating cognitive_graph by sequence length...
+  cognitive_graph results by sequence length:
+    1 steps: loss=0.010670 ± 0.006177
+    2 steps: loss=0.006266 ± 0.004230
+    3 steps: loss=0.004461 ± 0.003518
+    4 steps: loss=0.004178 ± 0.003353
+    5 steps: loss=0.004907 ± 0.003989
+    6 steps: loss=0.004852 ± 0.003931
+    7 steps: loss=0.005245 ± 0.004230
+    8 steps: loss=0.005729 ± 0.004352
+    9 steps: loss=0.004681 ± 0.003707
+    10 steps: loss=0.005758 ± 0.004401
+
+[2/5] Training temporal_cg_fixed...
+  Parameters: 283,266
+  Epoch   0: train_loss=2.470671, val_loss=0.200135, best=0.200135 @ 0
+  Epoch  20: train_loss=0.001668, val_loss=0.001998, best=0.001669 @ 17
+  Epoch  40: train_loss=0.000752, val_loss=0.001010, best=0.001010 @ 40
+  Epoch  60: train_loss=0.000560, val_loss=0.000948, best=0.000910 @ 58
+  Epoch  80: train_loss=0.000464, val_loss=0.000907, best=0.000863 @ 74
+  Epoch 100: train_loss=0.000431, val_loss=0.000857, best=0.000847 @ 94
+  Epoch 120: train_loss=0.000405, val_loss=0.000858, best=0.000847 @ 114
+  Epoch 140: train_loss=0.000389, val_loss=0.000851, best=0.000847 @ 114
+  Epoch 160: train_loss=0.000384, val_loss=0.000850, best=0.000847 @ 114
+  Epoch 180: train_loss=0.000384, val_loss=0.000851, best=0.000847 @ 114
+  Epoch 199: train_loss=0.000384, val_loss=0.000851, best=0.000847 @ 114
+
+[3/5] Evaluating temporal_cg_fixed by sequence length...
+  temporal_cg_fixed results by sequence length:
+    1 steps: loss=0.173226 ± 0.060899
+    2 steps: loss=0.142455 ± 0.051749
+    3 steps: loss=0.101868 ± 0.041595
+    4 steps: loss=0.066511 ± 0.026343
+    5 steps: loss=0.042148 ± 0.018798
+    6 steps: loss=0.023433 ± 0.015611
+    7 steps: loss=0.010350 ± 0.005595
+    8 steps: loss=0.004500 ± 0.002579
+    9 steps: loss=0.001900 ± 0.001300
+    10 steps: loss=0.001818 ± 0.001027
+
+======================================================================
+RESULTS SUMMARY
+======================================================================
+
+Best validation loss by model:
+  baseline: 0.002309 @ epoch 111
+  cognitive_graph: 0.001950 @ epoch 71
+  temporal_cg_fixed: 0.000847 @ epoch 114
+
+Loss by sequence length:
+Steps    Baseline     CG           Temp-CG-Fixed CG vs BL     Temp vs BL  
+----------------------------------------------------------------------
+1        0.025490     0.010670     0.173226          +58.1%     -579.6%
+2        0.022279     0.006266     0.142455          +71.9%     -539.4%
+3        0.016110     0.004461     0.101868          +72.3%     -532.3%
+4        0.011055     0.004178     0.066511          +62.2%     -501.6%
+5        0.011245     0.004907     0.042148          +56.4%     -274.8%
+6        0.007406     0.004852     0.023433          +34.5%     -216.4%
+7        0.009149     0.005245     0.010350          +42.7%      -13.1%
+8        0.007367     0.005729     0.004500          +22.2%      +38.9%
+9        0.005914     0.004681     0.001900          +20.8%      +67.9%
+10       0.006742     0.005758     0.001818          +14.6%      +73.0%
+
+Results saved to /Users/howardli/Downloads/oyster/products/oyster-world/research/cognitive-graph-validation/experiments/H1.416-temporal-cg-fixed/results.json
+
+======================================================================
+ANALYSIS
+======================================================================
+
+Temporal-CG-Fixed wins 3/10 sequence lengths vs baseline
+Temporal-CG-Fixed wins 3/10 sequence lengths vs CG
+CG wins 10/10 sequence lengths vs baseline
+
+======================================================================
+CONCLUSION
+======================================================================
+H1.416 REFUTED: Temporal-CG-Fixed does not outperform baseline.
+Temporal-CG-Fixed does not outperform original CG.
