@@ -1,161 +1,60 @@
-current_round: 163
-last_action: "H1.392 - Task type dependency investigation: Compared regression (action prediction) vs classification (target object prediction) on identical data configurations"
-next_intended_action: "H1.393 - Investigate discrepancy between H1.390 (+0.839 correlation) and H1.392 regression (-0.153): Test if data generation, model capacity, or random seeds explain the difference"
+current_round: 164
+last_action: "H1.393 - Discrepancy investigation: Re-ran H1.390 config with 5 seeds to test if H1.390's +0.839 correlation was reproducible"
+next_intended_action: "H1.394 - Investigate non-linear complexity relationship: CG shows inverted-U pattern (peaks at medium complexity ~145-166), suggesting need for refined complexity metric"
 
 experiments:
-  total_runs: 163
+  total_runs: 164
   trajectory:
+  - experiment_id: H1.393
+    description: "Discrepancy investigation: H1.390 vs H1.392"
+    result:
+      conclusion: NEW_RESULT
+      correlation: -0.522
+      h1_390_correlation: 0.839
+      h1_392_correlation: -0.153
+      key_finding: "Neither H1.390 nor H1.392 reproduced. New correlation -0.522 shows CG advantage peaks at medium complexity (~145-166) and decreases at both low and high complexity. This is an inverted-U pattern, not monotonic."
+      config:
+        seeds_tested: [42, 123, 456, 789, 1000]
+        configs_tested: 7
+        detailed_results:
+          - name: simple
+            complexity: 20.8
+            avg_improvement: -8.8
+            cg_wins: 0
+          - name: simple2
+            complexity: 57.3
+            avg_improvement: -4.2
+            cg_wins: 1
+          - name: medium
+            complexity: 104.0
+            avg_improvement: 3.7
+            cg_wins: 3
+          - name: threshold
+            complexity: 145.6
+            avg_improvement: 4.6
+            cg_wins: 4
+          - name: crossover
+            complexity: 166.4
+            avg_improvement: 4.6
+            cg_wins: 5
+          - name: complex
+            complexity: 311.9
+            avg_improvement: -4.2
+            cg_wins: 1
+          - name: very_complex
+            complexity: 552.6
+            avg_improvement: -14.4
+            cg_wins: 0
   - experiment_id: H1.392
-    description: "Task type dependency: Compare regression vs classification on identical data"
+    description: "Task type dependency: regression vs classification"
     result:
       conclusion: INCONCLUSIVE
       regression_correlation: -0.153
       classification_correlation: 0.560
-      regression_cg_wins: 4
-      classification_cg_wins: 4
-      regression_avg_improvement: 0.11
-      classification_avg_improvement: 29.56
-      key_finding: "Task type alone does NOT explain H1.390 vs H1.391 discrepancy. Regression shows weak negative correlation (-0.153), classification shows moderate positive (0.560). Neither matches H1.390's +0.839. CG shows stronger advantage in classification at higher complexity."
-      config:
-        n_train: 150
-        n_val: 50
-        n_epochs: 30
-        batch_size: 32
-        learning_rate: 1e-3
-        test_configs:
-          - name: simple
-            n_objects: 3
-            seq_len: 10
-            complexity: 21.3
-            regression_winner: cg
-            regression_improvement: 11.4
-            classification_winner: baseline
-            classification_improvement: 0.0
-          - name: simple2
-            n_objects: 4
-            seq_len: 15
-            complexity: 32.7
-            regression_winner: baseline
-            regression_improvement: -3.2
-            classification_winner: cg
-            classification_improvement: 54.5
-          - name: medium
-            n_objects: 5
-            seq_len: 20
-            complexity: 46.0
-            regression_winner: cg
-            regression_improvement: 6.5
-            classification_winner: baseline
-            classification_improvement: -16.7
-          - name: threshold
-            n_objects: 6
-            seq_len: 25
-            complexity: 61.1
-            regression_winner: baseline
-            regression_improvement: -6.0
-            classification_winner: baseline
-            classification_improvement: -28.6
-          - name: crossover
-            n_objects: 7
-            seq_len: 30
-            complexity: 78.0
-            regression_winner: baseline
-            regression_improvement: -14.2
-            classification_winner: cg
-            classification_improvement: 83.3
-          - name: complex
-            n_objects: 8
-            seq_len: 35
-            complexity: 96.6
-            regression_winner: cg
-            regression_improvement: 1.2
-            classification_winner: cg
-            classification_improvement: 14.3
-          - name: very_complex
-            n_objects: 10
-            seq_len: 40
-            complexity: 131.5
-            regression_winner: cg
-            regression_improvement: 5.1
-            classification_winner: cg
-            classification_improvement: 100.0
-  - experiment_id: H1.391
-    description: "LIBERO-style complexity validation: Test if predictor generalizes to robot manipulation"
-    result:
-      cognitive_graph_wins: false
-      conclusion: REFUTED
-      correlation: -0.805
-      h1_390_correlation: 0.839
-      cg_wins_count: 1
-      total_configs: 7
-      key_finding: "Complexity predictor does NOT generalize to classification tasks. Negative correlation (-0.805) vs H1.390's positive 0.839. Baseline dominates at higher complexity. Task type is a critical factor."
-      task_type: "target_object_classification"
-      config:
-        n_train: 100
-        n_val: 30
-        n_epochs: 10
-        batch_size: 32
-        learning_rate: 1e-3
-        test_configs:
-          - name: simple
-            n_objects: 3
-            seq_len: 10
-            complexity: 16.5
-            winner: cg_large
-            baseline_acc: 0.700
-            cg_large_acc: 0.867
-          - name: simple2
-            n_objects: 4
-            seq_len: 15
-            complexity: 26.3
-            winner: baseline
-            baseline_acc: 0.933
-          - name: medium
-            n_objects: 5
-            seq_len: 20
-            complexity: 38.0
-            winner: baseline
-            baseline_acc: 0.633
-          - name: threshold
-            n_objects: 6
-            seq_len: 25
-            complexity: 51.5
-            winner: baseline
-            baseline_acc: 0.933
-          - name: crossover
-            n_objects: 7
-            seq_len: 30
-            complexity: 66.8
-            winner: baseline
-            baseline_acc: 0.900
-          - name: complex
-            n_objects: 8
-            seq_len: 35
-            complexity: 83.8
-            winner: baseline
-            baseline_acc: 1.000
-          - name: very_complex
-            n_objects: 10
-            seq_len: 40
-            complexity: 115.5
-            winner: baseline
-            baseline_acc: 0.933
+      key_finding: "Task type alone does NOT explain H1.390 vs H1.391 discrepancy"
   - experiment_id: H1.390
-    description: "Complexity Threshold Predictor: Predict crossover from dataset statistics"
+    description: "Complexity threshold predictor"
     result:
-      cognitive_graph_wins: true
       conclusion: SUPPORTED
       correlation: 0.839
-      predicted_crossover: 24.3
-      h1_389_crossover: 72
-      key_finding: "Strong correlation (0.839) between predicted complexity and CG advantage. Crossover at complexity ~24. Small CG preferred at high complexity, Large CG near threshold."
-      configs_tested: 7
-      cg_wins_count: 5
-      config:
-        n_samples: 200
-        n_epochs: 30
-        batch_size: 32
-        learning_rate: 1e-3
-        test_configs:
-          - name: simple
-            n_objects: 3
+      key_finding: "Strong correlation between predicted complexity and CG advantage"

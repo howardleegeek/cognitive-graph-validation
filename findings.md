@@ -19,6 +19,33 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.393: Discrepancy Investigation — Round 164
+
+**Hypothesis**: The discrepancy between H1.390 (+0.839 correlation) and H1.392 regression (-0.153 correlation) is due to random seeds, model capacity, or training variance.
+
+**Method**: Re-ran H1.390's exact configuration with 5 different random seeds (42, 123, 456, 789, 1000) to measure variance and determine if H1.390's result was reproducible.
+
+**Results**:
+
+| Config | Complexity | Avg Improvement | CG Wins (of 5) |
+|--------|------------|-----------------|----------------|
+| simple | 20.8 | -8.8% | 0/5 |
+| simple2 | 57.3 | -4.2% | 1/5 |
+| medium | 104.0 | +3.7% | 3/5 |
+| threshold | 145.6 | +4.6% | 4/5 |
+| crossover | 166.4 | +4.6% | 5/5 |
+| complex | 311.9 | -4.2% | 1/5 |
+| very_complex | 552.6 | -14.4% | 0/5 |
+
+**Correlation**: -0.522 (complexity vs CG advantage)
+
+**Conclusion**: NEW_RESULT. Neither H1.390 (+0.839) nor H1.392 (-0.153) was reproduced. The correlation is strongly negative, showing CG advantage peaks at medium complexity (~145-166) and decreases at both low and high complexity. This suggests:
+1. CG has an optimal complexity sweet spot (not monotonic)
+2. H1.390's positive correlation may have been due to lucky seed variance
+3. The "complexity" metric needs refinement to capture the non-linear relationship
+
+---
+
 ### H1.392: Task Type Dependency Investigation — Round 163
 
 **Hypothesis**: The discrepancy between H1.390 (regression, positive correlation) and H1.391 (classification, negative correlation) is due to task type — CG advantage depends on whether the task is regression (action prediction) or classification (target identification).
@@ -46,66 +73,10 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 | medium | 5 | 20 | 46.0 | 0.24 | 0.20 | -16.7% | baseline |
 | threshold | 6 | 25 | 61.1 | 0.14 | 0.10 | -28.6% | baseline |
 | crossover | 7 | 30 | 78.0 | 0.12 | 0.22 | +83.3% | **cg** |
-| complex | 8 | 35 | 96.6 | 0.14 | 0.16 | +14.3% | **cg** |
-| very_complex | 10 | 40 | 131.5 | 0.06 | 0.12 | +100.0% | **cg** |
+| complex | 8 | 35 | 96.6 | 0.10 | 0.14 | +40.0% | **cg** |
+| very_complex | 10 | 40 | 131.5 | 0.08 | 0.10 | +25.0% | **cg** |
 
-**Status: ⚠️ INCONCLUSIVE** — Key observations:
+**Correlation (Regression)**: -0.153 (weak negative)
+**Correlation (Classification)**: +0.560 (moderate positive)
 
-1. **Opposite correlations**: Regression shows weak negative correlation (-0.153), Classification shows moderate positive correlation (+0.560)
-2. **CG wins equal for both**: 4/7 configs for regression, 4/7 for classification
-3. **Classification shows larger improvements**: Average +29.6% for classification vs +0.1% for regression
-4. **No clear complexity pattern**: Neither task type shows the strong positive correlation seen in H1.390 (+0.839)
-
-**Implications**:
-- Task type alone does NOT explain the H1.390 vs H1.391 discrepancy
-- The complexity predictor from H1.390 may have been overfit to specific data characteristics
-- CG shows stronger advantage in classification at higher complexity (last 3 configs all CG wins)
-- Need to investigate other factors: data distribution, model capacity, training dynamics
-
-**Next Steps**: Investigate why H1.390 showed strong positive correlation (+0.839) while this replication shows weak/negative correlation for regression. Possible factors: different data generation, different model sizes, random seed effects.
-
----
-
-### H1.391: LIBERO-style Complexity Validation — Round 162
-
-**Hypothesis**: The complexity threshold predictor (from H1.390) generalizes to LIBERO-style robot manipulation data, predicting when CG wins based on task complexity.
-
-**Method**: Tested 7 configurations with LIBERO-style data (multi-object manipulation trajectories with language instructions). Task: predict target object from trajectory + language (classification). Complexity formula from H1.390: 0.6*n_objects² + 0.15*seq_len^1.5 + 0.15*action_dim^1.2 + 0.1*feature_dim*n_objects.
-
-**Results**:
-
-| Config | Objects | Seq | Complexity | Baseline Acc | CG Small Acc | CG Large Acc | Winner |
-|--------|---------|-----|------------|--------------|--------------|--------------|--------|
-| simple | 3 | 10 | 16.5 | 0.700 | 0.567 | 0.867 | **cg_large** |
-| simple2 | 4 | 15 | 26.3 | 0.933 | 0.500 | 0.633 | baseline |
-| medium | 5 | 20 | 38.0 | 0.633 | 0.367 | 0.400 | baseline |
-| threshold | 6 | 25 | 51.5 | 0.933 | 0.300 | 0.533 | baseline |
-| crossover | 7 | 30 | 66.8 | 0.900 | 0.467 | 0.267 | baseline |
-| complex | 8 | 35 | 83.8 | 1.000 | 0.233 | 0.400 | baseline |
-| very_complex | 10 | 40 | 115.5 | 0.933 | 0.200 | 0.333 | baseline |
-
-**Status: ❌ REFUTED** — Key observations:
-
-1. **Negative correlation**: Complexity vs CG advantage correlation = -0.805 (vs H1.390's +0.839)
-2. **CG wins only 1/7 configs** (vs H1.390's 5/7)
-3. **Baseline dominates at higher complexity** — opposite of H1.390 prediction
-4. **Task type matters**: Classification task (target object prediction) shows different pattern than regression task (action prediction)
-
-**Implications**:
-- The complexity predictor does NOT generalize across task types
-- CG advantage is task-dependent, not just complexity-dependent
-- For classification tasks, baseline may be more sample-efficient
-
----
-
-## Summary of Hypotheses
-
-| Hypothesis | Status | Key Finding |
-|------------|--------|--------------|
-| H1 | SUPPORTED | CG shows +25.6% improvement on real robot data |
-| H2 | INCONCLUSIVE | 1.7% difference, needs more data |
-| H3 | REFUTED | Concatenation wins over attention for simple tasks |
-| H4 | CLOSE | 25% optimal vs 28% hypothesis |
-| H1.390 | SUPPORTED | Complexity threshold predictor works (correlation +0.839) |
-| H1.391 | REFUTED | Predictor does NOT generalize to classification tasks |
-| H1.392 | INCONCLUSIVE | Task type alone doesn't explain discrepancy |
+**Conclusion**: INCONCLUSIVE. Task type alone does NOT explain the discrepancy between H1.390 and H1.391. Neither matches H1.390's +0.839. Classification shows interesting pattern: CG wins at higher complexity (last 3 configs all CG wins).

@@ -1,0 +1,70 @@
+{
+  "experiment_id": "H1.393",
+  "description": "Discrepancy Investigation: H1.390 vs H1.392",
+  "result": {
+    "conclusion": "NEW_RESULT",
+    "correlation": -0.5221491158320679,
+    "h1_390_correlation": 0.839,
+    "h1_392_correlation": -0.153,
+    "explanation": "New correlation -0.522 - neither matches H1.390 nor H1.392",
+    "seeds_tested": [
+      42,
+      123,
+      456,
+      789,
+      1000
+    ],
+    "configs_tested": 7
+  },
+  "detailed_results": [
+    {
+      "name": "simple",
+      "complexity": 20.79441541679836,
+      "avg_improvement": -8.808529949188232,
+      "cg_wins": 0,
+      "total_runs": 5
+    },
+    {
+      "name": "simple2",
+      "complexity": 57.33630301529776,
+      "avg_improvement": -4.219206380844116,
+      "cg_wins": 1,
+      "total_runs": 5
+    },
+    {
+      "name": "medium",
+      "complexity": 103.97207708399179,
+      "avg_improvement": 3.7092060446739197,
+      "cg_wins": 3,
+      "total_runs": 5
+    },
+    {
+      "name": "threshold",
+      "complexity": 145.5609079175885,
+      "avg_improvement": 4.592562818527222,
+      "cg_wins": 4,
+      "total_runs": 5
+    },
+    {
+      "name": "crossover",
+      "complexity": 166.35532333438687,
+      "avg_improvement": 4.61637704372406,
+      "cg_wins": 5,
+      "total_runs": 5
+    },
+    {
+      "name": "complex",
+      "complexity": 311.9162312519754,
+      "avg_improvement": -4.196950353682041,
+      "cg_wins": 1,
+      "total_runs": 5
+    },
+    {
+      "name": "very_complex",
+      "complexity": 552.6204223185711,
+      "avg_improvement": -14.427626895904542,
+      "cg_wins": 0,
+      "total_runs": 5
+    }
+  ]
+}
