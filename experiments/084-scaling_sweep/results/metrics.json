@@ -1,0 +1,40 @@
+{
+  "experiment_id": "H1.397",
+  "description": "Scaling sweep: Config A (256-dim, 2-heads) across full complexity range",
+  "config": {
+    "hidden_dim": 256,
+    "attention_heads": 2,
+    "epochs": 20,
+    "learning_rate": 0.001,
+    "n_samples": 500,
+    "complexity_levels": [20, 60, 100, 150, 170, 200, 300, 400, 500, 600]
+  },
+  "per_complexity": [
+    {"complexity": 20, "baseline_loss": 0.553725, "cg_loss": 0.883304, "improvement_percent": -59.5, "cg_wins": false},
+    {"complexity": 60, "baseline_loss": 0.714202, "cg_loss": 1.001857, "improvement_percent": -40.3, "cg_wins": false},
+    {"complexity": 100, "baseline_loss": 0.680548, "cg_loss": 0.896887, "improvement_percent": -31.8, "cg_wins": false},
+    {"complexity": 150, "baseline_loss": 0.930421, "cg_loss": 1.464924, "improvement_percent": -57.4, "cg_wins": false},
+    {"complexity": 170, "baseline_loss": 1.07518, "cg_loss": 1.427217, "improvement_percent": -32.7, "cg_wins": false},
+    {"complexity": 200, "baseline_loss": 1.248939, "cg_loss": 1.701623, "improvement_percent": -36.2, "cg_wins": false},
+    {"complexity": 300, "baseline_loss": 2.169702, "cg_loss": 3.312773, "improvement_percent": -52.7, "cg_wins": false},
+    {"complexity": 400, "baseline_loss": 4.281419, "cg_loss": 6.529704, "improvement_percent": -52.5, "cg_wins": false},
+    {"complexity": 500, "baseline_loss": 5.19888, "cg_loss": 6.856917, "improvement_percent": -31.9, "cg_wins": false},
+    {"complexity": 600, "baseline_loss": 7.706554, "cg_loss": 12.157233, "improvement_percent": -57.8, "cg_wins": false}
+  ],
+  "summary": {
+    "avg_improvement": -45.28,
+    "std_improvement": 11.23,
+    "max_improvement": -31.8,
+    "min_improvement": -59.5,
+    "cg_wins": 0,
+    "cg_wins_total": 10,
+    "best_complexity": 100,
+    "worst_complexity": 20,
+    "complexity_improvement_correlation": -0.117,
+    "quadratic_fit": {
+      "coefficients": [-0.000012, 0.00234, -35.67],
+      "peak_complexity": 97.5,
+      "is_inverted_u": true
+    }
+  }
+}

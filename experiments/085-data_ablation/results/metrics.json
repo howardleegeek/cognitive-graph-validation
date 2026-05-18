@@ -1,0 +1,462 @@
+{
+  "experiment_id": "H1.398",
+  "description": "Controlled data ablation: identify structural properties enabling CG advantage",
+  "config": {
+    "n_samples": 500,
+    "epochs": 20,
+    "lr": 0.001,
+    "hidden_dim": 256,
+    "n_heads": 2,
+    "coupling_strengths": [
+      0.0,
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ],
+    "nonlinearities": [
+      0.0,
+      0.5,
+      1.0
+    ],
+    "interaction_orders": [
+      1,
+      2,
+      3
+    ]
+  },
+  "ablation_results": [
+    {
+      "coupling_strength": 0.0,
+      "nonlinearity": 0.0,
+      "interaction_order": 1,
+      "baseline_loss": 0.664907,
+      "cg_loss": 0.986569,
+      "improvement_percent": -48.38,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.0,
+      "nonlinearity": 0.0,
+      "interaction_order": 2,
+      "baseline_loss": 0.526071,
+      "cg_loss": 0.696628,
+      "improvement_percent": -32.42,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.0,
+      "nonlinearity": 0.0,
+      "interaction_order": 3,
+      "baseline_loss": 0.759207,
+      "cg_loss": 1.029682,
+      "improvement_percent": -35.63,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.0,
+      "nonlinearity": 0.5,
+      "interaction_order": 1,
+      "baseline_loss": 0.499937,
+      "cg_loss": 0.919603,
+      "improvement_percent": -83.94,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.0,
+      "nonlinearity": 0.5,
+      "interaction_order": 2,
+      "baseline_loss": 0.591324,
+      "cg_loss": 0.904136,
+      "improvement_percent": -52.9,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.0,
+      "nonlinearity": 0.5,
+      "interaction_order": 3,
+      "baseline_loss": 0.535705,
+      "cg_loss": 0.771998,
+      "improvement_percent": -44.11,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.0,
+      "nonlinearity": 1.0,
+      "interaction_order": 1,
+      "baseline_loss": 0.699336,
+      "cg_loss": 0.772129,
+      "improvement_percent": -10.41,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.0,
+      "nonlinearity": 1.0,
+      "interaction_order": 2,
+      "baseline_loss": 0.702385,
+      "cg_loss": 1.05527,
+      "improvement_percent": -50.24,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.0,
+      "nonlinearity": 1.0,
+      "interaction_order": 3,
+      "baseline_loss": 0.731784,
+      "cg_loss": 0.997445,
+      "improvement_percent": -36.3,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.25,
+      "nonlinearity": 0.0,
+      "interaction_order": 1,
+      "baseline_loss": 0.60514,
+      "cg_loss": 0.898462,
+      "improvement_percent": -48.47,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.25,
+      "nonlinearity": 0.0,
+      "interaction_order": 2,
+      "baseline_loss": 0.800573,
+      "cg_loss": 1.031944,
+      "improvement_percent": -28.9,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.25,
+      "nonlinearity": 0.0,
+      "interaction_order": 3,
+      "baseline_loss": 0.781761,
+      "cg_loss": 0.995948,
+      "improvement_percent": -27.4,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.25,
+      "nonlinearity": 0.5,
+      "interaction_order": 1,
+      "baseline_loss": 0.69904,
+      "cg_loss": 0.874438,
+      "improvement_percent": -25.09,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.25,
+      "nonlinearity": 0.5,
+      "interaction_order": 2,
+      "baseline_loss": 0.554988,
+      "cg_loss": 0.776492,
+      "improvement_percent": -39.91,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.25,
+      "nonlinearity": 0.5,
+      "interaction_order": 3,
+      "baseline_loss": 0.858634,
+      "cg_loss": 1.105188,
+      "improvement_percent": -28.71,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.25,
+      "nonlinearity": 1.0,
+      "interaction_order": 1,
+      "baseline_loss": 0.654443,
+      "cg_loss": 0.976664,
+      "improvement_percent": -49.24,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.25,
+      "nonlinearity": 1.0,
+      "interaction_order": 2,
+      "baseline_loss": 0.847224,
+      "cg_loss": 1.015155,
+      "improvement_percent": -19.82,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.25,
+      "nonlinearity": 1.0,
+      "interaction_order": 3,
+      "baseline_loss": 0.889258,
+      "cg_loss": 1.050948,
+      "improvement_percent": -18.18,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.5,
+      "nonlinearity": 0.0,
+      "interaction_order": 1,
+      "baseline_loss": 1.100128,
+      "cg_loss": 1.320058,
+      "improvement_percent": -19.99,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.5,
+      "nonlinearity": 0.0,
+      "interaction_order": 2,
+      "baseline_loss": 1.771115,
+      "cg_loss": 1.483425,
+      "improvement_percent": 16.24,
+      "cg_wins": true
+    },
+    {
+      "coupling_strength": 0.5,
+      "nonlinearity": 0.0,
+      "interaction_order": 3,
+      "baseline_loss": 1.331251,
+      "cg_loss": 1.421442,
+      "improvement_percent": -6.77,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.5,
+      "nonlinearity": 0.5,
+      "interaction_order": 1,
+      "baseline_loss": 1.158414,
+      "cg_loss": 1.236793,
+      "improvement_percent": -6.77,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.5,
+      "nonlinearity": 0.5,
+      "interaction_order": 2,
+      "baseline_loss": 1.978929,
+      "cg_loss": 1.938927,
+      "improvement_percent": 2.02,
+      "cg_wins": true
+    },
+    {
+      "coupling_strength": 0.5,
+      "nonlinearity": 0.5,
+      "interaction_order": 3,
+      "baseline_loss": 1.149232,
+      "cg_loss": 1.167916,
+      "improvement_percent": -1.63,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.5,
+      "nonlinearity": 1.0,
+      "interaction_order": 1,
+      "baseline_loss": 1.197297,
+      "cg_loss": 1.394218,
+      "improvement_percent": -16.45,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.5,
+      "nonlinearity": 1.0,
+      "interaction_order": 2,
+      "baseline_loss": 1.23203,
+      "cg_loss": 1.210291,
+      "improvement_percent": 1.76,
+      "cg_wins": true
+    },
+    {
+      "coupling_strength": 0.5,
+      "nonlinearity": 1.0,
+      "interaction_order": 3,
+      "baseline_loss": 1.367607,
+      "cg_loss": 1.708313,
+      "improvement_percent": -24.91,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.75,
+      "nonlinearity": 0.0,
+      "interaction_order": 1,
+      "baseline_loss": 1.768064,
+      "cg_loss": 1.77338,
+      "improvement_percent": -0.3,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.75,
+      "nonlinearity": 0.0,
+      "interaction_order": 2,
+      "baseline_loss": 2.386068,
+      "cg_loss": 2.145124,
+      "improvement_percent": 10.1,
+      "cg_wins": true
+    },
+    {
+      "coupling_strength": 0.75,
+      "nonlinearity": 0.0,
+      "interaction_order": 3,
+      "baseline_loss": 1.753114,
+      "cg_loss": 1.805116,
+      "improvement_percent": -2.97,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.75,
+      "nonlinearity": 0.5,
+      "interaction_order": 1,
+      "baseline_loss": 1.845018,
+      "cg_loss": 1.979782,
+      "improvement_percent": -7.3,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.75,
+      "nonlinearity": 0.5,
+      "interaction_order": 2,
+      "baseline_loss": 2.30216,
+      "cg_loss": 2.45164,
+      "improvement_percent": -6.49,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.75,
+      "nonlinearity": 0.5,
+      "interaction_order": 3,
+      "baseline_loss": 2.36903,
+      "cg_loss": 2.469477,
+      "improvement_percent": -4.24,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.75,
+      "nonlinearity": 1.0,
+      "interaction_order": 1,
+      "baseline_loss": 1.873876,
+      "cg_loss": 1.977325,
+      "improvement_percent": -5.52,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 0.75,
+      "nonlinearity": 1.0,
+      "interaction_order": 2,
+      "baseline_loss": 2.751903,
+      "cg_loss": 2.501825,
+      "improvement_percent": 9.09,
+      "cg_wins": true
+    },
+    {
+      "coupling_strength": 0.75,
+      "nonlinearity": 1.0,
+      "interaction_order": 3,
+      "baseline_loss": 1.788534,
+      "cg_loss": 1.799495,
+      "improvement_percent": -0.61,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 1.0,
+      "nonlinearity": 0.0,
+      "interaction_order": 1,
+      "baseline_loss": 3.023453,
+      "cg_loss": 2.877002,
+      "improvement_percent": 4.84,
+      "cg_wins": true
+    },
+    {
+      "coupling_strength": 1.0,
+      "nonlinearity": 0.0,
+      "interaction_order": 2,
+      "baseline_loss": 3.237279,
+      "cg_loss": 2.938479,
+      "improvement_percent": 9.23,
+      "cg_wins": true
+    },
+    {
+      "coupling_strength": 1.0,
+      "nonlinearity": 0.0,
+      "interaction_order": 3,
+      "baseline_loss": 3.516489,
+      "cg_loss": 3.261949,
+      "improvement_percent": 7.24,
+      "cg_wins": true
+    },
+    {
+      "coupling_strength": 1.0,
+      "nonlinearity": 0.5,
+      "interaction_order": 1,
+      "baseline_loss": 2.199722,
+      "cg_loss": 2.485568,
+      "improvement_percent": -12.99,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 1.0,
+      "nonlinearity": 0.5,
+      "interaction_order": 2,
+      "baseline_loss": 3.440808,
+      "cg_loss": 3.014435,
+      "improvement_percent": 12.39,
+      "cg_wins": true
+    },
+    {
+      "coupling_strength": 1.0,
+      "nonlinearity": 0.5,
+      "interaction_order": 3,
+      "baseline_loss": 4.011401,
+      "cg_loss": 3.38335,
+      "improvement_percent": 15.66,
+      "cg_wins": true
+    },
+    {
+      "coupling_strength": 1.0,
+      "nonlinearity": 1.0,
+      "interaction_order": 1,
+      "baseline_loss": 2.887582,
+      "cg_loss": 3.081922,
+      "improvement_percent": -6.73,
+      "cg_wins": false
+    },
+    {
+      "coupling_strength": 1.0,
+      "nonlinearity": 1.0,
+      "interaction_order": 2,
+      "baseline_loss": 4.330109,
+      "cg_loss": 3.722931,
+      "improvement_percent": 14.02,
+      "cg_wins": true
+    },
+    {
+      "coupling_strength": 1.0,
+      "nonlinearity": 1.0,
+      "interaction_order": 3,
+      "baseline_loss": 2.814765,
+      "cg_loss": 2.906654,
+      "improvement_percent": -3.26,
+      "cg_wins": false
+    }
+  ],
+  "analysis": {
+    "cg_wins": 11,
+    "total_configs": 45,
+    "avg_improvement": -15.65,
+    "correlation_coupling": 0.806,
+    "correlation_nonlinearity": -0.016,
+    "correlation_order": 0.152,
+    "best_config": {
+      "coupling_strength": 0.5,
+      "nonlinearity": 0.0,
+      "interaction_order": 2,
+      "baseline_loss": 1.771115,
+      "cg_loss": 1.483425,
+      "improvement_percent": 16.24,
+      "cg_wins": true
+    },
+    "worst_config": {
+      "coupling_strength": 0.0,
+      "nonlinearity": 0.5,
+      "interaction_order": 1,
+      "baseline_loss": 0.499937,
+      "cg_loss": 0.919603,
+      "improvement_percent": -83.94,
+      "cg_wins": false
+    },
+    "min_coupling_for_cg_win": 0.5
+  }
+}

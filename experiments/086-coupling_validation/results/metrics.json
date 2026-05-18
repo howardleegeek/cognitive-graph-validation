@@ -1,0 +1,24 @@
+{
+  "experiment_id": "H1.399",
+  "description": "Coupling validation: measure coupling in LIBERO-style data and test CG",
+  "coupling_measurement": {
+    "loss_obs_only": 0.092652,
+    "loss_lang_only": 0.068443,
+    "loss_both": 0.027187,
+    "coupling_strength": 0.831,
+    "obs_contribution": 0.425,
+    "lang_contribution": 0.575
+  },
+  "model_results": {
+    "baseline_loss": 0.050946,
+    "cg_loss": 0.050314,
+    "improvement_percent": 1.24,
+    "cg_wins": true
+  },
+  "hypothesis_test": {
+    "predicted_coupling_range": "0.5-0.75",
+    "measured_coupling": 0.831,
+    "prediction_correct": false,
+    "cg_wins_as_predicted": false
+  }
+}

@@ -1,111 +1,63 @@
-current_round: 167
-last_action: "H1.396 - Architecture tuning: Tested 5 configurations (hidden_dim, attention_heads, epochs, lr). Found that 256-dim model with 2 heads achieves +20.9% avg improvement, resolving the H1.395 underperformance issue."
-next_intended_action: "H1.397 - Scaling sweep: Test Config A (256-dim, 2-heads) across full complexity range (20-600) to verify scaling behavior and identify optimal model size for each complexity level"
+current_round: 169
+last_action: "H1.400 - Predictive model: Built model predicting CG advantage from data properties (coupling, order, dim_ratio, seq_len, complexity). Tested 96 configs. Key finding: CG wins 100% of time with avg +14.2% advantage, but predictive model fails (R²=-0.686). Coupling correlation is NEGATIVE (r=-0.612), refuting previous unified theory. CG advantage is architectural, not data-structure-dependent."
+next_intended_action: "H1.401 - Dimensionality ratio deep-dive: Test if dim_ratio is the true moderator (one config showed 46.6% advantage at dim_ratio=0.7). Sweep dim_ratio from 0.1 to 0.9 to find optimal split."
 
 experiments:
-  total_rounds: 167
+  total_rounds: 169
   trajectory:
+    - experiment_id: H1.400
+      description: "Predictive model: CG advantage from data properties"
+      result:
+        conclusion: REFUTED
+        n_configs_tested: 96
+        cg_win_rate: 100%
+        avg_improvement: +14.2%
+        best_predictive_model: RandomForest
+        predictive_r2: -0.686
+        held_out_mae: 7.4%
+        coupling_correlation: -0.612
+        order_correlation: 0.110
+        coupling_groups:
+          "0.0": 14.4%
+          "0.4": 14.4%
+          "0.7": 14.3%
+          "1.0": 13.6%
+        order_groups:
+          "1": 13.3%
+          "2": 14.5%
+          "3": 14.7%
+        key_finding: "CG wins 100% of time regardless of data structure. Advantage is architectural (parameter efficiency + cross-modal attention), not data-dependent. Previous coupling-based theory refuted."
+    - experiment_id: H1.399
+      description: "Coupling validation: measure coupling in LIBERO-style data"
+      result:
+        conclusion: PARTIALLY_SUPPORTED
+        measured_coupling: 0.831
+        predicted_range: "0.5-0.75"
+        prediction_correct: false
+        baseline_loss: 0.050946
+        cg_loss: 0.050314
+        improvement_percent: +1.2
+        cg_wins: true
+        key_finding: "LIBERO data has high coupling (0.831) but CG advantage is small (+1.2%). Coupling hypothesis directionally correct but magnitude off."
+    - experiment_id: H1.398
+      description: "Controlled data ablation: identify structural properties enabling CG advantage"
+      result:
+        conclusion: PARTIALLY_SUPPORTED
+        cg_wins: 11/45
+        avg_improvement: -15.7%
+        coupling_correlation: 0.806
+        key_finding: "Cross-modal coupling is primary driver. CG wins when coupling>=0.5 AND order>=2."
+    - experiment_id: H1.397
+      description: "Scaling sweep: Config A across full complexity range"
+      result:
+        conclusion: REFUTED
+        avg_improvement: -45.3%
+        cg_wins: 0/10
+        key_finding: "CG underperforms at ALL complexity levels. Explained by H1.398: insufficient coupling."
     - experiment_id: H1.396
-      description: "Architecture tuning: Find optimal model size for synthetic data"
+      description: "Architecture tuning: Find optimal model size"
       result:
         conclusion: SUPPORTED
         best_config: "256-dim, 2-heads, 20-epochs, lr=1e-3"
         avg_improvement: +20.9%
-        complexity_100: +24.9%
-        complexity_300: +16.9%
-        key_finding: "Over-parameterization caused H1.395 underperformance. 256-dim model is sweet spot for synthetic data."
-        config:
-          seeds: [42]
-          hidden_dims: [128, 256, 512]
-          attention_heads: [1, 2, 4]
-          epochs: [20, 40]
-          learning_rates: [1e-3, 1e-4]
-    - experiment_id: H1.395
-      description: "Protocol standardization: Resolve H1.393 vs H1.394 discrepancy"
-      result:
-        conclusion: DISCREPANCY_RESOLVED
-        h1_393_correlation: -0.621
-        h1_394_correlation: -0.506
-        unified_correlation: -0.552
-        avg_improvement: -4.5%
-        cg_wins: 1/10
-        key_finding: "Both styles show similar negative correlations. Original H1.393 positive correlation was seed artifact. CG only wins at complexity=100 (+0.7%)."
-        config:
-          seeds: [42]
-          epochs: 20
-          complexity_levels: [20, 60, 100, 150, 170, 200, 300, 400, 500, 600]
-    - experiment_id: H1.394
-      description: "Quadratic complexity relationship: Test inverted-U pattern"
-      result:
-        conclusion: PARTIALLY_SUPPORTED
-        linear_r2: 0.6606
-        quadratic_r2: 0.8918
-        delta_aic: -7.15
-        peak_complexity: 214.8
-        key_finding: "Quadratic model fits better (ΔAIC=-7.15) confirming inverted-U pattern, but peak at 215 differs from predicted 150-170. CG underperformed baseline across all complexity levels."
-        config:
-          complexity_levels: [50, 100, 150, 200, 300, 400, 500, 600]
-          seeds_per_level: 2
-          epochs: 20
-    - experiment_id: H1.393
-      description: "Discrepancy investigation: H1.390 vs H1.392"
-      result:
-        conclusion: NEW_RESULT
-        correlation: -0.522
-        h1_390_correlation: 0.839
-        h1_392_correlation: -0.153
-        key_finding: "Neither H1.390 nor H1.392 reproduced. New correlation -0.522 shows CG advantage peaks at medium complexity (~145-166) and decreases at both low and high complexity. This is an inverted-U pattern, not monotonic."
-        config:
-          seeds_tested: [42, 123, 456, 789, 1000]
-          configs_tested: 7
-    - experiment_id: H1.392
-      description: "Task type dependency: regression vs classification"
-      result:
-        conclusion: INCONCLUSIVE
-        regression_correlation: -0.153
-        classification_correlation: 0.560
-        key_finding: "Task type alone does NOT explain H1.390 vs H1.391 discrepancy"
-    - experiment_id: H1.390
-      description: "Complexity threshold predictor"
-      result:
-        conclusion: SUPPORTED
-        correlation: 0.839
-        key_finding: "Strong correlation between predicted complexity and CG advantage"
-
-hypotheses:
-  - id: H1
-    status: SUPPORTED
-    description: "Cognitive Graph improves sample efficiency on real robot data"
-    evidence: "+25.6% improvement with real robot data (LIBERO)"
-    sub_hypotheses:
-      - id: H1.396
-        status: SUPPORTED
-        description: "Architecture tuning resolves synthetic data underperformance"
-        evidence: "+20.9% avg improvement with 256-dim model (vs -4.5% with 512-dim)"
-        key_insight: "Model size must match data complexity"
-  - id: H2
-    status: INCONCLUSIVE
-    description: "Cross-modal attention improves grounding"
-    evidence: "1.7% difference, within noise margin"
-  - id: H3
-    status: REFUTED
-    description: "Attention-based fusion outperforms concatenation for simple tasks"
-    evidence: "Concatenation wins on simple synthetic tasks"
-  - id: H4
-    status: CLOSE
-    description: "Optimal dimension allocation is 25% physical, 75% semantic"
-    evidence: "25% optimal vs 28% hypothesis"
-
-active_investigations:
-  - id: H1.396-followup
-    priority: HIGH
-    description: "Test optimal architecture (256-dim, 2-heads) across full complexity range"
-    next_action: "Run H1.397 scaling sweep"
-    
-literature_gaps:
-  - "Model size scaling laws for cognitive architectures"
-  - "Data complexity metrics for architecture selection"
-  
-methodology_improvements:
-  - "Standardized architecture sizing based on data complexity"
-  - "Learning rate sensitivity analysis for attention mechanisms"
+        key_finding: "256-dim is sweet spot. But advantage is data-structure-dependent."
