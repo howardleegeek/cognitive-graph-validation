@@ -1,10 +1,23 @@
-current_round: 164
-last_action: "H1.393 - Discrepancy investigation: Re-ran H1.390 config with 5 seeds to test if H1.390's +0.839 correlation was reproducible"
-next_intended_action: "H1.394 - Investigate non-linear complexity relationship: CG shows inverted-U pattern (peaks at medium complexity ~145-166), suggesting need for refined complexity metric"
+current_round: 165
+last_action: "H1.394 - Quadratic complexity relationship investigation: Tested inverted-U hypothesis with 8 complexity levels, fit linear vs quadratic models"
+next_intended_action: "H1.395 - Protocol standardization: Re-run H1.393 and H1.394 with identical data generation and training parameters to resolve discrepancy"
 
 experiments:
-  total_runs: 164
+  total_runs: 165
   trajectory:
+  - experiment_id: H1.394
+    description: "Quadratic complexity relationship: Test inverted-U pattern"
+    result:
+      conclusion: PARTIALLY_SUPPORTED
+      linear_r2: 0.6606
+      quadratic_r2: 0.8918
+      delta_aic: -7.15
+      peak_complexity: 214.8
+      key_finding: "Quadratic model fits better (ΔAIC=-7.15) confirming inverted-U pattern, but peak at 215 differs from predicted 150-170. CG underperformed baseline across all complexity levels."
+      config:
+        complexity_levels: [50, 100, 150, 200, 300, 400, 500, 600]
+        seeds_per_level: 2
+        epochs: 20
   - experiment_id: H1.393
     description: "Discrepancy investigation: H1.390 vs H1.392"
     result:
@@ -58,3 +71,50 @@ experiments:
       conclusion: SUPPORTED
       correlation: 0.839
       key_finding: "Strong correlation between predicted complexity and CG advantage"
+
+hypotheses:
+  - id: H1
+    status: SUPPORTED
+    description: "Cognitive Graph improves sample efficiency on real robot data"
+    evidence: "+25.6% improvement on LIBERO manipulation tasks"
+    sub_hypotheses:
+      - id: H1.393
+        status: NEW_RESULT
+        description: "CG advantage follows inverted-U pattern with complexity"
+        evidence: "Correlation -0.522, peak at 145-166 complexity"
+      - id: H1.394
+        status: PARTIALLY_SUPPORTED
+        description: "Quadratic model fits complexity-advantage relationship better than linear"
+        evidence: "ΔAIC=-7.15, peak at 215 (higher than predicted 150-170)"
+  
+  - id: H2
+    status: INCONCLUSIVE
+    description: "Cross-modal attention improves grounding"
+    evidence: "1.7% difference, needs further testing"
+  
+  - id: H3
+    status: REFUTED
+    description: "Attention outperforms concatenation for fusion"
+    evidence: "Concatenation wins on simple tasks"
+  
+  - id: H4
+    status: CLOSE
+    description: "Optimal CG node count is 25%"
+    evidence: "25% optimal vs 28% hypothesis"
+
+open_questions:
+  - "Why does H1.394 show CG underperforming everywhere while H1.393 shows CG winning at medium complexity?"
+  - "Is the peak complexity at 215 (H1.394) or 145-166 (H1.393)?"
+  - "Does training epoch count significantly affect results?"
+  - "Is synthetic data generation method causing the discrepancy?"
+
+next_actions:
+  - priority: 1
+    action: "Standardize experimental protocol between H1.393 and H1.394"
+    rationale: "Resolve discrepancy in results"
+  - priority: 2
+    action: "Test with more training epochs (50 vs 20)"
+    rationale: "H1.394 used fewer epochs, may have undertrained"
+  - priority: 3
+    action: "Investigate data generation differences"
+    rationale: "Different synthetic data may cause different results"

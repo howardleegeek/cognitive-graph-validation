@@ -1,0 +1,278 @@
+{
+  "experiment_id": "H1.394",
+  "hypothesis": "CG advantage follows inverted-U (quadratic) relationship with complexity",
+  "prediction": "Quadratic model fits better than linear, peak at ~150-170",
+  "detailed_results": [
+    {
+      "target_complexity": 50,
+      "actual_complexity": 120,
+      "n_objects": 2,
+      "n_steps": 5,
+      "n_instructions": 2,
+      "baseline_loss": 0.82354336977005,
+      "cg_loss": 1.0170127153396606,
+      "improvement_percent": -23.492308076456393,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 50,
+      "actual_complexity": 121,
+      "n_objects": 1,
+      "n_steps": 7,
+      "n_instructions": 2,
+      "baseline_loss": 0.7158133387565613,
+      "cg_loss": 0.9195059537887573,
+      "improvement_percent": -28.45610775932596,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 100,
+      "actual_complexity": 144,
+      "n_objects": 2,
+      "n_steps": 8,
+      "n_instructions": 2,
+      "baseline_loss": 0.82354336977005,
+      "cg_loss": 1.0170127153396606,
+      "improvement_percent": -23.492308076456393,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 100,
+      "actual_complexity": 118,
+      "n_objects": 3,
+      "n_steps": 6,
+      "n_instructions": 1,
+      "baseline_loss": 0.7968707084655762,
+      "cg_loss": 0.9993950724601746,
+      "improvement_percent": -25.414959019458948,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 150,
+      "actual_complexity": 182,
+      "n_objects": 4,
+      "n_steps": 9,
+      "n_instructions": 2,
+      "baseline_loss": 0.82354336977005,
+      "cg_loss": 1.0170127153396606,
+      "improvement_percent": -23.492308076456393,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 150,
+      "actual_complexity": 223,
+      "n_objects": 4,
+      "n_steps": 11,
+      "n_instructions": 3,
+      "baseline_loss": 0.7964318990707397,
+      "cg_loss": 0.9456338286399841,
+      "improvement_percent": -18.733796291099104,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 200,
+      "actual_complexity": 221,
+      "n_objects": 5,
+      "n_steps": 12,
+      "n_instructions": 2,
+      "baseline_loss": 0.82354336977005,
+      "cg_loss": 1.0170127153396606,
+      "improvement_percent": -23.492308076456393,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 200,
+      "actual_complexity": 175,
+      "n_objects": 3,
+      "n_steps": 10,
+      "n_instructions": 2,
+      "baseline_loss": 0.7158133387565613,
+      "cg_loss": 0.9195059537887573,
+      "improvement_percent": -28.45610775932596,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 300,
+      "actual_complexity": 280,
+      "n_objects": 4,
+      "n_steps": 15,
+      "n_instructions": 4,
+      "baseline_loss": 0.7322800159454346,
+      "cg_loss": 0.9790036678314209,
+      "improvement_percent": -33.692528338008174,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 300,
+      "actual_complexity": 294,
+      "n_objects": 6,
+      "n_steps": 13,
+      "n_instructions": 4,
+      "baseline_loss": 0.6995991468429565,
+      "cg_loss": 0.8321481347084045,
+      "improvement_percent": -18.946419312201094,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 400,
+      "actual_complexity": 380,
+      "n_objects": 8,
+      "n_steps": 20,
+      "n_instructions": 4,
+      "baseline_loss": 0.7322800159454346,
+      "cg_loss": 0.9790036678314209,
+      "improvement_percent": -33.692528338008174,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 400,
+      "actual_complexity": 348,
+      "n_objects": 8,
+      "n_steps": 16,
+      "n_instructions": 4,
+      "baseline_loss": 0.6995991468429565,
+      "cg_loss": 0.8321481347084045,
+      "improvement_percent": -18.946419312201094,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 500,
+      "actual_complexity": 412,
+      "n_objects": 8,
+      "n_steps": 24,
+      "n_instructions": 4,
+      "baseline_loss": 0.7322800159454346,
+      "cg_loss": 0.9790036678314209,
+      "improvement_percent": -33.692528338008174,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 500,
+      "actual_complexity": 443,
+      "n_objects": 10,
+      "n_steps": 21,
+      "n_instructions": 5,
+      "baseline_loss": 0.810465395450592,
+      "cg_loss": 1.1477023363113403,
+      "improvement_percent": -41.61028253072491,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 600,
+      "actual_complexity": 459,
+      "n_objects": 10,
+      "n_steps": 23,
+      "n_instructions": 5,
+      "baseline_loss": 0.8284825682640076,
+      "cg_loss": 1.1153861284255981,
+      "improvement_percent": -34.63000564547361,
+      "cg_wins": false
+    },
+    {
+      "target_complexity": 600,
+      "actual_complexity": 452,
+      "n_objects": 9,
+      "n_steps": 24,
+      "n_instructions": 5,
+      "baseline_loss": 0.810465395450592,
+      "cg_loss": 1.1477023363113403,
+      "improvement_percent": -41.61028253072491,
+      "cg_wins": false
+    }
+  ],
+  "summary": [
+    {
+      "target_complexity": 50,
+      "avg_complexity": 120.5,
+      "avg_improvement": -25.974207917891178,
+      "std_improvement": 2.4818998414347835,
+      "cg_wins": 0,
+      "n_runs": 2
+    },
+    {
+      "target_complexity": 100,
+      "avg_complexity": 131.0,
+      "avg_improvement": -24.453633547957672,
+      "std_improvement": 0.9613254715012776,
+      "cg_wins": 0,
+      "n_runs": 2
+    },
+    {
+      "target_complexity": 150,
+      "avg_complexity": 202.5,
+      "avg_improvement": -21.113052183777747,
+      "std_improvement": 2.3792558926786445,
+      "cg_wins": 0,
+      "n_runs": 2
+    },
+    {
+      "target_complexity": 200,
+      "avg_complexity": 198.0,
+      "avg_improvement": -25.974207917891178,
+      "std_improvement": 2.4818998414347835,
+      "cg_wins": 0,
+      "n_runs": 2
+    },
+    {
+      "target_complexity": 300,
+      "avg_complexity": 287.0,
+      "avg_improvement": -26.319473825104634,
+      "std_improvement": 7.37305451290354,
+      "cg_wins": 0,
+      "n_runs": 2
+    },
+    {
+      "target_complexity": 400,
+      "avg_complexity": 364.0,
+      "avg_improvement": -26.319473825104634,
+      "std_improvement": 7.37305451290354,
+      "cg_wins": 0,
+      "n_runs": 2
+    },
+    {
+      "target_complexity": 500,
+      "avg_complexity": 427.5,
+      "avg_improvement": -37.65140543436654,
+      "std_improvement": 3.9588770963583677,
+      "cg_wins": 0,
+      "n_runs": 2
+    },
+    {
+      "target_complexity": 600,
+      "avg_complexity": 455.5,
+      "avg_improvement": -38.12014408809926,
+      "std_improvement": 3.49013844262565,
+      "cg_wins": 0,
+      "n_runs": 2
+    }
+  ],
+  "model_fits": {
+    "linear": {
+      "params": [
+        -0.03853239021519928,
+        -17.7117242162209
+      ],
+      "r2": 0.660593060366377,
+      "aic": 23.476710214872995,
+      "residual_std": 3.378035705797182
+    },
+    "quadratic": {
+      "params": [
+        -0.00026739254182173156,
+        0.11486128341998236,
+        -35.66172294472401
+      ],
+      "r2": 0.8918161714704762,
+      "aic": 16.32976698943144,
+      "residual_std": 1.9071508691593637,
+      "peak_complexity": 214.78026768704612
+    },
+    "comparison": {
+      "delta_r2": 0.2312231111040992,
+      "delta_aic": -7.146943225441554,
+      "quadratic_better": true
+    }
+  },
+  "conclusion": "PARTIALLY_SUPPORTED",
+  "key_finding": "Quadratic model fits better but peak at 215 differs from predicted 150-170 range."
+}
