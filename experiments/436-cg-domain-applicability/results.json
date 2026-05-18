@@ -1,0 +1,20 @@
+{
+  "experiment_id": "H1.436",
+  "description": "CG Domain of Applicability - Relational vs Continuous Control",
+  "conclusion": "PARTIALLY_SUPPORTED",
+  "results": {
+    "relational_mlp_mse": 0.1255994811654091,
+    "relational_cg_mse": 0.444689283768336,
+    "relational_cg_vs_mlp": 254.05344006373673,
+    "continuous_mlp_mse": 0.012218039793272814,
+    "continuous_cg_mse": 0.017291517307360966,
+    "continuous_cg_vs_mlp": 41.524480194290916
+  },
+  "key_insight": "CG underperforms on both but less on relational tasks",
+  "config": {
+    "n_trials": 3,
+    "epochs": 15,
+    "batch_size": 64,
+    "seq_len": 10
+  }
+}

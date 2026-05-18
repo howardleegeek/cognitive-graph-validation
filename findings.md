@@ -19,6 +19,38 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.436: CG Domain of Applicability — Round 202
+
+**Hypothesis**: CG performs better on tasks with clear relational structure (object relationships, spatial reasoning) vs continuous control tasks (trajectory following, smooth motion).
+
+**Context**: Following H1.435 which showed CG performs relatively better on high complexity tasks but still underperforms MLP overall, this experiment tests whether CG has a domain-specific advantage on relational vs continuous control tasks.
+
+**Method**: Generate synthetic relational tasks (object-to-object relationships) and continuous control tasks (smooth trajectory prediction). Train MLP and CG on each. 3 trials, 15 epochs each.
+
+**Results**:
+
+| Task Type | MLP MSE | CG MSE | CG vs MLP |
+|-----------|---------|--------|-----------|
+| Relational | 0.1256 | 0.4447 | **+254.1%** |
+| Continuous Control | 0.0122 | 0.0173 | **+41.5%** |
+
+**Key Findings**:
+
+1. **CG underperforms MLP on both task types** in this synthetic setup
+
+2. **CG performs relatively better on continuous control** (41.5% worse) compared to relational tasks (254.1% worse), which is OPPOSITE to the hypothesis
+
+3. **Hypothesis NOT SUPPORTED**: The data does not support the claim that CG has a domain-specific advantage on relational tasks
+
+4. **Alternative interpretation**: The CG architecture in this simplified implementation may not be well-suited for either task type compared to the MLP baseline. The attention mechanism may be adding unnecessary complexity without providing benefit.
+
+5. **Next steps**: Need to investigate why CG consistently underperforms - is it the architecture itself or the implementation? Consider testing with:
+   - More sophisticated CG implementation with proper graph structure
+   - Larger model capacity
+   - Different attention mechanisms
+
+---
+
 ### H1.435: Task Complexity Analysis — Round 201
 
 **Hypothesis**: CG advantage depends on task relational complexity. CG should perform relatively better on high-complexity tasks requiring relational reasoning.
@@ -47,70 +79,4 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 5. **Implication**: The CG vs MLP performance difference may depend on:
    - Task relational complexity (CG relatively better on complex tasks)
-   - Data distribution (synthetic vs real robot)
-   - Model capacity and training regimen
-
-### H1.434: CG on Real Robot Data (LIBERO-style) — Round 200
-
-**Hypothesis**: CG outperforms MLP on real robot manipulation tasks from data/cache.
-
-**Context**: Building on H1.433 which showed CG outperforms MLP on synthetic tasks (-8.5% to -14.7%), this experiment tests whether the advantage holds on real robot-style data.
-
-**Method**: Train 3 architectures (MLP, CG-3p, CG-6p) on 10 LIBERO-style manipulation tasks with 40 demos each, 3 runs per task.
-
-**Results**:
-
-| Task | MLP MSE | CG-3p MSE | CG-6p MSE | CG-3p vs MLP | CG-6p vs MLP |
-|------|---------|-----------|-----------|--------------|--------------|
-| 0 | 1.108 | 1.187 | 1.230 | -7.1% | -10.9% |
-| 1 | 1.318 | 1.369 | 1.489 | -3.9% | -13.0% |
-| 2 | 0.695 | 0.675 | 0.660 | **+2.9%** | **+5.0%** |
-| 3 | 1.121 | 1.206 | 1.359 | -7.7% | -21.3% |
-| 4 | 0.935 | 0.877 | 0.937 | **+6.2%** | -0.2% |
-| 5 | 0.950 | 0.982 | 1.063 | -3.3% | -12.0% |
-| 6 | 1.004 | 1.088 | 1.157 | -8.5% | -15.3% |
-| 7 | 0.784 | 0.857 | 1.025 | -9.5% | -30.9% |
-| 8 | 0.658 | 0.677 | 0.706 | -3.0% | -7.4% |
-| 9 | 0.869 | 0.932 | 1.010 | -7.6% | -16.4% |
-
-**Key Findings**:
-
-1. **CG does NOT outperform MLP on real robot data** - Average CG-3p: -4.2%, CG-6p: -12.2%
-
-2. **CG-3p wins on 2/10 tasks** (tasks 2 and 4), CG-6p wins on 1/10 tasks (task 2 only)
-
-3. **Deeper message passing (6 passes) actually hurts performance** on real robot data - CG-6p vs CG-3p: -8.1%
-
-4. **The discrepancy with H1.433 (synthetic data) suggests CG advantage may be task-dependent**:
-   - On synthetic physics tasks (collision, stacking, pushing): CG wins
-   - On LIBERO-style manipulation tasks: MLP wins
-
-5. **Possible explanations**:
-   - LIBERO tasks may require different attention patterns than simple physics
-   - The synthetic data in H1.433 may have clearer relational structure
-   - Real robot data may have more noise or different distributional properties
-
-## Sub-Hypotheses Generated
-
-### H1.435.1: CG Domain of Applicability
-**Prediction**: CG outperforms MLP on tasks with:
-1. Clear relational structure (object collisions, stacking)
-2. Multiple interacting entities
-3. Explicit spatial/temporal relationships
-
-**Test**: Compare CG vs MLP on carefully curated task sets that vary these dimensions.
-
-### H1.435.2: Data Distribution Hypothesis
-**Prediction**: CG advantage emerges more clearly on:
-1. Synthetic data with clean relational structure
-2. Tasks where physical and semantic modalities have clear correspondence
-3. Longer-horizon tasks requiring relational reasoning
-
-**Test**: Generate synthetic datasets systematically varying these properties.
-
-## Next Steps
-
-1. **Test H1.435.1**: Curate task sets with varying relational complexity
-2. **Analyze attention patterns**: Compare what CG vs MLP attends to in different tasks
-3. **Investigate training dynamics**: Does CG need more data/epochs to show advantage?
-4. **Explore architectural variants**: Different GNN architectures, attention mechanisms
+   - Data distribution and task type

@@ -1,14 +1,33 @@
-current_round: 201
-last_action: "H1.435 - Task Complexity Analysis: Tested CG vs MLP on tasks with varying relational complexity (low, medium, high). Result: CG performs relatively better on high complexity tasks (+4.0% improvement trend from low to high), but still underperforms MLP overall (+8.2% to +12.2% worse). Hypothesis PARTIALLY SUPPORTED."
-next_intended_action: "H1.436 - Test H1.435.1 (CG Domain of Applicability): Curate task sets with clear relational structure vs continuous control tasks to validate sub-hypothesis that CG wins on relational tasks but loses on continuous control."
+current_round: 202
+last_action: "H1.436 - CG Domain of Applicability: Tested CG vs MLP on relational tasks (object relationships) vs continuous control tasks (trajectory following). Result: NOT SUPPORTED - CG underperforms on both task types (relational: +254.1% worse, continuous: +41.5% worse). Interestingly, CG performs relatively better on continuous control than relational, opposite to hypothesis."
+next_intended_action: "H1.437 - Investigate CG implementation: The consistent underperformance suggests the simplified CG implementation may need refinement. Test with larger model capacity, different attention mechanisms, or proper graph structure."
 
 experiments:
-  total_rounds: 201
+  total_rounds: 202
   trajectory:
+    - experiment_id: H1.436
+      description: "CG Domain of Applicability - Relational vs Continuous Control"
+      result:
+        conclusion: "NOT_SUPPORTED - CG underperforms on both but relatively better on continuous control"
+        task: "domain_applicability"
+        results:
+          relational_mlp_mse: 0.1256
+          relational_cg_mse: 0.4447
+          relational_cg_vs_mlp: 254.1
+          continuous_mlp_mse: 0.0122
+          continuous_cg_mse: 0.0173
+          continuous_cg_vs_mlp: 41.5
+        key_insight: "CG performs relatively better on continuous control (41.5% worse) vs relational (254.1% worse), opposite to hypothesis. Suggests simplified CG implementation may need refinement."
+        config:
+          n_trials: 3
+          epochs: 15
+          batch_size: 64
+          seq_len: 10
+          architectures: ["Baseline MLP", "Simple CG"]
     - experiment_id: H1.435
       description: "Task Complexity Analysis - CG vs MLP on varying relational complexity"
       result:
-        conclusion: "PARTIALLY SUPPORTED - CG performs relatively better on high complexity tasks but still underperforms MLP overall"
+        conclusion: "PARTIALLY_SUPPORTED - CG performs relatively better on high complexity tasks but still underperforms MLP overall"
         task: "synthetic_complexity_analysis"
         results:
           low_complexity_mlp_mse: 0.054702
@@ -27,7 +46,7 @@ experiments:
           high_cg3_vs_mlp: 12.2
           high_cg6_vs_mlp: 11.2
           cg_improvement_trend: 4.0
-        key_insight: "CG shows a +4.0% improvement trend from low to high complexity tasks (CG-3p vs MLP: +8.2% low → +12.2% high), suggesting CG's advantage is complexity-dependent. However, CG still underperforms MLP in this synthetic setup. This partially explains the discrepancy between H1.433 (CG wins on synthetic physics) and H1.434 (CG loses on LIBERO manipulation)."
+        key_insight: "CG shows a +4.0% improvement trend from low to high complexity tasks (CG-3p vs MLP: +8.2% low → +12.2% high), suggesting CG's advantage is complexity-dependent. However, CG still underperforms MLP overall in this synthetic setup. This partially explains the discrepancy between H1.433 (CG wins on synthetic physics) and H1.434 (CG loses on LIBERO manipulation)."
         config:
           n_trials: 2
           epochs: 5
@@ -37,7 +56,7 @@ experiments:
     - experiment_id: H1.434
       description: "CG on Real Robot Data (LIBERO-style manipulation)"
       result:
-        conclusion: "NOT SUPPORTED - CG does NOT outperform MLP on real robot data"
+        conclusion: "NOT_SUPPORTED - CG does NOT outperform MLP on real robot data"
         task: "real_robot_manipulation"
         results:
           avg_cg3_vs_mlp: -4.2
@@ -53,35 +72,4 @@ experiments:
           n_tasks: 10
           epochs: 15
           n_runs: 3
-          architectures: ["Baseline MLP (256)", "CG (128, 3 passes)", "CG (128, 6 passes)"]
-    - experiment_id: H1.433
-      description: "Discrepancy analysis: Why did H1.431 show CG loses while H1.432 showed CG wins?"
-      result:
-        conclusion: "SUPPORTED - CG consistently outperforms MLP across all task types"
-        task: "discrepancy_analysis"
-        results:
-          collision_mlp_mse: 0.001345
-          collision_cg_3pass_mse: 0.001209
-          collision_cg_6pass_mse: 0.001231
-          collision_cg_3pass_vs_mlp: -10.1
-          collision_cg_6pass_vs_mlp: -8.5
-          stacking_mlp_mse: 0.000631
-          stacking_cg_3pass_mse: 0.000538
-          stacking_cg_6pass_mse: 0.000559
-          stacking_cg_3pass_vs_mlp: -14.7
-          stacking_cg_6pass_vs_mlp: -11.3
-          pushing_mlp_mse: 0.003460
-          pushing_cg_3pass_mse: 0.003389
-          pushing_cg_6pass_mse: 0.003317
-          pushing_cg_3pass_vs_mlp: -2.0
-          pushing_cg_6pass_vs_mlp: -4.1
-          multi_step_mlp_mse: 0.002505
-          multi_step_cg_3pass_mse: 0.002430
-          multi_step_cg_6pass_mse: 0.002241
-          multi_step_cg_3pass_vs_mlp: -3.0
-          multi_step_cg_6pass_vs_mlp: -9.0
-        key_insight: "CG consistently outperforms MLP across ALL task types. CG-6p shows strongest advantage on multi_step tasks (-9.0%), confirming that deeper message passing helps on complex relational reasoning. The discrepancy between H1.431 and H1.432 was likely due to random seed variance and implementation details. CG advantage is ROBUST."
-        config:
-          n_demos: 200
-          seq_len: 8
-          n_obj
+          architectures: ["Baseline MLP (256)", "CG (128, 3)", "CG (128, 6)"]
