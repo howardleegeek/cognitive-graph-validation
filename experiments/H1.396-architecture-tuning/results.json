@@ -1,0 +1,130 @@
+{
+  "experiment": "H1.396",
+  "timestamp": "2026-05-17T21:42:56.362182",
+  "seed": 42,
+  "device": "cpu",
+  "results": {
+    "A": {
+      "config": {
+        "name": "A",
+        "hidden_dim": 256,
+        "n_heads": 2,
+        "epochs": 20,
+        "lr": 0.001,
+        "desc": "Smaller model"
+      },
+      "results": {
+        "100": {
+          "baseline_mse": 0.1665528565645218,
+          "cg_mse": 0.1250586211681366,
+          "improvement": 24.91355372239474,
+          "cg_wins": true
+        },
+        "300": {
+          "baseline_mse": 0.2579200267791748,
+          "cg_mse": 0.21432927250862122,
+          "improvement": 16.90088001885755,
+          "cg_wins": true
+        }
+      }
+    },
+    "B": {
+      "config": {
+        "name": "B",
+        "hidden_dim": 512,
+        "n_heads": 1,
+        "epochs": 20,
+        "lr": 0.001,
+        "desc": "Fewer attention heads"
+      },
+      "results": {
+        "100": {
+          "baseline_mse": 0.10333707183599472,
+          "cg_mse": 0.08053036034107208,
+          "improvement": 22.070212644615044,
+          "cg_wins": true
+        },
+        "300": {
+          "baseline_mse": 0.19460336863994598,
+          "cg_mse": 0.18070510029792786,
+          "improvement": 7.141843658283544,
+          "cg_wins": true
+        }
+      }
+    },
+    "C": {
+      "config": {
+        "name": "C",
+        "hidden_dim": 512,
+        "n_heads": 4,
+        "epochs": 40,
+        "lr": 0.001,
+        "desc": "More training"
+      },
+      "results": {
+        "100": {
+          "baseline_mse": 0.08676987886428833,
+          "cg_mse": 0.06976789981126785,
+          "improvement": 19.59433305146395,
+          "cg_wins": true
+        },
+        "300": {
+          "baseline_mse": 0.1704077273607254,
+          "cg_mse": 0.17659258842468262,
+          "improvement": -3.629448710893768,
+          "cg_wins": false
+        }
+      }
+    },
+    "D": {
+      "config": {
+        "name": "D",
+        "hidden_dim": 512,
+        "n_heads": 4,
+        "epochs": 20,
+        "lr": 0.0001,
+        "desc": "Lower learning rate"
+      },
+      "results": {
+        "100": {
+          "baseline_mse": 0.26437219977378845,
+          "cg_mse": 0.31974607706069946,
+          "improvement": -20.945423661902414,
+          "cg_wins": false
+        },
+        "300": {
+          "baseline_mse": 0.3442592918872833,
+          "cg_mse": 0.42014795541763306,
+          "improvement": -22.044042185271515,
+          "cg_wins": false
+        }
+      }
+    },
+    "E": {
+      "config": {
+        "name": "E",
+        "hidden_dim": 128,
+        "n_heads": 1,
+        "epochs": 20,
+        "lr": 0.001,
+        "desc": "Minimal model"
+      },
+      "results": {
+        "100": {
+          "baseline_mse": 0.24502286314964294,
+          "cg_mse": 0.2049841433763504,
+          "improvement": 16.34080969368139,
+          "cg_wins": true
+        },
+        "300": {
+          "baseline_mse": 0.3189180791378021,
+          "cg_mse": 0.2871726453304291,
+          "improvement": 9.954102913574895,
+          "cg_wins": true
+        }
+      }
+    }
+  },
+  "best_config": "A",
+  "best_avg_improvement": 20.907216870626144
+}
