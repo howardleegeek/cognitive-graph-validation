@@ -1,0 +1,113 @@
+{
+  "collision": {
+    "Baseline MLP": {
+      "test_mse": 0.2166842371225357,
+      "test_mae": 0.3436221778392792,
+      "accuracy": 0.7622222304344177,
+      "final_train_loss": 0.018515291349852785,
+      "final_val_loss": 0.18045519292354584
+    },
+    "2-Node CG": {
+      "test_mse": 0.16305159032344818,
+      "test_mae": 0.2793320119380951,
+      "accuracy": 0.8377777934074402,
+      "final_train_loss": 0.07560487310676013,
+      "final_val_loss": 0.13271880149841309
+    },
+    "Per-Object CG": {
+      "test_mse": 0.20998403429985046,
+      "test_mae": 0.33494293689727783,
+      "accuracy": 0.7622222304344177,
+      "final_train_loss": 0.016271737404167652,
+      "final_val_loss": 0.19089405238628387
+    },
+    "Hybrid CG": {
+      "test_mse": 0.19530300796031952,
+      "test_mae": 0.32744100689888,
+      "accuracy": 0.7755555510520935,
+      "final_train_loss": 0.06518069983405225,
+      "final_val_loss": 0.1453574150800705
+    },
+    "GraphAttn": {
+      "test_mse": 0.14174053072929382,
+      "test_mae": 0.2559182047843933,
+      "accuracy": 0.8377777934074402,
+      "final_train_loss": 0.10248017113874941,
+      "final_val_loss": 0.11393535882234573
+    }
+  },
+  "permanence": {
+    "Baseline MLP": {
+      "test_mse": 0.04224012419581413,
+      "test_mae": 0.1593969464302063,
+      "accuracy": null,
+      "final_train_loss": 0.015933343702379393,
+      "final_val_loss": 0.04199863597750664
+    },
+    "2-Node CG": {
+      "test_mse": 0.039972878992557526,
+      "test_mae": 0.1560995727777481,
+      "accuracy": null,
+      "final_train_loss": 0.025056836688343215,
+      "final_val_loss": 0.040390368551015854
+    },
+    "Per-Object CG": {
+      "test_mse": 0.016153616830706596,
+      "test_mae": 0.0887247696518898,
+      "accuracy": null,
+      "final_train_loss": 0.00623217797564233,
+      "final_val_loss": 0.017447754740715027
+    },
+    "Hybrid CG": {
+      "test_mse": 0.07962070405483246,
+      "test_mae": 0.22395075857639313,
+      "accuracy": null,
+      "final_train_loss": 0.05024331939571044,
+      "final_val_loss": 0.07877860218286514
+    },
+    "GraphAttn": {
+      "test_mse": 0.26045194268226624,
+      "test_mae": 0.4880865812301636,
+      "accuracy": null,
+      "final_train_loss": 0.2230619604096693,
+      "final_val_loss": 0.254613995552063
+    }
+  },
+  "spatial": {
+    "Baseline MLP": {
+      "test_mse": 0.006649843417108059,
+      "test_mae": 0.06549069285392761,
+      "accuracy": null,
+      "final_train_loss": 0.004984623697750708,
+      "final_val_loss": 0.006352905184030533
+    },
+    "2-Node CG": {
+      "test_mse": 0.0027857846580445766,
+      "test_mae": 0.04197821766138077,
+      "accuracy": null,
+      "final_train_loss": 0.0024349531980560105,
+      "final_val_loss": 0.0027603807393461466
+    },
+    "Per-Object CG": {
+      "test_mse": 0.002673249924555421,
+      "test_mae": 0.0407925546169281,
+      "accuracy": null,
+      "final_train_loss": 0.0021901914767701834,
+      "final_val_loss": 0.0026217137929052114
+    },
+    "Hybrid CG": {
+      "test_mse": 0.0010734944371506572,
+      "test_mae": 0.02583506889641285,
+      "accuracy": null,
+      "final_train_loss": 0.001036145310054588,
+      "final_val_loss": 0.0010261870920658112
+    },
+    "GraphAttn": {
+      "test_mse": 0.054452601820230484,
+      "test_mae": 0.19084849953651428,
+      "accuracy": null,
+      "final_train_loss": 0.05035244279048022,
+      "final_val_loss": 0.051307618618011475
+    }
+  }
+}
