@@ -1,0 +1,21 @@
+{
+  "experiment": "H1.409",
+  "description": "Test CG on relational LIBERO-style data",
+  "hypothesis": "CG benefits require data with explicit relational structure",
+  "results": {
+    "baseline_loss": 0.0017567186614542152,
+    "cg_no_gnn_loss": 0.0004409609257827185,
+    "cg_with_gnn_loss": 0.0004047380551099877,
+    "cg_no_gnn_improvement": 74.89860297734356,
+    "cg_with_gnn_improvement": 76.96056494470521,
+    "conclusion": "SUPPORTED"
+  },
+  "config": {
+    "n_train": 400,
+    "n_val": 100,
+    "epochs": 30,
+    "lr": 0.0001,
+    "obs_dim": 27,
+    "data_type": "relational_libero"
+  }
+}
