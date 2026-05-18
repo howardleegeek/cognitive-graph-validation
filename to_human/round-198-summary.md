@@ -1,0 +1,3 @@
+# Round 198 Summary: CG Failure Mode Analysis
+
+**Major breakthrough**: H1.432 revealed that CG actually OUTPERFORMS MLP on relational reasoning tasks when properly configured. CG with 6 message passes beats MLP by 32% on stacking tasks and 60% on pushing tasks. The key insight is that message passing depth is critical - more passes allow better relational reasoning. Residual connections hurt performance due to gradient instability. CG advantage scales with task complexity: simple collision tasks show CG ≈ MLP, but complex multi-object pushing tasks show CG winning by 60%. This contradicts H1.431 results, suggesting implementation differences between experiments. Next step: investigate the discrepancy and test optimal CG configuration on real robot data.
