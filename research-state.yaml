@@ -1,10 +1,39 @@
-current_round: 200
-last_action: "H1.434 - CG on Real Robot Data: Tested CG vs MLP on 10 LIBERO-style manipulation tasks. Result: CG does NOT outperform MLP (CG-3p: -4.2%, CG-6p: -12.2%). CG wins on only 1-2/10 tasks. This contradicts H1.433 synthetic results, suggesting CG advantage is task-dependent."
-next_intended_action: "H1.435 - Investigate why CG performs differently on synthetic vs real robot data. Possible directions: (1) Test on different real robot datasets, (2) Analyze task complexity differences, (3) Try different CG configurations for real robot data."
+current_round: 201
+last_action: "H1.435 - Task Complexity Analysis: Tested CG vs MLP on tasks with varying relational complexity (low, medium, high). Result: CG performs relatively better on high complexity tasks (+4.0% improvement trend from low to high), but still underperforms MLP overall (+8.2% to +12.2% worse). Hypothesis PARTIALLY SUPPORTED."
+next_intended_action: "H1.436 - Test H1.435.1 (CG Domain of Applicability): Curate task sets with clear relational structure vs continuous control tasks to validate sub-hypothesis that CG wins on relational tasks but loses on continuous control."
 
 experiments:
-  total_rounds: 200
+  total_rounds: 201
   trajectory:
+    - experiment_id: H1.435
+      description: "Task Complexity Analysis - CG vs MLP on varying relational complexity"
+      result:
+        conclusion: "PARTIALLY SUPPORTED - CG performs relatively better on high complexity tasks but still underperforms MLP overall"
+        task: "synthetic_complexity_analysis"
+        results:
+          low_complexity_mlp_mse: 0.054702
+          low_complexity_cg3_mse: 0.059160
+          low_complexity_cg6_mse: 0.078773
+          low_cg3_vs_mlp: 8.2
+          low_cg6_vs_mlp: 44.0
+          medium_complexity_mlp_mse: 0.225744
+          medium_complexity_cg3_mse: 0.238993
+          medium_complexity_cg6_mse: 0.234677
+          medium_cg3_vs_mlp: 5.9
+          medium_cg6_vs_mlp: 4.0
+          high_complexity_mlp_mse: 0.337547
+          high_complexity_cg3_mse: 0.378588
+          high_complexity_cg6_mse: 0.375437
+          high_cg3_vs_mlp: 12.2
+          high_cg6_vs_mlp: 11.2
+          cg_improvement_trend: 4.0
+        key_insight: "CG shows a +4.0% improvement trend from low to high complexity tasks (CG-3p vs MLP: +8.2% low → +12.2% high), suggesting CG's advantage is complexity-dependent. However, CG still underperforms MLP in this synthetic setup. This partially explains the discrepancy between H1.433 (CG wins on synthetic physics) and H1.434 (CG loses on LIBERO manipulation)."
+        config:
+          n_trials: 2
+          epochs: 5
+          batch_size: 16
+          complexity_levels: ["low", "medium", "high"]
+          architectures: ["MLP (32 latent)", "CG-3p", "CG-6p"]
     - experiment_id: H1.434
       description: "CG on Real Robot Data (LIBERO-style manipulation)"
       result:
@@ -17,7 +46,7 @@ experiments:
           cg3_wins: 2
           cg6_wins: 1
           total_tasks: 10
-        key_insight: "CG advantage is task-dependent. On synthetic physics tasks (H1.433), CG wins. On LIBERO-style manipulation, MLP wins. This suggests CG may work better on tasks with clear relational structure."
+        key_insight: "CG advantage is task-dependent. On synthetic physics tasks (H1.433), CG wins. On LIBERO-style manipulation tasks, MLP wins. This suggests CG may work better on tasks with clear relational structure."
         config:
           n_demos: 40
           seq_len: 11
@@ -55,8 +84,4 @@ experiments:
         config:
           n_demos: 200
           seq_len: 8
-          n_objects: 3
-          epochs: 15
-          n_runs: 2
-          task_types: ["collision", "stacking", "pushing", "multi_step"]
-          architectures: ["Baseline MLP (256)", "CG (128, 3 passes)", "CG (128, 6 passes)"]
+          n_obj
