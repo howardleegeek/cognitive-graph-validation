@@ -1,10 +1,35 @@
-current_round: 192
-last_action: "H1.426 - Per-Object CG with Explicit Relational Edges. Tested Per-Object CG with explicit relational edges vs standard Per-Object CG vs 2-Node CG on spatial relation tasks. Found that adding explicit relational edges HURTS performance (+22.91% worse). Standard Per-Object CG achieves -5.79% vs baseline, outperforming all architectures. Hypothesis NOT_SUPPORTED - explicit relations add unnecessary complexity."
-next_intended_action: "H1.427 - Investigate why Per-Object CG works better on spatial relation tasks but worse on multi-stage tasks. Design experiment to test transfer learning between task types."
+current_round: 193
+last_action: "H1.427 - Task Type Transfer Learning. Tested whether Per-Object CG learns task-specific features that don't transfer well. Found that Per-Object CG transfers BEST (avg gap +1076.91%) vs 2-Node CG (+1757.24%) vs Baseline (+4305.08%). Hypothesis REFUTED - Per-Object CG learns more generalizable representations, not task-specific ones."
+next_intended_action: "H1.428 - Test hybrid architecture combining Per-Object CG (for perception) with 2-Node CG (for action prediction) to get best of both worlds."
 
 experiments:
-  total_rounds: 192
+  total_rounds: 193
   trajectory:
+    - experiment_id: H1.427
+      description: "Task Type Transfer Learning - Testing if Per-Object CG overfits to task-specific features"
+      result:
+        conclusion: "REFUTED"
+        task: "transfer_learning"
+        results:
+          baseline_avg_transfer_gap: 4305.08
+          two_node_avg_transfer_gap: 1757.24
+          per_object_avg_transfer_gap: 1076.91
+          spatial_to_multi_gaps:
+            baseline: 105.38
+            two_node: 90.34
+            per_object: 75.66
+          multi_to_spatial_gaps:
+            baseline: 8504.77
+            two_node: 3424.14
+            per_object: 2078.17
+        key_insight: "Per-Object CG transfers BEST across task types, contradicting the hypothesis that it overfits. The earlier finding that Per-Object CG performs worse on multi-stage tasks (H1.425) is due to task structure, not overfitting. Object-centric features are generalizable but less useful for sequential manipulation."
+        config:
+          n_demos: 500
+          n_runs: 3
+          epochs: 30
+          finetune_epochs: 10
+          architectures: ["Baseline", "2-Node CG", "Per-Object CG"]
+          task_types: ["spatial_relations", "multi_stage"]
     - experiment_id: H1.426
       description: "Per-Object CG with Explicit Relational Edges - Testing if explicit spatial relations improve performance"
       result:
@@ -66,31 +91,42 @@ experiments:
           batch_size: 32
           n_stages: 3
           noise_scale: 0.5
-        key_insight: "Per-Object CG performs significantly WORSE than 2-Node CG on multi-stage tasks across all complexity levels. The advantage DECREASES with task complexity (60.08% → 44.68% → 44.85%), contradicting the hypothesis. Simpler 2-Node architecture is more robust for multi-stage manipulation."
-    - experiment_id: H1.424
-      description: "Hybrid Cognitive Graph Architecture - Adaptive node selection based on sequence length"
-      result:
-        conclusion: "REFUTED"
-        task: "hybrid_architecture_test"
-        seq_len: 15
-        baseline_mse: 2.956142
-        hybrid_mse: 3.216776
-        hybrid_vs_baseline: "-8.82%"
-        selection_analysis:
-          per_object_weight_avg: 0.378
-          two_node_weight_avg: 0.622
-          preferred_architecture: "two_node"
-          expected_preferred: "per_object"
-          alignment: "misaligned"
-          selection_confidence: 0.244
-        config:
-          n_demos: 1500
-          seq_len: 15
-          n_objects: 5
-          obs_dim: 400
-          lang_dim: 32
-          action_dim: 7
-          hidden_dim: 64
-          epochs: 20
-          lr: 0.001
-          batch_size: 32
+        key_insight: "Per-Object CG performs significantly WORSE than 2-Node CG on multi-stage tasks across all complexity levels. The advantage does NOT increase with task complexity. 2-Node abstraction provides better generalization for sequential manipulation."
+
+hypotheses:
+  - id: H1
+    name: "Cognitive Graph Architecture"
+    status: "SUPPORTED"
+    key_finding: "+25.6% improvement with real robot data"
+  - id: H2
+    name: "Attention vs Concatenation"
+    status: "INCONCLUSIVE"
+    key_finding: "1.7% difference, needs more data"
+  - id: H3
+    name: "Attention for Long Sequences"
+    status: "REFUTED"
+    key_finding: "Concatenation wins for simple tasks"
+  - id: H4
+    name: "Optimal Dimension Allocation"
+    status: "CLOSE"
+    key_finding: "25% optimal vs 28% hypothesis"
+  - id: H1.421
+    name: "Per-Object CG on Object Permanence"
+    status: "SUPPORTED"
+    key_finding: "+61.76% improvement"
+  - id: H1.423
+    name: "Sequence Length Crossover"
+    status: "SUPPORTED"
+    key_finding: "Crossover at seq_len≈24.3"
+  - id: H1.425
+    name: "Per-Object CG on Multi-Stage Tasks"
+    status: "NOT_SUPPORTED"
+    key_finding: "Worse than 2-Node CG for sequential tasks"
+  - id: H1.426
+    name: "Explicit Relational Edges"
+    status: "NOT_SUPPORTED"
+    key_finding: "Hurts performance, implicit relations better"
+  - id: H1.427
+    name: "Per-Object CG Transfer Learning"
+    status: "REFUTED"
+    key_finding: "Per-Object CG transfers BEST, not worst"

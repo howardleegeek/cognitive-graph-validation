@@ -1,0 +1,79 @@
+{
+  "experiment": "H1.427",
+  "hypothesis": "Per-Object CG learns task-specific features that do not transfer well",
+  "timestamp": "2026-05-18T08:05:36.202504",
+  "results": {
+    "Baseline": {
+      "spatial_relations_to_multi_stage": {
+        "source_mse": 0.4500419696172078,
+        "transfer_mse": 0.9224379460016886,
+        "finetune_mse": 0.05001354590058327,
+        "transfer_gap": 105.38183145823052,
+        "finetune_gap": -88.61689940561115,
+        "source_mse_std": 0.03435551881111552,
+        "transfer_mse_std": 0.046657527120274524,
+        "n_runs": 3
+      },
+      "multi_stage_to_spatial_relations": {
+        "source_mse": 0.01772509701550007,
+        "transfer_mse": 1.3605207999547322,
+        "finetune_mse": 0.43243323763211566,
+        "transfer_gap": 8504.769710045834,
+        "finetune_gap": 2633.2081691405037,
+        "source_mse_std": 0.005477089485222667,
+        "transfer_mse_std": 0.08222774985932237,
+        "n_runs": 3
+      }
+    },
+    "2-Node CG": {
+      "spatial_relations_to_multi_stage": {
+        "source_mse": 0.44229275981585187,
+        "transfer_mse": 0.8411762317021688,
+        "finetune_mse": 0.037978626787662506,
+        "transfer_gap": 90.33845773178776,
+        "finetune_gap": -91.3458159307969,
+        "source_mse_std": 0.03277906775627038,
+        "transfer_mse_std": 0.05299758744512642,
+        "n_runs": 3
+      },
+      "multi_stage_to_spatial_relations": {
+        "source_mse": 0.042247326423724495,
+        "transfer_mse": 1.3662209113438923,
+        "finetune_mse": 0.45259671409924823,
+        "transfer_gap": 3424.144277083013,
+        "finetune_gap": 1057.6073538361543,
+        "source_mse_std": 0.010878040895521688,
+        "transfer_mse_std": 0.1834454002689493,
+        "n_runs": 3
+      }
+    },
+    "Per-Object CG": {
+      "spatial_relations_to_multi_stage": {
+        "source_mse": 0.49955637256304425,
+        "transfer_mse": 0.8743301828702291,
+        "finetune_mse": 0.07848411798477173,
+        "transfer_gap": 75.65753968240824,
+        "finetune_gap": -84.05664727781725,
+        "source_mse_std": 0.05323318933759705,
+        "transfer_mse_std": 0.06455266258278974,
+        "n_runs": 3
+      },
+      "multi_stage_to_spatial_relations": {
+        "source_mse": 0.05789208163817724,
+        "transfer_mse": 1.236868977546692,
+        "finetune_mse": 0.46250665187835693,
+        "transfer_gap": 2078.1704152824987,
+        "finetune_gap": 716.8864238089695,
+        "source_mse_std": 0.006650563102123733,
+        "transfer_mse_std": 0.07997307810884036,
+        "n_runs": 3
+      }
+    }
+  },
+  "conclusion": "REFUTED - Per-Object CG transfers better than other architectures",
+  "metrics": {
+    "per_object_avg_transfer_gap": 1076.9139774824534,
+    "two_node_avg_transfer_gap": 1757.2413674074005,
+    "baseline_avg_transfer_gap": 4305.075770752032
+  }
+}
