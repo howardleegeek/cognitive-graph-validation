@@ -1,0 +1,40 @@
+{
+  "experiment_id": "H1.430",
+  "description": "Attention-Based Temporal Aggregation (Transformer) vs RNN-based (GRU)",
+  "config": {
+    "n_runs": 3,
+    "seq_len": 15,
+    "n_objects": 3,
+    "n_demos": 500,
+    "epochs": 30,
+    "architectures": [
+      "Baseline MLP",
+      "Per-Object CG",
+      "Per-Object CG + GRU",
+      "Per-Object CG + Transformer",
+      "Full Transformer CG"
+    ]
+  },
+  "results": {
+    "Baseline MLP": {
+      "mean_mse": 0.03372489924853047,
+      "std_mse": 0.0005698340178686083
+    },
+    "Per-Object CG": {
+      "mean_mse": 0.03538718307390809,
+      "std_mse": 0.0007300234626592904
+    },
+    "Per-Object CG + GRU": {
+      "mean_mse": 0.035237538473059736,
+      "std_mse": 0.0001815854929513233
+    },
+    "Per-Object CG + Transformer": {
+      "mean_mse": 0.035417688389619194,
+      "std_mse": 0.00022178930461645897
+    },
+    "Full Transformer CG": {
+      "mean_mse": 0.0350518903384606,
+      "std_mse": 1.894601722653739e-05
+    }
+  }
+}

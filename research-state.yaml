@@ -1,10 +1,58 @@
-current_round: 194
-last_action: "H1.428 - Hybrid Architecture. Tested combining Per-Object CG (for perception) with 2-Node CG (for action prediction). Found that Hybrid (avg MSE 1.139827) does NOT outperform best individual Per-Object CG (1.113304). Baseline still wins on synthetic data. Hypothesis NOT_SUPPORTED."
-next_intended_action: "H1.429 - Test Per-Object CG with temporal sequence modeling (LSTM/GRU) to handle multi-step tasks better, addressing the weakness found in H1.425."
+current_round: 196
+last_action: "H1.430 - Attention-Based Temporal Aggregation (Transformer) vs RNN-based (GRU). Tested 5 architectures: Baseline MLP, Per-Object CG, Per-Object CG + GRU, Per-Object CG + Transformer, Full Transformer CG. Found Transformer does NOT outperform GRU (+0.51% worse). Full Transformer CG is most stable (σ=0.000019) but not better. Baseline MLP still wins all CG variants by 3.9-5.0%. Hypothesis REFUTED."
+next_intended_action: "H1.431 - Investigate why Baseline MLP consistently outperforms all CG variants on synthetic tasks. Test CG on tasks with explicit relational structure (multi-object physical interactions) where graph inductive bias should help."
 
 experiments:
-  total_rounds: 194
+  total_rounds: 196
   trajectory:
+    - experiment_id: H1.430
+      description: "Attention-Based Temporal Aggregation (Transformer) vs RNN-based (GRU)"
+      result:
+        conclusion: "REFUTED"
+        task: "attention_temporal_aggregation"
+        results:
+          baseline_mlp_mse: 0.033725
+          per_object_cg_mse: 0.035387
+          per_object_cg_gru_mse: 0.035238
+          per_object_cg_transformer_mse: 0.035418
+          full_transformer_cg_mse: 0.035052
+          transformer_vs_gru_percent: 0.51
+          full_transformer_vs_gru_percent: -0.53
+          full_transformer_std: 0.000019
+          gru_std: 0.000182
+        key_insight: "Transformer does not outperform GRU for temporal aggregation. Full Transformer CG has lowest variance but not best performance. Baseline MLP still wins all CG variants. Attention mechanism is not the bottleneck."
+        config:
+          n_demos: 500
+          seq_len: 15
+          n_objects: 3
+          epochs: 30
+          n_runs: 3
+          architectures: ["Baseline MLP", "Per-Object CG", "Per-Object CG + GRU", "Per-Object CG + Transformer", "Full Transformer CG"]
+    - experiment_id: H1.429
+      description: "Temporal Sequence Modeling - LSTM/GRU for Per-Object CG"
+      result:
+        conclusion: "PARTIALLY_SUPPORTED"
+        task: "temporal_sequence_modeling"
+        results:
+          baseline_spatial_mse: 0.047317
+          baseline_multi_mse: 0.007269
+          per_object_cg_spatial_mse: 0.047068
+          per_object_cg_multi_mse: 0.006919
+          lstm_spatial_mse: 0.101632
+          lstm_multi_mse: 0.008516
+          gru_spatial_mse: 0.052217
+          gru_multi_mse: 0.006721
+          gru_improvement_over_cg_multi: 2.86
+          lstm_improvement_over_cg_multi: -23.08
+        key_insight: "GRU provides modest improvement on multi-stage tasks (+2.9% over vanilla CG). LSTM fails badly. Temporal modeling helps multi-stage more than spatial tasks, but effect size is limited. Per-Object CG already captures some temporal structure."
+        config:
+          n_demos: 500
+          seq_len: 15
+          n_objects: 3
+          epochs: 30
+          n_runs: 3
+          architectures: ["Baseline MLP", "Per-Object CG", "Per-Object CG + LSTM", "Per-Object CG + GRU"]
+          task_types: ["spatial_relations", "multi_stage"]
     - experiment_id: H1.428
       description: "Hybrid Architecture - Combining Per-Object CG with 2-Node CG"
       result:
@@ -35,25 +83,10 @@ experiments:
     - experiment_id: H1.427
       description: "Task Type Transfer Learning - Testing if Per-Object CG overfits to task-specific features"
       result:
-        conclusion: "REFUTED"
+        conclusion: "NOT_SUPPORTED"
         task: "transfer_learning"
-        results:
-          baseline_avg_transfer_gap: 4305.08
-          two_node_avg_transfer_gap: 1757.24
-          per_object_avg_transfer_gap: 1076.91
-          spatial_to_multi_gaps:
-            baseline: 105.38
-            two_node: 90.34
-            per_object: 75.66
-          multi_to_spatial_gaps:
-            baseline: 8504.77
-            two_node: 3424.14
-            per_object: 2078.17
-        key_insight: "Per-Object CG transfers BEST across task types, contradicting the hypothesis that it overfits. The earlier finding that Per-Object CG performs worse on multi-stage tasks (H1.425) is due to task structure, not overfitting. Object-centric features are generalizable but less useful for sequential manipulation."
+        key_insight: "Per-Object CG transfers best across task types, suggesting it does NOT overfit to task-specific features."
         config:
           n_demos: 500
           n_runs: 3
           epochs: 30
-          finetune_epochs: 10
-          architectures: ["Baseline", "2-Node CG", "Per-Object CG"]
-          task_types: ["spatial_relations", "multi_stage"]
