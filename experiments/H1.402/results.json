@@ -1,0 +1,202 @@
+[
+  {
+    "dim_ratio": 0.1,
+    "coupling_strength": 0.0,
+    "baseline_loss": 0.003201589686796069,
+    "cg_loss": 0.0033548022620379925,
+    "improvement_percent": -4.785515641613899,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.3,
+    "coupling_strength": 0.0,
+    "baseline_loss": 0.003061174415051937,
+    "cg_loss": 0.0035007819533348083,
+    "improvement_percent": -14.360747826758924,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.5,
+    "coupling_strength": 0.0,
+    "baseline_loss": 0.0028769096825271845,
+    "cg_loss": 0.003481459803879261,
+    "improvement_percent": -21.013872108109325,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.7,
+    "coupling_strength": 0.0,
+    "baseline_loss": 0.0029095199424773455,
+    "cg_loss": 0.003689973382279277,
+    "improvement_percent": -26.824130964278766,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.9,
+    "coupling_strength": 0.0,
+    "baseline_loss": 0.003145886119455099,
+    "cg_loss": 0.0040727704763412476,
+    "improvement_percent": -29.463379209883627,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.1,
+    "coupling_strength": 0.3,
+    "baseline_loss": 0.0029045441187918186,
+    "cg_loss": 0.003404275979846716,
+    "improvement_percent": -17.205173707699334,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.3,
+    "coupling_strength": 0.3,
+    "baseline_loss": 0.003005063161253929,
+    "cg_loss": 0.003416064428165555,
+    "improvement_percent": -13.676959346842029,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.5,
+    "coupling_strength": 0.3,
+    "baseline_loss": 0.00295917596668005,
+    "cg_loss": 0.0036261046770960093,
+    "improvement_percent": -22.53764959993907,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.7,
+    "coupling_strength": 0.3,
+    "baseline_loss": 0.0032103031408041716,
+    "cg_loss": 0.0038850312121212482,
+    "improvement_percent": -21.01758126019399,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.9,
+    "coupling_strength": 0.3,
+    "baseline_loss": 0.0028653903864324093,
+    "cg_loss": 0.003939139656722546,
+    "improvement_percent": -37.47305342316798,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.1,
+    "coupling_strength": 0.5,
+    "baseline_loss": 0.0031357852276414633,
+    "cg_loss": 0.0034232072066515684,
+    "improvement_percent": -9.165869412118047,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.3,
+    "coupling_strength": 0.5,
+    "baseline_loss": 0.0031091675627976656,
+    "cg_loss": 0.0033931832294911146,
+    "improvement_percent": -9.134781608164225,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.5,
+    "coupling_strength": 0.5,
+    "baseline_loss": 0.003378104418516159,
+    "cg_loss": 0.0038551315665245056,
+    "improvement_percent": -14.121148694920507,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.7,
+    "coupling_strength": 0.5,
+    "baseline_loss": 0.002878589555621147,
+    "cg_loss": 0.003788352943956852,
+    "improvement_percent": -31.604484444792426,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.9,
+    "coupling_strength": 0.5,
+    "baseline_loss": 0.0027611644472926855,
+    "cg_loss": 0.00405978923663497,
+    "improvement_percent": -47.03178003814957,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.1,
+    "coupling_strength": 0.7,
+    "baseline_loss": 0.0029342074412852526,
+    "cg_loss": 0.003400146495550871,
+    "improvement_percent": -15.879553971191823,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.3,
+    "coupling_strength": 0.7,
+    "baseline_loss": 0.0030153521802276373,
+    "cg_loss": 0.003357063280418515,
+    "improvement_percent": -11.332377771046339,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.5,
+    "coupling_strength": 0.7,
+    "baseline_loss": 0.002958254888653755,
+    "cg_loss": 0.003611779073253274,
+    "improvement_percent": -22.091544143342055,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.7,
+    "coupling_strength": 0.7,
+    "baseline_loss": 0.002899490064010024,
+    "cg_loss": 0.0036725495010614395,
+    "improvement_percent": -26.661910197487153,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.9,
+    "coupling_strength": 0.7,
+    "baseline_loss": 0.0029494159389287233,
+    "cg_loss": 0.0038990317843854427,
+    "improvement_percent": -32.19674217267693,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.1,
+    "coupling_strength": 0.9,
+    "baseline_loss": 0.0029900670051574707,
+    "cg_loss": 0.0033903000876307487,
+    "improvement_percent": -13.385421857869032,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.3,
+    "coupling_strength": 0.9,
+    "baseline_loss": 0.0032043864484876394,
+    "cg_loss": 0.003430198645219207,
+    "improvement_percent": -7.046971405029597,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.5,
+    "coupling_strength": 0.9,
+    "baseline_loss": 0.0031425319612026215,
+    "cg_loss": 0.003487966489046812,
+    "improvement_percent": -10.992235945692517,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.7,
+    "coupling_strength": 0.9,
+    "baseline_loss": 0.003035068279132247,
+    "cg_loss": 0.003663309384137392,
+    "improvement_percent": -20.699405984525818,
+    "cg_wins": false
+  },
+  {
+    "dim_ratio": 0.9,
+    "coupling_strength": 0.9,
+    "baseline_loss": 0.003249051747843623,
+    "cg_loss": 0.004045587033033371,
+    "improvement_percent": -24.515931016438984,
+    "cg_wins": false
+  }
+]

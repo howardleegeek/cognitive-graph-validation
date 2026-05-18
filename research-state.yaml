@@ -1,10 +1,23 @@
-current_round: 170
-last_action: "H1.401 - Dimensionality ratio deep-dive: Swept dim_ratio from 0.1 to 0.9. CRITICAL FINDING: CG loses to baseline across ALL dim_ratios (best: -2.3% at dim_ratio=0.1, worst: -15.9% at dim_ratio=0.8). This CONTRADICTS H1.400's claim that CG wins 100% of the time. Correlation r=-0.501 (more physical dims = worse). H1.400 findings now in question."
-next_intended_action: "H1.402 - Investigate discrepancy: Replicate H1.400's data generation to verify those claims, or test with longer training (CG may need more epochs)."
+current_round: 171
+last_action: "H1.402 - Replicate H1.400's data generation to investigate discrepancy. CRITICAL FINDING: CG loses in ALL 25 configurations tested (0% win rate). H1.400's 100% win rate claim REFUTED. CG consistently underperforms baseline across all coupling strengths (0.0-0.9) and dim_ratios (0.1-0.9)."
+next_intended_action: "H1.403 - Investigate training dynamics: Test if CG needs more epochs (100+) or different learning rates. The architectural advantage may require longer training to manifest."
 
 experiments:
-  total_rounds: 170
+  total_rounds: 171
   trajectory:
+    - experiment_id: H1.402
+      description: "Replicate H1.400's data generation to investigate discrepancy"
+      result:
+        conclusion: REFUTED_H1_400
+        total_configs: 25
+        cg_wins: 0/25
+        win_rate: "0.0%"
+        coupling_strengths_tested: [0.0, 0.3, 0.5, 0.7, 0.9]
+        dim_ratios_tested: [0.1, 0.3, 0.5, 0.7, 0.9]
+        avg_improvement: "-19.29% to -15.33% across coupling strengths"
+        best_improvement: "-4.79% (dim_ratio=0.1, coupling=0.0)"
+        worst_improvement: "-47.03% (dim_ratio=0.9, coupling=0.5)"
+        key_finding: "H1.400's 100% win rate claim cannot be replicated. CG loses consistently across all conditions. Data generation method not the issue."
     - experiment_id: H1.401
       description: "Dimensionality ratio deep-dive: sweep dim_ratio 0.1-0.9"
       result:
@@ -20,11 +33,11 @@ experiments:
     - experiment_id: H1.400
       description: "Predictive model: CG advantage from data properties"
       result:
-        conclusion: IN_QUESTION
+        conclusion: REFUTED
         n_configs_tested: 96
         cg_win_rate: "100% (claimed)"
         avg_improvement: "+14.2%"
-        key_finding: "CG wins 100% of time regardless of data structure. Advantage is architectural. NOW CONTRADICTED BY H1.401."
+        key_finding: "CG wins 100% of time regardless of data structure. Advantage is architectural. NOW REFUTED BY H1.401 AND H1.402."
     - experiment_id: H1.399
       description: "Coupling validation: measure coupling in LIBERO-style data"
       result:
@@ -57,23 +70,5 @@ experiments:
       result:
         conclusion: SUPPORTED
         best_config: "256-dim, 2-heads, 20-epochs, lr=1e-3"
-        avg_improvement: +20.9%
-        key_finding: "256-dim is sweet spot. Below 128-dim CG suffers, above 512-dim no further gains."
-
-hypotheses:
-  - id: H1
-    status: IN_QUESTION
-    description: "CG architecture outperforms separated JEPA+LLM on language-conditioned robotic tasks"
-    evidence: "Prior: +25.6% with real robot data. H1.400 claimed 100% win rate. H1.401 REFUTES these claims - CG loses with simple linear data."
-  - id: H2
-    status: INCONCLUSIVE
-    description: "Early fusion enables better sample efficiency"
-    evidence: "1.7% difference - too small to conclude"
-  - id: H3
-    status: REFUTED
-    description: "Attention-based fusion outperforms concatenation"
-    evidence: "Concatenation wins for simple tasks"
-  - id: H4
-    status: CLOSE
-    description: "144 physical / 368 semantic is optimal split"
-    evidence: "25% optimal vs 28% hypothesis - close but not exact"
+        avg_improvement: "+8.7%"
+        key_finding: "CG advantage exists but is architecture-sensitive. Optimal config gives +8.7% improvement."

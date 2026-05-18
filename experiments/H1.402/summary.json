@@ -1,0 +1,8 @@
+{
+  "experiment_id": "H1.402",
+  "description": "Replicate H1.400 data generation to investigate discrepancy with H1.401",
+  "total_configs": 25,
+  "cg_win_rate": "0.0%",
+  "avg_improvement": "-20.17%",
+  "key_finding": "CG win rate: 0/25 (0.0%) across coupling strengths [0.0, 0.3, 0.5, 0.7, 0.9]"
+}
