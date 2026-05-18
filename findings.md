@@ -19,6 +19,39 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.391: LIBERO-style Complexity Validation — Round 162
+
+**Hypothesis**: The complexity threshold predictor (from H1.390) generalizes to LIBERO-style robot manipulation data, predicting when CG wins based on task complexity.
+
+**Method**: Tested 7 configurations with LIBERO-style data (multi-object manipulation trajectories with language instructions). Task: predict target object from trajectory + language (classification). Complexity formula from H1.390: 0.6*n_objects² + 0.15*seq_len^1.5 + 0.15*action_dim^1.2 + 0.1*feature_dim*n_objects.
+
+**Results**:
+
+| Config | Objects | Seq | Complexity | Baseline Acc | CG Small Acc | CG Large Acc | Winner |
+|--------|---------|-----|------------|--------------|--------------|--------------|--------|
+| simple | 3 | 10 | 16.5 | 0.700 | 0.567 | 0.867 | **cg_large** |
+| simple2 | 4 | 15 | 26.3 | 0.933 | 0.500 | 0.633 | baseline |
+| medium | 5 | 20 | 38.0 | 0.633 | 0.367 | 0.400 | baseline |
+| threshold | 6 | 25 | 51.5 | 0.933 | 0.300 | 0.533 | baseline |
+| crossover | 7 | 30 | 66.8 | 0.900 | 0.467 | 0.267 | baseline |
+| complex | 8 | 35 | 83.8 | 1.000 | 0.233 | 0.400 | baseline |
+| very_complex | 10 | 40 | 115.5 | 0.933 | 0.200 | 0.333 | baseline |
+
+**Status: ❌ REFUTED** — Key observations:
+
+1. **Negative correlation**: Complexity vs CG advantage correlation = -0.805 (vs H1.390's +0.839)
+2. **CG wins only 1/7 configs** (vs H1.390's 5/7)
+3. **Baseline dominates at higher complexity** — opposite of H1.390 prediction
+4. **Task type matters**: Classification task (target object prediction) shows different pattern than regression task (action prediction)
+
+**Implications**:
+- The complexity predictor does NOT generalize across task types
+- CG advantage is task-dependent, not just complexity-dependent
+- For classification tasks with explicit object-language matching, MLP baseline may be sufficient
+- H1.390's formula may only apply to action prediction/regression tasks
+
+---
+
 ### H1.390: Complexity Threshold Predictor — Round 161
 
 **Hypothesis**: The crossover point (where CG starts winning) can be predicted from dataset statistics: entity count, sequence length, action dimensionality, and feature dimensionality.
@@ -48,30 +81,4 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ---
 
-### H1.389: Complexity Threshold Hypothesis — Round 160
-
-**Hypothesis**: There exists a minimum task complexity threshold below which the baseline (separate encoders) outperforms Cognitive Graph, and above which CG provides increasing advantage.
-
-**Prediction**: CG's advantage follows a sigmoid curve with task complexity. The crossover point is where unified representation benefits outweigh the overhead of cross-modal attention.
-
-**Method**: Generated synthetic data with controlled complexity (1-10 objects). Each object adds 6 features (position + velocity). Complexity score = O(n²) for pairwise interactions.
-
-**Results**:
-
-| Objects | Complexity Score | Baseline MSE | CG Small MSE (%) | CG Large MSE (%) | Best Model |
-|---------|-----------------|--------------|------------------|------------------|------------|
-| 1 | 2 | 0.048983 | 0.071534 (-46.04%) | 0.070916 (-44.78%) | baseline |
-| 2 | 6 | 0.041240 | 0.051247 (-24.27%) | 0.050005 (-21.25%) | baseline |
-| 3 | 12 | 0.037408 | 0.042764 (-14.32%) | 0.041799 (-11.74%) | baseline |
-| 4 | 20 | 0.037333 | 0.043126 (-15.52%) | 0.043732 (-17.14%) | baseline |
-| 5 | 30 | 0.039731 | 0.045693 (-15.00%) | 0.044089 (-10.97%) | baseline |
-| 6 | 42 | 0.038465 | 0.043500 (-13.09%) | 0.040504 (-5.30%) | baseline |
-| 7 | 56 | 0.043012 | 0.043477 (-1.08%) | 0.043140 (-0.30%) | baseline |
-| 8 | 72 | 0.046679 | 0.044213 (+5.28%) | 0.044689 (+4.27%) | **cg_small** |
-| 9 | 90 | 0.048150 | 0.048956 (-1.68%) | 0.048772 (-1.29%) | baseline |
-| 10 | 110 | 0.051467 | 0.049899 (+3.05%) | 0.046238 (+10.16%) | **cg_large** |
-
-**Status: ✅ SUPPORTED** — Key observations:
-
-1. **Crossover point identified**: CG starts winning at 8 objects (complexity score 72)
-2. **Strong correlation**: Complexity vs CG advantage correlation = 0.83
+### H1.389: Complexity Threshold Hypot

@@ -1,0 +1,91 @@
+{
+  "experiment": "H1.391",
+  "hypothesis": "Complexity predictor generalizes to LIBERO-style robot data",
+  "task": "target_object_prediction",
+  "predicted_crossover": 24,
+  "actual_crossover": 16.492978309926848,
+  "correlation": -0.8045040820687801,
+  "h1_390_correlation": 0.839,
+  "cg_wins": 1,
+  "total_configs": 7,
+  "status": "SUPPORTED",
+  "configs": [
+    {
+      "config": "simple",
+      "n_objects": 3,
+      "seq_len": 10,
+      "complexity": 16.492978309926848,
+      "baseline_acc": 0.7,
+      "cg_small_acc": 0.5666666666666667,
+      "cg_large_acc": 0.8666666666666667,
+      "winner": "cg_large",
+      "cg_advantage": 23.80952380952382
+    },
+    {
+      "config": "simple2",
+      "n_objects": 4,
+      "seq_len": 15,
+      "complexity": 26.263774348640965,
+      "baseline_acc": 0.9333333333333333,
+      "cg_small_acc": 0.5,
+      "cg_large_acc": 0.6333333333333333,
+      "winner": "baseline",
+      "cg_advantage": -32.142857142857146
+    },
+    {
+      "config": "medium",
+      "n_objects": 5,
+      "seq_len": 20,
+      "complexity": 37.96596968467302,
+      "baseline_acc": 0.6333333333333333,
+      "cg_small_acc": 0.36666666666666664,
+      "cg_large_acc": 0.4,
+      "winner": "baseline",
+      "cg_advantage": -36.84210526315789
+    },
+    {
+      "config": "threshold",
+      "n_objects": 6,
+      "seq_len": 25,
+      "complexity": 51.49956181967428,
+      "baseline_acc": 0.9333333333333333,
+      "cg_small_acc": 0.3,
+      "cg_large_acc": 0.5333333333333333,
+      "winner": "baseline",
+      "cg_advantage": -42.85714285714286
+    },
+    {
+      "config": "crossover",
+      "n_objects": 7,
+      "seq_len": 30,
+      "complexity": 66.79707690740676,
+      "baseline_acc": 0.9,
+      "cg_small_acc": 0.4666666666666667,
+      "cg_large_acc": 0.26666666666666666,
+      "winner": "baseline",
+      "cg_advantage": -48.14814814814815
+    },
+    {
+      "config": "complex",
+      "n_objects": 8,
+      "seq_len": 35,
+      "complexity": 83.80898068094726,
+      "baseline_acc": 1.0,
+      "cg_small_acc": 0.23333333333333334,
+      "cg_large_acc": 0.4,
+      "winner": "baseline",
+      "cg_advantage": -60.0
+    },
+    {
+      "config": "very_complex",
+      "n_objects": 10,
+      "seq_len": 40,
+      "complexity": 115.49689374169483,
+      "baseline_acc": 0.9333333333333333,
+      "cg_small_acc": 0.2,
+      "cg_large_acc": 0.3333333333333333,
+      "winner": "baseline",
+      "cg_advantage": -64.28571428571429
+    }
+  ]
+}

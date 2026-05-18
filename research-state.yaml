@@ -1,10 +1,71 @@
-current_round: 161
-last_action: "H1.390 - Complexity Threshold Predictor: Test if crossover point can be predicted from dataset statistics (entity count, sequence length, action dimensionality)"
-next_intended_action: "H1.391 - Validate complexity predictor on real robot data (LIBERO) to see if it generalizes"
+current_round: 162
+last_action: "H1.391 - LIBERO-style complexity validation: Tested if complexity predictor generalizes to robot manipulation classification task"
+next_intended_action: "H1.392 - Investigate task-type dependency: Compare action prediction vs classification tasks to understand why complexity predictor fails for classification"
 
 experiments:
-  total_runs: 161
+  total_runs: 162
   trajectory:
+  - experiment_id: H1.391
+    description: "LIBERO-style complexity validation: Test if predictor generalizes to robot manipulation"
+    result:
+      cognitive_graph_wins: false
+      conclusion: REFUTED
+      correlation: -0.805
+      h1_390_correlation: 0.839
+      cg_wins_count: 1
+      total_configs: 7
+      key_finding: "Complexity predictor does NOT generalize to classification tasks. Negative correlation (-0.805) vs H1.390's positive 0.839. Baseline dominates at higher complexity. Task type is a critical factor."
+      task_type: "target_object_classification"
+      config:
+        n_train: 100
+        n_val: 30
+        n_epochs: 10
+        batch_size: 32
+        learning_rate: 1e-3
+        test_configs:
+          - name: simple
+            n_objects: 3
+            seq_len: 10
+            complexity: 16.5
+            winner: cg_large
+            baseline_acc: 0.700
+            cg_large_acc: 0.867
+          - name: simple2
+            n_objects: 4
+            seq_len: 15
+            complexity: 26.3
+            winner: baseline
+            baseline_acc: 0.933
+          - name: medium
+            n_objects: 5
+            seq_len: 20
+            complexity: 38.0
+            winner: baseline
+            baseline_acc: 0.633
+          - name: threshold
+            n_objects: 6
+            seq_len: 25
+            complexity: 51.5
+            winner: baseline
+            baseline_acc: 0.933
+          - name: crossover
+            n_objects: 7
+            seq_len: 30
+            complexity: 66.8
+            winner: baseline
+            baseline_acc: 0.900
+          - name: complex
+            n_objects: 8
+            seq_len: 35
+            complexity: 83.8
+            winner: baseline
+            baseline_acc: 1.000
+          - name: very_complex
+            n_objects: 10
+            seq_len: 40
+            complexity: 115.5
+            winner: baseline
+            baseline_acc: 0.933
   - experiment_id: H1.390
     description: "Complexity Threshold Predictor: Predict crossover from dataset statistics"
     result:
