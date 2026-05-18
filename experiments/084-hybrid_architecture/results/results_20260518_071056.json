@@ -1,0 +1,95 @@
+{
+  "config": {
+    "experiment_id": "H1.424",
+    "description": "Hybrid Cognitive Graph Architecture - Adaptive node selection based on sequence length",
+    "n_demos": 1500,
+    "seq_len": 15,
+    "n_objects": 5,
+    "obs_dim": 400,
+    "lang_dim": 32,
+    "action_dim": 7,
+    "hidden_dim": 64,
+    "epochs": 20,
+    "lr": 0.001,
+    "batch_size": 32,
+    "n_runs": 1,
+    "timestamp": "2026-05-18T07:10:42.671572"
+  },
+  "hybrid_model": {
+    "test_mse": 3.2167759195963543,
+    "test_mae": 1.4262609746721056,
+    "train_loss": 1.388799255544489,
+    "val_loss": 3.2096525132656097
+  },
+  "baseline_model": {
+    "test_mse": 2.9561424488491483,
+    "test_mae": 1.3658767949210273,
+    "train_loss": 1.7540251450105147,
+    "val_loss": 2.8957106471061707
+  },
+  "improvement": {
+    "mse_improvement_percent": -8.816674949093635,
+    "absolute_mse_difference": -0.260633470747206
+  },
+  "selection_analysis": {
+    "per_object_weight_avg": 0.3778347854743091,
+    "two_node_weight_avg": 0.6221652154241585,
+    "preferred_architecture": "two_node",
+    "expected_preferred": "per_object",
+    "alignment": "misaligned",
+    "selection_confidence": 0.24433042994984938,
+    "seq_len": 15
+  },
+  "selection_stats_sample": [
+    {
+      "seq_len": 15.0,
+      "per_object_weight": 0.9360631704330444,
+      "two_node_weight": 0.06393684446811676
+    },
+    {
+      "seq_len": 15.0,
+      "per_object_weight": 0.47037845849990845,
+      "two_node_weight": 0.5296215415000916
+    },
+    {
+      "seq_len": 15.0,
+      "per_object_weight": 0.05399944633245468,
+      "two_node_weight": 0.9460005760192871
+    },
+    {
+      "seq_len": 15.0,
+      "per_object_weight": 0.46826693415641785,
+      "two_node_weight": 0.5317331552505493
+    },
+    {
+      "seq_len": 15.0,
+      "per_object_weight": 0.6201871633529663,
+      "two_node_weight": 0.3798128664493561
+    },
+    {
+      "seq_len": 15.0,
+      "per_object_weight": 0.11489929258823395,
+      "two_node_weight": 0.885100781917572
+    },
+    {
+      "seq_len": 15.0,
+      "per_object_weight": 0.32806774973869324,
+      "two_node_weight": 0.6719322800636292
+    },
+    {
+      "seq_len": 15.0,
+      "per_object_weight": 0.4399813711643219,
+      "two_node_weight": 0.5600185990333557
+    },
+    {
+      "seq_len": 15.0,
+      "per_object_weight": 0.46357908844947815,
+      "two_node_weight": 0.5364208817481995
+    },
+    {
+      "seq_len": 15.0,
+      "per_object_weight": 0.6101202964782715,
+      "two_node_weight": 0.3898797035217285
+    }
+  ]
+}
