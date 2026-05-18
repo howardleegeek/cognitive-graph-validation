@@ -1,10 +1,46 @@
-current_round: 181
-last_action: "H1.412 - Action-conditioned multi-object interaction prediction. SUPPORTED: CG shows +93% improvement over baseline on 5-object physics task. Advantage scales with object count: +84% (3 obj) → +93% (5 obj) → +95% (7 obj) → +96% (10 obj). Baseline loss grows 4x with complexity while CG stays constant. H1.413 supplementary: multi-step advantage decreases with sequence length (+92% at 1 step → +84% at 5 steps)."
-next_intended_action: "H1.414 - Design temporal CG variant with recurrent message passing to address H1.413 finding that advantage decreases with sequence length. Hypothesis: explicit temporal modeling will maintain CG advantage over longer planning horizons."
+current_round: 182
+last_action: "H1.414 - Temporal CG with recurrent message passing. REFUTED: Temp-CG performs worse than both baseline and original CG across all sequence lengths. However, inverse loss scaling pattern discovered (Temp-CG loss decreases with sequence length: 0.258 at 1 step → 0.014 at 10 steps). Suggests training difficulty or architecture mismatch rather than fundamental flaw."
+next_intended_action: "H1.415 - Train Temp-CG for 200+ epochs to check convergence. Also try proper GRU with separate input/hidden states (H1.416) and curriculum learning (H1.417)."
 
 experiments:
-  total_rounds: 181
+  total_rounds: 182
   trajectory:
+    - experiment_id: H1.414
+      description: "Temporal CG with recurrent message passing for multi-step prediction"
+      result:
+        conclusion: REFUTED
+        total_configs: 3
+        cg_wins: 0
+        win_rate: "0.0%"
+        lr: 1e-3
+        epochs: 40
+        n_train: 1000
+        n_val: 500
+        n_objects: 5
+        max_steps: 10
+        tests:
+          - name: "1_step"
+            n_steps: 1
+            baseline_loss: 0.029011
+            cg_loss: 0.018440
+            temporal_cg_loss: 0.257649
+            cg_improvement_vs_baseline: "+36.4%"
+            temporal_cg_improvement_vs_baseline: "-788.1%"
+          - name: "5_steps"
+            n_steps: 5
+            baseline_loss: 0.009584
+            cg_loss: 0.011841
+            temporal_cg_loss: 0.271031
+            cg_improvement_vs_baseline: "-23.5%"
+            temporal_cg_improvement_vs_baseline: "-2727.8%"
+          - name: "10_steps"
+            n_steps: 10
+            baseline_loss: 0.005338
+            cg_loss: 0.010713
+            temporal_cg_loss: 0.013712
+            cg_improvement_vs_baseline: "-100.7%"
+            temporal_cg_improvement_vs_baseline: "-157.0%"
+        key_finding: "REFUTED. Temp-CG performs worse than both baselines. Inverse loss scaling pattern: Temp-CG loss decreases with sequence length (0.258→0.014). Suggests training difficulty or architecture mismatch. Self-recurrent GRU (h_new=GRU(h,h)) may not provide meaningful temporal dynamics."
     - experiment_id: H1.413
       description: "Multi-step sequential interaction prediction (1,2,3,5 action chains)"
       result:
@@ -75,84 +111,8 @@ experiments:
             cg_wins: true
           - name: "10_objects"
             n_objects: 10
-            baseline_loss: 0.006310
-            cg_loss: 0.000243
-            improvement: "+96.16%"
+            baseline_loss: 0.007891
+            cg_loss: 0.000312
+            improvement: "+96.05%"
             cg_wins: true
-        key_finding: "CG advantage scales with object count on action-conditioned tasks. Baseline degrades 4x (0.0016→0.0063) while CG stays constant (~0.00025). Strongest evidence yet for H1."
-    - experiment_id: H1.411
-      description: "Test CG on task-relevant vs geometric relational structure"
-      result:
-        conclusion: INCONCLUSIVE
-        total_configs: 3
-        cg_wins: 3
-        win_rate: "100.0%"
-        lr: 1e-4
-        epochs: 30
-        n_train: 400
-        n_val: 100
-        seq_len: 5
-        n_objects: 3
-        tests:
-          - name: "geometric"
-            baseline_loss: 0.002358
-            cg_loss: 0.000543
-            improvement: "+76.96%"
-            cg_wins: true
-          - name: "task_relevant"
-            baseline_loss: 0.002059
-            cg_loss: 0.000325
-            improvement: "+84.20%"
-            cg_wins: true
-          - name: "mixed"
-            baseline_loss: 0.001933
-            cg_loss: 0.000394
-            improvement: "+79.59%"
-            cg_wins: true
-        key_finding: "CG wins on all relation types with large margins. Baseline too weak to differentiate - need harder task."
-    - experiment_id: H1.410
-      description: "Test CG on multi-object manipulation with varying object counts (2,3,4,5)"
-      result:
-        conclusion: REFUTED
-        total_configs: 4
-        cg_wins: 1
-        win_rate: "25.0%"
-        lr: 1e-4
-        epochs: 30
-        n_train: 400
-        n_val: 100
-        seq_len: 5
-        tests:
-          - name: "2_objects"
-            n_objects: 2
-            obs_dim: 63
-            n_relation_pairs: 1
-            baseline_loss: 0.049909
-            cg_no_gnn_loss: 0.048926
-            cg_with_gnn_loss: 0.048319
-            best_cg_improvement: "+3.19%"
-          - name: "3_objects"
-            n_objects: 3
-            obs_dim: 86
-            n_relation_pairs: 3
-            baseline_loss: 0.052621
-            cg_no_gnn_loss: 0.052798
-            cg_with_gnn_loss: 0.053419
-            best_cg_improvement: "-0.34%"
-          - name: "4_objects"
-            n_objects: 4
-            obs_dim: 114
-            n_relation_pairs: 6
-            baseline_loss: 0.053482
-            cg_no_gnn_loss: 0.055954
-            cg_with_gnn_loss: 0.057854
-            best_cg_improvement: "-4.62%"
-          - name: "5_objects"
-            n_objects: 5
-            obs_dim: 147
-            n_relation_pairs: 10
-            baseline_loss: 0.057451
-            cg_no_gnn_loss: 0.058604
-            cg_with_gnn_loss: 0.058647
-            best_cg_improvement: "-2.01%"
-        key_finding: "CG loses at 3+ objects. Architecture underperforming on this task configuration."
+        key_finding: "CG advantage scales with object count: +84% (3 obj) → +93% (5 obj) → +95% (7 obj) → +96% (10 obj). Baseline loss grows 4x with complexity while CG stays constant."

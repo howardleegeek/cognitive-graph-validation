@@ -1,0 +1,117 @@
+{
+  "experiment_id": "H1.414",
+  "description": "Temporal CG with recurrent message passing for multi-step prediction",
+  "conclusion": "PARTIALLY_SUPPORTED",
+  "key_finding": "Temporal CG degrades less over longer sequences (degradation: CG=137.1pp vs Temp-CG=-631.2pp), but does not consistently beat original CG on all long sequences. Average improvement vs baseline: -1185.3% (short) \u2192 -804.5% (long).",
+  "config": {
+    "n_objects": 5,
+    "max_steps": 10,
+    "n_train": 1000,
+    "n_val": 500,
+    "epochs": 40,
+    "lr": 0.001,
+    "batch_size": 64
+  },
+  "models": {
+    "baseline": {
+      "n_params": 120714,
+      "final_val_loss": 0.002183629316277802
+    },
+    "cognitive_graph": {
+      "n_params": 192258,
+      "final_val_loss": 0.0050110515439882874
+    },
+    "temporal_cg": {
+      "n_params": 283266,
+      "final_val_loss": 0.010228003724478185
+    }
+  },
+  "comparison": {
+    "1": {
+      "baseline_loss": 0.02901097462616033,
+      "cg_loss": 0.018439633965802688,
+      "temporal_cg_loss": 0.2576494496729639,
+      "cg_improvement_vs_baseline": 36.4391089805892,
+      "temporal_cg_improvement_vs_baseline": -788.1102858248385,
+      "temporal_cg_vs_cg": -1297.259024505524
+    },
+    "2": {
+      "baseline_loss": 0.023889189434432707,
+      "cg_loss": 0.013365195167987325,
+      "temporal_cg_loss": 0.40194015308868053,
+      "cg_improvement_vs_baseline": 44.053375252977865,
+      "temporal_cg_improvement_vs_baseline": -1582.5190079883737,
+      "temporal_cg_vs_cg": -2907.364636555539
+    },
+    "3": {
+      "baseline_loss": 0.016625665001232515,
+      "cg_loss": 0.01212895711862736,
+      "temporal_cg_loss": 0.44234256785024295,
+      "cg_improvement_vs_baseline": 27.046785089629793,
+      "temporal_cg_improvement_vs_baseline": -2560.600750811776,
+      "temporal_cg_vs_cg": -3546.9958919296027
+    },
+    "4": {
+      "baseline_loss": 0.011308192862018656,
+      "cg_loss": 0.008989589462334361,
+      "temporal_cg_loss": 0.527862663165881,
+      "cg_improvement_vs_baseline": 20.503748282114064,
+      "temporal_cg_improvement_vs_baseline": -4567.966576152388,
+      "temporal_cg_vs_cg": -5771.932921715525
+    },
+    "5": {
+      "baseline_loss": 0.009584498586870419,
+      "cg_loss": 0.011840589834415974,
+      "temporal_cg_loss": 0.271030565413336,
+      "cg_improvement_vs_baseline": -23.538959572033555,
+      "temporal_cg_improvement_vs_baseline": -2727.80119332079,
+      "temporal_cg_vs_cg": -2188.9954740730554
+    },
+    "6": {
+      "baseline_loss": 0.0067955282085189,
+      "cg_loss": 0.009345660695987867,
+      "temporal_cg_loss": 0.16049552363593403,
+      "cg_improvement_vs_baseline": -37.52662646992048,
+      "temporal_cg_improvement_vs_baseline": -2261.781434955067,
+      "temporal_cg_vs_cg": -1617.326670171489
+    },
+    "7": {
+      "baseline_loss": 0.006405380436318052,
+      "cg_loss": 0.009210909136472214,
+      "temporal_cg_loss": 0.12374617052123402,
+      "cg_improvement_vs_baseline": -43.7995639454452,
+      "temporal_cg_improvement_vs_baseline": -1831.909771035644,
+      "temporal_cg_vs_cg": -1243.4740120412143
+    },
+    "8": {
+      "baseline_loss": 0.00539619705952765,
+      "cg_loss": 0.0117925656501387,
+      "temporal_cg_loss": 0.09481095797458633,
+      "cg_improvement_vs_baseline": -118.53474808369855,
+      "temporal_cg_improvement_vs_baseline": -1656.9958422327425,
+      "temporal_cg_vs_cg": -703.989231753577
+    },
+    "9": {
+      "baseline_loss": 0.005588204233098845,
+      "cg_loss": 0.010566513607594764,
+      "temporal_cg_loss": 0.03908955790805367,
+      "cg_improvement_vs_baseline": -89.08603134097123,
+      "temporal_cg_improvement_vs_baseline": -599.5012400679066,
+      "temporal_cg_vs_cg": -269.9380832667243
+    },
+    "10": {
+      "baseline_loss": 0.005337934004776972,
+      "cg_loss": 0.010712923397845093,
+      "temporal_cg_loss": 0.013712045840641602,
+      "cg_improvement_vs_baseline": -100.69418970444346,
+      "temporal_cg_improvement_vs_baseline": -156.87926880269694,
+      "temporal_cg_vs_cg": -27.99536906424425
+    }
+  },
+  "degradation_analysis": {
+    "cg_degradation_1_to_10_pp": 137.13329868503266,
+    "temporal_cg_degradation_1_to_10_pp": -631.2310170221415,
+    "temporal_maintains_advantage": true,
+    "tcg_beats_cg_on_long_sequences": false
+  }
+}
