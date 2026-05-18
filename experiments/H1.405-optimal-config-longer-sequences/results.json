@@ -1,0 +1,42 @@
+{
+  "experiment_id": "H1.405",
+  "timestamp": "2026-05-18T00:22:47.346865",
+  "config": {
+    "lr": 0.0001,
+    "epochs": 30,
+    "dim_ratio": 0.9,
+    "coupling": 0.9,
+    "seq_len": 20,
+    "n_samples": 500
+  },
+  "tests": [
+    {
+      "name": "longer_sequences",
+      "baseline_loss": 0.002009242307394743,
+      "cg_loss": 0.0011243463959544897,
+      "improvement_pct": 44.0412740754818,
+      "cg_wins": true
+    },
+    {
+      "name": "multi_step_tasks",
+      "baseline_loss": 0.001507786801084876,
+      "cg_loss": 0.0012219562195241451,
+      "improvement_pct": 18.956962705541088,
+      "cg_wins": true
+    },
+    {
+      "name": "seq_len_30",
+      "baseline_loss": 0.0016597663052380085,
+      "cg_loss": 0.0011993949301540852,
+      "improvement_pct": 27.73712019764774,
+      "cg_wins": true
+    }
+  ],
+  "summary": {
+    "total_wins": 3,
+    "total_tests": 3,
+    "win_rate": "100.0%",
+    "avg_improvement": 30.245118992890212,
+    "conclusion": "SUPPORTED"
+  }
+}
