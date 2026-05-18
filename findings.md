@@ -126,3 +126,34 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 | H1.425 | Per-Object advantage increases with complexity | NOT_SUPPORTED | 60% → 45% (decreasing) |
 
 **Overall H1 Status**: SUPPORTED with nuances. Per-Object CG excels on short sequences (≤20 steps) with explicit object tracking, but 2-Node CG is more robust for longer horizons and complex multi-stage tasks.
+
+---
+
+### H1.426: Per-Object CG with Explicit Relational Edges — Round 192
+
+**Hypothesis**: Adding explicit spatial relational edges between objects improves Per-Object CG performance on tasks requiring object relations.
+
+**Previous context**: H1.425 showed Per-Object CG performs WORSE than 2-Node CG on multi-stage tasks. This tests whether explicit relational structure helps.
+
+**Method**: Tested Per-Object CG with explicit relational edges vs standard Per-Object CG vs 2-Node CG on spatial relation tasks (above, below, beside, near).
+
+**Results**:
+
+| Model | Test MSE | vs Baseline |
+|-------|----------|-------------|
+| Baseline MLP | 0.160611 | — |
+| 2-Node CG | 0.201314 | +25.34% |
+| Per-Object CG | 0.151306 | **-5.79%** |
+| Per-Object+Rel CG | 0.185970 | +15.79% |
+
+**Key comparisons**:
+- Per-Object vs 2-Node: **-24.84%** (Per-Object wins)
+- Per-Object+Rel vs Per-Object: **+22.91%** (Relations HURT)
+- Per-Object+Rel vs 2-Node: -7.62% (Per-Object+Rel wins)
+
+**Conclusion**: H1.426 **NOT_SUPPORTED**. Adding explicit relational edges HURTS Per-Object CG performance (+22.91% worse). The standard Per-Object CG without explicit relations achieves -5.79% vs baseline, outperforming all other architectures. This suggests that:
+1. Per-Object CG works well on spatial relation tasks WITHOUT explicit relation encoding
+2. The relation encoder adds unnecessary complexity that hurts performance
+3. Per-Object CG implicitly learns relations from object positions
+
+**Key insight**: The 2-Node CG performs WORSE than baseline on this task (+25.34%), while Per-Object CG performs BETTER (-5.79%). This is the OPPOSITE of H1.425's multi-stage task results, suggesting Per-Object CG is specifically suited for tasks where individual object states matter (like spatial relations) but not for multi-stage manipulation tasks.

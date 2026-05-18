@@ -1,10 +1,35 @@
-current_round: 191
-last_action: "H1.425 - Per-Object CG on Complex Multi-Step Tasks. Tested Per-Object CG vs 2-Node CG vs Baseline on multi-stage manipulation tasks with 2, 3, and 4 stages. Found Per-Object CG performs WORSE than 2-Node across all complexity levels (60%, 45%, 45% worse). Hypothesis NOT_SUPPORTED - advantage does NOT increase with task complexity."
-next_intended_action: "H1.426 - Test Per-Object CG on tasks with explicit object relations (spatial relationships between objects). Based on H1.425 results showing 2-Node is more robust, explore whether adding explicit relational edges between objects improves Per-Object CG performance."
+current_round: 192
+last_action: "H1.426 - Per-Object CG with Explicit Relational Edges. Tested Per-Object CG with explicit relational edges vs standard Per-Object CG vs 2-Node CG on spatial relation tasks. Found that adding explicit relational edges HURTS performance (+22.91% worse). Standard Per-Object CG achieves -5.79% vs baseline, outperforming all architectures. Hypothesis NOT_SUPPORTED - explicit relations add unnecessary complexity."
+next_intended_action: "H1.427 - Investigate why Per-Object CG works better on spatial relation tasks but worse on multi-stage tasks. Design experiment to test transfer learning between task types."
 
 experiments:
-  total_rounds: 191
+  total_rounds: 192
   trajectory:
+    - experiment_id: H1.426
+      description: "Per-Object CG with Explicit Relational Edges - Testing if explicit spatial relations improve performance"
+      result:
+        conclusion: "NOT_SUPPORTED"
+        task: "spatial_relations"
+        results:
+          baseline_mse: 0.160611
+          two_node_mse: 0.201314
+          per_object_mse: 0.151306
+          per_object_rel_mse: 0.185970
+          per_object_vs_baseline: "-5.79%"
+          two_node_vs_baseline: "+25.34%"
+          per_object_rel_vs_per_object: "+22.91%"
+          per_object_vs_two_node: "-24.84%"
+        key_insight: "Adding explicit relational edges HURTS Per-Object CG performance. Standard Per-Object CG without explicit relations achieves best results (-5.79% vs baseline). 2-Node CG performs worst on this task (+25.34% vs baseline)."
+        config:
+          n_demos: 1500
+          seq_len: 15
+          n_objects: 5
+          obs_dim: 95
+          lang_dim: 32
+          action_dim: 7
+          hidden_dim: 64
+          epochs: 20
+          batch_size: 32
     - experiment_id: H1.425
       description: "Per-Object CG on Complex Multi-Step Tasks - Testing if advantage increases with task complexity"
       result:
@@ -69,35 +94,3 @@ experiments:
           epochs: 20
           lr: 0.001
           batch_size: 32
-          n_runs: 1
-        key_insight: "Naive hybrid architecture underperforms baseline (-8.82%). Selector fails to learn proper architecture choice: prefers two-node (62.2%) at seq_len=15 where per-object should be preferred. Selection weights show high variance (0.06-0.94 per-object weight across samples). Need auxiliary supervision or curriculum training to guide selector."
-    - experiment_id: H1.423
-      description: "Sequence-Length Crossover Analysis"
-      result:
-        conclusion: "SUPPORTED"
-        task: "seq_length_crossover"
-        seq_len_tested: 15
-        baseline_mse: 0.022170
-        two_node_cg_mse: 0.023150
-        two_node_cg_vs_baseline: "-4.42%"
-        per_object_cg_mse: 0.022392
-        per_object_cg_vs_baseline: "-1.00%"
-        per_object_cg_vs_two_node: "+3.28%"
-        crossover_estimate: 24.3
-        config:
-          n_demos: 1500
-          seq_len: 15
-          n_objects: 5
-          obs_dim: 400
-          lang_dim: 32
-          action_dim: 7
-          hidden_dim: 64
-          epochs: 20
-          lr: 0.001
-          batch_size: 32
-          n_runs: 1
-        key_insight: "Crossover point at seq_len≈24.3. Per-Object CG advantage decays linearly: +10.65% at 10 steps → +3.28% at 15 steps → -0.23% at 25 steps. Design principle: use Per-Object CG for ≤20 timesteps, 2-Node CG for longer horizons."
-        historical_comparison:
-          seq_len_10_h1_421: 10.65
-          seq_len_15_h1_423: 3.28
-          seq_len_25_h1_422: -0.23

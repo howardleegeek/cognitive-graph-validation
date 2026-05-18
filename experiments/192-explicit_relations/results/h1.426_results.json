@@ -1,0 +1,33 @@
+{
+  "experiment_id": "H1.426",
+  "hypothesis": "Per-Object CG with explicit relational edges improves performance on spatial relation tasks",
+  "config": {
+    "n_demos": 1500,
+    "seq_len": 15,
+    "n_objects": 5,
+    "obs_dim": 95,
+    "lang_dim": 32,
+    "action_dim": 7,
+    "hidden_dim": 64,
+    "epochs": 20,
+    "batch_size": 32
+  },
+  "results": {
+    "baseline_mse": 0.16061074584722518,
+    "two_node_mse": 0.20131406635046006,
+    "per_object_mse": 0.15130555331707002,
+    "per_object_rel_mse": 0.1859697788953781
+  },
+  "comparisons": {
+    "per_object_vs_baseline": -5.793630109286941,
+    "per_object_rel_vs_baseline": 15.789126010456812,
+    "two_node_vs_baseline": 25.342837609354206,
+    "per_object_vs_two_node": -24.841042625571987,
+    "per_object_rel_vs_per_object": 22.910081499564726,
+    "per_object_rel_vs_two_node": -7.622064236867421
+  },
+  "conclusion": {
+    "relations_help_per_object": false,
+    "per_object_rel_beats_two_node": true
+  }
+}
