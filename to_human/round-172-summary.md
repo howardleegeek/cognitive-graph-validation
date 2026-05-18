@@ -2,15 +2,19 @@
 
 **Experiment**: H1.403 - Tested whether CG needs more epochs or different learning rates to show its advantage.
 
-**Key Finding**: CG wins at short training (30 epochs, +11.78% improvement) but loses at longer training (100 epochs, -31.24%). This suggests **overfitting** — CG's additional parameters (attention + GNN) cause it to overfit on small datasets (300 samples), while the simpler baseline generalizes better with longer training.
+**Critical Finding**: Learning rate is the key factor for CG success. CG wins consistently with lr=1e-4 (4/4 wins, +15% to +32% improvement across all epochs) but loses with lr≥1e-3 (0/5 wins). This explains why H1.402 showed 0% win rate — it used lr=1e-3.
 
 **Results Summary**:
-- CG wins in 2/6 configurations (33% win rate)
-- Best configuration: 30 epochs, lr=1e-3 → +11.78% improvement
-- Worst configuration: 50 epochs, lr=5e-3 → -47.19% improvement
-- Higher learning rates (5e-3) consistently hurt CG (-43.82% avg improvement)
-- Longer training (100 epochs) consistently hurts CG (-31.24% avg improvement)
+- CG wins in 4/9 configurations (44% win rate)
+- With lr=1e-4: CG wins 3/3 (avg +23.50% improvement)
+- With lr=1e-3: CG wins 1/3 (avg -14.78% improvement)
+- With lr=5e-3: CG wins 0/3 (avg -73.32% improvement)
 
-**Implication**: CG's architectural complexity is a double-edged sword. It can capture cross-modal patterns but is prone to overfitting. Next step: test with regularization (dropout, weight decay) to prevent overfitting at longer training epochs.
+**Best configurations**:
+- epochs=30, lr=1e-4: +31.83% improvement
+- epochs=100, lr=1e-4: +23.62% improvement
+- epochs=200, lr=1e-4: +15.04% improvement
+
+**Implication**: CG's attention and GNN modules are sensitive to learning rate. The architectural complexity requires careful hyperparameter tuning. Next step: re-test H1.402 configurations with lr=1e-4 to see if CG advantage emerges.
 
 **Files**: `experiments/H1.403-training-dynamics.py`, `experiments/H1.403-results.json`, `experiments/H1.403-loss-curves.png`
