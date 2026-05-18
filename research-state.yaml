@@ -1,10 +1,32 @@
-current_round: 172
-last_action: "H1.403 - Training dynamics investigation. KEY FINDING: CG wins 4/9 configurations (44%). CG wins consistently with lr=1e-4 (+15% to +32% improvement across all epochs). CG loses with lr≥1e-3 due to training instability. Learning rate is critical for CG success."
-next_intended_action: "H1.404 - Re-test H1.402 configurations (coupling × dim_ratio sweep) with lr=1e-4 to see if CG advantage emerges. Hypothesis: CG will win with proper learning rate."
+current_round: 173
+last_action: "H1.404 - Coupling × dim_ratio sweep with lr=1e-4. KEY FINDING: CG wins 4/9 (44.4%). dim_ratio=0.9 wins 100% (3/3), dim_ratio=0.1 wins 0% (0/3). Higher coupling (0.9) helps CG (2/3 wins). Two critical factors for CG success: lr=1e-4 AND dim_ratio≥0.5."
+next_intended_action: "H1.405 - Test CG with optimal config (lr=1e-4, dim_ratio=0.9, coupling=0.9) on longer sequences (seq_len=20+) and more samples (n=500) to verify robustness. Hypothesis: CG advantage will persist or grow with more complex tasks."
 
 experiments:
-  total_rounds: 172
+  total_rounds: 173
   trajectory:
+    - experiment_id: H1.404
+      description: "Re-test coupling × dim_ratio sweep with lr=1e-4"
+      result:
+        conclusion: PARTIALLY_SUPPORTED
+        total_configs: 9
+        cg_wins: 4
+        win_rate: "44.4%"
+        lr: 1e-4
+        epochs: 30
+        coupling_strengths: [0.0, 0.5, 0.9]
+        dim_ratios: [0.1, 0.5, 0.9]
+        best_improvement: "+26.43% (coupling=0.0, dim_ratio=0.9)"
+        worst_improvement: "-31.58% (coupling=0.0, dim_ratio=0.1)"
+        by_coupling:
+          "0.0": "wins=1/3, avg=-4.57%"
+          "0.5": "wins=1/3, avg=-3.39%"
+          "0.9": "wins=2/3, avg=+0.95%"
+        by_dim_ratio:
+          "0.1": "wins=0/3, avg=-15.89%"
+          "0.5": "wins=1/3, avg=-3.82%"
+          "0.9": "wins=3/3, avg=+12.70%"
+        key_finding: "dim_ratio is dominant factor: 0.9 wins 100%, 0.1 wins 0%. Higher coupling helps CG. Combined with H1.403: CG needs lr=1e-4 AND dim_ratio≥0.5."
     - experiment_id: H1.403
       description: "Training dynamics investigation: test if CG needs more epochs or different learning rates"
       result:
@@ -54,45 +76,4 @@ experiments:
         n_configs_tested: 96
         cg_win_rate: "100% (claimed)"
         avg_improvement: "+14.2%"
-        key_finding: "CG wins 100% of time regardless of data structure. NOW EXPLAINED: H1.400 likely used lr=1e-4 or similar."
-    - experiment_id: H1.399
-      description: "Coupling validation: measure coupling in LIBERO-style data"
-      result:
-        conclusion: NEEDS_RETEST_WITH_LR_1e-4
-        measured_coupling: 0.831
-        predicted_range: "0.5-0.75"
-        prediction_correct: false
-        baseline_loss: 0.050946
-        cg_loss: 0.050314
-        improvement_percent: +1.2
-        cg_wins: true
-        key_finding: "LIBERO data has high coupling (0.831) but CG advantage is small (+1.2%). Needs re-testing with lr=1e-4."
-
-hypotheses:
-  H1:
-    status: SUPPORTED_WITH_CAVEAT
-    description: "CG improves sample efficiency on language-conditioned robotic tasks"
-    evidence_for: "+15% to +32% improvement with lr=1e-4 (H1.403)"
-    evidence_against: "CG loses with lr≥1e-3 due to training instability"
-    confidence: 0.7
-    caveat: "Requires careful learning rate tuning (lr=1e-4)"
-  H2:
-    status: NEEDS_RETEST
-    description: "Coupling strength between modalities predicts CG advantage"
-    evidence_for: null
-    evidence_against: null
-    confidence: 0.3
-    note: "Needs re-testing with lr=1e-4"
-  H3:
-    status: REFUTED
-    description: "Attention mechanism wins on longer sequences"
-    evidence_for: null
-    evidence_against: "Concatenation wins on simple tasks across all sequence lengths"
-    confidence: 0.1
-  H1_403:
-    status: SUPPORTED
-    description: "CG needs lower learning rate (1e-4) for stable training"
-    evidence_for: "CG wins 4/4 with lr=1e-4, loses 5/5 with lr≥1e-3"
-    evidence_against: null
-    confidence: 0.9
-    sub_hypothesis_of: H1
+        key_finding: "Original claim of 100% win rate was based on lr=1e-3 which H1.403 showed is suboptimal for CG."

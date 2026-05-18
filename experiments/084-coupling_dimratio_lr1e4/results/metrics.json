@@ -1,0 +1,29 @@
+{
+  "experiment_id": "H1.404",
+  "description": "Re-test coupling \u00d7 dim_ratio sweep with lr=1e-4 (focused 9-config)",
+  "hypothesis": "CG will win with proper learning rate (1e-4) across coupling/dim_ratio configurations",
+  "total_configs": 9,
+  "cg_wins": 6,
+  "win_rate": "66.7%",
+  "lr": 0.0001,
+  "epochs": 50,
+  "coupling_strengths": [
+    0.0,
+    0.5,
+    0.9
+  ],
+  "dim_ratios": [
+    0.1,
+    0.5,
+    0.9
+  ],
+  "best_improvement": "+65.57%",
+  "worst_improvement": "-82.23%",
+  "results": [
+    {
+      "coupling": 0.0,
+      "dim_ratio": 0.1,
+      "baseline_loss": 0.254134,
+      "cg_loss": 0.46311,
+      "improvement_pct": -82.23,
+      "cg_wins": 

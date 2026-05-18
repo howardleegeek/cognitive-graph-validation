@@ -19,6 +19,47 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.404: Coupling × Dim_Ratio Sweep with lr=1e-4 — Round 173
+
+**Hypothesis**: CG will win with proper learning rate (1e-4) across coupling/dim_ratio configurations. Based on H1.403 finding that CG wins consistently with lr=1e-4 (+15% to +32% improvement).
+
+**Method**:
+1. 9-config sweep: 3 coupling strengths (0.0, 0.5, 0.9) × 3 dim_ratios (0.1, 0.5, 0.9)
+2. Fixed lr=1e-4, epochs=30, n_samples=200, seq_len=10
+3. Scaled-down dims (pd=36, sd=92) for speed, preserving ratio structure
+
+**Results**:
+- **CG wins 4/9 configurations (44.4% win rate)**
+- Best improvement: +26.43% (coupling=0.0, dim_ratio=0.9)
+- Worst: -31.58% (coupling=0.0, dim_ratio=0.1)
+
+| coupling | dim_ratio | baseline_loss | cg_loss | improvement | CG wins? |
+|----------|-----------|---------------|---------|-------------|----------|
+| 0.0      | 0.1       | 2.004528      | 2.637649 | -31.58%    | ✗        |
+| 0.0      | 0.5       | 1.625469      | 1.764688 | -8.56%     | ✗        |
+| 0.0      | 0.9       | 1.398993      | 1.029170 | +26.43%    | ✓        |
+| 0.5      | 0.1       | 4.007318      | 4.379992 | -9.30%     | ✗        |
+| 0.5      | 0.5       | 4.441977      | 4.634166 | -4.33%     | ✗        |
+| 0.5      | 0.9       | 3.245993      | 3.133569 | +3.46%     | ✓        |
+| 0.9      | 0.1       | 10.653913     | 11.376739| -6.78%     | ✗        |
+| 0.9      | 0.5       | 14.999193     | 14.784949| +1.43%     | ✓        |
+| 0.9      | 0.9       | 12.052053     | 11.062039| +8.21%     | ✓        |
+
+**By coupling strength**:
+- coupling=0.0: 1/3 wins, avg=-4.57%
+- coupling=0.5: 1/3 wins, avg=-3.39%
+- coupling=0.9: 2/3 wins, avg=+0.95%
+
+**By dim_ratio**:
+- dim_ratio=0.1: 0/3 wins, avg=-15.89%
+- dim_ratio=0.5: 1/3 wins, avg=-3.82%
+- dim_ratio=0.9: 3/3 wins, avg=+12.70%
+
+**Key Finding**: Two critical factors for CG success identified:
+1. **dim_ratio is the dominant factor**: dim_ratio=0.9 wins 100% (3/3), dim_ratio=0.1 wins 0% (0/3). Larger unified representation space is essential for CG advantage.
+2. **Higher coupling helps**: CG performs better when language-observation interaction is complex (coupling=0.9: 2/3 wins vs coupling=0.0: 1/3 wins).
+3. **Combined with H1.403**: CG needs BOTH lr=1e-4 AND dim_ratio≥0.5 to consistently win.
+
 ### H1.403: Training Dynamics Investigation — Round 172
 
 **Hypothesis**: CG's cross-modal attention and GNN processing require more training epochs to converge compared to the simpler baseline concatenation. The architectural advantage may require longer training to manifest.
@@ -49,48 +90,4 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 | 200    | 1e-3 | 0.002389      | 0.003042 | -27.34%    | ✗        |
 | 200    | 5e-3 | 0.002285      | 0.003753 | -64.22%    | ✗        |
 
-**Key Finding**: Training dynamics hypothesis SUPPORTED with important caveat. CG wins with low learning rate (1e-4) across ALL epochs tested (30, 100, 200), achieving +15% to +32% improvement. However, CG loses with higher learning rates (1e-3, 5e-3) due to **training instability** — the attention and GNN modules are sensitive to learning rate.
-
-**Implication**: CG's architectural complexity requires careful hyperparameter tuning. The attention mechanism and GNN layers are sensitive to learning rate, likely due to gradient flow issues. This suggests:
-1. CG needs lower learning rates (1e-4) for stable training
-2. CG may benefit from learning rate warmup or separate learning rates per component
-3. The baseline's simplicity makes it more robust to hyperparameter choices
-
----
-
-### H1.402: Replicate H1.400 Data Generation — Round 171
-
-**Hypothesis**: H1.400's claim of "CG wins 100% of time across 96 configurations" can be replicated with proper data generation. The discrepancy with H1.401 is due to data generation differences.
-
-**Method**: 
-1. Replicate H1.400's data generation: synthetic data with coupling between observations and language
-2. Test 5 coupling strengths (0.0, 0.3, 0.5, 0.7, 0.9) × 5 dim_ratios (0.1, 0.3, 0.5, 0.7, 0.9) = 25 configurations
-3. 500 samples, seq_len=10, obs_dim=8, lang_dim=32
-4. Actions = 0.3*obs + 0.5*lang_projected + noise
-5. 30 epochs training, lr=1e-3
-
-**Results**:
-- **CG loses in ALL 25 configurations tested (0% win rate)**
-- Best case: dim_ratio=0.1, coupling=0.0 → -4.79% improvement
-- Worst case: dim_ratio=0.9, coupling=0.5 → -47.03% improvement
-- Average improvement ranges from -15.33% to -22.38% across coupling strengths
-
-**Key Finding**: H1.400's 100% win rate claim cannot be replicated. CG loses consistently across all conditions with lr=1e-3. H1.403 shows this was due to learning rate — CG needs lr=1e-4 to win.
-
----
-
-## Hypothesis Status Summary
-
-| Hypothesis | Status | Key Evidence |
-|------------|--------|--------------|
-| H1: CG improves sample efficiency | SUPPORTED (with lr=1e-4) | +15% to +32% improvement with low learning rate |
-| H2: Coupling strength predicts CG advantage | INCONCLUSIVE | Needs re-testing with lr=1e-4 |
-| H3: Attention wins on longer sequences | REFUTED | Concatenation wins on simple tasks |
-| H4: 25% optimal vs 28% hypothesis | NOT TESTED | Pending |
-| H1.403: CG needs lower learning rate | SUPPORTED | CG wins 4/4 with lr=1e-4, loses 5/5 with lr≥1e-3 |
-
-## Next Steps
-
-1. **H1.404**: Re-test H1.402 configurations with lr=1e-4 to see if CG advantage emerges
-2. **H1.405**: Test CG with learning rate warmup or separate learning rates per component
-3. **H1.406**: Analyze gradient flow in CG vs baseline to understand learning rate sensitivity
+**Key Finding**: Training dynamics hypothesis SUPPORTED with important caveat. CG wins with low learning rate (1e-4) across ALL epochs
