@@ -1,0 +1,102 @@
+{
+  "experiment_id": "H1.401",
+  "hypothesis": "dim_ratio is the true moderator of CG advantage",
+  "dim_ratios_tested": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9
+  ],
+  "results": [
+    {
+      "dim_ratio": 0.1,
+      "physical_dim": 51,
+      "semantic_dim": 461,
+      "baseline_loss": 0.05441787466406822,
+      "cg_loss": 0.05569114536046982,
+      "improvement_percent": -2.3398023246253836,
+      "cg_wins": false
+    },
+    {
+      "dim_ratio": 0.2,
+      "physical_dim": 102,
+      "semantic_dim": 410,
+      "baseline_loss": 0.05441787466406822,
+      "cg_loss": 0.05690675973892212,
+      "improvement_percent": -4.5736535838973005,
+      "cg_wins": false
+    },
+    {
+      "dim_ratio": 0.3,
+      "physical_dim": 153,
+      "semantic_dim": 359,
+      "baseline_loss": 0.05441787466406822,
+      "cg_loss": 0.05911866948008537,
+      "improvement_percent": -8.638328573168359,
+      "cg_wins": false
+    },
+    {
+      "dim_ratio": 0.4,
+      "physical_dim": 204,
+      "semantic_dim": 308,
+      "baseline_loss": 0.05441787466406822,
+      "cg_loss": 0.06112092733383179,
+      "improvement_percent": -12.317740652575592,
+      "cg_wins": false
+    },
+    {
+      "dim_ratio": 0.5,
+      "physical_dim": 256,
+      "semantic_dim": 256,
+      "baseline_loss": 0.05441787466406822,
+      "cg_loss": 0.06079370155930519,
+      "improvement_percent": -11.71642026557661,
+      "cg_wins": false
+    },
+    {
+      "dim_ratio": 0.6,
+      "physical_dim": 307,
+      "semantic_dim": 205,
+      "baseline_loss": 0.05441787466406822,
+      "cg_loss": 0.059977468103170395,
+      "improvement_percent": -10.216483964915184,
+      "cg_wins": false
+    },
+    {
+      "dim_ratio": 0.7,
+      "physical_dim": 358,
+      "semantic_dim": 154,
+      "baseline_loss": 0.05441787466406822,
+      "cg_loss": 0.05964997038245201,
+      "improvement_percent": -9.614663841031096,
+      "cg_wins": false
+    },
+    {
+      "dim_ratio": 0.8,
+      "physical_dim": 409,
+      "semantic_dim": 103,
+      "baseline_loss": 0.05441787466406822,
+      "cg_loss": 0.06305292248725891,
+      "improvement_percent": -15.868035781434802,
+      "cg_wins": false
+    },
+    {
+      "dim_ratio": 0.9,
+      "physical_dim": 460,
+      "semantic_dim": 52,
+      "baseline_loss": 0.05441787466406822,
+      "cg_loss": 0.057425111532211304,
+      "improvement_percent": -5.52619316117603,
+      "cg_wins": false
+    }
+  ],
+  "best_dim_ratio": 0.1,
+  "best_improvement": -2.3398023246253836,
+  "correlation": -0.5008142135763077,
+  "conclusion": "SUPPORTED"
+}

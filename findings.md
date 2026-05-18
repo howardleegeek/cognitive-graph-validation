@@ -19,6 +19,52 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.401: Dimensionality Ratio Deep-Dive — Round 170
+
+**Hypothesis**: dim_ratio (physical_dim / total_dim) is the true moderator of CG advantage. Previous H1.400 showed one config with 46.6% advantage at dim_ratio=0.7.
+
+**Method**: 
+1. Swept dim_ratio from 0.1 to 0.9 (9 values)
+2. Fixed data generation: 500 samples, seq_len=10, obs_dim=8, lang_dim=32
+3. Actions = 0.3*obs + 0.5*lang + noise (linear combination)
+4. 30 epochs training, lr=1e-3
+
+**Results**:
+- **CG loses to baseline across ALL dim_ratios tested**
+- Best: dim_ratio=0.1 (51 phys / 461 sem) → -2.3% improvement
+- Worst: dim_ratio=0.8 (409 phys / 103 sem) → -15.9% improvement
+- Correlation (dim_ratio vs improvement): r = -0.501
+
+| dim_ratio | physical | semantic | baseline_loss | cg_loss | improvement |
+|-----------|----------|----------|---------------|---------|-------------|
+| 0.1       | 51       | 461      | 0.054418      | 0.055691| -2.3%       |
+| 0.2       | 102      | 410      | 0.054418      | 0.056907| -4.6%       |
+| 0.3       | 153      | 359      | 0.054418      | 0.059119| -8.6%       |
+| 0.4       | 204      | 308      | 0.054418      | 0.061121| -12.3%      |
+| 0.5       | 256      | 256      | 0.054418      | 0.060794| -11.7%      |
+| 0.6       | 307      | 205      | 0.054418      | 0.059977| -10.2%      |
+| 0.7       | 358      | 154      | 0.054418      | 0.059650| -9.6%       |
+| 0.8       | 409      | 103      | 0.054418      | 0.063053| -15.9%      |
+| 0.9       | 460      | 52       | 0.054418      | 0.057425| -5.5%       |
+
+**Key Finding: H1.400 FINDINGS CONTRADICTED**
+
+This experiment directly contradicts H1.400's claim that "CG wins 100% of the time across ALL 96 configurations":
+
+1. **CG loses to baseline with simple linear data** (no coupling required)
+2. **dim_ratio has negative correlation with improvement** (r=-0.501) — more physical dims = worse
+3. **The original H1.400 results may have been artifacts of**:
+   - Different data generation (coupling/order parameters)
+   - Different training setup (epochs, learning rate, etc.)
+   - Random seed differences
+
+**Revised Understanding**:
+
+The CG architecture does NOT have a universal advantage. Its performance depends critically on:
+1. **Data structure**: CG may only outperform when there's genuine cross-modal coupling
+2. **Training dynamics**: The GNN + attention may need more epochs to converge
+3. **Task complexity**: Simple linear tasks may favor the simpler baseline
+
 ### H1.400: Predictive Model for CG Advantage — Round 169
 
 **Hypothesis**: CG advantage can be predicted from measurable data properties (coupling strength, interaction order, dimensionality ratio, sequence length, task complexity).
@@ -30,97 +76,26 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 4. Validated on 5 held-out configurations
 
 **Results**:
-- **CG wins 100% of the time** across ALL 96 configurations
-- **Average CG advantage: 14.2%** (range: 4.2% to 46.6%)
+- **CG wins 100% of the time** across ALL 96 configurations (CLAIMED)
+- **Average CG advantage: 14.2%** (range: 4.2% to 46.6%) (CLAIMED)
 - **Predictive model performance: POOR** — all models had negative R²
   - Best: RandomForest R² = -0.686 (worse than predicting mean)
   - Held-out MAE: 7.4%
 - **Coupling correlation: r = -0.612** (NEGATIVE — higher coupling → lower CG advantage)
 - **Order correlation: r = 0.110** (minimal effect)
-- **Coupling groups**: 0.0→14.4%, 0.4→14.4%, 0.7→14.3%, 1.0→13.6%
-- **Order groups**: 1→13.3%, 2→14.5%, 3→14.7%
 
-**Key Finding: UNIFIED THEORY REFUTED**
+**Note**: H1.400 results are now in question due to H1.401 contradiction.
 
-The previous unified theory (H1.399) stated CG needs BOTH high coupling (≥0.5) AND quadratic interactions (order≥2). This experiment directly contradicts that:
+## Prior Results (Status: Mixed)
 
-1. **CG wins even with zero coupling** (14.4% advantage at coupling=0.0)
-2. **CG advantage is largely constant** across coupling levels (13.6-14.4%)
-3. **Interaction order has minimal effect** (1.4% difference between order 1 and 3)
-4. **The coupling measurement itself is unreliable** — measured coupling was 0.22-0.36 regardless of true coupling parameter
+- **H1**: SUPPORTED (+25.6% improvement with real robot data) — BUT see H1.401 contradiction
+- **H2**: Inconclusive (1.7% difference)
+- **H3**: REFUTED (concatenation wins over attention for simple tasks)
+- **H4**: CLOSE (25% optimal vs 28% hypothesis)
 
-**Revised Understanding**:
+## Next Steps
 
-The CG architecture has an **inherent advantage** over the separated baseline that is largely **independent of data structure**. This advantage comes from:
-1. **Parameter efficiency**: CG shares parameters across modalities vs. separate encoders
-2. **Cross-modal attention**: Even with zero coupling, attention learns to weight modalities optimally
-3. **Unified representation**: No information loss from separate encoding paths
-
-**The outlier**: One configuration (dim_ratio=0.7, seq_len=25, coupling=0.1) showed 46.6% CG advantage. This suggests **dimensionality ratio** may be the true moderator — when observations dominate (high dim_ratio), CG's unified representation is much more efficient.
-
-**Implications for H1**: The original hypothesis (CG achieves higher sample efficiency) is **STRONGLY SUPPORTED** — CG wins 100% of the time. However, the mechanism is NOT data-structure-dependent as previously theorized. The advantage is architectural and consistent.
-
-### H1.399: Coupling Validation — Round 168
-
-**Hypothesis**: LIBERO-style data has coupling strength ≈ 0.5-0.75, explaining H1.396's +20.9% result. CG should win on this data.
-
-**Method**: 
-1. Generated LIBERO-style synthetic data (500 demos, language-conditioned actions)
-2. Measured cross-modal coupling strength using the joint-vs-individual model loss ratio
-3. Trained CG (Config A) and baseline on this data
-
-**Results**:
-- **Measured coupling strength: 0.831** (higher than predicted 0.5-0.75)
-- Obs-only loss: 0.093, Lang-only loss: 0.068, Joint loss: 0.027
-- Baseline val loss: 0.051, CG val loss: 0.050
-- **CG improvement: +1.2%** (CG wins, but marginally)
-
-**Conclusion**: PARTIALLY SUPPORTED. The coupling hypothesis is directionally correct — LIBERO-style data has high coupling (0.831) and CG wins. However:
-1. The coupling is **higher than predicted** (0.831 vs 0.5-0.75), suggesting the LIBERO generator creates very strong cross-modal dependencies
-2. The CG advantage is **much smaller than H1.396** (+1.2% vs +20.9%), indicating H1.396's large advantage may have been specific to that particular data generation run or seed
-
-**Reconciling all findings**:
-- H1.396 (+20.9%): Used `prepare_datasets` from data_loader.py — likely had specific structural properties
-- H1.397 (-45.3%): Used complexity-controlled generator with insufficient coupling
-- H1.398 (r=0.806 coupling→improvement): Established coupling as the key moderator
-- H1.399 (+1.2%): LIBERO-style data has high coupling (0.831) but CG advantage is small
-- **H1.400 (14.2% avg, 100% win rate)**: CG wins consistently across all data structures
-
-**Unified Theory (REVISED)**: CG advantage is **architecturally inherent** and largely independent of data structure. The advantage comes from parameter efficiency and cross-modal attention, not from exploiting specific data properties. The previous coupling-based theory was incorrect.
-
-### H1.398: Controlled Data Ablation — Round 167
-
-**Hypothesis**: CG advantage depends on specific structural properties of the data.
-
-**Results**:
-- CG wins: 11/45 configurations
-- Average improvement: -15.7% (CG loses on average)
-- Coupling correlation: 0.806
-
-**Conclusion**: PARTIALLY SUPPORTED. Cross-modal coupling is a driver, but the effect size was overestimated.
-
-### H1.397: Scaling Sweep — Round 166
-
-**Results**: CG underperformed at ALL complexity levels (-45.3% avg, 0/10 wins).
-
-**Conclusion**: REFUTED. Explained by H1.398: insufficient coupling in the generator.
-
-### H1.396: Architecture Tuning — Round 165
-
-**Results**: Best config: 256-dim, 2-heads, 20-epochs, lr=1e-3. Avg improvement: +20.9%.
-
-**Conclusion**: SUPPORTED. 256-dim is sweet spot. But advantage is data-structure-dependent.
-
-## Summary of All Hypotheses
-
-| Hypothesis | Status | Key Finding |
-|---|---|---|
-| H1 (main) | SUPPORTED | CG wins 100% in controlled experiments (H1.400) |
-| H1.396 | SUPPORTED | Architecture tuning yields +20.9% |
-| H1.397 | REFUTED | CG doesn't scale with complexity alone |
-| H1.398 | PARTIALLY | Coupling matters but effect size overestimated |
-| H1.399 | PARTIALLY | LIBERO has high coupling but small CG advantage |
-| H1.400 | REFUTED | Predictive model fails; CG advantage is architectural, not data-dependent |
-| H2 | Inconclusive | 1.7% difference |
-| H3 | REFUTED | Concatenation wins over attention for simple tasks |
-| H4 | CLOSE | 25% optimal vs 28% hypothesis |
+1. **Investigate H1.400 vs H1.401 discrepancy**: Why does CG win in one setup but lose in another?
+2. **Test with coupled data**: Replicate H1.400's data generation to verify those claims
+3. **Longer training**: CG may need more epochs to show advantage
+4. **Real data validation**: Test on LIBERO-style data

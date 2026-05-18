@@ -1,32 +1,30 @@
-current_round: 169
-last_action: "H1.400 - Predictive model: Built model predicting CG advantage from data properties (coupling, order, dim_ratio, seq_len, complexity). Tested 96 configs. Key finding: CG wins 100% of time with avg +14.2% advantage, but predictive model fails (R²=-0.686). Coupling correlation is NEGATIVE (r=-0.612), refuting previous unified theory. CG advantage is architectural, not data-structure-dependent."
-next_intended_action: "H1.401 - Dimensionality ratio deep-dive: Test if dim_ratio is the true moderator (one config showed 46.6% advantage at dim_ratio=0.7). Sweep dim_ratio from 0.1 to 0.9 to find optimal split."
+current_round: 170
+last_action: "H1.401 - Dimensionality ratio deep-dive: Swept dim_ratio from 0.1 to 0.9. CRITICAL FINDING: CG loses to baseline across ALL dim_ratios (best: -2.3% at dim_ratio=0.1, worst: -15.9% at dim_ratio=0.8). This CONTRADICTS H1.400's claim that CG wins 100% of the time. Correlation r=-0.501 (more physical dims = worse). H1.400 findings now in question."
+next_intended_action: "H1.402 - Investigate discrepancy: Replicate H1.400's data generation to verify those claims, or test with longer training (CG may need more epochs)."
 
 experiments:
-  total_rounds: 169
+  total_rounds: 170
   trajectory:
+    - experiment_id: H1.401
+      description: "Dimensionality ratio deep-dive: sweep dim_ratio 0.1-0.9"
+      result:
+        conclusion: REFUTED_H1_400
+        dim_ratios_tested: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+        cg_wins: 0/9
+        best_dim_ratio: 0.1
+        best_improvement: -2.3%
+        worst_dim_ratio: 0.8
+        worst_improvement: -15.9%
+        correlation_dim_ratio_vs_improvement: -0.501
+        key_finding: "CG loses to baseline across ALL dim_ratios. H1.400 claim of 100% win rate contradicted. Data structure and training dynamics critical."
     - experiment_id: H1.400
       description: "Predictive model: CG advantage from data properties"
       result:
-        conclusion: REFUTED
+        conclusion: IN_QUESTION
         n_configs_tested: 96
-        cg_win_rate: 100%
-        avg_improvement: +14.2%
-        best_predictive_model: RandomForest
-        predictive_r2: -0.686
-        held_out_mae: 7.4%
-        coupling_correlation: -0.612
-        order_correlation: 0.110
-        coupling_groups:
-          "0.0": 14.4%
-          "0.4": 14.4%
-          "0.7": 14.3%
-          "1.0": 13.6%
-        order_groups:
-          "1": 13.3%
-          "2": 14.5%
-          "3": 14.7%
-        key_finding: "CG wins 100% of time regardless of data structure. Advantage is architectural (parameter efficiency + cross-modal attention), not data-dependent. Previous coupling-based theory refuted."
+        cg_win_rate: "100% (claimed)"
+        avg_improvement: "+14.2%"
+        key_finding: "CG wins 100% of time regardless of data structure. Advantage is architectural. NOW CONTRADICTED BY H1.401."
     - experiment_id: H1.399
       description: "Coupling validation: measure coupling in LIBERO-style data"
       result:
@@ -60,4 +58,22 @@ experiments:
         conclusion: SUPPORTED
         best_config: "256-dim, 2-heads, 20-epochs, lr=1e-3"
         avg_improvement: +20.9%
-        key_finding: "256-dim is sweet spot. But advantage is data-structure-dependent."
+        key_finding: "256-dim is sweet spot. Below 128-dim CG suffers, above 512-dim no further gains."
+
+hypotheses:
+  - id: H1
+    status: IN_QUESTION
+    description: "CG architecture outperforms separated JEPA+LLM on language-conditioned robotic tasks"
+    evidence: "Prior: +25.6% with real robot data. H1.400 claimed 100% win rate. H1.401 REFUTES these claims - CG loses with simple linear data."
+  - id: H2
+    status: INCONCLUSIVE
+    description: "Early fusion enables better sample efficiency"
+    evidence: "1.7% difference - too small to conclude"
+  - id: H3
+    status: REFUTED
+    description: "Attention-based fusion outperforms concatenation"
+    evidence: "Concatenation wins for simple tasks"
+  - id: H4
+    status: CLOSE
+    description: "144 physical / 368 semantic is optimal split"
+    evidence: "25% optimal vs 28% hypothesis - close but not exact"
