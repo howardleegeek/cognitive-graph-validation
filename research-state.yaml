@@ -1,10 +1,30 @@
-current_round: 199
-last_action: "H1.433 - Discrepancy analysis: Confirmed CG consistently outperforms MLP across all 4 task types (collision -8.5%, stacking -11.3%, pushing -4.1%, multi_step -9.0%). CG-3p and CG-6p both beat MLP, with CG-3p slightly better on simpler tasks and CG-6p better on complex tasks. Key finding: CG advantage is robust across different random seeds and task types."
-next_intended_action: "H1.434 - Test CG on longer sequences (20+ timesteps) to validate H3 (attention on longer sequences). Also test on real robot data from data/cache to confirm real-world applicability."
+current_round: 200
+last_action: "H1.434 - CG on Real Robot Data: Tested CG vs MLP on 10 LIBERO-style manipulation tasks. Result: CG does NOT outperform MLP (CG-3p: -4.2%, CG-6p: -12.2%). CG wins on only 1-2/10 tasks. This contradicts H1.433 synthetic results, suggesting CG advantage is task-dependent."
+next_intended_action: "H1.435 - Investigate why CG performs differently on synthetic vs real robot data. Possible directions: (1) Test on different real robot datasets, (2) Analyze task complexity differences, (3) Try different CG configurations for real robot data."
 
 experiments:
-  total_rounds: 199
+  total_rounds: 200
   trajectory:
+    - experiment_id: H1.434
+      description: "CG on Real Robot Data (LIBERO-style manipulation)"
+      result:
+        conclusion: "NOT SUPPORTED - CG does NOT outperform MLP on real robot data"
+        task: "real_robot_manipulation"
+        results:
+          avg_cg3_vs_mlp: -4.2
+          avg_cg6_vs_mlp: -12.2
+          cg6_vs_cg3: -8.1
+          cg3_wins: 2
+          cg6_wins: 1
+          total_tasks: 10
+        key_insight: "CG advantage is task-dependent. On synthetic physics tasks (H1.433), CG wins. On LIBERO-style manipulation, MLP wins. This suggests CG may work better on tasks with clear relational structure."
+        config:
+          n_demos: 40
+          seq_len: 11
+          n_tasks: 10
+          epochs: 15
+          n_runs: 3
+          architectures: ["Baseline MLP (256)", "CG (128, 3 passes)", "CG (128, 6 passes)"]
     - experiment_id: H1.433
       description: "Discrepancy analysis: Why did H1.431 show CG loses while H1.432 showed CG wins?"
       result:
@@ -40,51 +60,3 @@ experiments:
           n_runs: 2
           task_types: ["collision", "stacking", "pushing", "multi_step"]
           architectures: ["Baseline MLP (256)", "CG (128, 3 passes)", "CG (128, 6 passes)"]
-    - experiment_id: H1.432
-      description: "Failure mode analysis: Why does CG underperform even on relational tasks?"
-      result:
-        conclusion: "PARTIALLY SUPPORTED - CG actually OUTPERFORMS MLP when properly configured"
-        task: "failure_mode_analysis"
-        results:
-          collision_mlp_mse: 0.001564
-          collision_cg_3pass_mse: 0.001581
-          collision_cg_6pass_mse: 0.001552
-          collision_cg_wide_mse: 0.001614
-          collision_cg_residual_mse: 0.003262
-          stacking_mlp_mse: 0.002913
-          stacking_cg_3pass_mse: 0.002115
-          stacking_cg_6pass_mse: 0.001985
-          stacking_cg_wide_mse: 0.002183
-          stacking_cg_residual_mse: 0.003575
-          pushing_mlp_mse: 0.004551
-          pushing_cg_3pass_mse: 0.001968
-          pushing_cg_6pass_mse: 0.001837
-          pushing_cg_wide_mse: 0.001819
-          pushing_cg_residual_mse: 0.003644
-          cg_6pass_vs_mlp_stacking: -31.8
-          cg_6pass_vs_mlp_pushing: -59.6
-          cg_wide_vs_mlp_pushing: -60.0
-        key_insight: "CG OUTPERFORMS MLP on relational tasks when using 6+ message passes. CG advantage scales with task complexity: collision (simple) ≈ MLP, stacking (medium) CG wins by 32%, pushing (complex) CG wins by 60%. Residual connections cause gradient explosion and hurt performance. Deeper message passing consistently improves CG."
-        config:
-          n_demos: 300
-          seq_len: 10
-          n_objects: 3
-          epochs: 20
-          n_runs: 3
-          task_types: ["collision", "stacking", "pushing"]
-          architectures: ["Baseline MLP (256)", "CG (128, 3 passes)", "CG Deep (128, 6 passes)", "CG Wide (256, 3 passes)", "CG Residual (128, 3 passes)"]
-    - experiment_id: H1.431
-      description: "Test CG on tasks with explicit relational structure (collision avoidance, stacking, pushing)"
-      result:
-        conclusion: "REFUTED (but see H1.432 - implementation issue)"
-        task: "relational_structure_tasks"
-        results:
-          collision_mlp_mse: 0.005362
-          collision_cg_mse: 0.006859
-          collision_cg_vs_mlp_percent: +27.93
-          stacking_mlp_mse: 0.002405
-          stacking_cg_mse: 0.002946
-          stacking_cg_vs_mlp_percent: +22.51
-          pushing_mlp_mse: 0.019028
-          pushing_cg_mse: 0.018936
-          pushing_cg_vs_mlp_percent: +0.48

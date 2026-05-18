@@ -1,0 +1,103 @@
+{
+  "experiment_id": "H1.434",
+  "description": "CG on real robot data (LIBERO-style manipulation)",
+  "results": [
+    {
+      "task_type": 0,
+      "n_demos": 40,
+      "mlp_mse": 1.108392556508382,
+      "cg_3pass_mse": 1.187090555826823,
+      "cg_6pass_mse": 1.2303249438603718,
+      "cg_3pass_vs_mlp": -7.122229475080803,
+      "cg_6pass_vs_mlp": -10.940593770802172
+    },
+    {
+      "task_type": 1,
+      "n_demos": 40,
+      "mlp_mse": 1.3184665441513062,
+      "cg_3pass_mse": 1.3693471352259319,
+      "cg_6pass_mse": 1.4892587264378865,
+      "cg_3pass_vs_mlp": -3.8948608176620305,
+      "cg_6pass_vs_mlp": -13.034911298358145
+    },
+    {
+      "task_type": 2,
+      "n_demos": 40,
+      "mlp_mse": 0.6951744755109152,
+      "cg_3pass_mse": 0.6747378706932068,
+      "cg_6pass_mse": 0.6595548391342163,
+      "cg_3pass_vs_mlp": 2.915123231830145,
+      "cg_6pass_vs_mlp": 5.03496767674283
+    },
+    {
+      "task_type": 3,
+      "n_demos": 40,
+      "mlp_mse": 1.1206247806549072,
+      "cg_3pass_mse": 1.2062196334203084,
+      "cg_6pass_mse": 1.3585950533548992,
+      "cg_3pass_vs_mlp": -7.6523869054101015,
+      "cg_6pass_vs_mlp": -21.26528578248237
+    },
+    {
+      "task_type": 4,
+      "n_demos": 40,
+      "mlp_mse": 0.93482772509257,
+      "cg_3pass_mse": 0.8770919243494669,
+      "cg_6pass_mse": 0.9365349014600118,
+      "cg_3pass_vs_mlp": 6.157694027203149,
+      "cg_6pass_vs_mlp": -0.15133699363916917
+    },
+    {
+      "task_type": 5,
+      "n_demos": 40,
+      "mlp_mse": 0.9499380985895792,
+      "cg_3pass_mse": 0.9819101293881735,
+      "cg_6pass_mse": 1.0629030466079712,
+      "cg_3pass_vs_mlp": -3.328918581837618,
+      "cg_6pass_vs_mlp": -11.959473280111814
+    },
+    {
+      "task_type": 6,
+      "n_demos": 40,
+      "mlp_mse": 1.0042571822802226,
+      "cg_3pass_mse": 1.08817191918691,
+      "cg_6pass_mse": 1.1569526592890422,
+      "cg_3pass_vs_mlp": -8.469404289896497,
+      "cg_6pass_vs_mlp": -15.293539131221165
+    },
+    {
+      "task_type": 7,
+      "n_demos": 40,
+      "mlp_mse": 0.7839296460151672,
+      "cg_3pass_mse": 0.857434352238973,
+      "cg_6pass_mse": 1.0251376628875732,
+      "cg_3pass_vs_mlp": -9.53971119035318,
+      "cg_6pass_vs_mlp": -30.91529787022961
+    },
+    {
+      "task_type": 8,
+      "n_demos": 40,
+      "mlp_mse": 0.6576488614082336,
+      "cg_3pass_mse": 0.6769457260767618,
+      "cg_6pass_mse": 0.7060937881469727,
+      "cg_3pass_vs_mlp": -3.035653998642674,
+      "cg_6pass_vs_mlp": -7.385983830170026
+    },
+    {
+      "task_type": 9,
+      "n_demos": 40,
+      "mlp_mse": 0.8694923321406046,
+      "cg_3pass_mse": 0.9321781992912292,
+      "cg_6pass_mse": 1.0102135141690571,
+      "cg_3pass_vs_mlp": -7.577541223697781,
+      "cg_6pass_vs_mlp": -16.43354566927593
+    }
+  ],
+  "key_findings": {
+    "avg_cg3_vs_mlp": -4.154788922354738,
+    "avg_cg6_vs_mlp": -12.234499994954756,
+    "cg6_vs_cg3": -8.079711072600016,
+    "cg3_wins": 2,
+    "cg6_wins": 1
+  }
+}
