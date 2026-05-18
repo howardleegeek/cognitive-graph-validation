@@ -19,6 +19,42 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.395: Protocol Standardization — Round 166
+
+**Hypothesis**: The discrepancy between H1.393 (CG wins at medium complexity) and H1.394 (CG loses everywhere) is due to differences in data generation or training parameters, not a fundamental finding.
+
+**Method**: Ran both H1.393 and H1.394 style experiments with identical seeds (42), data generation, and training parameters (20 epochs). Also ran a unified experiment covering all complexity levels.
+
+**Results**:
+
+| Style | Correlation | Avg Improvement | CG Wins |
+|-------|-------------|-----------------|---------|
+| H1.393 (7 configs) | -0.621 | -3.2% | 1/7 |
+| H1.394 (8 configs) | -0.506 | -5.0% | 1/8 |
+| UNIFIED (10 configs) | -0.552 | -4.5% | 1/10 |
+
+**Detailed Results (UNIFIED style)**:
+| Complexity | Improvement | CG Wins |
+|------------|-------------|---------|
+| 20 | -2.0% | No |
+| 60 | -2.8% | No |
+| 100 | +0.7% | Yes |
+| 150 | -2.5% | No |
+| 170 | -2.6% | No |
+| 200 | -7.2% | No |
+| 300 | -8.0% | No |
+| 400 | -10.3% | No |
+| 500 | -6.1% | No |
+| 600 | -4.1% | No |
+
+**Conclusion**: DISCREPANCY_RESOLVED. Both H1.393 and H1.394 styles now show similar negative correlations (-0.5 to -0.6), confirming:
+1. The original H1.393 result (positive correlation) was likely a seed artifact
+2. CG underperforms baseline across most complexity levels in synthetic data
+3. Only at complexity=100 does CG show slight advantage (+0.7%)
+4. The inverted-U pattern is NOT confirmed - instead there's a negative linear relationship
+
+**Key Insight**: The CG architecture as currently implemented struggles with this synthetic data task. The unified representation may be overkill for simple pattern learning, or the architecture needs tuning for this specific task type.
+
 ### H1.394: Quadratic Complexity Relationship — Round 165
 
 **Hypothesis**: CG advantage follows an inverted-U (quadratic) relationship with task complexity, peaking at medium complexity (~145-166) and decreasing at both low and high complexity.
@@ -52,41 +88,4 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 **Key Insight**: The discrepancy between H1.393 (CG wins at medium complexity) and H1.394 (CG loses everywhere) may be due to:
 - Different data generation methods
-- Insufficient training epochs (20 vs 50)
-- Different random initialization effects
-- Need to standardize experimental protocol
-
----
-
-### H1.393: Discrepancy Investigation — Round 164
-
-**Hypothesis**: The discrepancy between H1.390 (+0.839 correlation) and H1.392 regression (-0.153 correlation) is due to random seeds, model capacity, or training variance.
-
-**Method**: Re-ran H1.390's exact configuration with 5 different random seeds (42, 123, 456, 789, 1000) to measure variance and determine if H1.390's result was reproducible.
-
-**Results**:
-
-| Config | Complexity | Avg Improvement | CG Wins (of 5) |
-|--------|------------|-----------------|----------------|
-| simple | 20.8 | -8.8% | 0/5 |
-| simple2 | 57.3 | -4.2% | 1/5 |
-| medium | 104.0 | +3.7% | 3/5 |
-| threshold | 145.6 | +4.6% | 4/5 |
-| crossover | 166.4 | +4.6% | 5/5 |
-| complex | 311.9 | -4.2% | 1/5 |
-| very_complex | 552.6 | -14.4% | 0/5 |
-
-**Correlation**: -0.522 (complexity vs CG advantage)
-
-**Conclusion**: NEW_RESULT. Neither H1.390 (+0.839) nor H1.392 (-0.153) was reproduced. The correlation is strongly negative, showing CG advantage peaks at medium complexity (~145-166) and decreases at both low and high complexity. This suggests:
-1. CG has an optimal complexity sweet spot (not monotonic)
-2. H1.390's positive correlation may have been due to lucky seed variance
-3. The "complexity" metric needs refinement to capture the non-linear relationship
-
----
-
-### H1.392: Task Type Dependency Investigation — Round 163
-
-**Hypothesis**: The discrepancy between H1.390 (regression, positive correlation) and H1.391 (classification, negative correlation) is due to task type — CG advantage depends on whether the task is regression (action prediction) or classification (target identification).
-
-**Method**: Direct head-to-head comparison of both task types on identical data configurations (7 complexity levels, same train/val splits). Measur
+- Insufficient training epochs (
