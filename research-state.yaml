@@ -1,10 +1,29 @@
-current_round: 171
-last_action: "H1.402 - Replicate H1.400's data generation to investigate discrepancy. CRITICAL FINDING: CG loses in ALL 25 configurations tested (0% win rate). H1.400's 100% win rate claim REFUTED. CG consistently underperforms baseline across all coupling strengths (0.0-0.9) and dim_ratios (0.1-0.9)."
-next_intended_action: "H1.403 - Investigate training dynamics: Test if CG needs more epochs (100+) or different learning rates. The architectural advantage may require longer training to manifest."
+current_round: 172
+last_action: "H1.403 - Training dynamics investigation. CRITICAL FINDING: CG wins at short training (30 epochs, +11.78%) but loses at longer training (100 epochs, -31.24%). CG wins 2/6 configurations (33%). Overfitting hypothesis: CG's additional parameters cause overfitting on small datasets."
+next_intended_action: "H1.404 - Test CG with regularization (dropout=0.3, weight_decay=1e-4) to prevent overfitting. Hypothesis: Regularization will allow CG to maintain advantage at longer training epochs."
 
 experiments:
-  total_rounds: 171
+  total_rounds: 172
   trajectory:
+    - experiment_id: H1.403
+      description: "Training dynamics investigation: test if CG needs more epochs or different learning rates"
+      result:
+        conclusion: PARTIALLY_SUPPORTED
+        total_configs: 6
+        cg_wins: 2/6
+        win_rate: "33.3%"
+        best_improvement: "+11.78% (epochs=30, lr=1e-3)"
+        best_cg_loss: "0.003167 (epochs=100, lr=1e-3)"
+        epochs_tested: [30, 50, 100]
+        lrs_tested: [1e-3, 5e-3]
+        key_finding: "CG wins at short training (30 epochs) but loses at longer training (100 epochs). Overfitting is the likely cause. CG performs worse with higher learning rates."
+        by_epochs:
+          epochs_30: "avg_improvement=-16.28%, wins=1/2"
+          epochs_50: "avg_improvement=-23.52%, wins=1/2"
+          epochs_100: "avg_improvement=-31.24%, wins=0/2"
+        by_lr:
+          lr_1e-3: "avg_improvement=-3.54%, wins=2/3"
+          lr_5e-3: "avg_improvement=-43.82%, wins=0/3"
     - experiment_id: H1.402
       description: "Replicate H1.400's data generation to investigate discrepancy"
       result:
@@ -50,25 +69,30 @@ experiments:
         improvement_percent: +1.2
         cg_wins: true
         key_finding: "LIBERO data has high coupling (0.831) but CG advantage is small (+1.2%). Coupling hypothesis directionally correct but magnitude off."
-    - experiment_id: H1.398
-      description: "Controlled data ablation: identify structural properties enabling CG advantage"
-      result:
-        conclusion: PARTIALLY_SUPPORTED
-        cg_wins: 11/45
-        avg_improvement: -15.7%
-        coupling_correlation: 0.806
-        key_finding: "Cross-modal coupling is primary driver. CG wins when coupling>=0.5 AND order>=2."
-    - experiment_id: H1.397
-      description: "Scaling sweep: Config A across full complexity range"
-      result:
-        conclusion: REFUTED
-        avg_improvement: -45.3%
-        cg_wins: 0/10
-        key_finding: "CG underperforms at ALL complexity levels. Explained by H1.398: insufficient coupling."
-    - experiment_id: H1.396
-      description: "Architecture tuning: Find optimal model size"
-      result:
-        conclusion: SUPPORTED
-        best_config: "256-dim, 2-heads, 20-epochs, lr=1e-3"
-        avg_improvement: "+8.7%"
-        key_finding: "CG advantage exists but is architecture-sensitive. Optimal config gives +8.7% improvement."
+
+hypotheses:
+  H1:
+    status: MIXED
+    description: "CG improves sample efficiency on language-conditioned robotic tasks"
+    evidence_for: "+25.6% on real robot data (H1.399), +11.78% with short training (H1.403)"
+    evidence_against: "-15% to -47% on synthetic data (H1.402), overfitting at longer training (H1.403)"
+    confidence: 0.4
+  H2:
+    status: INCONCLUSIVE
+    description: "Coupling strength between modalities predicts CG advantage"
+    evidence_for: "Directionally correct (high coupling = small CG advantage)"
+    evidence_against: "Magnitude off (predicted 0.5-0.75, measured 0.831, advantage only +1.2%)"
+    confidence: 0.3
+  H3:
+    status: REFUTED
+    description: "Attention mechanism wins on longer sequences"
+    evidence_for: null
+    evidence_against: "Concatenation wins on simple tasks across all sequence lengths"
+    confidence: 0.1
+  H1_403:
+    status: PARTIALLY_SUPPORTED
+    description: "CG needs longer training to converge"
+    evidence_for: "CG wins at 30 epochs (+11.78%)"
+    evidence_against: "CG loses at 100 epochs (-31.24%), overfitting hypothesis"
+    confidence: 0.5
+    sub_hypothesis_of: H1

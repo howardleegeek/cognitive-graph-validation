@@ -1,0 +1,88 @@
+{
+  "experiment": "H1.403",
+  "description": "Training dynamics investigation",
+  "dim_ratio": 0.1,
+  "coupling": 0.0,
+  "results": [
+    {
+      "epochs": 30,
+      "lr": 0.0001,
+      "baseline_loss": 0.005332639906555414,
+      "cg_loss": 0.003635111264884472,
+      "improvement": 31.832800853179123,
+      "cg_wins": true
+    },
+    {
+      "epochs": 30,
+      "lr": 0.001,
+      "baseline_loss": 0.0036221900954842567,
+      "cg_loss": 0.0033548022620379925,
+      "improvement": 7.381938175459473,
+      "cg_wins": true
+    },
+    {
+      "epochs": 30,
+      "lr": 0.005,
+      "baseline_loss": 0.0026098438538610935,
+      "cg_loss": 0.005010080523788929,
+      "improvement": -91.96859292470091,
+      "cg_wins": false
+    },
+    {
+      "epochs": 100,
+      "lr": 0.0001,
+      "baseline_loss": 0.004324251785874367,
+      "cg_loss": 0.0033028358593583107,
+      "improvement": 23.6206395254925,
+      "cg_wins": true
+    },
+    {
+      "epochs": 100,
+      "lr": 0.001,
+      "baseline_loss": 0.0024888140615075827,
+      "cg_loss": 0.003095082240179181,
+      "improvement": -24.359721686253874,
+      "cg_wins": false
+    },
+    {
+      "epochs": 100,
+      "lr": 0.005,
+      "baseline_loss": 0.0023660892620682716,
+      "cg_loss": 0.00387474219314754,
+      "improvement": -63.76145461902431,
+      "cg_wins": false
+    },
+    {
+      "epochs": 200,
+      "lr": 0.0001,
+      "baseline_loss": 0.003779722610488534,
+      "cg_loss": 0.0032111702021211386,
+      "improvement": 15.042172851248184,
+      "cg_wins": true
+    },
+    {
+      "epochs": 200,
+      "lr": 0.001,
+      "baseline_loss": 0.002389194443821907,
+      "cg_loss": 0.0030423798598349094,
+      "improvement": -27.339148460772645,
+      "cg_wins": false
+    },
+    {
+      "epochs": 200,
+      "lr": 0.005,
+      "baseline_loss": 0.0022852595429867506,
+      "cg_loss": 0.0037528148386627436,
+      "improvement": -64.21832041703026,
+      "cg_wins": false
+    }
+  ],
+  "summary": {
+    "total_configs": 9,
+    "cg_wins": 4,
+    "best_cg_loss": 0.0030423798598349094,
+    "best_improvement": 31.832800853179123,
+    "best_epochs": 30,
+    "best_lr": 0.0001
+  }
+}

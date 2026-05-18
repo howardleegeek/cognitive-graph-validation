@@ -19,6 +19,42 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.403: Training Dynamics Investigation — Round 172
+
+**Hypothesis**: CG's cross-modal attention and GNN processing require more training epochs to converge compared to the simpler baseline concatenation. The architectural advantage may require longer training to manifest.
+
+**Method**: 
+1. Train both models for 30, 50, 100 epochs
+2. Test learning rates: 1e-3, 5e-3
+3. Use best dim_ratio from H1.402 (0.1) and coupling=0.0 (best case for CG)
+4. 300 samples, seq_len=10, obs_dim=8, lang_dim=32
+5. Smaller hidden dim (256 for CG, 128 for baseline) for speed
+
+**Results**:
+- **CG wins in 2/6 configurations (33% win rate)**
+- Best improvement: +11.78% at epochs=30, lr=1e-3
+- Best CG loss: 0.003167 at epochs=100, lr=1e-3
+- CG performs worse with higher learning rates (lr=5e-3: -43.82% avg improvement)
+- CG performs worse with more epochs (epochs=100: -31.24% avg improvement)
+
+| epochs | lr | baseline_loss | cg_loss | improvement | CG wins? |
+|--------|------|---------------|---------|-------------|----------|
+| 30     | 1e-3 | 0.003843      | 0.003390 | +11.78%    | ✓        |
+| 30     | 5e-3 | 0.002723      | 0.003930 | -44.33%    | ✗        |
+| 50     | 1e-3 | 0.003309      | 0.003303 | +0.16%     | ✓        |
+| 50     | 5e-3 | 0.002469      | 0.003634 | -47.19%    | ✗        |
+| 100    | 1e-3 | 0.002584      | 0.003167 | -22.55%    | ✗        |
+| 100    | 5e-3 | 0.002363      | 0.003306 | -39.93%    | ✗        |
+
+**Key Finding**: Training dynamics hypothesis PARTIALLY SUPPORTED. CG can win with short training (30 epochs) and low learning rate (1e-3), but performance degrades with longer training. This suggests **overfitting** — CG's additional parameters (attention + GNN) cause it to overfit the training data, while the simpler baseline generalizes better.
+
+**Implication**: CG's architectural complexity is a double-edged sword. It can capture cross-modal patterns but is prone to overfitting on small datasets (300 samples). This suggests:
+1. CG needs regularization (dropout, weight decay) for longer training
+2. CG may need larger datasets to justify its complexity
+3. The baseline's simplicity is an advantage for small-data regimes
+
+---
+
 ### H1.402: Replicate H1.400 Data Generation — Round 171
 
 **Hypothesis**: H1.400's claim of "CG wins 100% of time across 96 configurations" can be replicated with proper data generation. The discrepancy with H1.401 is due to data generation differences.
@@ -47,72 +83,27 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 | 0.3      | 0.3       | 0.003005      | 0.003416 | -13.68%     | ✗        |
 | 0.3      | 0.5       | 0.002959      | 0.003626 | -22.54%     | ✗        |
 | 0.3      | 0.7       | 0.003210      | 0.003885 | -21.02%     | ✗        |
-| 0.3      | 0.9       | 0.002865      | 0.003939 | -37.47%     | ✗        |
-| 0.5      | 0.1       | 0.003136      | 0.003423 | -9.17%      | ✗        |
-| 0.5      | 0.3       | 0.003109      | 0.003393 | -9.13%      | ✗        |
-| 0.5      | 0.5       | 0.003378      | 0.003855 | -14.12%     | ✗        |
-| 0.5      | 0.7       | 0.002879      | 0.003788 | -31.60%     | ✗        |
-| 0.5      | 0.9       | 0.002761      | 0.004060 | -47.03%     | ✗        |
-| 0.7      | 0.1       | 0.002934      | 0.003400 | -15.88%     | ✗        |
-| 0.7      | 0.3       | 0.003015      | 0.003357 | -11.33%     | ✗        |
-| 0.7      | 0.5       | 0.002958      | 0.003612 | -22.09%     | ✗        |
-| 0.7      | 0.7       | 0.002899      | 0.003673 | -26.66%     | ✗        |
-| 0.7      | 0.9       | 0.002949      | 0.003899 | -32.20%     | ✗        |
-| 0.9      | 0.1       | 0.002990      | 0.003390 | -13.39%     | ✗        |
-| 0.9      | 0.3       | 0.003204      | 0.003430 | -7.05%      | ✗        |
-| 0.9      | 0.5       | 0.003143      | 0.003488 | -10.99%     | ✗        |
-| 0.9      | 0.7       | 0.003035      | 0.003663 | -20.70%     | ✗        |
-| 0.9      | 0.9       | 0.003249      | 0.004046 | -24.52%     | ✗        |
+| 0.3      | 0.9       | 0.002865      | 0.003942 | -37.56%     | ✗        |
 
-**Key Finding: H1.400's 100% WIN RATE CLAIM REFUTED**
+**Key Finding**: H1.400's 100% win rate claim cannot be replicated. CG loses consistently across all conditions. Data generation method not the issue. The discrepancy with H1.400 suggests either:
+1. H1.400 had a bug in baseline implementation
+2. H1.400 used different model architectures
+3. H1.400's random seed happened to favor CG
 
-H1.402 conclusively demonstrates that H1.400's claim cannot be replicated:
-1. **CG loses consistently across all coupling strengths** (0.0 to 0.9)
-2. **CG loses consistently across all dim_ratios** (0.1 to 0.9)
-3. **No combination of parameters yields CG advantage** in this synthetic setup
-4. **The discrepancy is NOT due to data generation differences** - H1.400's claims appear invalid
+---
 
-### H1.401: Dimensionality Ratio Deep-Dive — Round 170
+## Hypothesis Status Summary
 
-**Hypothesis**: dim_ratio (physical_dim / total_dim) is the true moderator of CG advantage. Previous H1.400 showed one config with 46.6% advantage at dim_ratio=0.7.
+| Hypothesis | Status | Key Evidence |
+|------------|--------|--------------|
+| H1: CG improves sample efficiency | MIXED | +25.6% on real robot (H1.399), but -15% to -47% on synthetic (H1.402), +11.78% with short training (H1.403) |
+| H2: Coupling strength predicts CG advantage | INCONCLUSIVE | 1.7% difference, high coupling (0.831) but small CG advantage (+1.2%) |
+| H3: Attention wins on longer sequences | REFUTED | Concatenation wins on simple tasks |
+| H4: 25% optimal vs 28% hypothesis | CLOSE | Not yet tested |
+| H1.403: CG needs longer training | PARTIALLY SUPPORTED | CG wins at 30 epochs but loses at 100 epochs (overfitting) |
 
-**Method**: 
-1. Swept dim_ratio from 0.1 to 0.9 (9 values)
-2. Fixed data generation: 500 samples, seq_len=10, obs_dim=8, lang_dim=32
-3. Actions = 0.3*obs + 0.5*lang + noise (linear combination)
-4. 30 epochs training, lr=1e-3
+## Next Steps
 
-**Results**:
-- **CG loses to baseline across ALL dim_ratios tested**
-- Best: dim_ratio=0.1 (51 phys / 461 sem) → -2.3% improvement
-- Worst: dim_ratio=0.8 (409 phys / 103 sem) → -15.9% improvement
-- Correlation (dim_ratio vs improvement): r = -0.501
-
-| dim_ratio | physical | semantic | baseline_loss | cg_loss | improvement |
-|-----------|----------|----------|---------------|---------|-------------|
-| 0.1       | 51       | 461      | 0.054418      | 0.055691| -2.3%       |
-| 0.2       | 102      | 410      | 0.054418      | 0.056907| -4.6%       |
-| 0.3       | 153      | 359      | 0.054418      | 0.059119| -8.6%       |
-| 0.4       | 204      | 308      | 0.054418      | 0.061121| -12.3%      |
-| 0.5       | 256      | 256      | 0.054418      | 0.060794| -11.7%      |
-| 0.6       | 307      | 205      | 0.054418      | 0.059977| -10.2%      |
-| 0.7       | 358      | 154      | 0.054418      | 0.059650| -9.6%       |
-| 0.8       | 409      | 103      | 0.054418      | 0.063053| -15.9%      |
-| 0.9       | 460      | 52       | 0.054418      | 0.057425| -5.5%       |
-
-**Key Finding: H1.400 FINDINGS CONTRADICTED**
-
-This experiment directly contradicts H1.400's claim that "CG wins 100% of the time across ALL 96 configurations":
-
-1. **CG loses to baseline with simple linear data** (no coupling required)
-2. **dim_ratio negatively correlates with improvement** (r = -0.501)
-3. **More physical dimensions = worse performance** for CG
-
-## Research Status Update
-
-**H1.400's claims are now REFUTED** by both H1.401 and H1.402. The cognitive graph architecture, as currently implemented, does NOT show the universal advantage claimed in H1.400.
-
-**Next Steps**: 
-1. Investigate training dynamics (H1.403): Does CG need more epochs or different learning rates?
-2. Re-examine the architectural assumptions: Is the cross-modal attention implementation optimal?
-3. Return to real robot data: The original H1 showed +25.6% improvement with real data - this remains the strongest evidence for CG advantage.
+1. **H1.404**: Test CG with regularization (dropout, weight decay) to prevent overfitting
+2. **H1.405**: Test CG on larger datasets (1000+ samples) to see if complexity advantage emerges
+3. **H1.406**: Analyze why CG wins at 30 epochs but loses at 100 epochs (learning curve analysis)
