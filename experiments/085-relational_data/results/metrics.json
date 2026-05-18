@@ -1,0 +1,67 @@
+{
+  "experiment_id": "H1.408",
+  "description": "Investigate what data properties enable CG benefits",
+  "hypothesis": "CG benefits require data with explicit relational structure",
+  "results": {
+    "unstructured": {
+      "description": "Unstructured synthetic data (replicates H1.407)",
+      "obs_dim": 8,
+      "results": {
+        "baseline": {
+          "loss": 0.103136,
+          "improvement": "baseline"
+        },
+        "cg_no_gnn": {
+          "loss": 0.141822,
+          "improvement": "-37.51%"
+        },
+        "cg_with_gnn": {
+          "loss": 0.115099,
+          "improvement": "-11.60%"
+        }
+      }
+    },
+    "relational": {
+      "description": "Relational data with explicit object-entity relationships",
+      "obs_dim": 27,
+      "results": {
+        "baseline": {
+          "loss": 0.00849,
+          "improvement": "baseline"
+        },
+        "cg_no_gnn": {
+          "loss": 0.004836,
+          "improvement": "+43.05%"
+        },
+        "cg_with_gnn": {
+          "loss": 0.005833,
+          "improvement": "+31.29%"
+        }
+      }
+    },
+    "structured_multi_object": {
+      "description": "Structured data with multi-object interactions and graph structure",
+      "obs_dim": 40,
+      "results": {
+        "baseline": {
+          "loss": 0.021499,
+          "improvement": "baseline"
+        },
+        "cg_no_gnn": {
+          "loss": 0.028447,
+          "improvement": "-32.32%"
+        },
+        "cg_with_gnn": {
+          "loss": 0.028216,
+          "improvement": "-31.24%"
+        }
+      }
+    }
+  },
+  "config": {
+    "lr": 0.0001,
+    "epochs": 30,
+    "n_demos_train": 400,
+    "n_demos_val": 100
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "experiment_id": "H1.407",
+  "description": "CG with cross-attention only (no GNN) on longer sequences and multi-step tasks",
+  "hypothesis": "Removing GNN from CG will improve performance on longer sequences and multi-step tasks",
+  "results": {
+    "seq_len=20": {
+      "baseline": {
+        "loss": 0.090596,
+        "improvement": "baseline"
+      },
+      "full_cg": {
+        "loss": 0.113172,
+        "improvement": "-24.92%"
+      },
+      "cg_no_gnn": {
+        "loss": 0.131798,
+        "improvement": "-45.48%"
+      },
+      "cg_no_cross_attn": {
+        "loss": 0.110079,
+        "improvement": "-21.51%"
+      }
+    },
+    "multi_step (n=3)": {
+      "baseline": {
+        "loss": 0.028725,
+        "improvement": "baseline"
+      },
+      "full_cg": {
+        "loss": 0.034235,
+        "improvement": "-19.18%"
+      },
+      "cg_no_gnn": {
+        "loss": 0.036209,
+        "improvement": "-26.05%"
+      },
+      "cg_no_cross_attn": {
+        "loss": 0.037663,
+        "improvement": "-31.11%"
+      }
+    },
+    "seq_len=30": {
+      "baseline": {
+        "loss": 0.109083,
+        "improvement": "baseline"
+      },
+      "full_cg": {
+        "loss": 0.128759,
+        "improvement": "-18.04%"
+      },
+      "cg_no_gnn": {
+        "loss": 0.146295,
+        "improvement": "-34.11%"
+      },
+      "cg_no_cross_attn": {
+        "loss": 0.123961,
+        "improvement": "-13.64%"
+      }
+    }
+  },
+  "config": {
+    "lr": 0.0001,
+    "epochs": 30,
+    "n_demos_train": 400,
+    "n_demos_val": 100
+  }
+}

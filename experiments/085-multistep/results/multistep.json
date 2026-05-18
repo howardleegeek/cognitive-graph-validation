@@ -1,0 +1,34 @@
+{
+  "1_steps": {
+    "n_steps": 1,
+    "n_objects": 5,
+    "baseline_loss": 0.003926469857105985,
+    "cg_loss": 0.00033117102793767117,
+    "improvement_percent": 91.56568011496816,
+    "cg_wins": true
+  },
+  "2_steps": {
+    "n_steps": 2,
+    "n_objects": 5,
+    "baseline_loss": 0.005681429000105709,
+    "cg_loss": 0.000628924353804905,
+    "improvement_percent": 88.93017313437863,
+    "cg_wins": true
+  },
+  "3_steps": {
+    "n_steps": 3,
+    "n_objects": 5,
+    "baseline_loss": 0.0063278102315962315,
+    "cg_loss": 0.0007716302716289647,
+    "improvement_percent": 87.8057298909497,
+    "cg_wins": true
+  },
+  "5_steps": {
+    "n_steps": 5,
+    "n_objects": 5,
+    "baseline_loss": 0.007481280830688775,
+    "cg_loss": 0.001233183138538152,
+    "improvement_percent": 83.51641695524191,
+    "cg_wins": true
+  }
+}

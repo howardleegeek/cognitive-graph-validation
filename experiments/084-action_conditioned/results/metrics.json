@@ -1,0 +1,16 @@
+{
+  "experiment_id": "H1.412",
+  "description": "Action-conditioned multi-object interaction prediction",
+  "config": {
+    "n_objects": 5,
+    "n_train": 2000,
+    "n_val": 500,
+    "epochs": 100,
+    "lr": 0.001,
+    "seed": 42
+  },
+  "baseline_loss": 0.0010100126382894814,
+  "cg_loss": 7.041124945317279e-05,
+  "improvement_percent": 93.02867639632524,
+  "cg_wins": true
+}

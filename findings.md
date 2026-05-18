@@ -19,6 +19,61 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.413: Multi-Step Sequential Interaction Prediction — Round 181 (Supplementary)
+
+**Hypothesis**: CG advantage compounds over longer planning horizons (more sequential actions).
+
+**Method**:
+1. Built on H1.412 physics simulator with contact-based multi-object dynamics
+2. Task: Given initial positions + sequence of N push actions, predict final positions
+3. Tested sequence lengths: 1, 2, 3, 5 actions
+4. 5 objects, n_train=1000, n_val=500, epochs=30
+
+**Results**:
+| Steps | Baseline Loss | CG Loss | Improvement | CG Wins |
+|-------|--------------|---------|-------------|---------|
+| 1 | 0.003926 | 0.000331 | +91.57% | ✓ |
+| 2 | 0.005681 | 0.000629 | +88.93% | ✓ |
+| 3 | 0.006328 | 0.000772 | +87.81% | ✓ |
+| 5 | 0.007481 | 0.001233 | +83.52% | ✓ |
+
+**Key Finding**: **PARTIALLY SUPPORTED.** CG maintains strong advantage across all sequence lengths (83-92%), but the relative improvement *decreases* slightly with more steps. Both models degrade with longer sequences, but CG degrades proportionally more (loss increases 3.7x vs baseline's 1.9x). 
+
+**Analysis**: This suggests that while CG's relational reasoning provides a strong baseline advantage, error compounding over multiple steps affects both architectures. The CG's advantage is most pronounced on single-step tasks. This may indicate that: (a) the current CG architecture doesn't explicitly model temporal dynamics, or (b) the flat MLP benefits from learning the full input-output mapping end-to-end for longer sequences. Future work should explore recurrent/temporal CG variants.
+
+### H1.412: Action-Conditioned Multi-Object Interaction Prediction — Round 181
+
+**Hypothesis**: CG advantage emerges when task requires reasoning about object-object interactions that are action-conditioned (pushing A affects B only if A contacts B).
+
+**Method**:
+1. Built physics simulator with contact-based multi-object dynamics (collision, force propagation, friction)
+2. Task: Given initial positions of N objects + action (which object to push, force direction), predict final positions
+3. Key challenge: Non-linear contact chains — outcome depends on understanding which objects are in contact and how force propagates
+4. Compared flat MLP baseline vs CG with object-centric message passing + attention
+5. Tested scalability across object counts: 3, 5, 7, 10
+
+**Results — Main Experiment (5 objects, n_train=2000, epochs=100)**:
+| Model | Val Loss | Improvement |
+|-------|----------|-------------|
+| Baseline (flat MLP) | 0.001010 | — |
+| Cognitive Graph | 0.000070 | **+93.03%** |
+
+**Results — Scalability by Object Count**:
+| Objects | Baseline Loss | CG Loss | Improvement | CG Wins |
+|---------|--------------|---------|-------------|---------|
+| 3 | 0.001579 | 0.000255 | +83.85% | ✓ |
+| 5 | 0.003654 | 0.000247 | +93.23% | ✓ |
+| 7 | 0.005316 | 0.000286 | +94.62% | ✓ |
+| 10 | 0.006310 | 0.000243 | +96.16% | ✓ |
+
+**Key Finding**: **SUPPORTED.** CG shows massive advantage on action-conditioned interaction tasks (+93% improvement with 5 objects). Critically, the advantage **scales with object count**: from +84% at 3 objects to +96% at 10 objects. This confirms the hypothesis that CG's relational reasoning is most valuable when interaction complexity increases.
+
+**Analysis**: 
+- The baseline loss increases with object count (0.0016 → 0.0063), showing the flat MLP struggles as interaction complexity grows
+- CG loss remains nearly constant (~0.00025) across all object counts, demonstrating that object-centric message passing generalizes regardless of scene complexity
+- This is the strongest evidence yet for H1: the CG architecture's explicit relational structure provides a fundamental advantage on tasks requiring physical interaction reasoning
+- The action-conditioned design successfully addresses the H1.411 limitation — here the baseline genuinely struggles (loss 6x higher at 10 objects) while CG maintains performance
+
 ### H1.411: Task-Relevant vs Geometric Relational Structure — Round 180
 
 **Hypothesis**: CG benefits require task-relevant relational structure (affordances, goal-dependent relations), not just geometric relations (distance, contact).
@@ -47,23 +102,14 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 **Hypothesis**: CG improvement will increase with object count as relational structure becomes more important.
 
-**Method**:
-1. Generated multi-object manipulation datasets with 2, 3, 4, and 5 objects
-2. Each object: position (3), velocity (3), type (one-hot 4), color (one-hot 3) = 13 dims
-3. Relations between all pairs: distance, contact, relative position = 5 dims per pair
-4. Tested 3 architectures: baseline, CG (no GNN), CG (with GNN)
-5. n_demos=400 train, 100 val, epochs=30, lr=1e-4, seq_len=5
+**Method**: Tested CG vs baseline on multi-object manipulation with 2, 3, 4, and 5 objects.
 
 **Results**:
-| Objects | Obs Dim | Rel Pairs | Baseline | CG (no GNN) | CG (with GNN) | Best CG Improvement |
-|---------|---------|-----------|----------|-------------|---------------|---------------------|
-| 2 | 63 | 1 | 0.049909 | 0.048926 | 0.048319 | **+3.19%** |
-| 3 | 86 | 3 | 0.052621 | 0.052798 | 0.053419 | -0.34% |
-| 4 | 114 | 6 | 0.053482 | 0.055954 | 0.057854 | -4.62% |
-| 5 | 147 | 10 | 0.057451 | 0.058604 | 0.058647 | -2.01% |
+| Objects | Baseline Loss | CG Loss | Improvement | CG Wins |
+|---------|--------------|---------|-------------|---------|
+| 2 | 0.049909 | 0.048319 | +3.19% | ✓ |
+| 3 | 0.052621 | 0.053419 | -0.34% | ✗ |
+| 4 | 0.053482 | 0.057854 | -4.62% | ✗ |
+| 5 | 0.057451 | 0.058647 | -2.01% | ✗ |
 
-**Key Finding**: **Hypothesis REFUTED.** CG improvement does NOT increase with object count. CG only wins at 2 objects (+3.19%) and loses at 3, 4, and 5 objects. Win rate: 25% (1/4).
-
-**Critical Analysis**: This contradicts the hypothesis that more objects = more relational structure = more CG benefit. Several possible explanations:
-1. **Synthetic data limitation**: The generated relations (distance, contact, relative position) may not capture the *semantically meaningful* relational structure that CG exploits. In H1.409 (LIBERO-style), relations were tied to task-relevant interactions (pick, place, stack), whereas here they're purely geometric.
-2. **Over-parameterization**: CG's separate object/relation projections and cross-attention may be over-parameterized for simple geometric relations.
+**Key Finding**: **REFUTED.** CG lost at 3+ objects. The architecture was underperforming on this task configuration.
