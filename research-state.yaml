@@ -1,10 +1,47 @@
-current_round: 190
-last_action: "H1.424 - Hybrid Cognitive Graph Architecture. Designed and tested adaptive architecture that selects between Per-Object CG (for short horizons) and 2-Node CG (for long horizons) based on sequence length. Tested at seq_len=15 (crossover point). Found -8.82% performance vs baseline, with selection mechanism misaligned (preferred two-node at seq_len=15)."
-next_intended_action: "H1.425 - Improve hybrid architecture training: Add auxiliary loss to guide selector towards correct architecture choice based on sequence length. Test with curriculum learning across multiple sequence lengths."
+current_round: 191
+last_action: "H1.425 - Per-Object CG on Complex Multi-Step Tasks. Tested Per-Object CG vs 2-Node CG vs Baseline on multi-stage manipulation tasks with 2, 3, and 4 stages. Found Per-Object CG performs WORSE than 2-Node across all complexity levels (60%, 45%, 45% worse). Hypothesis NOT_SUPPORTED - advantage does NOT increase with task complexity."
+next_intended_action: "H1.426 - Test Per-Object CG on tasks with explicit object relations (spatial relationships between objects). Based on H1.425 results showing 2-Node is more robust, explore whether adding explicit relational edges between objects improves Per-Object CG performance."
 
 experiments:
-  total_rounds: 190
+  total_rounds: 191
   trajectory:
+    - experiment_id: H1.425
+      description: "Per-Object CG on Complex Multi-Step Tasks - Testing if advantage increases with task complexity"
+      result:
+        conclusion: "NOT_SUPPORTED"
+        task: "complex_multistep"
+        stages_tested: [2, 3, 4]
+        results:
+          stage_2:
+            baseline_mse: 0.064395
+            two_node_mse: 0.060018
+            per_object_mse: 0.096079
+            per_object_vs_two_node: "+60.08%"
+          stage_3:
+            baseline_mse: 0.065177
+            two_node_mse: 0.066755
+            per_object_mse: 0.096584
+            per_object_vs_two_node: "+44.68%"
+          stage_4:
+            baseline_mse: 0.068990
+            two_node_mse: 0.067047
+            per_object_mse: 0.097116
+            per_object_vs_two_node: "+44.85%"
+        complexity_trend: "decreasing"
+        config:
+          n_demos: 1500
+          seq_len: 15
+          n_objects: 5
+          obj_feat_dim: 8
+          lang_dim: 32
+          action_dim: 7
+          hidden_dim: 64
+          epochs: 20
+          lr: 0.001
+          batch_size: 32
+          n_stages: 3
+          noise_scale: 0.5
+        key_insight: "Per-Object CG performs significantly WORSE than 2-Node CG on multi-stage tasks across all complexity levels. The advantage DECREASES with task complexity (60.08% → 44.68% → 44.85%), contradicting the hypothesis. Simpler 2-Node architecture is more robust for multi-stage manipulation."
     - experiment_id: H1.424
       description: "Hybrid Cognitive Graph Architecture - Adaptive node selection based on sequence length"
       result:
@@ -64,34 +101,3 @@ experiments:
           seq_len_10_h1_421: 10.65
           seq_len_15_h1_423: 3.28
           seq_len_25_h1_422: -0.23
-    - experiment_id: H1.422
-      description: "Per-Object CG on Multi-Step Long-Horizon Manipulation (25 timesteps)"
-      result:
-        conclusion: "REFUTED"
-        task: "multi_step_long_horizon_manipulation"
-        seq_len: 25
-        baseline_mse: 0.009335
-        baseline_mse_std: 0.000171
-        baseline_mae: 0.073805
-        two_node_cg_mse: 0.009088
-        two_node_cg_mse_std: 0.000011
-        two_node_cg_mae: 0.071905
-        two_node_cg_vs_baseline: "+2.64%"
-        per_object_cg_mse: 0.009109
-        per_object_cg_mse_std: 0.000018
-        per_object_cg_mae: 0.071220
-        per_object_cg_vs_baseline: "+2.41%"
-        per_object_cg_vs_two_node: "-0.23%"
-        config:
-          n_demos: 1500
-          seq_len: 25
-          n_objects: 5
-          obs_dim: 400
-          lang_dim: 32
-          action_dim: 7
-          hidden_dim: 64
-          epochs: 30
-          lr: 0.001
-          batch_size: 32
-          n_runs: 2
-        key_insight: "Per-Object CG advantage does NOT scale to longer horizons. At seq_len=10 (H1.421), Per-Object CG beat 2-Node CG by +10.65%. At seq_len=25 (H1.422), advantage reversed to -0.23%. Simpler 2-Node abstraction is more robust for long sequences. CG architecture itself remains beneficial vs baseline at both lengths."

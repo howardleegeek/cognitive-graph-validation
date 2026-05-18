@@ -1,0 +1,60 @@
+{
+  "experiment_id": "H1.425",
+  "conclusion": "NOT_SUPPORTED",
+  "config": {
+    "n_demos": 1500,
+    "seq_len": 15,
+    "n_objects": 5,
+    "obj_feat_dim": 8,
+    "lang_dim": 32,
+    "action_dim": 7,
+    "hidden_dim": 64,
+    "epochs": 20,
+    "lr": 0.001,
+    "batch_size": 32,
+    "n_stages": 4,
+    "noise_scale": 0.5
+  },
+  "results_by_stages": {
+    "2": {
+      "baseline_mse": 0.0643947571516037,
+      "two_node_mse": 0.060018084943294525,
+      "per_object_mse": 0.09607888013124466,
+      "two_node_vs_baseline": -6.796628175808217,
+      "per_object_vs_baseline": 49.20295437258574,
+      "per_object_vs_two_node": 60.08321528755975
+    },
+    "3": {
+      "baseline_mse": 0.06517729163169861,
+      "two_node_mse": 0.06675491482019424,
+      "per_object_mse": 0.09658420830965042,
+      "two_node_vs_baseline": 2.420510501434165,
+      "per_object_vs_baseline": 48.186900516555426,
+      "per_object_vs_two_node": 44.68478998108529
+    },
+    "4": {
+      "baseline_mse": 0.06899019330739975,
+      "two_node_mse": 0.06704655289649963,
+      "per_object_mse": 0.09711600095033646,
+      "two_node_vs_baseline": -2.817270568064411,
+      "per_object_vs_baseline": 40.767834230607946,
+      "per_object_vs_two_node": 44.84861153153586
+    }
+  },
+  "complexity_trend": [
+    {
+      "n_stages": 2,
+      "per_object_advantage": 60.08321528755975
+    },
+    {
+      "n_stages": 3,
+      "per_object_advantage": 44.68478998108529
+    },
+    {
+      "n_stages": 4,
+      "per_object_advantage": 44.84861153153586
+    }
+  ],
+  "trend": "decreasing",
+  "key_insight": "Per-Object CG advantage does not increase with complexity. Simpler 2-Node may be sufficient for multi-stage tasks."
+}
