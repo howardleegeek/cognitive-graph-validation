@@ -1,10 +1,37 @@
-current_round: 193
-last_action: "H1.427 - Task Type Transfer Learning. Tested whether Per-Object CG learns task-specific features that don't transfer well. Found that Per-Object CG transfers BEST (avg gap +1076.91%) vs 2-Node CG (+1757.24%) vs Baseline (+4305.08%). Hypothesis REFUTED - Per-Object CG learns more generalizable representations, not task-specific ones."
-next_intended_action: "H1.428 - Test hybrid architecture combining Per-Object CG (for perception) with 2-Node CG (for action prediction) to get best of both worlds."
+current_round: 194
+last_action: "H1.428 - Hybrid Architecture. Tested combining Per-Object CG (for perception) with 2-Node CG (for action prediction). Found that Hybrid (avg MSE 1.139827) does NOT outperform best individual Per-Object CG (1.113304). Baseline still wins on synthetic data. Hypothesis NOT_SUPPORTED."
+next_intended_action: "H1.429 - Test Per-Object CG with temporal sequence modeling (LSTM/GRU) to handle multi-step tasks better, addressing the weakness found in H1.425."
 
 experiments:
-  total_rounds: 193
+  total_rounds: 194
   trajectory:
+    - experiment_id: H1.428
+      description: "Hybrid Architecture - Combining Per-Object CG with 2-Node CG"
+      result:
+        conclusion: "NOT_SUPPORTED"
+        task: "hybrid_architecture"
+        results:
+          baseline_avg_mse: 1.085781
+          per_object_avg_mse: 1.113304
+          two_node_avg_mse: 1.132485
+          hybrid_avg_mse: 1.139827
+          spatial_relations:
+            baseline: 1.111649
+            per_object: 1.138354
+            two_node: 1.139350
+            hybrid: 1.133744
+          multi_stage:
+            baseline: 1.059912
+            per_object: 1.088253
+            two_node: 1.125620
+            hybrid: 1.145911
+        key_insight: "Hybrid architecture does not outperform individual architectures. Per-Object CG remains the best CG variant. Additional complexity adds overhead without benefit on synthetic data."
+        config:
+          n_demos: 500
+          n_runs: 3
+          epochs: 30
+          architectures: ["Baseline", "Per-Object CG", "2-Node CG", "Hybrid"]
+          task_types: ["spatial_relations", "multi_stage"]
     - experiment_id: H1.427
       description: "Task Type Transfer Learning - Testing if Per-Object CG overfits to task-specific features"
       result:
@@ -30,103 +57,3 @@ experiments:
           finetune_epochs: 10
           architectures: ["Baseline", "2-Node CG", "Per-Object CG"]
           task_types: ["spatial_relations", "multi_stage"]
-    - experiment_id: H1.426
-      description: "Per-Object CG with Explicit Relational Edges - Testing if explicit spatial relations improve performance"
-      result:
-        conclusion: "NOT_SUPPORTED"
-        task: "spatial_relations"
-        results:
-          baseline_mse: 0.160611
-          two_node_mse: 0.201314
-          per_object_mse: 0.151306
-          per_object_rel_mse: 0.185970
-          per_object_vs_baseline: "-5.79%"
-          two_node_vs_baseline: "+25.34%"
-          per_object_rel_vs_per_object: "+22.91%"
-          per_object_vs_two_node: "-24.84%"
-        key_insight: "Adding explicit relational edges HURTS Per-Object CG performance. Standard Per-Object CG without explicit relations achieves best results (-5.79% vs baseline). 2-Node CG performs worst on this task (+25.34% vs baseline)."
-        config:
-          n_demos: 1500
-          seq_len: 15
-          n_objects: 5
-          obs_dim: 95
-          lang_dim: 32
-          action_dim: 7
-          hidden_dim: 64
-          epochs: 20
-          batch_size: 32
-    - experiment_id: H1.425
-      description: "Per-Object CG on Complex Multi-Step Tasks - Testing if advantage increases with task complexity"
-      result:
-        conclusion: "NOT_SUPPORTED"
-        task: "complex_multistep"
-        stages_tested: [2, 3, 4]
-        results:
-          stage_2:
-            baseline_mse: 0.064395
-            two_node_mse: 0.060018
-            per_object_mse: 0.096079
-            per_object_vs_two_node: "+60.08%"
-          stage_3:
-            baseline_mse: 0.065177
-            two_node_mse: 0.066755
-            per_object_mse: 0.096584
-            per_object_vs_two_node: "+44.68%"
-          stage_4:
-            baseline_mse: 0.068990
-            two_node_mse: 0.067047
-            per_object_mse: 0.097116
-            per_object_vs_two_node: "+44.85%"
-        complexity_trend: "decreasing"
-        config:
-          n_demos: 1500
-          seq_len: 15
-          n_objects: 5
-          obj_feat_dim: 8
-          lang_dim: 32
-          action_dim: 7
-          hidden_dim: 64
-          epochs: 20
-          lr: 0.001
-          batch_size: 32
-          n_stages: 3
-          noise_scale: 0.5
-        key_insight: "Per-Object CG performs significantly WORSE than 2-Node CG on multi-stage tasks across all complexity levels. The advantage does NOT increase with task complexity. 2-Node abstraction provides better generalization for sequential manipulation."
-
-hypotheses:
-  - id: H1
-    name: "Cognitive Graph Architecture"
-    status: "SUPPORTED"
-    key_finding: "+25.6% improvement with real robot data"
-  - id: H2
-    name: "Attention vs Concatenation"
-    status: "INCONCLUSIVE"
-    key_finding: "1.7% difference, needs more data"
-  - id: H3
-    name: "Attention for Long Sequences"
-    status: "REFUTED"
-    key_finding: "Concatenation wins for simple tasks"
-  - id: H4
-    name: "Optimal Dimension Allocation"
-    status: "CLOSE"
-    key_finding: "25% optimal vs 28% hypothesis"
-  - id: H1.421
-    name: "Per-Object CG on Object Permanence"
-    status: "SUPPORTED"
-    key_finding: "+61.76% improvement"
-  - id: H1.423
-    name: "Sequence Length Crossover"
-    status: "SUPPORTED"
-    key_finding: "Crossover at seq_len≈24.3"
-  - id: H1.425
-    name: "Per-Object CG on Multi-Stage Tasks"
-    status: "NOT_SUPPORTED"
-    key_finding: "Worse than 2-Node CG for sequential tasks"
-  - id: H1.426
-    name: "Explicit Relational Edges"
-    status: "NOT_SUPPORTED"
-    key_finding: "Hurts performance, implicit relations better"
-  - id: H1.427
-    name: "Per-Object CG Transfer Learning"
-    status: "REFUTED"
-    key_finding: "Per-Object CG transfers BEST, not worst"

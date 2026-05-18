@@ -1,0 +1,29 @@
+{
+  "task": "hybrid_architecture",
+  "config": {
+    "n_demos": 500,
+    "n_objects": 5,
+    "obs_dim": 95,
+    "lang_dim": 32,
+    "action_dim": 7,
+    "hidden_dim": 64,
+    "epochs": 30,
+    "n_runs": 3
+  },
+  "architectures": {
+    "spatial_relations": {
+      "baseline": 1.1116492660790682,
+      "per_object": 1.1383539721866447,
+      "two_node": 1.1393498984823625,
+      "hybrid": 1.1337439088796577
+    },
+    "multi_stage": {
+      "baseline": 1.059911656051874,
+      "per_object": 1.0882534242371718,
+      "two_node": 1.1256199877535302,
+      "hybrid": 1.1459106109837691
+    }
+  },
+  "conclusion": "NOT_SUPPORTED",
+  "key_insight": "Best individual (1.113304) matches or beats hybrid (1.139827)"
+}
