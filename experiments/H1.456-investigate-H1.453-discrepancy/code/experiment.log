@@ -1,0 +1,60 @@
+================================================================================
+H1.456: Investigating H1.453 Discrepancy
+================================================================================
+
+Running experiment: H1.453_replication
+Config: {'name': 'H1.453_replication', 'n_demos': 500, 'n_steps_per_goal': 3, 'n_sub_goals': 3, 'lang_dim': 384, 'projection_dim': 32, 'epochs': 50, 'batch_size': 32, 'seed': 42}
+Baseline loss: 1.189114
+CG loss: 1.197535
+Improvement: -0.71%
+CG wins: False
+
+Running experiment: H1.454_config
+Config: {'name': 'H1.454_config', 'n_demos': 500, 'n_steps_per_goal': 3, 'n_sub_goals': 3, 'lang_dim': 384, 'projection_dim': 32, 'epochs': 50, 'batch_size': 32, 'seed': 123}
+Baseline loss: 1.269980
+CG loss: 1.287849
+Improvement: -1.41%
+CG wins: False
+
+Running experiment: H1.455_demo_count
+Config: {'name': 'H1.455_demo_count', 'n_demos': 150, 'n_steps_per_goal': 3, 'n_sub_goals': 3, 'lang_dim': 384, 'projection_dim': 32, 'epochs': 20, 'batch_size': 32, 'seed': 42}
+Baseline loss: 1.137876
+CG loss: 1.140594
+Improvement: -0.24%
+CG wins: False
+
+Running experiment: complexity_2_steps
+Config: {'name': 'complexity_2_steps', 'n_demos': 500, 'n_steps_per_goal': 2, 'n_sub_goals': 3, 'lang_dim': 384, 'projection_dim': 32, 'epochs': 50, 'batch_size': 32, 'seed': 42}
+Baseline loss: 1.189114
+CG loss: 1.197535
+Improvement: -0.71%
+CG wins: False
+
+Running experiment: complexity_5_steps
+Config: {'name': 'complexity_5_steps', 'n_demos': 500, 'n_steps_per_goal': 5, 'n_sub_goals': 3, 'lang_dim': 384, 'projection_dim': 32, 'epochs': 50, 'batch_size': 32, 'seed': 42}
+Baseline loss: 1.189114
+CG loss: 1.197535
+Improvement: -0.71%
+CG wins: False
+
+Running experiment: init_sensitivity
+Config: {'name': 'init_sensitivity', 'n_demos': 500, 'n_steps_per_goal': 3, 'n_sub_goals': 3, 'lang_dim': 384, 'projection_dim': 32, 'epochs': 50, 'batch_size': 32, 'seed': 999}
+Baseline loss: 1.357607
+CG loss: 1.360490
+Improvement: -0.21%
+CG wins: False
+
+================================================================================
+Analysis of H1.453 Discrepancy
+================================================================================
+
+H1.453 Replication: -0.71%
+H1.454 Config: -1.41%
+H1.455 Demo Count: -0.24%
+
+Key Insights:
+✗ H1.453 result NOT reproducible with current setup
+✗ Low seed sensitivity: 0.70% difference
+✗ Demo count has minimal effect: 0.47% difference
+
+Results saved to experiment_results.json

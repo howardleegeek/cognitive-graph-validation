@@ -1,10 +1,57 @@
-current_round: 221
-last_action: "H1.455 - Tested whether optimal 3 sub-goals from H1.454 generalize across task complexities (2/3/5 steps per sub-goal). REFUTED: CG loses at all complexity levels (avg -0.81%)."
-next_intended_action: "H1.456 - Investigate why H1.453 showed massive gains (+82.81%) while subsequent experiments show marginal/negative results. Need to understand the key difference in experimental setup."
+current_round: 222
+last_action: "H1.456 - Investigated why H1.453 showed massive gains (+82.81%) while subsequent experiments show marginal/negative results. Found H1.453 NOT reproducible with current setup (-0.71% vs +82.81%)."
+next_intended_action: "H1.457 - Investigate potential differences in data generation or model architecture that could explain the H1.453 discrepancy. Focus on data pattern complexity and model capacity."
 
 experiments:
-  total_rounds: 221
+  total_rounds: 222
   trajectory:
+    - experiment_id: H1.456
+      description: "Investigate why H1.453 showed massive gains while subsequent experiments show marginal/negative results"
+      result:
+        conclusion: "H1.453 NOT REPRODUCIBLE - Current setup shows small negative results"
+        task: "h1_453_discrepancy_investigation"
+        results:
+          h1_453_replication:
+            baseline_loss: 1.189114
+            cg_loss: 1.197535
+            improvement_pct: -0.71
+            cg_wins: false
+          h1_454_config:
+            baseline_loss: 1.269980
+            cg_loss: 1.287849
+            improvement_pct: -1.41
+            cg_wins: false
+          h1_455_demo_count:
+            baseline_loss: 1.137876
+            cg_loss: 1.140594
+            improvement_pct: -0.24
+            cg_wins: false
+          complexity_2_steps:
+            baseline_loss: 1.189114
+            cg_loss: 1.197535
+            improvement_pct: -0.71
+            cg_wins: false
+          complexity_5_steps:
+            baseline_loss: 1.189114
+            cg_loss: 1.197535
+            improvement_pct: -0.71
+            cg_wins: false
+          init_sensitivity:
+            baseline_loss: 1.357607
+            cg_loss: 1.360490
+            improvement_pct: -0.21
+            cg_wins: false
+          avg_improvement_pct: -0.66
+          all_cg_wins: false
+        key_insight: "H1.453 result (+82.81%) NOT reproducible with current setup. All configurations show small negative results (-0.21% to -1.41%). This suggests either: (1) Original H1.453 had unique data/configuration not captured, (2) Bug in replication, or (3) Statistical anomaly. Low sensitivity to seed (0.70% diff) and demo count (0.47% diff)."
+        config:
+          n_demos: [150, 500]
+          n_steps_per_goal: [2, 3, 5]
+          n_sub_goals: 3
+          lang_dim: 384
+          projection_dim: 32
+          epochs: [20, 50]
+          seeds: [42, 123, 999]
     - experiment_id: H1.455
       description: "Test whether optimal 3 sub-goals generalize across task complexities"
       result:
@@ -74,6 +121,7 @@ experiments:
           obs_dim: 8
           action_dim: 7
           lang_dim: 384
+          projection_dim: 32
           epochs: 50
           batch_size: 32
     - experiment_id: H1.453

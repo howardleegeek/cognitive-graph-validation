@@ -1,0 +1,51 @@
+{
+  "experiment_id": "H1.456",
+  "description": "Investigate why H1.453 showed massive gains while subsequent experiments show marginal/negative results",
+  "results": {
+    "H1.453_replication": {
+      "baseline_loss": 1.1891143918037415,
+      "cg_loss": 1.1975347101688385,
+      "improvement_pct": -0.7081167651435494,
+      "cg_wins": false
+    },
+    "H1.454_config": {
+      "baseline_loss": 1.2699801325798035,
+      "cg_loss": 1.287848562002182,
+      "improvement_pct": -1.4069849570072481,
+      "cg_wins": false
+    },
+    "H1.455_demo_count": {
+      "baseline_loss": 1.1378761529922485,
+      "cg_loss": 1.1405943632125854,
+      "improvement_pct": -0.2388845405705089,
+      "cg_wins": false
+    },
+    "complexity_2_steps": {
+      "baseline_loss": 1.1891143918037415,
+      "cg_loss": 1.1975347101688385,
+      "improvement_pct": -0.7081167651435494,
+      "cg_wins": false
+    },
+    "complexity_5_steps": {
+      "baseline_loss": 1.1891143918037415,
+      "cg_loss": 1.1975347101688385,
+      "improvement_pct": -0.7081167651435494,
+      "cg_wins": false
+    },
+    "init_sensitivity": {
+      "baseline_loss": 1.357606679201126,
+      "cg_loss": 1.360490083694458,
+      "improvement_pct": -0.21238879695469884,
+      "cg_wins": false
+    }
+  },
+  "analysis": {
+    "h1_453_reproducible": false,
+    "h1_453_replication_improvement": -0.7081167651435494,
+    "seed_sensitivity": 0.6988681918636988,
+    "demo_count_effect": 0.4692322245730405,
+    "complexity_2_steps_improvement": -0.7081167651435494,
+    "complexity_5_steps_improvement": -0.7081167651435494,
+    "init_sensitivity_improvement": -0.21238879695469884
+  }
+}
