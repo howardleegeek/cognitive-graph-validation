@@ -1,0 +1,27 @@
+{
+  "experiment_id": "H1.462",
+  "description": "Re-test GNN-only CG variant on real robot data",
+  "hypothesis": "The 81.31% improvement of GNN-only CG over baseline will hold on real robot data",
+  "results": {
+    "baseline_concat": {
+      "val_loss": 0.00030291178336483426,
+      "n_params": 158408,
+      "improvement_pct": 0.0,
+      "cg_wins": false
+    },
+    "cg_no_attention": {
+      "val_loss": 0.0003081940012634732,
+      "n_params": 1977224,
+      "improvement_pct": -1.74,
+      "cg_wins": false
+    },
+    "cg_full_attention": {
+      "val_loss": 0.0003128332245978527,
+      "n_params": 3027848,
+      "improvement_pct": -3.28,
+      "cg_wins": false
+    }
+  },
+  "baseline_loss": 0.00030291178336483426,
+  "key_insight": "GNN-only CG FAILS TO CONFIRM the -1.7% improvement on real robot data. Full CG with attention: -3.3%."
+}

@@ -19,6 +19,41 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.462: GNN-only CG on Real Robot Data — Round 228 (REFUTED: 81% improvement does NOT generalize)
+
+**Hypothesis**: The 81.31% improvement of GNN-only CG over baseline (found in H1.461) will hold when tested on real robot demonstration data.
+
+**Context**: H1.461 found that CG without attention (GNN-only) beats baseline by 81.31% on simplified synthetic data. This experiment tests whether that advantage generalizes to realistic robot demonstration data with proper noise, variable trajectory lengths, and realistic action spaces.
+
+**Method**: Compare 3 architectures on real robot data (800 train / 200 val samples):
+1. **Baseline concatenation** (158K params) — reference
+2. **CG no attention** (1.98M params) — GNN-only, the H1.461 winner
+3. **CG full attention** (3.03M params) — GNN + cross-attention
+
+**Results**:
+
+| Config | Parameters | Val Loss | vs Baseline |
+|--------|------------|----------|-------------|
+| **Baseline concat** | 158,408 | **0.000303** | **0.00%** |
+| CG no attention | 1,977,224 | 0.000308 | -1.74% |
+| CG full attention | 3,027,848 | 0.000313 | -3.28% |
+
+**Key Findings**:
+1. **H1.461 DOES NOT GENERALIZE**: The 81.31% improvement from H1.461 completely disappears on real robot data
+2. **Baseline wins on real data**: Simple concatenation beats both CG variants (by 1.74% and 3.28%)
+3. **Attention still degrades**: CG with attention (-3.28%) is worse than GNN-only (-1.74%), confirming attention is harmful
+4. **Parameter efficiency matters**: Baseline achieves best results with 12.5x fewer parameters than CG no-attn
+5. **Data distribution shift**: The synthetic data in H1.461 may have had structural properties that favored CG (e.g., cleaner graph structure, less noise)
+
+**Analysis — Why did H1.461's 81% improvement vanish?**
+- H1.461 used simplified synthetic data with clean graph structure and low noise
+- Real robot data has: sensor noise, actuator noise, variable trajectory lengths, complex dynamics
+- The GNN message passing may have been exploiting structure in the simplified data that doesn't exist in real data
+- The baseline's simplicity makes it more robust to noise and distribution shift
+- **Hypothesis**: CG's advantage requires clean, structured data with explicit graph-like relationships. Real robot data is too noisy for the graph structure to provide benefit.
+
+**Conclusion**: H1 (CG improves sample efficiency) is **REFUTED** on real robot data. The GNN-only variant that showed 81.31% improvement on simplified data underperforms baseline by 1.74% on real robot data. The attention mechanism remains harmful (confirming H1.461's finding about attention), but the GNN-only advantage does not transfer to realistic settings.
+
 ### H1.461: Simplified CG Investigation — Round 227 (BREAKTHROUGH: CG BEATS BASELINE WHEN ATTENTION REMOVED)
 
 **Hypothesis**: CG's poor performance may be due to overparameterization. Testing simplified CG variants with fewer parameters to see if performance improves.
@@ -62,51 +97,17 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 - Previous negative results were due to attention mechanism, not CG concept itself
 - Need to re-test H1 with GNN-only CG variant
 
----
+## Hypothesis Status
 
-### H1.460: Compositional Task Cardinality Investigation — Round 226
-
-**Hypothesis**: CG's inconsistent performance on compositional tasks may depend on concept cardinality (number of concepts to compose).
-
-**Method**: Test CG vs baseline on compositional tasks with varying concept cardinalities (2, 4, 8 concepts).
-
-**Results**: CG underperforms baseline at all cardinalities, with worst performance at 4 concepts (-0.01% vs -0.00% at 2 and 8).
-
-**Conclusion**: Cardinality does not explain CG's poor performance on compositional tasks.
-
----
-
-### H1.458: Fundamental Architecture Flaws Investigation — Round 224
-
-**Hypothesis**: The GNN message passing and attention mechanisms in CG may be inappropriate for this task. Simpler fusion baselines might outperform CG.
-
-**Method**: Compare 5 fusion methods on synthetic data.
-
-**Results**:
-
-| Fusion Method | Validation Loss | Improvement vs Baseline |
-|---------------|----------------|-------------------------|
-| Concatenation (Baseline) | 0.005906 | 0.00% |
-| Bilinear | 0.013041 | -120.80% |
-| Additive | 0.007038 | -19.16% |
-| FiLM | 0.010672 | -80.70% |
-| Cognitive Graph | 0.006221 | -5.33% |
-
-**Conclusion**: Concatenation baseline was best. CG underperformed by 5.33%.
-
----
-
-## Hypothesis Status Summary
-
-| Hypothesis | Status | Key Evidence |
-|------------|--------|--------------|
-| H1: CG improves sample efficiency | **PARTIALLY SUPPORTED** | GNN-only CG beats baseline by 81.31%; attention degrades performance |
+| Hypothesis | Status | Evidence |
+|------------|--------|----------|
+| H1: CG improves sample efficiency | **REFUTED** | GNN-only CG underperforms baseline by 1.74% on real robot data (H1.462). The 81.31% improvement on simplified data (H1.461) does not generalize. |
 | H2: CG helps multi-step tasks | Inconclusive | 1.7% difference |
 | H3: Attention helps long sequences | **REFUTED** | Removing attention improves CG by 81.31% |
 | H4: 25% dimension allocation optimal | Close | 25% optimal vs 28% hypothesis |
 
 ## Next Steps
 
-1. **H1.462**: Re-test H1 with GNN-only CG on real robot data (confirm 81% improvement)
-2. **H1.463**: Test GNN-only CG on multi-step tasks (H2 follow-up)
-3. **H1.464**: Investigate why attention degrades performance (theoretical analysis)
+1. **H1.463**: Investigate why CG advantage disappears on real data — is it noise, data structure, or parameter efficiency?
+2. **H1.464**: Test if CG can be made competitive with real data by adding noise regularization or simplifying the graph structure
+3. **H1.465**: Explore hybrid approach — use CG for structured sub-tasks, baseline for noisy perception

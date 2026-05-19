@@ -1,10 +1,31 @@
-current_round: 227
-last_action: "H1.461 - Tested simplified CG variants to investigate overparameterization. BREAKTHROUGH: CG without attention beats baseline by 81.31%! GNN-only variant is best configuration."
-next_intended_action: "H1.462 - Re-test GNN-only CG variant on real robot data to confirm the 81% improvement holds with actual robot demonstrations."
+current_round: 228
+last_action: "H1.462 - Re-tested GNN-only CG variant on real robot data. REFUTED: The 81.31% improvement from H1.461 does NOT generalize. Baseline concatenation wins by 1.74% on real robot data. Attention still degrades performance (CG with attn: -3.28%)."
+next_intended_action: "H1.463 - Investigate why CG advantage disappears on real data. Test if adding noise to H1.461's simplified data causes the same collapse, or if simplifying real data restores CG advantage."
 
 experiments:
-  total_rounds: 227
+  total_rounds: 228
   trajectory:
+    - experiment_id: H1.462
+      description: "Re-test GNN-only CG variant on real robot data"
+      result:
+        conclusion: "REFUTED: 81.31% improvement does NOT generalize to real robot data. Baseline wins by 1.74%. Attention still harmful (-3.28%)."
+        task: "real_robot_gnn_only"
+        results:
+          baseline_concat:
+            val_loss: 0.000303
+            n_params: 158408
+            improvement_pct: 0.0
+          cg_no_attention:
+            val_loss: 0.000308
+            n_params: 1977224
+            improvement_pct: -1.74
+            cg_wins: false
+          cg_full_attention:
+            val_loss: 0.000313
+            n_params: 3027848
+            improvement_pct: -3.28
+            cg_wins: false
+        key_insight: "CG advantage is data-dependent. Works on clean synthetic data (81.31%) but fails on real robot data (-1.74%). Baseline is more robust to noise and distribution shift."
     - experiment_id: H1.461
       description: "Test simplified CG variants to investigate overparameterization"
       result:
@@ -81,25 +102,3 @@ experiments:
           cognitive_graph:
             val_loss: 0.006221
             improvement_pct: -5.33
-
-hypotheses:
-  - id: H1
-    name: "Cognitive Graph Sample Efficiency"
-    status: "PARTIALLY SUPPORTED"
-    key_finding: "GNN-only CG beats baseline by 81.31%. Attention degrades performance."
-    confidence: 0.85
-  - id: H2
-    name: "Multi-step Task Benefit"
-    status: "INCONCLUSIVE"
-    key_finding: "1.7% difference - needs re-testing with GNN-only variant"
-    confidence: 0.3
-  - id: H3
-    name: "Attention Benefits Long Sequences"
-    status: "REFUTED"
-    key_finding: "Removing attention improves CG by 81.31%. Attention is harmful."
-    confidence: 0.95
-  - id: H4
-    name: "Dimension Allocation"
-    status: "CLOSE"
-    key_finding: "25% optimal vs 28% hypothesis"
-    confidence: 0.7
