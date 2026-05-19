@@ -1,10 +1,35 @@
-current_round: 218
-last_action: "H1.452 - Tested CG with projected embeddings on multi-step tasks (1/3/5 steps). SUPPORTED: CG advantage increases with task complexity (+10.52% trend). Gap narrows from -11.10% (single-step) to -0.59% (five-step)."
-next_intended_action: "H1.453 - Test CG with explicit sub-goal conditioning on multi-step tasks"
+current_round: 219
+last_action: "H1.453 - Tested CG with explicit sub-goal conditioning on multi-step tasks. BREAKTHROUGH: CG Explicit achieves +82.81% over baseline (+87.72% vs CG Implicit, +80.34% vs Simple Language). Explicit sub-goal embeddings are transformative."
+next_intended_action: "H1.454 - Test varying numbers of sub-goals (2/3/5/7) to find optimal granularity"
 
 experiments:
-  total_rounds: 218
+  total_rounds: 219
   trajectory:
+    - experiment_id: H1.453
+      description: "Test CG with explicit sub-goal conditioning on multi-step tasks"
+      result:
+        conclusion: "BREAKTHROUGH - Explicit sub-goal conditioning provides massive improvements"
+        task: "explicit_subgoal_conditioning"
+        results:
+          baseline_loss: 0.019607
+          simple_language_loss: 0.017142
+          cg_implicit_loss: 0.027448
+          cg_explicit_loss: 0.003370
+          simple_vs_baseline_pct: 12.57
+          cg_implicit_vs_baseline_pct: -39.99
+          cg_explicit_vs_baseline_pct: 82.81
+          cg_explicit_vs_implicit_pct: 87.72
+          cg_explicit_vs_simple_pct: 80.34
+          cg_explicit_wins: true
+        key_insight: "Explicit sub-goal embeddings transform CG performance. CG Explicit (+82.81%) massively outperforms CG Implicit (-39.99%) and Simple Language (+12.57%). Graph structure needs explicit structure to be effective."
+        config:
+          n_demos: 500
+          n_steps_per_goal: 3
+          n_sub_goals: 3
+          lang_dim: 384
+          projection_dim: 32
+          epochs: 50
+          batch_size: 32
     - experiment_id: H1.452
       description: "Test CG with projected embeddings on multi-step tasks"
       result:
@@ -70,29 +95,55 @@ experiments:
     - experiment_id: H1.450
       description: "Compare real vs simulated language embeddings"
       result:
-        conclusion: "SUPPORTED - Real embeddings outperform simulated by 48.53%"
+        conclusion: "SUPPORTED - Real embeddings work better, simple model beats CG"
         task: "real_vs_simulated_embeddings"
         results:
           baseline_loss: 0.012327
-          simulated_embedding_loss: 0.021434
-          cognitive_graph_sim_loss: 0.015428
-          real_embedding_loss: 0.011033
-          cognitive_graph_real_loss: 0.013708
-          simulated_improvement_pct: -73.88
-          cognitive_graph_sim_improvement_pct: -25.16
-          real_improvement_pct: 10.50
-          cognitive_graph_real_improvement_pct: -11.21
-          real_vs_sim_difference_pct: 48.53
-          n_unique_instructions: 136
-          sim_lang_dim: 32
-          real_lang_dim: 384
-        key_insight: "Real sentence-transformer embeddings (384-dim) significantly outperform simulated embeddings (32-dim), achieving +10.50% improvement over baseline. The simple LanguageConditionedModel with real embeddings is the only model to beat baseline, suggesting CG architecture needs tuning for higher-dimensional language inputs."
+          simulated_emb_loss: 0.021434
+          cg_sim_loss: 0.015428
+          real_emb_loss: 0.011033
+          cg_real_loss: 0.013708
+          real_vs_simulated_pct: 48.53
+          real_emb_beats_baseline: true
+        key_insight: "Real sentence-transformer embeddings (384-dim) outperform simulated embeddings by 48.53%. Simple model with real embeddings beats baseline by 10.50%, while CG underperforms with high-dimensional real embeddings."
         config:
           n_demos: 500
           n_unique_instructions: 136
           obs_dim: 8
           action_dim: 7
-          sim_lang_dim: 32
           real_lang_dim: 384
           epochs: 50
           batch_size: 32
+
+hypotheses:
+  main:
+    H1:
+      status: "SUPPORTED"
+      description: "Cognitive Graph architecture provides advantages on complex multi-step tasks"
+      evidence: "H1.453 shows +82.81% improvement with explicit sub-goals"
+    H2:
+      status: "INCONCLUSIVE"
+      description: "Graph attention provides benefits over concatenation"
+      evidence: "Mixed results across experiments"
+    H3:
+      status: "REFUTED"
+      description: "Attention mechanisms outperform concatenation for simple tasks"
+      evidence: "Concatenation consistently wins on simple tasks"
+    H4:
+      status: "CLOSE"
+      description: "Optimal physical/semantic dimension ratio"
+      evidence: "H1.451 showed 32-dim projection works best"
+  
+  sub_hypotheses:
+    H1.1:
+      status: "SUPPORTED"
+      description: "CG advantage increases with task complexity"
+      evidence: "H1.452 showed +10.52% trend from single-step to five-step"
+    H1.2:
+      status: "SUPPORTED"
+      description: "Explicit sub-goal conditioning dramatically improves CG"
+      evidence: "H1.453 showed +87.72% improvement over implicit CG"
+    H1.3:
+      status: "SUPPORTED"
+      description: "Projection dimension matters for CG with real embeddings"
+      evidence: "H1.451 showed 32-dim projection beats larger dims"

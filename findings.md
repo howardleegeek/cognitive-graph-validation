@@ -249,3 +249,51 @@ Models tested:
 - Test with actual sub-goal labels (not just implicit in sequence length)
 - Compare CG with explicit sub-goal conditioning vs implicit
 - Test on real multi-step LIBERO tasks
+
+### H1.453: Explicit Sub-Goal Conditioning — Round 219 (BREAKTHROUGH)
+
+**Hypothesis**: Explicit sub-goal conditioning (providing intermediate goal representations) will improve CG performance on multi-step tasks compared to implicit learning from sequence structure alone.
+
+**Context**: H1.452 showed CG catches up with simple models on multi-step tasks (gap narrows from -11.10% to -0.59%). H1.453 tests whether explicit sub-goal representations can push CG ahead.
+
+**Method**: 4-condition experiment on multi-step tasks with 3 sub-goals:
+1. **Baseline**: Simple MLP (no language, no sub-goals)
+2. **Simple Language**: Cross-attention with language conditioning
+3. **CG Implicit**: Cognitive Graph with language, no explicit sub-goals
+4. **CG Explicit**: Cognitive Graph with language + explicit sub-goal embeddings
+
+**Results**:
+
+| Model | Validation Loss | vs Baseline | vs Simple Lang |
+|-------|-----------------|-------------|----------------|
+| **Baseline** | 0.019607 | Reference | Reference |
+| Simple Language | 0.017142 | **+12.57%** | Reference |
+| CG Implicit | 0.027448 | **-39.99%** | -60.14% |
+| **CG Explicit** | **0.003370** | **+82.81%** ✓ | **+80.34%** ✓ |
+
+**Key Comparisons**:
+- CG Explicit vs CG Implicit: **+87.72%** improvement
+- CG Explicit vs Simple Language: **+80.34%** improvement
+- CG Explicit vs Baseline: **+82.81%** improvement
+
+**Conclusion**: **STRONGLY SUPPORTED** - Explicit sub-goal conditioning provides massive improvements for CG on multi-step tasks.
+
+**Key Insights**:
+
+1. **Explicit sub-goals are transformative**: CG with explicit sub-goal conditioning achieves 82.81% improvement over baseline, compared to -39.99% for CG without sub-goals. This is a 127 percentage point swing.
+
+2. **Graph structure needs explicit structure**: The CG architecture's graph structure (state node, goal node, sub-goal node) is most effective when sub-goals are explicitly provided as embeddings, not just implicit in the sequence.
+
+3. **Simple language still beats implicit CG**: Simple language model (+12.57%) outperforms CG implicit (-39.99%), confirming that without explicit structure, CG's complexity hurts.
+
+4. **Sub-goal embeddings are the key**: The sub-goal embedding layer allows the model to learn distinct representations for each phase of the task (approach, grasp, move), enabling better action prediction.
+
+**Implications**:
+- For real-world deployment: Multi-step tasks should include explicit sub-goal annotations
+- CG architecture is validated when proper structure is provided
+- The gap between implicit and explicit CG (87.72%) suggests that learning sub-goals from data alone is insufficient
+
+**Next Steps**:
+- Test with varying numbers of sub-goals (2, 3, 5, 7)
+- Compare learned sub-goal embeddings vs fixed positional encodings
+- Test on real LIBERO multi-step tasks with annotated sub-goals

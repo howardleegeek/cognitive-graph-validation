@@ -1,0 +1,21 @@
+{
+  "baseline_loss": 0.019607,
+  "simple_language_loss": 0.017142,
+  "cg_implicit_loss": 0.027448,
+  "cg_explicit_loss": 0.003370,
+  "simple_vs_baseline_pct": 12.57,
+  "cg_implicit_vs_baseline_pct": -39.99,
+  "cg_explicit_vs_baseline_pct": 82.81,
+  "cg_explicit_vs_implicit_pct": 87.72,
+  "cg_explicit_vs_simple_pct": 80.34,
+  "cg_explicit_wins": true,
+  "config": {
+    "n_demos": 500,
+    "n_steps_per_goal": 3,
+    "n_sub_goals": 3,
+    "lang_dim": 384,
+    "projection_dim": 32,
+    "epochs": 50,
+    "batch_size": 32
+  }
+}
