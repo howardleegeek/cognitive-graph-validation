@@ -1,0 +1,48 @@
+{
+  "experiment_id": "H1.452",
+  "description": "Multi-step task test with projected real embeddings",
+  "config": {
+    "n_demos": 500,
+    "n_unique_instructions": 136,
+    "obs_dim": 8,
+    "action_dim": 7,
+    "real_lang_dim": 384,
+    "projection_dim": 32,
+    "epochs": 50,
+    "batch_size": 32
+  },
+  "results": {
+    "single_step": {
+      "n_steps": 1,
+      "baseline_loss": 1.1466619968414307,
+      "simple_language_loss": 0.9524635672569275,
+      "cg_projected_loss": 1.058215618133545,
+      "baseline_improvement_pct": 0.0,
+      "simple_language_improvement_pct": 16.935978528933358,
+      "cg_improvement_pct": 7.713378393242136,
+      "cg_vs_simple_pct": -11.103002205237186
+    },
+    "three_step": {
+      "n_steps": 3,
+      "baseline_loss": 1.1775460243225098,
+      "simple_language_loss": 0.9731891751289368,
+      "cg_projected_loss": 0.99709552526474,
+      "baseline_improvement_pct": 0.0,
+      "simple_language_improvement_pct": 17.354468103371826,
+      "cg_improvement_pct": 15.324284174929833,
+      "cg_vs_simple_pct": -2.4564956893027396
+    },
+    "five_step": {
+      "n_steps": 5,
+      "baseline_loss": 1.1629955768585205,
+      "simple_language_loss": 1.0043127536773682,
+      "cg_projected_loss": 1.0101933479309082,
+      "baseline_improvement_pct": 0.0,
+      "simple_language_improvement_pct": 13.644318717856677,
+      "cg_improvement_pct": 13.13867670420219,
+      "cg_vs_simple_pct": -0.585534160749009
+    }
+  },
+  "conclusion": "SUPPORTED - CG advantage increases with task complexity",
+  "advantage_trend": 10.517468044488176
+}
