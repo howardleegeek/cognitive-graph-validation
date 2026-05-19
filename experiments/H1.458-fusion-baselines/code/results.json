@@ -1,0 +1,26 @@
+{
+  "concatenation": {
+    "val_loss": 0.005906175822019577,
+    "description": "ConcatenationBaseline"
+  },
+  "bilinear": {
+    "val_loss": 0.013040868373262503,
+    "description": "BilinearFusion",
+    "improvement_pct": -120.80054448503137
+  },
+  "additive": {
+    "val_loss": 0.007037629373371601,
+    "description": "AdditiveFusion",
+    "improvement_pct": -19.157126124381634
+  },
+  "film": {
+    "val_loss": 0.010672191254025886,
+    "description": "FiLMFusion",
+    "improvement_pct": -80.69545464998707
+  },
+  "cognitive_graph": {
+    "val_loss": 0.006220853621406215,
+    "description": "CognitiveGraph",
+    "improvement_pct": -5.327944999765277
+  }
+}

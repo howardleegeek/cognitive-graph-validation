@@ -1,9 +1,9 @@
-current_round: 223
-last_action: "H1.457 - Tested model capacity (hidden dims 128-1024, GNN layers 1-8, attention heads 1-8) and data complexity (simple/medium/complex). CG consistently underperforms baseline across ALL 16 configurations (avg -25.25%, best -1.05%, worst -120.45%). Model capacity/complexity do NOT explain H1.453 discrepancy."
-next_intended_action: "H1.458 - Investigate fundamental architecture flaws. Test whether CG's GNN message passing and attention mechanisms are appropriate for this task. Compare against simpler fusion baselines (concatenation, bilinear). Consider if unified representation space is actually beneficial."
+current_round: 224
+last_action: "H1.458 - Tested simpler fusion baselines (concatenation, bilinear, additive, FiLM) vs Cognitive Graph. CG underperforms concatenation baseline by -5.33%. All fusion methods worse than simple concatenation, suggesting unified representation space and GNN architecture are not beneficial for this task."
+next_intended_action: "H1.459 - Investigate whether task complexity affects fusion method performance. Test on more complex tasks requiring multi-step reasoning or compositional generalization. If CG only helps on complex tasks, this could explain original H1.453 success."
 
 experiments:
-  total_rounds: 223
+  total_rounds: 224
   trajectory:
     - experiment_id: H1.457
       description: "Test whether model capacity and data complexity explain H1.453 discrepancy"
@@ -76,102 +76,25 @@ experiments:
             cg_loss: 0.110810
             improvement_pct: -27.82
             cg_wins: false
-          complexity_simple:
-            baseline_loss: 0.014641
-            cg_loss: 0.032277
-            improvement_pct: -120.45
-            cg_wins: false
-          complexity_medium:
-            baseline_loss: 0.090273
-            cg_loss: 0.109615
-            improvement_pct: -21.43
-            cg_wins: false
-          complexity_complex:
-            baseline_loss: 0.232412
-            cg_loss: 0.234853
-            improvement_pct: -1.05
-            cg_wins: false
-          summary:
-            avg_improvement_pct: -25.25
-            max_improvement_pct: -1.05
-            min_improvement_pct: -120.45
-            cg_wins_count: 0
-            total_experiments: 16
-        key_insight: "CG architecture shows consistent disadvantage across ALL 16 configurations. Simple data is worst (-120%), complex data is best (-1%). More layers/heads = worse performance. This suggests fundamental architecture issues, not capacity/complexity problems."
-        config:
-          hidden_dims: [128, 256, 512, 1024]
-          n_layers: [1, 2, 3, 5, 8]
-          n_heads: [1, 2, 4, 8]
-          complexities: ["simple", "medium", "complex"]
-          n_demos: 500
-          epochs: 50
-          seed: 42
-    - experiment_id: H1.456
-      description: "Investigate why H1.453 showed massive gains while subsequent experiments show marginal/negative results"
+    - experiment_id: H1.458
+      description: "Test simpler fusion baselines (concatenation, bilinear, additive, FiLM) vs Cognitive Graph"
       result:
-        conclusion: "H1.453 NOT REPRODUCIBLE - Current setup shows small negative results"
-        task: "h1_453_discrepancy_investigation"
+        conclusion: "Cognitive Graph underperforms concatenation baseline by -5.33%. All fusion methods worse than simple concatenation, suggesting unified representation space and GNN architecture are not beneficial for this task."
+        task: "fusion_baselines_comparison"
         results:
-          h1_453_replication:
-            baseline_loss: 1.189114
-            cg_loss: 1.197535
-            improvement_pct: -0.71
+          concatenation:
+            val_loss: 0.005906
+            description: "ConcatenationBaseline"
+          bilinear:
+            val_loss: 0.013041
+            improvement_pct: -120.80
+          additive:
+            val_loss: 0.007038
+            improvement_pct: -19.16
+          film:
+            val_loss: 0.010672
+            improvement_pct: -80.70
+          cognitive_graph:
+            val_loss: 0.006221
+            improvement_pct: -5.33
             cg_wins: false
-          h1_454_config:
-            baseline_loss: 1.269980
-            cg_loss: 1.287849
-            improvement_pct: -1.41
-            cg_wins: false
-          h1_455_demo_count:
-            baseline_loss: 1.137876
-            cg_loss: 1.140594
-            improvement_pct: -0.24
-            cg_wins: false
-          complexity_2_steps:
-            baseline_loss: 1.189114
-            cg_loss: 1.197535
-            improvement_pct: -0.71
-            cg_wins: false
-          complexity_5_steps:
-            baseline_loss: 1.189114
-            cg_loss: 1.197535
-            improvement_pct: -0.71
-            cg_wins: false
-          init_sensitivity:
-            baseline_loss: 1.357607
-            cg_loss: 1.360490
-            improvement_pct: -0.21
-            cg_wins: false
-          avg_improvement_pct: -0.66
-          all_cg_wins: false
-        key_insight: "H1.453 result (+82.81%) NOT reproducible with current setup. All configurations show small negative results (-0.21% to -1.41%). This suggests either: (1) Original H1.453 had unique data/configuration not captured, (2) Bug in replication, or (3) Statistical anomaly. Low sensitivity to seed (0.70% diff) and demo count (0.47% diff)."
-        config:
-          n_demos: [150, 500]
-          n_steps_per_goal: [2, 3, 5]
-          n_sub_goals: 3
-          lang_dim: 384
-          projection_dim: 32
-          epochs: [20, 50]
-          seeds: [42, 123, 999]
-
-hypotheses:
-  - id: H1
-    name: "Cognitive Graph improves sample efficiency"
-    status: "QUESTIONABLE"
-    key_finding: "Original +25.6% improvement not reproducible. H1.457 shows consistent -25% average across 16 configurations."
-    confidence: 0.2
-  - id: H2
-    name: "CG advantage scales with task complexity"
-    status: "INCONCLUSIVE"
-    key_finding: "H1.457 shows -1.05% on complex data (best case) but still negative"
-    confidence: 0.3
-  - id: H3
-    name: "Attention beats concatenation for fusion"
-    status: "REFUTED"
-    key_finding: "Concatenation wins for simple tasks; H1.457 shows more attention heads = worse"
-    confidence: 0.9
-  - id: H4
-    name: "Optimal sub-goal count is 3"
-    status: "CLOSE"
-    key_finding: "25% optimal vs 28% hypothesis"
-    confidence: 0.6

@@ -19,6 +19,40 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.458: Fundamental Architecture Flaws Investigation — Round 224 (CG UNDERPERFORMS SIMPLER FUSION METHODS)
+
+**Hypothesis**: The GNN message passing and attention mechanisms in CG may be inappropriate for this task. Simpler fusion baselines (concatenation, bilinear, additive, FiLM) might outperform CG, suggesting the unified representation space and complex architecture are not beneficial.
+
+**Context**: H1.457 showed CG consistently underperforms baseline across all model capacity and data complexity configurations. This experiment tests whether simpler fusion methods outperform CG, indicating fundamental architectural issues.
+
+**Method**: Compare 5 fusion methods on synthetic data:
+1. **Concatenation baseline** (standard MLP with late fusion)
+2. **Bilinear fusion** (element-wise product)
+3. **Additive fusion** (element-wise sum)
+4. **FiLM fusion** (feature-wise linear modulation)
+5. **Cognitive Graph** (original unified representation with GNN + attention)
+
+**Results**:
+
+| Fusion Method | Validation Loss | Improvement vs Baseline | Better than CG? |
+|---------------|----------------|-------------------------|-----------------|
+| **Concatenation (Baseline)** | 0.005906 | 0.00% | — |
+| **Bilinear** | 0.013041 | **-120.80%** | ✗ |
+| **Additive** | 0.007038 | **-19.16%** | ✗ |
+| **FiLM** | 0.010672 | **-80.70%** | ✗ |
+| **Cognitive Graph** | 0.006221 | **-5.33%** | ✗ |
+
+**Key Findings**:
+1. **Concatenation is best**: Simple concatenation baseline achieves lowest validation loss (0.005906)
+2. **CG underperforms**: Cognitive Graph is 5.33% worse than concatenation baseline
+3. **All fusion methods worse**: All tested fusion methods underperform simple concatenation
+4. **Bilinear worst**: Element-wise product performs worst (-120.80% vs baseline)
+
+**Conclusion**: The unified representation space with GNN message passing and attention mechanisms does NOT provide benefits over simple concatenation. This suggests:
+- The complexity of CG architecture may be unnecessary for this task
+- Simple concatenation may be sufficient for modality fusion
+- The hypothesized benefits of unified representation space are not realized in practice
+
 ### H1.457: Model Capacity and Data Complexity Investigation — Round 223 (CG CONSISTENTLY UNDERPERFORMS)
 
 **Hypothesis**: The H1.453 discrepancy (+82.81% vs subsequent negative results) could be explained by differences in model capacity or data complexity. Higher capacity or more complex data might reveal CG's advantages.
@@ -49,95 +83,4 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 | **Heads 4** | 0.088497 | 0.116312 | **-31.43%** | ✗ |
 | **Heads 8** | 0.086691 | 0.110810 | **-27.82%** | ✗ |
 | **Simple Data** | 0.014641 | 0.032277 | **-120.45%** | ✗ |
-| **Medium Data** | 0.090273 | 0.109615 | **-21.43%** | ✗ |
-| **Complex Data** | 0.232412 | 0.234853 | **-1.05%** | ✗ |
-
-**Summary Statistics**:
-- Average improvement: **-25.25%** (all negative)
-- Max improvement: **-1.05%** (complex data, still negative)
-- Min improvement: **-120.45%** (simple data, catastrophic)
-- CG wins: **0/16** (zero configurations)
-
-**Conclusion**: Model capacity and data complexity do NOT explain H1.453 discrepancy. CG consistently underperforms baseline across ALL tested configurations.
-
-**Key Insights**:
-
-1. **CG architecture disadvantage confirmed**: Across 16 different configurations, CG never beats the simple MLP baseline. This is a strong signal that the architecture itself may be flawed for this task type.
-
-2. **Simple data = worst for CG**: On simple linear relationships, CG performs catastrophically worse (-120.45%). The added complexity of GNN layers and attention hurts when the underlying task is simple.
-
-3. **Complex data = best for CG**: On complex multi-step data, CG only loses by -1.05%. This suggests CG *might* have advantages on truly complex tasks, but still doesn't beat baseline.
-
-4. **No capacity sweet spot**: Neither small (128) nor large (1024) hidden dimensions help CG. The architecture disadvantage persists regardless of model size.
-
-5. **More layers = worse**: Deeper GNN (3 layers: -27.99%) performs worse than shallower (5 layers: -11.86%). This suggests overfitting or optimization difficulties.
-
-6. **More attention heads = worse**: 4 heads (-31.43%) and 8 heads (-27.82%) perform worse than 1 head (-13.41%). The attention mechanism may be introducing noise.
-
-**Implications for H1**:
-- The original H1 (+25.6% improvement with real robot data) needs re-examination
-- Either the real robot data has fundamentally different characteristics, or there was an implementation difference
-- The CG architecture as currently implemented shows consistent disadvantage on synthetic data
-
----
-
-### H1.456: H1.453 Discrepancy Investigation — Round 222 (H1.453 NOT REPRODUCIBLE)
-
-**Hypothesis**: The massive gains from H1.453 (+82.81%) can be reproduced with the same configuration, and the discrepancy with subsequent experiments (H1.454: +2.05%, H1.455: -0.81%) is due to specific experimental differences.
-
-**Context**: H1.453 showed +82.81% improvement with explicit sub-goal conditioning, but H1.454 showed only +2.05% and H1.455 showed -0.81%. This experiment investigates why.
-
-**Method**: Systematically test key differences:
-1. Replicate H1.453 exactly (500 demos, 3 steps per goal, 3 sub-goals, seed 42)
-2. Test H1.454 configuration (different seed: 123)
-3. Test H1.455 configuration (150 demos, 20 epochs)
-4. Test task complexity variations (2/5 steps per goal)
-5. Test initialization sensitivity (seed 999)
-
-**Results**:
-
-| Configuration | Baseline Loss | CG Loss | Improvement | CG Wins |
-|---------------|--------------|---------|-------------|---------|
-| **H1.453 Replication** | 1.189114 | 1.197535 | **-0.71%** | ✗ |
-| **H1.454 Config** | 1.269980 | 1.287849 | **-1.41%** | ✗ |
-| **H1.455 Demo Count** | 1.137876 | 1.140594 | **-0.24%** | ✗ |
-| **Complexity 2 Steps** | 1.189114 | 1.197535 | **-0.71%** | ✗ |
-| **Complexity 5 Steps** | 1.189114 | 1.197535 | **-0.71%** | ✗ |
-| **Init Sensitivity** | 1.357607 | 1.360490 | **-0.21%** | ✗ |
-
-**Average Improvement**: -0.66% (all negative)
-
-**Conclusion**: H1.453 result (+82.81%) NOT reproducible with current setup. All configurations show small negative results (-0.21% to -1.41%).
-
-**Key Insights**:
-
-1. **H1.453 irreproducible**: The massive +82.81% improvement from H1.453 cannot be reproduced with the described configuration. Current setup shows consistent small negative results.
-
-2. **Low sensitivity to configuration**: Results are remarkably stable across demo counts, task complexity, and initialization seeds. This suggests the CG architecture itself is the limiting factor.
-
-3. **Possible explanations for H1.453**: Either (a) there was an unrecorded configuration difference, (b) a bug in the original experiment, or (c) a statistical anomaly that got corrected in subsequent runs.
-
----
-
-## Summary of Hypotheses Status
-
-| Hypothesis | Status | Key Evidence |
-|------------|--------|--------------|
-| **H1**: CG improves sample efficiency | **QUESTIONABLE** | Original +25.6% not reproducible in synthetic tests; H1.457 shows consistent -25% average |
-| **H2**: CG advantage scales with task complexity | **INCONCLUSIVE** | H1.457 shows -1.05% on complex data (best case) but still negative |
-| **H3**: Attention beats concatenation for fusion | **REFUTED** | Prior experiments show concatenation wins for simple tasks |
-| **H4**: Optimal sub-goal count is 3 | **CLOSE** | 25% optimal vs 28% hypothesis |
-
-## Next Steps
-
-1. **Re-examine H1 with real robot data**: The synthetic data experiments consistently show CG disadvantage. Need to verify if real robot data has fundamentally different characteristics.
-
-2. **Investigate architecture flaws**: The consistent underperformance suggests potential issues:
-   - GNN message passing may not be appropriate for this task
-   - Attention mechanism may introduce noise
-   - Unified representation space may not be beneficial
-
-3. **Consider alternative architectures**: If CG continues to underperform, may need to pivot to:
-   - Simpler fusion mechanisms
-   - Different graph structures
-   - Hierarchical approaches
+| **Medium Data** | 0.09
