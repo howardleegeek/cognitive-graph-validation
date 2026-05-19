@@ -1,0 +1,35 @@
+{
+  "experiment_id": "H1.455",
+  "hypothesis": "Sub-goal generalization across task complexities",
+  "conclusion": "REFUTED - 3 sub-goals do not generalize",
+  "results": {
+    "2": {
+      "baseline_loss": 1.02712,
+      "cg_loss": 1.028928,
+      "improvement_pct": -0.18,
+      "cg_wins": 0.0
+    },
+    "3": {
+      "baseline_loss": 1.019063,
+      "cg_loss": 1.02009,
+      "improvement_pct": -0.1,
+      "cg_wins": 0.0
+    },
+    "5": {
+      "baseline_loss": 0.978149,
+      "cg_loss": 0.999314,
+      "improvement_pct": -2.16,
+      "cg_wins": 0.0
+    }
+  },
+  "config": {
+    "n_sub_goals": 3,
+    "steps_per_goal_configs": [
+      2,
+      3,
+      5
+    ],
+    "n_demos": 150,
+    "epochs": 20
+  }
+}

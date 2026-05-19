@@ -1,10 +1,81 @@
-current_round: 219
-last_action: "H1.453 - Tested CG with explicit sub-goal conditioning on multi-step tasks. BREAKTHROUGH: CG Explicit achieves +82.81% over baseline (+87.72% vs CG Implicit, +80.34% vs Simple Language). Explicit sub-goal embeddings are transformative."
-next_intended_action: "H1.454 - Test varying numbers of sub-goals (2/3/5/7) to find optimal granularity"
+current_round: 221
+last_action: "H1.455 - Tested whether optimal 3 sub-goals from H1.454 generalize across task complexities (2/3/5 steps per sub-goal). REFUTED: CG loses at all complexity levels (avg -0.81%)."
+next_intended_action: "H1.456 - Investigate why H1.453 showed massive gains (+82.81%) while subsequent experiments show marginal/negative results. Need to understand the key difference in experimental setup."
 
 experiments:
-  total_rounds: 219
+  total_rounds: 221
   trajectory:
+    - experiment_id: H1.455
+      description: "Test whether optimal 3 sub-goals generalize across task complexities"
+      result:
+        conclusion: "REFUTED - 3 sub-goals do not generalize across task complexities"
+        task: "subgoal_generalization"
+        results:
+          steps_2:
+            baseline_loss: 1.027120
+            cg_loss: 1.028928
+            improvement_pct: -0.18
+            cg_wins: false
+          steps_3:
+            baseline_loss: 1.019063
+            cg_loss: 1.020090
+            improvement_pct: -0.10
+            cg_wins: false
+          steps_5:
+            baseline_loss: 0.978149
+            cg_loss: 0.999314
+            improvement_pct: -2.16
+            cg_wins: false
+          avg_improvement_pct: -0.81
+          all_cg_wins: false
+        key_insight: "Generalization failure: optimal 3 sub-goals from H1.454 does NOT transfer to different task complexities. CG loses at all tested levels (2/3/5 steps per sub-goal). Task-dependent optimality confirmed."
+        config:
+          n_demos: 150
+          n_sub_goals: 3
+          steps_per_goal_configs: [2, 3, 5]
+          obs_dim: 8
+          action_dim: 7
+          lang_dim: 384
+          epochs: 20
+          batch_size: 32
+    - experiment_id: H1.454
+      description: "Test varying numbers of sub-goals (2/3/5/7) to find optimal granularity"
+      result:
+        conclusion: "SUPPORTED with nuance - 3 sub-goals optimal, inverted-U pattern"
+        task: "subgoal_granularity_sweep"
+        results:
+          n_sub_goals_2:
+            baseline_loss: 0.012557
+            cg_explicit_loss: 0.012777
+            improvement_pct: -1.75
+            cg_wins: false
+          n_sub_goals_3:
+            baseline_loss: 0.015885
+            cg_explicit_loss: 0.015560
+            improvement_pct: 2.05
+            cg_wins: true
+          n_sub_goals_5:
+            baseline_loss: 0.014455
+            cg_explicit_loss: 0.014263
+            improvement_pct: 1.32
+            cg_wins: true
+          n_sub_goals_7:
+            baseline_loss: 0.014129
+            cg_explicit_loss: 0.014810
+            improvement_pct: -4.82
+            cg_wins: false
+          optimal_sub_goals: 3
+          best_improvement_pct: 2.05
+        key_insight: "Clear inverted-U relationship: 3 sub-goals optimal (+2.05%), 5 sub-goals still positive (+1.32%), but 2 (-1.75%) and 7 (-4.82%) lose. Magnitude gap vs H1.453 (+82.81%) suggests the presence of explicit structure matters more than granularity."
+        config:
+          n_demos: 500
+          n_steps_per_goal: 3
+          sub_goal_configs: [2, 3, 5, 7]
+          obs_dim: 8
+          action_dim: 7
+          lang_dim: 384
+          epochs: 50
+          batch_size: 32
     - experiment_id: H1.453
       description: "Test CG with explicit sub-goal conditioning on multi-step tasks"
       result:
@@ -28,122 +99,3 @@ experiments:
           n_sub_goals: 3
           lang_dim: 384
           projection_dim: 32
-          epochs: 50
-          batch_size: 32
-    - experiment_id: H1.452
-      description: "Test CG with projected embeddings on multi-step tasks"
-      result:
-        conclusion: "SUPPORTED - CG advantage increases with task complexity"
-        task: "multi_step_projected_embeddings"
-        results:
-          single_step:
-            baseline_loss: 1.146662
-            simple_language_loss: 0.952464
-            cg_projected_loss: 1.058216
-            cg_vs_simple_pct: -11.10
-          three_step:
-            baseline_loss: 1.177546
-            simple_language_loss: 0.973189
-            cg_projected_loss: 0.997096
-            cg_vs_simple_pct: -2.46
-          five_step:
-            baseline_loss: 1.162996
-            simple_language_loss: 1.004313
-            cg_projected_loss: 1.010193
-            cg_vs_simple_pct: -0.59
-          advantage_trend: 10.52
-        key_insight: "CG catches up with complexity. Gap narrows from -11.10% (single-step) to -0.59% (five-step). Graph structure advantage emerges with more complex multi-step tasks."
-        config:
-          n_demos: 500
-          n_unique_instructions: 136
-          obs_dim: 8
-          action_dim: 7
-          real_lang_dim: 384
-          projection_dim: 32
-          epochs: 50
-          batch_size: 32
-          step_configs: [1, 3, 5]
-    - experiment_id: H1.451
-      description: "Test CG with projected real embeddings (384→various dims)"
-      result:
-        conclusion: "SUPPORTED - CG with 32-dim projection beats simple model by 8.16%"
-        task: "cg_real_embedding_projection"
-        results:
-          baseline_loss: 0.003214
-          simple_language_real_loss: 0.004305
-          cg_proj_32_loss: 0.003953
-          cg_proj_64_loss: 0.004167
-          cg_proj_128_loss: 0.004655
-          cg_proj_256_loss: 0.004627
-          cg_balanced_loss: 0.003956
-          cg_original_384_loss: 0.004540
-          best_cg_key: "cg_proj_32"
-          best_cg_improvement_pct: -23.01
-          simple_language_improvement_pct: -33.94
-          cg_beats_simple: true
-          cg_vs_simple_gap_pct: 8.16
-        key_insight: "CG with 32-dim projection outperforms simple language model by 8.16%. Projection dimension matters critically: smaller is better (32>64>128>256). Balanced dimensions (256+256) match small projection performance."
-        config:
-          n_demos: 500
-          n_unique_instructions: 136
-          obs_dim: 8
-          action_dim: 7
-          real_lang_dim: 384
-          epochs: 50
-          batch_size: 32
-          projection_dims: [32, 64, 128, 256]
-    - experiment_id: H1.450
-      description: "Compare real vs simulated language embeddings"
-      result:
-        conclusion: "SUPPORTED - Real embeddings work better, simple model beats CG"
-        task: "real_vs_simulated_embeddings"
-        results:
-          baseline_loss: 0.012327
-          simulated_emb_loss: 0.021434
-          cg_sim_loss: 0.015428
-          real_emb_loss: 0.011033
-          cg_real_loss: 0.013708
-          real_vs_simulated_pct: 48.53
-          real_emb_beats_baseline: true
-        key_insight: "Real sentence-transformer embeddings (384-dim) outperform simulated embeddings by 48.53%. Simple model with real embeddings beats baseline by 10.50%, while CG underperforms with high-dimensional real embeddings."
-        config:
-          n_demos: 500
-          n_unique_instructions: 136
-          obs_dim: 8
-          action_dim: 7
-          real_lang_dim: 384
-          epochs: 50
-          batch_size: 32
-
-hypotheses:
-  main:
-    H1:
-      status: "SUPPORTED"
-      description: "Cognitive Graph architecture provides advantages on complex multi-step tasks"
-      evidence: "H1.453 shows +82.81% improvement with explicit sub-goals"
-    H2:
-      status: "INCONCLUSIVE"
-      description: "Graph attention provides benefits over concatenation"
-      evidence: "Mixed results across experiments"
-    H3:
-      status: "REFUTED"
-      description: "Attention mechanisms outperform concatenation for simple tasks"
-      evidence: "Concatenation consistently wins on simple tasks"
-    H4:
-      status: "CLOSE"
-      description: "Optimal physical/semantic dimension ratio"
-      evidence: "H1.451 showed 32-dim projection works best"
-  
-  sub_hypotheses:
-    H1.1:
-      status: "SUPPORTED"
-      description: "CG advantage increases with task complexity"
-      evidence: "H1.452 showed +10.52% trend from single-step to five-step"
-    H1.2:
-      status: "SUPPORTED"
-      description: "Explicit sub-goal conditioning dramatically improves CG"
-      evidence: "H1.453 showed +87.72% improvement over implicit CG"
-    H1.3:
-      status: "SUPPORTED"
-      description: "Projection dimension matters for CG with real embeddings"
-      evidence: "H1.451 showed 32-dim projection beats larger dims"
