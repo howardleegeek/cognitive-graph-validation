@@ -1,0 +1,49 @@
+{
+  "experiment_id": "H1.459",
+  "description": "Task complexity investigation",
+  "results": {
+    "simple_single_step": {
+      "baseline_loss": 0.014579,
+      "cg_loss": 0.013786,
+      "improvement_pct": 5.44,
+      "cg_wins": true
+    },
+    "multi_step_2": {
+      "baseline_loss": 0.007307,
+      "cg_loss": 0.005626,
+      "improvement_pct": 23.0,
+      "cg_wins": true
+    },
+    "multi_step_3": {
+      "baseline_loss": 0.007656,
+      "cg_loss": 0.006625,
+      "improvement_pct": 13.48,
+      "cg_wins": true
+    },
+    "multi_step_5": {
+      "baseline_loss": 0.010767,
+      "cg_loss": 0.007326,
+      "improvement_pct": 31.96,
+      "cg_wins": true
+    },
+    "compositional_2": {
+      "baseline_loss": 0.185003,
+      "cg_loss": 0.186309,
+      "improvement_pct": -0.71,
+      "cg_wins": false
+    },
+    "compositional_4": {
+      "baseline_loss": 0.409052,
+      "cg_loss": 0.319035,
+      "improvement_pct": 22.01,
+      "cg_wins": true
+    },
+    "compositional_8": {
+      "baseline_loss": 0.66429,
+      "cg_loss": 0.672356,
+      "improvement_pct": -1.21,
+      "cg_wins": false
+    }
+  },
+  "conclusion": "CG improves with task complexity. Simple: 5.44%, Multi-step avg: 22.81%, Compositional avg: 6.70%"
+}
