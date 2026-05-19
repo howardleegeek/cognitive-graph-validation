@@ -1,0 +1,170 @@
+================================================================================
+H1.449: Language-Conditioned Task Identification vs Task Embeddings
+================================================================================
+
+============================================================
+Configuration 1/4:
+  Objects: 5, Horizon: 10
+============================================================
+
+Running H1.449: Language vs Task Embeddings
+  n_objects=5, horizon=10, n_tasks=4, n_demos=200
+  Generating data...
+
+  Training baseline model...
+  Epoch 10/30: train_loss=0.5720, val_loss=0.6587
+  Epoch 20/30: train_loss=0.4380, val_loss=0.7145
+  Epoch 30/30: train_loss=0.3010, val_loss=0.7958
+    Final val loss: 0.795757, Best val loss: 0.647705
+
+  Training task_embedding model...
+  Epoch 10/30: train_loss=0.1611, val_loss=0.6142
+  Epoch 20/30: train_loss=0.0399, val_loss=0.7127
+  Epoch 30/30: train_loss=0.0143, val_loss=0.7294
+    Final val loss: 0.729403, Best val loss: 0.503834
+
+  Training language model...
+  Epoch 10/30: train_loss=0.2157, val_loss=0.6188
+  Epoch 20/30: train_loss=0.0508, val_loss=0.7383
+  Epoch 30/30: train_loss=0.0292, val_loss=0.7533
+    Final val loss: 0.753333, Best val loss: 0.490467
+
+  Training hybrid model...
+  Epoch 10/30: train_loss=0.2923, val_loss=0.5699
+  Epoch 20/30: train_loss=0.0783, val_loss=0.6875
+  Epoch 30/30: train_loss=0.0247, val_loss=0.7230
+    Final val loss: 0.722978, Best val loss: 0.469267
+
+  Improvements vs Baseline:
+    task_embedding: +22.21%
+    language: +24.28%
+    hybrid: +27.55%
+
+============================================================
+Configuration 2/4:
+  Objects: 8, Horizon: 15
+============================================================
+
+Running H1.449: Language vs Task Embeddings
+  n_objects=8, horizon=15, n_tasks=4, n_demos=200
+  Generating data...
+
+  Training baseline model...
+  Epoch 10/30: train_loss=0.7360, val_loss=0.7799
+  Epoch 20/30: train_loss=0.4322, val_loss=0.9514
+  Epoch 30/30: train_loss=0.2657, val_loss=1.1113
+    Final val loss: 1.111261, Best val loss: 0.770674
+
+  Training task_embedding model...
+  Epoch 10/30: train_loss=0.1617, val_loss=0.6212
+  Epoch 20/30: train_loss=0.0375, val_loss=0.6915
+  Epoch 30/30: train_loss=0.0126, val_loss=0.7166
+    Final val loss: 0.716611, Best val loss: 0.482184
+
+  Training language model...
+  Epoch 10/30: train_loss=0.1462, val_loss=0.6365
+  Epoch 20/30: train_loss=0.0280, val_loss=0.7212
+  Epoch 30/30: train_loss=0.0074, val_loss=0.7146
+    Final val loss: 0.714569, Best val loss: 0.485205
+
+  Training hybrid model...
+  Epoch 10/30: train_loss=0.1608, val_loss=0.6177
+  Epoch 20/30: train_loss=0.0259, val_loss=0.6744
+  Epoch 30/30: train_loss=0.0075, val_loss=0.6944
+    Final val loss: 0.694388, Best val loss: 0.487503
+
+  Improvements vs Baseline:
+    task_embedding: +37.43%
+    language: +37.04%
+    hybrid: +36.74%
+
+============================================================
+Configuration 3/4:
+  Objects: 3, Horizon: 5
+============================================================
+
+Running H1.449: Language vs Task Embeddings
+  n_objects=3, horizon=5, n_tasks=4, n_demos=200
+  Generating data...
+
+  Training baseline model...
+  Epoch 10/30: train_loss=0.5177, val_loss=0.4961
+  Epoch 20/30: train_loss=0.4693, val_loss=0.5264
+  Epoch 30/30: train_loss=0.3839, val_loss=0.5948
+    Final val loss: 0.594760, Best val loss: 0.493693
+
+  Training task_embedding model...
+  Epoch 10/30: train_loss=0.2127, val_loss=0.4957
+  Epoch 20/30: train_loss=0.0977, val_loss=0.5358
+  Epoch 30/30: train_loss=0.0384, val_loss=0.5806
+    Final val loss: 0.580607, Best val loss: 0.406196
+
+  Training language model...
+  Epoch 10/30: train_loss=0.2724, val_loss=0.4953
+  Epoch 20/30: train_loss=0.1086, val_loss=0.5633
+  Epoch 30/30: train_loss=0.0411, val_loss=0.6015
+    Final val loss: 0.601507, Best val loss: 0.407000
+
+  Training hybrid model...
+  Epoch 10/30: train_loss=0.3119, val_loss=0.4541
+  Epoch 20/30: train_loss=0.1438, val_loss=0.5584
+  Epoch 30/30: train_loss=0.0548, val_loss=0.5970
+    Final val loss: 0.597033, Best val loss: 0.418126
+
+  Improvements vs Baseline:
+    task_embedding: +17.72%
+    language: +17.56%
+    hybrid: +15.31%
+
+============================================================
+Configuration 4/4:
+  Objects: 10, Horizon: 20
+============================================================
+
+Running H1.449: Language vs Task Embeddings
+  n_objects=10, horizon=20, n_tasks=4, n_demos=200
+  Generating data...
+
+  Training baseline model...
+  Epoch 10/30: train_loss=0.5466, val_loss=0.6320
+  Epoch 20/30: train_loss=0.3118, val_loss=0.7818
+  Epoch 30/30: train_loss=0.1680, val_loss=0.8931
+    Final val loss: 0.893101, Best val loss: 0.612372
+
+  Training task_embedding model...
+  Epoch 10/30: train_loss=0.1114, val_loss=0.5414
+  Epoch 20/30: train_loss=0.0125, val_loss=0.6030
+  Epoch 30/30: train_loss=0.0190, val_loss=0.6021
+    Final val loss: 0.602104, Best val loss: 0.448604
+
+  Training language model...
+  Epoch 10/30: train_loss=0.2196, val_loss=0.5081
+  Epoch 20/30: train_loss=0.0596, val_loss=0.6109
+  Epoch 30/30: train_loss=0.0128, val_loss=0.6349
+    Final val loss: 0.634892, Best val loss: 0.437903
+
+  Training hybrid model...
+  Epoch 10/30: train_loss=0.1548, val_loss=0.5300
+  Epoch 20/30: train_loss=0.0242, val_loss=0.5970
+  Epoch 30/30: train_loss=0.0108, val_loss=0.6079
+    Final val loss: 0.607914, Best val loss: 0.443550
+
+  Improvements vs Baseline:
+    task_embedding: +26.74%
+    language: +28.49%
+    hybrid: +27.57%
+
+================================================================================
+AGGREGATE RESULTS
+================================================================================
+
+Average Improvements Across 4 Configurations:
+  task_embedding: +26.03%
+  language: +26.84%
+  hybrid: +26.79%
+
+Language achieves 103.1% of task embedding performance
+
+CONCLUSION: SUPPORTED - Language can effectively replace task IDs
+
+Results saved to /Users/howardli/Downloads/oyster/products/oyster-world/research/cognitive-graph-validation/experiments/H1.449-language-task-identification/code/results.json
