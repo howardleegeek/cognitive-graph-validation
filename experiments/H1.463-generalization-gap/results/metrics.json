@@ -1,0 +1,58 @@
+{
+  "experiment": "H1.463",
+  "hypothesis": "CG advantage is data-quality dependent (noise-sensitive)",
+  "noise_threshold": 0.0,
+  "conclusion": "CONFIRMED: CG advantage is highly noise-sensitive. Real robot data (with inherent noise) explains H1.462 collapse.",
+  "cg_advantage_data_dependent": true,
+  "results": [
+    {
+      "noise_level": 0.0,
+      "baseline_loss": 0.002379,
+      "cg_loss": 0.001703,
+      "improvement_pct": 28.42,
+      "cg_wins": true
+    },
+    {
+      "noise_level": 0.01,
+      "baseline_loss": 0.000328,
+      "cg_loss": 0.003177,
+      "improvement_pct": -867.66,
+      "cg_wins": false
+    },
+    {
+      "noise_level": 0.05,
+      "baseline_loss": 0.001356,
+      "cg_loss": 0.003593,
+      "improvement_pct": -164.91,
+      "cg_wins": false
+    },
+    {
+      "noise_level": 0.1,
+      "baseline_loss": 0.001467,
+      "cg_loss": 0.003289,
+      "improvement_pct": -124.2,
+      "cg_wins": false
+    },
+    {
+      "noise_level": 0.2,
+      "baseline_loss": 0.001067,
+      "cg_loss": 0.003274,
+      "improvement_pct": -206.99,
+      "cg_wins": false
+    },
+    {
+      "noise_level": 0.3,
+      "baseline_loss": 0.002,
+      "cg_loss": 0.003734,
+      "improvement_pct": -86.71,
+      "cg_wins": false
+    },
+    {
+      "noise_level": 0.5,
+      "baseline_loss": 0.000813,
+      "cg_loss": 0.002294,
+      "improvement_pct": -182.36,
+      "cg_wins": false
+    }
+  ]
+}

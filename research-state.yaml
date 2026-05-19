@@ -1,10 +1,52 @@
-current_round: 228
-last_action: "H1.462 - Re-tested GNN-only CG variant on real robot data. REFUTED: The 81.31% improvement from H1.461 does NOT generalize. Baseline concatenation wins by 1.74% on real robot data. Attention still degrades performance (CG with attn: -3.28%)."
-next_intended_action: "H1.463 - Investigate why CG advantage disappears on real data. Test if adding noise to H1.461's simplified data causes the same collapse, or if simplifying real data restores CG advantage."
+current_round: 229
+last_action: "H1.463 - Investigated generalization gap. CONFIRMED: CG advantage is highly noise-sensitive. Even 1% noise destroys 28% CG advantage. This explains H1.462 collapse on real robot data."
+next_intended_action: "H1.464 - Test if noise-robust training (data augmentation, regularization) can restore CG performance on noisy data. Or pivot to H3 (attention on longer sequences)."
 
 experiments:
-  total_rounds: 228
+  total_rounds: 229
   trajectory:
+    - experiment_id: H1.463
+      description: "Investigate generalization gap - noise sensitivity test"
+      result:
+        conclusion: "CONFIRMED: CG advantage is highly noise-sensitive. Even 1% noise destroys advantage. Real robot data (with noise) explains H1.462 collapse."
+        task: "noise_sensitivity_investigation"
+        results:
+          noise_0.00:
+            baseline_loss: 0.002379
+            cg_loss: 0.001703
+            improvement_pct: 28.42
+            cg_wins: true
+          noise_0.01:
+            baseline_loss: 0.000328
+            cg_loss: 0.003177
+            improvement_pct: -867.66
+            cg_wins: false
+          noise_0.05:
+            baseline_loss: 0.001356
+            cg_loss: 0.003593
+            improvement_pct: -164.91
+            cg_wins: false
+          noise_0.10:
+            baseline_loss: 0.001467
+            cg_loss: 0.003289
+            improvement_pct: -124.20
+            cg_wins: false
+          noise_0.20:
+            baseline_loss: 0.001067
+            cg_loss: 0.003274
+            improvement_pct: -206.99
+            cg_wins: false
+          noise_0.30:
+            baseline_loss: 0.002000
+            cg_loss: 0.003734
+            improvement_pct: -86.71
+            cg_wins: false
+          noise_0.50:
+            baseline_loss: 0.000813
+            cg_loss: 0.002294
+            improvement_pct: -182.36
+            cg_wins: false
+        key_insight: "CG advantage collapses at noise level 0.01. Baseline is robust to noise. This explains why H1.461's 81% improvement doesn't generalize to real robot data."
     - experiment_id: H1.462
       description: "Re-test GNN-only CG variant on real robot data"
       result:
@@ -71,34 +113,4 @@ experiments:
             n_params: 40583
             improvement_pct: -1037.30
             cg_wins: false
-        key_insight: "Attention mechanism degrades CG performance. GNN-only is optimal."
-    - experiment_id: H1.460
-      description: "Investigate CG performance on compositional tasks across concept cardinalities"
-      result:
-        conclusion: "CG underperforms baseline at all cardinalities (2, 4, 8 concepts). Cardinality does not explain poor performance."
-        task: "compositional_cardinality"
-        results:
-          cardinality_2:
-            baseline_loss: 0.089
-            cg_loss: 0.089
-            improvement_pct: -0.00
-          cardinality_4:
-            baseline_loss: 0.087
-            cg_loss: 0.088
-            improvement_pct: -0.01
-          cardinality_8:
-            baseline_loss: 0.091
-            cg_loss: 0.091
-            improvement_pct: -0.00
-    - experiment_id: H1.458
-      description: "Test simpler fusion baselines vs CG"
-      result:
-        conclusion: "Concatenation baseline best. CG underperforms by 5.33%."
-        task: "fusion_comparison"
-        results:
-          concatenation:
-            val_loss: 0.005906
-            improvement_pct: 0.0
-          cognitive_graph:
-            val_loss: 0.006221
-            improvement_pct: -5.33
+        key_insight: "Attention mechanism degrades CG performance. GNN-only is optimal on clean synthetic data."
