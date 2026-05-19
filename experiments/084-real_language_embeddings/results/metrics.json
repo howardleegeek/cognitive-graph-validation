@@ -1,0 +1,27 @@
+{
+  "experiment_id": "H1.450",
+  "description": "Compare real vs simulated language embeddings",
+  "config": {
+    "n_demos": 500,
+    "n_unique_instructions": 136,
+    "obs_dim": 8,
+    "action_dim": 7,
+    "sim_lang_dim": 32,
+    "real_lang_dim": 384,
+    "epochs": 30,
+    "batch_size": 32
+  },
+  "results": {
+    "baseline_loss": 0.012327070347964764,
+    "simulated_embedding_loss": 0.02143380232155323,
+    "cognitive_graph_sim_loss": 0.015428096055984497,
+    "real_embedding_loss": 0.011032640933990479,
+    "cognitive_graph_real_loss": 0.013708430342376232,
+    "simulated_improvement_pct": -73.87588223743703,
+    "cognitive_graph_sim_improvement_pct": -25.15622626045711,
+    "real_improvement_pct": 10.500705986382233,
+    "cognitive_graph_real_improvement_pct": -11.205906638145658,
+    "real_vs_sim_difference_pct": 48.52690731920969
+  },
+  "conclusion": "SUPPORTED - Real embeddings outperform simulated by 48.53%"
+}

@@ -19,6 +19,50 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.450: Real Language Embeddings vs Simulated — Round 216 (SUPPORTED)
+
+**Hypothesis**: Language-conditioned models trained on real text embeddings (sentence-transformers) will achieve comparable or better performance than simulated embeddings, validating the approach for real-world deployment.
+
+**Context**: H1.449 showed language-conditioned models can replace task IDs, but used simulated language embeddings. H1.450 tests whether real text embeddings from pre-trained language models work as well or better.
+
+**Method**: 4-condition experiment comparing embedding types:
+1. **Baseline**: Simple MLP (no language conditioning)
+2. **Simulated Embeddings**: Language-conditioned model with synthetic 32-dim embeddings
+3. **Cognitive Graph (sim)**: Full CG architecture with simulated embeddings
+4. **Real Embeddings**: Language-conditioned model with 384-dim sentence-transformer embeddings
+5. **Cognitive Graph (real)**: Full CG architecture with real embeddings
+
+**Results**:
+
+| Model | Validation Loss | vs Baseline |
+|-------|-----------------|-------------|
+| **Baseline** | 0.012327 | Reference |
+| Simulated Embeddings | 0.021434 | **-73.88%** (worse) |
+| Cognitive Graph (sim) | 0.015428 | **-25.16%** (worse) |
+| **Real Embeddings** | **0.011033** | **+10.50%** (better) ✓ |
+| Cognitive Graph (real) | 0.013708 | **-11.21%** (worse) |
+
+**Real vs Simulated Comparison**:
+- Real embeddings outperform simulated by **+48.53%**
+- Real embeddings are the ONLY model to beat baseline
+
+**Key Insights**:
+
+1. **Real language embeddings work better**: Sentence-transformer embeddings (384-dim, trained on real text) significantly outperform simulated embeddings (32-dim, random). This validates that the language-conditioning approach works with real text.
+
+2. **Simulated embeddings were misleading**: The simulated embeddings caused worse performance than baseline, likely because they don't capture semantic relationships. Real embeddings fix this.
+
+3. **Simple model + real embeddings wins**: The LanguageConditionedModel (simple cross-attention) with real embeddings achieves +10.50% improvement, while the full Cognitive Graph underperforms. This suggests:
+   - Real embeddings are information-rich enough that simple fusion suffices
+   - The CG architecture may need tuning for higher-dimensional language inputs (384 vs 32)
+
+4. **Practical implication**: **Use real language embeddings** — sentence-transformers provide semantically meaningful representations that improve task prediction. The simulated embeddings in earlier experiments were a limitation.
+
+**Next Steps**: 
+- Test CG architecture with projected real embeddings (384 → 128 dim)
+- Compare different sentence-transformer models (all-MiniLM-L6-v2 vs all-mpnet-base-v2)
+- Test on held-out language instructions to measure generalization
+
 ### H1.449: Language-Conditioned Task Identification — Round 215 (SUPPORTED)
 
 **Hypothesis**: Language-conditioned models can achieve similar performance to task embeddings by learning to infer task identity from language descriptions, eliminating the need for explicit task IDs at inference time.
@@ -50,9 +94,9 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 **Key Insights**:
 
-1. **Language can effectively replace task IDs**: Language-only models achieve **103.1%** of task embedding performance, actually slightly outperforming them (+26.84% vs +26.03%).
+1. **Language can effectively replace task IDs**: Language-only models achieve **103.1%** of task embedding performance, demonstrating that language descriptions contain sufficient information to infer task identity.
 
-2. **Language provides richer signal than task IDs**: The slight outperformance suggests language descriptions may contain additional useful information beyond simple task categorization.
+2. **Consistent across complexity levels**: Language-only wins in 2/4 configurations and matches performance in others, showing robustness to scene complexity and temporal length.
 
 3. **Hybrid models don't add much**: Language+TaskID hybrid shows similar performance (+26.79%), indicating language alone captures most of the task-relevant information.
 
@@ -109,47 +153,4 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ### H1.447: Task Embeddings Solve Multi-Task Generalization — Round 213 (BREAKTHROUGH)
 
-**Hypothesis**: Task embeddings allow GraphCG to learn task-specific attention patterns, solving the multi-task generalization problem identified in H1.445.
-
-**Context**: H1.445 showed GraphCG fails on multi-task learning (-32.6% vs single-task). H1.447 investigates whether task embeddings can provide the missing task context.
-
-**Method**: 4-task experiment comparing:
-1. **Single-task baseline**: Separate models per task
-2. **Multi-task baseline**: Single model for all tasks
-3. **Multi-task + TaskEmbeddings**: GraphCG with task ID embeddings
-4. **Multi-task + SimpleAttention**: GraphCG with simpler attention
-
-**Results**:
-
-| Model | Improvement vs Single-task |
-|-------|----------------------------|
-| Single-task baseline | 0% (reference) |
-| Multi-task baseline | +3.8% |
-| **Multi-task + TaskEmbeddings** | **+32.1%** ✓✓✓ |
-| Multi-task + SimpleAttention | +9.7% |
-
-**Key Insights**:
-
-1. **Task embeddings solve the multi-task problem**: +32.1% improvement vs +3.8% baseline. H1.445's -32.6% failure was due to missing task context, not architecture flaws.
-
-2. **Task embeddings enable task-specific attention**: The model learns different attention patterns for different tasks using the same architecture.
-
-3. **Simple attention helps but isn't enough**: +9.7% improvement shows some benefit, but task embeddings are 3.3× more effective.
-
-## Research Trajectory
-
-The research has progressed through three key phases:
-
-1. **H1.447**: Discovered task embeddings solve multi-task generalization (+32.1%)
-2. **H1.448**: Validated task embeddings generalize across complexity (+91.5%)
-3. **H1.449**: Found language can replace task IDs (+26.84%, 103.1% of task embedding performance)
-
-**Current Status**: Language-conditioned Cognitive Graph models can infer task identity from language descriptions alone, achieving similar or better performance than models with explicit task IDs. This eliminates the need for task labels at inference time, making the system more practical for real-world deployment.
-
-## Next Steps
-
-Based on H1.449's success:
-1. **Test on real language data**: Replace simulated language embeddings with real text descriptions
-2. **Explore few-shot language learning**: Can models generalize to new tasks from few language examples?
-3. **Investigate language grounding**: How does language conditioning affect the learned graph structure?
-4. **Scale to more complex tasks**: Test on LIBERO-90 or other challenging benchmarks
+**Hypothesis**: Task embeddings allow GraphCG to learn task-specific attention patterns, solving the multi-task generalization problem identified in
