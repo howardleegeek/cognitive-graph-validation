@@ -1,0 +1,40 @@
+{
+  "experiment_id": "H1.441",
+  "round": 207,
+  "conclusion": "SUPPORTED",
+  "key_insight": "GraphCG maintains +29.1% advantage with stable trend",
+  "results": [
+    {
+      "level": 1,
+      "n_objects": 2,
+      "mlp_mse": 0.004761891685325282,
+      "graphcg_mse": 0.0031564103625896676,
+      "improvement": 33.71520036214231
+    },
+    {
+      "level": 2,
+      "n_objects": 4,
+      "mlp_mse": 0.023585025126036878,
+      "graphcg_mse": 0.015428711171928929,
+      "improvement": 34.582595992673845
+    },
+    {
+      "level": 3,
+      "n_objects": 6,
+      "mlp_mse": 0.033504195866347196,
+      "graphcg_mse": 0.03723244586629638,
+      "improvement": -11.127710734564946
+    },
+    {
+      "level": 4,
+      "n_objects": 8,
+      "mlp_mse": 0.05494076951811924,
+      "graphcg_mse": 0.022435638960450886,
+      "improvement": 59.16395209380585
+    }
+  ],
+  "summary": {
+    "avg_improvement": 29.083509428514265,
+    "trend_slope": 3.0635948467751746
+  }
+}

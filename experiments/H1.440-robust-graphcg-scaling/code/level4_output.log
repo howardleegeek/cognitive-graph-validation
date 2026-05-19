@@ -1,0 +1,39 @@
+================================================================================
+H1.440 - Running Level 4 Only
+================================================================================
+
+Testing Level 4 (Very Complex): 8 objects, 20 steps
+Trials: 5, Samples: 1500
+
+Trial 1/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.034374, GraphCG MSE: 0.046945, Improvement: +36.57%
+
+Trial 2/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.029536, GraphCG MSE: 0.027413, Improvement: -7.19%
+
+Trial 3/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.030503, GraphCG MSE: 0.039143, Improvement: +28.33%
+
+Trial 4/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.032194, GraphCG MSE: 0.025870, Improvement: -19.64%
+
+Trial 5/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.031542, GraphCG MSE: 0.029116, Improvement: -7.69%
+
+Level 4 Summary:
+  MLP MSE: 0.031630 (best: 0.029536, worst: 0.034374)
+  GraphCG MSE: 0.033697 (best: 0.025870, worst: 0.046945)
+  Average Improvement: +6.08% ± 24.76%
+  Improvement Range: [-19.64%, +36.57%]
+
+Results saved to: /Users/howardli/Downloads/oyster/products/oyster-world/research/cognitive-graph-validation/experiments/H1.440-robust-graphcg-scaling/code/results_level4.json

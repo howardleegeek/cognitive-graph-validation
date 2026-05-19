@@ -1,0 +1,163 @@
+{
+  "experiment_id": "H1.439",
+  "description": "GraphCG Scaling: Does advantage increase with task complexity?",
+  "timestamp": "2026-05-18T19:14:11.822841",
+  "config": {
+    "n_trials": 3,
+    "epochs": 15,
+    "batch_size": 64,
+    "learning_rate": 0.0003,
+    "tasks": [
+      "complex_relational_6obj",
+      "complex_compositional_6obj_20step",
+      "multi_step_manipulation_6obj_25step",
+      "extreme_complexity_8obj_30step"
+    ]
+  },
+  "results": {
+    "complex_relational_6obj": {
+      "MLP-128": {
+        "mean_mse": 0.26094523072242737,
+        "std_mse": 0.00678081190211022,
+        "mean_train_time": 0.2831126848856608,
+        "n_params": 22145
+      },
+      "GraphCG-128-3p": {
+        "mean_mse": 0.2894798517227173,
+        "std_mse": 0.004734038273067574,
+        "mean_train_time": 4.718015591303508,
+        "n_params": 143937
+      },
+      "GraphCG-128-6p": {
+        "mean_mse": 0.3047594626744588,
+        "std_mse": 0.01515279003413515,
+        "mean_train_time": 10.223625421524048,
+        "n_params": 143937
+      },
+      "GraphCG-256-3p": {
+        "mean_mse": 0.30478790402412415,
+        "std_mse": 0.009835672876577049,
+        "mean_train_time": 8.950478076934814,
+        "n_params": 484417
+      }
+    },
+    "complex_compositional_6obj_20step": {
+      "MLP-128": {
+        "mean_mse": 0.0009680500879767351,
+        "std_mse": 0.0012333249845876174,
+        "mean_train_time": 0.116301695505778,
+        "n_params": 97925
+      },
+      "GraphCG-128-3p": {
+        "mean_mse": 0.001741320554477473,
+        "std_mse": 0.0015141871085601697,
+        "mean_train_time": 4.857813755671184,
+        "n_params": 750149
+      },
+      "GraphCG-128-6p": {
+        "mean_mse": 0.0021822231356054544,
+        "std_mse": 0.0016586603161470865,
+        "mean_train_time": 10.324613491694132,
+        "n_params": 750149
+      },
+      "GraphCG-256-3p": {
+        "mean_mse": 0.0017175375057073932,
+        "std_mse": 0.001564558037250987,
+        "mean_train_time": 10.0019580523173,
+        "n_params": 1696837
+      }
+    },
+    "multi_step_manipulation_6obj_25step": {
+      "MLP-128": {
+        "mean_mse": 0.47469497720400494,
+        "std_mse": 0.0077359256473574865,
+        "mean_train_time": 0.10386768976847331,
+        "n_params": 33170
+      },
+      "GraphCG-128-3p": {
+        "mean_mse": 0.011339136399328709,
+        "std_mse": 0.0001204448154867816,
+        "mean_train_time": 5.8456019560496015,
+        "n_params": 232018
+      },
+      "GraphCG-128-6p": {
+        "mean_mse": 0.018355557695031166,
+        "std_mse": 0.0015966423686795913,
+        "mean_train_time": 11.457749923070272,
+        "n_params": 232018
+      },
+      "GraphCG-256-3p": {
+        "mean_mse": 0.011928155086934566,
+        "std_mse": 0.00011629883887435086,
+        "mean_train_time": 11.937649408976236,
+        "n_params": 660562
+      }
+    },
+    "extreme_complexity_8obj_30step": {
+      "MLP-128": {
+        "mean_mse": 0.7067888776461283,
+        "std_mse": 0.012468642025457957,
+        "mean_train_time": 0.11415696144104004,
+        "n_params": 37400
+      },
+      "GraphCG-128-3p": {
+        "mean_mse": 0.01140756377329429,
+        "std_mse": 0.0004330220661997047,
+        "mean_train_time": 5.811731020609538,
+        "n_params": 265816
+      },
+      "GraphCG-128-6p": {
+        "mean_mse": 0.016898958012461662,
+        "std_mse": 0.0006329671645567679,
+        "mean_train_time": 12.7066171169281,
+        "n_params": 265816
+      },
+      "GraphCG-256-3p": {
+        "mean_mse": 0.013015133328735828,
+        "std_mse": 0.0002029684987004488,
+        "mean_train_time": 12.492374340693155,
+        "n_params": 728152
+      }
+    }
+  },
+  "summary": {
+    "GraphCG-128-3p": [
+      10.935099645734764,
+      79.87917940453943,
+      -97.6112794649488,
+      -98.38600123260488
+    ],
+    "GraphCG-128-6p": [
+      16.790585453787237,
+      125.42461001851584,
+      -96.13318897892137,
+      -97.60905150789277
+    ],
+    "GraphCG-256-3p": [
+      16.801484809788725,
+      77.42238000278662,
+      -97.4871958500188,
+      -98.15855430944512
+    ]
+  },
+  "avg_improvements": {
+    "GraphCG-128-3p": {
+      "mean": -26.29575041181987,
+      "std": 75.73334943247973
+    },
+    "GraphCG-128-6p": {
+      "mean": -12.881761253627769,
+      "std": 92.35612381661993
+    },
+    "GraphCG-256-3p": {
+      "mean": -25.35547133672214,
+      "std": 75.57077849456812
+    }
+  },
+  "key_findings": {
+    "mlp_baseline": "MLP-128",
+    "best_model": "GraphCG-128-3p",
+    "best_improvement": -26.29575041181987,
+    "complexity_trend": "To be analyzed"
+  }
+}

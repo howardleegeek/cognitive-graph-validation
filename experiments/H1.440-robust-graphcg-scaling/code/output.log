@@ -1,0 +1,153 @@
+================================================================================
+H1.440 - Robust GraphCG Scaling Test (Full)
+================================================================================
+
+============================================================
+Testing Level 1 (Simple): 2 objects, 5 steps
+============================================================
+
+Trial 1/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.011936, GraphCG MSE: 0.003565, Improvement: -70.14%
+
+Trial 2/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.015543, GraphCG MSE: 0.005270, Improvement: -66.10%
+
+Trial 3/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.008648, GraphCG MSE: 0.002986, Improvement: -65.47%
+
+Trial 4/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.015935, GraphCG MSE: 0.005830, Improvement: -63.42%
+
+Trial 5/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.010529, GraphCG MSE: 0.004537, Improvement: -56.91%
+
+Level 1 (Simple) Summary:
+  MLP MSE: 0.012518 (best: 0.008648, worst: 0.015935)
+  GraphCG MSE: 0.004437 (best: 0.002986, worst: 0.005830)
+  Average Improvement: -64.41% ± 4.85%
+  Improvement Range: [-70.14%, -56.91%]
+
+============================================================
+Testing Level 2 (Medium): 4 objects, 10 steps
+============================================================
+
+Trial 1/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.022220, GraphCG MSE: 0.018745, Improvement: -15.64%
+
+Trial 2/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.023895, GraphCG MSE: 0.011690, Improvement: -51.08%
+
+Trial 3/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.022748, GraphCG MSE: 0.018394, Improvement: -19.14%
+
+Trial 4/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.028036, GraphCG MSE: 0.024743, Improvement: -11.74%
+
+Trial 5/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.023616, GraphCG MSE: 0.017739, Improvement: -24.89%
+
+Level 2 (Medium) Summary:
+  MLP MSE: 0.024103 (best: 0.022220, worst: 0.028036)
+  GraphCG MSE: 0.018262 (best: 0.011690, worst: 0.024743)
+  Average Improvement: -24.50% ± 15.62%
+  Improvement Range: [-51.08%, -11.74%]
+
+============================================================
+Testing Level 3 (Complex): 6 objects, 15 steps
+============================================================
+
+Trial 1/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.040357, GraphCG MSE: 0.036362, Improvement: -9.90%
+
+Trial 2/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.029064, GraphCG MSE: 0.030625, Improvement: +5.37%
+
+Trial 3/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.025379, GraphCG MSE: 0.023467, Improvement: -7.53%
+
+Trial 4/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.033466, GraphCG MSE: 0.025161, Improvement: -24.82%
+
+Trial 5/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.024089, GraphCG MSE: 0.025223, Improvement: +4.70%
+
+Level 3 (Complex) Summary:
+  MLP MSE: 0.030471 (best: 0.024089, worst: 0.040357)
+  GraphCG MSE: 0.028168 (best: 0.023467, worst: 0.036362)
+  Average Improvement: -6.43% ± 12.39%
+  Improvement Range: [-24.82%, +5.37%]
+
+============================================================
+Testing Level 4 (Very Complex): 8 objects, 20 steps
+============================================================
+
+Trial 1/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.034374, GraphCG MSE: 0.046945, Improvement: +36.57%
+
+Trial 2/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.029536, GraphCG MSE: 0.027413, Improvement: -7.19%
+
+Trial 3/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.030503, GraphCG MSE: 0.039143, Improvement: +28.33%
+
+Trial 4/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.032194, GraphCG MSE: 0.025870, Improvement: -19.64%
+
+Trial 5/5
+  Training MLP...
+  Training GraphCG...
+    MLP MSE: 0.031542, GraphCG MSE: 0.029116, Improvement: -7.69%
+
+Level 4 (Very Complex) Summary:
+  MLP MSE: 0.031630 (best: 0.029536, worst: 0.034374)
+  GraphCG MSE: 0.033697 (best: 0.025870, worst: 0.046945)
+  Average Improvement: +6.08% ± 24.76%
+  Improvement Range: [-19.64%, +36.57%]
+
+================================================================================
+EXPERIMENT COMPLETE
+================================================================================
+Overall Average Improvement: -22.32%
+Overall Std Improvement: 30.74%
+Trend Slope: +22.95% per complexity level
+Trend Classification: STRONG_POSITIVE
+
+Results saved to: /Users/howardli/Downloads/oyster/products/oyster-world/research/cognitive-graph-validation/experiments/H1.440-robust-graphcg-scaling/code/results.json

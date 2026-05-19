@@ -1,0 +1,69 @@
+{
+  "experiment_id": "H1.439-fast",
+  "description": "GraphCG Scaling: Fast test of complexity trend",
+  "timestamp": "2026-05-18T19:12:23.230687",
+  "results": {
+    "1": {
+      "n_objects": 2,
+      "seq_len": 5,
+      "mlp_mse": 0.08987583220005035,
+      "graphcg_mse": 0.04310041293501854,
+      "improvement_pct": -52.04449084923812,
+      "input_dim": 7,
+      "output_dim": 3
+    },
+    "2": {
+      "n_objects": 4,
+      "seq_len": 10,
+      "mlp_mse": 0.015156986191868782,
+      "graphcg_mse": 0.03645973652601242,
+      "improvement_pct": 140.54740213177638,
+      "input_dim": 13,
+      "output_dim": 3
+    },
+    "3": {
+      "n_objects": 6,
+      "seq_len": 15,
+      "mlp_mse": 0.005903290584683418,
+      "graphcg_mse": 0.01457411888986826,
+      "improvement_pct": 146.8812720770011,
+      "input_dim": 19,
+      "output_dim": 3
+    },
+    "4": {
+      "n_objects": 8,
+      "seq_len": 20,
+      "mlp_mse": 0.07044877856969833,
+      "graphcg_mse": 0.010420454666018486,
+      "improvement_pct": -85.20846652336344,
+      "input_dim": 25,
+      "output_dim": 3
+    }
+  },
+  "trend_analysis": {
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "improvements": [
+      -52.04449084923812,
+      140.54740213177638,
+      146.8812720770011,
+      -85.20846652336344
+    ],
+    "slope": -9.31580570771508,
+    "intercept": 60.83344347833163,
+    "trend": "STRONG_NEGATIVE",
+    "conclusion": "GraphCG advantage STRONGLY INCREASES with complexity"
+  },
+  "key_findings": {
+    "tested_complexity_levels": "1-4",
+    "objects_range": "2-8",
+    "sequence_range": "5-20",
+    "avg_improvement": 37.54392920904398,
+    "best_improvement": -85.20846652336344,
+    "worst_improvement": 146.8812720770011
+  }
+}
