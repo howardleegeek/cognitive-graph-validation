@@ -1,0 +1,168 @@
+{
+  "experiment_id": "H1.442",
+  "description": "Test adaptive node GraphCG on LIBERO-style manipulation tasks",
+  "config": {
+    "n_trials": 3,
+    "epochs": 50,
+    "batch_size": 64,
+    "lr": 0.0003,
+    "hidden_dim": 64,
+    "n_passes": 3,
+    "max_nodes": 10
+  },
+  "results": {
+    "simple_pick": {
+      "n_objects": 2,
+      "complexity": 1,
+      "n_samples": 400,
+      "trials": [
+        {
+          "trial": 1,
+          "mlp_mse": 0.053326111286878586,
+          "graphcg_fixed_mse": 0.07970567792654037,
+          "graphcg_adaptive_mse": 0.07212620973587036,
+          "graphcg_fixed_improvement": -49.468386130290995,
+          "graphcg_adaptive_improvement": -35.25495858464693
+        },
+        {
+          "trial": 2,
+          "mlp_mse": 0.05332440882921219,
+          "graphcg_fixed_mse": 0.08167917281389236,
+          "graphcg_adaptive_mse": 0.07417604327201843,
+          "graphcg_fixed_improvement": -53.174080326881864,
+          "graphcg_adaptive_improvement": -39.1033579192411
+        },
+        {
+          "trial": 3,
+          "mlp_mse": 0.05250232294201851,
+          "graphcg_fixed_mse": 0.0809202641248703,
+          "graphcg_adaptive_mse": 0.07837875932455063,
+          "graphcg_fixed_improvement": -54.127016845017394,
+          "graphcg_adaptive_improvement": -49.286269506796934
+        }
+      ],
+      "avg_mlp_mse": 0.05305094768603643,
+      "avg_graphcg_fixed_mse": 0.08076837162176768,
+      "avg_graphcg_adaptive_mse": 0.07489367077747981,
+      "avg_graphcg_fixed_improvement": -52.246802639167136,
+      "avg_graphcg_adaptive_improvement": -41.173106314164144
+    },
+    "pick_place": {
+      "n_objects": 3,
+      "complexity": 2,
+      "n_samples": 400,
+      "trials": [
+        {
+          "trial": 1,
+          "mlp_mse": 0.08658997714519501,
+          "graphcg_fixed_mse": 0.12268717586994171,
+          "graphcg_adaptive_mse": 0.1264319270849228,
+          "graphcg_fixed_improvement": -41.68750231244262,
+          "graphcg_adaptive_improvement": -46.0121959299289
+        },
+        {
+          "trial": 2,
+          "mlp_mse": 0.086199551820755,
+          "graphcg_fixed_mse": 0.13115954399108887,
+          "graphcg_adaptive_mse": 0.12498147040605545,
+          "graphcg_fixed_improvement": -52.158034723689205,
+          "graphcg_adaptive_improvement": -44.99085872968842
+        },
+        {
+          "trial": 3,
+          "mlp_mse": 0.08367929607629776,
+          "graphcg_fixed_mse": 0.12411888688802719,
+          "graphcg_adaptive_mse": 0.12648260593414307,
+          "graphcg_fixed_improvement": -48.326877385365556,
+          "graphcg_adaptive_improvement": -51.15161320049558
+        }
+      ],
+      "avg_mlp_mse": 0.08548960834741592,
+      "avg_graphcg_fixed_mse": 0.12598853558301926,
+      "avg_graphcg_adaptive_mse": 0.12596533447504044,
+      "avg_graphcg_fixed_improvement": -47.37292405297057,
+      "avg_graphcg_adaptive_improvement": -47.34578495568457
+    },
+    "multi_object": {
+      "n_objects": 5,
+      "complexity": 3,
+      "n_samples": 400,
+      "trials": [
+        {
+          "trial": 1,
+          "mlp_mse": 0.1598198413848877,
+          "graphcg_fixed_mse": 0.2308644950389862,
+          "graphcg_adaptive_mse": 0.23279735445976257,
+          "graphcg_fixed_improvement": -44.45296218446653,
+          "graphcg_adaptive_improvement": -45.66236109515718
+        },
+        {
+          "trial": 2,
+          "mlp_mse": 0.16054992377758026,
+          "graphcg_fixed_mse": 0.22400236129760742,
+          "graphcg_adaptive_mse": 0.22727163136005402,
+          "graphcg_fixed_improvement": -39.521935624168684,
+          "graphcg_adaptive_improvement": -41.55823061922313
+        },
+        {
+          "trial": 3,
+          "mlp_mse": 0.1593417227268219,
+          "graphcg_fixed_mse": 0.23681053519248962,
+          "graphcg_adaptive_mse": 0.23346103727817535,
+          "graphcg_fixed_improvement": -48.61803370764451,
+          "graphcg_adaptive_improvement": -46.5159490452007
+        }
+      ],
+      "avg_mlp_mse": 0.15990382929642996,
+      "avg_graphcg_fixed_mse": 0.23055913050969443,
+      "avg_graphcg_adaptive_mse": 0.23117667436599731,
+      "avg_graphcg_fixed_improvement": -44.186122073589345,
+      "avg_graphcg_adaptive_improvement": -44.5723191140355
+    },
+    "long_horizon": {
+      "n_objects": 7,
+      "complexity": 4,
+      "n_samples": 400,
+      "trials": [
+        {
+          "trial": 1,
+          "mlp_mse": 0.2756642997264862,
+          "graphcg_fixed_mse": 0.373978853225708,
+          "graphcg_adaptive_mse": 0.4038340151309967,
+          "graphcg_fixed_improvement": -35.66459407212664,
+          "graphcg_adaptive_improvement": -46.49485462269882
+        },
+        {
+          "trial": 2,
+          "mlp_mse": 0.2843032777309418,
+          "graphcg_fixed_mse": 0.3737106919288635,
+          "graphcg_adaptive_mse": 0.4103350043296814,
+          "graphcg_fixed_improvement": -31.447901308593046,
+          "graphcg_adaptive_improvement": -44.33002939839941
+        },
+        {
+          "trial": 3,
+          "mlp_mse": 0.283755898475647,
+          "graphcg_fixed_mse": 0.3724317252635956,
+          "graphcg_adaptive_mse": 0.4001353681087494,
+          "graphcg_fixed_improvement": -31.25074307329654,
+          "graphcg_adaptive_improvement": -41.013938479622674
+        }
+      ],
+      "avg_mlp_mse": 0.28124115864435834,
+      "avg_graphcg_fixed_mse": 0.3733737568060557,
+      "avg_graphcg_adaptive_mse": 0.40476812918980914,
+      "avg_graphcg_fixed_improvement": -32.7592869428486,
+      "avg_graphcg_adaptive_improvement": -43.922081369909314
+    }
+  },
+  "overall": {
+    "avg_mlp_mse": 0.14492138599356016,
+    "avg_graphcg_fixed_mse": 0.20267244863013426,
+    "avg_graphcg_adaptive_mse": 0.20920095220208168,
+    "avg_graphcg_fixed_improvement": -39.84992431630509,
+    "avg_graphcg_adaptive_improvement": -44.35478295203297,
+    "adaptive_vs_fixed_improvement": -3.2212092053328742
+  },
+  "conclusion": "REFUTED - Adaptive node GraphCG does not improve over MLP on LIBERO tasks"
+}

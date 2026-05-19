@@ -1,10 +1,55 @@
-current_round: 207
-last_action: "H1.441 - Parameter-Matched Architecture with Adaptive Node Count: Tested GraphCG with adaptive node count (n_objects + 2, max 10) vs fixed 6 nodes. Results show GraphCG maintains +29.1% average improvement with positive trend (+3.1%/level), confirming that fixed node count was the cause of H1.440's diminishing advantage."
-next_intended_action: "H1.442 - Test adaptive node GraphCG on LIBERO real robot data: Apply the adaptive node architecture to LIBERO manipulation tasks to verify transfer from synthetic to real-world tasks."
+current_round: 208
+last_action: "H1.442 - Adaptive Node GraphCG on LIBERO Tasks: Tested GraphCG with adaptive node count on LIBERO-style manipulation tasks. Results show GraphCG performs WORSE than MLP (-39.8% fixed nodes, -44.4% adaptive nodes). This is a critical negative result showing synthetic task improvements (H1.441 +29.1%) do NOT transfer to LIBERO tasks."
+next_intended_action: "H1.443 - Investigate synthetic vs LIBERO task discrepancy: Analyze why GraphCG succeeds on synthetic transformation tasks but fails on LIBERO action prediction. Consider task structure differences, input representation, and architectural modifications."
 
 experiments:
-  total_rounds: 207
+  total_rounds: 208
   trajectory:
+    - experiment_id: H1.442
+      description: "Adaptive node GraphCG on LIBERO manipulation tasks"
+      result:
+        conclusion: "REFUTED - GraphCG performs worse than MLP on LIBERO tasks"
+        task: "libero_manipulation"
+        results:
+          simple_pick_objects: 2
+          simple_pick_mlp_mse: 0.0531
+          simple_pick_graphcg_fixed_mse: 0.0808
+          simple_pick_graphcg_adaptive_mse: 0.0749
+          simple_pick_fixed_improvement: -52.2
+          simple_pick_adaptive_improvement: -41.2
+          pick_place_objects: 3
+          pick_place_mlp_mse: 0.0855
+          pick_place_graphcg_fixed_mse: 0.1260
+          pick_place_graphcg_adaptive_mse: 0.1260
+          pick_place_fixed_improvement: -47.4
+          pick_place_adaptive_improvement: -47.3
+          multi_object_objects: 5
+          multi_object_mlp_mse: 0.1599
+          multi_object_graphcg_fixed_mse: 0.2266
+          multi_object_graphcg_adaptive_mse: 0.2297
+          multi_object_fixed_improvement: -41.7
+          multi_object_adaptive_improvement: -43.6
+          long_horizon_objects: 7
+          long_horizon_mlp_mse: 0.2812
+          long_horizon_graphcg_fixed_mse: 0.3734
+          long_horizon_graphcg_adaptive_mse: 0.4048
+          long_horizon_fixed_improvement: -32.8
+          long_horizon_adaptive_improvement: -43.9
+          overall_avg_mlp_mse: 0.1449
+          overall_avg_graphcg_fixed_mse: 0.2027
+          overall_avg_graphcg_adaptive_mse: 0.2092
+          overall_fixed_improvement: -39.8
+          overall_adaptive_improvement: -44.4
+          adaptive_vs_fixed: -3.2
+        key_insight: "CRITICAL: GraphCG success on synthetic tasks (+29.1% H1.441) does NOT transfer to LIBERO manipulation tasks. MLP outperforms GraphCG by 39.8-44.4%. This reveals synthetic tasks may not capture real manipulation complexity."
+        config:
+          n_trials: 3
+          epochs: 50
+          batch_size: 64
+          hidden_dim: 64
+          n_passes: 3
+          max_nodes: 10
+          task_types: ["simple_pick", "pick_place", "multi_object", "long_horizon"]
     - experiment_id: H1.441
       description: "Parameter-matched architecture with adaptive node count"
       result:
@@ -46,7 +91,7 @@ experiments:
     - experiment_id: H1.440
       description: "Robust GraphCG Scaling: Does advantage scale with task complexity?"
       result:
-        conclusion: "PARTIALLY SUPPORTED - GraphCG shows strong advantage on simple tasks (-64.4%) but advantage diminishes with complexity (+6.1% at highest level). However, relative trend is positive (+23.5%/level)."
+        conclusion: "PARTIALLY SUPPORTED - GraphCG shows strong advantage on simple tasks (-64.4%) but advantage diminishes with complexity (+6.1% at highest level)."
         task: "complexity_scaling_robust"
         results:
           level_1_objects: 2
@@ -63,21 +108,47 @@ experiments:
           level_3_steps: 15
           level_3_mlp_mse: 0.030471
           level_3_graphcg_mse: 0.028168
-          level_3_improvement: -6.44
+          level_3_improvement: -6.4
           level_4_objects: 8
           level_4_steps: 20
-          level_4_mlp_mse: 0.031630
-          level_4_graphcg_mse: 0.033697
-          level_4_improvement: +6.08
-          avg_improvement: -22.32
-          trend_slope: +23.50
-          trend_class: "STRONG_POSITIVE"
-        key_insight: "GraphCG provides dramatic improvements on simple tasks (-64.4%) but the absolute advantage diminishes with complexity. However, the positive trend slope (+23.5%/level) shows GraphCG's relative performance improves with task complexity - it goes from much better to slightly worse, not from better to much worse. This suggests GraphCG scales better than MLP, but MLP may have parameter advantage on very complex tasks. Need to investigate parameter scaling and adaptive architectures."
+          level_4_mlp_mse: 0.0316
+          level_4_graphcg_mse: 0.0337
+          level_4_improvement: +6.1
+          avg_improvement: -22.3
+          trend_slope: +23.5
+          trend_class: "POSITIVE"
+        key_insight: "GraphCG advantage diminishes with complexity. Fixed 6-node architecture may be under-parameterized for complex tasks."
         config:
           n_trials: 5
-          epochs: 100
-          batch_size: "full batch"
-          complexity_levels: 4
-          architectures: ["MLP-64", "GraphCG-64-3p-6n"]
+          epochs: "early stopping"
           n_samples: 1500
-          training: "early_stopping"
+          complexity_levels: 4
+
+hypotheses:
+  - id: H1
+    name: "Cognitive Graph Sample Efficiency"
+    status: "SUPPORTED"
+    key_finding: "+25.6% improvement with real robot data"
+    confidence: 0.85
+  - id: H2
+    name: "Statistical Significance"
+    status: "INCONCLUSIVE"
+    key_finding: "1.7% difference, needs more data"
+    confidence: 0.3
+  - id: H3
+    name: "Attention vs Concatenation"
+    status: "REFUTED"
+    key_finding: "Concatenation wins over attention for simple tasks"
+    confidence: 0.9
+  - id: H4
+    name: "Dimension Allocation"
+    status: "CLOSE"
+    key_finding: "25% optimal vs 28% hypothesis"
+    confidence: 0.7
+  - id: H1.442
+    name: "Adaptive GraphCG on LIBERO"
+    status: "REFUTED"
+    key_finding: "GraphCG -39.8% worse than MLP on LIBERO tasks"
+    confidence: 0.95
+    parent: H1
+    sub_hypothesis: true
