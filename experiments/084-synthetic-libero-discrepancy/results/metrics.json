@@ -1,8 +1,8 @@
 {
   "noise_sweep": [
     {
-      "noise": 0.0,
-      "mlp_loss": 0.09554244577884674,
-      "graphcg_loss": 0.10807222314178944,
-      "improvement_pct": -13.114356934032777,
+      "noise_level": 0.0,
+      "mlp_loss": 0.09103650748729707,
+      "graphcg_loss": 0.09081406295299531,
+      "improvement_percent": 0.2443465159653637,
       "graphcg_wins": 

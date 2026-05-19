@@ -1,0 +1,139 @@
+{
+  "experiment_id": "H1.443",
+  "description": "Analyze why GraphCG succeeds on synthetic but fails on LIBERO",
+  "config": {
+    "n_trials": 3,
+    "epochs": 50,
+    "batch_size": 64,
+    "hidden_dim": 64,
+    "n_passes": 3,
+    "n_nodes": 6
+  },
+  "results": {
+    "synthetic_transformation": {
+      "task": "synthetic_transformation",
+      "n_samples": 400,
+      "input_dim": 42,
+      "output_dim": 12,
+      "trials": [
+        {
+          "trial": 1,
+          "mlp_mse": 4.147624492645264,
+          "graphcg_mse": 4.826637268066406,
+          "improvement": -16.37112464315889
+        },
+        {
+          "trial": 2,
+          "mlp_mse": 4.3226118087768555,
+          "graphcg_mse": 4.977970600128174,
+          "improvement": -15.16117616716458
+        },
+        {
+          "trial": 3,
+          "mlp_mse": 4.302790641784668,
+          "graphcg_mse": 4.559094429016113,
+          "improvement": -5.956687381962377
+        }
+      ],
+      "avg_mlp_mse": 4.257675647735596,
+      "avg_graphcg_mse": 4.7879007657368975,
+      "avg_improvement": -12.496329397428616
+    },
+    "synthetic_action": {
+      "task": "synthetic_action",
+      "n_samples": 400,
+      "input_dim": 60,
+      "output_dim": 12,
+      "trials": [
+        {
+          "trial": 1,
+          "mlp_mse": 1.099411129951477,
+          "graphcg_mse": 0.27801114320755005,
+          "improvement": 74.7127225081103
+        },
+        {
+          "trial": 2,
+          "mlp_mse": 0.9414805173873901,
+          "graphcg_mse": 0.22411006689071655,
+          "improvement": 76.19599527002191
+        },
+        {
+          "trial": 3,
+          "mlp_mse": 1.063841462135315,
+          "graphcg_mse": 0.2661089599132538,
+          "improvement": 74.98603228162148
+        }
+      ],
+      "avg_mlp_mse": 1.034911036491394,
+      "avg_graphcg_mse": 0.25607672333717346,
+      "avg_improvement": 75.29825001991789
+    },
+    "libero_transformation": {
+      "task": "libero_transformation",
+      "n_samples": 400,
+      "input_dim": 26,
+      "output_dim": 19,
+      "trials": [
+        {
+          "trial": 1,
+          "mlp_mse": 0.12504418194293976,
+          "graphcg_mse": 0.01968950591981411,
+          "improvement": 84.2539607889963
+        },
+        {
+          "trial": 2,
+          "mlp_mse": 0.14542892575263977,
+          "graphcg_mse": 0.022279324010014534,
+          "improvement": 84.68026639493338
+        },
+        {
+          "trial": 3,
+          "mlp_mse": 0.13291160762310028,
+          "graphcg_mse": 0.01900053396821022,
+          "improvement": 85.70438330556473
+        }
+      ],
+      "avg_mlp_mse": 0.13446157177289328,
+      "avg_graphcg_mse": 0.020323121299346287,
+      "avg_improvement": 84.87953682983148
+    },
+    "libero_action": {
+      "task": "libero_action",
+      "n_samples": 400,
+      "input_dim": 57,
+      "output_dim": 7,
+      "trials": [
+        {
+          "trial": 1,
+          "mlp_mse": 0.05333570018410683,
+          "graphcg_mse": 0.07912809401750565,
+          "improvement": -48.35859235815288
+        },
+        {
+          "trial": 2,
+          "mlp_mse": 0.06101806461811066,
+          "graphcg_mse": 0.08772775530815125,
+          "improvement": -43.77341506520503
+        },
+        {
+          "trial": 3,
+          "mlp_mse": 0.05144118890166283,
+          "graphcg_mse": 0.09288816154003143,
+          "improvement": -80.57156827693156
+        }
+      ],
+      "avg_mlp_mse": 0.055264984567960106,
+      "avg_graphcg_mse": 0.08658133695522945,
+      "avg_improvement": -57.567858566763164
+    }
+  },
+  "analysis": {
+    "trans_avg_improvement": 36.191603716201435,
+    "action_avg_improvement": 8.865195726577362,
+    "synth_avg_improvement": 31.400960311244635,
+    "libero_avg_improvement": 13.655839131534158,
+    "task_type_diff": 27.326407989624073,
+    "data_source_diff": 17.745121179710477,
+    "conclusion": "TASK_TYPE_DOMINANT"
+  }
+}
