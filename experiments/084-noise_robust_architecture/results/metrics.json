@@ -1,0 +1,52 @@
+{
+  "experiment": "H1.465",
+  "description": "Architectural changes for noise robustness",
+  "noise_level": 0.01,
+  "results": {
+    "baseline": {
+      "loss": 0.017423904966562986,
+      "params": 61447,
+      "improvement_pct": 0.0,
+      "cg_wins": false
+    },
+    "cg_standard": {
+      "loss": 0.013646812411025167,
+      "params": 1099527,
+      "improvement_pct": 21.677646674417574,
+      "cg_wins": true
+    },
+    "cg_skip": {
+      "loss": 0.01287567475810647,
+      "params": 1099527,
+      "improvement_pct": 26.103391961702677,
+      "cg_wins": true
+    },
+    "cg_bn": {
+      "loss": 0.012609469937160611,
+      "params": 1099527,
+      "improvement_pct": 27.631205740856746,
+      "cg_wins": true
+    },
+    "cg_skip_bn": {
+      "loss": 0.014076527440920472,
+      "params": 1099527,
+      "improvement_pct": 19.211408304087033,
+      "cg_wins": true
+    },
+    "cg_dropout": {
+      "loss": 0.010774368653073907,
+      "params": 1099527,
+      "improvement_pct": 38.16329534768323,
+      "cg_wins": true
+    },
+    "cg_prenorm": {
+      "loss": 0.01399887865409255,
+      "params": 1099527,
+      "improvement_pct": 19.657053450665437,
+      "cg_wins": true
+    }
+  },
+  "best_architecture": "cg_dropout",
+  "best_improvement_pct": 38.16329534768323,
+  "conclusion": "SUPPORTED: cg_dropout achieves +38.16% improvement at 1.0% noise"
+}
