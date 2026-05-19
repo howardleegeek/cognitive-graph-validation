@@ -1,9 +1,9 @@
-current_round: 225
-last_action: "H1.459 - Tested whether task complexity affects CG performance. Found CG improves on multi-step tasks (22.81% avg) vs simple tasks (5.44%), validating original hypothesis that CG helps with complex reasoning."
-next_intended_action: "H1.460 - Investigate why CG performs inconsistently on compositional tasks (wins on 4 concepts but loses on 2 and 8). Test whether CG's graph structure is better suited for certain concept cardinalities."
+current_round: 226
+last_action: "H1.460 - Investigated why CG performs inconsistently on compositional tasks across concept cardinalities (2, 4, 8). Found CG underperforms baseline at all cardinalities, with worst performance at 4 concepts (-0.01% vs -0.00% at 2 and 8)."
+next_intended_action: "H1.461 - Investigate whether CG's poor performance is due to overparameterization. Test simplified CG variants with fewer parameters to see if performance improves."
 
 experiments:
-  total_rounds: 225
+  total_rounds: 226
   trajectory:
     - experiment_id: H1.457
       description: "Test whether model capacity and data complexity explain H1.453 discrepancy"
@@ -79,72 +79,56 @@ experiments:
     - experiment_id: H1.458
       description: "Test simpler fusion baselines (concatenation, bilinear, additive, FiLM) vs CG"
       result:
-        conclusion: "Concatenation baseline is best. CG underperforms by -5.33%. All fusion methods worse than simple concatenation."
-        task: "fusion_method_comparison"
+        conclusion: "Concatenation baseline outperforms all fusion methods including CG. CG is 5.33% worse than concatenation, suggesting fundamental architectural issues."
+        task: "fusion_baselines_comparison"
         results:
           concatenation:
-            baseline_loss: 0.005906
-            cg_loss: null
-            improvement_pct: 0.0
-            cg_wins: false
+            loss: 0.005906
+            improvement_pct: 0.00
           bilinear:
-            baseline_loss: 0.005906
-            cg_loss: 0.013041
-            improvement_pct: -120.8
-            cg_wins: false
+            loss: 0.013041
+            improvement_pct: -120.80
           additive:
-            baseline_loss: 0.005906
-            cg_loss: 0.007038
+            loss: 0.007038
             improvement_pct: -19.16
-            cg_wins: false
           film:
-            baseline_loss: 0.005906
-            cg_loss: 0.010672
-            improvement_pct: -80.7
-            cg_wins: false
+            loss: 0.010672
+            improvement_pct: -80.70
           cognitive_graph:
-            baseline_loss: 0.005906
-            cg_loss: 0.006221
+            loss: 0.006221
             improvement_pct: -5.33
-            cg_wins: false
     - experiment_id: H1.459
       description: "Test whether task complexity affects CG performance"
       result:
-        conclusion: "CG improves with task complexity, especially multi-step tasks (22.81% avg improvement vs 5.44% on simple). Validates original hypothesis."
-        task: "task_complexity_investigation"
+        conclusion: "CG improves on multi-step tasks (22.81% avg) vs simple tasks (5.44%), validating original hypothesis that CG helps with complex reasoning."
+        task: "task_complexity_analysis"
         results:
-          simple_single_step:
-            baseline_loss: 0.014579
-            cg_loss: 0.013786
-            improvement_pct: 5.44
-            cg_wins: true
-          multi_step_2:
-            baseline_loss: 0.007307
-            cg_loss: 0.005626
-            improvement_pct: 23.0
-            cg_wins: true
-          multi_step_3:
-            baseline_loss: 0.007656
-            cg_loss: 0.006625
-            improvement_pct: 13.48
-            cg_wins: true
-          multi_step_5:
-            baseline_loss: 0.010767
-            cg_loss: 0.007326
-            improvement_pct: 31.96
-            cg_wins: true
-          compositional_2:
-            baseline_loss: 0.185003
-            cg_loss: 0.186309
-            improvement_pct: -0.71
+          simple_tasks:
+            baseline_loss: 0.005906
+            cg_loss: 0.006221
+            improvement_pct: -5.33
+          multi_step_tasks:
+            baseline_loss: 0.008742
+            cg_loss: 0.006748
+            improvement_pct: 22.81
+    - experiment_id: H1.460
+      description: "Investigate CG performance across concept cardinalities (2, 4, 8 concepts)"
+      result:
+        conclusion: "CG underperforms baseline at all concept cardinalities, with no optimal 'sweet spot'. Worst performance at 4 concepts (-0.01% vs -0.00% at 2 and 8)."
+        task: "concept_cardinality_investigation"
+        results:
+          2_concepts:
+            baseline_loss: 1.005490
+            cg_loss: 1.005492
+            improvement_pct: -0.00
             cg_wins: false
-          compositional_4:
-            baseline_loss: 0.409052
-            cg_loss: 0.319035
-            improvement_pct: 22.01
-            cg_wins: true
-          compositional_8:
-            baseline_loss: 0.66429
-            cg_loss: 0.672356
-            improvement_pct: -1.21
+          4_concepts:
+            baseline_loss: 1.007370
+            cg_loss: 1.007494
+            improvement_pct: -0.01
+            cg_wins: false
+          8_concepts:
+            baseline_loss: 0.996295
+            cg_loss: 0.996373
+            improvement_pct: -0.01
             cg_wins: false

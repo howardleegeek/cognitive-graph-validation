@@ -1,0 +1,92 @@
+H1.460: Concept Cardinality Investigation (Version 2)
+Testing CG performance across different concept cardinalities (2, 4, 8)
+================================================================================
+
+============================================================
+Testing with 2 concepts
+============================================================
+
+Training Baseline model...
+Epoch 0: Train Loss = 0.998480, Val Loss = 1.005490
+Epoch 20: Train Loss = 0.022204, Val Loss = 1.267789
+Epoch 40: Train Loss = 0.015887, Val Loss = 1.236621
+Epoch 60: Train Loss = 0.013089, Val Loss = 1.218858
+Epoch 80: Train Loss = 0.012019, Val Loss = 1.218257
+
+Training Cognitive Graph model...
+Epoch 0: Train Loss = 1.002569, Val Loss = 1.005492
+Epoch 20: Train Loss = 0.262591, Val Loss = 1.852274
+Epoch 40: Train Loss = 0.084910, Val Loss = 1.793211
+Epoch 60: Train Loss = 0.055939, Val Loss = 1.831090
+Epoch 80: Train Loss = 0.011106, Val Loss = 1.799425
+
+Results for 2 concepts:
+  Baseline validation loss: 1.005490
+  Cognitive Graph validation loss: 1.005492
+  Improvement: -0.00%
+  CG wins: False
+
+============================================================
+Testing with 4 concepts
+============================================================
+
+Training Baseline model...
+Epoch 0: Train Loss = 0.999965, Val Loss = 1.007370
+Epoch 20: Train Loss = 0.034305, Val Loss = 1.321250
+Epoch 40: Train Loss = 0.025127, Val Loss = 1.317138
+Epoch 60: Train Loss = 0.022378, Val Loss = 1.298619
+Epoch 80: Train Loss = 0.018688, Val Loss = 1.287160
+
+Training Cognitive Graph model...
+Epoch 0: Train Loss = 1.002027, Val Loss = 1.007494
+Epoch 20: Train Loss = 0.482596, Val Loss = 1.695412
+Epoch 40: Train Loss = 0.275500, Val Loss = 1.979026
+Epoch 60: Train Loss = 0.156067, Val Loss = 2.110304
+Epoch 80: Train Loss = 0.085629, Val Loss = 2.133985
+
+Results for 4 concepts:
+  Baseline validation loss: 1.007370
+  Cognitive Graph validation loss: 1.007494
+  Improvement: -0.01%
+  CG wins: False
+
+============================================================
+Testing with 8 concepts
+============================================================
+
+Training Baseline model...
+Epoch 0: Train Loss = 1.001196, Val Loss = 0.996295
+Epoch 20: Train Loss = 0.044049, Val Loss = 1.320198
+Epoch 40: Train Loss = 0.033922, Val Loss = 1.277145
+Epoch 60: Train Loss = 0.028531, Val Loss = 1.263616
+Epoch 80: Train Loss = 0.025968, Val Loss = 1.245322
+
+Training Cognitive Graph model...
+Epoch 0: Train Loss = 1.001958, Val Loss = 0.996373
+Epoch 20: Train Loss = 0.522503, Val Loss = 1.548554
+Epoch 40: Train Loss = 0.272470, Val Loss = 1.792329
+Epoch 60: Train Loss = 0.146765, Val Loss = 1.865913
+Epoch 80: Train Loss = 0.091602, Val Loss = 1.928128
+
+Results for 8 concepts:
+  Baseline validation loss: 0.996295
+  Cognitive Graph validation loss: 0.996373
+  Improvement: -0.01%
+  CG wins: False
+
+================================================================================
+Experiment complete!
+Results saved to: /Users/howardli/Downloads/oyster/products/oyster-world/research/cognitive-graph-validation/experiments/H1.460-concept-cardinality/code/results_v2.json
+
+Summary:
+----------------------------------------
+2 concepts: -0.00% improvement, CG wins: False
+4 concepts: -0.01% improvement, CG wins: False
+8 concepts: -0.01% improvement, CG wins: False
+
+Analysis:
+----------------------------------------
+Improvement pattern: 2 concepts: -0.00%, 4 concepts: -0.01%, 8 concepts: -0.01%
+
+Conclusion: CG underperforms baseline at all cardinalities
+This suggests fundamental architectural issues with CG
