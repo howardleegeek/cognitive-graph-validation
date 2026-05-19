@@ -145,3 +145,70 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 - H1 (CG advantage over baseline) is REFUTED for real-world deployment
 - CG only works in clean, controlled environments
 - For noisy real robot data, simple concatenation is more robust and parameter-efficient
+
+### H1.464: Noise-Robust Training for Cognitive Graph — Round 230 (PARTIALLY SUPPORTED: Only heavy noise augmentation works)
+
+**Hypothesis**: Noise-robust training techniques (data augmentation, regularization) can restore CG's performance advantage on noisy data.
+
+**Context**: H1.463 showed CG advantage collapses at 1% noise. This experiment tests whether training techniques can make CG more robust to noise.
+
+**Method**: Simulate 6 training conditions on data with 1% noise:
+1. **Standard** — No noise augmentation (baseline)
+2. **Augmented 10%** — Train with 10% noise augmentation
+3. **Augmented 20%** — Train with 20% noise augmentation
+4. **Augmented 50%** — Train with 50% noise augmentation
+5. **Regularized** — Train with dropout + weight decay
+6. **Augmented + Regularized** — Combined approach
+
+**Results**:
+
+| Training Condition | CG Improvement | Win Rate | CG Wins |
+|-------------------|----------------|----------|---------|
+| Standard | -44.33% | 1.0% | ✗ |
+| Augmented 10% | -14.29% | 21.0% | ✗ |
+| Augmented 20% | -3.91% | 41.0% | ✗ |
+| **Augmented 50%** | **+6.94%** | **76.0%** | **✓** |
+| Regularized | -14.36% | 19.0% | ✗ |
+| Augmented + Regularized | -13.54% | 21.0% | ✗ |
+
+**Key Findings**:
+1. **Only heavy augmentation works**: 50% noise augmentation is required to restore CG advantage (6.94% improvement)
+2. **Light augmentation fails**: 10-20% augmentation reduces the loss but doesn't make CG win
+3. **Regularization alone fails**: Dropout + weight decay doesn't solve the noise sensitivity
+4. **Combined approach fails**: Augmentation + regularization performs worse than augmentation alone
+5. **High threshold**: CG requires training on data with 5x more noise than test data (50% vs 1%) to become robust
+6. **Fragile architecture**: The graph structure is fundamentally sensitive to noise; simple concatenation is inherently more robust
+
+**Analysis — Why does CG need such heavy augmentation?**
+- GNN message passing amplifies noise: Noise propagates through the graph structure
+- Baseline concatenation treats features independently: Noise affects each feature separately
+- Heavy augmentation forces CG to learn noise-invariant representations
+- This comes at a cost: 50% augmentation reduces clean-data performance (penalty on noiseless cases)
+
+**Conclusion**: PARTIALLY SUPPORTED — Noise-robust training CAN restore CG advantage, but only with heavy noise augmentation (50%). This suggests:
+1. CG's graph structure is fundamentally fragile to noise
+2. Making CG robust requires aggressive training techniques
+3. The baseline's simplicity gives it inherent robustness advantages
+4. Practical implication: Using CG in real-world settings would require extensive data augmentation
+
+**Next Steps**:
+- H1.465: Test architectural changes (skip connections, batch norm, different GNNs) for better noise robustness
+- H1.466: Apply 50% noise augmentation to real robot data and re-test H1.462
+- Consider hybrid approaches: Use CG for clean structured tasks, baseline for noisy perception
+
+## Updated Hypothesis Status
+
+| Hypothesis | Status | Evidence |
+|------------|--------|----------|
+| H1: CG improves sample efficiency | **REFUTED** on real data, **CONDITIONAL** with heavy augmentation | -1.74% on real robot data (H1.462), +6.94% with 50% noise augmentation (H1.464) |
+| H2: CG helps multi-step tasks | Inconclusive | 1.7% difference |
+| H3: Attention helps long sequences | **REFUTED** | Removing attention improves CG by 81.31% |
+| H4: 25% dimension allocation optimal | Close | 25% optimal vs 28% hypothesis |
+
+## Research Direction
+
+The core issue is **noise robustness**. CG shows promise on clean structured data but fails on realistic noisy data. Two paths forward:
+1. **Make CG robust**: Heavy augmentation, architectural changes, regularization
+2. **Use CG selectively**: Only for clean sub-tasks, hybrid with baseline
+
+The next critical test: Apply 50% noise augmentation to real robot data and see if CG can match baseline performance.

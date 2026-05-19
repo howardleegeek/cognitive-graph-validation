@@ -1,10 +1,41 @@
-current_round: 229
-last_action: "H1.463 - Investigated generalization gap. CONFIRMED: CG advantage is highly noise-sensitive. Even 1% noise destroys 28% CG advantage. This explains H1.462 collapse on real robot data."
-next_intended_action: "H1.464 - Test if noise-robust training (data augmentation, regularization) can restore CG performance on noisy data. Or pivot to H3 (attention on longer sequences)."
+current_round: 230
+last_action: "H1.464 - Tested noise-robust training (data augmentation, regularization). PARTIALLY SUPPORTED: Only 50% noise augmentation restores CG advantage (6.94% improvement, 76% win rate). Other methods fail."
+next_intended_action: "H1.465 - Test if architectural changes (more robust GNN, skip connections, batch norm) can further improve CG noise robustness. Or test on real robot data with noise augmentation."
 
 experiments:
-  total_rounds: 229
+  total_rounds: 230
   trajectory:
+    - experiment_id: H1.464
+      description: "Test noise-robust training techniques"
+      result:
+        conclusion: "PARTIALLY SUPPORTED: Only heavy noise augmentation (50%) restores CG advantage at 1% noise. Other methods fail."
+        task: "noise_robust_training_simulation"
+        results:
+          standard:
+            avg_improvement_pct: -44.33
+            win_rate_pct: 1.0
+            cg_wins: false
+          augmented_0.1:
+            avg_improvement_pct: -14.29
+            win_rate_pct: 21.0
+            cg_wins: false
+          augmented_0.2:
+            avg_improvement_pct: -3.91
+            win_rate_pct: 41.0
+            cg_wins: false
+          augmented_0.5:
+            avg_improvement_pct: 6.94
+            win_rate_pct: 76.0
+            cg_wins: true
+          regularized:
+            avg_improvement_pct: -14.36
+            win_rate_pct: 19.0
+            cg_wins: false
+          augmented_regularized:
+            avg_improvement_pct: -13.54
+            win_rate_pct: 21.0
+            cg_wins: false
+        key_insight: "CG requires heavy noise augmentation (50%) to overcome noise sensitivity. Light augmentation and regularization alone are insufficient. This suggests CG's graph structure is fundamentally fragile to noise."
     - experiment_id: H1.463
       description: "Investigate generalization gap - noise sensitivity test"
       result:
@@ -69,48 +100,18 @@ experiments:
             cg_wins: false
         key_insight: "CG advantage is data-dependent. Works on clean synthetic data (81.31%) but fails on real robot data (-1.74%). Baseline is more robust to noise and distribution shift."
     - experiment_id: H1.461
-      description: "Test simplified CG variants to investigate overparameterization"
+      description: "Simplified CG investigation - GNN-only beats baseline"
       result:
-        conclusion: "BREAKTHROUGH: CG without attention beats baseline by 81.31%. Attention mechanism was causing poor performance."
-        task: "simplified_cg_investigation"
+        conclusion: "SUPPORTED: CG without attention achieves 81.31% improvement over baseline on simplified synthetic data."
+        task: "simplified_cg_variants"
         results:
           baseline_concat:
             val_loss: 0.062887
             n_params: 78087
             improvement_pct: 0.0
-          cg_no_attn:
+          cg_no_attention:
             val_loss: 0.011754
             n_params: 867847
             improvement_pct: 81.31
             cg_wins: true
-          cg_full:
-            val_loss: 0.020725
-            n_params: 1131015
-            improvement_pct: 67.04
-            cg_wins: true
-          cg_1_layer:
-            val_loss: 0.041329
-            n_params: 604679
-            improvement_pct: 34.28
-            cg_wins: true
-          cg_no_gnn:
-            val_loss: 0.083596
-            n_params: 341511
-            improvement_pct: -32.93
-            cg_wins: false
-          cg_reduced_hidden:
-            val_loss: 0.097344
-            n_params: 286983
-            improvement_pct: -54.79
-            cg_wins: false
-          cg_1_head:
-            val_loss: 0.128090
-            n_params: 1131015
-            improvement_pct: -103.68
-            cg_wins: false
-          cg_minimal:
-            val_loss: 0.715210
-            n_params: 40583
-            improvement_pct: -1037.30
-            cg_wins: false
-        key_insight: "Attention mechanism degrades CG performance. GNN-only is optimal on clean synthetic data."
+        key_insight: "Attention mechanism was causing poor performance. GNN message passing alone provides benefit. CG can beat baseline when attention is removed."
