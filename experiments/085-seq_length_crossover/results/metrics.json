@@ -1,0 +1,51 @@
+{
+  "experiment_id": "H1.423",
+  "description": "Sequence-Length Crossover Analysis",
+  "conclusion": "SUPPORTED",
+  "key_insight": "Crossover point estimated at seq_len\u224824.3. Per-Object CG advantage diminishes with sequence length, flipping from positive to negative between seq_len=10 and seq_len=25.",
+  "config": {
+    "n_demos": 1500,
+    "seq_lengths": [
+      15
+    ],
+    "n_objects": 5,
+    "obs_dim": 400,
+    "lang_dim": 32,
+    "action_dim": 7,
+    "hidden_dim": 64,
+    "epochs": 20,
+    "lr": 0.001,
+    "batch_size": 32,
+    "n_runs": 1
+  },
+  "results_by_seq_len": {
+    "15": {
+      "baseline": {
+        "mse_mean": 0.0221695575164631,
+        "mse_std": 0.0,
+        "mae_mean": 0.11003601457923651,
+        "mae_std": 0.0
+      },
+      "two_node_cg": {
+        "mse_mean": 0.023150203051045537,
+        "mse_std": 0.0,
+        "mae_mean": 0.1122819734737277,
+        "mae_std": 0.0
+      },
+      "per_object_cg": {
+        "mse_mean": 0.02239184337668121,
+        "mse_std": 0.0,
+        "mae_mean": 0.11067887861281633,
+        "mae_std": 0.0
+      },
+      "two_node_vs_baseline": -4.42,
+      "per_object_vs_baseline": -1.0,
+      "per_object_vs_two_node": 3.28
+    }
+  },
+  "crossover_estimate": 24.344729344729345,
+  "historical_comparison": {
+    "seq_len_10_h1_421": 10.65,
+    "seq_len_25_h1_422": -0.23
+  }
+}

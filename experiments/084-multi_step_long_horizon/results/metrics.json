@@ -1,0 +1,49 @@
+{
+  "experiment_id": "H1.422",
+  "description": "Per-Object CG on Multi-Step Long-Horizon Manipulation (25 timesteps)",
+  "conclusion": "REFUTED",
+  "key_insight": "Per-Object CG does NOT scale advantage to longer horizons: -0.23% vs 2-Node CG. Simpler architectures may be more robust for long sequences.",
+  "config": {
+    "n_demos": 1500,
+    "seq_len": 25,
+    "n_objects": 5,
+    "obs_dim": 400,
+    "lang_dim": 32,
+    "action_dim": 7,
+    "hidden_dim": 64,
+    "epochs": 30,
+    "lr": 0.001,
+    "batch_size": 32,
+    "n_runs": 2
+  },
+  "results": {
+    "baseline": {
+      "mse_mean": 0.009334509668406099,
+      "mse_std": 0.00017068249871954322,
+      "mae_mean": 0.0738046569749713,
+      "mae_std": 0.000873299315571785
+    },
+    "two_node_cg": {
+      "mse_mean": 0.009088293474633247,
+      "mse_std": 1.094333129003644e-05,
+      "mae_mean": 0.07190490048378706,
+      "mae_std": 0.00012067053467035294,
+      "vs_baseline_pct": 2.64
+    },
+    "per_object_cg": {
+      "mse_mean": 0.009109134436585009,
+      "mse_std": 1.8145074136555195e-05,
+      "mae_mean": 0.07121998444199562,
+      "mae_std": 2.1474435925483704e-05,
+      "vs_baseline_pct": 2.41,
+      "vs_two_node_pct": -0.23
+    }
+  },
+  "comparison_to_h1_421": {
+    "h1_421_seq_len": 10,
+    "h1_421_per_object_vs_two_node": 10.65,
+    "h1_422_seq_len": 25,
+    "h1_422_per_object_vs_two_node": -0.23,
+    "scaling_factor": 0
+  }
+}

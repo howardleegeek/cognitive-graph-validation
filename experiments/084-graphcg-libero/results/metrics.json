@@ -1,0 +1,27 @@
+{
+  "experiment_id": "H1.438",
+  "description": "GraphCG on LIBERO Real Robot Manipulation Data",
+  "mlp_mean_mse": 0.004386736700932185,
+  "mlp_std_mse": 3.517413546861824e-05,
+  "graphcg_mean_mse": 0.0038915129844099283,
+  "graphcg_std_mse": 7.085198611250341e-05,
+  "improvement_percent": -11.289114215973377,
+  "n_trials": 3,
+  "epochs": 15,
+  "batch_size": 64,
+  "n_tasks": 10,
+  "per_trial": {
+    "mlp": [
+      0.004374356009066105,
+      0.004351203329861164,
+      0.004434650763869286
+    ],
+    "graphcg": [
+      0.003989644348621368,
+      0.0038599881809204817,
+      0.003824906423687935
+    ]
+  },
+  "conclusion": "SUPPORTED",
+  "key_insight": "GraphCG outperforms MLP by 11.3% on LIBERO-style manipulation tasks. Message-passing graph structure helps with object relationship reasoning."
+}

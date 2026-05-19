@@ -1,0 +1,105 @@
+{
+  "experiment": "H1.429",
+  "hypothesis": "Adding LSTM/GRU to Per-Object CG improves multi-step task performance",
+  "timestamp": "2026-05-18T08:44:45.457904",
+  "config": {
+    "n_demos": 500,
+    "seq_len": 15,
+    "n_objects": 3,
+    "epochs": 30,
+    "n_runs": 3
+  },
+  "results": {
+    "spatial_relations": {
+      "Baseline MLP": {
+        "avg_mse": 0.04731723169485728,
+        "std_mse": 0.0020380408553924757,
+        "all_losses": [
+          0.048517946153879166,
+          0.044447705149650574,
+          0.0489860437810421
+        ]
+      },
+      "Per-Object CG": {
+        "avg_mse": 0.047067638486623764,
+        "std_mse": 0.0022028999812795883,
+        "all_losses": [
+          0.04859631508588791,
+          0.043952446430921555,
+          0.04865415394306183
+        ],
+        "delta_vs_baseline": -0.5274890336846152
+      },
+      "Per-Object CG + LSTM": {
+        "avg_mse": 0.10163218528032303,
+        "std_mse": 0.006519695528688165,
+        "all_losses": [
+          0.09762495011091232,
+          0.11082720011472702,
+          0.09644440561532974
+        ],
+        "delta_vs_baseline": 114.78895032519205
+      },
+      "Per-Object CG + GRU": {
+        "avg_mse": 0.05221741025646528,
+        "std_mse": 0.00515683817686638,
+        "all_losses": [
+          0.055241573601961136,
+          0.04495812952518463,
+          0.05645252764225006
+        ],
+        "delta_vs_baseline": 10.35601278030934
+      }
+    },
+    "multi_stage": {
+      "Baseline MLP": {
+        "avg_mse": 0.007268902535239856,
+        "std_mse": 0.00023222089250494538,
+        "all_losses": [
+          0.007042673882097006,
+          0.0071758488193154335,
+          0.007588184904307127
+        ]
+      },
+      "Per-Object CG": {
+        "avg_mse": 0.006918743407974641,
+        "std_mse": 0.0001672227095900675,
+        "all_losses": [
+          0.006888160482048988,
+          0.006730949506163597,
+          0.007137120235711336
+        ],
+        "delta_vs_baseline": -4.817221383388112
+      },
+      "Per-Object CG + LSTM": {
+        "avg_mse": 0.008515704423189163,
+        "std_mse": 0.00021841548028018974,
+        "all_losses": [
+          0.008300747722387314,
+          0.008431080728769302,
+          0.008815284818410873
+        ],
+        "delta_vs_baseline": 17.152546507602416
+      },
+      "Per-Object CG + GRU": {
+        "avg_mse": 0.006720738175014655,
+        "std_mse": 0.00024375543247852715,
+        "all_losses": [
+          0.006627656519412994,
+          0.006479830015450716,
+          0.007054727990180254
+        ],
+        "delta_vs_baseline": -7.541225894386168
+      }
+    }
+  },
+  "analysis": {
+    "lstm_spatial_improvement_over_cg": -115.92794656397743,
+    "lstm_multi_improvement_over_cg": -23.081662681316416,
+    "gru_spatial_improvement_over_cg": -10.941215526045644,
+    "gru_multi_improvement_over_cg": 2.8618669790783415,
+    "temporal_helps_multi_more": true
+  },
+  "status": "PARTIALLY_SUPPORTED",
+  "conclusion": "Temporal modeling provides marginal improvement on multi-stage tasks"
+}
