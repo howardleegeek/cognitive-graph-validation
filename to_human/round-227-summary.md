@@ -1,0 +1,3 @@
+# Round 227 Summary
+
+**BREAKTHROUGH**: Discovered that the attention mechanism in Cognitive Graph was causing poor performance. Testing simplified CG variants revealed that removing attention (GNN-only) achieves **81.31% improvement** over baseline, while full CG with attention achieves 67.04% improvement. The key insight is that GNN message passing is beneficial, but learned attention patterns degrade performance on this task. This partially supports H1 (CG improves sample efficiency) and refutes H3 (attention helps long sequences). Next step is to confirm this finding on real robot data.

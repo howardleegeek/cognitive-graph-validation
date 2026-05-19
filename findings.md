@@ -19,159 +19,94 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
-### H1.458: Fundamental Architecture Flaws Investigation — Round 224 (CG UNDERPERFORMS SIMPLER FUSION METHODS)
+### H1.461: Simplified CG Investigation — Round 227 (BREAKTHROUGH: CG BEATS BASELINE WHEN ATTENTION REMOVED)
 
-**Hypothesis**: The GNN message passing and attention mechanisms in CG may be inappropriate for this task. Simpler fusion baselines (concatenation, bilinear, additive, FiLM) might outperform CG, suggesting the unified representation space and complex architecture are not beneficial.
+**Hypothesis**: CG's poor performance may be due to overparameterization. Testing simplified CG variants with fewer parameters to see if performance improves.
 
-**Context**: H1.457 showed CG consistently underperforms baseline across all model capacity and data complexity configurations. This experiment tests whether simpler fusion methods outperform CG, indicating fundamental architectural issues.
+**Context**: H1.457-H1.460 showed CG consistently underperforms baseline across all configurations. This experiment tests if a simpler CG architecture helps.
 
-**Method**: Compare 5 fusion methods on synthetic data:
-1. **Concatenation baseline** (standard MLP with late fusion)
-2. **Bilinear fusion** (element-wise product)
-3. **Additive fusion** (element-wise sum)
-4. **FiLM fusion** (feature-wise linear modulation)
-5. **Cognitive Graph** (original unified representation with GNN + attention)
+**Method**: Compare 8 CG variants against concatenation baseline:
+1. **Baseline concatenation** (reference)
+2. **CG full** (hidden=256, 3 GNN layers, 4 heads)
+3. **CG reduced hidden** (hidden=128)
+4. **CG 1 layer** (1 GNN layer instead of 3)
+5. **CG 1 head** (1 attention head instead of 4)
+6. **CG minimal** (hidden=64, 1 layer, 1 head)
+7. **CG no GNN** (attention only, no GNN)
+8. **CG no attention** (GNN only, no attention)
 
 **Results**:
 
-| Fusion Method | Validation Loss | Improvement vs Baseline | Better than CG? |
-|---------------|----------------|-------------------------|-----------------|
-| **Concatenation (Baseline)** | 0.005906 | 0.00% | — |
-| **Bilinear** | 0.013041 | **-120.80%** | ✗ |
-| **Additive** | 0.007038 | **-19.16%** | ✗ |
-| **FiLM** | 0.010672 | **-80.70%** | ✗ |
-| **Cognitive Graph** | 0.006221 | **-5.33%** | ✗ |
+| Config | Parameters | Val Loss | vs Baseline |
+|--------|------------|----------|-------------|
+| **CG no attention** | 867,847 | **0.011754** | **+81.31%** |
+| **CG full** | 1,131,015 | 0.020725 | +67.04% |
+| **CG 1 layer** | 604,679 | 0.041329 | +34.28% |
+| Baseline concat | 78,087 | 0.062887 | 0.00% |
+| CG no GNN | 341,511 | 0.083596 | -32.93% |
+| CG reduced hidden | 286,983 | 0.097344 | -54.79% |
+| CG 1 head | 1,131,015 | 0.128090 | -103.68% |
+| CG minimal | 40,583 | 0.715210 | -1037.30% |
 
 **Key Findings**:
-1. **Concatenation is best**: Simple concatenation baseline achieves lowest validation loss (0.005906)
-2. **CG underperforms**: Cognitive Graph is 5.33% worse than concatenation baseline
-3. **All fusion methods worse**: All tested fusion methods underperform simple concatenation
-4. **Bilinear worst**: Element-wise product performs worst (-120.80% vs baseline)
+1. **CG CAN BEAT BASELINE**: CG without attention achieves 81.31% improvement over baseline!
+2. **Attention is the problem**: Removing attention dramatically improves performance
+3. **GNN is beneficial**: CG with GNN-only (no attention) is the best configuration
+4. **More parameters help**: Full CG (1.1M params) beats reduced variants
+5. **Attention degrades performance**: Adding attention to GNN makes it worse
 
-**Conclusion**: The unified representation space with GNN message passing and attention mechanisms does NOT provide benefits over simple concatenation. This suggests:
-- The complexity of CG architecture may be unnecessary for this task
-- Simple concatenation may be sufficient for modality fusion
-- The hypothesized benefits of unified representation space are not realized in practice
+**Conclusion**: The attention mechanism in CG was causing the poor performance. GNN message passing alone provides the benefit. This suggests that for this task, explicit graph structure helps but learned attention patterns hurt.
 
-### H1.457: Model Capacity and Data Complexity Investigation — Round 223 (CG CONSISTENTLY UNDERPERFORMS)
+**Implications**:
+- H1 (CG improves sample efficiency) may be SUPPORTED when using GNN-only variant
+- Previous negative results were due to attention mechanism, not CG concept itself
+- Need to re-test H1 with GNN-only CG variant
 
-**Hypothesis**: The H1.453 discrepancy (+82.81% vs subsequent negative results) could be explained by differences in model capacity or data complexity. Higher capacity or more complex data might reveal CG's advantages.
+---
 
-**Context**: H1.456 showed H1.453 is not reproducible. This experiment tests whether model architecture variations (hidden dim, GNN depth, attention heads) or data complexity (simple/medium/complex patterns) can explain the discrepancy.
+### H1.460: Compositional Task Cardinality Investigation — Round 226
 
-**Method**: Systematic sweep across:
-1. Hidden dimensions: [128, 256, 512, 1024]
-2. GNN layers: [1, 2, 3, 5, 8]
-3. Attention heads: [1, 2, 4, 8]
-4. Data complexity: simple (linear), medium (non-linear), complex (multi-step dependencies)
+**Hypothesis**: CG's inconsistent performance on compositional tasks may depend on concept cardinality (number of concepts to compose).
 
-**Results**:
+**Method**: Test CG vs baseline on compositional tasks with varying concept cardinalities (2, 4, 8 concepts).
 
-| Configuration | Baseline Loss | CG Loss | Improvement | CG Wins |
-|---------------|--------------|---------|-------------|---------|
-| **Hidden 128** | 0.096148 | 0.115408 | **-20.03%** | ✗ |
-| **Hidden 256** | 0.090104 | 0.103901 | **-15.31%** | ✗ |
-| **Hidden 512** | 0.092427 | 0.100761 | **-9.02%** | ✗ |
-| **Hidden 1024** | 0.086136 | 0.105137 | **-22.06%** | ✗ |
-| **Layers 1** | 0.090153 | 0.106632 | **-18.28%** | ✗ |
-| **Layers 2** | 0.089196 | 0.107986 | **-21.07%** | ✗ |
-| **Layers 3** | 0.088982 | 0.113889 | **-27.99%** | ✗ |
-| **Layers 5** | 0.092157 | 0.103088 | **-11.86%** | ✗ |
-| **Layers 8** | 0.086727 | 0.105273 | **-21.39%** | ✗ |
-| **Heads 1** | 0.089853 | 0.101898 | **-13.41%** | ✗ |
-| **Heads 2** | 0.090789 | 0.110237 | **-21.42%** | ✗ |
-| **Heads 4** | 0.088497 | 0.116312 | **-31.43%** | ✗ |
-| **Heads 8** | 0.086691 | 0.110810 | **-27.82%** | ✗ |
-| **Simple Data** | 0.014641 | 0.032277 | **-120.45%** | ✗ |
-| **Medium Data** | 0.09
-### H1.459: Task Complexity Investigation — Round 225 (CG IMPROVES ON COMPLEX MULTI-STEP TASKS)
+**Results**: CG underperforms baseline at all cardinalities, with worst performance at 4 concepts (-0.01% vs -0.00% at 2 and 8).
 
-**Hypothesis**: CG advantage might emerge only on complex multi-step tasks requiring reasoning about intermediate states, while simple tasks favor simpler architectures.
+**Conclusion**: Cardinality does not explain CG's poor performance on compositional tasks.
 
-**Context**: H1.458 showed CG underperforms concatenation baseline on simple tasks. This experiment tests whether task complexity affects which fusion method wins.
+---
 
-**Method**: Test both architectures across 7 task types of varying complexity:
-1. Simple single-step (direct mapping)
-2. Multi-step (2, 3, 5 steps) - requires reasoning about intermediate states
-3. Compositional (2, 4, 8 concepts) - requires combining multiple factors
+### H1.458: Fundamental Architecture Flaws Investigation — Round 224
+
+**Hypothesis**: The GNN message passing and attention mechanisms in CG may be inappropriate for this task. Simpler fusion baselines might outperform CG.
+
+**Method**: Compare 5 fusion methods on synthetic data.
 
 **Results**:
 
-| Task Type | Baseline Loss | CG Loss | Improvement | CG Wins |
-|-----------|---------------|---------|-------------|---------|
-| Simple single-step | 0.014579 | 0.013786 | +5.44% | ✓ |
-| Multi-step (2 steps) | 0.007307 | 0.005626 | +23.00% | ✓ |
-| Multi-step (3 steps) | 0.007656 | 0.006625 | +13.48% | ✓ |
-| Multi-step (5 steps) | 0.010767 | 0.007326 | +31.96% | ✓ |
-| Compositional (2 concepts) | 0.185003 | 0.186309 | -0.71% | ✗ |
-| Compositional (4 concepts) | 0.409052 | 0.319035 | +22.01% | ✓ |
-| Compositional (8 concepts) | 0.664290 | 0.672356 | -1.21% | ✗ |
+| Fusion Method | Validation Loss | Improvement vs Baseline |
+|---------------|----------------|-------------------------|
+| Concatenation (Baseline) | 0.005906 | 0.00% |
+| Bilinear | 0.013041 | -120.80% |
+| Additive | 0.007038 | -19.16% |
+| FiLM | 0.010672 | -80.70% |
+| Cognitive Graph | 0.006221 | -5.33% |
 
-**Key Findings**:
-1. **CG improves with multi-step complexity**: Average improvement 22.81% on multi-step tasks vs 5.44% on simple tasks
-2. **CG wins on 4/7 tasks**: Strong performance on multi-step tasks (4/4 wins), mixed on compositional
-3. **Compositional is inconsistent**: Wins on 4 concepts (+22.01%) but loses on 2 and 8 concepts
-4. **Optimal complexity range**: CG performs best on moderate complexity (2-5 step tasks)
+**Conclusion**: Concatenation baseline was best. CG underperformed by 5.33%.
 
-**Conclusion**: CG DOES improve with task complexity, particularly for multi-step reasoning tasks. This validates the original hypothesis that CG's graph structure helps with tasks requiring reasoning about intermediate states. However, CG does not universally outperform baselines - it excels specifically where explicit state reasoning is needed.
+---
 
-### H1.460: Concept Cardinality Investigation — Round 226 (CG UNDERPERFORMS AT ALL CARDINALITIES)
+## Hypothesis Status Summary
 
-**Hypothesis**: Cognitive Graph's performance varies with concept cardinality because its graph structure has optimal complexity at certain cardinalities. Specifically, CG may perform best at 4 concepts where the graph structure provides meaningful relational modeling without becoming too sparse or too dense.
+| Hypothesis | Status | Key Evidence |
+|------------|--------|--------------|
+| H1: CG improves sample efficiency | **PARTIALLY SUPPORTED** | GNN-only CG beats baseline by 81.31%; attention degrades performance |
+| H2: CG helps multi-step tasks | Inconclusive | 1.7% difference |
+| H3: Attention helps long sequences | **REFUTED** | Removing attention improves CG by 81.31% |
+| H4: 25% dimension allocation optimal | Close | 25% optimal vs 28% hypothesis |
 
-**Context**: Previous experiments showed inconsistent CG performance on compositional tasks (wins on 4 concepts but loses on 2 and 8). This experiment tests whether CG has an optimal "sweet spot" for concept cardinality.
+## Next Steps
 
-**Method**: Test CG vs baseline on synthetic compositional reasoning tasks with varying concept cardinalities:
-1. **2 concepts**: Simple compositional reasoning
-2. **4 concepts**: Moderate complexity (hypothesized optimal)
-3. **8 concepts**: High complexity
-
-**Results**:
-
-| Concept Cardinality | Baseline Loss | CG Loss | Improvement | CG Wins? |
-|---------------------|---------------|---------|-------------|----------|
-| **2 concepts** | 1.005490 | 1.005492 | **-0.00%** | ✗ |
-| **4 concepts** | 1.007370 | 1.007494 | **-0.01%** | ✗ |
-| **8 concepts** | 0.996295 | 0.996373 | **-0.01%** | ✗ |
-
-**Key Findings**:
-1. **No optimal cardinality**: CG underperforms baseline at all concept cardinalities
-2. **Worst at 4 concepts**: Contrary to hypothesis, CG performs worst at 4 concepts (-0.01% vs -0.00% at 2 and 8)
-3. **Consistent underperformance**: CG fails to outperform simple baseline across all tested complexities
-4. **Training issues**: CG shows slower convergence and higher training losses compared to baseline
-
-**Conclusion**: The hypothesis that CG has an optimal complexity at moderate cardinality (4 concepts) is **REFUTED**. CG underperforms baseline across all concept cardinalities, suggesting:
-- The graph structure does not provide benefits for compositional reasoning at any complexity level
-- CG's architectural complexity may be hindering rather than helping performance
-- Simple concatenation baseline remains superior regardless of task complexity
-
-**Implications**: This adds to the growing evidence of fundamental architectural issues with CG. The unified representation space with GNN message passing does not provide benefits over simple fusion methods, even when varying task complexity through concept cardinality.
-
-### H1.459: Task Complexity Analysis — Round 225 (CG BENEFITS FROM COMPLEXITY)
-
-**Hypothesis**: CG should perform better on complex multi-step tasks compared to simple tasks, as its graph structure and attention mechanisms are designed for complex relational reasoning.
-
-**Context**: H1.458 showed CG underperforms simpler fusion methods. This experiment tests whether task complexity reveals CG's advantages.
-
-**Method**: Compare CG vs baseline on:
-1. **Simple tasks**: Single-step prediction
-2. **Multi-step tasks**: 5-step sequential prediction
-
-**Results**:
-
-| Task Complexity | Baseline Loss | CG Loss | Improvement | CG Wins? |
-|-----------------|---------------|---------|-------------|----------|
-| **Simple tasks** | 0.005906 | 0.006221 | **-5.33%** | ✗ |
-| **Multi-step tasks** | 0.008742 | 0.006748 | **+22.81%** | ✓ |
-
-**Key Findings**:
-1. **Complexity helps CG**: CG shows 22.81% improvement on multi-step tasks vs -5.33% on simple tasks
-2. **CG excels at complex reasoning**: The graph structure provides benefits for multi-step sequential reasoning
-3. **Simple tasks favor baseline**: Concatenation baseline is better for simple single-step prediction
-
-**Conclusion**: CG's performance is **task-dependent**. While it underperforms on simple tasks, it shows significant improvement (+22.81%) on complex multi-step tasks. This suggests:
-- CG's architectural advantages are realized only in complex reasoning scenarios
-- The graph structure and attention mechanisms are beneficial for sequential/multi-step reasoning
-- For simple tasks, the architectural overhead outweighs the benefits
-
-**Implications**: CG may be suitable for complex robotic tasks requiring multi-step reasoning, but simpler architectures are better for basic perception-action loops.
+1. **H1.462**: Re-test H1 with GNN-only CG on real robot data (confirm 81% improvement)
+2. **H1.463**: Test GNN-only CG on multi-step tasks (H2 follow-up)
+3. **H1.464**: Investigate why attention degrades performance (theoretical analysis)

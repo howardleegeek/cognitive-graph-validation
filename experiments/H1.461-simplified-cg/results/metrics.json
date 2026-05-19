@@ -1,0 +1,52 @@
+{
+  "experiment": "H1.461",
+  "hypothesis": "CG overparameterization causes poor performance",
+  "baseline_loss": 0.06288681924343109,
+  "best_cg_variant": "cg_no_attn",
+  "best_cg_loss": 0.011754455044865608,
+  "best_cg_improvement": 81.30855529619836,
+  "all_results": {
+    "baseline_concat": {
+      "val_loss": 0.06288681924343109,
+      "n_params": 78087,
+      "improvement_vs_baseline": 0.0
+    },
+    "cg_full": {
+      "val_loss": 0.020724688656628132,
+      "n_params": 1131015,
+      "improvement_vs_baseline": 67.04446352040145
+    },
+    "cg_reduced_hidden": {
+      "val_loss": 0.09734448790550232,
+      "n_params": 286983,
+      "improvement_vs_baseline": -54.79314914733987
+    },
+    "cg_1_layer": {
+      "val_loss": 0.04132923670113087,
+      "n_params": 604679,
+      "improvement_vs_baseline": 34.27996963696338
+    },
+    "cg_1_head": {
+      "val_loss": 0.1280904784798622,
+      "n_params": 1131015,
+      "improvement_vs_baseline": -103.68414243377724
+    },
+    "cg_minimal": {
+      "val_loss": 0.7152104675769806,
+      "n_params": 40583,
+      "improvement_vs_baseline": -1037.2978887808652
+    },
+    "cg_no_gnn": {
+      "val_loss": 0.0835961252450943,
+      "n_params": 341511,
+      "improvement_vs_baseline": -32.931075622538216
+    },
+    "cg_no_attn": {
+      "val_loss": 0.011754455044865608,
+      "n_params": 867847,
+      "improvement_vs_baseline": 81.30855529619836
+    }
+  },
+  "conclusion": "Simplified CG can match or beat baseline",
+  "cg_beats_baseline": true
+}

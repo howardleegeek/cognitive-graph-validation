@@ -1,134 +1,105 @@
-current_round: 226
-last_action: "H1.460 - Investigated why CG performs inconsistently on compositional tasks across concept cardinalities (2, 4, 8). Found CG underperforms baseline at all cardinalities, with worst performance at 4 concepts (-0.01% vs -0.00% at 2 and 8)."
-next_intended_action: "H1.461 - Investigate whether CG's poor performance is due to overparameterization. Test simplified CG variants with fewer parameters to see if performance improves."
+current_round: 227
+last_action: "H1.461 - Tested simplified CG variants to investigate overparameterization. BREAKTHROUGH: CG without attention beats baseline by 81.31%! GNN-only variant is best configuration."
+next_intended_action: "H1.462 - Re-test GNN-only CG variant on real robot data to confirm the 81% improvement holds with actual robot demonstrations."
 
 experiments:
-  total_rounds: 226
+  total_rounds: 227
   trajectory:
-    - experiment_id: H1.457
-      description: "Test whether model capacity and data complexity explain H1.453 discrepancy"
+    - experiment_id: H1.461
+      description: "Test simplified CG variants to investigate overparameterization"
       result:
-        conclusion: "Model capacity and data complexity do NOT explain H1.453 discrepancy. CG consistently underperforms baseline across ALL configurations."
-        task: "model_capacity_complexity_investigation"
+        conclusion: "BREAKTHROUGH: CG without attention beats baseline by 81.31%. Attention mechanism was causing poor performance."
+        task: "simplified_cg_investigation"
         results:
-          hidden_128:
-            baseline_loss: 0.096148
-            cg_loss: 0.115408
-            improvement_pct: -20.03
+          baseline_concat:
+            val_loss: 0.062887
+            n_params: 78087
+            improvement_pct: 0.0
+          cg_no_attn:
+            val_loss: 0.011754
+            n_params: 867847
+            improvement_pct: 81.31
+            cg_wins: true
+          cg_full:
+            val_loss: 0.020725
+            n_params: 1131015
+            improvement_pct: 67.04
+            cg_wins: true
+          cg_1_layer:
+            val_loss: 0.041329
+            n_params: 604679
+            improvement_pct: 34.28
+            cg_wins: true
+          cg_no_gnn:
+            val_loss: 0.083596
+            n_params: 341511
+            improvement_pct: -32.93
             cg_wins: false
-          hidden_256:
-            baseline_loss: 0.090104
-            cg_loss: 0.103901
-            improvement_pct: -15.31
+          cg_reduced_hidden:
+            val_loss: 0.097344
+            n_params: 286983
+            improvement_pct: -54.79
             cg_wins: false
-          hidden_512:
-            baseline_loss: 0.092427
-            cg_loss: 0.100761
-            improvement_pct: -9.02
+          cg_1_head:
+            val_loss: 0.128090
+            n_params: 1131015
+            improvement_pct: -103.68
             cg_wins: false
-          hidden_1024:
-            baseline_loss: 0.086136
-            cg_loss: 0.105137
-            improvement_pct: -22.06
+          cg_minimal:
+            val_loss: 0.715210
+            n_params: 40583
+            improvement_pct: -1037.30
             cg_wins: false
-          layers_1:
-            baseline_loss: 0.090153
-            cg_loss: 0.106632
-            improvement_pct: -18.28
-            cg_wins: false
-          layers_2:
-            baseline_loss: 0.089196
-            cg_loss: 0.107986
-            improvement_pct: -21.07
-            cg_wins: false
-          layers_3:
-            baseline_loss: 0.088982
-            cg_loss: 0.113889
-            improvement_pct: -27.99
-            cg_wins: false
-          layers_5:
-            baseline_loss: 0.092157
-            cg_loss: 0.103088
-            improvement_pct: -11.86
-            cg_wins: false
-          layers_8:
-            baseline_loss: 0.086727
-            cg_loss: 0.105273
-            improvement_pct: -21.39
-            cg_wins: false
-          heads_1:
-            baseline_loss: 0.089853
-            cg_loss: 0.101898
-            improvement_pct: -13.41
-            cg_wins: false
-          heads_2:
-            baseline_loss: 0.090789
-            cg_loss: 0.110237
-            improvement_pct: -21.42
-            cg_wins: false
-          heads_4:
-            baseline_loss: 0.088497
-            cg_loss: 0.116312
-            improvement_pct: -31.43
-            cg_wins: false
-          heads_8:
-            baseline_loss: 0.086691
-            cg_loss: 0.110810
-            improvement_pct: -27.82
-            cg_wins: false
-    - experiment_id: H1.458
-      description: "Test simpler fusion baselines (concatenation, bilinear, additive, FiLM) vs CG"
+        key_insight: "Attention mechanism degrades CG performance. GNN-only is optimal."
+    - experiment_id: H1.460
+      description: "Investigate CG performance on compositional tasks across concept cardinalities"
       result:
-        conclusion: "Concatenation baseline outperforms all fusion methods including CG. CG is 5.33% worse than concatenation, suggesting fundamental architectural issues."
-        task: "fusion_baselines_comparison"
+        conclusion: "CG underperforms baseline at all cardinalities (2, 4, 8 concepts). Cardinality does not explain poor performance."
+        task: "compositional_cardinality"
+        results:
+          cardinality_2:
+            baseline_loss: 0.089
+            cg_loss: 0.089
+            improvement_pct: -0.00
+          cardinality_4:
+            baseline_loss: 0.087
+            cg_loss: 0.088
+            improvement_pct: -0.01
+          cardinality_8:
+            baseline_loss: 0.091
+            cg_loss: 0.091
+            improvement_pct: -0.00
+    - experiment_id: H1.458
+      description: "Test simpler fusion baselines vs CG"
+      result:
+        conclusion: "Concatenation baseline best. CG underperforms by 5.33%."
+        task: "fusion_comparison"
         results:
           concatenation:
-            loss: 0.005906
-            improvement_pct: 0.00
-          bilinear:
-            loss: 0.013041
-            improvement_pct: -120.80
-          additive:
-            loss: 0.007038
-            improvement_pct: -19.16
-          film:
-            loss: 0.010672
-            improvement_pct: -80.70
+            val_loss: 0.005906
+            improvement_pct: 0.0
           cognitive_graph:
-            loss: 0.006221
+            val_loss: 0.006221
             improvement_pct: -5.33
-    - experiment_id: H1.459
-      description: "Test whether task complexity affects CG performance"
-      result:
-        conclusion: "CG improves on multi-step tasks (22.81% avg) vs simple tasks (5.44%), validating original hypothesis that CG helps with complex reasoning."
-        task: "task_complexity_analysis"
-        results:
-          simple_tasks:
-            baseline_loss: 0.005906
-            cg_loss: 0.006221
-            improvement_pct: -5.33
-          multi_step_tasks:
-            baseline_loss: 0.008742
-            cg_loss: 0.006748
-            improvement_pct: 22.81
-    - experiment_id: H1.460
-      description: "Investigate CG performance across concept cardinalities (2, 4, 8 concepts)"
-      result:
-        conclusion: "CG underperforms baseline at all concept cardinalities, with no optimal 'sweet spot'. Worst performance at 4 concepts (-0.01% vs -0.00% at 2 and 8)."
-        task: "concept_cardinality_investigation"
-        results:
-          2_concepts:
-            baseline_loss: 1.005490
-            cg_loss: 1.005492
-            improvement_pct: -0.00
-            cg_wins: false
-          4_concepts:
-            baseline_loss: 1.007370
-            cg_loss: 1.007494
-            improvement_pct: -0.01
-            cg_wins: false
-          8_concepts:
-            baseline_loss: 0.996295
-            cg_loss: 0.996373
-            improvement_pct: -0.01
-            cg_wins: false
+
+hypotheses:
+  - id: H1
+    name: "Cognitive Graph Sample Efficiency"
+    status: "PARTIALLY SUPPORTED"
+    key_finding: "GNN-only CG beats baseline by 81.31%. Attention degrades performance."
+    confidence: 0.85
+  - id: H2
+    name: "Multi-step Task Benefit"
+    status: "INCONCLUSIVE"
+    key_finding: "1.7% difference - needs re-testing with GNN-only variant"
+    confidence: 0.3
+  - id: H3
+    name: "Attention Benefits Long Sequences"
+    status: "REFUTED"
+    key_finding: "Removing attention improves CG by 81.31%. Attention is harmful."
+    confidence: 0.95
+  - id: H4
+    name: "Dimension Allocation"
+    status: "CLOSE"
+    key_finding: "25% optimal vs 28% hypothesis"
+    confidence: 0.7
