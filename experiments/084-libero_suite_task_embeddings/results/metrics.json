@@ -1,0 +1,280 @@
+{
+  "experiment_id": "H1.448",
+  "description": "Test task embeddings on full LIBERO suite with varying object counts and horizons",
+  "conclusion": "CONFIRMED - Task embeddings generalize across object counts and horizons",
+  "h1447_reference_improvement": 32.1,
+  "overall_task_embedding_improvement_pct": 91.45440160623667,
+  "overall_simple_attention_improvement_pct": 23.671407062552742,
+  "task_embedding_win_rate": 100.0,
+  "total_conditions": 16,
+  "by_object_count": {
+    "3": {
+      "avg_task_embedding_improvement_pct": 90.03376107035521,
+      "avg_simple_attention_improvement_pct": 43.10854120868107,
+      "task_embedding_wins": 4,
+      "total": 4
+    },
+    "5": {
+      "avg_task_embedding_improvement_pct": 89.36805393026131,
+      "avg_simple_attention_improvement_pct": 4.121442792861233,
+      "task_embedding_wins": 4,
+      "total": 4
+    },
+    "8": {
+      "avg_task_embedding_improvement_pct": 94.95644104135256,
+      "avg_simple_attention_improvement_pct": 44.59040332965843,
+      "task_embedding_wins": 4,
+      "total": 4
+    },
+    "10": {
+      "avg_task_embedding_improvement_pct": 91.45935038297758,
+      "avg_simple_attention_improvement_pct": 2.865240919010228,
+      "task_embedding_wins": 4,
+      "total": 4
+    }
+  },
+  "by_horizon": {
+    "5": {
+      "avg_task_embedding_improvement_pct": 86.47214073545427,
+      "avg_simple_attention_improvement_pct": 1.0926752856874584,
+      "task_embedding_wins": 4,
+      "total": 4
+    },
+    "10": {
+      "avg_task_embedding_improvement_pct": 92.60514847387516,
+      "avg_simple_attention_improvement_pct": 22.999675000762384,
+      "task_embedding_wins": 4,
+      "total": 4
+    },
+    "15": {
+      "avg_task_embedding_improvement_pct": 92.60275290661396,
+      "avg_simple_attention_improvement_pct": 28.321634853499162,
+      "task_embedding_wins": 4,
+      "total": 4
+    },
+    "20": {
+      "avg_task_embedding_improvement_pct": 94.13756430900328,
+      "avg_simple_attention_improvement_pct": 42.271643110261955,
+      "task_embedding_wins": 4,
+      "total": 4
+    }
+  },
+  "per_condition": {
+    "obj3_hor5": {
+      "n_objects": 3,
+      "horizon": 5,
+      "obs_dim": 16,
+      "baseline_loss": 0.027942247688770294,
+      "cg_task_embedding_loss": 0.005910588428378105,
+      "cg_simple_attention_loss": 0.02924550138413906,
+      "task_embedding_improvement_pct": 78.84712606440208,
+      "simple_attention_improvement_pct": -4.664097569690255,
+      "task_embedding_wins": true,
+      "simple_attention_wins": false
+    },
+    "obj3_hor10": {
+      "n_objects": 3,
+      "horizon": 10,
+      "obs_dim": 16,
+      "baseline_loss": 0.06222495809197426,
+      "cg_task_embedding_loss": 0.004031075164675713,
+      "cg_simple_attention_loss": 0.025821423158049583,
+      "task_embedding_improvement_pct": 93.52177118590033,
+      "simple_attention_improvement_pct": 58.503108801000515,
+      "task_embedding_wins": true,
+      "simple_attention_wins": true
+    },
+    "obj3_hor15": {
+      "n_objects": 3,
+      "horizon": 15,
+      "obs_dim": 16,
+      "baseline_loss": 0.05157056450843811,
+      "cg_task_embedding_loss": 0.0035227970220148563,
+      "cg_simple_attention_loss": 0.023433122783899307,
+      "task_embedding_improvement_pct": 93.16897719543394,
+      "simple_attention_improvement_pct": 54.561050461130556,
+      "task_embedding_wins": true,
+      "simple_attention_wins": true
+    },
+    "obj3_hor20": {
+      "n_objects": 3,
+      "horizon": 20,
+      "obs_dim": 16,
+      "baseline_loss": 0.0543816052377224,
+      "cg_task_embedding_loss": 0.0029381457716226578,
+      "cg_simple_attention_loss": 0.019558832049369812,
+      "task_embedding_improvement_pct": 94.59716983568447,
+      "simple_attention_improvement_pct": 64.03410314228346,
+      "task_embedding_wins": true,
+      "simple_attention_wins": true
+    },
+    "obj5_hor5": {
+      "n_objects": 5,
+      "horizon": 5,
+      "obs_dim": 22,
+      "baseline_loss": 0.04545539990067482,
+      "cg_task_embedding_loss": 0.006383794825524092,
+      "cg_simple_attention_loss": 0.05757962167263031,
+      "task_embedding_improvement_pct": 85.95591538194934,
+      "simple_attention_improvement_pct": -26.67278650819987,
+      "task_embedding_wins": true,
+      "simple_attention_wins": false
+    },
+    "obj5_hor10": {
+      "n_objects": 5,
+      "horizon": 10,
+      "obs_dim": 22,
+      "baseline_loss": 0.032182477414608,
+      "cg_task_embedding_loss": 0.004376324359327555,
+      "cg_simple_attention_loss": 0.05076966807246208,
+      "task_embedding_improvement_pct": 86.4015305504694,
+      "simple_attention_improvement_pct": -57.75562402606438,
+      "task_embedding_wins": true,
+      "simple_attention_wins": false
+    },
+    "obj5_hor15": {
+      "n_objects": 5,
+      "horizon": 15,
+      "obs_dim": 22,
+      "baseline_loss": 0.03820274770259857,
+      "cg_task_embedding_loss": 0.0036965201143175364,
+      "cg_simple_attention_loss": 0.019778719171881676,
+      "task_embedding_improvement_pct": 90.32394176697899,
+      "simple_attention_improvement_pct": 48.226972243317675,
+      "task_embedding_wins": true,
+      "simple_attention_wins": true
+    },
+    "obj5_hor20": {
+      "n_objects": 5,
+      "horizon": 20,
+      "obs_dim": 22,
+      "baseline_loss": 0.05612695962190628,
+      "cg_task_embedding_loss": 0.002923749852925539,
+      "cg_simple_attention_loss": 0.02655523084104061,
+      "task_embedding_improvement_pct": 94.79082802164754,
+      "simple_attention_improvement_pct": 52.687209462391515,
+      "task_embedding_wins": true,
+      "simple_attention_wins": true
+    },
+    "obj8_hor5": {
+      "n_objects": 8,
+      "horizon": 5,
+      "obs_dim": 31,
+      "baseline_loss": 0.12107586115598679,
+      "cg_task_embedding_loss": 0.007323320955038071,
+      "cg_simple_attention_loss": 0.041365861892700195,
+      "task_embedding_improvement_pct": 93.95146077416443,
+      "simple_attention_improvement_pct": 65.83475723587303,
+      "task_embedding_wins": true,
+      "simple_attention_wins": true
+    },
+    "obj8_hor10": {
+      "n_objects": 8,
+      "horizon": 10,
+      "obs_dim": 31,
+      "baseline_loss": 0.09815225005149841,
+      "cg_task_embedding_loss": 0.004724402911961079,
+      "cg_simple_attention_loss": 0.05035356804728508,
+      "task_embedding_improvement_pct": 95.1866585743248,
+      "simple_attention_improvement_pct": 48.698508673142356,
+      "task_embedding_wins": true,
+      "simple_attention_wins": true
+    },
+    "obj8_hor15": {
+      "n_objects": 8,
+      "horizon": 15,
+      "obs_dim": 31,
+      "baseline_loss": 0.0571887344121933,
+      "cg_task_embedding_loss": 0.0028958842158317566,
+      "cg_simple_attention_loss": 0.02324942871928215,
+      "task_embedding_improvement_pct": 94.9362680506979,
+      "simple_attention_improvement_pct": 59.346138783716285,
+      "task_embedding_wins": true,
+      "simple_attention_wins": true
+    },
+    "obj8_hor20": {
+      "n_objects": 8,
+      "horizon": 20,
+      "obs_dim": 31,
+      "baseline_loss": 0.06977920234203339,
+      "cg_task_embedding_loss": 0.0029646554030478,
+      "cg_simple_attention_loss": 0.06665155291557312,
+      "task_embedding_improvement_pct": 95.75137676622315,
+      "simple_attention_improvement_pct": 4.48220862590205,
+      "task_embedding_wins": true,
+      "simple_attention_wins": true
+    },
+    "obj10_hor5": {
+      "n_objects": 10,
+      "horizon": 5,
+      "obs_dim": 37,
+      "baseline_loss": 0.0503622442483902,
+      "cg_task_embedding_loss": 0.006479575764387846,
+      "cg_simple_attention_loss": 0.06553496420383453,
+      "task_embedding_improvement_pct": 87.13406072130124,
+      "simple_attention_improvement_pct": -30.127172015233068,
+      "task_embedding_wins": true,
+      "simple_attention_wins": false
+    },
+    "obj10_hor10": {
+      "n_objects": 10,
+      "horizon": 10,
+      "obs_dim": 37,
+      "baseline_loss": 0.11248482763767242,
+      "cg_task_embedding_loss": 0.005274825729429722,
+      "cg_simple_attention_loss": 0.06461948901414871,
+      "task_embedding_improvement_pct": 95.31063358480613,
+      "simple_attention_improvement_pct": 42.552706554971046,
+      "task_embedding_wins": true,
+      "simple_attention_wins": true
+    },
+    "obj10_hor15": {
+      "n_objects": 10,
+      "horizon": 15,
+      "obs_dim": 37,
+      "baseline_loss": 0.051040105521678925,
+      "cg_task_embedding_loss": 0.004092485178261995,
+      "cg_simple_attention_loss": 0.07597198337316513,
+      "task_embedding_improvement_pct": 91.98182461334501,
+      "simple_attention_improvement_pct": -48.847622074167866,
+      "task_embedding_wins": true,
+      "simple_attention_wins": false
+    },
+    "obj10_hor20": {
+      "n_objects": 10,
+      "horizon": 20,
+      "obs_dim": 37,
+      "baseline_loss": 0.037622030824422836,
+      "cg_task_embedding_loss": 0.003231400391086936,
+      "cg_simple_attention_loss": 0.019607454538345337,
+      "task_embedding_improvement_pct": 91.41088261245794,
+      "simple_attention_improvement_pct": 47.8830512104708,
+      "task_embedding_wins": true,
+      "simple_attention_wins": true
+    }
+  },
+  "config": {
+    "n_objects_list": [
+      3,
+      5,
+      8,
+      10
+    ],
+    "horizon_list": [
+      5,
+      10,
+      15,
+      20
+    ],
+    "n_demos": 200,
+    "epochs": 30,
+    "batch_size": 32,
+    "task_types": [
+      "pick",
+      "place",
+      "push",
+      "stack"
+    ],
+    "n_tasks": 4
+  }
+}
