@@ -1,0 +1,93 @@
+{
+  "experiment": "H1.466-dropout-real-robot",
+  "hypothesis": "Dropout CG architectural robustness generalizes to realistic deployment",
+  "results": {
+    "noise_0.0": {
+      "baseline": 0.0003817197975877207,
+      "cg_standard": 0.00036603629996534437,
+      "cg_dropout": 0.00036150910818832926,
+      "improvements": {
+        "cg_vs_baseline": 4.1086413965134145,
+        "dropout_vs_baseline": 5.2946400807903915,
+        "dropout_vs_standard": 1.236814976395437
+      }
+    },
+    "noise_0.005": {
+      "baseline": 0.0004526872726273723,
+      "cg_standard": 0.0004181282129138708,
+      "cg_dropout": 0.00040725791768636554,
+      "improvements": {
+        "cg_vs_baseline": 7.634201755424354,
+        "dropout_vs_baseline": 10.035483144321077,
+        "dropout_vs_standard": 2.5997516770638036
+      }
+    },
+    "noise_0.01": {
+      "baseline": 0.00041308313666377217,
+      "cg_standard": 0.000373321381630376,
+      "cg_dropout": 0.000353274037479423,
+      "improvements": {
+        "cg_vs_baseline": 9.625605962646727,
+        "dropout_vs_baseline": 14.478707522992066,
+        "dropout_vs_standard": 5.36999623846935
+      }
+    },
+    "noise_0.02": {
+      "baseline": 0.0003544191022228915,
+      "cg_standard": 0.0003591424501792062,
+      "cg_dropout": 0.0003477678619674407,
+      "improvements": {
+        "cg_vs_baseline": -1.3327012925347925,
+        "dropout_vs_baseline": 1.8766596421396935,
+        "dropout_vs_standard": 3.1671522556271974
+      }
+    },
+    "noise_0.05": {
+      "baseline": 0.0003959297828259878,
+      "cg_standard": 0.0003593251094571315,
+      "cg_dropout": 0.00034333678922848776,
+      "improvements": {
+        "cg_vs_baseline": 9.245243716597134,
+        "dropout_vs_baseline": 13.283414352442083,
+        "dropout_vs_standard": 4.449541601141895
+      }
+    }
+  },
+  "summary": [
+    {
+      "noise": "noise_0.0",
+      "dropout_vs_baseline": 5.2946400807903915,
+      "dropout_vs_standard": 1.236814976395437,
+      "cg_wins": true,
+      "dropout_wins": true
+    },
+    {
+      "noise": "noise_0.005",
+      "dropout_vs_baseline": 10.035483144321077,
+      "dropout_vs_standard": 2.5997516770638036,
+      "cg_wins": true,
+      "dropout_wins": true
+    },
+    {
+      "noise": "noise_0.01",
+      "dropout_vs_baseline": 14.478707522992066,
+      "dropout_vs_standard": 5.36999623846935,
+      "cg_wins": true,
+      "dropout_wins": true
+    },
+    {
+      "noise": "noise_0.02",
+      "dropout_vs_baseline": 1.8766596421396935,
+      "dropout_vs_standard": 3.1671522556271974,
+      "cg_wins": false,
+      "dropout_wins": true
+    },
+    {
+      "noise": "noise_0.05",
+      "dropout_vs_baseline": 13.283414352442083,
+      "dropout_vs_standard": 4.449541601141895,
+      "cg_wins": true,
+      "dropout_wins": true
+    }
+  ]
+}
