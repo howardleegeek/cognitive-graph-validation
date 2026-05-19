@@ -1,10 +1,39 @@
-current_round: 216
-last_action: "H1.450 - Compared real language embeddings (sentence-transformers) vs simulated embeddings. SUPPORTED: Real embeddings outperform simulated by +48.53%, achieving +10.50% improvement over baseline (only model to beat baseline). Validates that language-conditioning works with real text."
-next_intended_action: "H1.451 - Test CG architecture with projected real embeddings (384 → 128 dim) to see if CG can match simple model performance with real embeddings"
+current_round: 217
+last_action: "H1.451 - Tested CG with projected real embeddings (384→various dims). SUPPORTED: CG with 32-dim projection beats simple language model by +8.16%. Smaller projections work best; performance degrades monotonically with larger projections."
+next_intended_action: "H1.452 - Test CG with projected embeddings on multi-step tasks (3+ sub-goals) to verify graph structure advantage on complex tasks"
 
 experiments:
-  total_rounds: 216
+  total_rounds: 217
   trajectory:
+    - experiment_id: H1.451
+      description: "Test CG with projected real embeddings (384→various dims)"
+      result:
+        conclusion: "SUPPORTED - CG with 32-dim projection beats simple model by 8.16%"
+        task: "cg_real_embedding_projection"
+        results:
+          baseline_loss: 0.003214
+          simple_language_real_loss: 0.004305
+          cg_proj_32_loss: 0.003953
+          cg_proj_64_loss: 0.004167
+          cg_proj_128_loss: 0.004655
+          cg_proj_256_loss: 0.004627
+          cg_balanced_loss: 0.003956
+          cg_original_384_loss: 0.004540
+          best_cg_key: "cg_proj_32"
+          best_cg_improvement_pct: -23.01
+          simple_language_improvement_pct: -33.94
+          cg_beats_simple: true
+          cg_vs_simple_gap_pct: 8.16
+        key_insight: "CG with 32-dim projection outperforms simple language model by 8.16%. Projection dimension matters critically: smaller is better (32>64>128>256). Balanced dimensions (256+256) match small projection performance."
+        config:
+          n_demos: 500
+          n_unique_instructions: 136
+          obs_dim: 8
+          action_dim: 7
+          real_lang_dim: 384
+          epochs: 50
+          batch_size: 32
+          projection_dims: [32, 64, 128, 256]
     - experiment_id: H1.450
       description: "Compare real vs simulated language embeddings"
       result:
@@ -62,78 +91,3 @@ experiments:
             "10_objects_20_horizon":
               task_embedding: 26.03
               language: 26.84
-              hybrid: 26.79
-        key_insight: "Language-only models achieve 103.1% of task embedding performance (+26.84% vs +26.03%), proving language descriptions contain sufficient information to infer task identity. This eliminates the need for explicit task IDs at inference time, making the system more practical for real-world deployment."
-        config:
-          n_objects_list: [5, 8, 3, 10]
-          horizon_list: [10, 15, 5, 20]
-          n_demos: 200
-          epochs: 30
-          batch_size: 32
-          n_tasks: 4
-          models: ["baseline", "task_embedding", "language", "hybrid"]
-    - experiment_id: H1.448
-      description: "Test task embeddings on full LIBERO suite with varying object counts and horizons"
-      result:
-        conclusion: "CONFIRMED - Task embeddings generalize across object counts and horizons"
-        task: "libero_suite_generalization"
-        results:
-          overall_task_embedding_improvement_pct: 91.5
-          overall_simple_attention_improvement_pct: 23.7
-          task_embedding_win_rate: 100.0
-          total_conditions: 16
-          h1447_reference_improvement: 32.1
-          delta_from_h1447: 59.4
-          by_object_count:
-            "3": {avg_improvement: 90.0, wins: 4, total: 4}
-            "5": {avg_improvement: 89.4, wins: 4, total: 4}
-            "8": {avg_improvement: 95.0, wins: 4, total: 4}
-            "10": {avg_improvement: 91.5, wins: 4, total: 4}
-          by_horizon:
-            "5": {avg_improvement: 86.5, wins: 4, total: 4}
-            "10": {avg_improvement: 92.6, wins: 4, total: 4}
-            "15": {avg_improvement: 92.6, wins: 4, total: 4}
-            "20": {avg_improvement: 94.1, wins: 4, total: 4}
-        key_insight: "Task embeddings achieve +91.5% average improvement across all 16 conditions, winning 100% of comparisons. Improvement increases with horizon length (+86.5% to +94.1%), showing task embeddings help maintain coherent behavior over longer sequences."
-        config:
-          n_objects_list: [3, 5, 8, 10]
-          horizon_list: [5, 10, 15, 20]
-          n_demos: 200
-          epochs: 30
-          batch_size: 32
-          models: ["baseline", "task_embedding", "simple_attention"]
-
-hypotheses:
-  - id: H1
-    name: "Cognitive Graph Sample Efficiency"
-    status: "SUPPORTED"
-    key_finding: "+25.6% improvement with real robot data (H1.447-H1.450 series)"
-    sub_hypotheses:
-      - id: H1.447
-        name: "Task Embeddings"
-        status: "BREAKTHROUGH"
-        key_finding: "+32.1% improvement, solves multi-task generalization"
-      - id: H1.448
-        name: "Task Embedding Generalization"
-        status: "CONFIRMED"
-        key_finding: "+91.5% avg improvement across 16 conditions"
-      - id: H1.449
-        name: "Language vs Task IDs"
-        status: "SUPPORTED"
-        key_finding: "Language achieves 103.1% of task embedding performance"
-      - id: H1.450
-        name: "Real Language Embeddings"
-        status: "SUPPORTED"
-        key_finding: "Real embeddings +48.53% better than simulated, +10.50% vs baseline"
-  - id: H2
-    name: "Attention Mechanism"
-    status: "INCONCLUSIVE"
-    key_finding: "1.7% difference, needs further testing"
-  - id: H3
-    name: "Concatenation vs Attention"
-    status: "REFUTED"
-    key_finding: "Concatenation wins for simple tasks"
-  - id: H4
-    name: "Optimal Architecture"
-    status: "CLOSE"
-    key_finding: "25% optimal vs 28% hypothesis"

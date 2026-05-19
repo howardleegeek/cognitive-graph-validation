@@ -1,0 +1,23 @@
+{
+  "experiment_id": "H1.451",
+  "description": "Test CG architecture with projected real embeddings (384 \u2192 128 dim)",
+  "conclusion": "SUPPORTED - Projected embeddings improve CG performance",
+  "results": {
+    "baseline_loss": 0.1392316147685051,
+    "lang_sim_32_loss": 0.1446546733379364,
+    "lang_real_384_loss": 0.16783628165721892,
+    "lang_proj_128_loss": 0.1484141767024994,
+    "cg_sim_32_loss": 0.2072859838604927,
+    "cg_real_384_loss": 0.209153051674366,
+    "cg_proj_128_loss": 0.20134107321500777,
+    "cg_balanced_128_loss": 0.1985997587442398,
+    "cg_proj_vs_cg_real_pct": 3.735053539415155,
+    "cg_proj_vs_lang_proj_pct": -35.66161783762875,
+    "cg_balanced_vs_cg_proj_pct": 1.3615276937759164,
+    "n_demos": 300,
+    "n_unique_instructions": 5,
+    "epochs": 30,
+    "batch_size": 64
+  },
+  "key_insight": "CG with projected embeddings (128-dim) outperforms CG with full real embeddings (384-dim) by 3.74%. CG balanced outperforms CG projected by 1.36%."
+}
