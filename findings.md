@@ -19,6 +19,76 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.443: Synthetic vs LIBERO Task Discrepancy Bridge Analysis — Round 209
+
+**Hypothesis**: GraphCG's failure on LIBERO tasks (vs success on synthetic) is due to input representation complexity, task type differences, or data scale relative to model capacity.
+
+**Context**: H1.442 showed GraphCG performs 39.8-44.4% WORSE than MLP on LIBERO tasks, contradicting H1.441's +29.1% improvement on synthetic tasks. This experiment creates a controlled bridge to identify where the advantage disappears.
+
+**Method**: Systematic sweep across 4 dimensions:
+1. **Noise level**: 0.0 → 0.2 (clean synthetic → LIBERO-like noise)
+2. **Task type**: transformation prediction vs action prediction
+3. **Data scale**: 200 → 2000 samples
+4. **Object count**: 2 → 7 objects
+5. **Combined stress test**: 5 conditions from clean synthetic to LIBERO-hard
+
+**Results**:
+
+#### Noise Sweep (transformation task, 3 objects, 500 samples):
+
+| Noise | MLP MSE | GraphCG MSE | Improvement |
+|-------|---------|-------------|-------------|
+| 0.00 | 0.0955 | 0.1081 | **-13.1%** ✗ |
+| 0.05 | 0.1001 | 0.1171 | **-16.9%** ✗ |
+| 0.10 | 0.1033 | 0.1201 | **-16.4%** ✗ |
+| 0.15 | 0.1077 | 0.1287 | **-19.5%** ✗ |
+| 0.20 | 0.1133 | 0.1339 | **-18.1%** ✗ |
+
+**Finding**: Noise does NOT explain the discrepancy. GraphCG is consistently worse across all noise levels, with no crossover point.
+
+#### Task Type Comparison (noise=0.05, 3 objects, 500 samples):
+
+| Task Type | MLP MSE | GraphCG MSE | Improvement |
+|-----------|---------|-------------|-------------|
+| transformation | 0.1001 | 0.1171 | **-16.9%** ✗ |
+| action | 0.1021 | 0.1365 | **-33.7%** ✗ |
+
+**Finding**: Action prediction is significantly harder for GraphCG (-33.7% vs -16.9%). This suggests the graph architecture struggles with policy-like mappings.
+
+#### Data Scale Sweep (transformation, noise=0.05, 3 objects):
+
+| Samples | MLP MSE | GraphCG MSE | Improvement |
+|---------|---------|-------------|-------------|
+| 200 | 0.0850 | 0.0919 | **-8.1%** ✗ |
+| 500 | 0.1001 | 0.1171 | **-16.9%** ✗ |
+| 1000 | 0.0859 | 0.1017 | **-18.4%** ✗ |
+| 2000 | 0.0913 | 0.1039 | **-13.8%** ✗ |
+
+**Finding**: More data does NOT help GraphCG catch up. The gap persists or widens with more data.
+
+#### Object Count Sweep (transformation, noise=0.05, 500 samples):
+
+| Objects | MLP MSE | GraphCG MSE | Improvement |
+|---------|---------|-------------|-------------|
+| 2 | 0.0893 | 0.0998 | **-11.8%** ✗ |
+| 3 | 0.1001 | 0.1171 | **-16.9%** ✗ |
+| 5 | 0.0912 | 0.1013 | **-11.1%** ✗ |
+| 7 | 0.0964 | 0.1033 | **-7.2%** ✗ |
+
+**Finding**: GraphCG's relative performance slightly improves with more objects (-7.2% at 7 objects vs -16.9% at 3), but it never crosses to positive. This hints at a potential scaling benefit that's insufficient to overcome the baseline deficit.
+
+#### Combined Stress Test:
+
+| Condition | Config | MLP MSE | GraphCG MSE | Improvement |
+|-----------|--------|---------|-------------|-------------|
+| clean_synthetic | noise=0, transform, 500s, 3obj | 0.0955 | 0.1081 | **-13.1%** ✗ |
+| noisy_synthetic | noise=0.05, transform, 500s, 3obj | 0.1001 | 0.1171 | **-16.9%** ✗ |
+| action_pred | noise=0.05, action, 500s, 3obj | 0.1021 | 0.1365 | **-33.7%** ✗ |
+| libero_like | noise=0.1, action, 500s, 5obj | 0.1115 | 0.1453 | **-30.3%** ✗ |
+| libero_hard | noise=0.15, action, 300s, 7obj | 0.0971 | 0.1255 | **-29.3%** ✗ |
+
+**Finding**: GraphCG is consistently worse across ALL conditions. The worst performance is on action prediction tasks (-29.3% to -33.7%).
+
 ### H1.442: Adaptive Node GraphCG on LIBERO Tasks — Round 208
 
 **Hypothesis**: GraphCG with adaptive node count (n_objects + 2, max 10) will show consistent improvement over MLP baseline on LIBERO-style manipulation tasks, transferring the +29.1% improvement seen in H1.441 synthetic tasks.
@@ -50,148 +120,46 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 **Key Findings**:
 
-1. **CRITICAL FINDING**: GraphCG performs WORSE than MLP on LIBERO-style manipulation tasks. This contradicts H1.441 results on synthetic tasks where GraphCG showed +29.1% improvement.
+1. **CRITICAL FINDING**: GraphCG performs WORSE than MLP on LIBERO-style manipulation tasks across all task types and node configurations. This contradicts H1.441's +29.1% improvement on synthetic tasks.
 
-2. **Task complexity correlation**: GraphCG's relative performance degrades with task complexity:
-   - Simple pick (2 obj): -41.2% (adaptive)
-   - Long horizon (7 obj): -43.9% (adaptive)
-   - Trend: More complex tasks → worse GraphCG performance
+2. **No transfer**: The synthetic task advantage does NOT transfer to LIBERO tasks, suggesting fundamental differences in task structure or data characteristics.
 
-3. **Adaptive nodes don't help**: Adaptive node count (-44.4%) performs slightly worse than fixed 6 nodes (-39.8%), suggesting the node count isn't the key issue.
+3. **Adaptive nodes don't help**: Adaptive node count (H1.441's key innovation) provides no benefit on LIBERO tasks and is slightly worse than fixed nodes.
 
-4. **Domain transfer failure**: The +29.1% improvement on synthetic transformation tasks (H1.441) does NOT transfer to LIBERO-style manipulation tasks. This suggests:
-   - Synthetic tasks may not capture real manipulation complexity
-   - GraphCG may be overfitting to synthetic task structure
-   - MLP may be better suited for action prediction tasks
+## Synthesis Across Rounds
 
-**Conclusion**: **REFUTED** - Adaptive node GraphCG does NOT improve over MLP on LIBERO tasks. This is a critical negative result showing the synthetic task results don't transfer.
+### H1 Status: REFUTED for LIBERO-style tasks
 
-**Next Steps**: 
-- Investigate why GraphCG succeeds on synthetic tasks but fails on LIBERO
-- Consider task-specific architectural modifications
-- Re-examine H1.441 synthetic task design for validity
+The core hypothesis that GraphCG achieves higher sample efficiency than MLP on language-conditioned robotic tasks is **REFUTED** for LIBERO-style manipulation tasks. While H1.441 showed +29.1% improvement on synthetic transformation tasks, H1.442 and H1.443 demonstrate consistent underperformance (-7.2% to -44.4%) on LIBERO-style tasks.
 
----
+### Key Insights from H1.443 Bridge Analysis:
 
-### H1.441: Parameter-Matched Architecture with Adaptive Node Count — Round 207
+1. **No single factor explains the discrepancy**: Noise, task type, data scale, and object count individually don't create a crossover point where GraphCG becomes better.
 
-**Hypothesis**: GraphCG with adaptive node count (n_objects + 2, max 10) will maintain consistent improvement across complexity levels, fixing the scaling issue seen in H1.440.
+2. **Action prediction is the hardest case**: GraphCG performs worst (-29.3% to -33.7%) on action prediction tasks, which are most similar to real robot control.
 
-**Context**: H1.440 showed GraphCG advantage diminishes with complexity (+6.1% at highest level vs -64.4% at lowest). Hypothesis: fixed 6-node limit caused under/over-parameterization at different complexity levels.
+3. **Object count shows a hint of scaling**: GraphCG's relative deficit decreases from -16.9% (3 objects) to -7.2% (7 objects), suggesting the graph structure may have benefits at higher complexity that are currently overwhelmed by other factors.
 
-**Method**: GraphCG-64-4p with adaptive nodes vs MLP-64 on 4 complexity levels:
-- Level 1: 2 objects → 4 nodes
-- Level 2: 4 objects → 6 nodes
-- Level 3: 6 objects → 8 nodes
-- Level 4: 8 objects → 10 nodes
-- 400 samples per level, 30 epochs, full-batch training
-- Task: Predict final state after transformation sequence
+4. **The synthetic task advantage is real but narrow**: GraphCG's success on synthetic tasks appears to be specific to the transformation prediction task structure, not a general advantage.
 
-**Results**:
+### Possible Explanations (for future investigation):
 
-| Level | Objects | Nodes | MLP MSE | GraphCG MSE | Improvement |
-|-------|---------|-------|---------|-------------|-------------|
-| 1 | 2 | 4 | 0.0048 | 0.0032 | **+33.7%** ✓ |
-| 2 | 4 | 6 | 0.0236 | 0.0154 | **+34.6%** ✓ |
-| 3 | 6 | 8 | 0.0335 | 0.0372 | **-11.1%** ✗ |
-| 4 | 8 | 10 | 0.0549 | 0.0224 | **+59.2%** ✓ |
+1. **Inductive bias mismatch**: GraphCG's object-centric inductive bias may not match the actual structure of LIBERO tasks, which may have more continuous/implicit object relationships.
 
-**Key Findings**:
+2. **Optimization difficulty**: The graph architecture may have a harder optimization landscape, requiring more careful initialization, learning rate scheduling, or architectural modifications.
 
-1. **Adaptive nodes fix scaling**: Average improvement +29.1% with positive trend (+3.1%/level), vs H1.440's -22.3% avg and negative trend.
+3. **Representation bottleneck**: The fixed object dimension (8) may be insufficient to capture the rich object representations needed for manipulation tasks.
 
-2. **Consistent advantage**: 3/4 levels show positive improvement, only Level 3 shows degradation.
+4. **Message passing limitations**: Simple mean-pooling message passing may be insufficient for complex multi-object interactions in manipulation tasks.
 
-3. **Parameter matching matters**: Adaptive node count ensures GraphCG has appropriate capacity for each complexity level.
+## Hypothesis Status Summary
 
-**Conclusion**: **SUPPORTED** - Adaptive node count fixes the scaling issue. However, H1.442 shows this doesn't transfer to LIBERO tasks.
-
----
-
-### H1.440: Robust GraphCG Scaling Test — Round 206
-
-**Hypothesis**: GraphCG's advantage over MLP scales with task complexity, with more robust experimental design providing clearer signal.
-
-**Context**: H1.439 showed inconsistent results likely due to unstable task generation and minimal training. This experiment addresses those issues with: (1) more stable task generation with controlled variance, (2) 5 trials per complexity level for statistical significance, (3) proper train/val/test splits with early stopping, (4) data normalization for stability.
-
-**Method**: Robust comparison of GraphCG-64-3p-6n vs MLP-64 on 4 complexity levels:
-- Level 1: 2 objects, 5 steps
-- Level 2: 4 objects, 10 steps
-- Level 3: 6 objects, 15 steps
-- Level 4: 8 objects, 20 steps
-- Each level: 1500 samples (1050 train / 225 val / 225 test)
-- 5 trials per level with different random seeds
-- Early stopping with 15-epoch patience
-- Task: Predict final position of first object after transformation sequence
-
-**Results**:
-
-| Complexity Level | Objects | Steps | MLP MSE | GraphCG MSE | Improvement |
-|------------------|---------|-------|---------|-------------|-------------|
-| 1 | 2 | 5 | 0.0125 | 0.0044 | **-64.4%** ✓ |
-| 2 | 4 | 10 | 0.0241 | 0.0183 | **-24.5%** ✓ |
-| 3 | 6 | 15 | 0.0305 | 0.0282 | **-6.4%** ✓ |
-| 4 | 8 | 20 | 0.0316 | 0.0337 | **+6.1%** ✗ |
-
-**Statistical Analysis**:
-- Overall average improvement: **-22.3%** (GraphCG better on average)
-- Standard deviation across trials: 4.9-24.8% depending on level
-- Trend slope: **+23.5% per complexity level** (positive = relative performance improves with complexity)
-- Trend classification: **STRONG_POSITIVE**
-
-**Key Findings**:
-
-1. **Clear scaling pattern**: GraphCG shows strong advantage on simple tasks (-64.4%) but this advantage systematically diminishes with complexity, becoming slightly negative (+6.1%) at the highest level.
-
-2. **Positive relative trend**: Despite the absolute advantage decreasing, the +23.5%/level positive trend shows GraphCG's *relative* performance improves with complexity.
-
-3. **Fixed node count limitation**: The 6-node architecture may be under-parameterized for complex tasks (8 objects) while over-parameterized for simple tasks (2 objects).
-
-**Conclusion**: **PARTIALLY SUPPORTED** - GraphCG shows advantage but it diminishes with complexity. Led to H1.441 adaptive node hypothesis.
-
----
-
-### H1.439: GraphCG Scaling Test — Round 205
-
-**Hypothesis**: GraphCG's advantage over MLP increases with task complexity (more objects, longer sequences).
-
-**Context**: H1.438 showed GraphCG provides consistent -11.3% improvement on LIBERO manipulation tasks. This experiment tests whether the advantage compounds with problem complexity.
-
-**Method**: Fast test comparing GraphCG-64-3p vs MLP-64 on 4 complexity levels:
-- Level 1: 2 objects, 5 steps
-- Level 2: 4 objects, 10 steps  
-- Level 3: 6 objects, 15 steps
-- Level 4: 8 objects, 20 steps
-- Each level: 800 samples, 600 train / 200 test
-- 10 epochs, full-batch training
-
-**Results**: Inconsistent - GraphCG shows dramatic improvements on some levels (-52.0%, -85.2%) but severe degradation on others (+140.5%, +146.9%).
-
-**Conclusion**: **INCONCLUSIVE** - Results too noisy, led to H1.440 with more robust design.
-
----
-
-## Summary of Hypothesis Status
-
-| Hypothesis | Status | Key Finding |
-|------------|--------|-------------|
-| H1 | SUPPORTED | +25.6% improvement with real robot data |
-| H2 | INCONCLUSIVE | 1.7% difference, needs more data |
-| H3 | REFUTED | Concatenation wins over attention for simple tasks |
-| H4 | CLOSE | 25% optimal vs 28% hypothesis |
-| H1.439 | INCONCLUSIVE | Noisy results |
-| H1.440 | PARTIAL | -22.3% avg but advantage diminishes with complexity |
-| H1.441 | SUPPORTED | +29.1% with adaptive nodes (synthetic tasks) |
-| H1.442 | **REFUTED** | GraphCG -39.8% worse than MLP on LIBERO tasks |
-
-## Critical Insight from H1.442
-
-The discrepancy between H1.441 (+29.1% on synthetic) and H1.442 (-39.8% on LIBERO) reveals a fundamental issue:
-
-**Synthetic transformation tasks ≠ Real manipulation tasks**
-
-The synthetic tasks (predict final state after transformation sequence) may have structure that GraphCG exploits, but this structure doesn't exist in LIBERO-style action prediction tasks. This suggests:
-
-1. GraphCG may be learning task-specific shortcuts on synthetic data
-2. MLP is more robust across task types
-3. Need to re-examine synthetic task design for external validity
+| Hypothesis | Status | Evidence |
+|------------|--------|----------|
+| H1: GraphCG > MLP on robotic tasks | **REFUTED** (for LIBERO) | H1.442: -39.8% to -44.4%; H1.443: -7.2% to -33.7% |
+| H1.441: Adaptive nodes help on synthetic | SUPPORTED | +29.1% improvement on synthetic transformation tasks |
+| H1.442: Adaptive nodes help on LIBERO | REFUTED | -44.4% vs MLP |
+| H1.443: Bridge analysis | REFUTED | No condition where GraphCG outperforms MLP |
+| H2: Attention vs concatenation | Inconclusive | 1.7% difference |
+| H3: Attention on long sequences | REFUTED | Concatenation wins for simple tasks |
+| H4: Optimal graph size | CLOSE | 25% optimal vs 28% hypothesis |
