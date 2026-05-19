@@ -1,0 +1,161 @@
+{
+  "experiment_id": "H1.445",
+  "description": "Test combined GraphCG on full LIBERO task suite",
+  "config": {
+    "task_types": [
+      "pick",
+      "place",
+      "push",
+      "stack"
+    ],
+    "object_counts": [
+      2,
+      3,
+      5,
+      7
+    ],
+    "n_samples": 500,
+    "epochs": 50,
+    "batch_size": 64,
+    "n_trials": 2,
+    "noise": 0.05
+  },
+  "results": [
+    {
+      "task_type": "pick",
+      "n_objects": 2,
+      "mlp_mse": 0.017521355766803026,
+      "graphcg_mse": 0.024811475537717342,
+      "improvement_pct": -41.60705294693347,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "pick",
+      "n_objects": 3,
+      "mlp_mse": 0.018803622107952833,
+      "graphcg_mse": 0.02298053866252303,
+      "improvement_pct": -22.21336150338613,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "pick",
+      "n_objects": 5,
+      "mlp_mse": 0.01770326728001237,
+      "graphcg_mse": 0.023970969021320343,
+      "improvement_pct": -35.40420896420875,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "pick",
+      "n_objects": 7,
+      "mlp_mse": 0.017939442303031683,
+      "graphcg_mse": 0.02330726431682706,
+      "improvement_pct": -29.921900152315427,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "place",
+      "n_objects": 2,
+      "mlp_mse": 0.016982348170131445,
+      "graphcg_mse": 0.02243659645318985,
+      "improvement_pct": -32.11716205802056,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "place",
+      "n_objects": 3,
+      "mlp_mse": 0.018166506197303534,
+      "graphcg_mse": 0.024959204252809286,
+      "improvement_pct": -37.39132875485985,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "place",
+      "n_objects": 5,
+      "mlp_mse": 0.01789363520219922,
+      "graphcg_mse": 0.023010694421827793,
+      "improvement_pct": -28.597091433939926,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "place",
+      "n_objects": 7,
+      "mlp_mse": 0.018013532739132643,
+      "graphcg_mse": 0.024340409319847822,
+      "improvement_pct": -35.122908273126555,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "push",
+      "n_objects": 2,
+      "mlp_mse": 0.01860822318121791,
+      "graphcg_mse": 0.022457909304648638,
+      "improvement_pct": -20.68809088294032,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "push",
+      "n_objects": 3,
+      "mlp_mse": 0.017896463628858328,
+      "graphcg_mse": 0.024871157482266426,
+      "improvement_pct": -38.972469634510894,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "push",
+      "n_objects": 5,
+      "mlp_mse": 0.01767765311524272,
+      "graphcg_mse": 0.022913773078471422,
+      "improvement_pct": -29.61999496818845,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "push",
+      "n_objects": 7,
+      "mlp_mse": 0.017546863295137882,
+      "graphcg_mse": 0.02317860210314393,
+      "improvement_pct": -32.09541621929981,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "stack",
+      "n_objects": 2,
+      "mlp_mse": 0.01711274031549692,
+      "graphcg_mse": 0.023245480377227068,
+      "improvement_pct": -35.83727648912239,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "stack",
+      "n_objects": 3,
+      "mlp_mse": 0.017300703329965472,
+      "graphcg_mse": 0.0236874814145267,
+      "improvement_pct": -36.9162915677485,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "stack",
+      "n_objects": 5,
+      "mlp_mse": 0.017312066163867712,
+      "graphcg_mse": 0.02355854632332921,
+      "improvement_pct": -36.08165599839623,
+      "graphcg_wins": false
+    },
+    {
+      "task_type": "stack",
+      "n_objects": 7,
+      "mlp_mse": 0.0180443343706429,
+      "graphcg_mse": 0.023501998279243708,
+      "improvement_pct": -30.24585887457347,
+      "graphcg_wins": false
+    }
+  ],
+  "summary": {
+    "overall_mlp_mse": 0.017782672322937287,
+    "overall_graphcg_mse": 0.023577006271807477,
+    "overall_improvement_pct": -32.58415745194982,
+    "wins": 0,
+    "total": 16,
+    "win_rate_pct": 0.0
+  }
+}
