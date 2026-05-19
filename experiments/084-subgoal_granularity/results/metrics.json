@@ -1,0 +1,48 @@
+{
+  "experiment_id": "H1.454",
+  "description": "Test varying numbers of sub-goals (2/3/5/7) to find optimal granularity",
+  "results": {
+    "2": {
+      "baseline_loss": 0.012557,
+      "cg_explicit_loss": 0.012777,
+      "improvement_pct": -1.75,
+      "cg_wins": false
+    },
+    "3": {
+      "baseline_loss": 0.015885,
+      "cg_explicit_loss": 0.01556,
+      "improvement_pct": 2.05,
+      "cg_wins": true
+    },
+    "5": {
+      "baseline_loss": 0.014455,
+      "cg_explicit_loss": 0.014263,
+      "improvement_pct": 1.32,
+      "cg_wins": true
+    },
+    "7": {
+      "baseline_loss": 0.014129,
+      "cg_explicit_loss": 0.01481,
+      "improvement_pct": -4.82,
+      "cg_wins": false
+    }
+  },
+  "optimal_sub_goals": 3,
+  "best_improvement_pct": 2.05,
+  "config": {
+    "n_demos": 500,
+    "n_steps_per_goal": 3,
+    "sub_goal_configs": [
+      2,
+      3,
+      5,
+      7
+    ],
+    "obs_dim": 8,
+    "action_dim": 7,
+    "lang_dim": 384,
+    "epochs": 50,
+    "batch_size": 32
+  },
+  "conclusion": "Optimal sub-goal granularity is 3 sub-goals with +2.05% improvement over baseline."
+}

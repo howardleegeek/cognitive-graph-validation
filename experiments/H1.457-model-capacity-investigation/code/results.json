@@ -1,0 +1,111 @@
+{
+  "capacity_experiments": {
+    "hidden_128": {
+      "baseline_loss": 0.09614761266857386,
+      "cg_loss": 0.11540821753442287,
+      "improvement_pct": -20.032327721169104,
+      "cg_wins": false
+    },
+    "hidden_256": {
+      "baseline_loss": 0.0901042278856039,
+      "cg_loss": 0.10390051826834679,
+      "improvement_pct": -15.311479501559702,
+      "cg_wins": false
+    },
+    "hidden_512": {
+      "baseline_loss": 0.09242682717740536,
+      "cg_loss": 0.10076135210692883,
+      "improvement_pct": -9.017430527530781,
+      "cg_wins": false
+    },
+    "hidden_1024": {
+      "baseline_loss": 0.08613623306155205,
+      "cg_loss": 0.10513714142143726,
+      "improvement_pct": -22.059135493314834,
+      "cg_wins": false
+    },
+    "layers_1": {
+      "baseline_loss": 0.09015345480293036,
+      "cg_loss": 0.10663183778524399,
+      "improvement_pct": -18.278149204968702,
+      "cg_wins": false
+    },
+    "layers_2": {
+      "baseline_loss": 0.08919550850987434,
+      "cg_loss": 0.10798577778041363,
+      "improvement_pct": -21.06638505060949,
+      "cg_wins": false
+    },
+    "layers_3": {
+      "baseline_loss": 0.08898204378783703,
+      "cg_loss": 0.1138888280838728,
+      "improvement_pct": -27.990798183307497,
+      "cg_wins": false
+    },
+    "layers_5": {
+      "baseline_loss": 0.09215681441128254,
+      "cg_loss": 0.10308821871876717,
+      "improvement_pct": -11.861742810140278,
+      "cg_wins": false
+    },
+    "layers_8": {
+      "baseline_loss": 0.08672679588198662,
+      "cg_loss": 0.1052734013646841,
+      "improvement_pct": -21.385092455087072,
+      "cg_wins": false
+    },
+    "heads_1": {
+      "baseline_loss": 0.08985270000994205,
+      "cg_loss": 0.10189820174127817,
+      "improvement_pct": -13.405831688979076,
+      "cg_wins": false
+    },
+    "heads_2": {
+      "baseline_loss": 0.09078881703317165,
+      "cg_loss": 0.11023699678480625,
+      "improvement_pct": -21.421338428199572,
+      "cg_wins": false
+    },
+    "heads_4": {
+      "baseline_loss": 0.0884972857311368,
+      "cg_loss": 0.11631161905825138,
+      "improvement_pct": -31.4295891645956,
+      "cg_wins": false
+    },
+    "heads_8": {
+      "baseline_loss": 0.08669061027467251,
+      "cg_loss": 0.11080985330045223,
+      "improvement_pct": -27.822209290440757,
+      "cg_wins": false
+    }
+  },
+  "complexity_experiments": {
+    "complexity_simple": {
+      "baseline_loss": 0.014641337438727794,
+      "cg_loss": 0.032276758344769035,
+      "improvement_pct": -120.44952163587048,
+      "cg_wins": false
+    },
+    "complexity_medium": {
+      "baseline_loss": 0.09027307387441397,
+      "cg_loss": 0.10961455665528774,
+      "improvement_pct": -21.425528068071824,
+      "cg_wins": false
+    },
+    "complexity_complex": {
+      "baseline_loss": 0.23241231590509415,
+      "cg_loss": 0.2348531112074852,
+      "improvement_pct": -1.0502004994381424,
+      "cg_wins": false
+    }
+  },
+  "summary": {
+    "avg_improvement": -25.250422482705183,
+    "max_improvement": -1.0502004994381424,
+    "min_improvement": -120.44952163587048,
+    "cg_wins_count": 0,
+    "total_experiments": 16
+  },
+  "conclusion": "Model capacity/data complexity do NOT explain H1.453 discrepancy",
+  "timestamp": "2026-05-19T13:46:54.898200"
+}

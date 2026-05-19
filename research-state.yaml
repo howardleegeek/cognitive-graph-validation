@@ -1,10 +1,111 @@
-current_round: 222
-last_action: "H1.456 - Investigated why H1.453 showed massive gains (+82.81%) while subsequent experiments show marginal/negative results. Found H1.453 NOT reproducible with current setup (-0.71% vs +82.81%)."
-next_intended_action: "H1.457 - Investigate potential differences in data generation or model architecture that could explain the H1.453 discrepancy. Focus on data pattern complexity and model capacity."
+current_round: 223
+last_action: "H1.457 - Tested model capacity (hidden dims 128-1024, GNN layers 1-8, attention heads 1-8) and data complexity (simple/medium/complex). CG consistently underperforms baseline across ALL 16 configurations (avg -25.25%, best -1.05%, worst -120.45%). Model capacity/complexity do NOT explain H1.453 discrepancy."
+next_intended_action: "H1.458 - Investigate fundamental architecture flaws. Test whether CG's GNN message passing and attention mechanisms are appropriate for this task. Compare against simpler fusion baselines (concatenation, bilinear). Consider if unified representation space is actually beneficial."
 
 experiments:
-  total_rounds: 222
+  total_rounds: 223
   trajectory:
+    - experiment_id: H1.457
+      description: "Test whether model capacity and data complexity explain H1.453 discrepancy"
+      result:
+        conclusion: "Model capacity and data complexity do NOT explain H1.453 discrepancy. CG consistently underperforms baseline across ALL configurations."
+        task: "model_capacity_complexity_investigation"
+        results:
+          hidden_128:
+            baseline_loss: 0.096148
+            cg_loss: 0.115408
+            improvement_pct: -20.03
+            cg_wins: false
+          hidden_256:
+            baseline_loss: 0.090104
+            cg_loss: 0.103901
+            improvement_pct: -15.31
+            cg_wins: false
+          hidden_512:
+            baseline_loss: 0.092427
+            cg_loss: 0.100761
+            improvement_pct: -9.02
+            cg_wins: false
+          hidden_1024:
+            baseline_loss: 0.086136
+            cg_loss: 0.105137
+            improvement_pct: -22.06
+            cg_wins: false
+          layers_1:
+            baseline_loss: 0.090153
+            cg_loss: 0.106632
+            improvement_pct: -18.28
+            cg_wins: false
+          layers_2:
+            baseline_loss: 0.089196
+            cg_loss: 0.107986
+            improvement_pct: -21.07
+            cg_wins: false
+          layers_3:
+            baseline_loss: 0.088982
+            cg_loss: 0.113889
+            improvement_pct: -27.99
+            cg_wins: false
+          layers_5:
+            baseline_loss: 0.092157
+            cg_loss: 0.103088
+            improvement_pct: -11.86
+            cg_wins: false
+          layers_8:
+            baseline_loss: 0.086727
+            cg_loss: 0.105273
+            improvement_pct: -21.39
+            cg_wins: false
+          heads_1:
+            baseline_loss: 0.089853
+            cg_loss: 0.101898
+            improvement_pct: -13.41
+            cg_wins: false
+          heads_2:
+            baseline_loss: 0.090789
+            cg_loss: 0.110237
+            improvement_pct: -21.42
+            cg_wins: false
+          heads_4:
+            baseline_loss: 0.088497
+            cg_loss: 0.116312
+            improvement_pct: -31.43
+            cg_wins: false
+          heads_8:
+            baseline_loss: 0.086691
+            cg_loss: 0.110810
+            improvement_pct: -27.82
+            cg_wins: false
+          complexity_simple:
+            baseline_loss: 0.014641
+            cg_loss: 0.032277
+            improvement_pct: -120.45
+            cg_wins: false
+          complexity_medium:
+            baseline_loss: 0.090273
+            cg_loss: 0.109615
+            improvement_pct: -21.43
+            cg_wins: false
+          complexity_complex:
+            baseline_loss: 0.232412
+            cg_loss: 0.234853
+            improvement_pct: -1.05
+            cg_wins: false
+          summary:
+            avg_improvement_pct: -25.25
+            max_improvement_pct: -1.05
+            min_improvement_pct: -120.45
+            cg_wins_count: 0
+            total_experiments: 16
+        key_insight: "CG architecture shows consistent disadvantage across ALL 16 configurations. Simple data is worst (-120%), complex data is best (-1%). More layers/heads = worse performance. This suggests fundamental architecture issues, not capacity/complexity problems."
+        config:
+          hidden_dims: [128, 256, 512, 1024]
+          n_layers: [1, 2, 3, 5, 8]
+          n_heads: [1, 2, 4, 8]
+          complexities: ["simple", "medium", "complex"]
+          n_demos: 500
+          epochs: 50
+          seed: 42
     - experiment_id: H1.456
       description: "Investigate why H1.453 showed massive gains while subsequent experiments show marginal/negative results"
       result:
@@ -52,98 +153,25 @@ experiments:
           projection_dim: 32
           epochs: [20, 50]
           seeds: [42, 123, 999]
-    - experiment_id: H1.455
-      description: "Test whether optimal 3 sub-goals generalize across task complexities"
-      result:
-        conclusion: "REFUTED - 3 sub-goals do not generalize across task complexities"
-        task: "subgoal_generalization"
-        results:
-          steps_2:
-            baseline_loss: 1.027120
-            cg_loss: 1.028928
-            improvement_pct: -0.18
-            cg_wins: false
-          steps_3:
-            baseline_loss: 1.019063
-            cg_loss: 1.020090
-            improvement_pct: -0.10
-            cg_wins: false
-          steps_5:
-            baseline_loss: 0.978149
-            cg_loss: 0.999314
-            improvement_pct: -2.16
-            cg_wins: false
-          avg_improvement_pct: -0.81
-          all_cg_wins: false
-        key_insight: "Generalization failure: optimal 3 sub-goals from H1.454 does NOT transfer to different task complexities. CG loses at all tested levels (2/3/5 steps per sub-goal). Task-dependent optimality confirmed."
-        config:
-          n_demos: 150
-          n_sub_goals: 3
-          steps_per_goal_configs: [2, 3, 5]
-          obs_dim: 8
-          action_dim: 7
-          lang_dim: 384
-          epochs: 20
-          batch_size: 32
-    - experiment_id: H1.454
-      description: "Test varying numbers of sub-goals (2/3/5/7) to find optimal granularity"
-      result:
-        conclusion: "SUPPORTED with nuance - 3 sub-goals optimal, inverted-U pattern"
-        task: "subgoal_granularity_sweep"
-        results:
-          n_sub_goals_2:
-            baseline_loss: 0.012557
-            cg_explicit_loss: 0.012777
-            improvement_pct: -1.75
-            cg_wins: false
-          n_sub_goals_3:
-            baseline_loss: 0.015885
-            cg_explicit_loss: 0.015560
-            improvement_pct: 2.05
-            cg_wins: true
-          n_sub_goals_5:
-            baseline_loss: 0.014455
-            cg_explicit_loss: 0.014263
-            improvement_pct: 1.32
-            cg_wins: true
-          n_sub_goals_7:
-            baseline_loss: 0.014129
-            cg_explicit_loss: 0.014810
-            improvement_pct: -4.82
-            cg_wins: false
-          optimal_sub_goals: 3
-          best_improvement_pct: 2.05
-        key_insight: "Clear inverted-U relationship: 3 sub-goals optimal (+2.05%), 5 sub-goals still positive (+1.32%), but 2 (-1.75%) and 7 (-4.82%) lose. Magnitude gap vs H1.453 (+82.81%) suggests the presence of explicit structure matters more than granularity."
-        config:
-          n_demos: 500
-          n_steps_per_goal: 3
-          sub_goal_configs: [2, 3, 5, 7]
-          obs_dim: 8
-          action_dim: 7
-          lang_dim: 384
-          projection_dim: 32
-          epochs: 50
-          batch_size: 32
-    - experiment_id: H1.453
-      description: "Test CG with explicit sub-goal conditioning on multi-step tasks"
-      result:
-        conclusion: "BREAKTHROUGH - Explicit sub-goal conditioning provides massive improvements"
-        task: "explicit_subgoal_conditioning"
-        results:
-          baseline_loss: 0.019607
-          simple_language_loss: 0.017142
-          cg_implicit_loss: 0.027448
-          cg_explicit_loss: 0.003370
-          simple_vs_baseline_pct: 12.57
-          cg_implicit_vs_baseline_pct: -39.99
-          cg_explicit_vs_baseline_pct: 82.81
-          cg_explicit_vs_implicit_pct: 87.72
-          cg_explicit_vs_simple_pct: 80.34
-          cg_explicit_wins: true
-        key_insight: "Explicit sub-goal embeddings transform CG performance. CG Explicit (+82.81%) massively outperforms CG Implicit (-39.99%) and Simple Language (+12.57%). Graph structure needs explicit structure to be effective."
-        config:
-          n_demos: 500
-          n_steps_per_goal: 3
-          n_sub_goals: 3
-          lang_dim: 384
-          projection_dim: 32
+
+hypotheses:
+  - id: H1
+    name: "Cognitive Graph improves sample efficiency"
+    status: "QUESTIONABLE"
+    key_finding: "Original +25.6% improvement not reproducible. H1.457 shows consistent -25% average across 16 configurations."
+    confidence: 0.2
+  - id: H2
+    name: "CG advantage scales with task complexity"
+    status: "INCONCLUSIVE"
+    key_finding: "H1.457 shows -1.05% on complex data (best case) but still negative"
+    confidence: 0.3
+  - id: H3
+    name: "Attention beats concatenation for fusion"
+    status: "REFUTED"
+    key_finding: "Concatenation wins for simple tasks; H1.457 shows more attention heads = worse"
+    confidence: 0.9
+  - id: H4
+    name: "Optimal sub-goal count is 3"
+    status: "CLOSE"
+    key_finding: "25% optimal vs 28% hypothesis"
+    confidence: 0.6

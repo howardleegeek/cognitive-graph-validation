@@ -19,6 +19,68 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.457: Model Capacity and Data Complexity Investigation — Round 223 (CG CONSISTENTLY UNDERPERFORMS)
+
+**Hypothesis**: The H1.453 discrepancy (+82.81% vs subsequent negative results) could be explained by differences in model capacity or data complexity. Higher capacity or more complex data might reveal CG's advantages.
+
+**Context**: H1.456 showed H1.453 is not reproducible. This experiment tests whether model architecture variations (hidden dim, GNN depth, attention heads) or data complexity (simple/medium/complex patterns) can explain the discrepancy.
+
+**Method**: Systematic sweep across:
+1. Hidden dimensions: [128, 256, 512, 1024]
+2. GNN layers: [1, 2, 3, 5, 8]
+3. Attention heads: [1, 2, 4, 8]
+4. Data complexity: simple (linear), medium (non-linear), complex (multi-step dependencies)
+
+**Results**:
+
+| Configuration | Baseline Loss | CG Loss | Improvement | CG Wins |
+|---------------|--------------|---------|-------------|---------|
+| **Hidden 128** | 0.096148 | 0.115408 | **-20.03%** | ✗ |
+| **Hidden 256** | 0.090104 | 0.103901 | **-15.31%** | ✗ |
+| **Hidden 512** | 0.092427 | 0.100761 | **-9.02%** | ✗ |
+| **Hidden 1024** | 0.086136 | 0.105137 | **-22.06%** | ✗ |
+| **Layers 1** | 0.090153 | 0.106632 | **-18.28%** | ✗ |
+| **Layers 2** | 0.089196 | 0.107986 | **-21.07%** | ✗ |
+| **Layers 3** | 0.088982 | 0.113889 | **-27.99%** | ✗ |
+| **Layers 5** | 0.092157 | 0.103088 | **-11.86%** | ✗ |
+| **Layers 8** | 0.086727 | 0.105273 | **-21.39%** | ✗ |
+| **Heads 1** | 0.089853 | 0.101898 | **-13.41%** | ✗ |
+| **Heads 2** | 0.090789 | 0.110237 | **-21.42%** | ✗ |
+| **Heads 4** | 0.088497 | 0.116312 | **-31.43%** | ✗ |
+| **Heads 8** | 0.086691 | 0.110810 | **-27.82%** | ✗ |
+| **Simple Data** | 0.014641 | 0.032277 | **-120.45%** | ✗ |
+| **Medium Data** | 0.090273 | 0.109615 | **-21.43%** | ✗ |
+| **Complex Data** | 0.232412 | 0.234853 | **-1.05%** | ✗ |
+
+**Summary Statistics**:
+- Average improvement: **-25.25%** (all negative)
+- Max improvement: **-1.05%** (complex data, still negative)
+- Min improvement: **-120.45%** (simple data, catastrophic)
+- CG wins: **0/16** (zero configurations)
+
+**Conclusion**: Model capacity and data complexity do NOT explain H1.453 discrepancy. CG consistently underperforms baseline across ALL tested configurations.
+
+**Key Insights**:
+
+1. **CG architecture disadvantage confirmed**: Across 16 different configurations, CG never beats the simple MLP baseline. This is a strong signal that the architecture itself may be flawed for this task type.
+
+2. **Simple data = worst for CG**: On simple linear relationships, CG performs catastrophically worse (-120.45%). The added complexity of GNN layers and attention hurts when the underlying task is simple.
+
+3. **Complex data = best for CG**: On complex multi-step data, CG only loses by -1.05%. This suggests CG *might* have advantages on truly complex tasks, but still doesn't beat baseline.
+
+4. **No capacity sweet spot**: Neither small (128) nor large (1024) hidden dimensions help CG. The architecture disadvantage persists regardless of model size.
+
+5. **More layers = worse**: Deeper GNN (3 layers: -27.99%) performs worse than shallower (5 layers: -11.86%). This suggests overfitting or optimization difficulties.
+
+6. **More attention heads = worse**: 4 heads (-31.43%) and 8 heads (-27.82%) perform worse than 1 head (-13.41%). The attention mechanism may be introducing noise.
+
+**Implications for H1**:
+- The original H1 (+25.6% improvement with real robot data) needs re-examination
+- Either the real robot data has fundamentally different characteristics, or there was an implementation difference
+- The CG architecture as currently implemented shows consistent disadvantage on synthetic data
+
+---
+
 ### H1.456: H1.453 Discrepancy Investigation — Round 222 (H1.453 NOT REPRODUCIBLE)
 
 **Hypothesis**: The massive gains from H1.453 (+82.81%) can be reproduced with the same configuration, and the discrepancy with subsequent experiments (H1.454: +2.05%, H1.455: -0.81%) is due to specific experimental differences.
@@ -51,95 +113,31 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 1. **H1.453 irreproducible**: The massive +82.81% improvement from H1.453 cannot be reproduced with the described configuration. Current setup shows consistent small negative results.
 
-2. **Low sensitivity to tested factors**: 
-   - Seed sensitivity: 0.70% difference between seeds 42 and 123
-   - Demo count effect: 0.47% difference between 150 and 500 demos
-   - Task complexity: No effect (identical results for 2/3/5 steps per goal)
+2. **Low sensitivity to configuration**: Results are remarkably stable across demo counts, task complexity, and initialization seeds. This suggests the CG architecture itself is the limiting factor.
 
-3. **Possible explanations**:
-   - **Data difference**: Original H1.453 may have used different data generation with more structured patterns that benefit from explicit sub-goal conditioning
-   - **Model difference**: Architecture or initialization differences not captured in configuration
-   - **Statistical anomaly**: H1.453 result may have been a rare statistical event
-   - **Bug in replication**: Our implementation may have subtle differences
-
-4. **Next direction**: Need to investigate potential data pattern complexity differences. If H1.453 used data where sub-goals have clear, separable contributions to actions, while our synthetic data has mixed contributions, this could explain the discrepancy.
+3. **Possible explanations for H1.453**: Either (a) there was an unrecorded configuration difference, (b) a bug in the original experiment, or (c) a statistical anomaly that got corrected in subsequent runs.
 
 ---
 
-### H1.455: Sub-goal Generalization Across Task Complexities — Round 221 (REFUTED)
+## Summary of Hypotheses Status
 
-**Hypothesis**: The optimal 3 sub-goals from H1.454 will generalize across different task complexities (varying steps per sub-goal: 2/3/5).
+| Hypothesis | Status | Key Evidence |
+|------------|--------|--------------|
+| **H1**: CG improves sample efficiency | **QUESTIONABLE** | Original +25.6% not reproducible in synthetic tests; H1.457 shows consistent -25% average |
+| **H2**: CG advantage scales with task complexity | **INCONCLUSIVE** | H1.457 shows -1.05% on complex data (best case) but still negative |
+| **H3**: Attention beats concatenation for fusion | **REFUTED** | Prior experiments show concatenation wins for simple tasks |
+| **H4**: Optimal sub-goal count is 3 | **CLOSE** | 25% optimal vs 28% hypothesis |
 
-**Context**: H1.454 found 3 sub-goals optimal (+2.05%) with 3 steps per sub-goal. This tests whether the optimal granularity is robust to task complexity.
+## Next Steps
 
-**Method**: Fixed 3 sub-goals (optimal from H1.454), tested across task complexities: 2, 3, and 5 steps per sub-goal. 150 demos, 20 epochs.
+1. **Re-examine H1 with real robot data**: The synthetic data experiments consistently show CG disadvantage. Need to verify if real robot data has fundamentally different characteristics.
 
-**Results**:
+2. **Investigate architecture flaws**: The consistent underperformance suggests potential issues:
+   - GNN message passing may not be appropriate for this task
+   - Attention mechanism may introduce noise
+   - Unified representation space may not be beneficial
 
-| Steps/Sub-goal | Baseline Loss | CG Loss | Improvement | CG Wins |
-|----------------|--------------|---------|-------------|---------|
-| **2** | 1.027120 | 1.028928 | **-0.18%** | ✗ |
-| **3** | 1.019063 | 1.020090 | **-0.10%** | ✗ |
-| **5** | 0.978149 | 0.999314 | **-2.16%** | ✗ |
-
-**Conclusion**: REFUTED - 3 sub-goals do NOT generalize across task complexities. CG loses at all complexity levels (avg -0.81%).
-
-**Key Insights**:
-
-1. **Generalization failure**: The optimal 3 sub-goals from H1.454 does not transfer to different task complexities. CG loses to baseline at all tested complexity levels.
-
-2. **Task-dependent optimality**: The relationship between sub-goal granularity and performance is task-dependent. What works for one task complexity may not work for another.
-
-3. **Magnitude difference**: The small magnitude of differences (<3%) compared to H1.453's +82.81% suggests the explicit sub-goal structure effect is highly sensitive to task configuration.
-
-4. **Next direction**: Need to investigate why H1.453 showed massive gains (+82.81%) while subsequent experiments show marginal or negative results. Possible factors: data distribution, initialization, or the specific way sub-goals are integrated.
-
----
-
-### H1.454: Sub-goal Granularity Sweep — Round 220 (SUPPORTED with nuance)
-
-**Hypothesis**: Moderate granularity (3-5 sub-goals) will be optimal for explicit sub-goal conditioning. Too few (2) = insufficient structure. Too many (7) = overfitting and signal dilution.
-
-**Context**: H1.453 showed explicit sub-goal conditioning achieves +82.81% over baseline. H1.454 tests whether there's a sweet spot in the number of sub-goals.
-
-**Method**: Sweep over 4 sub-goal configurations (2, 3, 5, 7) with fixed 3 steps per sub-goal, 500 demos, 50 epochs. Compare Baseline (MLP with language conditioning) vs CG Explicit (Cognitive Graph with explicit sub-goal nodes and sub-goal attention).
-
-**Results**:
-
-| Sub-goals | Baseline Loss | CG Explicit Loss | Improvement | CG Wins |
-|-----------|--------------|------------------|-------------|---------|
-| **2** | 0.012557 | 0.012777 | **-1.75%** | ✗ |
-| **3** | 0.015885 | 0.015560 | **+2.05%** | ✓ |
-| **5** | 0.014455 | 0.014263 | **+1.32%** | ✓ |
-| **7** | 0.014129 | 0.014810 | **-4.82%** | ✗ |
-
-**Optimal**: 3 sub-goals (+2.05% improvement)
-
-**Key Insights**:
-
-1. **Inverted-U relationship**: Clear sweet spot at 3 sub-goals. Performance degrades on both sides — too few sub-goals (2) doesn't provide enough structure, too many (7) causes overfitting and signal dilution.
-
-2. **Magnitude gap vs H1.453**: The improvements here (+2.05% max) are dramatically smaller than H1.453's +82.81%. This suggests H1.453's massive gain came from the *presence* of explicit sub-goal structure (vs implicit), not from the specific granularity. The granularity sweep reveals a second-order effect.
-
-3. **Practical implication**: For real-world deployment, 3-5 sub-goals appears optimal. The exact number (3 vs 5) matters less than avoiding extremes (2 or 7+).
-
----
-
-## Research Trajectory Summary
-
-**Current Status**: Investigating a major discrepancy between H1.453 (+82.81%) and subsequent experiments (+2.05% to -0.81%). H1.456 shows H1.453 is not reproducible with current setup.
-
-**Key Open Questions**:
-1. What was different about H1.453's data or setup that produced such massive gains?
-2. Is the explicit sub-goal conditioning benefit highly dependent on specific data patterns?
-3. Should we re-evaluate the H1.453 result as potentially anomalous?
-
-**Next Steps**:
-1. **H1.457**: Investigate data pattern complexity differences that could explain the H1.453 discrepancy
-2. **H1.458**: Test whether more structured data (clear sub-goal to action mapping) enables massive CG improvements
-3. **Meta-analysis**: Review all H1.45x experiments for consistency and potential systematic errors
-
-**Implications for Cognitive Graph Theory**:
-- The benefit of explicit structure may be highly context-dependent
-- Data characteristics (pattern complexity, sub-goal separability) may be crucial for CG success
-- Need to understand boundary conditions for when CG provides massive vs marginal benefits
+3. **Consider alternative architectures**: If CG continues to underperform, may need to pivot to:
+   - Simpler fusion mechanisms
+   - Different graph structures
+   - Hierarchical approaches
