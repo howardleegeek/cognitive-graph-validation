@@ -1,0 +1,65 @@
+{
+  "experiment_id": "H1.447",
+  "description": "Investigate single-task vs multi-task generalization gap",
+  "single_task": {
+    "pick": {
+      "task_type": "pick",
+      "mlp_avg": 0.009442799258977175,
+      "graphcg_avg": 0.011712804126242796,
+      "improvement_pct": -24.03953324653757,
+      "n_trials": 3
+    },
+    "place": {
+      "task_type": "place",
+      "mlp_avg": 0.012301944041003784,
+      "graphcg_avg": 0.011154237824181715,
+      "improvement_pct": 9.329470309705792,
+      "n_trials": 3
+    },
+    "push": {
+      "task_type": "push",
+      "mlp_avg": 0.011421288053194681,
+      "graphcg_avg": 0.011449572630226612,
+      "improvement_pct": -0.24764787386672474,
+      "n_trials": 3
+    },
+    "stack": {
+      "task_type": "stack",
+      "mlp_avg": 0.012074799432108799,
+      "graphcg_avg": 0.011607560639580091,
+      "improvement_pct": 3.8695366755844063,
+      "n_trials": 3
+    }
+  },
+  "multi_task": {
+    "baseline": {
+      "config": "baseline",
+      "mlp_avg": 0.01560503544492854,
+      "graphcg_avg": 0.015016798861324787,
+      "improvement_pct": 3.7695305831229176,
+      "n_trials": 3
+    },
+    "task_embedding": {
+      "config": "task_embedding",
+      "mlp_avg": 0.01560503544492854,
+      "graphcg_avg": 0.010591440109743012,
+      "improvement_pct": 32.12806118178277,
+      "n_trials": 3
+    },
+    "simple_attention": {
+      "config": "simple_attention",
+      "mlp_avg": 0.01560503544492854,
+      "graphcg_avg": 0.01408543044494258,
+      "improvement_pct": 9.737914440173949,
+      "n_trials": 3
+    }
+  },
+  "summary": {
+    "single_task_avg_improvement": -2.772043533778524,
+    "multi_task_baseline_improvement": 3.7695305831229176,
+    "multi_task_with_embeddings_improvement": 32.12806118178277,
+    "multi_task_simple_attention_improvement": 9.737914440173949,
+    "generalization_gap": -6.541574116901442
+  },
+  "conclusion": "Task embeddings help, Simpler attention helps"
+}
