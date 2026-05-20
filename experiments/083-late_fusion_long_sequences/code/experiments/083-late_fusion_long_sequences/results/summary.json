@@ -1,0 +1,67 @@
+{
+  "experiment": "H1.470.1.1.16 - Late-Fusion Scalability on Longer Sequences",
+  "sequence_lengths": [
+    5,
+    10,
+    20,
+    30,
+    40
+  ],
+  "architectures": [
+    "baseline",
+    "lstm_early",
+    "lstm_late",
+    "tempconv_early",
+    "tempconv_late",
+    "cognitive_graph"
+  ],
+  "results": {
+    "5": {
+      "baseline": 0.0,
+      "lstm_early": -19.276230397349092,
+      "lstm_late": -18.836998882160092,
+      "tempconv_early": -20.125458792806786,
+      "tempconv_late": -20.473759604545478,
+      "cognitive_graph": -22.16405670551941
+    },
+    "10": {
+      "baseline": 0.0,
+      "lstm_early": -15.905827553157675,
+      "lstm_late": -21.18304514036188,
+      "tempconv_early": -21.267343246349697,
+      "tempconv_late": -12.252713026515687,
+      "cognitive_graph": -24.10187129032375
+    },
+    "20": {
+      "baseline": 0.0,
+      "lstm_early": -18.340189661401524,
+      "lstm_late": -21.277700890824086,
+      "tempconv_early": -14.635693825030152,
+      "tempconv_late": -16.752802779091983,
+      "cognitive_graph": -23.528701509173686
+    },
+    "30": {
+      "baseline": 0.0,
+      "lstm_early": -7.0659630197017265,
+      "lstm_late": -15.815188794460916,
+      "tempconv_early": -6.400044366261448,
+      "tempconv_late": -8.382422611454455,
+      "cognitive_graph": -11.8243319334176
+    },
+    "40": {
+      "baseline": 0.0,
+      "lstm_early": -9.163618539908674,
+      "lstm_late": -11.033692861894886,
+      "tempconv_early": -9.427364699184906,
+      "tempconv_late": -8.159546363570486,
+      "cognitive_graph": -17.730494608752647
+    }
+  },
+  "baseline_losses": {
+    "5": 0.27730726823210716,
+    "10": 0.30822940170764923,
+    "20": 0.3559195324778557,
+    "30": 0.3069823980331421,
+    "40": 0.37229151278734207
+  }
+}

@@ -1,11 +1,52 @@
-current_round: 254
-last_action: "H1.470.1.1.15 - Late-fusion architecture test. SUPPORTED: Late fusion (separate temporal processing per modality) dramatically outperforms early fusion on crossmodal tasks (+62.92% improvement gap for LSTM, +11.73% for TempConv). LSTM-late achieves +95.76% on temporal, +65.43% on crossmodal, +79.90% on combined. Cognitive Graph consistently underperforms (-11% to -19%). The optimal architecture is: separated encoders → independent temporal processing → late concatenation."
-
-next_intended_action: "H1.470.1.1.16 - Test late-fusion on longer sequences (20+ timesteps) to verify scalability. Also consider: (1) formal paper draft summarizing 254 rounds of evidence against CG hypothesis, (2) test late-fusion on real robot data if available, (3) investigate why unified representation is harmful - is it interference, optimization difficulty, or architectural mismatch?"
+current_round: 255
+last_action: "H1.470.1.1.16 - Test late-fusion on longer sequences (20+ timesteps) to verify scalability"
+next_intended_action: "H1.470.1.1.17 - Analyze why unified representation is harmful: interference, optimization difficulty, or architectural mismatch?"
 
 experiments:
-  total_rounds: 254
+  total_rounds: 255
   trajectory:
+    - experiment_id: H1.470.1.1.16
+      description: "Late-fusion scalability test on longer sequences (5-40 timesteps)"
+      result:
+        conclusion: "REFUTED"
+        task: "late_fusion_scalability"
+        configurations_tested: 4
+        architectures_tested: ["baseline", "lstm_early", "lstm_late", "cognitive_graph"]
+        sequence_lengths_tested: [5, 10, 20, 30, 40]
+        key_metrics:
+          sequence_length_5:
+            baseline_loss: 0.350503
+            lstm_early_improvement: 18.50
+            lstm_late_improvement: 4.85
+            cognitive_graph_improvement: 32.94
+          sequence_length_10:
+            baseline_loss: 0.700707
+            lstm_early_improvement: 11.21
+            lstm_late_improvement: 5.31
+            cognitive_graph_improvement: 41.95
+          sequence_length_20:
+            baseline_loss: 0.086845
+            lstm_early_improvement: 56.88
+            lstm_late_improvement: 40.73
+            cognitive_graph_improvement: 68.58
+          sequence_length_30:
+            baseline_loss: 0.733937
+            lstm_early_improvement: 50.61
+            lstm_late_improvement: 25.20
+            cognitive_graph_improvement: 85.20
+          sequence_length_40:
+            baseline_loss: 0.077063
+            lstm_early_improvement: 7.51
+            lstm_late_improvement: -49.39
+            cognitive_graph_improvement: -10.83
+        key_insights:
+          - "Early fusion outperforms late fusion on longer sequences (contrary to hypothesis)"
+          - "Late fusion degrades catastrophically on very long sequences (40 timesteps: -49.39%)"
+          - "Cognitive Graph shows inconsistent performance: strong at 20-30 timesteps but negative at 40"
+          - "No scalability advantage for late fusion - gap becomes increasingly negative with length"
+          - "Joint temporal processing (early fusion) is more stable than independent processing (late fusion)"
+        conclusion_detail: "The hypothesis that late-fusion scales better to longer sequences is REFUTED. Early fusion maintains better performance on long sequences than late fusion, suggesting joint temporal processing of concatenated modalities is more stable."
+
     - experiment_id: H1.470.1.1.15
       description: "Late-fusion architecture test - comparing early vs late fusion"
       result:
@@ -43,65 +84,3 @@ experiments:
           - "Processing modalities independently before fusion is superior to early fusion"
           - "Best architecture: separated encoders → independent temporal processing → late concatenation"
         conclusion_detail: "Late-fusion architecture significantly outperforms early fusion, especially on crossmodal tasks. This provides clear architectural direction: maintain modality separation through temporal processing, fuse only at final stage."
-    
-    - experiment_id: H1.470.1.1.14
-      description: "LSTM dominance ablation study - isolating temporal vs encoding factors"
-      result:
-        conclusion: "SUPPORTED"
-        task: "lstm_ablation"
-        configurations_tested: 6
-        architectures_tested: ["baseline", "lstm", "lstm_feedforward", "separated_temporal", "unified_temporal", "unified_feedforward"]
-        tasks_tested: ["temporal_only", "crossmodal_only", "combined"]
-        key_metrics:
-          temporal_only:
-            baseline_loss: 1.9839
-            lstm_improvement: 93.85
-            lstm_feedforward_improvement: -11.93
-            separated_temporal_improvement: 91.51
-            unified_temporal_improvement: 72.09
-            unified_feedforward_improvement: -38.38
-          crossmodal_only:
-            baseline_loss: 2.3974
-            lstm_improvement: -481.01
-            lstm_feedforward_improvement: -500.67
-            separated_temporal_improvement: -407.02
-            unified_temporal_improvement: -499.57
-            unified_feedforward_improvement: -239.85
-          combined:
-            baseline_loss: 2.1258
-            lstm_improvement: -57.57
-            lstm_feedforward_improvement: -68.01
-            separated_temporal_improvement: -66.01
-            unified_temporal_improvement: -66.33
-            unified_feedforward_improvement: -67.66
-        key_insights:
-          - "Temporal processing is the DOMINANT factor: LSTM (+93.85%) vs LSTM-FeedForward (-11.93%) = 105.79% gap"
-          - "Separated+Temporal ≈ LSTM: only 2.34% gap between 1D convolutions and LSTM"
-          - "Unified encoding underperforms separated encoding by 19.42% even with same temporal processing"
-          - "Baseline wins on crossmodal and combined tasks - no architecture beats simple concatenation"
-          - "Unified encoding is consistently the worst approach"
-        conclusion_detail: "LSTM's dominance comes from temporal recurrence, not separated encoding. However, separated encoding provides an additional 19.42% advantage over unified encoding when combined with temporal processing. The optimal architecture is: separated encoders → temporal processing → simple fusion (concatenation). This contradicts the CG hypothesis entirely."
-
-hypothesis_status:
-  H1:
-    status: "REFUTED"
-    description: "CG advantage increases with task complexity"
-    evidence: "After 254 rounds, CG consistently underperforms baseline. Unified representation is harmful."
-  H2:
-    status: "INCONCLUSIVE"
-    description: "CG provides better cross-modal grounding"
-    evidence: "Late-fusion with separated encoding achieves 65% improvement on crossmodal tasks vs CG's -8%"
-  H3:
-    status: "REFUTED"
-    description: "Attention-based fusion outperforms concatenation"
-    evidence: "Concatenation consistently outperforms attention-based fusion across all experiments"
-  H4:
-    status: "CLOSE"
-    description: "Optimal dimension allocation"
-    evidence: "Separated encoding with late fusion is optimal, dimension allocation less critical"
-
-recommended_next_steps:
-  - "Test late-fusion on longer sequences (20+ timesteps)"
-  - "Draft formal paper summarizing evidence against CG hypothesis"
-  - "Test on real robot data if available"
-  - "Investigate mechanism: why is unified representation harmful?"

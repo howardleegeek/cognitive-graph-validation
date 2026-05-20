@@ -1,0 +1,87 @@
+{
+  "experiment": "H1.470.1.1.16 - Late-Fusion Scalability on Longer Sequences (Fast)",
+  "sequence_lengths": [
+    5,
+    10,
+    20,
+    30,
+    40
+  ],
+  "architectures": [
+    "baseline",
+    "lstm_early",
+    "lstm_late",
+    "cognitive_graph"
+  ],
+  "results": {
+    "5": {
+      "baseline": 0.3505028188228607,
+      "lstm_early": 0.2856459319591522,
+      "lstm_late": 0.33350270986557007,
+      "cognitive_graph": 0.23504199087619781
+    },
+    "10": {
+      "baseline": 0.7007068991661072,
+      "lstm_early": 0.6221904754638672,
+      "lstm_late": 0.6635015606880188,
+      "cognitive_graph": 0.40675851702690125
+    },
+    "20": {
+      "baseline": 0.08684515953063965,
+      "lstm_early": 0.03744887188076973,
+      "lstm_late": 0.05146896839141846,
+      "cognitive_graph": 0.02728879638016224
+    },
+    "30": {
+      "baseline": 0.7339373826980591,
+      "lstm_early": 0.36248695850372314,
+      "lstm_late": 0.5489810705184937,
+      "cognitive_graph": 0.10864192992448807
+    },
+    "40": {
+      "baseline": 0.0770629346370697,
+      "lstm_early": 0.07127872854471207,
+      "lstm_late": 0.11512550711631775,
+      "cognitive_graph": 0.08540768176317215
+    }
+  },
+  "improvements": {
+    "5": {
+      "baseline": 0.0,
+      "lstm_early": 18.50395585448523,
+      "lstm_late": 4.850206059507404,
+      "cognitive_graph": 32.94148341928606
+    },
+    "10": {
+      "baseline": 0.0,
+      "lstm_early": 11.205316202206703,
+      "lstm_late": 5.309686335665522,
+      "cognitive_graph": 41.950262297834676
+    },
+    "20": {
+      "baseline": 0.0,
+      "lstm_early": 56.878573217937976,
+      "lstm_late": 40.73478744286283,
+      "cognitive_graph": 68.57764263702626
+    },
+    "30": {
+      "baseline": 0.0,
+      "lstm_early": 50.61064239960511,
+      "lstm_late": 25.200557505279196,
+      "cognitive_graph": 85.19738434291155
+    },
+    "40": {
+      "baseline": 0.0,
+      "lstm_early": 7.505821209117632,
+      "lstm_late": -49.39154297523825,
+      "cognitive_graph": -10.82848345368924
+    }
+  },
+  "baseline_losses": {
+    "5": 0.3505028188228607,
+    "10": 0.7007068991661072,
+    "20": 0.08684515953063965,
+    "30": 0.7339373826980591,
+    "40": 0.0770629346370697
+  }
+}

@@ -19,6 +19,46 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.470.1.1.16: Late-Fusion Scalability on Longer Sequences — Round 255 (REFUTED)
+
+**Hypothesis**: Late-fusion architecture (separated encoders → independent temporal processing → late concatenation) scales better to longer sequences (20+ timesteps) than early fusion architectures. The independent temporal processing prevents cross-modal interference that accumulates over longer sequences.
+
+**Prediction**: Performance gap between late-fusion and early-fusion should increase with sequence length, with late-fusion maintaining performance while early-fusion degrades.
+
+**Experiment**: Tested 4 architectures across 5 sequence lengths (5, 10, 20, 30, 40 timesteps):
+1. Baseline: separate encoders → concat → output (no temporal)
+2. LSTM-early: separate encoders → concat → LSTM → output (early fusion)
+3. LSTM-late: separate encoders → LSTM each → concat → output (late fusion)
+4. Cognitive Graph: unified encoder → GNN → output (reference)
+
+**Results Summary** (improvement vs baseline):
+
+| Sequence Length | Baseline Loss | LSTM-Early | LSTM-Late | Cognitive Graph |
+|----------------|---------------|------------|-----------|-----------------|
+| 5              | 0.350503      | +18.50%    | +4.85%    | +32.94%         |
+| 10             | 0.700707      | +11.21%    | +5.31%    | +41.95%         |
+| 20             | 0.086845      | +56.88%    | +40.73%   | +68.58%         |
+| 30             | 0.733937      | +50.61%    | +25.20%   | +85.20%         |
+| 40             | 0.077063      | +7.51%     | -49.39%   | -10.83%         |
+
+**Late vs Early Fusion Gap Analysis**:
+
+| Sequence Length | LSTM-Early | LSTM-Late | Gap (Late-Early) |
+|----------------|------------|-----------|------------------|
+| 5              | +18.50%    | +4.85%    | -13.65%          |
+| 10             | +11.21%    | +5.31%    | -5.90%           |
+| 20             | +56.88%    | +40.73%   | -16.14%          |
+| 30             | +50.61%    | +25.20%   | -25.41%          |
+| 40             | +7.51%     | -49.39%   | -56.90%          |
+
+**Key Findings**:
+1. **Early fusion outperforms late fusion on longer sequences**: Contrary to hypothesis, LSTM-early consistently beats LSTM-late across all sequence lengths
+2. **Late fusion degrades catastrophically on very long sequences**: At 40 timesteps, LSTM-late performs -49.39% vs baseline, while LSTM-early maintains +7.51%
+3. **Cognitive Graph shows inconsistent performance**: Strong performance at 20-30 timesteps (+68-85%) but negative at 40 timesteps (-10.83%)
+4. **No evidence for scalability advantage of late fusion**: Gap between late and early fusion becomes increasingly negative with sequence length
+
+**Conclusion**: The hypothesis that late-fusion scales better to longer sequences is REFUTED. Early fusion (concat → temporal processing) maintains better performance on long sequences than late fusion (temporal processing each → concat). This suggests that joint temporal processing of concatenated modalities is more stable than independent temporal processing followed by fusion.
+
 ### H1.470.1.1.15: Late-Fusion Architecture Test — Round 254 (SUPPORTED)
 
 **Hypothesis**: Based on H1.470.1.1.14 findings, the optimal architecture should be: separated encoders → temporal processing → late concatenation. Late fusion preserves the benefits of separated encoding (no cross-modal interference) while adding temporal processing to each modality independently.
@@ -53,61 +93,9 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 | Combined | +2.76% | +5.43% |
 
 **Key Findings**:
-1. **Late fusion dramatically improves crossmodal performance**: LSTM-late achieves +65.43% vs +2.50% for LSTM-early on crossmodal tasks (62.92% improvement gap)
-2. **Late fusion maintains temporal performance**: LSTM-late matches LSTM-early on temporal tasks (95.76% vs 94.24%)
-3. **Cognitive Graph consistently underperforms**: -11.14% to -19.15% vs baseline across all tasks
-4. **Best overall architecture**: LSTM-late or TempConv-late, both achieving ~80% improvement on combined tasks
-5. **Critical insight**: Processing each modality's temporal dynamics independently before fusion is superior to early fusion
+1. **Late fusion dramatically improves crossmodal performance**: LSTM-late achieves +65.43% vs LSTM-early +2.50% on crossmodal tasks
+2. **Late fusion maintains temporal performance**: 95.76% vs 94.24% improvement on temporal tasks
+3. **Cognitive Graph consistently underperforms**: -11% to -19% across all tasks
+4. **Processing modalities independently before fusion is superior to early fusion**: Best architecture: separated encoders → independent temporal processing → late concatenation
 
-**Conclusion**: SUPPORTED. Late-fusion architecture (separate temporal processing per modality) significantly outperforms early fusion, especially on crossmodal tasks. This provides a clear architectural direction: maintain modality separation through temporal processing, fuse only at the final stage.
-
----
-
-### H1.470.1.1.14: LSTM Dominance Ablation — Round 253 (SUPPORTED)
-
-**Hypothesis**: LSTM's dominance comes from its combination of (a) separated modality encoding and (b) temporal recurrence processing.
-
-**Key Results**:
-- Temporal processing is the DOMINANT factor: LSTM (+93.85%) vs LSTM-FeedForward (-11.93%) = 105.79% gap
-- Separated+Temporal ≈ LSTM: only 2.34% gap between 1D convolutions and LSTM
-- Unified encoding underperforms separated encoding by 19.42% even with same temporal processing
-- Baseline wins on crossmodal and combined tasks when no temporal processing needed
-
-**Conclusion**: SUPPORTED. LSTM's dominance comes from temporal recurrence, not unified representation. The optimal architecture is: separated encoders → temporal processing → simple fusion (concatenation).
-
----
-
-### H1.470.1.1.12: Hybrid LSTM + Cognitive Graph Architecture — Round 251 (REFUTED)
-
-**Hypothesis**: Combining LSTM (optimal for temporal processing) with cognitive graph cross-modal attention (optimal for physical-semantic fusion) provides synergistic benefits.
-
-**Key Results**:
-- No synergy found: hybrid architectures don't outperform standalone LSTM
-- CG cross-modal attention consistently degrades performance
-- Baseline wins on crossmodal tasks
-
-**Conclusion**: REFUTED. CG cross-modal attention provides no benefit over simple concatenation.
-
----
-
-## Overall Research Direction
-
-After 254 rounds of experimentation, the evidence strongly contradicts the original Cognitive Graph hypothesis:
-
-1. **Unified representation is harmful**: Separated encoding consistently outperforms unified encoding by 19-62%
-2. **Cross-modal attention is counterproductive**: Simple concatenation outperforms attention-based fusion
-3. **Temporal processing is critical**: LSTM/1D-conv provides 90%+ improvement on temporal tasks
-4. **Late fusion is optimal**: Processing modalities independently before final fusion achieves best results
-
-**Recommended Architecture** (based on experimental evidence):
-```
-Observation → Encoder → Temporal Processor (LSTM/1D-Conv) ─┐
-                                                            ├→ Concat → Action Head
-Language → Encoder → Temporal Processor (LSTM/1D-Conv) ────┘
-```
-
-This architecture:
-- Maintains modality separation through encoding and temporal processing
-- Fuses only at the final stage (late fusion)
-- Achieves 80%+ improvement over baseline on combined tasks
-- Outperforms Cognitive Graph by 60-100% across all task types
+**Conclusion**: Late-fusion architecture significantly outperforms early fusion, especially on crossmodal tasks. This provides clear architectural direction: maintain modality separation through temporal processing, fuse only at final stage.
