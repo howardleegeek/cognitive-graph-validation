@@ -1,0 +1,76 @@
+{
+  "experiment_id": "H1.470.1.1.34",
+  "description": "Auxiliary loss approaches for multi-step tasks",
+  "conclusion": "SUPPORTED",
+  "task": "multi_step_manipulation",
+  "configurations_tested": 5,
+  "key_metrics": {
+    "baseline_test_loss": 0.063061,
+    "best_config": "consistency",
+    "best_test_loss": 0.059469,
+    "best_improvement": 5.7,
+    "prior_curriculum_best": 0.01603,
+    "auxiliary_vs_prior_curriculum": -270.99
+  },
+  "per_config_results": {
+    "baseline": {
+      "test_loss": 0.063061,
+      "vs_baseline_pct": 0.0,
+      "description": "Baseline: Standard MSE loss"
+    },
+    "subgoal": {
+      "test_loss": 0.060041,
+      "vs_baseline_pct": 4.79,
+      "description": "Sub-goal prediction auxiliary loss"
+    },
+    "consistency": {
+      "test_loss": 0.059469,
+      "vs_baseline_pct": 5.7,
+      "description": "Temporal consistency auxiliary loss"
+    },
+    "combined": {
+      "test_loss": 0.060781,
+      "vs_baseline_pct": 3.62,
+      "description": "Combined sub-goal + temporal consistency"
+    },
+    "weighted": {
+      "test_loss": 0.059764,
+      "vs_baseline_pct": 5.23,
+      "description": "Weighted auxiliary losses (adaptive)"
+    }
+  },
+  "per_complexity_results": {
+    "1": {
+      "baseline": 0.096,
+      "best_aux": 0.096485,
+      "improvement_pct": -0.51
+    },
+    "2": {
+      "baseline": 0.074471,
+      "best_aux": 0.067777,
+      "improvement_pct": 8.99
+    },
+    "3": {
+      "baseline": 0.063353,
+      "best_aux": 0.060992,
+      "improvement_pct": 3.73
+    },
+    "4": {
+      "baseline": 0.05996,
+      "best_aux": 0.059127,
+      "improvement_pct": 1.39
+    }
+  },
+  "key_insights": [
+    "Auxiliary losses improve multi-step task performance by 5.70%",
+    "Best auxiliary approach: consistency (test loss: 0.059469)",
+    "Baseline test loss: 0.063061",
+    "Compared to prior curriculum best (0.016030): -270.99%"
+  ],
+  "recommendations": [
+    "R1: Adopt consistency as default for multi-step tasks",
+    "R2: Test auxiliary losses on longer sequences (10+ steps)",
+    "R3: Investigate optimal auxiliary loss weighting"
+  ],
+  "timestamp": "2026-05-20T14:38:38.993026"
+}

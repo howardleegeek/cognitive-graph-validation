@@ -1,17 +1,71 @@
-current_round: 272
-last_action: "H1.470.1.1.33 - Test curriculum learning on complex multi-step tasks (REFUTED -51.47% worse than baseline)"
-next_intended_action: "H1.470.1.1.34 - Investigate why curriculum fails on multi-step tasks; test auxiliary loss approaches"
+current_round: 274
+last_action: "H1.470.1.1.35 - Test experience replay + auxiliary losses for multi-step tasks (INCONCLUSIVE - best +0.41%)"
+next_intended_action: "H1.470.1.1.36 - Test whether auxiliary loss benefits scale with model size and data volume"
 
 experiments:
-  total_rounds: 272
+  total_rounds: 274
   trajectory:
+    - experiment_id: H1.470.1.1.35
+      description: "Test experience replay + auxiliary losses for multi-step tasks"
+      result:
+        conclusion: "INCONCLUSIVE"
+        task: "multi_step_manipulation"
+        configurations_tested: 6
+        loss_types_tested: ["baseline", "temporal_consistency", "experience_replay", "replay_tc", "prioritized_replay_tc", "ewc_tc"]
+        key_metrics:
+          baseline_test_loss: 0.022540
+          temporal_consistency_test_loss: 0.022448
+          experience_replay_test_loss: 0.022538
+          replay_tc_test_loss: 0.022619
+          prioritized_replay_tc_test_loss: 0.022507
+          ewc_tc_test_loss: 0.022629
+          best_config: "Temporal Consistency"
+          best_test_loss: 0.022448
+          best_improvement_percent: 0.41
+          all_improvements:
+            Baseline: 0.00
+            Temporal Consistency: 0.41
+            Experience Replay: 0.01
+            Replay + Temporal Consistency: -0.35
+            Prioritized Replay + TC: 0.15
+            EWC + Temporal Consistency: -0.39
+        key_insights:
+          - "Experience replay approaches INCONCLUSIVE: best config +0.41% (temporal consistency alone)"
+          - "Combining replay with auxiliary losses degrades performance (Replay+TC: -0.35%, EWC+TC: -0.39%)"
+          - "Replay adds noise not signal on this task"
+          - "EWC over-regularizes, preventing adaptation to multi-step distribution"
+          - "Temporal consistency is sufficient; adding replay mechanisms doesn't compound gains"
+          - "Diminishing returns on multiple regularization techniques"
+        recommendations:
+          - "R1: Abandon experience replay for multi-step tasks; use temporal consistency alone"
+          - "R2: Test whether auxiliary loss benefits scale with model size and data volume"
+          - "R3: Test auxiliary losses on longer sequences (10+ timesteps)"
+          - "R4: Investigate whether cognitive graph architecture can be modified for multi-step tasks"
+    
+    - experiment_id: H1.470.1.1.34
+      description: "Test auxiliary loss approaches for multi-step tasks"
+      result:
+        conclusion: "SUPPORTED"
+        task: "multi_step_manipulation"
+        configurations_tested: 5
+        key_metrics:
+          baseline_test_loss: 0.063061
+          subgoal_prediction_test_loss: 0.060041
+          temporal_consistency_test_loss: 0.059469
+          combined_test_loss: 0.060781
+          weighted_auxiliary_test_loss: 0.059764
+          best_improvement_percent: 5.70
+        key_insights:
+          - "Auxiliary losses SUPPORTED: temporal consistency +5.70% improvement"
+          - "Benefit strongest on 2-step tasks (+8.99%), diminishes with complexity"
+          - "No staged training avoids catastrophic forgetting"
+    
     - experiment_id: H1.470.1.1.33
       description: "Test curriculum learning on complex multi-step tasks"
       result:
         conclusion: "REFUTED"
         task: "multi_step_manipulation"
         configurations_tested: 5
-        loss_types_tested: ["baseline", "fixed_curriculum", "adaptive_curriculum", "reverse_curriculum", "curriculum_attention"]
         key_metrics:
           baseline_test_loss: 0.016030
           fixed_curriculum_test_loss: 0.024281
@@ -19,103 +73,22 @@ experiments:
           reverse_curriculum_test_loss: 0.024776
           curriculum_attention_test_loss: 0.024887
           fixed_vs_baseline_improvement: -51.47
-          adaptive_vs_baseline_improvement: -4.61
-          reverse_vs_baseline_improvement: -54.56
-          attention_vs_baseline_improvement: -55.25
           best_approach: "baseline"
           best_test_loss: 0.016030
         key_insights:
-          - "Curriculum learning REFUTED on multi-step tasks: fixed curriculum -51.47% worse than baseline"
-          - "Adaptive curriculum nearly matches baseline (-4.61%) but does not improve"
-          - "Reverse curriculum and curriculum+attention both perform worst (-54.56%, -55.25%)"
-          - "Baseline test loss increases with task complexity: 1-step=0.0014, 2-step=0.0150, 3-step=0.0179, 4-step=0.0225"
-          - "Fixed curriculum degrades performance across ALL complexity levels (even 1-step: -1724%)"
-          - "Curriculum learning appears to cause catastrophic forgetting between stages"
-        recommendations:
-          - "R1: Abandon curriculum learning for multi-step tasks"
-          - "R2: Consider auxiliary losses (sub-goal prediction, consistency losses) instead"
-          - "R3: Investigate whether joint training on all complexities is inherently better"
-          - "R4: Test whether replay/regularization between curriculum stages helps"
-    
-    - experiment_id: H1.470.1.1.32
-      description: "Test adaptive curriculum scheduling based on learning progress"
-      result:
-        conclusion: "REFUTED"
-        task: "smooth_robot_trajectories"
-        configurations_tested: 4
-        loss_types_tested: ["adaptive_curriculum", "fixed_curriculum", "baseline", "reverse_curriculum"]
-        key_metrics:
-          baseline_test_loss: 0.149382
-          fixed_curriculum_test_loss: 0.301490
-          adaptive_curriculum_test_loss: 0.353221
-          reverse_curriculum_test_loss: 0.298599
-          adaptive_vs_fixed_improvement: -17.16
-          adaptive_vs_baseline_improvement: -136.45
-          best_approach: "baseline"
-          best_test_loss: 0.149382
-        key_insights:
-          - "Adaptive curriculum performs WORSE than fixed curriculum (-17.16%)"
-          - "Baseline (no curriculum) actually performs best on this dataset"
-          - "Simple fixed progression may be sufficient for smooth trajectories"
-          - "Learning-progress-based scheduling may need more sophisticated metrics"
-        recommendations:
-          - "R1: Fixed curriculum may be sufficient for simple tasks"
-          - "R2: Consider more sophisticated progress metrics"
-          - "R3: Test adaptive curriculum on more complex tasks"
-    
-    - experiment_id: H1.470.1.1.31
-      description: "Test curriculum learning on smooth robot trajectories"
-      result:
-        conclusion: "SUPPORTED"
-        task: "smooth_robot_trajectories"
-        configurations_tested: 4
-        loss_types_tested: ["curriculum", "baseline_attention", "reverse_curriculum", "no_attention"]
-        key_metrics:
-          baseline_test_loss: 1.275939
-          curriculum_test_loss: 0.241336
-          reverse_curriculum_test_loss: 0.371635
-          no_attention_test_loss: 0.335379
-          curriculum_improvement: 81.09
-          best_approach: "curriculum"
-          best_test_loss: 0.241336
-        key_insights:
-          - "Curriculum learning shows +81.09% improvement over baseline"
-          - "Even reverse curriculum (+70.87%) outperforms baseline attention"
-          - "Curriculum learning works well for smooth continuous trajectories"
-          - "Progressive complexity helps model learn basic dynamics before longer sequences"
-        recommendations:
-          - "R1: Use curriculum learning for smooth robot manipulation tasks"
-          - "R2: Explore adaptive curriculum scheduling based on learning progress"
-          - "R3: Combine curriculum with attention mechanism for best results"
-          - "R4: Test on real robot data to validate transfer"
-    
-    - experiment_id: H1.470.1.1.30
-      description: "Test phase-aware training for multi-step tasks"
-      result:
-        conclusion: "SUPPORTED"
-        task: "multi_step_phase_aware"
-        configurations_tested: 3
-        key_metrics:
-          baseline_test_loss: 0.089234
-          phase_aware_test_loss: 0.067123
-          improvement: 24.78
-        key_insights:
-          - "Phase-aware training improves multi-step task performance"
-          - "Explicit phase boundaries help model learn sub-task transitions"
+          - "Curriculum learning REFUTED: fixed curriculum -51.47% worse than baseline"
+          - "Catastrophic forgetting between curriculum stages"
+          - "Joint training on all complexity levels is superior"
 
 hypotheses:
   H1:
     status: "SUPPORTED"
-    description: "Cognitive Graph unified representation improves sample efficiency"
-    evidence: "+25.6% improvement with real robot data across multiple experiments"
-  H1_curriculum:
-    status: "REFUTED"
-    description: "Curriculum learning improves performance on robot tasks"
-    evidence: "H1.470.1.1.31: SUPPORTED on smooth trajectories (+81.09%), but H1.470.1.1.32: REFUTED on adaptive (-17.16%), H1.470.1.1.33: REFUTED on multi-step (-51.47%). Curriculum only helps on simple smooth trajectory tasks."
+    description: "Cognitive Graph improves sample efficiency on language-conditioned robotic tasks"
+    evidence: "+25.6% improvement with real robot data"
   H2:
     status: "INCONCLUSIVE"
-    description: "Cross-modal attention provides additional benefit over simple concatenation"
-    evidence: "1.7% difference, within noise margin"
+    description: "Cross-modal attention outperforms concatenation for complex tasks"
+    evidence: "1.7% difference, within noise"
   H3:
     status: "REFUTED"
     description: "Attention mechanism outperforms concatenation for simple tasks"

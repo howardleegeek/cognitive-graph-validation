@@ -1,0 +1,35 @@
+{
+  "experiment_id": "H1.470.1.1.35",
+  "description": "Experience Replay + Auxiliary Losses for Multi-Step Tasks",
+  "conclusion": "INCONCLUSIVE",
+  "task": "multi_step_manipulation",
+  "configurations_tested": 6,
+  "key_metrics": {
+    "baseline_test_loss": 0.022142,
+    "temporal_consistency_test_loss": 0.022034,
+    "experience_replay_test_loss": 0.02229,
+    "replay_tc_test_loss": 0.022525,
+    "prioritized_replay_tc_test_loss": 0.022385,
+    "ewc_tc_test_loss": 0.022039,
+    "best_config": "Temporal Consistency",
+    "best_test_loss": 0.022034,
+    "best_improvement_percent": 0.49,
+    "all_improvements": {
+      "Baseline": 0.0,
+      "Temporal Consistency": 0.49,
+      "Experience Replay": -0.67,
+      "Replay + Temporal Consistency": -1.73,
+      "Prioritized Replay + TC": -1.1,
+      "EWC + Temporal Consistency": 0.47
+    }
+  },
+  "key_insights": [
+    "Best configuration: Temporal Consistency with +0.49% improvement over baseline",
+    "Temporal consistency alone: +0.49%",
+    "Experience replay alone: +-0.67%",
+    "Replay + TC combined: +-1.73%",
+    "Prioritized replay + TC: +-1.10%",
+    "EWC + TC: +0.47%"
+  ],
+  "timestamp": "2026-05-20T15:13:41.644928"
+}
