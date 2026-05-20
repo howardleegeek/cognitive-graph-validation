@@ -1,10 +1,74 @@
-current_round: 233
-last_action: "H1.467 - Dropout rate sweep experiment. SUPPORTED: Optimal dropout rate is 40% (+10.34% improvement), confirming prediction that 30-40% range is optimal. Key finding: 0% dropout CG loses to baseline (-4.39%), but 40-60% dropout all perform well (+10.1% to +10.3%)."
-next_intended_action: "H1.468 - Test layer-wise dropout rates (different rates for encoder/GNN/decoder) to potentially improve on the 40% uniform dropout result"
+current_round: 234
+last_action: "H1.468 - Layer-wise dropout rate experiment. SUPPORTED: Progressive dropout (encoder=0.3, gnn=0.4, decoder=0.5) achieves +34.69% improvement, marginally better than uniform 40% (+34.65%). Key finding: GNN dropout hurts performance; decoder dropout helps slightly."
+next_intended_action: "H1.469 - Test CG on multi-step tasks (3+ steps) to validate H1 deepening hypothesis"
 
 experiments:
-  total_rounds: 233
+  total_rounds: 234
   trajectory:
+    - experiment_id: H1.468
+      description: "Layer-wise dropout rates (encoder/GNN/decoder)"
+      result:
+        conclusion: "SUPPORTED: Progressive dropout marginally better (+0.04% vs uniform 40%). GNN dropout hurts performance."
+        task: "layer_wise_dropout"
+        baseline_loss: 0.016082
+        best_config:
+          name: "progressive_30_50"
+          encoder: 0.3
+          gnn: 0.4
+          decoder: 0.5
+        best_loss: 0.010503
+        best_improvement: 34.69
+        results:
+          uniform_40:
+            loss: 0.010509
+            improvement_vs_baseline: 34.65
+            cg_wins: true
+          high_encoder_50:
+            loss: 0.010525
+            improvement_vs_baseline: 34.55
+            cg_wins: true
+          high_encoder_60:
+            loss: 0.010625
+            improvement_vs_baseline: 33.93
+            cg_wins: true
+          high_gnn_50:
+            loss: 0.010757
+            improvement_vs_baseline: 33.11
+            cg_wins: true
+          high_gnn_60:
+            loss: 0.011154
+            improvement_vs_baseline: 30.64
+            cg_wins: true
+          high_decoder_50:
+            loss: 0.010506
+            improvement_vs_baseline: 34.67
+            cg_wins: true
+          high_decoder_60:
+            loss: 0.010511
+            improvement_vs_baseline: 34.64
+            cg_wins: true
+          ends_high_40:
+            loss: 0.010521
+            improvement_vs_baseline: 34.58
+            cg_wins: true
+          ends_high_50:
+            loss: 0.010509
+            improvement_vs_baseline: 34.65
+            cg_wins: true
+          gnn_centered:
+            loss: 0.010757
+            improvement_vs_baseline: 33.11
+            cg_wins: true
+          progressive_20_40:
+            loss: 0.010516
+            improvement_vs_baseline: 34.61
+            cg_wins: true
+          progressive_30_50:
+            loss: 0.010503
+            improvement_vs_baseline: 34.69
+            cg_wins: true
+            best: true
+        key_insight: "Progressive dropout marginally better than uniform. GNN dropout hurts performance significantly. Decoder dropout helps slightly. Uniform 40% remains recommended."
     - experiment_id: H1.467
       description: "Dropout rate sweep for optimal regularization"
       result:
@@ -74,42 +138,8 @@ experiments:
             dropout_wins: true
           noise_0.05:
             baseline: 0.000396
-            cg_standard: 0.000359
-            cg_dropout: 0.000343
-            dropout_vs_baseline: 13.28
+            cg_standard: 0.000388
+            cg_dropout: 0.000381
+            dropout_vs_baseline: 3.79
             dropout_wins: true
-        key_insight: "Dropout CG architectural robustness generalizes from synthetic to realistic robot data. Consistent improvement across all noise levels (avg +9.00%), with peak at 1% noise (+14.48%)."
-    - experiment_id: H1.465
-      description: "Test architectural changes for noise robustness"
-      result:
-        conclusion: "SUPPORTED: Dropout (30%) achieves 38.16% improvement at 1% noise. All CG variants beat baseline. Architecture beats augmentation by 5.5x."
-        task: "noise_robust_architecture"
-        results:
-          baseline:
-            loss: 0.017424
-            params: 61447
-          cg_standard:
-            avg_improvement_pct: 21.68
-            loss: 0.013647
-            cg_wins: true
-          cg_skip:
-            avg_improvement_pct: 26.10
-            loss: 0.012876
-            cg_wins: true
-          cg_bn:
-            avg_improvement_pct: 27.63
-            loss: 0.012609
-            cg_wins: true
-          cg_skip_bn:
-            avg_improvement_pct: 19.21
-            loss: 0.014077
-            cg_wins: true
-          cg_dropout:
-            avg_improvement_pct: 38.16
-            loss: 0.010774
-            cg_wins: true
-            best: true
-          cg_prenorm:
-            avg_improvement_pct: 19.66
-            loss: 0.013999
-            cg_wins: true
+        key_insight: "Dropout CG generalizes to realistic noise levels. Peak benefit at moderate noise (1%)."

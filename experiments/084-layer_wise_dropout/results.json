@@ -1,0 +1,149 @@
+{
+  "experiment_id": "H1.468",
+  "task": "layer_wise_dropout",
+  "baseline_loss": 0.01608152803964913,
+  "best_config": {
+    "name": "progressive_30_50",
+    "encoder": 0.3,
+    "gnn": 0.4,
+    "decoder": 0.5
+  },
+  "best_loss": 0.010502520250156522,
+  "best_improvement": 34.69202538302032,
+  "best_cg_wins": true,
+  "all_results": [
+    {
+      "name": "uniform_40",
+      "loss": 0.01050922553986311,
+      "improvement_vs_baseline": 34.650329782390486,
+      "cg_wins": true,
+      "config": {
+        "encoder": 0.4,
+        "gnn": 0.4,
+        "decoder": 0.4
+      }
+    },
+    {
+      "name": "high_encoder_50",
+      "loss": 0.010525293182581663,
+      "improvement_vs_baseline": 34.55041612568486,
+      "cg_wins": true,
+      "config": {
+        "encoder": 0.5,
+        "gnn": 0.4,
+        "decoder": 0.4
+      }
+    },
+    {
+      "name": "high_encoder_60",
+      "loss": 0.010625131661072373,
+      "improvement_vs_baseline": 33.92958906096466,
+      "cg_wins": true,
+      "config": {
+        "encoder": 0.6,
+        "gnn": 0.3,
+        "decoder": 0.3
+      }
+    },
+    {
+      "name": "high_gnn_50",
+      "loss": 0.010757213924080133,
+      "improvement_vs_baseline": 33.10826000142436,
+      "cg_wins": true,
+      "config": {
+        "encoder": 0.3,
+        "gnn": 0.5,
+        "decoder": 0.3
+      }
+    },
+    {
+      "name": "high_gnn_60",
+      "loss": 0.011153651867061853,
+      "improvement_vs_baseline": 30.643084167359962,
+      "cg_wins": true,
+      "config": {
+        "encoder": 0.2,
+        "gnn": 0.6,
+        "decoder": 0.2
+      }
+    },
+    {
+      "name": "high_decoder_50",
+      "loss": 0.010505852987989783,
+      "improvement_vs_baseline": 34.67130137081797,
+      "cg_wins": true,
+      "config": {
+        "encoder": 0.3,
+        "gnn": 0.3,
+        "decoder": 0.5
+      }
+    },
+    {
+      "name": "high_decoder_60",
+      "loss": 0.010511027416214347,
+      "improvement_vs_baseline": 34.63912514843534,
+      "cg_wins": true,
+      "config": {
+        "encoder": 0.2,
+        "gnn": 0.2,
+        "decoder": 0.6
+      }
+    },
+    {
+      "name": "ends_high_40",
+      "loss": 0.010521104093641043,
+      "improvement_vs_baseline": 34.57646519844892,
+      "cg_wins": true,
+      "config": {
+        "encoder": 0.4,
+        "gnn": 0.2,
+        "decoder": 0.4
+      }
+    },
+    {
+      "name": "ends_high_50",
+      "loss": 0.010508558712899685,
+      "improvement_vs_baseline": 34.65447632220798,
+      "cg_wins": true,
+      "config": {
+        "encoder": 0.5,
+        "gnn": 0.2,
+        "decoder": 0.5
+      }
+    },
+    {
+      "name": "gnn_centered",
+      "loss": 0.010757213924080133,
+      "improvement_vs_baseline": 33.10826000142436,
+      "cg_wins": true,
+      "config": {
+        "encoder": 0.3,
+        "gnn": 0.5,
+        "decoder": 0.3
+      }
+    },
+    {
+      "name": "progressive_20_40",
+      "loss": 0.010516434675082564,
+      "improvement_vs_baseline": 34.605501111870616,
+      "cg_wins": true,
+      "config": {
+        "encoder": 0.2,
+        "gnn": 0.3,
+        "decoder": 0.4
+      }
+    },
+    {
+      "name": "progressive_30_50",
+      "loss": 0.010502520250156522,
+      "improvement_vs_baseline": 34.69202538302032,
+      "cg_wins": true,
+      "config": {
+        "encoder": 0.3,
+        "gnn": 0.4,
+        "decoder": 0.5
+      }
+    }
+  ],
+  "conclusion": "SUPPORTED"
+}
