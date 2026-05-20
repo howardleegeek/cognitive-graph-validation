@@ -1,0 +1,3 @@
+# Round 264 Summary: Ensemble Disagreement on Multi-Step Tasks
+
+**Progress**: Tested ensemble disagreement noise estimation on multi-step real robot tasks (20 timesteps). Results show ensemble disagreement provides a small improvement (+0.76%) over baseline, while oracle noise estimation actually performs worse than baseline (-11.14%). This suggests that on multi-step tasks, true noise levels may not be optimal for sample weighting, but ensemble disagreement still captures useful uncertainty. The hypothesis is inconclusive - ensemble disagreement helps but doesn't show the dramatic superiority seen on single-step tasks. Next step: test on more complex hierarchical multi-step tasks with clear phase transitions where uncertainty estimation might be more critical.

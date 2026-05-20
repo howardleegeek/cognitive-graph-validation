@@ -151,13 +151,14 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 | H1.470.1.1.22 | SUPPORTED | Noise-aware loss alone best (+55.36%) |
 | H1.470.1.1.23 | SUPPORTED | Ensemble disagreement best noise proxy (+7.40% vs +0.67% oracle) |
 | H1.470.1.1.24 | SUPPORTED | Ensemble disagreement maintains 7.3x superiority on real robot data (+15.24% vs +2.10% oracle) |
+| H1.470.1.1.25 | INCONCLUSIVE | Ensemble disagreement provides small improvement on multi-step tasks (+0.76% vs -11.14% oracle) |
 | H2 | Inconclusive | 1.7% difference |
 | H3 | REFUTED | Concatenation wins over attention for simple tasks |
 | H4 | CLOSE | 25% optimal vs 28% hypothesis |
 
 ## Next Steps
 
-1. **H1.470.1.1.25**: Test ensemble disagreement on multi-step real robot tasks
+1. **H1.470.1.1.26**: Test ensemble disagreement on hierarchical multi-step tasks with phase transitions
 2. **H1.470.1.1.26**: Compare ensemble sizes (3, 5, 7, 10 models) for cost-benefit analysis
 3. **H1.470.1.1.27**: Test ensemble disagreement with different normalization strategies
 4. **H1.470.1.1.28**: Validate on actual real robot dataset (if available)

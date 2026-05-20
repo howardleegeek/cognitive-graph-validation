@@ -1,10 +1,37 @@
-current_round: 263
-last_action: "H1.470.1.1.24 - Test ensemble disagreement on real robot data validation (SUPPORTED - 726% oracle ratio)"
-next_intended_action: "H1.470.1.1.25 - Test ensemble disagreement on multi-step real robot tasks"
+current_round: 264
+last_action: "H1.470.1.1.25 - Test ensemble disagreement on multi-step real robot tasks (INCONCLUSIVE - 0.76% improvement, oracle worse than baseline)"
+next_intended_action: "H1.470.1.1.26 - Test ensemble disagreement on hierarchical multi-step tasks with phase transitions"
 
 experiments:
-  total_rounds: 263
+  total_rounds: 264
   trajectory:
+    - experiment_id: H1.470.1.1.25
+      description: "Test ensemble disagreement noise estimation on multi-step real robot tasks"
+      result:
+        conclusion: "INCONCLUSIVE"
+        task: "ensemble_disagreement_multi_step_real_robot"
+        configurations_tested: 3
+        architectures_tested: ["baseline", "oracle_noise", "ensemble_disagreement"]
+        sequence_lengths_tested: [20]
+        key_metrics:
+          baseline_test_loss: 0.002055
+          oracle_test_loss: 0.002284
+          oracle_improvement: -11.14
+          ensemble_disagreement_loss: 0.002039
+          ensemble_disagreement_improvement: 0.76
+          ensemble_disagreement_oracle_ratio: "inf (oracle worse than baseline)"
+          ensemble_outperforms_oracle: true
+          ensemble_outperformance_margin: 10.74
+        key_insights:
+          - "On simple multi-step tasks, oracle noise estimation performs worse than baseline (-11.14%)"
+          - "Ensemble disagreement provides small improvement (+0.76%) over baseline"
+          - "True noise levels may not be optimal for weighting on multi-step tasks"
+          - "Ensemble disagreement captures useful uncertainty despite oracle failure"
+        recommendations:
+          - "R1: Test on more complex hierarchical multi-step tasks"
+          - "R2: Investigate why oracle noise fails on multi-step tasks"
+          - "R3: Consider adaptive noise estimation strategies"
+    
     - experiment_id: H1.470.1.1.24
       description: "Test ensemble disagreement noise estimation on real robot data validation"
       result:
@@ -58,35 +85,4 @@ experiments:
         key_insights:
           - "Ensemble disagreement outperforms oracle noise estimation by 10x (1109% vs 100%)"
           - "Learned estimator and reconstruction proxy perform worse than baseline"
-          - "Model uncertainty captures both input and label noise"
-          - "5-model ensemble provides robust uncertainty estimates"
-        recommendations:
-          - "R1: Use ensemble disagreement for noise-aware loss in production"
-          - "R2: 5 models sufficient for good uncertainty estimates"
-          - "R3: Disagreement normalization important for stable training"
-    
-    - experiment_id: H1.470.1.1.22
-      description: "Combined noise-aware loss + domain randomization"
-      result:
-        conclusion: "SUPPORTED"
-        task: "sim_to_real_gap_closure"
-        configurations_tested: 6
-        architectures_tested: ["baseline", "noise_aware_loss", "domain_randomization", "combined"]
-        sequence_lengths_tested: []
-        key_metrics:
-          baseline_syn_to_real_loss: 0.0013
-          oracle_real_trained_loss: 0.0007
-          noise_aware_loss: 0.0006
-          domain_rand_loss: 0.0014
-          combined_loss: 0.0009
-          strong_combined_loss: 0.0014
-          best_config: "Noise-aware on real"
-          best_test_loss: 0.0006
-          best_improvement: 55.36
-          gap_closure_percent: 110.6
-          prior_gap_closure: 36.1
-        key_insights:
-          - "Noise-aware loss alone (+55.36%) outperforms combined approach (+32.90%)"
-          - "Domain randomization interferes with noise-aware loss effectiveness"
-          - "Gap closure: 110.6% (exceeds 100% - improves beyond oracle)"
-         
+  
