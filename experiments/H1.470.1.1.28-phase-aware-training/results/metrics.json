@@ -1,0 +1,75 @@
+{
+  "experiment_id": "H1.470.1.1.28",
+  "timestamp": "2026-05-20T19:37:12",
+  "configurations_tested": 3,
+  "architectures_tested": [
+    "baseline",
+    "oracle_phase",
+    "detected_phase"
+  ],
+  "phase_counts": [
+    3,
+    4,
+    5
+  ],
+  "results": {
+    "3_phase": {
+      "baseline": {
+        "final_test_loss": 1.0977800548062078e-06,
+        "final_transition_loss": 0
+      },
+      "oracle_phase": {
+        "final_test_loss": 6.255207381400396e-08,
+        "final_transition_loss": 0
+      },
+      "detected_phase": {
+        "final_test_loss": 2.0769125967490253e-07,
+        "final_transition_loss": 0
+      },
+      "improvements": {
+        "oracle_vs_baseline": 94.30194841488114,
+        "detected_vs_baseline": 81.0807949401516
+      }
+    },
+    "4_phase": {
+      "baseline": {
+        "final_test_loss": 4.323679677327164e-06,
+        "final_transition_loss": 0
+      },
+      "oracle_phase": {
+        "final_test_loss": 1.1998639593002736e-07,
+        "final_transition_loss": 0
+      },
+      "detected_phase": {
+        "final_test_loss": 5.003609885534388e-07,
+        "final_transition_loss": 0
+      },
+      "improvements": {
+        "oracle_vs_baseline": 97.22490089727921,
+        "detected_vs_baseline": 88.42742696279585
+      }
+    },
+    "5_phase": {
+      "baseline": {
+        "final_test_loss": 1.0142041719518602e-06,
+        "final_transition_loss": 0
+      },
+      "oracle_phase": {
+        "final_test_loss": 5.514186909749696e-07,
+        "final_transition_loss": 0
+      },
+      "detected_phase": {
+        "final_test_loss": 3.786722379572893e-07,
+        "final_transition_loss": 0
+      },
+      "improvements": {
+        "oracle_vs_baseline": 45.63040596512721,
+        "detected_vs_baseline": 62.66311572860861
+      }
+    }
+  },
+  "conclusion": "SUPPORTED",
+  "key_insight": "Phase-aware training improves hierarchical task learning (oracle: 79.05%, detected: 77.39%)",
+  "avg_oracle_improvement": 79.05241842576253,
+  "avg_detected_improvement": 77.39044587718536
+}
