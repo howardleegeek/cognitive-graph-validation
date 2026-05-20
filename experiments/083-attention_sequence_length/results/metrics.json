@@ -1,0 +1,330 @@
+{
+  "hypothesis": "H1.470.1.1.6: Attention requires longer sequences",
+  "prediction": "Real CG underperforms on short sequences, catches up on longer ones",
+  "sequence_lengths": [
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    40,
+    50
+  ],
+  "temporal_strengths": [
+    "weak",
+    "strong"
+  ],
+  "models": [
+    "baseline",
+    "sim_cg",
+    "real_cg"
+  ],
+  "detailed_results": {
+    "weak": {
+      "5": {
+        "baseline": {
+          "loss": 0.12502989172935486
+        },
+        "sim_cg": {
+          "loss": 0.14333760738372803,
+          "improvement_vs_baseline": -14.64
+        },
+        "real_cg": {
+          "loss": 0.22523601353168488,
+          "improvement_vs_baseline": -80.15
+        },
+        "gap_difference": 65.5
+      },
+      "10": {
+        "baseline": {
+          "loss": 0.03976624459028244
+        },
+        "sim_cg": {
+          "loss": 0.035827651619911194,
+          "improvement_vs_baseline": 9.9
+        },
+        "real_cg": {
+          "loss": 0.04646267369389534,
+          "improvement_vs_baseline": -16.84
+        },
+        "gap_difference": 26.74
+      },
+      "15": {
+        "baseline": {
+          "loss": 0.01718832552433014
+        },
+        "sim_cg": {
+          "loss": 0.016802795231342316,
+          "improvement_vs_baseline": 2.24
+        },
+        "real_cg": {
+          "loss": 0.019224362447857857,
+          "improvement_vs_baseline": -11.85
+        },
+        "gap_difference": 14.09
+      },
+      "20": {
+        "baseline": {
+          "loss": 0.011217864230275154
+        },
+        "sim_cg": {
+          "loss": 0.011494691483676434,
+          "improvement_vs_baseline": -2.47
+        },
+        "real_cg": {
+          "loss": 0.009801358915865421,
+          "improvement_vs_baseline": 12.63
+        },
+        "gap_difference": 15.09
+      },
+      "25": {
+        "baseline": {
+          "loss": 0.006813643500208855
+        },
+        "sim_cg": {
+          "loss": 0.006609973963350058,
+          "improvement_vs_baseline": 2.99
+        },
+        "real_cg": {
+          "loss": 0.006032825913280249,
+          "improvement_vs_baseline": 11.46
+        },
+        "gap_difference": 8.47
+      },
+      "30": {
+        "baseline": {
+          "loss": 0.005837376229465008
+        },
+        "sim_cg": {
+          "loss": 0.004182170145213604,
+          "improvement_vs_baseline": 28.36
+        },
+        "real_cg": {
+          "loss": 0.004367685876786709,
+          "improvement_vs_baseline": 25.18
+        },
+        "gap_difference": 3.18
+      },
+      "40": {
+        "baseline": {
+          "loss": 0.003215804696083069
+        },
+        "sim_cg": {
+          "loss": 0.002382048638537526,
+          "improvement_vs_baseline": 25.93
+        },
+        "real_cg": {
+          "loss": 0.002509679179638624,
+          "improvement_vs_baseline": 21.96
+        },
+        "gap_difference": 3.97
+      },
+      "50": {
+        "baseline": {
+          "loss": 0.002206644043326378
+        },
+        "sim_cg": {
+          "loss": 0.0014873906038701534,
+          "improvement_vs_baseline": 32.59
+        },
+        "real_cg": {
+          "loss": 0.0013620139798149467,
+          "improvement_vs_baseline": 38.28
+        },
+        "gap_difference": 5.68
+      }
+    },
+    "strong": {
+      "5": {
+        "baseline": {
+          "loss": 0.779004693031311
+        },
+        "sim_cg": {
+          "loss": 1.2658005952835083,
+          "improvement_vs_baseline": -62.49
+        },
+        "real_cg": {
+          "loss": 1.469016432762146,
+          "improvement_vs_baseline": -88.58
+        },
+        "gap_difference": 26.09
+      },
+      "10": {
+        "baseline": {
+          "loss": 0.7749479413032532
+        },
+        "sim_cg": {
+          "loss": 1.29049813747406,
+          "improvement_vs_baseline": -66.53
+        },
+        "real_cg": {
+          "loss": 1.6209646463394165,
+          "improvement_vs_baseline": -109.17
+        },
+        "gap_difference": 42.64
+      },
+      "15": {
+        "baseline": {
+          "loss": 0.7665188908576965
+        },
+        "sim_cg": {
+          "loss": 1.3863552808761597,
+          "improvement_vs_baseline": -80.86
+        },
+        "real_cg": {
+          "loss": 1.6983428001403809,
+          "improvement_vs_baseline": -121.57
+        },
+        "gap_difference": 40.7
+      },
+      "20": {
+        "baseline": {
+          "loss": 0.7627347111701965
+        },
+        "sim_cg": {
+          "loss": 1.3061484098434448,
+          "improvement_vs_baseline": -71.25
+        },
+        "real_cg": {
+          "loss": 1.6341670751571655,
+          "improvement_vs_baseline": -114.25
+        },
+        "gap_difference": 43.01
+      },
+      "25": {
+        "baseline": {
+          "loss": 0.7842403650283813
+        },
+        "sim_cg": {
+          "loss": 1.3081574440002441,
+          "improvement_vs_baseline": -66.81
+        },
+        "real_cg": {
+          "loss": 1.7827727794647217,
+          "improvement_vs_baseline": -127.32
+        },
+        "gap_difference": 60.52
+      },
+      "30": {
+        "baseline": {
+          "loss": 0.7747384905815125
+        },
+        "sim_cg": {
+          "loss": 1.4661078453063965,
+          "improvement_vs_baseline": -89.24
+        },
+        "real_cg": {
+          "loss": 1.8319045305252075,
+          "improvement_vs_baseline": -136.45
+        },
+        "gap_difference": 47.22
+      },
+      "40": {
+        "baseline": {
+          "loss": 0.774074375629425
+        },
+        "sim_cg": {
+          "loss": 1.3794959783554077,
+          "improvement_vs_baseline": -78.21
+        },
+        "real_cg": {
+          "loss": 1.744118094444275,
+          "improvement_vs_baseline": -125.32
+        },
+        "gap_difference": 47.1
+      },
+      "50": {
+        "baseline": {
+          "loss": 0.7684561014175415
+        },
+        "sim_cg": {
+          "loss": 1.4449983835220337,
+          "improvement_vs_baseline": -88.04
+        },
+        "real_cg": {
+          "loss": 1.8039000034332275,
+          "improvement_vs_baseline": -134.74
+        },
+        "gap_difference": 46.7
+      }
+    }
+  },
+  "analysis": {
+    "weak_temporal": {
+      "sim_cg_improvements": [
+        -14.64,
+        9.9,
+        2.24,
+        -2.47,
+        2.99,
+        28.36,
+        25.93,
+        32.59
+      ],
+      "real_cg_improvements": [
+        -80.15,
+        -16.84,
+        -11.85,
+        12.63,
+        11.46,
+        25.18,
+        21.96,
+        38.28
+      ],
+      "gap_differences": [
+        65.5,
+        26.74,
+        14.09,
+        15.09,
+        8.47,
+        3.18,
+        3.97,
+        5.68
+      ],
+      "short_seq_gap_avg": 35.44,
+      "long_seq_gap_avg": 4.28,
+      "gap_reduction": 31.17,
+      "crossover_seq_len": null
+    },
+    "strong_temporal": {
+      "sim_cg_improvements": [
+        -62.49,
+        -66.53,
+        -80.86,
+        -71.25,
+        -66.81,
+        -89.24,
+        -78.21,
+        -88.04
+      ],
+      "real_cg_improvements": [
+        -88.58,
+        -109.17,
+        -121.57,
+        -114.25,
+        -127.32,
+        -136.45,
+        -125.32,
+        -134.74
+      ],
+      "gap_differences": [
+        26.09,
+        42.64,
+        40.7,
+        43.01,
+        60.52,
+        47.22,
+        47.1,
+        46.7
+      ],
+      "short_seq_gap_avg": 36.48,
+      "long_seq_gap_avg": 47.01,
+      "gap_reduction": -10.53,
+      "crossover_seq_len": 10
+    },
+    "crossover_analysis": {},
+    "overall": {
+      "weak_temporal_gap_reduction": 30.62,
+      "strong_temporal_gap_reduction": -10.42,
+      "hypothesis_supported": 

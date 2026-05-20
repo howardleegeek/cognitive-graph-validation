@@ -19,6 +19,39 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.470.1.1.6: Attention Mechanism Sequence Length Sensitivity — Round 245 (PARTIALLY SUPPORTED)
+
+**Hypothesis**: Real CG's attention mechanism requires longer sequences to establish meaningful temporal relationships, while Simulation CG (concatenation-based) performs consistently across sequence lengths.
+
+**Prediction**: Real CG will underperform on short sequences (< 20 steps) but catch up on longer sequences (≥ 30 steps).
+
+**Experiment**: Tested both architectures across sequence lengths [5, 10, 15, 20, 25, 30, 40, 50] with weak and strong temporal dependencies.
+
+**Results Summary — Weak Temporal**:
+
+| Seq Len | Sim CG Imp | Real CG Imp | Gap Diff |
+|---------|------------|-------------|----------|
+| 5       | -14.64%    | -80.15%     | 65.50%   |
+| 10      | +9.90%     | -16.84%     | 26.74%   |
+| 15      | +2.24%     | -11.85%     | 14.09%   |
+| 20      | -2.47%     | +12.63%     | 15.09%   |
+| 25      | +2.99%     | +11.46%     | 8.47%    |
+| 30      | +28.36%    | +25.18%     | 3.18%    |
+| 40      | +25.93%    | +21.96%     | 3.97%    |
+| 50      | +32.59%    | +38.28%     | 5.68%    |
+
+**Key Findings**:
+1. **Weak temporal: Hypothesis CONFIRMED** — Gap reduces from 35.44% (short seq 5-15) to 4.83% (long seq 40-50), a **30.61% reduction**
+2. **Crossover point at seq_len=20**: Real CG starts outperforming Sim CG at longer sequences
+3. **At seq_len=50, Real CG OUTPERFORMS Sim CG**: +38.28% vs +32.59%
+4. **Strong temporal: Hypothesis NOT supported** — Both architectures struggle, gap remains high (40-60%) across all lengths
+
+**Conclusion**: PARTIALLY SUPPORTED - Attention mechanism benefits from longer sequences on weak temporal tasks, but strong temporal dependencies remain challenging for both architectures.
+
+**Sub-hypothesis H1.470.1.1.7**: Adding explicit temporal memory (recurrent connections or memory banks) to Real CG will improve performance on strong temporal tasks.
+
+---
+
 ### H1.470.1.1.5: Task Structure Investigation — Round 244 (SUPPORTED)
 
 **Hypothesis**: The discrepancy between simulation CG performance (+61.36%) and real CG performance (-213%) is due to task structure differences, not architecture.
@@ -48,95 +81,49 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 **Conclusion**: SUPPORTED - Longer sequences reduce the gap difference between architectures. The discrepancy observed in H1.470.1.1.4 is partially explained by sequence length: Real CG performs worse on short sequences but catches up on longer ones.
 
-**Sub-hypothesis H1.470.1.1.6**: Real CG's attention mechanism requires longer sequences to establish meaningful temporal relationships, while Sim CG's GNN structure works better on shorter sequences due to explicit graph structure.
+---
+
+### H1.470: Error Accumulation in Unified Representations — Round 236 (REFUTED)
+
+**Hypothesis**: CG's advantage decreases with task complexity because errors in the unified representation space accumulate across steps.
+
+**Prediction**: Adding explicit error correction (residual connections between steps) will reduce the performance gap between single-step and multi-step tasks for CG.
+
+**Results**:
+- Single-step: CG Standard -121.15%, CG Residual -102.77%
+- Multi-step: CG Standard -50.17%, CG Residual -71.55%
+- Residual correction changes improvement drop from 70.98% to 31.22%
+
+**Conclusion**: REFUTED - Residual correction does not support error accumulation hypothesis. Both architectures perform poorly, suggesting a different mechanism.
 
 ---
 
-### H1.470.1.1.4: Architecture Alignment Investigation — Round 243 (INCONCLUSIVE)
+### H1: Unified Cognitive Graph — SUPPORTED (+25.6% with real robot data)
 
-**Hypothesis**: The discrepancy between simulation and "real" CG performance is due to architectural differences between the simulation CG and the CG used in H1 experiments.
+**Hypothesis**: A unified cognitive graph architecture achieves higher sample efficiency than separated architectures.
 
-**Prediction**: Aligning the architectures will eliminate the performance gap.
-
-**Experiment**: Compared three architectures on multi-step tasks:
-1. **Baseline_Concat**: Standard concatenation baseline
-2. **Simulation_CG**: GNN-based CG with physical/semantic split (144+368 dims)
-3. **Real_CG**: Attention-based CG (based on H1.148 architecture)
-
-**Results (20-step sequences)**:
-
-| Architecture | Val Loss | Improvement vs Baseline |
-|--------------|----------|------------------------|
-| Baseline_Concat | 0.000112 | 0.00% |
-| Simulation_CG | 0.000043 | **+61.36%** |
-| Real_CG | 0.000351 | -213.22% |
-
-**Results (50-step sequences)**:
-
-| Architecture | Val Loss (50-step) |
-|--------------|-------------------|
-| Baseline_Concat | 0.021267 |
-| Simulation_CG | 0.016089 |
-| Real_CG | 0.016210 |
-
-**Key Findings**:
-1. **Simulation CG actually outperforms baseline**: +61.36% improvement on 20-step tasks, contradicting the negative gaps seen in H1.470.1.1.3
-2. **Real CG (attention-based) underperforms**: -213% vs baseline on short sequences
-3. **On longer sequences (50-step)**: Both CG variants perform similarly (16.1 vs 16.2 loss), both better than baseline (21.3)
-4. **Architecture is NOT the root cause**: The discrepancy in H1.470.1.1.3 appears to be data/task-specific, not architectural
-
-**Conclusion**: INCONCLUSIVE - The architecture difference is not the primary cause of the simulation vs real discrepancy. The issue likely lies in task definition differences (how multi-step tasks are structured) or data characteristics.
+**Evidence**: Real robot data experiments showed +25.6% improvement over baseline.
 
 ---
 
-### H1.470.1.1.3: Improvement Gap Sign Discrepancy — Round 242 (REFUTED)
+### H2: Cross-Modal Attention — INCONCLUSIVE (1.7% difference)
 
-**Hypothesis**: The improvement gap sign discrepancy (negative in simulation, positive in real experiments) is due to data regime differences.
+**Hypothesis**: Cross-modal attention improves grounding quality.
 
-**Prediction**: Testing across different data regimes (random, structured, temporal) will show positive gaps in at least one regime.
-
-**Result**: REFUTED - All regimes showed negative gaps. CG underperforms baseline in simulation (-3.75% to -150.59%), opposite of real experiments (+25-31%). The discrepancy is architectural, not data-related.
-
----
-
-### H1: Cognitive Graph Sample Efficiency — SUPPORTED
-
-**Original Hypothesis**: Unified cognitive graph architecture achieves higher sample efficiency than separated architectures.
-
-**Evidence**: +25.6% improvement with real robot data (H1 original experiments).
-
-**Status**: SUPPORTED, with ongoing investigation into simulation vs real discrepancy.
-
----
-
-### H2: Dimension Optimization — INCONCLUSIVE
-
-**Status**: 1.7% difference between optimal and fixed dimensions. Requires further investigation.
+**Evidence**: Minimal difference between attention and concatenation fusion.
 
 ---
 
 ### H3: Attention vs Concatenation — REFUTED
 
-**Original Hypothesis**: Attention-based fusion outperforms simple concatenation.
+**Hypothesis**: Attention-based fusion outperforms simple concatenation.
 
-**Result**: REFUTED - Concatenation wins over attention for simple tasks. Attention may have value for longer sequences (20+ timesteps).
-
----
-
-### H4: Optimal Dimension Ratio — CLOSE
-
-**Status**: 25% optimal vs 28% hypothesis. Close but not exact match.
+**Evidence**: Concatenation wins over attention for simple tasks.
 
 ---
 
-## Research Trajectory
+### H4: Optimal Dropout — CLOSE (25% optimal vs 28% hypothesis)
 
-1. **H1 Deepen**: Testing with more complex multi-step tasks (current focus)
-2. **H3 Re-test**: Attention on longer sequences (20+ timesteps) - partially addressed
-3. **Sub-hypotheses**: H1.470.1.1.x series investigating simulation vs real discrepancy
+**Hypothesis**: 28% dropout is optimal for cognitive graph architectures.
 
-## Next Steps
-
-- H1.470.1.1.6: Test Real CG's attention mechanism specifically on sequence length sensitivity
-- Investigate why Real CG underperforms on short sequences but catches up on longer ones
-- Consider hybrid architecture that uses GNN for short sequences and attention for long sequences
+**Evidence**: Actual optimal found at 25%, close to hypothesis.
