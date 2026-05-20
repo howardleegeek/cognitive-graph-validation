@@ -1,0 +1,81 @@
+{
+  "experiment_id": "H1.470.1.1.10",
+  "hypothesis": "Alternative memory architectures may better handle very long sequences",
+  "configurations": [
+    {
+      "seq_len": 60,
+      "baseline_loss": 0.07124220207333565,
+      "single_lstm_loss": 0.019919761456549168,
+      "single_lstm_improvement": 72.03937992252953,
+      "transformer_xl_loss": 0.04676791559904814,
+      "transformer_xl_improvement": 34.353635572766336,
+      "txl_vs_lstm": -134.78150429191965,
+      "swa_loss": 0.05376286618411541,
+      "swa_improvement": 24.535086480380368,
+      "swa_vs_lstm": -169.89713858465606,
+      "global_attention_loss": 0.0644159484654665,
+      "global_attention_improvement": 9.581755489312789,
+      "ga_vs_lstm": -223.3771077328237
+    },
+    {
+      "seq_len": 100,
+      "baseline_loss": 0.05533788911998272,
+      "single_lstm_loss": 0.019185565412044525,
+      "single_lstm_improvement": 65.33014591422761,
+      "transformer_xl_loss": 0.03446500655263662,
+      "transformer_xl_improvement": 37.718971394246445,
+      "txl_vs_lstm": -79.64029629796472,
+      "swa_loss": 0.04450838174670935,
+      "swa_improvement": 19.56978761837664,
+      "swa_vs_lstm": -131.98889785529795,
+      "global_attention_loss": 0.05210859049111605,
+      "global_attention_improvement": 5.835601393947209,
+      "ga_vs_lstm": -171.60310041424552
+    },
+    {
+      "seq_len": 150,
+      "baseline_loss": 0.04701914079487324,
+      "single_lstm_loss": 0.017880651634186506,
+      "single_lstm_improvement": 61.971547476392566,
+      "transformer_xl_loss": 0.029331722296774387,
+      "transformer_xl_improvement": 37.61748555819508,
+      "txl_vs_lstm": -64.04168537512507,
+      "swa_loss": 0.039143484085798264,
+      "swa_improvement": 16.74989499155991,
+      "swa_vs_lstm": -118.91531073151029,
+      "global_attention_loss": 0.04535131994634867,
+      "global_attention_improvement": 3.547110432750448,
+      "ga_vs_lstm": -153.63348536828624
+    },
+    {
+      "seq_len": 200,
+      "baseline_loss": 0.04105095099657774,
+      "single_lstm_loss": 0.01556917722336948,
+      "single_lstm_improvement": 62.07352851662944,
+      "transformer_xl_loss": 0.024589485488831997,
+      "transformer_xl_improvement": 40.100083209078576,
+      "txl_vs_lstm": -57.93696183201609,
+      "swa_loss": 0.03446147684007883,
+      "swa_improvement": 16.05194032422842,
+      "swa_vs_lstm": -121.34423897720063,
+      "global_attention_loss": 0.03989827819168568,
+      "global_attention_improvement": 2.807907677919951,
+      "ga_vs_lstm": -156.26452585945256
+    }
+  ],
+  "summary": {
+    "avg_lstm_improvement": 65.35365045744479,
+    "avg_transformer_xl_vs_lstm": -84.10011194925639,
+    "avg_swa_vs_lstm": -135.53639653716624,
+    "avg_global_attention_vs_lstm": -176.21955484370199,
+    "transformer_xl_scaling_corr": 0.8850296745796085,
+    "swa_scaling_corr": 0.842600916358751,
+    "global_attention_scaling_corr": 0.8479434425904897,
+    "best_overall_architecture": "Transformer-XL",
+    "best_overall_improvement": -84.10011194925639,
+    "best_scaling_architecture": "Transformer-XL",
+    "best_scaling_correlation": 0.8850296745796085
+  },
+  "conclusion": "PARTIALLY_SUPPORTED",
+  "key_finding": "Single LSTM remains best overall (65.4% avg improvement). Transformer-XL shows best scaling (corr=0.885) but still underperforms LSTM by 84.1%."
+}
