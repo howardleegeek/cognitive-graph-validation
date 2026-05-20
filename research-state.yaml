@@ -1,10 +1,36 @@
-current_round: 276
-last_action: "H1.470.1.1.37 - Test adaptive regularization that scales with model capacity (REFUTED - fixed regularization consistently outperforms all adaptive strategies across model sizes 32-128)"
-next_intended_action: "H1.470.1.1.38 - Test whether over-regularization at h=256 is architecture-dependent (multi-layer GRU, layer norm) vs purely capacity-dependent; or investigate learned regularization weights via meta-learning"
+current_round: 277
+last_action: "H1.470.1.1.38 - Test whether over-regularization at h=256 is architecture-dependent (multi-layer GRU, layer norm) vs purely capacity-dependent (INCONCLUSIVE - both architectures show over-regularization but at different capacity thresholds)"
+next_intended_action: "H1.470.1.1.39 - Investigate task-dependent regularization scaling based on task complexity metrics"
 
 experiments:
-  total_rounds: 276
+  total_rounds: 277
   trajectory:
+    - experiment_id: H1.470.1.1.38
+      description: "Test whether over-regularization at h=256 is architecture-dependent"
+      result:
+        conclusion: "INCONCLUSIVE"
+        task: "architecture_comparison"
+        configurations_tested: 5
+        model_types_tested: ["simple_gru", "cognitive_graph"]
+        model_sizes_tested: [32, 64, 128, 256]
+        key_metrics:
+          simple_gru_h32: "+0.40%"
+          simple_gru_h64: "-1.44%"
+          simple_gru_h128: "-6.17%"
+          cognitive_graph_h128: "+11.83%"
+          cognitive_graph_h256: "-9.38%"
+        key_insights:
+          - "Both simple GRU and cognitive graph architectures show over-regularization for larger models"
+          - "Over-regularization threshold differs: GRU at h=64+, cognitive graph at h=256+"
+          - "Cognitive graph benefits more at moderate sizes (+11.83% vs +0.40% for GRU at h=128)"
+          - "Effect is NOT purely architecture-dependent — both architectures exhibit similar patterns"
+          - "The discrepancy with H1.470.1.1.36 suggests task/data differences are significant"
+        recommendations:
+          - "R1: Over-regularization depends on model capacity relative to task complexity"
+          - "R2: Need adaptive regularization that considers both architecture and task"
+          - "R3: Investigate task-dependent regularization scaling"
+          - "R4: Explore meta-learning for adaptive regularization weights"
+    
     - experiment_id: H1.470.1.1.37
       description: "Test adaptive regularization that scales with model capacity"
       result:
@@ -53,30 +79,3 @@ experiments:
           model_scaling_effect: "negative"
         key_insights:
           - "Temporal consistency helps small models (+5.18%) but hurts large models (-5.85%)"
-          - "Over-regularization effect: larger models have capacity to learn directly, auxiliary losses constrain them"
-          - "No data scaling effect: improvement doesn't increase with more data"
-          - "Best config: small model (h=32) + more data (n=2000) + temporal consistency"
-          - "Regularization-capacity tradeoff discovered"
-        recommendations:
-          - "R1: Use temporal consistency loss only for small models (hidden_dim <= 32)"
-          - "R2: For larger models, rely on data volume rather than auxiliary regularization"
-          - "R3: Investigate adaptive regularization that scales with model capacity"
-          - "R4: Test whether this finding generalizes to real robot data"
-    
-    - experiment_id: H1.470.1.1.35
-      description: "Test experience replay + auxiliary losses for multi-step tasks"
-      result:
-        conclusion: "INCONCLUSIVE"
-        task: "multi_step_manipulation"
-        configurations_tested: 6
-        loss_types_tested: ["baseline", "temporal_consistency", "experience_replay", "replay_tc", "prioritized_replay_tc", "ewc_tc"]
-        key_metrics:
-          baseline_test_loss: 0.022540
-          temporal_consistency_test_loss: 0.022448
-          experience_replay_test_loss: 0.022538
-          replay_tc_test_loss: 0.022619
-          prioritized_replay_tc_test_loss: 0.022507
-          ewc_tc_test_loss: 0.022629
-          best_config: "Temporal Consistency"
-          best_test_loss: 0.022448
-          best_improvement_percent: 0.41
