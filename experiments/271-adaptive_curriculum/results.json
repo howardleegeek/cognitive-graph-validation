@@ -1,0 +1,29 @@
+{
+  "experiment_id": "H1.470.1.1.32",
+  "conclusion": "REFUTED",
+  "configurations_tested": [
+    "adaptive_curriculum",
+    "fixed_curriculum",
+    "baseline",
+    "reverse_curriculum"
+  ],
+  "key_metrics": {
+    "baseline_test_loss": 0.14938190542161464,
+    "fixed_curriculum_test_loss": 0.3014897607266903,
+    "adaptive_curriculum_test_loss": 0.35322089716792104,
+    "reverse_curriculum_test_loss": 0.2985991295427084,
+    "adaptive_vs_fixed_improvement": -17.158505256212194,
+    "adaptive_vs_baseline_improvement": -136.45494156135737,
+    "best_approach": "baseline",
+    "best_test_loss": 0.14938190542161464
+  },
+  "key_insights": [
+    "Fixed curriculum outperforms adaptive by 17.16%",
+    "Simple fixed progression may be sufficient for smooth trajectories"
+  ],
+  "recommendations": [
+    "R1: Fixed curriculum may be sufficient for simple tasks",
+    "R2: Consider more sophisticated progress metrics",
+    "R3: Test adaptive curriculum on more complex tasks"
+  ]
+}

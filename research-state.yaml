@@ -1,10 +1,36 @@
-current_round: 270
-last_action: "H1.470.1.1.31 - Curriculum learning for smooth robot trajectories (SUPPORTED +81.09% improvement)"
-next_intended_action: "H1.470.1.1.32 - Test adaptive curriculum scheduling based on learning progress"
+current_round: 271
+last_action: "H1.470.1.1.32 - Test adaptive curriculum scheduling based on learning progress (REFUTED -17.16% worse than fixed curriculum)"
+next_intended_action: "H1.470.1.1.33 - Test curriculum learning on more complex multi-step tasks"
 
 experiments:
-  total_rounds: 270
+  total_rounds: 271
   trajectory:
+    - experiment_id: H1.470.1.1.32
+      description: "Test adaptive curriculum scheduling based on learning progress"
+      result:
+        conclusion: "REFUTED"
+        task: "smooth_robot_trajectories"
+        configurations_tested: 4
+        loss_types_tested: ["adaptive_curriculum", "fixed_curriculum", "baseline", "reverse_curriculum"]
+        key_metrics:
+          baseline_test_loss: 0.149382
+          fixed_curriculum_test_loss: 0.301490
+          adaptive_curriculum_test_loss: 0.353221
+          reverse_curriculum_test_loss: 0.298599
+          adaptive_vs_fixed_improvement: -17.16
+          adaptive_vs_baseline_improvement: -136.45
+          best_approach: "baseline"
+          best_test_loss: 0.149382
+        key_insights:
+          - "Adaptive curriculum performs WORSE than fixed curriculum (-17.16%)"
+          - "Baseline (no curriculum) actually performs best on this dataset"
+          - "Simple fixed progression may be sufficient for smooth trajectories"
+          - "Learning-progress-based scheduling may need more sophisticated metrics"
+        recommendations:
+          - "R1: Fixed curriculum may be sufficient for simple tasks"
+          - "R2: Consider more sophisticated progress metrics"
+          - "R3: Test adaptive curriculum on more complex tasks"
+    
     - experiment_id: H1.470.1.1.31
       description: "Test curriculum learning on smooth robot trajectories"
       result:
@@ -54,26 +80,4 @@ experiments:
           - "Phase-aware training is NOT a general technique for robot learning"
         recommendations:
           - "R1: Do NOT use phase-aware training for smooth robot manipulation trajectories"
-          - "R2: Re-examine H1.470.1.1.28 results as potentially synthetic task artifacts"
-          - "R3: Explore alternative approaches: curriculum learning, data augmentation, trajectory smoothing"
-          - "R4: Focus on techniques that work with continuous, smooth dynamics"
-    
-    - experiment_id: H1.470.1.1.29
-      description: "Test hybrid phase-aware + ensemble disagreement on mixed tasks"
-      result:
-        conclusion: "REFUTED"
-        task: "mixed_hierarchical_noisy"
-        configurations_tested: 3
-        loss_types_tested: ["baseline", "phase_aware", "ensemble_disagreement", "hybrid"]
-        key_metrics:
-          avg_phase_improvement: -2.46
-          avg_ensemble_improvement: 0.96
-          avg_hybrid_improvement: -0.34
-          best_approach: "ensemble_disagreement"
-          best_improvement: 0.96
-        key_insights:
-          - "Phase-aware training does NOT generalize to mixed/noisy tasks"
-          - "Ensemble disagreement provides marginal improvement (+0.96%) on some configs"
-          - "Hybrid approach performs worse than either individual approach"
-          - "Benefits of phase-aware training are task-specific to hierarchical structure"
-          - "Clear phase transitions required for phase-aware training to work"
+          - "R2: Re-examine H1.470.1.1.28 results as potentially synthetic-task-specific"

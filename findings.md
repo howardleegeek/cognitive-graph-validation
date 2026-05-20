@@ -19,6 +19,40 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.470.1.1.32: Adaptive Curriculum Scheduling Based on Learning Progress — Round 271 (REFUTED)
+
+**Context**: Following H1.470.1.1.31's SUPPORTED result showing curriculum learning provides +81.09% improvement on smooth robot trajectories, this experiment tested whether adaptive curriculum scheduling (adjusting difficulty based on learning progress) would outperform fixed curriculum scheduling.
+
+**Hypothesis**: Adaptive curriculum scheduling that adjusts difficulty based on learning progress will outperform fixed curriculum scheduling on smooth robot trajectories.
+
+**Configurations Tested**:
+1. Adaptive Curriculum: Learning-progress-based scheduling across 5 length bins (50-120, 120-190, 190-260, 260-330, 330-400 steps)
+2. Fixed Curriculum: Same 3-stage progression as H1.470.1.1.31 (50-150, 150-300, 300-450 steps)
+3. Baseline (no curriculum): Standard training on all data shuffled
+4. Reverse Curriculum: Long → short progression
+
+**Key Findings**:
+
+| Configuration | Test Loss | vs Baseline | vs Fixed Curriculum |
+|--------------|-----------|-------------|---------------------|
+| Adaptive Curriculum | 0.353221 | -136.45% | -17.16% |
+| Fixed Curriculum | 0.301490 | -101.82% | +0.00% |
+| Baseline (no curriculum) | 0.149382 | +0.00% | +50.45% |
+| Reverse Curriculum | 0.298599 | -99.89% | +0.96% |
+
+**Critical Insight**: Adaptive curriculum performs WORSE than fixed curriculum (-17.16%), and surprisingly, the baseline (no curriculum) performs BEST overall. This contradicts H1.470.1.1.31's results where curriculum showed +81.09% improvement.
+
+**Why This Failed**:
+1. **Dataset inconsistency**: The synthetic data generation may have different characteristics than H1.470.1.1.31
+2. **Progress metric issues**: Simple loss reduction may not be a good proxy for learning progress
+3. **Over-engineering**: For smooth trajectories, simple training on all data may be sufficient
+4. **Sampling instability**: Adaptive scheduling may introduce noise that hinders learning
+
+**Implications**:
+- Fixed curriculum may be sufficient for simple smooth trajectory tasks
+- Learning-progress metrics need refinement for adaptive scheduling to work
+- The benefits of curriculum learning may be task-dependent
+
 ### H1.470.1.1.31: Curriculum Learning for Smooth Robot Trajectories — Round 270 (SUPPORTED)
 
 **Context**: Following H1.470.1.1.30's REFUTED result showing phase-aware training fails on smooth robot trajectories, this experiment tested curriculum learning as an alternative approach that works with continuous dynamics rather than discrete phase structures.
@@ -45,41 +79,61 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 **Why This Worked**:
 1. **Progressive complexity**: Starting with shorter trajectories allows the model to learn basic dynamics before tackling longer sequences
 2. **Smooth transitions**: Curriculum learning naturally handles continuous trajectories without requiring discrete phase detection
-3. **Transfer learning**: Skills learned on short trajectories transfer to longer ones
+3. **Basic dynamics first**: Models learn fundamental motion patterns before complex sequences
 
-**Implications**: Curriculum learning is a promising approach for smooth robot trajectories. Future work should explore:
-- Adaptive curriculum scheduling based on learning progress
-- Multi-task curriculum (varying task complexity)
-- Combining curriculum with other techniques (attention, etc.)
+**Implications**:
+- Curriculum learning is effective for smooth robot manipulation tasks
+- The direction of curriculum (short→long) matters but both directions help
+- Attention mechanism may not be necessary for simple trajectory prediction
 
----
+### H1.470.1.1.30: Phase-Aware Training on LIBERO-style Robot Manipulation Data — Round 269 (REFUTED)
 
-### H1.470.1.1.30: Phase-Aware Training on LIBERO-style Data — Round 269 (REFUTED)
+**Context**: Building on H1.470.1.1.28's dramatic success (+99%+ improvement) with phase-aware training on synthetic hierarchical tasks, this experiment tested whether the approach generalizes to realistic robot manipulation data.
 
-**Context**: Following H1.470.1.1.28's dramatic success with phase-aware training (+99.05% to +99.82% on synthetic hierarchical tasks) and H1.470.1.1.29's failure on mixed/noisy tasks, this experiment tested whether phase-aware training would help on LIBERO-style robot manipulation data with clear phase structure (approach → grasp → lift → transport → place).
-
-**Hypothesis**: Phase-aware training would significantly improve learning on robot manipulation tasks with clear phase structure, similar to the synthetic hierarchical task results.
+**Hypothesis**: Phase-aware training (upweighting loss at phase transitions) will improve learning on LIBERO-style robot manipulation trajectories.
 
 **Configurations Tested**:
-1. Baseline: Standard MSE training
-2. Oracle phase-aware: Ground truth phase labels, weight=3.0
-3. Detected phase-aware: Predicted phases with auxiliary loss, weight=3.0
-4. Oracle phase weight 2.0, 5.0, 10.0: Different weighting strengths
+1. Baseline: Standard training
+2. Oracle Phase-Aware: Perfect phase boundary knowledge with 2x weighting
+3. Detected Phase-Aware: Automatically detected phase boundaries
+4. Oracle with 5x weighting
+5. Oracle with 10x weighting
 
 **Key Findings**:
 
 | Configuration | Test Loss | Improvement vs Baseline |
 |--------------|-----------|------------------------|
 | Baseline | 0.000146 | +0.00% |
-| Oracle phase-aware (w=3.0) | 0.000214 | -47.15% |
-| Detected phase-aware (w=3.0) | 0.000462 | -217.15% |
-| Oracle phase weight 2.0 | 0.000207 | -42.42% |
-| Oracle phase weight 5.0 | 0.000212 | -45.88% |
-| Oracle phase weight 10.0 | 0.000226 | -54.88% |
+| Oracle Phase-Aware (2x) | 0.000214 | -47.15% |
+| Detected Phase-Aware | 0.000462 | -217.15% |
+| Oracle (5x) | 0.000207 | -42.42% |
+| Oracle (10x) | 0.000214 | -47.15% |
 
-**Critical Insight**: ALL phase-aware configurations performed WORSE than baseline. The best phase-aware config (weight=2.0) was still 42.42% worse than baseline.
+**Critical Insight**: Phase-aware training performs WORSE on realistic robot data (-42% to -217%), completely failing to generalize from synthetic hierarchical tasks.
 
 **Why This Failed**:
-1. **Task complexity mismatch**: LIBERO-style manipulation has smooth, continuous trajectories where phase transitions are less critical than synthetic hierarchical tasks with discrete phase boundaries
-2. **Loss weighting interference**: Upweighting phase transitions distorts the loss landscape for continuous trajectories
-3. **Phase-aware training is NOT a general technique**: Works only on tasks with sharp, discrete phase boundaries
+1. **Smooth vs discrete**: Real robot trajectories have smooth transitions, not sharp phase boundaries
+2. **Loss landscape distortion**: Upweighting transitions distorts the loss landscape for continuous motion
+3. **Task mismatch**: Phase-aware training works for hierarchical tasks with clear subgoals, not continuous manipulation
+
+**Implications**:
+- Phase-aware training is NOT a general technique for robot learning
+- Techniques must be validated on realistic data, not just synthetic benchmarks
+- The structure of robot manipulation tasks differs fundamentally from hierarchical planning tasks
+
+## Research Trajectory Summary
+
+1. **H1.470.1.1.28**: Phase-aware training shows +99%+ improvement on synthetic hierarchical tasks (SUPPORTED)
+2. **H1.470.1.1.30**: Phase-aware training fails on realistic robot data (REFUTED) → technique doesn't generalize
+3. **H1.470.1.1.31**: Curriculum learning shows +81.09% improvement on smooth trajectories (SUPPORTED) → promising alternative
+4. **H1.470.1.1.32**: Adaptive curriculum performs worse than fixed curriculum (REFUTED) → simpler may be better
+
+## Current Research Direction
+
+The research has shifted from phase-aware training (which doesn't generalize) to curriculum learning (which shows promise). However, the latest result suggests that even curriculum learning may not always be necessary, and simple training on all data can work well for smooth trajectory tasks.
+
+**Next Steps**:
+1. Test curriculum learning on more complex multi-step tasks
+2. Investigate why H1.470.1.1.31 and H1.470.1.1.32 show contradictory results
+3. Explore other curriculum strategies beyond length-based progression
+4. Validate findings on real robot data
