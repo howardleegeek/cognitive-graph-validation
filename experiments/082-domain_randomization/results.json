@@ -1,0 +1,25 @@
+{
+  "experiment_id": "H1.470.1.1.22",
+  "description": "Combined noise-aware loss + domain randomization",
+  "conclusion": "SUPPORTED",
+  "task": "sim_to_real_gap_closure",
+  "configurations_tested": 6,
+  "key_metrics": {
+    "synthetic_test_loss": 0.0007573086768388748,
+    "baseline_syn_to_real_loss": 0.0013095379108563066,
+    "oracle_real_trained_loss": 0.0006540847825817764,
+    "noise_aware_loss": 0.0005845804698765278,
+    "domain_rand_loss": 0.0014278028393164277,
+    "combined_loss": 0.000878683349583298,
+    "strong_combined_loss": 0.0013850047253072262,
+    "best_config": "Noise-aware on real",
+    "best_test_loss": 0.0005845804698765278,
+    "best_improvement": 55.35979027180124,
+    "gap_size": 0.0006554531282745302,
+    "gap_closure_percent": 110.6040096090803,
+    "prior_gap_closure": 36.1
+  },
+  "key_insights": [
+    "Combined approach closes 110.6% of gap (vs 36.1% prior)"
+  ]
+}

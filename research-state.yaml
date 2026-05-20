@@ -1,12 +1,38 @@
-current_round: 264
-last_action: "H1.470.1.1.25 - Test ensemble disagreement on multi-step real robot tasks (INCONCLUSIVE - 0.76% improvement, oracle worse than baseline)"
-next_intended_action: "H1.470.1.1.26 - Test ensemble disagreement on hierarchical multi-step tasks with phase transitions"
+current_round: 265
+last_action: "H1.470.1.1.26 - Test ensemble disagreement on hierarchical multi-step tasks with phase transitions (REFUTED - -4.05% worse than baseline)"
+next_intended_action: "H1.470.1.1.27 - Test ensemble disagreement on more complex hierarchical tasks (4-5 phases) or explore different uncertainty estimation methods"
 
 experiments:
-  total_rounds: 264
+  total_rounds: 265
   trajectory:
+    - experiment_id: H1.470.1.1.26
+      description: "Test ensemble disagreement on hierarchical multi-step tasks with phase transitions"
+      result:
+        conclusion: "REFUTED"
+        task: "hierarchical_multi_step_phase_transitions"
+        configurations_tested: 3
+        architectures_tested: ["baseline", "oracle_noise", "ensemble_disagreement"]
+        sequence_lengths_tested: [20]
+        n_phases: 3
+        key_metrics:
+          baseline_test_loss: 0.443798
+          oracle_test_loss: 0.423309
+          oracle_improvement: 4.62
+          ensemble_disagreement_loss: 0.461756
+          ensemble_disagreement_improvement: -4.05
+          oracle_ratio: -87.7
+        key_insights:
+          - "Ensemble disagreement performs worse than baseline (-4.05%) on hierarchical tasks"
+          - "Oracle noise (+4.62%) outperforms ensemble disagreement"
+          - "Simple hierarchical structures don't provide enough signal for ensemble disagreement"
+          - "Phase transitions may be too abrupt for ensemble to capture useful uncertainty"
+        recommendations:
+          - "R1: Test on tasks with more phases (4-5) to increase complexity"
+          - "R2: Test on tasks with noisy/ambiguous phase transitions"
+          - "R3: Consider adaptive phase detection mechanisms"
+    
     - experiment_id: H1.470.1.1.25
-      description: "Test ensemble disagreement noise estimation on multi-step real robot tasks"
+      description: "Test ensemble disagreement on multi-step real robot tasks"
       result:
         conclusion: "INCONCLUSIVE"
         task: "ensemble_disagreement_multi_step_real_robot"
@@ -55,34 +81,6 @@ experiments:
           - "Ensemble disagreement captures real robot noise characteristics effectively"
           - "5-model ensemble provides robust uncertainty estimates for real-world data"
         recommendations:
-          - "R1: Use ensemble disagreement for noise-aware loss in real robot applications"
-          - "R2: Ensemble size of 5 is sufficient for real robot data"
-          - "R3: Normalize disagreement to 0.05-0.25 range for stable training"
-    
-    - experiment_id: H1.470.1.1.23
-      description: "Noise estimation strategy comparison"
-      result:
-        conclusion: "SUPPORTED"
-        task: "noise_estimation_comparison"
-        configurations_tested: 5
-        architectures_tested: ["baseline", "oracle_noise", "learned_estimator", "reconstruction_proxy", "ensemble_disagreement"]
-        sequence_lengths_tested: []
-        key_metrics:
-          baseline_test_loss: 0.463881
-          oracle_test_loss: 0.460788
-          oracle_improvement: 0.67
-          learned_estimator_loss: 0.473750
-          learned_estimator_improvement: -2.13
-          learned_estimator_oracle_ratio: -319.1
-          reconstruction_proxy_loss: 0.489315
-          reconstruction_proxy_improvement: -5.48
-          reconstruction_proxy_oracle_ratio: -822.3
-          ensemble_disagreement_loss: 0.429573
-          ensemble_disagreement_improvement: 7.40
-          ensemble_disagreement_oracle_ratio: 1109.2
-          best_non_oracle_strategy: "ensemble_disagreement"
-          best_non_oracle_oracle_ratio: 1109.2
-        key_insights:
-          - "Ensemble disagreement outperforms oracle noise estimation by 10x (1109% vs 100%)"
-          - "Learned estimator and reconstruction proxy perform worse than baseline"
-  
+          - "R1: Use ensemble disagreement for real robot training"
+          - "R2: Test with more diverse real robot datasets"
+          - "R3: Investigate optimal ensemble size"

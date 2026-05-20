@@ -1,0 +1,36 @@
+{
+  "experiment_id": "H1.470.1.1.26",
+  "description": "Test ensemble disagreement on hierarchical multi-step tasks with phase transitions",
+  "result": {
+    "conclusion": "REFUTED",
+    "task": "hierarchical_multi_step_phase_transitions",
+    "configurations_tested": 3,
+    "architectures_tested": [
+      "baseline",
+      "oracle_noise",
+      "ensemble_disagreement"
+    ],
+    "sequence_lengths_tested": [
+      20
+    ],
+    "n_phases": 3,
+    "key_metrics": {
+      "baseline_test_loss": 0.44379767775535583,
+      "oracle_test_loss": 0.42330917716026306,
+      "oracle_improvement": 4.616630870787723,
+      "ensemble_disagreement_loss": 0.4617561995983124,
+      "ensemble_disagreement_improvement": -4.046556064418212,
+      "oracle_ratio": -87.65171350439286
+    },
+    "key_insights": [
+      "Phase transitions (approach/grasp/transport) create natural decision boundaries",
+      "Ensemble disagreement provides -4.05% improvement over baseline",
+      "Oracle ratio: -87.7% (ensemble vs oracle performance)"
+    ],
+    "recommendations": [
+      "R1: Test on tasks with more phases (4-5)",
+      "R2: Test on tasks with noisy phase transitions",
+      "R3: Consider adaptive phase detection"
+    ]
+  }
+}
