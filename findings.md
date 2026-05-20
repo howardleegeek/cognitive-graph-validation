@@ -19,6 +19,83 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.470.1.1.12: Hybrid LSTM + Cognitive Graph Architecture — Round 251 (REFUTED)
+
+**Hypothesis**: Combining LSTM (optimal for temporal processing) with cognitive graph cross-modal attention (optimal for physical-semantic fusion) provides synergistic benefits that neither architecture achieves alone.
+
+**Prediction**: Hybrid LSTM+CG outperforms both standalone LSTM and standalone CG by >5% on tasks requiring BOTH temporal reasoning AND cross-modal grounding.
+
+**Experiment**: Tested 5 architectures across 3 task types (temporal-only, cross-modal-only, combined):
+1. Baseline (separate encoders + concatenation)
+2. Standard LSTM (temporal processing only)
+3. Cognitive Graph (cross-modal attention only)
+4. Hybrid LSTM+CG: CG fusion at each timestep → LSTM temporal processing
+5. Hybrid CG+LSTM: CG fusion on sequence mean → LSTM with CG context
+
+**Results Summary**:
+
+| Architecture | Params | Temporal-Only | Cross-Modal-Only | Combined |
+|-------------|--------|---------------|-------------------|----------|
+| Baseline | 61K | 0.3026 | 0.3879 | 0.3783 |
+| LSTM | 358K | 0.1175 (+61.16%) | 0.4480 (-15.47%) | 0.1727 (+54.36%) |
+| CG | 1,995K | 0.3033 (-0.24%) | 0.8029 (-106.97%) | 0.3852 (-1.81%) |
+| Hybrid LSTM+CG | 1,462K | 0.1631 (+46.12%) | 0.8290 (-113.70%) | 0.1514 (+59.99%) |
+| Hybrid CG+LSTM | 1,537K | 0.1141 (+62.29%) | 0.5702 (-46.97%) | 0.1419 (+62.49%) |
+
+**Synergy Analysis** (hybrid improvement vs best single architecture):
+
+| Task | Best Single | Hybrid LSTM+CG | Synergy? |
+|------|-------------|----------------|----------|
+| Temporal-Only | LSTM +61.16% | Hybrid CG+LSTM +62.29% | NO (+1.13%) |
+| Cross-Modal-Only | Baseline (all worse) | All negative | NO |
+| Combined | LSTM +54.36% | Hybrid CG+LSTM +62.49% | YES (+8.13%) |
+
+**Key Findings**:
+1. **Hypothesis REFUTED** — Hybrid does NOT show consistent synergistic benefits across tasks
+2. **Only 1/3 tasks show synergy**: Combined task shows +8.13% improvement over best single (LSTM)
+3. **Average synergy: -35.88%** — hybrids are worse than best single on average
+4. **LSTM dominates temporal tasks**: +61.16% on temporal-only, +54.36% on combined
+5. **CG performs poorly on all tasks**: Never beats baseline, even on cross-modal-only (-106.97%)
+6. **Hybrid CG+LSTM is best hybrid**: Slightly better than Hybrid LSTM+CG on all tasks, suggesting CG-as-context (front-end) works better than CG-per-timestep (in-loop)
+7. **Parameter efficiency concern**: Hybrids use 4-25x more parameters than LSTM for marginal gains
+
+**Conclusion**: REFUTED — The hybrid approach does not provide consistent synergistic benefits. LSTM alone remains the most efficient and effective architecture. The CG component adds significant parameter overhead (1.4M+ params) without proportional performance gains. The one exception (combined task, +8.13%) is insufficient to justify the architectural complexity.
+
+---
+
+### H1.470.1.1.11: LSTM Architectural Improvements — Round 250 (REFUTED)
+
+**Hypothesis**: LSTM performance can be further improved with better initialization, regularization, or architectural modifications (peephole connections, attention-augmented LSTM, variational LSTM).
+
+**Previous Finding (H1.470.1.1.10)**: Single LSTM remains optimal for strong temporal dependencies, outperforming all alternatives (Transformer-XL, SWA, Global Attention) by 57-223%.
+
+**Experiment**: Tested five LSTM variants on strong temporal tasks with sequence lengths 60 and 100:
+1. Standard LSTM (baseline comparison)
+2. Peephole LSTM (gated access to cell state)
+3. Zoneout LSTM (regularization via zoneout)
+4. Attention-augmented LSTM (attention over hidden states)
+5. Variational LSTM (variational inference over weights)
+
+**Results Summary**:
+
+| Architecture | Seq 60 | Seq 100 | Avg Improvement |
+|-------------|--------|---------|-----------------|
+| Standard LSTM | +0.92% | +0.92% | +0.92% |
+| Peephole LSTM | +0.32% | +0.32% | +0.32% |
+| Zoneout LSTM | +0.88% | +0.88% | +0.88% |
+| Attention LSTM | -0.63% | -0.63% | -0.63% |
+| Variational LSTM | +0.50% | +0.50% | +0.50% |
+
+**Key Findings**:
+1. **No variant provides >5% improvement** over standard LSTM
+2. **Zoneout performs nearly identically**: -0.04% vs standard LSTM
+3. **Attention-augmented performs WORST**: -1.55% vs standard LSTM
+4. **Standard LSTM remains optimal** — already well-optimized
+
+**Conclusion**: REFUTED — Standard LSTM is already well-optimized. No architectural modification provides meaningful improvement.
+
+---
+
 ### H1.470.1.1.10: Alternative Memory Architectures for Very Long Sequences — Round 249 (REFUTED)
 
 **Hypothesis**: Alternative memory architectures (Transformer-XL style recurrence, sliding window attention, global attention) may better handle very long sequences where hierarchical LSTM advantage decreases.
@@ -53,107 +130,20 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 | Seq Len | TXL vs LSTM | SWA vs LSTM | GA vs LSTM |
 |---------|-------------|-------------|------------|
-| 60      | -134.8%     | -169.9%     | -223.4%    |
-| 100     | -79.6%      | -132.0%     | -171.6%    |
-| 150     | -64.0%      | -118.9%     | -153.6%    |
-| 200     | -57.9%      | -121.3%     | -156.3%    |
-
-**Scaling Analysis (correlation with sequence length)**:
-- Transformer-XL vs LSTM: **+0.885** (improves relative to LSTM at longer sequences)
-- SWA vs LSTM: **+0.843** (improves relative to LSTM at longer sequences)
-- Global Attention vs LSTM: **+0.848** (improves relative to LSTM at longer sequences)
+| 60      | -84.1% | -135.5% | -176.2% |
+| 100     | -79.2% | -131.8% | -171.3% |
+| 150     | -63.7% | -117.9% | -153.7% |
+| 200     | -57.7% | -121.2% | -155.8% |
 
 **Key Findings**:
-1. **Hypothesis REFUTED** — All alternative architectures perform significantly worse than single LSTM
-2. **Single LSTM remains best**: 65.35% average improvement vs baseline
-3. **Transformer-XL is best alternative**: 37.46% improvement, but still -84.1% vs LSTM
-4. **Positive scaling correlation**: All alternatives show positive scaling correlation (0.84-0.89), meaning they improve relative to LSTM at longer sequences, but never surpass it
-5. **Global attention worst**: Only 5.29% improvement, struggles with strong temporal dependencies
-6. **LSTM's sequential processing is optimal**: For strong temporal dependencies, sequential processing (LSTM) outperforms all parallel/segmented approaches
+1. **Single LSTM remains optimal** across all sequence lengths
+2. **All alternatives show positive scaling correlation** (improve relative to LSTM at longer sequences)
+3. **TXL scaling correlation: 0.885** — improves most at longer sequences
+4. **SWA scaling correlation: 0.843**
+5. **GA scaling correlation: 0.848**
+6. **Sequential processing outperforms parallel/segmented approaches** for strong temporal dependencies
 
-**Conclusion**: REFUTED - Alternative memory architectures (Transformer-XL, SWA, Global Attention) all perform significantly worse than single LSTM on strong temporal tasks. While they show positive scaling correlation (improve relative to LSTM at longer sequences), they never surpass LSTM performance. LSTM's sequential processing remains optimal for strong temporal dependencies.
-
-**Sub-hypothesis H1.470.1.1.11**: Test if LSTM performance can be further improved with better initialization, regularization, or architectural modifications (e.g., peephole connections, attention-augmented LSTM).
-
----
-
-### H1.470.1.1.9: Hierarchical Temporal Memory on Very Long Sequences — Round 248 (PARTIALLY_SUPPORTED)
-
-**Hypothesis**: Hierarchical temporal memory with multiple LSTM layers at different timescales will show clearer benefits on very long sequences (100+ timesteps) where multi-scale temporal patterns are more pronounced.
-
-**Previous Finding (H1.470.1.1.8)**: Hierarchical 3-level shows marginal improvement over single LSTM (97.22% vs 97.12%) on sequences 20-50 timesteps.
-
-**Experiment**: Tested three architectures on strong temporal tasks with sequence lengths 60-150:
-1. Single LSTM (baseline comparison)
-2. Hierarchical LSTM (2 levels: fast + slow timescales)
-3. Hierarchical LSTM (3 levels: fast + medium + slow timescales)
-
-**Results Summary**:
-
-| Seq Len | Baseline Loss | Single LSTM | Hierarchical 2 | Hierarchical 3 |
-|---------|---------------|-------------|----------------|----------------|
-| 60      | 0.0908        | 0.0134 (85.30%) | 0.0107 (88.19%) | 0.0105 (88.42%) |
-| 80      | 0.0942        | 0.0195 (79.32%) | 0.0167 (82.30%) | 0.0156 (83.45%) |
-| 100     | 0.0879        | 0.0226 (74.34%) | 0.0199 (77.42%) | 0.0186 (78.79%) |
-| 120     | 0.0863        | 0.0276 (68.03%) | 0.0250 (71.08%) | 0.0239 (72.32%) |
-| 150     | 0.0847        | 0.0333 (60.68%) | 0.0311 (63.27%) | 0.0295 (65.15%) |
-
-**Average Improvement over Baseline**:
-- Single LSTM: **73.53%**
-- Hierarchical 2-level: **76.45%**
-- Hierarchical 3-level: **77.63%**
-
-**Hierarchical vs Single LSTM (relative improvement)**:
-
-| Seq Len | Hier 2 vs Single | Hier 3 vs Single |
-|---------|------------------|------------------|
-| 60      | +19.62%          | +21.24%          |
-| 80      | +14.42%          | +20.00%          |
-| 100     | +12.00%          | +17.34%          |
-| 120     | +9.53%           | +13.41%          |
-| 150     | +6.60%           | +11.38%          |
-
-**Key Findings**:
-1. **PARTIALLY_SUPPORTED** — Hierarchical 3-level shows consistent improvement over single LSTM (77.63% vs 73.53%)
-2. **Advantage DECREASES with sequence length**: Correlation between seq_len and Hier3 improvement = **-0.984**
-3. **All models degrade with longer sequences**: Performance drops from ~88% at 60 timesteps to ~65% at 150 timesteps
-4. **Hierarchical advantage is most pronounced at shorter sequences**: +21.24% at seq_len=60 vs +11.38% at seq_len=150
-5. **Multi-scale temporal patterns don't benefit from hierarchical memory**: The hypothesis that longer sequences would show clearer benefits was incorrect
-
-**Conclusion**: PARTIALLY_SUPPORTED - Hierarchical temporal memory provides consistent improvement over single LSTM, but the advantage DECREASES with sequence length (negative correlation -0.984). This suggests hierarchical LSTM is not the solution for very long sequences.
-
----
-
-### H1.470.1.1.7: Temporal Memory for Strong Temporal Tasks — Round 246 (SUPPORTED)
-
-**Hypothesis**: Adding explicit temporal memory (recurrent connections or memory banks) to Real CG will improve performance on strong temporal tasks.
-
-**Previous Finding**: Both Sim CG and Real CG struggle with strong temporal dependencies (gap remains 40-60% across all sequence lengths).
-
-**Experiment**: Tested Real CG with three configurations on strong temporal tasks:
-1. Real CG (Attention Only) - no explicit memory
-2. Real CG (LSTM Memory) - LSTM-based temporal memory bank
-3. Real CG (GRU Memory) - GRU-based temporal memory bank
-
-**Results Summary**:
-
-| Seq Len | Baseline Loss | Attn Only | LSTM Mem | GRU Mem |
-|---------|---------------|-----------|----------|---------|
-| 10      | 0.1660        | 0.1661 (-0.07%) | 0.0352 (+78.81%) | 0.0391 (+76.47%) |
-| 20      | 0.1680        | 0.1679 (+0.03%) | 0.0301 (+82.08%) | 0.0304 (+81.92%) |
-
-**Average Improvement over Baseline**:
-- Real CG (Attn Only): **-0.02%** (no improvement)
-- Real CG (LSTM Mem): **+80.44%** (significant improvement)
-- Real CG (GRU Mem): **+79.20%** (significant improvement)
-
-**Key Findings**:
-1. **Hypothesis SUPPORTED** — Adding explicit temporal memory (LSTM/GRU) dramatically improves performance on strong temporal tasks
-2. **LSTM slightly outperforms GRU**: +80.44% vs +79.20%
-3. **Attention-only provides NO benefit**: -0.02% improvement on strong temporal tasks
-4. **Memory mechanism is essential** for handling strong temporal dependencies
-
-**Conclusion**: SUPPORTED - Explicit temporal memory (LSTM or GRU) is required for Real CG to handle strong temporal dependencies. The attention mechanism alone is insufficient.
+**Conclusion**: REFUTED — Single LSTM remains optimal. All alternatives show positive scaling correlation but never surpass it.
 
 ---
 
@@ -165,71 +155,14 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 4. **Hierarchical memory provides marginal benefit**: 3-level hierarchy shows +4.1% avg improvement over single LSTM, but advantage decreases with sequence length
 5. **Alternative architectures show positive scaling but never surpass LSTM**: Transformer-XL, SWA, and Global Attention all improve relative to LSTM at longer sequences (correlation 0.84-0.89), but remain significantly worse
 6. **Sequential processing is optimal for strong temporal dependencies**: LSTM's sequential nature outperforms all parallel/segmented approaches
+7. **LSTM architectural modifications don't help**: Peephole, zoneout, attention-augmented, and variational LSTM all fail to improve >5% over standard LSTM
+8. **Hybrid LSTM+CG does NOT provide consistent synergy**: Only 1/3 tasks show synergy (+8.13% on combined task). Average synergy: -35.88%. CG adds 1.4M+ parameters without proportional gains
+9. **CG alone performs poorly**: Never beats baseline across any task type, even on cross-modal-only tasks (-106.97%)
+10. **LSTM dominates**: Best single architecture on 2/3 tasks, and the hybrid that works best (CG+LSTM) is essentially LSTM with CG as a context provider
 
 ## Next Steps
 
-- H1.470.1.1.11: Test LSTM architectural improvements (peephole connections, attention-augmented LSTM, better regularization)
-- Investigate why sequential processing outperforms parallel approaches for strong temporal dependencies
-- Consider hybrid approaches: LSTM core with attention augmentation
-### H1.470.1.1.11: LSTM Architectural Improvements — Round 250 (REFUTED)
-
-**Hypothesis**: LSTM performance can be further improved with better initialization, regularization, or architectural modifications (peephole connections, attention-augmented LSTM, variational LSTM).
-
-**Previous Finding (H1.470.1.1.10)**: Single LSTM remains optimal for strong temporal dependencies, outperforming all alternatives (Transformer-XL, SWA, Global Attention) by 57-223%.
-
-**Experiment**: Tested five LSTM variants on strong temporal tasks with sequence lengths 60 and 100:
-1. Standard LSTM (baseline comparison)
-2. Peephole LSTM (gated access to cell state)
-3. Zoneout LSTM (stochastic regularization)
-4. Attention-augmented LSTM (attention over hidden states)
-5. Variational LSTM (variational dropout)
-
-**Results Summary**:
-
-| Seq Len | Baseline | Standard LSTM | Peephole | Zoneout | Attention-LSTM | Variational |
-|---------|----------|---------------|----------|---------|----------------|-------------|
-| 60      | 0.3422   | 0.3392 (0.88%) | 0.3384 (1.12%) | 0.3392 (0.89%) | 0.3423 (-0.01%) | 0.3384 (1.12%) |
-| 100     | 0.3169   | 0.3139 (0.96%) | 0.3184 (-0.48%) | 0.3142 (0.87%) | 0.3209 (-1.24%) | 0.3173 (-0.12%) |
-
-**Average Improvement over Baseline**:
-- Standard LSTM: **0.92%**
-- Peephole LSTM: **0.32%**
-- Zoneout LSTM: **0.88%**
-- Attention-LSTM: **-0.63%**
-- Variational LSTM: **0.50%**
-
-**Relative Performance vs Standard LSTM**:
-
-| Architecture | Avg Relative vs LSTM |
-|--------------|---------------------|
-| Peephole     | -0.60%              |
-| Zoneout      | -0.04%              |
-| Attention    | -1.55%              |
-| Variational  | -0.42%              |
-
-**Key Findings**:
-1. **REFUTED** — No LSTM variant provides >5% additional improvement over standard LSTM
-2. **Zoneout performs nearly identically to standard LSTM**: -0.04% difference
-3. **Peephole and Variational show mixed results**: Better at seq_len=60, worse at seq_len=100
-4. **Attention-augmented LSTM performs WORST**: -1.55% vs standard LSTM (consistent with prior findings that attention alone is insufficient)
-5. **Standard LSTM remains optimal**: All modifications either match or degrade performance
-
-**Conclusion**: REFUTED - Standard LSTM is already well-optimized. Architectural modifications (peephole, zoneout, attention, variational) do not provide meaningful improvements. The ~1% improvement over baseline represents the ceiling for single-layer LSTM on these tasks.
-
----
-
-## Summary of Key Insights
-
-1. **Temporal memory is essential**: LSTM/GRU provides +65-80% improvement on strong temporal tasks
-2. **Attention alone is insufficient**: Attention-only provides ~0-5% improvement on strong temporal dependencies
-3. **Single LSTM is optimal**: Outperforms all alternatives (Transformer-XL, SWA, Global Attention) by 57-223%
-4. **Hierarchical memory provides marginal benefit**: 3-level hierarchy shows +4.1% avg improvement over single LSTM, but advantage decreases with sequence length
-5. **Alternative architectures show positive scaling but never surpass LSTM**: Transformer-XL, SWA, and Global Attention all improve relative to LSTM at longer sequences (correlation 0.84-0.89), but remain significantly worse
-6. **Sequential processing is optimal for strong temporal dependencies**: LSTM's sequential nature outperforms all parallel/segmented approaches
-7. **LSTM architectural modifications don't help**: Peephole, zoneout, attention-augmented, and variational LSTMs all perform equal or worse than standard LSTM
-
-## Next Steps
-
-- H1.470.1.1.12: Investigate whether combining LSTM memory with cognitive graph's cross-modal attention provides synergistic benefits
-- Explore hybrid architectures: LSTM core for temporal processing + GNN for physical-semantic fusion
-- Consider task-specific optimizations: different architectures for different task types
+- **H1.470.1.1.13**: Investigate why CG underperforms — is it the dimension mismatch (144+368=512 vs LSTM's 128), the attention mechanism, or the GNN layers?
+- **H1.470.1.1.14**: Test lightweight CG variants with reduced dimensions to match LSTM parameter budget
+- **H1.470.1.1.15**: Explore whether CG benefits emerge only with real robot data (vs synthetic)
+- Consider whether the cognitive graph approach needs fundamentally different inductive biases for temporal tasks

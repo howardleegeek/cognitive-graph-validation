@@ -1,0 +1,199 @@
+{
+  "hypothesis": "H1.470.1.1.12: Hybrid LSTM + CG Architecture",
+  "prediction": "Hybrid outperforms both LSTM and CG by >5% on combined tasks",
+  "architectures_tested": [
+    "baseline",
+    "lstm",
+    "cognitive_graph",
+    "hybrid_lstm_cg",
+    "hybrid_cg_lstm"
+  ],
+  "parameter_counts": {
+    "baseline": 61447,
+    "lstm": 358279,
+    "cognitive_graph": 1994759,
+    "hybrid_lstm_cg": 1461895,
+    "hybrid_cg_lstm": 1536583
+  },
+  "tasks": [
+    "temporal_only",
+    "crossmodal_only",
+    "combined"
+  ],
+  "detailed_results": {
+    "temporal_only": {
+      "baseline": {
+        "val_loss": 0.290234,
+        "test_loss": 0.30262,
+        "test_mae": 0.438174,
+        "params": 61447
+      },
+      "lstm": {
+        "val_loss": 0.115636,
+        "test_loss": 0.117537,
+        "test_mae": 0.272352,
+        "params": 358279
+      },
+      "cognitive_graph": {
+        "val_loss": 0.289409,
+        "test_loss": 0.30334,
+        "test_mae": 0.437772,
+        "params": 1994759
+      },
+      "hybrid_lstm_cg": {
+        "val_loss": 0.159553,
+        "test_loss": 0.163062,
+        "test_mae": 0.316902,
+        "params": 1461895
+      },
+      "hybrid_cg_lstm": {
+        "val_loss": 0.110416,
+        "test_loss": 0.114115,
+        "test_mae": 0.26717,
+        "params": 1536583
+      }
+    },
+    "crossmodal_only": {
+      "baseline": {
+        "val_loss": 0.340311,
+        "test_loss": 0.387943,
+        "test_mae": 0.44581,
+        "params": 61447
+      },
+      "lstm": {
+        "val_loss": 0.367848,
+        "test_loss": 0.447964,
+        "test_mae": 0.45657,
+        "params": 358279
+      },
+      "cognitive_graph": {
+        "val_loss": 0.688995,
+        "test_loss": 0.80294,
+        "test_mae": 0.630435,
+        "params": 1994759
+      },
+      "hybrid_lstm_cg": {
+        "val_loss": 0.753055,
+        "test_loss": 0.829039,
+        "test_mae": 0.627463,
+        "params": 1461895
+      },
+      "hybrid_cg_lstm": {
+        "val_loss": 0.454863,
+        "test_loss": 0.570156,
+        "test_mae": 0.487359,
+        "params": 1536583
+      }
+    },
+    "combined": {
+      "baseline": {
+        "val_loss": 0.390731,
+        "test_loss": 0.378323,
+        "test_mae": 0.485041,
+        "params": 61447
+      },
+      "lstm": {
+        "val_loss": 0.178208,
+        "test_loss": 0.172678,
+        "test_mae": 0.326178,
+        "params": 358279
+      },
+      "cognitive_graph": {
+        "val_loss": 0.396471,
+        "test_loss": 0.385152,
+        "test_mae": 0.491705,
+        "params": 1994759
+      },
+      "hybrid_lstm_cg": {
+        "val_loss": 0.156791,
+        "test_loss": 0.151351,
+        "test_mae": 0.303334,
+        "params": 1461895
+      },
+      "hybrid_cg_lstm": {
+        "val_loss": 0.14228,
+        "test_loss": 0.141898,
+        "test_mae": 0.296846,
+        "params": 1536583
+      }
+    }
+  },
+  "analysis": {
+    "temporal_only": {
+      "baseline_loss": 0.30262,
+      "improvements_over_baseline": {
+        "lstm": 61.16,
+        "cognitive_graph": -0.24,
+        "hybrid_lstm_cg": 46.12,
+        "hybrid_cg_lstm": 62.29
+      },
+      "best_architecture": "hybrid_cg_lstm",
+      "best_improvement": 62.29
+    },
+    "crossmodal_only": {
+      "baseline_loss": 0.387943,
+      "improvements_over_baseline": {
+        "lstm": -15.47,
+        "cognitive_graph": -106.97,
+        "hybrid_lstm_cg": -113.7,
+        "hybrid_cg_lstm": -46.97
+      },
+      "best_architecture": "lstm",
+      "best_improvement": -15.47
+    },
+    "combined": {
+      "baseline_loss": 0.378323,
+      "improvements_over_baseline": {
+        "lstm": 54.36,
+        "cognitive_graph": -1.81,
+        "hybrid_lstm_cg": 59.99,
+        "hybrid_cg_lstm": 62.49
+      },
+      "best_architecture": "hybrid_cg_lstm",
+      "best_improvement": 62.49
+    }
+  },
+  "synergy_analysis": {
+    "temporal_only": {
+      "lstm_improvement": 61.16,
+      "cg_improvement": -0.24,
+      "hybrid_lstm_cg_improvement": 46.12,
+      "hybrid_cg_lstm_improvement": 62.29,
+      "best_single_improvement": 61.16,
+      "hybrid_vs_best_single": -15.04,
+      "hybrid2_vs_best_single": 1.13,
+      "synergy_detected": false,
+      "synergy_detected_v2": false
+    },
+    "crossmodal_only": {
+      "lstm_improvement": -15.47,
+      "cg_improvement": -106.97,
+      "hybrid_lstm_cg_improvement": -113.7,
+      "hybrid_cg_lstm_improvement": -46.97,
+      "best_single_improvement": -15.47,
+      "hybrid_vs_best_single": -98.23,
+      "hybrid2_vs_best_single": -31.5,
+      "synergy_detected": false,
+      "synergy_detected_v2": false
+    },
+    "combined": {
+      "lstm_improvement": 54.36,
+      "cg_improvement": -1.81,
+      "hybrid_lstm_cg_improvement": 59.99,
+      "hybrid_cg_lstm_improvement": 62.49,
+      "best_single_improvement": 54.36,
+      "hybrid_vs_best_single": 5.63,
+      "hybrid2_vs_best_single": 8.13,
+      "synergy_detected": true,
+      "synergy_detected_v2": true
+    }
+  },
+  "conclusion": {
+    "avg_hybrid_synergy": -35.88,
+    "tasks_with_synergy": 1,
+    "total_tasks": 3,
+    "hypothesis_supported": false,
+    "key_insight": "Hybrid LSTM+CG does NOT show consistent synergistic benefits. Only 1/3 tasks show synergy. Average synergy: -35.88%. One architecture likely dominates; combining them adds overhead without benefit."
+  },
+  "timestamp": "2026-05-20T01:10:12.702358"
+}
