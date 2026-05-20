@@ -1,0 +1,102 @@
+{
+  "hypothesis": "H1.470.1: Representation Bottleneck",
+  "prediction": "Larger unified representations reduce single-to-multi performance gap",
+  "dimensions": [
+    256,
+    512,
+    768,
+    1024
+  ],
+  "detailed_results": {
+    "dim_256": {
+      "unified_dim": 256,
+      "single_step": {
+        "baseline_loss": 3.966401,
+        "cg_loss": 3.787747,
+        "improvement_percent": 4.5
+      },
+      "multi_step": {
+        "baseline_loss": 2.113301,
+        "cg_loss": 2.107399,
+        "improvement_percent": 0.28
+      },
+      "improvement_gap": -4.22,
+      "baseline_single_to_multi_change": 46.72,
+      "cg_single_to_multi_change": 44.36
+    },
+    "dim_512": {
+      "unified_dim": 512,
+      "single_step": {
+        "baseline_loss": 3.932976,
+        "cg_loss": 3.90024,
+        "improvement_percent": 0.83
+      },
+      "multi_step": {
+        "baseline_loss": 2.115961,
+        "cg_loss": 2.059449,
+        "improvement_percent": 2.67
+      },
+      "improvement_gap": 1.84,
+      "baseline_single_to_multi_change": 46.2,
+      "cg_single_to_multi_change": 47.2
+    },
+    "dim_768": {
+      "unified_dim": 768,
+      "single_step": {
+        "baseline_loss": 4.053925,
+        "cg_loss": 3.87346,
+        "improvement_percent": 4.45
+      },
+      "multi_step": {
+        "baseline_loss": 2.157027,
+        "cg_loss": 1.974756,
+        "improvement_percent": 8.45
+      },
+      "improvement_gap": 4.0,
+      "baseline_single_to_multi_change": 46.79,
+      "cg_single_to_multi_change": 49.02
+    },
+    "dim_1024": {
+      "unified_dim": 1024,
+      "single_step": {
+        "baseline_loss": 4.033564,
+        "cg_loss": 3.303105,
+        "improvement_percent": 18.11
+      },
+      "multi_step": {
+        "baseline_loss": 2.086549,
+        "cg_loss": 1.908711,
+        "improvement_percent": 8.52
+      },
+      "improvement_gap": -9.59,
+      "baseline_single_to_multi_change": 48.27,
+      "cg_single_to_multi_change": 42.21
+    }
+  },
+  "analysis": {
+    "improvement_gaps_by_dimension": {
+      "256": -4.22,
+      "512": 1.84,
+      "768": 4.0,
+      "1024": -9.59
+    },
+    "cg_single_to_multi_change_by_dimension": {
+      "256": 44.36,
+      "512": 47.2,
+      "768": 49.02,
+      "1024": 42.21
+    },
+    "baseline_single_to_multi_change_by_dimension": {
+      "256": 46.72,
+      "512": 46.2,
+      "768": 46.79,
+      "1024": 48.27
+    },
+    "gap_512": 1.84,
+    "gap_1024": -9.59,
+    "gap_trend_1024_vs_512": -11.43,
+    "cg_change_trend_1024_vs_512": -4.99,
+    "hypothesis_supported": false,
+    "key_insight": "REFUTED: Representation bottleneck not confirmed - larger dimensions do not reduce the single-to-multi performance gap (gap trend: -11.43%)"
+  }
+}

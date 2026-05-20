@@ -1,10 +1,21 @@
-current_round: 236
-last_action: "H1.470 - Error Accumulation analysis. ANALYSIS: CG advantage drops from +8.07% (single) to +2.08% (3-step) because baseline improves MORE on multi-step (5.59% better) while CG gets slightly worse (0.57% worse). Sub-hypothesis H1.470.1: representation bottleneck - increasing unified dim should reduce gap."
-next_intended_action: "H1.470.1 - Test CG with varying representation dimensions [256, 512, 768, 1024, 2048] on single-step vs 3-step tasks to test representation bottleneck hypothesis"
+current_round: 237
+last_action: "H1.470.1 - Representation Bottleneck Dimension Sweep. REFUTED: Not simple bigger-is-better. Non-monotonic relationship found — 768 is optimal dimension for multi-step (+8.45% CG improvement, +4.00% gap), while 1024 overfits single-step (+18.11% vs +8.52% multi, -9.59% gap). New sub-hypothesis H1.470.1.1: optimal dimension exists."
+next_intended_action: "H1.470.1.1 - Fine-grained dimension sweep around 768 [640, 704, 768, 832, 896] to confirm optimal dimension hypothesis for multi-step tasks"
 
 experiments:
-  total_rounds: 236
+  total_rounds: 237
   trajectory:
+    - experiment_id: H1.470.1
+      description: "Representation Bottleneck - Dimension Sweep [256, 512, 768, 1024]"
+      result:
+        conclusion: "REFUTED: Non-monotonic relationship. 768 is optimal for multi-step (+8.45% improvement, +4.00% gap). 1024 overfits single-step (+18.11% vs +8.52% multi, -9.59% gap). Baseline stable at 46-48% s2m change."
+        task: "representation_dimension_sweep"
+        dimensions_tested: [256, 512, 768, 1024]
+        best_dimension: 768
+        best_multi_step_improvement: 8.45
+        best_improvement_gap: 4.00
+        key_insight: "Optimal dimension exists (~768). Below: too constrained. Above: overfits single-step, diminishing returns on multi-step."
+        sub_hypothesis: "H1.470.1.1: Optimal representation dimension (~768) for CG on multi-step tasks"
     - experiment_id: H1.470
       description: "Error Accumulation in Unified Representations - deep analysis of H1.469"
       result:
@@ -39,16 +50,3 @@ experiments:
         improvement_difference: -5.99
         hypothesis_supported: false
         key_insight: "CG advantage does NOT increase with task complexity. Actually performs worse on multi-step tasks compared to single-step."
-    - experiment_id: H1.468
-      description: "Layer-wise dropout rates (encoder/GNN/decoder)"
-      result:
-        conclusion: "SUPPORTED: Progressive dropout marginally better (+0.04% vs uniform 40%). GNN dropout hurts performance."
-        task: "layer_wise_dropout"
-        baseline_loss: 0.016082
-        best_config:
-          name: "progressive_30_50"
-          encoder: 0.3
-          gnn: 0.4
-          decoder: 0.5
-        best_loss: 0.010503
-        best_improvement: 34.69

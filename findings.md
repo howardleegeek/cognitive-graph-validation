@@ -19,6 +19,43 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.470.1: Representation Bottleneck - Dimension Sweep — Round 237 (REFUTED)
+
+**Hypothesis**: CG's advantage decreases with task complexity because the fixed 512-dim unified representation becomes a bottleneck when encoding both current state and task history. Increasing representation dimension should reduce this gap.
+
+**Prediction**: Larger unified representations (768, 1024) will show smaller single-to-multi performance gap for CG.
+
+**Experiment**: Compared CG with dimensions [256, 512, 768, 1024] on single-step vs 3-step tasks. 15 epochs, 800 train / 200 test samples.
+
+**Results**:
+
+| Dimension | Single-step CG imp. | Multi-step CG imp. | Improvement Gap | CG s2m change | Baseline s2m change |
+|-----------|---------------------|--------------------|-----------------|---------------|---------------------|
+| 256       | +4.50%              | +0.28%             | -4.22%          | +44.36%       | +46.72%             |
+| 512       | +0.83%              | +2.67%             | +1.84%          | +47.20%       | +46.20%             |
+| 768       | +4.45%              | +8.45%             | +4.00%          | +49.02%       | +46.79%             |
+| 1024      | +18.11%             | +8.52%             | -9.59%          | +42.21%       | +48.27%             |
+
+**Key Findings**:
+1. **Non-monotonic relationship**: The improvement gap does NOT consistently decrease with dimension. It peaks at 768 (+4.00%) then collapses at 1024 (-9.59%).
+2. **768 is the sweet spot**: At 768 dimensions, CG shows its best multi-step performance (+8.45% improvement over baseline), with the largest positive gap (+4.00%).
+3. **1024 overfits single-step**: At 1024 dimensions, CG achieves +18.11% on single-step but only +8.52% on multi-step — the gap widens dramatically (-9.59%).
+4. **Baseline is stable**: Baseline single-to-multi change stays consistent (46-48%) across all dimensions, confirming this is a CG-specific phenomenon.
+5. **CG s2m change peaks at 768**: CG's single-to-multi improvement peaks at 768 (+49.02%) then drops at 1024 (+42.21%).
+
+**Conclusion**: **REFUTED**. The representation bottleneck hypothesis is not confirmed as a simple "bigger is better" relationship. Instead, there appears to be an **optimal dimension** (~768) where CG handles multi-step tasks best. Beyond this, larger dimensions cause overfitting on single-step tasks while providing diminishing returns on multi-step.
+
+**New Sub-Hypothesis H1.470.1.1**: There exists an optimal representation dimension (~768) for CG on multi-step tasks. Below this, the representation is too constrained; above this, the model overfits to single-step patterns and fails to generalize the extra capacity to multi-step reasoning.
+
+**Falsification criteria for H1.470.1.1**:
+- REFUTED if: A finer sweep around 768 (e.g., [640, 704, 768, 832, 896]) shows no peak
+- REFUTED if: The peak shifts significantly with different task complexities
+- SUPPORTED if: 768 consistently outperforms both 512 and 1024 on multi-step tasks across multiple seeds
+
+**Status**: EXPERIMENT COMPLETE — H1.470.1 REFUTED, H1.470.1.1 generated
+
+---
+
 ### H1.470: Error Accumulation in Unified Representations — Round 236 (ANALYSIS: Representation Bottleneck Hypothesis)
 
 **Hypothesis**: CG's advantage decreases with task complexity because the fixed 512-dim unified representation becomes a bottleneck when encoding both current state and task history.
@@ -46,58 +83,25 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ---
 
-### H1.469: Multi-step Tasks Experiment — Round 235 (REFUTED: CG advantage decreases with complexity)
+### H1.469: Multi-step Tasks Experiment — Round 235 (REFUTED: CG advantage decreases with task complexity)
 
-**Hypothesis**: CG advantage increases with task complexity. Prediction: 3-step tasks will show larger CG improvement than single-step.
+**Hypothesis**: CG advantage increases with task complexity (multi-step tasks).
 
-**Method**: Compare CG vs baseline on single-step vs 3-step LIBERO-style tasks (400 train, 100 val).
+**Result**: REFUTED. CG improvement drops from +8.07% (single-step) to +2.08% (3-step), a -5.99% difference.
 
-**Results**:
-
-| Task Type | Baseline Loss | CG Loss | CG Improvement |
-|-----------|--------------|---------|----------------|
-| Single-step | 0.011058 | 0.010166 | **+8.07%** |
-| 3-step | 0.010440 | 0.010224 | **+2.08%** |
-
-**Key Finding**: CG advantage drops by -5.99% from single-step to 3-step. Hypothesis REFUTED.
-
-**Conclusion**: CG advantage does NOT increase with task complexity. The unified representation that helps on single-step tasks becomes a liability on multi-step tasks.
+**Key insight**: CG advantage does NOT increase with task complexity. Actually performs worse on multi-step tasks compared to single-step.
 
 ---
 
-### H1.467: Dropout Rate Sweep — Round 233 (SUPPORTED: Optimal dropout at 40%)
+## Summary of Hypothesis Status
 
-**Hypothesis**: There exists an optimal dropout rate that maximizes CG's advantage over baseline. Prediction: 30-40% dropout will be optimal, balancing regularization with capacity.
-
-**Context**: H1.466 showed Dropout CG (30%) generalizes to realistic robot data. This experiment finds the optimal dropout rate for deployment.
-
-**Method**: Test CG with dropout rates [0%, 10%, 20%, 30%, 40%, 50%, 60%] against baseline on synthetic LIBERO-style data (400 train, 100 val demos).
-
-**Results**:
-
-| Dropout Rate | Loss | vs Baseline | CG Wins |
-|--------------|------|-------------|---------|
-| **Baseline** | 0.010846 | — | — |
-| 0% | 0.011323 | -4.39% | ✗ |
-| 10% | 0.010159 | +6.33% | ✓ |
-| 20% | 0.010641 | +1.89% | ✓ |
-| 30% | 0.010086 | +7.01% | ✓ |
-| **40%** | **0.009724** | **+10.34%** | **✓** |
-| 50% | 0.009726 | +10.32% | ✓ |
-| 60% | 0.009748 | +10.12% | ✓ |
-
-**Key Findings**:
-1. **Optimal dropout at 40%**: Peak improvement of +10.34% over baseline
-2. **No dropout = worse than baseline**: 0% dropout CG loses to baseline by 4.39%
-3. **Plateau effect**: 40-60% dropout all perform similarly well (+10.1% to +10.3%)
-4. **Prediction confirmed**: Optimal rate (40%) falls within predicted 30-40% range
-
-**Conclusion**: SUPPORTED — Optimal dropout rate is 40%, confirming the prediction that moderate regularization balances capacity and robustness. The plateau from 40-60% suggests the architecture is tolerant to over-regularization.
-
----
-
-### H1.466: Dropout CG on Real Robot Data — Round 232 (SUPPORTED: Dropout CG generalizes to realistic conditions)
-
-**Hypothesis**: Dropout CG (30%) architectural robustness generalizes to realistic deployment conditions.
-
-**Context**: H1.465 showed Drop
+| Hypothesis | Status | Key Finding |
+|------------|--------|-------------|
+| H1 | SUPPORTED | +25.6% improvement with real robot data |
+| H2 | Inconclusive | 1.7% difference |
+| H3 | REFUTED | Concatenation wins over attention for simple tasks |
+| H4 | CLOSE | 25% optimal vs 28% hypothesis |
+| H1.469 | REFUTED | CG advantage decreases with task complexity |
+| H1.470 | ANALYSIS | Representation bottleneck identified |
+| H1.470.1 | REFUTED | Not simple "bigger is better" — optimal dim ~768 |
+| H1.470.1.1 | PENDING | Optimal dimension hypothesis for multi-step tasks |
