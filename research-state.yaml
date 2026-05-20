@@ -1,11 +1,32 @@
-current_round: 249
-last_action: "H1.470.1.1.10 - Tested alternative memory architectures (Transformer-XL, SWA, Global Attention) for very long sequences (60-200 timesteps). REFUTED: All alternatives perform significantly worse than single LSTM (-57.9% to -223.4% vs LSTM). Positive scaling correlation (0.84-0.89) but never surpass LSTM."
+current_round: 250
+last_action: "H1.470.1.1.11 - Tested LSTM architectural improvements (peephole, zoneout, attention-augmented, variational). REFUTED: No variant provides >5% improvement over standard LSTM. Zoneout performs nearly identically (-0.04%), attention-augmented performs WORST (-1.55%). Standard LSTM remains optimal."
 
-next_intended_action: "H1.470.1.1.11 - Test LSTM architectural improvements (peephole connections, attention-augmented LSTM, better regularization) to further optimize the best-performing architecture"
+next_intended_action: "H1.470.1.1.12 - Test hybrid architecture: LSTM core for temporal processing + cognitive graph cross-modal attention for physical-semantic fusion. Does combining these provide synergistic benefits?"
 
 experiments:
-  total_rounds: 249
+  total_rounds: 250
   trajectory:
+    - experiment_id: H1.470.1.1.11
+      description: "LSTM architectural improvements (peephole, zoneout, attention, variational)"
+      result:
+        conclusion: "REFUTED"
+        task: "lstm_architectural_improvements"
+        configurations_tested: 12
+        sequence_lengths: [60, 100]
+        architectures_tested: ["baseline", "standard_lstm", "peephole_lstm", "zoneout_lstm", "attention_lstm", "variational_lstm"]
+        key_metrics:
+          standard_lstm_avg_improvement: 0.92
+          peephole_lstm_avg_improvement: 0.32
+          zoneout_lstm_avg_improvement: 0.88
+          attention_lstm_avg_improvement: -0.63
+          variational_lstm_avg_improvement: 0.50
+          peephole_vs_lstm: -0.60
+          zoneout_vs_lstm: -0.04
+          attention_vs_lstm: -1.55
+          variational_vs_lstm: -0.42
+          best_architecture: "standard_lstm"
+        key_insight: "Standard LSTM is already well-optimized. No architectural modification provides meaningful improvement. Attention-augmented LSTM performs worst, consistent with prior findings that attention alone is insufficient for temporal tasks."
+        sub_hypothesis: "H1.470.1.1.12: Test hybrid architecture combining LSTM temporal processing with cognitive graph cross-modal attention."
     - experiment_id: H1.470.1.1.10
       description: "Alternative memory architectures for very long sequences"
       result:
@@ -47,91 +68,4 @@ experiments:
           correlation_seq_len_vs_hier3_improvement: -0.984
           best_architecture: "hierarchical_3"
         key_insight: "Hierarchical memory provides consistent improvement over single LSTM (77.63% vs 73.53%), but the advantage DECREASES with sequence length (negative correlation -0.984). All models show decreasing performance as sequence length increases from 60 to 150 timesteps."
-        sub_hypothesis: "H1.470.1.1.10: Alternative memory architectures (Transformer-XL, state space models) may better handle very long sequences."
-    - experiment_id: H1.470.1.1.8
-      description: "Hierarchical temporal memory for longer sequences"
-      result:
-        conclusion: "PARTIALLY_SUPPORTED"
-        task: "hierarchical_temporal_memory"
-        configurations_tested: 12
-        sequence_lengths: [20, 30, 40, 50]
-        architectures_tested: ["baseline", "single_lstm", "hierarchical_2", "hierarchical_3"]
-        key_metrics:
-          single_lstm_avg_improvement: 97.12
-          hierarchical_2_avg_improvement: 97.04
-          hierarchical_3_avg_improvement: 97.22
-          hier2_vs_single_at_20: 1.51
-          hier2_vs_single_at_50: -9.69
-          hier3_vs_single_at_20: 2.15
-          hier3_vs_single_at_30: 8.02
-          hier3_vs_single_at_50: 1.06
-          best_architecture: "hierarchical_3"
-        key_insight: "Hierarchical memory provides marginal benefit over single LSTM. The key finding is that ANY temporal memory provides ~97% improvement over baseline. Hierarchical advantage does not consistently scale with sequence length."
-        sub_hypothesis: "H1.470.1.1.9: Test if hierarchical memory benefit emerges with even longer sequences (100+ timesteps)."
-    - experiment_id: H1.470.1.1.7
-      description: "Temporal memory for strong temporal tasks"
-      result:
-        conclusion: "SUPPORTED"
-        task: "temporal_memory_strong"
-        configurations_tested: 6
-        sequence_lengths: [10, 20]
-        architectures_tested: ["baseline", "attention_only", "lstm_memory", "gru_memory"]
-        key_metrics:
-          attention_only_improvement: -0.02
-          lstm_memory_improvement: 80.44
-          gru_memory_improvement: 79.20
-          lstm_vs_attention: 80.46
-          best_architecture: "lstm_memory"
-        key_insight: "Explicit temporal memory (LSTM/GRU) is essential for strong temporal tasks. Attention-only provides no benefit. LSTM slightly outperforms GRU."
-        sub_hypothesis: "H1.470.1.1.8: Test if hierarchical temporal memory provides additional benefit over single LSTM."
-
-hypotheses:
-  - id: H1
-    status: SUPPORTED
-    description: "Cognitive Graph architecture achieves higher sample efficiency than separated architectures"
-    key_finding: "+25.6% improvement with real robot data"
-    sub_hypotheses:
-      - id: H1.470
-        status: SUPPORTED
-        description: "Temporal memory is essential for strong temporal dependencies"
-        key_finding: "LSTM provides +80% improvement over attention-only"
-        sub_hypotheses:
-          - id: H1.470.1
-            status: SUPPORTED
-            description: "Single LSTM is optimal for strong temporal tasks"
-            key_finding: "LSTM outperforms attention-only by 80%"
-            sub_hypotheses:
-              - id: H1.470.1.1
-                status: INVESTIGATING
-                description: "Optimizing LSTM architecture for very long sequences"
-                key_finding: "Single LSTM remains best, alternatives show positive scaling but never surpass"
-                sub_hypotheses:
-                  - id: H1.470.1.1.7
-                    status: SUPPORTED
-                    description: "Temporal memory essential for strong temporal tasks"
-                  - id: H1.470.1.1.8
-                    status: PARTIALLY_SUPPORTED
-                    description: "Hierarchical memory marginal benefit"
-                  - id: H1.470.1.1.9
-                    status: PARTIALLY_SUPPORTED
-                    description: "Hierarchical memory advantage decreases with seq length"
-                  - id: H1.470.1.1.10
-                    status: REFUTED
-                    description: "Alternative architectures worse than LSTM"
-                    key_finding: "TXL/SWA/GA all underperform LSTM by 57-223%"
-                  - id: H1.470.1.1.11
-                    status: PENDING
-                    description: "Test LSTM architectural improvements"
-                    prediction: "Peephole connections or attention-augmented LSTM may further improve performance"
-  - id: H2
-    status: INCONCLUSIVE
-    description: "Multi-step tasks show increasing CG advantage"
-    key_finding: "1.7% difference, needs more investigation"
-  - id: H3
-    status: REFUTED
-    description: "Attention wins on longer sequences"
-    key_finding: "Concatenation wins over attention for simple tasks"
-  - id: H4
-    status: CLOSE
-    description: "25% physical dimensions is optimal"
-    key_finding: "25% optimal vs 28% hypothesis"
+        sub_hypothesis:

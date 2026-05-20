@@ -1,0 +1,141 @@
+{
+  "hypothesis": "H1.470.1.1.11: LSTM Architectural Improvements",
+  "prediction": "At least one improvement provides >5% additional improvement over standard LSTM",
+  "sequence_lengths": [
+    60,
+    100
+  ],
+  "architectures": [
+    "baseline",
+    "standard_lstm",
+    "peephole_lstm",
+    "zoneout_lstm",
+    "attention_lstm",
+    "variational_lstm"
+  ],
+  "configurations_tested": 12,
+  "detailed_results": {
+    "60": {
+      "baseline": {
+        "loss": 0.34224892656008404,
+        "improvement_vs_baseline": 0.0
+      },
+      "standard_lstm": {
+        "loss": 0.33923932909965515,
+        "improvement_vs_baseline": 0.8793592110508891
+      },
+      "peephole_lstm": {
+        "loss": 0.33840590715408325,
+        "improvement_vs_baseline": 1.1228725958695225
+      },
+      "zoneout_lstm": {
+        "loss": 0.33920984466870624,
+        "improvement_vs_baseline": 0.8879741192831099
+      },
+      "attention_lstm": {
+        "loss": 0.3422941168149312,
+        "improvement_vs_baseline": -0.01320391426830033
+      },
+      "variational_lstm": {
+        "loss": 0.3384212553501129,
+        "improvement_vs_baseline": 1.1183880833295048
+      }
+    },
+    "100": {
+      "baseline": {
+        "loss": 0.31691381831963855,
+        "improvement_vs_baseline": 0.0
+      },
+      "standard_lstm": {
+        "loss": 0.31386741002400714,
+        "improvement_vs_baseline": 0.9612734186802825
+      },
+      "peephole_lstm": {
+        "loss": 0.3184267083803813,
+        "improvement_vs_baseline": -0.4773821693116693
+      },
+      "zoneout_lstm": {
+        "loss": 0.3141619563102722,
+        "improvement_vs_baseline": 0.8683313412956998
+      },
+      "attention_lstm": {
+        "loss": 0.3208557665348053,
+        "improvement_vs_baseline": -1.2438549496099618
+      },
+      "variational_lstm": {
+        "loss": 0.3172956307729085,
+        "improvement_vs_baseline": -0.12047832287478968
+      }
+    }
+  },
+  "summary": {
+    "baseline": {
+      "avg_improvement": 0.0,
+      "improvements_by_seq_len": [
+        0.0,
+        0.0
+      ]
+    },
+    "standard_lstm": {
+      "avg_improvement": 0.9203163148655857,
+      "improvements_by_seq_len": [
+        0.8793592110508891,
+        0.9612734186802825
+      ]
+    },
+    "peephole_lstm": {
+      "avg_improvement": 0.3227452132789266,
+      "improvements_by_seq_len": [
+        1.1228725958695225,
+        -0.4773821693116693
+      ],
+      "relative_vs_lstm": [
+        0.24351338481863338,
+        -1.4386555879919518
+      ],
+      "avg_relative_vs_lstm": -0.5975711015866592
+    },
+    "zoneout_lstm": {
+      "avg_improvement": 0.8781527302894048,
+      "improvements_by_seq_len": [
+        0.8879741192831099,
+        0.8683313412956998
+      ],
+      "relative_vs_lstm": [
+        0.008614908232220775,
+        -0.09294207738458271
+      ],
+      "avg_relative_vs_lstm": -0.04216358457618097
+    },
+    "attention_lstm": {
+      "avg_improvement": -0.628529431939131,
+      "improvements_by_seq_len": [
+        -0.01320391426830033,
+        -1.2438549496099618
+      ],
+      "relative_vs_lstm": [
+        -0.8925631253191895,
+        -2.2051283682902443
+      ],
+      "avg_relative_vs_lstm": -1.5488457468047168
+    },
+    "variational_lstm": {
+      "avg_improvement": 0.49895488022735757,
+      "improvements_by_seq_len": [
+        1.1183880833295048,
+        -0.12047832287478968
+      ],
+      "relative_vs_lstm": [
+        0.2390288722786157,
+        -1.0817517415550721
+      ],
+      "avg_relative_vs_lstm": -0.4213614346382282
+    }
+  },
+  "key_findings": {
+    "best_architecture": "standard_lstm",
+    "lstm_avg_improvement": 0.9203163148655857,
+    "any_improvement_beats_lstm": false
+  },
+  "conclusion": "REFUTED - Standard LSTM remains optimal"
+}

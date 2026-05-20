@@ -171,3 +171,65 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 - H1.470.1.1.11: Test LSTM architectural improvements (peephole connections, attention-augmented LSTM, better regularization)
 - Investigate why sequential processing outperforms parallel approaches for strong temporal dependencies
 - Consider hybrid approaches: LSTM core with attention augmentation
+### H1.470.1.1.11: LSTM Architectural Improvements — Round 250 (REFUTED)
+
+**Hypothesis**: LSTM performance can be further improved with better initialization, regularization, or architectural modifications (peephole connections, attention-augmented LSTM, variational LSTM).
+
+**Previous Finding (H1.470.1.1.10)**: Single LSTM remains optimal for strong temporal dependencies, outperforming all alternatives (Transformer-XL, SWA, Global Attention) by 57-223%.
+
+**Experiment**: Tested five LSTM variants on strong temporal tasks with sequence lengths 60 and 100:
+1. Standard LSTM (baseline comparison)
+2. Peephole LSTM (gated access to cell state)
+3. Zoneout LSTM (stochastic regularization)
+4. Attention-augmented LSTM (attention over hidden states)
+5. Variational LSTM (variational dropout)
+
+**Results Summary**:
+
+| Seq Len | Baseline | Standard LSTM | Peephole | Zoneout | Attention-LSTM | Variational |
+|---------|----------|---------------|----------|---------|----------------|-------------|
+| 60      | 0.3422   | 0.3392 (0.88%) | 0.3384 (1.12%) | 0.3392 (0.89%) | 0.3423 (-0.01%) | 0.3384 (1.12%) |
+| 100     | 0.3169   | 0.3139 (0.96%) | 0.3184 (-0.48%) | 0.3142 (0.87%) | 0.3209 (-1.24%) | 0.3173 (-0.12%) |
+
+**Average Improvement over Baseline**:
+- Standard LSTM: **0.92%**
+- Peephole LSTM: **0.32%**
+- Zoneout LSTM: **0.88%**
+- Attention-LSTM: **-0.63%**
+- Variational LSTM: **0.50%**
+
+**Relative Performance vs Standard LSTM**:
+
+| Architecture | Avg Relative vs LSTM |
+|--------------|---------------------|
+| Peephole     | -0.60%              |
+| Zoneout      | -0.04%              |
+| Attention    | -1.55%              |
+| Variational  | -0.42%              |
+
+**Key Findings**:
+1. **REFUTED** — No LSTM variant provides >5% additional improvement over standard LSTM
+2. **Zoneout performs nearly identically to standard LSTM**: -0.04% difference
+3. **Peephole and Variational show mixed results**: Better at seq_len=60, worse at seq_len=100
+4. **Attention-augmented LSTM performs WORST**: -1.55% vs standard LSTM (consistent with prior findings that attention alone is insufficient)
+5. **Standard LSTM remains optimal**: All modifications either match or degrade performance
+
+**Conclusion**: REFUTED - Standard LSTM is already well-optimized. Architectural modifications (peephole, zoneout, attention, variational) do not provide meaningful improvements. The ~1% improvement over baseline represents the ceiling for single-layer LSTM on these tasks.
+
+---
+
+## Summary of Key Insights
+
+1. **Temporal memory is essential**: LSTM/GRU provides +65-80% improvement on strong temporal tasks
+2. **Attention alone is insufficient**: Attention-only provides ~0-5% improvement on strong temporal dependencies
+3. **Single LSTM is optimal**: Outperforms all alternatives (Transformer-XL, SWA, Global Attention) by 57-223%
+4. **Hierarchical memory provides marginal benefit**: 3-level hierarchy shows +4.1% avg improvement over single LSTM, but advantage decreases with sequence length
+5. **Alternative architectures show positive scaling but never surpass LSTM**: Transformer-XL, SWA, and Global Attention all improve relative to LSTM at longer sequences (correlation 0.84-0.89), but remain significantly worse
+6. **Sequential processing is optimal for strong temporal dependencies**: LSTM's sequential nature outperforms all parallel/segmented approaches
+7. **LSTM architectural modifications don't help**: Peephole, zoneout, attention-augmented, and variational LSTMs all perform equal or worse than standard LSTM
+
+## Next Steps
+
+- H1.470.1.1.12: Investigate whether combining LSTM memory with cognitive graph's cross-modal attention provides synergistic benefits
+- Explore hybrid architectures: LSTM core for temporal processing + GNN for physical-semantic fusion
+- Consider task-specific optimizations: different architectures for different task types
