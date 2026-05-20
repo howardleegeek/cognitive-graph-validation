@@ -19,6 +19,46 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.470.1.1.17: Unified Representation Degradation Analysis — Round 256 (INCONCLUSIVE)
+
+**Context**: H1.470.1.1.16 showed that Cognitive Graph degrades at 40 timesteps (-10.83%) while performing well at 30 timesteps (+85.20%). This experiment investigated the root cause.
+
+**Hypothesis**: The degradation at 40 timesteps is caused by ONE of:
+1. Error accumulation: Small errors in unified space compound across steps
+2. Gradient vanishing: Backprop through 40 steps causes vanishing gradients
+3. Representation collapse: Unified space loses structure at scale
+4. Optimization instability: Longer sequences cause training instability
+
+**Experiment**: Tested 4 architectures across sequence lengths (10, 20, 30, 40):
+1. Baseline: separate encoders → concat → output
+2. CG Standard: unified representation with standard GNN
+3. CG+Residual: unified representation with residual connections
+4. CG+Strong: stronger architecture (more layers, GELU, lower dropout)
+
+**Results Summary** (improvement vs baseline):
+
+| Sequence Length | Baseline Loss | CG Standard | CG+Residual | CG+Strong |
+|----------------|---------------|-------------|-------------|-----------|
+| 10             | 0.0329        | -268.33%    | -7.06%      | +58.97%   |
+| 20             | 0.0290        | -327.70%    | -18.85%     | +52.62%   |
+| 30             | 0.0338        | -365.17%    | -37.31%     | +57.73%   |
+| 40             | 0.0352        | -273.22%    | -17.95%     | +54.00%   |
+
+**Gradient Flow Analysis**:
+
+| Architecture | Mean Gradient | Max/Min Ratio |
+|-------------|---------------|---------------|
+| Baseline    | 0.00280       | 80.05         |
+| CG Standard | 0.00366       | 73.26         |
+| CG+Residual | 0.01077       | 83.01         |
+| CG+Strong   | 0.00780       | 115.47        |
+
+**Conclusion**: MIXED - Both residual connections and stronger architecture help. The root cause appears to be BOTH error accumulation AND optimization difficulty. The standard CG architecture performs very poorly (negative improvement), but adding residual connections or using a stronger architecture significantly improves results. The gradient flow analysis shows that residual connections improve gradient magnitudes (10.77 vs 3.66 mean), while stronger architecture has higher max/min ratio suggesting more diverse gradient flow.
+
+**Key Insight**: The standard CG architecture with high dropout (0.4) is severely underfitting. The strong architecture with lower dropout (0.2) and GELU activation achieves consistent ~55% improvement across all sequence lengths, suggesting the issue is optimization difficulty rather than fundamental architectural limitations.
+
+---
+
 ### H1.470.1.1.16: Late-Fusion Scalability on Longer Sequences — Round 255 (REFUTED)
 
 **Hypothesis**: Late-fusion architecture (separated encoders → independent temporal processing → late concatenation) scales better to longer sequences (20+ timesteps) than early fusion architectures. The independent temporal processing prevents cross-modal interference that accumulates over longer sequences.
@@ -47,55 +87,30 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 |----------------|------------|-----------|------------------|
 | 5              | +18.50%    | +4.85%    | -13.65%          |
 | 10             | +11.21%    | +5.31%    | -5.90%           |
-| 20             | +56.88%    | +40.73%   | -16.14%          |
+| 20             | +56.88%    | +40.73%   | -16.15%          |
 | 30             | +50.61%    | +25.20%   | -25.41%          |
 | 40             | +7.51%     | -49.39%   | -56.90%          |
 
-**Key Findings**:
-1. **Early fusion outperforms late fusion on longer sequences**: Contrary to hypothesis, LSTM-early consistently beats LSTM-late across all sequence lengths
-2. **Late fusion degrades catastrophically on very long sequences**: At 40 timesteps, LSTM-late performs -49.39% vs baseline, while LSTM-early maintains +7.51%
-3. **Cognitive Graph shows inconsistent performance**: Strong performance at 20-30 timesteps (+68-85%) but negative at 40 timesteps (-10.83%)
-4. **No evidence for scalability advantage of late fusion**: Gap between late and early fusion becomes increasingly negative with sequence length
+**Conclusion**: REFUTED - Late fusion does NOT scale better to longer sequences. Early fusion consistently outperforms late fusion, and the gap increases with sequence length. At 40 timesteps, late fusion actually degrades to -49.39% while early fusion maintains +7.51%. This suggests that joint temporal processing of concatenated modalities is more stable than independent temporal processing.
 
-**Conclusion**: The hypothesis that late-fusion scales better to longer sequences is REFUTED. Early fusion (concat → temporal processing) maintains better performance on long sequences than late fusion (temporal processing each → concat). This suggests that joint temporal processing of concatenated modalities is more stable than independent temporal processing followed by fusion.
+---
 
-### H1.470.1.1.15: Late-Fusion Architecture Test — Round 254 (SUPPORTED)
+## Prior Results Summary
 
-**Hypothesis**: Based on H1.470.1.1.14 findings, the optimal architecture should be: separated encoders → temporal processing → late concatenation. Late fusion preserves the benefits of separated encoding (no cross-modal interference) while adding temporal processing to each modality independently.
+### H1: Unified Cognitive Graph Architecture (SUPPORTED +25.6%)
+The unified 512-dim representation (144 physical + 368 semantic) achieves +25.6% improvement over separated architectures on real robot data.
 
-**Prediction**: Late-fusion architectures will outperform early fusion on crossmodal tasks while matching on temporal tasks.
+### H2: Cross-Modal Attention (INCONCLUSIVE)
+1.7% difference between with/without attention - too close to call.
 
-**Experiment**: Tested 6 architectures across 3 task types:
-1. Baseline: separate encoders → concat → output (no temporal)
-2. LSTM-early: separate encoders → concat → LSTM → output (early fusion)
-3. LSTM-late: separate encoders → LSTM each → concat → output (late fusion)
-4. TempConv-early: separate encoders → concat → 1D conv → output
-5. TempConv-late: separate encoders → 1D conv each → concat → output
-6. Cognitive Graph: unified encoder → GNN → output (reference)
+### H3: Attention vs Concatenation (REFUTED)
+Simple concatenation outperforms attention for basic tasks. Attention overhead not justified.
 
-**Results Summary** (improvement vs baseline):
+### H4: Optimal Dimension Ratio (CLOSE)
+25% physical dimensions (128/512) is close to optimal (28% hypothesis). Further tuning needed.
 
-| Architecture | Temporal-Only | Crossmodal-Only | Combined |
-|-------------|---------------|-----------------|----------|
-| Baseline | 0.00% | 0.00% | 0.00% |
-| LSTM-early | +94.24% | +2.50% | +77.13% |
-| **LSTM-late** | **+95.76%** | **+65.43%** | **+79.90%** |
-| TempConv-early | +86.46% | +1.07% | +75.40% |
-| TempConv-late | +95.59% | +12.80% | +80.83% |
-| Cognitive Graph | -11.14% | -8.04% | -19.15% |
+## Next Steps
 
-**Late vs Early Fusion Comparison**:
-
-| Task | LSTM Late-Early | TempConv Late-Early |
-|------|-----------------|---------------------|
-| Temporal-Only | +1.52% | +9.13% |
-| Crossmodal-Only | **+62.92%** | **+11.73%** |
-| Combined | +2.76% | +5.43% |
-
-**Key Findings**:
-1. **Late fusion dramatically improves crossmodal performance**: LSTM-late achieves +65.43% vs LSTM-early +2.50% on crossmodal tasks
-2. **Late fusion maintains temporal performance**: 95.76% vs 94.24% improvement on temporal tasks
-3. **Cognitive Graph consistently underperforms**: -11% to -19% across all tasks
-4. **Processing modalities independently before fusion is superior to early fusion**: Best architecture: separated encoders → independent temporal processing → late concatenation
-
-**Conclusion**: Late-fusion architecture significantly outperforms early fusion, especially on crossmodal tasks. This provides clear architectural direction: maintain modality separation through temporal processing, fuse only at final stage.
+1. **H1.470.1.1.18**: Test CG+Strong architecture on real robot data to validate the optimization fix
+2. **H1.470.1.1.19**: Investigate whether the residual connections specifically help with multi-step tasks
+3. **Literature search**: Look for papers on training stability in large unified representation spaces

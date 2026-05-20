@@ -1,0 +1,57 @@
+{
+  "experiment_id": "H1.470.1.1.17",
+  "conclusion": "MIXED - Both residual connections and stronger architecture help",
+  "root_cause": "Both error accumulation and optimization difficulty contribute",
+  "sequence_length_results": {
+    "10": {
+      "baseline_loss": 0.03292969334870577,
+      "cg_improvement": -268.3308799038316,
+      "cg_residual_improvement": -7.062582094247498,
+      "cg_strong_improvement": 58.96517333041763
+    },
+    "20": {
+      "baseline_loss": 0.029017568565905094,
+      "cg_improvement": -327.6972737467599,
+      "cg_residual_improvement": -18.848881277778933,
+      "cg_strong_improvement": 52.617959464302785
+    },
+    "30": {
+      "baseline_loss": 0.033839479088783264,
+      "cg_improvement": -365.1655555942084,
+      "cg_residual_improvement": -37.30725949600362,
+      "cg_strong_improvement": 57.73396317101944
+    },
+    "40": {
+      "baseline_loss": 0.035192279145121574,
+      "cg_improvement": -273.21953320869574,
+      "cg_residual_improvement": -17.94985643635599,
+      "cg_strong_improvement": 53.99548426457883
+    }
+  },
+  "gradient_analysis": {
+    "baseline": {
+      "mean": 0.002797265328505697,
+      "max": 0.02980859763920307,
+      "min": 0.0003723475383594632,
+      "ratio": 80.05369723554975
+    },
+    "cg_standard": {
+      "mean": 0.003662774892291054,
+      "max": 0.048250310122966766,
+      "min": 0.0006586100207641721,
+      "ratio": 73.2597075730916
+    },
+    "cg_residual": {
+      "mean": 0.010767366838020582,
+      "max": 0.10085438191890717,
+      "min": 0.0012149745598435402,
+      "ratio": 83.00877661514868
+    },
+    "cg_strong": {
+      "mean": 0.007803212175570914,
+      "max": 0.10763085633516312,
+      "min": 0.0009321182733401656,
+      "ratio": 115.46785932099381
+    }
+  }
+}
