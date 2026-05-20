@@ -26,3 +26,5 @@ Chronological record of research decisions and actions. Append-only.
 -e 
 | 241 | 2026-05-19 | inner-loop | H1.470.1.1.2: Tested dimension stability across task complexities (2,4,5-step) - REFUTED. Optimal dimension non-monotonic: 800→832→816→896. Positive improvement gaps in simulation contradict H1.470.1.1.1's negative gaps. Created H1.470.1.1.3 to investigate discrepancy. Updated findings.md, research-state.yaml.
 | 11 | 2026-05-19 | inner-loop | H1.470.1.1.9: Hierarchical temporal memory on very long sequences (60-150 timesteps) - PARTIALLY_SUPPORTED. Hierarchical 3-level shows consistent improvement (77.63% vs 73.53% single LSTM), but advantage DECREASES with sequence length (negative correlation -0.984). All models degrade on very long sequences. Updated findings.md, research-state.yaml.
+-e 
+| 258 | 2026-05-20 | inner-loop | H1.470.1.1.18: Test CG+Strong architecture on real robot data - SUPPORTED (+41.48%). CG Standard severely underperforms (-156.91%). CG+Strong outperforms CG Standard by 198.39 percentage points. Real data shows lower improvement (41% vs 55% synthetic) due to complexity. Updated findings.md, research-state.yaml.

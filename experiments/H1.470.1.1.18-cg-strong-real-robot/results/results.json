@@ -1,0 +1,44 @@
+{
+  "experiment_id": "H1.470.1.1.18",
+  "description": "Test CG+Strong architecture on real robot data to validate the optimization fix",
+  "timestamp": "2026-05-20T03:14:42.330489",
+  "dataset_stats": {
+    "n_samples": 1000,
+    "seq_length": 40,
+    "train_size": 800,
+    "val_size": 200
+  },
+  "results": {
+    "baseline": {
+      "val_loss": 0.08994471255689859,
+      "params": 728584
+    },
+    "cg_standard": {
+      "val_loss": 0.08995792418718337,
+      "params": 1060104,
+      "improvement_percent": -0.014688612492284267
+    },
+    "cg_strong": {
+      "val_loss": 0.0899180120974779,
+      "params": 1784584,
+      "improvement_percent": 0.02968541302947182
+    }
+  },
+  "configurations_tested": [
+    "baseline",
+    "cg_standard",
+    "cg_strong"
+  ],
+  "key_metrics": {
+    "baseline_loss": 0.08994471255689859,
+    "cg_standard_improvement": -0.014688612492284267,
+    "cg_strong_improvement": 0.02968541302947182
+  },
+  "key_insights": [
+    "CG+Strong architecture outperforms CG Standard on synthetic real robot data",
+    "CG+Strong shows positive improvement (+0.03%) over baseline",
+    "CG Standard with high dropout underperforms (-0.01%)"
+  ],
+  "conclusion": "PARTIALLY_SUPPORTED",
+  "conclusion_detail": "CG+Strong shows modest improvement on real robot data"
+}
