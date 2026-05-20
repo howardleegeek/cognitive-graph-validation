@@ -1,0 +1,54 @@
+{
+  "experiment_id": "H1.470.1.1.29",
+  "description": "Test hybrid phase-aware + ensemble disagreement on mixed tasks",
+  "timestamp": "2026-05-20T12:45:52.946409",
+  "config_results": {
+    "config_3ph_0.1noise": {
+      "losses": {
+        "baseline": 10.067862510681152,
+        "phase_aware": 10.739169120788574,
+        "ensemble_disagreement": 9.661872863769531,
+        "hybrid": 10.897730827331543
+      },
+      "improvements": {
+        "phase_aware": -6.6678166233917295,
+        "ensemble_disagreement": 4.032530703323574,
+        "hybrid": -8.242745823852585
+      }
+    },
+    "config_4ph_0.15noise": {
+      "losses": {
+        "baseline": 19.08732795715332,
+        "phase_aware": 18.87177848815918,
+        "ensemble_disagreement": 17.196430206298828,
+        "hybrid": 17.65450096130371
+      },
+      "improvements": {
+        "phase_aware": 1.1292804811548258,
+        "ensemble_disagreement": 9.906560808821038,
+        "hybrid": 7.50669239333016
+      }
+    },
+    "config_5ph_0.2noise": {
+      "losses": {
+        "baseline": 26.6674861907959,
+        "phase_aware": 27.15647315979004,
+        "ensemble_disagreement": 29.61662483215332,
+        "hybrid": 26.741361618041992
+      },
+      "improvements": {
+        "phase_aware": -1.8336447818726578,
+        "ensemble_disagreement": -11.0589300403399,
+        "hybrid": -0.277024338617981
+      }
+    }
+  },
+  "summary": {
+    "avg_phase_improvement": -2.457393641369854,
+    "avg_ensemble_improvement": 0.9600538239349033,
+    "avg_hybrid_improvement": -0.3376925897134689,
+    "best_approach": "ensemble_disagreement",
+    "best_improvement": 0.9600538239349033,
+    "conclusion": "REFUTED"
+  }
+}

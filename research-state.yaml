@@ -1,10 +1,35 @@
-current_round: 267
-last_action: "H1.470.1.1.28 - Test phase-aware training for hierarchical tasks (SUPPORTED - +99.05% to +99.82% improvement)"
-next_intended_action: "H1.470.1.1.29 - Test phase-aware training on real robot data or combine with ensemble disagreement for mixed tasks"
+current_round: 268
+last_action: "H1.470.1.1.29 - Test phase-aware + ensemble disagreement on mixed tasks (REFUTED - no consistent improvement)"
+next_intended_action: "H1.470.1.1.30 - Test phase-aware training on real robot LIBERO data with clear hierarchical structure"
 
 experiments:
-  total_rounds: 267
+  total_rounds: 268
   trajectory:
+    - experiment_id: H1.470.1.1.29
+      description: "Test hybrid phase-aware + ensemble disagreement on mixed tasks"
+      result:
+        conclusion: "REFUTED"
+        task: "mixed_hierarchical_noisy"
+        configurations_tested: 3
+        loss_types_tested: ["baseline", "phase_aware", "ensemble_disagreement", "hybrid"]
+        key_metrics:
+          avg_phase_improvement: -2.46
+          avg_ensemble_improvement: 0.96
+          avg_hybrid_improvement: -0.34
+          best_approach: "ensemble_disagreement"
+          best_improvement: 0.96
+        key_insights:
+          - "Phase-aware training does NOT generalize to mixed/noisy tasks"
+          - "Ensemble disagreement provides marginal improvement (+0.96%) on some configs"
+          - "Hybrid approach performs worse than either individual approach"
+          - "Benefits of phase-aware training are task-specific to hierarchical structure"
+          - "Clear phase transitions required for phase-aware training to work"
+        recommendations:
+          - "R1: Use phase-aware training ONLY for tasks with clear hierarchical structure"
+          - "R2: Use ensemble disagreement for tasks with genuine sensor noise"
+          - "R3: Do NOT combine both - they interfere with each other"
+          - "R4: Test phase-aware on real robot data with known phase boundaries"
+    
     - experiment_id: H1.470.1.1.28
       description: "Test phase-aware training for hierarchical tasks"
       result:
@@ -42,83 +67,3 @@ experiments:
           - "R2: Use ensemble disagreement for tasks with genuine noise/uncertainty"
           - "R3: Develop hybrid approach for mixed task types"
           - "R4: Test phase-aware training on real robot manipulation data"
-    
-    - experiment_id: H1.470.1.1.27
-      description: "Test ensemble disagreement on complex hierarchical tasks with 4-5 phases"
-      result:
-        conclusion: "REFUTED"
-        task: "complex_hierarchical_multi_step"
-        configurations_tested: 2
-        architectures_tested: ["baseline", "oracle_noise", "ensemble_disagreement"]
-        sequence_lengths_tested: [40, 50]
-        n_phases: [4, 5]
-        key_metrics:
-          baseline_test_loss_4phase: 0.009572
-          oracle_test_loss_4phase: 0.009619
-          ensemble_test_loss_4phase: 0.009700
-          oracle_improvement_4phase: -0.49
-          ensemble_improvement_4phase: -1.35
-          baseline_test_loss_5phase: 0.009002
-          oracle_test_loss_5phase: 0.008992
-          ensemble_test_loss_5phase: 0.009145
-          oracle_improvement_5phase: 0.11
-          ensemble_improvement_5phase: -1.59
-        key_insights:
-          - "Ensemble disagreement fails on hierarchical tasks regardless of complexity (3-phase: -4.05%, 4-phase: -1.35%, 5-phase: -1.59%)"
-          - "Oracle noise also fails on hierarchical tasks (-0.49% to +0.11%), suggesting noise-aware loss is fundamentally wrong for structured tasks"
-          - "Hierarchical tasks have deterministic phase transitions, not random noise"
-          - "Ensemble disagreement incorrectly downweights important phase transition samples"
-          - "Phase transitions are 'uncertain' but also highly informative for learning task structure"
-        recommendations:
-          - "R1: Use ensemble disagreement only for tasks with genuine noise/uncertainty"
-          - "R2: For hierarchical tasks, consider phase-aware training instead of noise-aware"
-          - "R3: Investigate why oracle noise also fails on hierarchical tasks"
-          - "R4: Consider alternative uncertainty estimation methods for structured tasks"
-    
-    - experiment_id: H1.470.1.1.26
-      description: "Test ensemble disagreement on hierarchical multi-step tasks with phase transitions"
-      result:
-        conclusion: "REFUTED"
-        task: "hierarchical_multi_step_phase_transitions"
-        configurations_tested: 3
-        architectures_tested: ["baseline", "oracle_noise", "ensemble_disagreement"]
-        sequence_lengths_tested: [20]
-        n_phases: 3
-        key_metrics:
-          baseline_test_loss: 0.443798
-          oracle_test_loss: 0.423309
-          oracle_improvement: 4.62
-          ensemble_disagreement_loss: 0.461756
-          ensemble_disagreement_improvement: -4.05
-          oracle_ratio: -87.7
-        key_insights:
-          - "Ensemble disagreement fails on hierarchical tasks (-4.05% worse than baseline)"
-          - "Oracle noise helps (+4.62%), showing noise-aware loss can work"
-          - "Ensemble disagreement incorrectly downweights phase transition samples"
-          - "Phase transitions are deterministic and informative, not noisy"
-
-hypotheses:
-  - id: H1
-    name: "Cognitive Graph improves sample efficiency"
-    status: "SUPPORTED"
-    key_finding: "+25.6% improvement with real robot data"
-  - id: H2
-    name: "Early fusion improves grounding"
-    status: "INCONCLUSIVE"
-    key_finding: "1.7% difference, needs more testing"
-  - id: H3
-    name: "Attention enables long-horizon planning"
-    status: "REFUTED"
-    key_finding: "Concatenation wins for simple tasks; attention needs task structure"
-  - id: H4
-    name: "Dimension allocation (144/368) is optimal"
-    status: "CLOSE"
-    key_finding: "25% optimal vs 28% hypothesis"
-  - id: H1.470
-    name: "Ensemble disagreement helps noisy data"
-    status: "PARTIALLY_SUPPORTED"
-    key_finding: "Works for real robot (+15.24%), fails for hierarchical tasks"
-  - id: H1.470.1.1.28
-    name: "Phase-aware training for hierarchical tasks"
-    status: "SUPPORTED"
-    key_finding: "+99.05% to +99.82% improvement on hierarchical tasks"
