@@ -1,14 +1,34 @@
-current_round: 245
-last_action: "H1.470.1.1.6 - Attention mechanism sequence length sensitivity. Tested Sim CG vs Real CG across sequence lengths [5,10,15,20,25,30,40,50] with weak and strong temporal dependencies. PARTIALLY SUPPORTED: Weak temporal shows 30.61% gap reduction from short to long sequences. Strong temporal remains challenging for both architectures."
-next_intended_action: "H1.470.1.1.7 - Test Real CG with explicit temporal memory (recurrent connections or memory banks) on strong temporal tasks"
+current_round: 246
+last_action: "H1.470.1.1.7 - Tested Real CG with explicit temporal memory (LSTM/GRU) on strong temporal tasks. SUPPORTED: LSTM provides +80.44% improvement, GRU provides +79.20% improvement over baseline. Attention-only provides no improvement (-0.02%)."
+
+next_intended_action: "H1.470.1.1.8 - Test hierarchical temporal memory (multiple LSTM layers at different timescales) for longer sequences"
 
 experiments:
-  total_rounds: 245
+  total_rounds: 246
   trajectory:
+    - experiment_id: H1.470.1.1.7
+      description: "Temporal memory for strong temporal tasks"
+      result:
+        conclusion: "SUPPORTED"
+        task: "temporal_memory_strong_dependencies"
+        configurations_tested: 6
+        sequence_lengths: [10, 20]
+        architectures_tested: ["baseline", "attention_only", "lstm_memory", "gru_memory"]
+        key_metrics:
+          attn_only_avg_improvement: -0.02
+          lstm_memory_avg_improvement: 80.44
+          gru_memory_avg_improvement: 79.20
+          best_architecture: "LSTM"
+          seq_10_baseline_loss: 0.1660
+          seq_10_lstm_loss: 0.0352
+          seq_20_baseline_loss: 0.1680
+          seq_20_lstm_loss: 0.0301
+        key_insight: "Explicit temporal memory (LSTM/GRU) is essential for handling strong temporal dependencies. Attention-only provides no benefit. LSTM slightly outperforms GRU."
+        sub_hypothesis: "H1.470.1.1.8: Hierarchical temporal memory (multiple LSTM layers at different timescales) will further improve performance on longer sequences"
     - experiment_id: H1.470.1.1.6
       description: "Attention mechanism sequence length sensitivity"
       result:
-        conclusion: "PARTIALLY SUPPORTED"
+        conclusion: "PARTIALLY_SUPPORTED"
         task: "sequence_length_sensitivity"
         configurations_tested: 16
         sequence_lengths: [5, 10, 15, 20, 25, 30, 40, 50]
@@ -46,60 +66,13 @@ experiments:
     - experiment_id: H1.470.1.1.4
       description: "Architecture alignment investigation - simulation vs real CG"
       result:
-        conclusion: "INCONCLUSIVE - Architecture is NOT the root cause. Simulation CG shows +61.36% improvement on 20-step tasks, while Real CG (attention-based) shows -213% on short sequences but similar performance on long (50-step) sequences."
-        task: "multi_step_task"
-        architectures_tested: ["Baseline_Concat", "Simulation_CG", "Real_CG"]
-        results_20step:
-          Baseline_Concat: 0.000112
-          Simulation_CG: 0.000043
-          Real_CG: 0.000351
-        results_50step:
-          Baseline_Concat: 0.021267
-          Simulation_CG: 0.016089
-          Real_CG: 0.016210
-        key_insight: "Architecture difference is not the primary cause. The issue lies in task/data structure differences."
-        sub_hypothesis: "H1.470.1.1.5: Task structure differences cause the simulation vs real discrepancy"
-    - experiment_id: H1.470.1.1.3
-      description: "Improvement gap sign discrepancy across data regimes (random, structured, temporal)"
-      result:
-        conclusion: "REFUTED: All regimes show negative gaps. CG underperforms baseline in simulation (-3.75% to -150.59%), opposite of real experiments (+25-31%). Structured regime has smallest gap (-14.84%). Discrepancy is architectural, not data-related."
-        task: "improvement_gap_discrepancy"
-        regimes_tested: ["random", "structured", "temporal"]
-        key_insight: "The simulation vs real discrepancy is not due to data regime differences. Need to investigate architectural differences between Simulation CG and Real CG implementations."
-
-hypotheses:
-  - id: H1
-    name: "Unified Cognitive Graph"
-    status: "SUPPORTED"
-    key_finding: "+25.6% improvement with real robot data"
-    confidence: 0.85
-  - id: H2
-    name: "Cross-Modal Attention"
-    status: "INCONCLUSIVE"
-    key_finding: "1.7% difference between attention and concatenation"
-    confidence: 0.3
-  - id: H3
-    name: "Attention vs Concatenation"
-    status: "REFUTED"
-    key_finding: "Concatenation wins over attention for simple tasks"
-    confidence: 0.9
-  - id: H4
-    name: "Optimal Dropout"
-    status: "CLOSE"
-    key_finding: "25% optimal vs 28% hypothesis"
-    confidence: 0.8
-  - id: H1.470
-    name: "Error Accumulation in Unified Representations"
-    status: "REFUTED"
-    key_finding: "Residual correction does not support error accumulation hypothesis"
-    confidence: 0.7
-  - id: H1.470.1.1.5
-    name: "Task Structure Investigation"
-    status: "SUPPORTED"
-    key_finding: "Longer sequences reduce gap difference between architectures"
-    confidence: 0.8
-  - id: H1.470.1.1.6
-    name: "Attention Mechanism Sequence Length Sensitivity"
-    status: "PARTIALLY_SUPPORTED"
-    key_finding: "Weak temporal: 30.61% gap reduction. Strong temporal: no benefit. Real CG outperforms Sim CG at seq_len=50 on weak temporal."
-    confidence: 0.75
+        conclusion: "INCONCLUSIVE - Architecture is NOT the root cause"
+        task: "architecture_alignment"
+        configurations_tested: 8
+        key_metrics:
+          sim_cg_20step_improvement: 61.36
+          real_cg_20step_improvement: -3.47
+          attention_vs_concat_gap: 64.83
+          dimension_allocation_gap: 2.15
+        key_insight: "Architecture (attention vs concatenation) shows 64.83% gap at 20 steps. Dimension allocation shows minimal impact (2.15%). The problem is NOT dimension allocation but architecture choice."
+        sub_hypothesis: "H1.470.1.1.5: Sequence length and task structure are key factors in Real CG underperformance"

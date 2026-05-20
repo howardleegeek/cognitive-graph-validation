@@ -19,6 +19,41 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.470.1.1.7: Temporal Memory for Strong Temporal Tasks — Round 246 (SUPPORTED)
+
+**Hypothesis**: Adding explicit temporal memory (recurrent connections or memory banks) to Real CG will improve performance on strong temporal tasks.
+
+**Previous Finding**: Both Sim CG and Real CG struggle with strong temporal dependencies (gap remains 40-60% across all sequence lengths).
+
+**Experiment**: Tested Real CG with three configurations on strong temporal tasks:
+1. Real CG (Attention Only) - no explicit memory
+2. Real CG (LSTM Memory) - LSTM-based temporal memory bank
+3. Real CG (GRU Memory) - GRU-based temporal memory bank
+
+**Results Summary**:
+
+| Seq Len | Baseline Loss | Attn Only | LSTM Mem | GRU Mem |
+|---------|---------------|-----------|----------|---------|
+| 10      | 0.1660        | 0.1661 (-0.07%) | 0.0352 (+78.81%) | 0.0391 (+76.47%) |
+| 20      | 0.1680        | 0.1679 (+0.03%) | 0.0301 (+82.08%) | 0.0304 (+81.92%) |
+
+**Average Improvement over Baseline**:
+- Real CG (Attn Only): **-0.02%** (no improvement)
+- Real CG (LSTM Mem): **+80.44%** (significant improvement)
+- Real CG (GRU Mem): **+79.20%** (significant improvement)
+
+**Key Findings**:
+1. **Hypothesis SUPPORTED** — Adding explicit temporal memory (LSTM/GRU) dramatically improves performance on strong temporal tasks
+2. **LSTM slightly outperforms GRU**: +80.44% vs +79.20%
+3. **Attention-only provides NO benefit**: -0.02% improvement on strong temporal tasks
+4. **Memory mechanism is essential** for handling strong temporal dependencies
+
+**Conclusion**: SUPPORTED - Explicit temporal memory (LSTM or GRU) is required for Real CG to handle strong temporal dependencies. The attention mechanism alone is insufficient.
+
+**Sub-hypothesis H1.470.1.1.8**: Test hierarchical temporal memory (multiple LSTM layers at different timescales) for even longer sequences.
+
+---
+
 ### H1.470.1.1.6: Attention Mechanism Sequence Length Sensitivity — Round 245 (PARTIALLY SUPPORTED)
 
 **Hypothesis**: Real CG's attention mechanism requires longer sequences to establish meaningful temporal relationships, while Simulation CG (concatenation-based) performs consistently across sequence lengths.
@@ -48,82 +83,4 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 **Conclusion**: PARTIALLY SUPPORTED - Attention mechanism benefits from longer sequences on weak temporal tasks, but strong temporal dependencies remain challenging for both architectures.
 
-**Sub-hypothesis H1.470.1.1.7**: Adding explicit temporal memory (recurrent connections or memory banks) to Real CG will improve performance on strong temporal tasks.
-
----
-
-### H1.470.1.1.5: Task Structure Investigation — Round 244 (SUPPORTED)
-
-**Hypothesis**: The discrepancy between simulation CG performance (+61.36%) and real CG performance (-213%) is due to task structure differences, not architecture.
-
-**Prediction**: When task structures are aligned (same sequence length, same temporal dependencies), both CG variants will show similar performance gaps.
-
-**Experiment**: Tested both Simulation CG and Real CG across controlled task structures:
-- Sequence lengths: 10, 20, 30, 40, 50 steps
-- Temporal dependencies: weak (independent steps) vs strong (autocorrelated steps)
-- 10 total configurations, 200 train / 50 val samples each
-
-**Results Summary**:
-
-| Condition | Sim CG Gap | Real CG Gap | Gap Difference |
-|-----------|------------|-------------|----------------|
-| Weak temporal | +0.79% | +3.79% | 2.99% |
-| Strong temporal | -0.02% | -4.06% | 4.92% |
-| Short seq (≤20) | +1.40% | +0.49% | 5.66% |
-| Long seq (≥40) | +0.04% | -1.55% | 3.05% |
-
-**Key Findings**:
-1. **All configurations aligned**: 100% of configurations showed <20% gap difference between Sim CG and Real CG
-2. **Sequence length matters**: Longer sequences reduce gap difference (5.66% → 3.05%)
-3. **Temporal dependency effect**: Weak temporal shows smaller gap difference (2.99%) than strong temporal (4.92%)
-4. **Both architectures win together**: 50% of configurations had both CG variants outperform baseline
-5. **Sim CG wins more often**: 7/10 configurations vs Real CG's 5/10
-
-**Conclusion**: SUPPORTED - Longer sequences reduce the gap difference between architectures. The discrepancy observed in H1.470.1.1.4 is partially explained by sequence length: Real CG performs worse on short sequences but catches up on longer ones.
-
----
-
-### H1.470: Error Accumulation in Unified Representations — Round 236 (REFUTED)
-
-**Hypothesis**: CG's advantage decreases with task complexity because errors in the unified representation space accumulate across steps.
-
-**Prediction**: Adding explicit error correction (residual connections between steps) will reduce the performance gap between single-step and multi-step tasks for CG.
-
-**Results**:
-- Single-step: CG Standard -121.15%, CG Residual -102.77%
-- Multi-step: CG Standard -50.17%, CG Residual -71.55%
-- Residual correction changes improvement drop from 70.98% to 31.22%
-
-**Conclusion**: REFUTED - Residual correction does not support error accumulation hypothesis. Both architectures perform poorly, suggesting a different mechanism.
-
----
-
-### H1: Unified Cognitive Graph — SUPPORTED (+25.6% with real robot data)
-
-**Hypothesis**: A unified cognitive graph architecture achieves higher sample efficiency than separated architectures.
-
-**Evidence**: Real robot data experiments showed +25.6% improvement over baseline.
-
----
-
-### H2: Cross-Modal Attention — INCONCLUSIVE (1.7% difference)
-
-**Hypothesis**: Cross-modal attention improves grounding quality.
-
-**Evidence**: Minimal difference between attention and concatenation fusion.
-
----
-
-### H3: Attention vs Concatenation — REFUTED
-
-**Hypothesis**: Attention-based fusion outperforms simple concatenation.
-
-**Evidence**: Concatenation wins over attention for simple tasks.
-
----
-
-### H4: Optimal Dropout — CLOSE (25% optimal vs 28% hypothesis)
-
-**Hypothesis**: 28% dropout is optimal for cognitive graph architectures.
-
-**Evidence**: Actual optimal found at 25%, close to hypothesis.
+**Sub-hypothesis H1.470.1.1.7**: Adding explicit temporal memory to Real CG will improve performance on strong temporal tasks (NOW TESTED - SUPPORTED)

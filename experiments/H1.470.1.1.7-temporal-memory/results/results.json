@@ -1,0 +1,36 @@
+{
+  "experiment_id": "H1.470.1.1.7",
+  "hypothesis": "Adding explicit temporal memory to Real CG will improve performance on strong temporal tasks",
+  "configurations": [
+    {
+      "seq_len": 10,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.16597074270248413,
+      "real_cg_attn_loss": 0.16608598828315735,
+      "real_cg_lstm_loss": 0.03517686761915684,
+      "real_cg_gru_loss": 0.03905075043439865,
+      "attn_improvement_pct": -0.06943728683543021,
+      "lstm_improvement_pct": 78.8053803662166,
+      "gru_improvement_pct": 76.471304641686
+    },
+    {
+      "seq_len": 20,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.16797615587711334,
+      "real_cg_attn_loss": 0.16792120039463043,
+      "real_cg_lstm_loss": 0.03009630460292101,
+      "real_cg_gru_loss": 0.03037011530250311,
+      "attn_improvement_pct": 0.03271624010917005,
+      "lstm_improvement_pct": 82.08299002571614,
+      "gru_improvement_pct": 81.91998433115648
+    }
+  ],
+  "summary": {
+    "avg_attn_improvement": -0.01836052336313008,
+    "avg_lstm_improvement": 80.44418519596637,
+    "avg_gru_improvement": 79.19564448642124,
+    "best_architecture": "LSTM",
+    "best_improvement": 80.44418519596637,
+    "conclusion": "SUPPORTED"
+  }
+}
