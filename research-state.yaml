@@ -1,10 +1,28 @@
-current_round: 234
-last_action: "H1.468 - Layer-wise dropout rate experiment. SUPPORTED: Progressive dropout (encoder=0.3, gnn=0.4, decoder=0.5) achieves +34.69% improvement, marginally better than uniform 40% (+34.65%). Key finding: GNN dropout hurts performance; decoder dropout helps slightly."
-next_intended_action: "H1.469 - Test CG on multi-step tasks (3+ steps) to validate H1 deepening hypothesis"
+current_round: 235
+last_action: "H1.469 - Multi-step tasks experiment. REFUTED: CG improvement decreases from 8.07% (single-step) to 2.08% (3-step), difference of -5.99%. Hypothesis that CG advantage increases with task complexity is not supported."
+next_intended_action: "H3 re-test: attention on longer sequences (20+ timesteps) - based on priority order after H1 deepening attempt"
 
 experiments:
-  total_rounds: 234
+  total_rounds: 235
   trajectory:
+    - experiment_id: H1.469
+      description: "Multi-step tasks (3-step) vs single-step comparison"
+      result:
+        conclusion: "REFUTED: CG improvement decreases from 8.07% (single-step) to 2.08% (3-step), difference of -5.99%"
+        task: "multi_step_comparison"
+        single_step:
+          baseline_loss: 0.011058
+          cg_loss: 0.010166
+          improvement_percent: 8.07
+          cg_wins: true
+        multi_step:
+          baseline_loss: 0.010440
+          cg_loss: 0.010224
+          improvement_percent: 2.08
+          cg_wins: true
+        improvement_difference: -5.99
+        hypothesis_supported: false
+        key_insight: "CG advantage does NOT increase with task complexity. Actually performs worse on multi-step tasks compared to single-step."
     - experiment_id: H1.468
       description: "Layer-wise dropout rates (encoder/GNN/decoder)"
       result:
@@ -78,68 +96,4 @@ experiments:
         results:
           dropout_0.0:
             loss: 0.011323
-            improvement_vs_baseline: -4.39
-            cg_wins: false
-          dropout_0.1:
-            loss: 0.010159
-            improvement_vs_baseline: 6.33
-            cg_wins: true
-          dropout_0.2:
-            loss: 0.010641
-            improvement_vs_baseline: 1.89
-            cg_wins: true
-          dropout_0.3:
-            loss: 0.010086
-            improvement_vs_baseline: 7.01
-            cg_wins: true
-          dropout_0.4:
-            loss: 0.009724
-            improvement_vs_baseline: 10.34
-            cg_wins: true
-            best: true
-          dropout_0.5:
-            loss: 0.009726
-            improvement_vs_baseline: 10.32
-            cg_wins: true
-          dropout_0.6:
-            loss: 0.009748
-            improvement_vs_baseline: 10.12
-            cg_wins: true
-        key_insight: "No dropout = worse than baseline. 40-60% dropout plateau suggests architecture is tolerant to over-regularization. Optimal at 40% confirms prediction."
-    - experiment_id: H1.466
-      description: "Test dropout CG on realistic robot data"
-      result:
-        conclusion: "SUPPORTED: Dropout CG wins at all 5 noise levels (avg +9.00% improvement). Peak at 1% noise (+14.48%). Generalizes to realistic deployment."
-        task: "dropout_real_robot_validation"
-        results:
-          noise_0.0:
-            baseline: 0.000382
-            cg_standard: 0.000366
-            cg_dropout: 0.000362
-            dropout_vs_baseline: 5.29
-            dropout_wins: true
-          noise_0.005:
-            baseline: 0.000453
-            cg_standard: 0.000418
-            cg_dropout: 0.000407
-            dropout_vs_baseline: 10.04
-            dropout_wins: true
-          noise_0.01:
-            baseline: 0.000413
-            cg_standard: 0.000373
-            cg_dropout: 0.000353
-            dropout_vs_baseline: 14.48
-            dropout_wins: true
-          noise_0.02:
-            baseline: 0.000354
-            cg_standard: 0.000359
-            cg_dropout: 0.000348
-            dropout_vs_baseline: 1.88
-            dropout_wins: true
-          noise_0.05:
-            baseline: 0.000396
-            cg_standard: 0.000388
-            cg_dropout: 0.000381
-            dropout_vs_baseline: 3.79
-            dropout_wins: true
-        key_insight: "Dropout CG generalizes to realistic noise levels. Peak benefit at moderate noise (1%)."
+            improvem

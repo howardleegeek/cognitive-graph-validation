@@ -171,3 +171,55 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 5. **All configs beat baseline**: Every configuration tested beats baseline
 
 **Conclusion**: SUPPORTED — Progressive dropout (increasing from encoder to decoder) marginally outperforms uniform dropout (+0.04%). However, the improvement is negligible for practical purposes. Uniform 40% remains the recommended configuration. The key insight is that GNN layers should have lower dropout than encoder/decoder layers.
+
+---
+
+### H1.469: Multi-Step Tasks — Round 235 (REFUTED: CG advantage decreases with task complexity)
+
+**Hypothesis**: Cognitive Graph advantage increases with task complexity (multi-step vs single-step).
+
+**Context**: H1.468 showed progressive dropout achieves +34.69% improvement. This experiment tests whether CG's advantage scales with task complexity by comparing single-step vs 3-step tasks.
+
+**Prediction**: CG will show greater improvement on 3-step tasks compared to 1-step tasks.
+
+**Method**: Compare CG vs baseline on both single-step and 3-step tasks using the same dataset and training conditions. Single-step: predict next action. Multi-step: predict sequence of 3 actions from initial observation.
+
+**Results**:
+
+| Task Type | Baseline Loss | CG Loss | Improvement | CG Wins |
+|-----------|---------------|---------|-------------|---------|
+| **Single-step** | 0.011058 | 0.010166 | **+8.07%** | ✓ |
+| **3-step** | 0.010440 | 0.010224 | **+2.08%** | ✓ |
+| **Difference** | — | — | **-5.99%** | — |
+
+**Key Findings**:
+1. **CG wins on both tasks**: Both single-step (+8.07%) and multi-step (+2.08%) show CG advantage
+2. **Advantage DECREASES with complexity**: Improvement drops from 8.07% to 2.08% (-5.99% difference)
+3. **Multi-step is harder for CG**: While baseline performs slightly worse on multi-step (0.010440 vs 0.011058), CG degrades more (0.010224 vs 0.010166)
+4. **Hypothesis refuted**: Contrary to prediction, CG does NOT show greater improvement on more complex tasks
+
+**Conclusion**: REFUTED — Cognitive Graph advantage does NOT increase with task complexity. The improvement actually decreases by 5.99% from single-step to 3-step tasks. This suggests that while CG is effective for single-step prediction, its advantage diminishes for multi-step planning tasks.
+
+---
+
+## Hypothesis Status Summary
+
+| Hypothesis | Status | Key Evidence |
+|------------|--------|--------------|
+| H1: CG > Baseline | **SUPPORTED** | +25.6% improvement on real robot data |
+| H2: CG learns faster | Inconclusive | 1.7% difference in sample efficiency |
+| H3: Attention > Concat | **REFUTED** | Concatenation wins for simple tasks |
+| H4: 25% physical dims optimal | **CLOSE** | 25% optimal vs 28% hypothesis |
+| H1.465: Dropout CG robust | **SUPPORTED** | +38.16% at 1% noise |
+| H1.466: Dropout CG on real data | **SUPPORTED** | +9.00% avg across noise levels |
+| H1.467: Optimal dropout 30-40% | **SUPPORTED** | 40% optimal, +10.34% improvement |
+| H1.468: Progressive dropout better | **SUPPORTED** | +34.69% vs +34.65% uniform |
+| H1.469: CG scales with complexity | **REFUTED** | -5.99% difference (8.07% → 2.08%) |
+
+---
+
+## Next Steps
+
+1. **H3 re-test**: Attention on longer sequences (20+ timesteps) - based on priority order
+2. **Sub-hypotheses**: Generate H1.1 / H1.2 / H3.1 with concrete predictions
+3. **New experiment**: Test CG with different multi-step architectures

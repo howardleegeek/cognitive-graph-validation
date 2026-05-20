@@ -1,0 +1,30 @@
+{
+  "experiment_id": "H1.469",
+  "description": "Multi-step tasks (3-step) vs single-step comparison",
+  "hypothesis": "Cognitive Graph advantage increases with task complexity",
+  "prediction": "CG will show greater improvement on 3-step tasks compared to 1-step tasks",
+  "results": {
+    "single_step": {
+      "baseline_loss": 0.011057730065658689,
+      "cg_loss": 0.01016564154997468,
+      "improvement_percent": 8.067555550614433,
+      "cg_wins": true
+    },
+    "multi_step": {
+      "baseline_loss": 0.01044046739116311,
+      "cg_loss": 0.01022370858117938,
+      "improvement_percent": 2.076140864796882,
+      "cg_wins": true
+    },
+    "improvement_difference": -5.991414685817551,
+    "hypothesis_supported": false
+  },
+  "config": {
+    "dropout_rate": 0.4,
+    "batch_size": 32,
+    "epochs": 50,
+    "learning_rate": 0.001,
+    "train_size": 400,
+    "val_size": 100
+  }
+}
