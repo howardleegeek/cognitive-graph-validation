@@ -1,0 +1,42 @@
+[
+  {
+    "id": "R1",
+    "title": "Noise-Robust Training",
+    "description": "Add controlled noise injection during training to improve robustness",
+    "implementation": "Add Gaussian noise to input features with increasing variance schedule",
+    "expected_impact": "Reduce sensitivity to sensor noise by 20-30%",
+    "priority": "High"
+  },
+  {
+    "id": "R2",
+    "title": "Adaptive Dropout Schedule",
+    "description": "Use higher dropout for synthetic data, lower for real data",
+    "implementation": "Dynamic dropout based on estimated data complexity",
+    "expected_impact": "Improve real data performance by 5-10%",
+    "priority": "Medium"
+  },
+  {
+    "id": "R3",
+    "title": "Partial Observability Handling",
+    "description": "Add attention masks for occluded/missing observations",
+    "implementation": "Binary masks indicating observation availability",
+    "expected_impact": "Reduce performance drop by 15-25%",
+    "priority": "High"
+  },
+  {
+    "id": "R4",
+    "title": "Multi-Task Curriculum",
+    "description": "Train on mixed synthetic/real data with progressive difficulty",
+    "implementation": "Start with synthetic, gradually introduce real data",
+    "expected_impact": "Smooth transition, improve final performance by 10-15%",
+    "priority": "Medium"
+  },
+  {
+    "id": "R5",
+    "title": "Online Adaptation",
+    "description": "Allow graph structure to adapt during deployment",
+    "implementation": "Learnable graph structure parameters",
+    "expected_impact": "Handle non-stationarity, long-term improvement",
+    "priority": "Low (complex)"
+  }
+]

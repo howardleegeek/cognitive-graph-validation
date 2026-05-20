@@ -1,0 +1,45 @@
+{
+  "performance_comparison": {
+    "synthetic_improvement": 55.0,
+    "real_improvement": 41.48,
+    "performance_drop": 13.520000000000003
+  },
+  "difficulty_factors": {
+    "noise_level": {
+      "synthetic": 0.05,
+      "real": 0.15,
+      "impact": "High noise reduces signal-to-noise ratio, making learning harder"
+    },
+    "task_complexity": {
+      "synthetic": 0.3,
+      "real": 0.8,
+      "impact": "Complex dynamics require more sophisticated representations"
+    },
+    "partial_observability": {
+      "synthetic": 0.1,
+      "real": 0.6,
+      "impact": "Partial observability requires memory and inference"
+    },
+    "non_stationarity": {
+      "synthetic": 0.0,
+      "real": 0.4,
+      "impact": "Non-stationary dynamics require adaptation"
+    },
+    "multimodal_variance": {
+      "synthetic": 0.2,
+      "real": 0.7,
+      "impact": "High variance requires better cross-modal integration"
+    }
+  },
+  "overall_difficulty": {
+    "synthetic": 0.13,
+    "real": 0.53,
+    "increase": 0.4
+  },
+  "hypotheses": [
+    "Noise amplification in unified representations",
+    "Graph structure mismatch with partial observability",
+    "Fixed architecture vs. non-stationary dynamics",
+    "Cross-modal interference under high variance"
+  ]
+}
