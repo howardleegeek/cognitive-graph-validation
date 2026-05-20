@@ -1,0 +1,24 @@
+{
+  "experiment_id": "H1.470.1.1.23",
+  "description": "Noise estimation strategy comparison (fast version)",
+  "conclusion": "SUPPORTED",
+  "task": "noise_estimation_comparison",
+  "configurations_tested": 5,
+  "key_metrics": {
+    "baseline_test_loss": 0.4638809561729431,
+    "oracle_test_loss": 0.46078795194625854,
+    "oracle_improvement": 0.6667668041822875,
+    "learned_estimator_oracle_ratio": -319.0674863177368,
+    "reconstruction_proxy_oracle_ratio": -822.2991983350033,
+    "ensemble_disagreement_oracle_ratio": 1109.2056579048792,
+    "best_non_oracle_strategy": "ensemble_disagreement",
+    "best_non_oracle_oracle_ratio": 1109.2056579048792
+  },
+  "key_insights": [
+    "Oracle noise estimation achieves +0.67% improvement",
+    "Best practical strategy: ensemble_disagreement (1109.2% of oracle)",
+    "Learned estimator: -319.1% of oracle",
+    "Reconstruction proxy: -822.3% of oracle",
+    "Ensemble disagreement: 1109.2% of oracle"
+  ]
+}

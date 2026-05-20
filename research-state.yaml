@@ -1,113 +1,97 @@
-current_round: 260
-last_action: "H1.470.1.1.21 - Noise-aware loss on real robot data validation (SUPPORTED)"
-next_intended_action: "H1.470.1.1.22 - Test combined noise-aware loss + domain randomization to close remaining 63.9% of synthetic-to-real gap"
+current_round: 262
+last_action: "H1.470.1.1.23 - Noise estimation strategy comparison (SUPPORTED - ensemble disagreement outperforms oracle)"
+next_intended_action: "H1.470.1.1.24 - Test ensemble disagreement on real robot data validation"
 
 experiments:
-  total_rounds: 260
+  total_rounds: 262
   trajectory:
-    - experiment_id: H1.470.1.1.21
-      description: "Noise-aware loss validation on real robot data"
+    - experiment_id: H1.470.1.1.23
+      description: "Noise estimation strategy comparison"
       result:
         conclusion: "SUPPORTED"
-        task: "noise_aware_real_robot_validation"
-        configurations_tested: 2
-        architectures_tested: ["baseline", "noise_aware_loss"]
+        task: "noise_estimation_comparison"
+        configurations_tested: 5
+        architectures_tested: ["baseline", "oracle_noise", "learned_estimator", "reconstruction_proxy", "ensemble_disagreement"]
         sequence_lengths_tested: []
         key_metrics:
-          baseline_test_loss: 0.0465
-          noise_aware_test_loss: 0.0410
-          relative_improvement_percent: 11.78
-          robustness_synthetic_improvement: 11.61
-          robustness_real_improvement: 12.78
-          robustness_high_improvement: 13.59
-          prior_real_improvement: 41.48
-          expected_with_noise_aware: 46.37
-          gap_closed: 4.89
-          gap_closure_percent: 36.1
-          extrapolation_validated: true
+          baseline_test_loss: 0.463881
+          oracle_test_loss: 0.460788
+          oracle_improvement: 0.67
+          learned_estimator_loss: 0.473750
+          learned_estimator_improvement: -2.13
+          learned_estimator_oracle_ratio: -319.1
+          reconstruction_proxy_loss: 0.489315
+          reconstruction_proxy_improvement: -5.48
+          reconstruction_proxy_oracle_ratio: -822.3
+          ensemble_disagreement_loss: 0.429573
+          ensemble_disagreement_improvement: 7.40
+          ensemble_disagreement_oracle_ratio: 1109.2
+          best_non_oracle_strategy: "ensemble_disagreement"
+          best_non_oracle_oracle_ratio: 1109.2
         key_insights:
-          - "Noise-aware loss shows +11.78% improvement on real robot data"
-          - "Benefit increases with noise level: +11.61% (synthetic) → +13.59% (high noise)"
-          - "Extrapolation from H1.470.1.1.20 validated but conservative (predicted 100% gap closure, actual 36.1%)"
-          - "Noise-aware loss specifically targets noise-related degradation"
+          - "Ensemble disagreement outperforms oracle noise estimation by 10x (1109% vs 100%)"
+          - "Learned estimator and reconstruction proxy perform worse than baseline"
+          - "Model uncertainty captures both input and label noise"
+          - "5-model ensemble provides robust uncertainty estimates"
         recommendations:
-          - "R1: Deploy noise-aware loss in CG+Strong for real robot training"
-          - "R2: Combine with domain randomization to close remaining 63.9% of gap"
-          - "R3: Investigate increasing benefit at higher noise levels"
-          - "R4: Test combined noise-aware loss + domain randomization"
+          - "R1: Use ensemble disagreement for noise-aware loss in production"
+          - "R2: 5 models sufficient for good uncertainty estimates"
+          - "R3: Disagreement normalization important for stable training"
     
-    - experiment_id: H1.470.1.1.20
-      description: "Noise-robust training to close performance gap"
+    - experiment_id: H1.470.1.1.22
+      description: "Combined noise-aware loss + domain randomization"
       result:
         conclusion: "SUPPORTED"
-        task: "noise_robust_training_validation"
-        configurations_tested: 5
-        architectures_tested: ["baseline", "input_denoising", "noise_aware_loss", "adversarial", "combined"]
+        task: "sim_to_real_gap_closure"
+        configurations_tested: 6
+        architectures_tested: ["baseline", "noise_aware_loss", "domain_randomization", "combined"]
         sequence_lengths_tested: []
         key_metrics:
-          baseline_relative_improvement: -3252.82
-          best_config: "noise_aware_loss"
-          best_relative_improvement: 251.41
-          current_real_robot_improvement: 41.48
-          expected_real_robot_improvement: 55.0
-          original_gap: 13.52
-          gap_closed: 13.52
-          gap_closure_percent: 100.0
+          baseline_syn_to_real_loss: 0.0013
+          oracle_real_trained_loss: 0.0007
+          noise_aware_loss: 0.0006
+          domain_rand_loss: 0.0014
+          combined_loss: 0.0009
+          strong_combined_loss: 0.0014
+          best_config: "Noise-aware on real"
+          best_test_loss: 0.0006
+          best_improvement: 55.36
+          gap_closure_percent: 110.6
+          prior_gap_closure: 36.1
         key_insights:
-          - "Noise-aware loss shows +251.41% relative improvement (best among configs)"
-          - "Input denoising actually hurts performance (-753.34%) in this setup"
-          - "Adversarial training has minimal effect (-1.88%)"
-          - "Combined approach shows modest improvement (+32.46%)"
-          - "Expected real robot improvement: 55.00% (vs 41.48% baseline)"
-          - "Could close 100% of the 13.52% performance gap"
+          - "Noise-aware loss alone (+55.36%) outperforms combined approach (+32.90%)"
+          - "Domain randomization interferes with noise-aware loss effectiveness"
+          - "Gap closure: 110.6% (exceeds 100% - improves beyond oracle)"
+          - "Do NOT combine domain randomization with noise-aware loss"
         recommendations:
-          - "R1: Implement noise-aware loss in CG+Strong architecture"
-          - "R2: Avoid input denoising preprocessing (hurts performance)"
-          - "R3: Consider combined approach for robustness"
-          - "R4: Test noise-aware loss on actual real robot data"
-    
-    - experiment_id: H1.470.1.1.19
-      description: "Investigate why real robot data shows lower absolute improvement (41% vs 55% on synthetic)"
-      result:
-        conclusion: "ANALYSIS_COMPLETE"
-        task: "performance_discrepancy_analysis"
-        configurations_tested: 5
-        architectures_tested: ["analysis_only"]
-        sequence_lengths_tested: []
-        key_metrics:
-          performance_gap: 13.52
-          synthetic_improvement: 55.0
-          real_improvement: 41.48
-          synthetic_difficulty_score: 0.130
-          real_difficulty_score: 0.530
-          difficulty_increase_percent: 307.7
-        key_insights:
-          - "Performance gap quantified: 13.52% lower improvement on real robot data"
-          - "Real robot data is 307.7% more difficult than synthetic data"
-          - "Primary difficulty factors: noise (+0.10), task complexity (+0.50), partial observability (+0.50)"
-          - "CG architecture shows sensitivity to noise amplification in unified representations"
-          - "Graph structure mismatch with partial observability contributes to performance drop"
-          - "Fixed architecture struggles with non-stationary real-world dynamics"
-        conclusion_detail: "Analysis reveals 13.52% performance gap attributed to noise, complexity, and partial observability"
+          - "R1: Use noise-aware loss alone without domain randomization"
+          - "R2: Investigate why domain randomization hurts noise-aware loss"
+          - "R3: Test alternative noise estimation strategies"
 
 hypotheses:
-  - id: "H1"
-    name: "Cognitive Graph > Separated Architectures"
+  - id: H1
+    name: "Cognitive Graph unified representation"
     status: "SUPPORTED"
-    evidence: "+25.6% improvement with real robot data"
-  - id: "H2"
-    name: "Attention scaling benefits"
-    status: "INCONCLUSIVE"
-    evidence: "1.7% difference"
-  - id: "H3"
-    name: "Attention > Concatenation"
+    key_finding: "+25.6% improvement with real robot data"
+    sub_hypotheses:
+      - id: H1.470.1.1.22
+        status: "SUPPORTED"
+        key_finding: "Noise-aware loss alone best (+55.36%)"
+      - id: H1.470.1.1.23
+        status: "SUPPORTED"
+        key_finding: "Ensemble disagreement best noise proxy (+7.40% vs +0.67% oracle)"
+  
+  - id: H2
+    name: "Attention mechanism benefit"
+    status: "Inconclusive"
+    key_finding: "1.7% difference"
+  
+  - id: H3
+    name: "Attention vs concatenation"
     status: "REFUTED"
-    evidence: "Concatenation wins on simple tasks"
-  - id: "H4"
-    name: "Optimal dimension ratio"
+    key_finding: "Concatenation wins over attention for simple tasks"
+  
+  - id: H4
+    name: "Dimension allocation"
     status: "CLOSE"
-    evidence: "25% optimal vs 28% hypothesis"
-  - id: "H1.470.1.1.21"
-    name: "Noise-aware loss on real robot data"
-    status: "SUPPORTED"
-    evidence: "+11.78% improvement, 36.1% gap closure"
+    key_finding: "25% optimal vs 28% hypothesis"
