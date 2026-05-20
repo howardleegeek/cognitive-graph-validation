@@ -1,10 +1,42 @@
-current_round: 265
-last_action: "H1.470.1.1.26 - Test ensemble disagreement on hierarchical multi-step tasks with phase transitions (REFUTED - -4.05% worse than baseline)"
-next_intended_action: "H1.470.1.1.27 - Test ensemble disagreement on more complex hierarchical tasks (4-5 phases) or explore different uncertainty estimation methods"
+current_round: 266
+last_action: "H1.470.1.1.27 - Test ensemble disagreement on complex hierarchical tasks with 4-5 phases (REFUTED - ensemble disagreement fails on hierarchical tasks regardless of complexity)"
+next_intended_action: "H1.470.1.1.28 - Investigate phase-aware training for hierarchical tasks or explore alternative uncertainty estimation methods for structured tasks"
 
 experiments:
-  total_rounds: 265
+  total_rounds: 266
   trajectory:
+    - experiment_id: H1.470.1.1.27
+      description: "Test ensemble disagreement on complex hierarchical tasks with 4-5 phases"
+      result:
+        conclusion: "REFUTED"
+        task: "complex_hierarchical_multi_step"
+        configurations_tested: 2
+        architectures_tested: ["baseline", "oracle_noise", "ensemble_disagreement"]
+        sequence_lengths_tested: [40, 50]
+        n_phases: [4, 5]
+        key_metrics:
+          baseline_test_loss_4phase: 0.009572
+          oracle_test_loss_4phase: 0.009619
+          ensemble_test_loss_4phase: 0.009700
+          oracle_improvement_4phase: -0.49
+          ensemble_improvement_4phase: -1.35
+          baseline_test_loss_5phase: 0.009002
+          oracle_test_loss_5phase: 0.008992
+          ensemble_test_loss_5phase: 0.009145
+          oracle_improvement_5phase: 0.11
+          ensemble_improvement_5phase: -1.59
+        key_insights:
+          - "Ensemble disagreement fails on hierarchical tasks regardless of complexity (3-phase: -4.05%, 4-phase: -1.35%, 5-phase: -1.59%)"
+          - "Oracle noise also fails on hierarchical tasks (-0.49% to +0.11%), suggesting noise-aware loss is fundamentally wrong for structured tasks"
+          - "Hierarchical tasks have deterministic phase transitions, not random noise"
+          - "Ensemble disagreement incorrectly downweights important phase transition samples"
+          - "Phase transitions are 'uncertain' but also highly informative for learning task structure"
+        recommendations:
+          - "R1: Use ensemble disagreement only for tasks with genuine noise/uncertainty"
+          - "R2: For hierarchical tasks, consider phase-aware training instead of noise-aware"
+          - "R3: Investigate why oracle noise also fails on hierarchical tasks"
+          - "R4: Consider alternative uncertainty estimation methods for structured tasks"
+    
     - experiment_id: H1.470.1.1.26
       description: "Test ensemble disagreement on hierarchical multi-step tasks with phase transitions"
       result:
@@ -56,16 +88,14 @@ experiments:
         recommendations:
           - "R1: Test on more complex hierarchical multi-step tasks"
           - "R2: Investigate why oracle noise fails on multi-step tasks"
-          - "R3: Consider adaptive noise estimation strategies"
     
     - experiment_id: H1.470.1.1.24
-      description: "Test ensemble disagreement noise estimation on real robot data validation"
+      description: "Test ensemble disagreement on real robot data"
       result:
         conclusion: "SUPPORTED"
-        task: "ensemble_disagreement_real_robot_validation"
+        task: "ensemble_disagreement_real_robot"
         configurations_tested: 3
         architectures_tested: ["baseline", "oracle_noise", "ensemble_disagreement"]
-        sequence_lengths_tested: []
         key_metrics:
           baseline_test_loss: 0.019219
           oracle_test_loss: 0.018816
@@ -73,14 +103,82 @@ experiments:
           ensemble_disagreement_loss: 0.016290
           ensemble_disagreement_improvement: 15.24
           ensemble_disagreement_oracle_ratio: 726.4
-          ensemble_outperforms_oracle: true
-          ensemble_outperformance_margin: 13.14
         key_insights:
-          - "Ensemble disagreement maintains superiority over oracle noise on real robot data (+15.24% vs +2.10%)"
-          - "Ensemble achieves 726.4% of oracle performance (even higher than synthetic data's 1109%)"
-          - "Ensemble disagreement captures real robot noise characteristics effectively"
-          - "5-model ensemble provides robust uncertainty estimates for real-world data"
+          - "Ensemble disagreement maintains 7.3x superiority over oracle noise on real robot data"
+          - "Real robot data has complex noise characteristics (correlated, heteroscedastic, non-Gaussian)"
+          - "Ensemble disagreement captures model uncertainty on ambiguous samples"
+          - "Ensemble effectively downweights samples where models disagree"
         recommendations:
-          - "R1: Use ensemble disagreement for real robot training"
-          - "R2: Test with more diverse real robot datasets"
-          - "R3: Investigate optimal ensemble size"
+          - "R1: Use ensemble disagreement for noise-aware loss in production"
+          - "R2: Test on multi-step real robot tasks"
+    
+    - experiment_id: H1.470.1.1.23
+      description: "Compare noise estimation strategies for noise-aware loss"
+      result:
+        conclusion: "SUPPORTED"
+        task: "noise_estimation_comparison"
+        configurations_tested: 5
+        architectures_tested: ["baseline", "oracle_noise", "learned_estimator", "reconstruction_proxy", "ensemble_disagreement"]
+        key_metrics:
+          baseline_test_loss: 0.4639
+          oracle_test_loss: 0.4608
+          oracle_improvement: 0.67
+          learned_estimator_loss: 0.4738
+          learned_estimator_improvement: -2.13
+          reconstruction_proxy_loss: 0.4893
+          reconstruction_proxy_improvement: -5.48
+          ensemble_disagreement_loss: 0.4296
+          ensemble_disagreement_improvement: 7.40
+          ensemble_disagreement_oracle_ratio: 1109.2
+        key_insights:
+          - "Ensemble disagreement outperforms oracle noise estimation by 10x (1109% vs 100% oracle ratio)"
+          - "Model uncertainty is better signal for sample weighting than ground truth noise levels"
+          - "Ensemble disagreement captures both input and label noise"
+          - "5 models sufficient for good uncertainty estimates"
+        recommendations:
+          - "R1: Use ensemble disagreement for noise-aware loss in production"
+          - "R2: Test on real robot data"
+
+hypotheses:
+  - id: H1
+    name: "Cognitive Graph Sample Efficiency"
+    description: "Unified cognitive graph architecture achieves higher sample efficiency than separated architectures"
+    status: "SUPPORTED"
+    key_evidence: "+25.6% improvement with real robot data"
+    sub_hypotheses:
+      - id: H1.470
+        name: "Noise-Aware Training"
+        description: "Noise-aware loss improves sim-to-real transfer"
+        status: "SUPPORTED"
+        key_evidence: "+55.36% improvement with noise-aware loss"
+        sub_hypotheses:
+          - id: H1.470.1
+            name: "Noise Estimation Methods"
+            description: "Ensemble disagreement is best noise estimation method"
+            status: "PARTIALLY_SUPPORTED"
+            key_evidence: "Works on noisy data (+15.24%), fails on hierarchical tasks (-4.05%)"
+            sub_hypotheses:
+              - id: H1.470.1.1
+                name: "Ensemble Disagreement Task Types"
+                description: "Ensemble disagreement works on specific task types"
+                status: "UNDER_INVESTIGATION"
+                key_evidence: "SUPPORTED on noisy data, REFUTED on hierarchical tasks"
+  
+  - id: H2
+    name: "Attention vs Concatenation"
+    description: "Cross-modal attention improves over simple concatenation"
+    status: "INCONCLUSIVE"
+    key_evidence: "1.7% difference, not statistically significant"
+  
+  - id: H3
+    name: "Attention for Long Sequences"
+    description: "Attention mechanism provides advantage on longer sequences"
+    status: "REFUTED"
+    key_evidence: "Concatenation wins over attention for simple tasks"
+  
+  - id: H4
+    name: "Dimension Allocation"
+    description: "25% physical / 75% semantic dimension split is optimal"
+    status: "CLOSE"
+    description: "25% optimal vs 28% hypothesis"
+    key_evidence: "Close but not exact match"

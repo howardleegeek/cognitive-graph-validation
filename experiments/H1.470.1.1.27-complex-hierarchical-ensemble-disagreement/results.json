@@ -1,0 +1,37 @@
+{
+  "experiment_id": "H1.470.1.1.27",
+  "timestamp": "2026-05-20T12:04:39.508812",
+  "description": "Test ensemble disagreement on complex hierarchical tasks (4-5 phases)",
+  "results": [
+    {
+      "n_phases": 4,
+      "n_samples": 800,
+      "seq_length": 40,
+      "baseline_test_loss": 0.009571664966642857,
+      "oracle_test_loss": 0.009618951939046383,
+      "ensemble_test_loss": 0.009700413793325424,
+      "baseline_improvement_pct": 0.0,
+      "oracle_improvement_pct": -0.4940307936844934,
+      "ensemble_improvement_pct": -1.3451037738079612,
+      "oracle_ratio_pct": 272.271241186434
+    },
+    {
+      "n_phases": 5,
+      "n_samples": 800,
+      "seq_length": 50,
+      "baseline_test_loss": 0.009002107195556164,
+      "oracle_test_loss": 0.008992158807814121,
+      "ensemble_test_loss": 0.009144915267825127,
+      "baseline_improvement_pct": 0.0,
+      "oracle_improvement_pct": 0.11051176714440264,
+      "ensemble_improvement_pct": -1.5863849337348395,
+      "oracle_ratio_pct": -1435.4896086875115
+    }
+  ],
+  "comparison_to_H1_470_1_1_26": {
+    "H1_470_1_1_26_ensemble_improvement": -4.05,
+    "H1_470_1_1_27_4phase_improvement": -1.3451037738079612,
+    "H1_470_1_1_27_5phase_improvement": -1.5863849337348395
+  },
+  "conclusion": "REFUTED - Ensemble disagreement still fails on complex hierarchical tasks"
+}
