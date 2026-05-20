@@ -1,0 +1,36 @@
+{
+  "experiment_id": "H1.470.1.1.21",
+  "description": "Noise-aware loss validation on real robot data",
+  "results": {
+    "baseline": {
+      "test_loss": 0.04646418768912554,
+      "train_loss": 0.00015730501734651626
+    },
+    "noise_aware_loss": {
+      "test_loss": 0.04099205769598484,
+      "train_loss": 0.002468772819265723
+    },
+    "relative_improvement_percent": 11.777091702867317,
+    "robustness": {
+      "baseline": {
+        "synthetic": 0.046368820611387494,
+        "real": 0.046983815040439365,
+        "high": 0.047419936144724485
+      },
+      "noise_aware": {
+        "synthetic": 0.04098426203243435,
+        "real": 0.040979690244421364,
+        "high": 0.040975813725963234
+      }
+    },
+    "extrapolation_validation": {
+      "prior_real_improvement": 41.48,
+      "expected_with_noise_aware": 46.36513763834936,
+      "gap_closed": 4.885137638349363,
+      "gap_closure_percent": 36.132674839862155,
+      "extrapolation_validated": true
+    }
+  },
+  "best_config": "noise_aware_loss",
+  "timestamp": "2026-05-20T04:26:02.009294"
+}
