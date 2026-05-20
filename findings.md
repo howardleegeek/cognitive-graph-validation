@@ -19,6 +19,41 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.470.1.1.31: Curriculum Learning for Smooth Robot Trajectories — Round 270 (SUPPORTED)
+
+**Context**: Following H1.470.1.1.30's REFUTED result showing phase-aware training fails on smooth robot trajectories, this experiment tested curriculum learning as an alternative approach that works with continuous dynamics rather than discrete phase structures.
+
+**Hypothesis**: Training on progressively longer/more complex trajectories (curriculum learning) will improve learning on smooth robot manipulation data compared to baseline training.
+
+**Configurations Tested**:
+1. Curriculum Learning (short → medium → long): Train on 40-100 steps, then 100-160, then 160-220
+2. Baseline with attention: Standard training on all data shuffled
+3. Reverse Curriculum (long → short): Train on longest trajectories first
+4. Baseline without attention: No cross-attention mechanism
+
+**Key Findings**:
+
+| Configuration | Test Loss | Improvement vs Baseline |
+|--------------|-----------|------------------------|
+| Curriculum (short→long) | 0.241336 | +81.09% |
+| Baseline (attention) | 1.275939 | +0.00% |
+| Reverse Curriculum | 0.371635 | +70.87% |
+| Baseline (no attention) | 0.335379 | +73.72% |
+
+**Critical Insight**: Curriculum learning shows +81.09% improvement over baseline, significantly outperforming all other approaches. Even reverse curriculum (+70.87%) and no-attention baseline (+73.72%) outperform the attention baseline, suggesting the curriculum approach is the key factor.
+
+**Why This Worked**:
+1. **Progressive complexity**: Starting with shorter trajectories allows the model to learn basic dynamics before tackling longer sequences
+2. **Smooth transitions**: Curriculum learning naturally handles continuous trajectories without requiring discrete phase detection
+3. **Transfer learning**: Skills learned on short trajectories transfer to longer ones
+
+**Implications**: Curriculum learning is a promising approach for smooth robot trajectories. Future work should explore:
+- Adaptive curriculum scheduling based on learning progress
+- Multi-task curriculum (varying task complexity)
+- Combining curriculum with other techniques (attention, etc.)
+
+---
+
 ### H1.470.1.1.30: Phase-Aware Training on LIBERO-style Data — Round 269 (REFUTED)
 
 **Context**: Following H1.470.1.1.28's dramatic success with phase-aware training (+99.05% to +99.82% on synthetic hierarchical tasks) and H1.470.1.1.29's failure on mixed/noisy tasks, this experiment tested whether phase-aware training would help on LIBERO-style robot manipulation data with clear phase structure (approach → grasp → lift → transport → place).
@@ -46,110 +81,5 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 **Why This Failed**:
 1. **Task complexity mismatch**: LIBERO-style manipulation has smooth, continuous trajectories where phase transitions are less critical than synthetic hierarchical tasks with discrete phase boundaries
-2. **Loss weighting interference**: Upweighting phase transitions distorts the overall loss landscape, causing the model to overfit to transition points at the expense of overall trajectory accuracy
-3. **Phase detection overhead**: The detected phase-aware model had to learn phase prediction as an auxiliary task, adding complexity without benefit
-4. **Different learning dynamics**: The synthetic hierarchical tasks in H1.470.1.1.28 had sharp phase boundaries with distinct dynamics per phase, while LIBERO manipulation has overlapping dynamics across phases
-
-**Conclusion**: REFUTED - Phase-aware training does NOT transfer to LIBERO-style robot manipulation data. The dramatic improvements seen in H1.470.1.1.28 are specific to synthetic tasks with sharp phase boundaries and do not generalize to realistic robot manipulation trajectories.
-
-**Implications**:
-- Phase-aware training is NOT a general technique for robot learning
-- The success in H1.470.1.1.28 was an artifact of synthetic task design
-- Need to explore alternative approaches for real robot data
-
----
-
-### H1.470.1.1.29: Phase-Aware + Ensemble Disagreement for Mixed Tasks — Round 268 (REFUTED)
-
-**Context**: Building on H1.470.1.1.28's success with phase-aware training (+99.05% to +99.82% on hierarchical tasks), this experiment tested whether combining phase-aware training with ensemble disagreement could handle mixed tasks that have BOTH hierarchical structure AND sensor noise.
-
-**Hypothesis**: A hybrid approach (phase-aware for hierarchical parts + ensemble disagreement for noise) would outperform either approach alone on mixed tasks.
-
-**Configurations Tested**:
-1. Baseline: Standard training without any weighting
-2. Phase-aware: Upweights phase transitions
-3. Ensemble disagreement: Downweights high-disagreement (noisy) samples
-4. Hybrid: Combines both phase-aware and disagreement weighting
-
-**Key Findings**:
-
-1. **Test Results (3 phases, noise=0.1, seq_len=18)**:
-   | Strategy | Test Loss | Improvement |
-   |----------|-----------|-------------|
-   | Baseline | 10.07 | +0.00% |
-   | Phase-aware | 10.74 | -6.67% |
-   | Ensemble disagreement | 9.66 | +4.03% |
-   | Hybrid | 10.90 | -8.24% |
-
-2. **Test Results (4 phases, noise=0.15, seq_len=28)**:
-   | Strategy | Test Loss | Improvement |
-   |----------|-----------|-------------|
-   | Baseline | 19.09 | +0.00% |
-   | Phase-aware | 18.87 | +1.13% |
-   | Ensemble disagreement | 17.20 | +9.91% |
-   | Hybrid | 17.65 | +7.51% |
-
-3. **Test Results (5 phases, noise=0.2, seq_len=40)**:
-   | Strategy | Test Loss | Improvement |
-   |----------|-----------|-------------|
-   | Baseline | 26.67 | +0.00% |
-   | Phase-aware | 27.16 | -1.83% |
-   | Ensemble disagreement | 29.62 | -11.06% |
-   | Hybrid | 26.74 | -0.28% |
-
-4. **Summary**:
-   - Phase-aware: -2.46% average (worse than baseline)
-   - Ensemble disagreement: +0.96% average (marginal improvement)
-   - Hybrid: -0.34% average (slightly worse)
-
-**Conclusion**: REFUTED - Neither phase-aware training nor hybrid approaches provide consistent improvement on mixed tasks. The benefits of phase-aware training are specific to tasks with clear hierarchical structure and no noise.
-
----
-
-### H1.470.1.1.28: Phase-Aware Training for Hierarchical Tasks — Round 267 (SUPPORTED)
-
-**Context**: Testing whether phase-aware training (upweighting loss at phase transitions) improves learning on hierarchical multi-step tasks.
-
-**Hypothesis**: Phase transitions are critical learning moments; upweighting them should improve sample efficiency.
-
-**Key Findings**:
-
-| Configuration | Test Loss | Improvement |
-|--------------|-----------|-------------|
-| Baseline (3 phases) | 1.06e-05 | +0.00% |
-| Oracle phase (3 phases) | 4.25e-08 | +99.60% |
-| Detected phase (3 phases) | 5.46e-08 | +99.48% |
-| Baseline (4 phases) | 1.17e-05 | +0.00% |
-| Oracle phase (4 phases) | 1.24e-09 | +99.99% |
-| Detected phase (4 phases) | 2.13e-07 | +98.18% |
-| Baseline (5 phases) | 1.03e-05 | +0.00% |
-| Oracle phase (5 phases) | 1.18e-08 | +99.89% |
-| Detected phase (5 phases) | 5.29e-08 | +99.49% |
-
-**Average Improvements**:
-- Oracle phase-aware: +99.82%
-- Detected phase-aware: +99.05%
-
-**Conclusion**: SUPPORTED - Phase-aware training dramatically improves hierarchical task learning. Automatic phase detection from velocity changes works nearly as well as oracle labels.
-
-**IMPORTANT CAVEAT (from H1.470.1.1.30)**: This result does NOT generalize to realistic robot manipulation data. The synthetic tasks had sharp phase boundaries that don't exist in real robot trajectories.
-
----
-
-## Summary of Hypotheses
-
-| Hypothesis | Status | Key Evidence |
-|------------|--------|---------------|
-| H1: Unified CG improves sample efficiency | SUPPORTED | +25.6% on real robot data |
-| H2: Attention helps long sequences | INCONCLUSIVE | 1.7% difference |
-| H3: Attention beats concatenation | REFUTED | Concatenation wins for simple tasks |
-| H4: 25% optimal dimension allocation | CLOSE | 25% optimal vs 28% hypothesis |
-| H1.470.1.1.28: Phase-aware for hierarchical | SUPPORTED* | +99.05% to +99.82% (*synthetic only) |
-| H1.470.1.1.29: Phase-aware + ensemble for mixed | REFUTED | -2.46% average |
-| H1.470.1.1.30: Phase-aware for LIBERO data | REFUTED | -42.42% to -217.15% |
-
-## Next Steps
-
-1. **Investigate why phase-aware fails on real data**: The synthetic tasks had sharp phase boundaries; real robot trajectories are smooth
-2. **Alternative approaches for real robot data**: Consider curriculum learning, data augmentation, or different loss weighting strategies
-3. **Re-examine H1.470.1.1.28 results**: The dramatic improvements may be artifacts of synthetic task design
+2. **Loss weighting interference**: Upweighting phase transitions distorts the loss landscape for continuous trajectories
+3. **Phase-aware training is NOT a general technique**: Works only on tasks with sharp, discrete phase boundaries

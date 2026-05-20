@@ -1,0 +1,13 @@
+{
+  "experiment_id": "H1.470.1.1.31",
+  "conclusion": "SUPPORTED",
+  "key_metrics": {
+    "baseline_test_loss": 1.2759390018074426,
+    "curriculum_test_loss": 0.2413359753544421,
+    "reverse_curriculum_test_loss": 0.3716354227412945,
+    "no_attention_test_loss": 0.33537945382763523,
+    "curriculum_improvement": 81.08561812025687,
+    "best_approach": "curriculum",
+    "best_test_loss": 0.2413359753544421
+  }
+}

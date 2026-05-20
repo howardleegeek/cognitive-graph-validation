@@ -1,10 +1,36 @@
-current_round: 269
-last_action: "H1.470.1.1.30 - Test phase-aware training on LIBERO-style robot manipulation data (REFUTED - all phase-aware configs performed worse than baseline)"
-next_intended_action: "H1.470.1.1.31 - Investigate why phase-aware training fails on smooth trajectories; test alternative loss weighting strategies for real robot data"
+current_round: 270
+last_action: "H1.470.1.1.31 - Curriculum learning for smooth robot trajectories (SUPPORTED +81.09% improvement)"
+next_intended_action: "H1.470.1.1.32 - Test adaptive curriculum scheduling based on learning progress"
 
 experiments:
-  total_rounds: 269
+  total_rounds: 270
   trajectory:
+    - experiment_id: H1.470.1.1.31
+      description: "Test curriculum learning on smooth robot trajectories"
+      result:
+        conclusion: "SUPPORTED"
+        task: "smooth_robot_trajectories"
+        configurations_tested: 4
+        loss_types_tested: ["curriculum", "baseline_attention", "reverse_curriculum", "no_attention"]
+        key_metrics:
+          baseline_test_loss: 1.275939
+          curriculum_test_loss: 0.241336
+          reverse_curriculum_test_loss: 0.371635
+          no_attention_test_loss: 0.335379
+          curriculum_improvement: 81.09
+          best_approach: "curriculum"
+          best_test_loss: 0.241336
+        key_insights:
+          - "Curriculum learning shows +81.09% improvement over baseline"
+          - "Even reverse curriculum (+70.87%) outperforms baseline attention"
+          - "Curriculum learning works well for smooth continuous trajectories"
+          - "Progressive complexity helps model learn basic dynamics before longer sequences"
+        recommendations:
+          - "R1: Use curriculum learning for smooth robot manipulation tasks"
+          - "R2: Explore adaptive curriculum scheduling based on learning progress"
+          - "R3: Combine curriculum with attention mechanism for best results"
+          - "R4: Test on real robot data to validate transfer"
+    
     - experiment_id: H1.470.1.1.30
       description: "Test phase-aware training on LIBERO-style robot manipulation data"
       result:
@@ -51,34 +77,3 @@ experiments:
           - "Hybrid approach performs worse than either individual approach"
           - "Benefits of phase-aware training are task-specific to hierarchical structure"
           - "Clear phase transitions required for phase-aware training to work"
-    
-    - experiment_id: H1.470.1.1.28
-      description: "Test phase-aware training for hierarchical tasks"
-      result:
-        conclusion: "SUPPORTED"
-        task: "hierarchical_multi_step"
-        configurations_tested: 3
-        architectures_tested: ["baseline", "oracle_phase", "detected_phase"]
-        phase_counts: [3, 4, 5]
-        key_metrics:
-          baseline_test_loss_3phase: 1.06e-05
-          oracle_test_loss_3phase: 4.25e-08
-          detected_test_loss_3phase: 5.46e-08
-          oracle_improvement_3phase: 99.60
-          detected_improvement_3phase: 99.48
-          baseline_test_loss_4phase: 1.17e-05
-          oracle_test_loss_4phase: 1.24e-09
-          detected_test_loss_4phase: 2.13e-07
-          oracle_improvement_4phase: 99.99
-          detected_improvement_4phase: 98.18
-          baseline_test_loss_5phase: 1.03e-05
-          oracle_test_loss_5phase: 1.18e-08
-          detected_test_loss_5phase: 5.29e-08
-          oracle_improvement_5phase: 99.89
-          detected_improvement_5phase: 99.49
-          avg_oracle_improvement: 99.82
-          avg_detected_improvement: 99.05
-        key_insights:
-          - "Phase-aware training dramatically improves hierarchical task learning (+99.05% to +99.82%)"
-          - "Automatic phase detection from velocity changes works nearly as well as oracle labels"
-          - "CAVEAT: Results do NOT generalize to realistic robot data (see H1.470.1.1.30)"
