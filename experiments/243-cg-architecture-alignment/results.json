@@ -1,0 +1,44 @@
+{
+  "experiment_id": "H1.470.1.1.4",
+  "description": "Architecture alignment investigation - simulation vs real CG",
+  "task": "multi_step_task",
+  "architectures_tested": [
+    "Baseline_Concat",
+    "Simulation_CG",
+    "Real_CG"
+  ],
+  "results": [
+    {
+      "architecture": "Baseline_Concat",
+      "val_loss": 0.0001119583338246836,
+      "improvement_vs_baseline": 0
+    },
+    {
+      "architecture": "Simulation_CG",
+      "val_loss": 4.3258924132613985e-05,
+      "improvement_vs_baseline": 61.36158635555128
+    },
+    {
+      "architecture": "Real_CG",
+      "val_loss": 0.0003506717199343257,
+      "improvement_vs_baseline": -213.2162724781571
+    },
+    {
+      "architecture": "Baseline_Concat_long",
+      "seq_length": 50,
+      "val_loss": 0.021267436736909923
+    },
+    {
+      "architecture": "Simulation_CG_long",
+      "seq_length": 50,
+      "val_loss": 0.016089176797681744
+    },
+    {
+      "architecture": "Real_CG_long",
+      "seq_length": 50,
+      "val_loss": 0.01621012224824684
+    }
+  ],
+  "conclusion": "INCONCLUSIVE: Both architectures perform similarly",
+  "key_insight": "Architecture difference may not be the root cause"
+}

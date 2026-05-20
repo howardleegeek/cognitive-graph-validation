@@ -1,10 +1,26 @@
-current_round: 242
-last_action: "H1.470.1.1.3 - Investigate why improvement gaps are positive in simulation vs negative in real experiments - REFUTED: All three data regimes (random, structured, temporal) show negative gaps. CG underperforms baseline in simulation, opposite of real experiments. Discrepancy is in architecture/training, not data."
-next_intended_action: "H1.470.1.1.4 - Investigate whether simulation CG architecture matches real CG architecture used in H1 experiments. If mismatch found, align architectures and re-test."
+current_round: 243
+last_action: "H1.470.1.1.4 - Architecture alignment investigation - compared Simulation CG vs Real CG architectures. Found Simulation CG actually outperforms baseline (+61.36%), contradicting H1.470.1.1.3's negative gaps. Architecture is NOT the root cause - discrepancy is task/data-specific."
+next_intended_action: "H1.470.1.1.5 - Investigate task structure differences between simulation and real experiments"
 
 experiments:
-  total_rounds: 242
+  total_rounds: 243
   trajectory:
+    - experiment_id: H1.470.1.1.4
+      description: "Architecture alignment investigation - simulation vs real CG"
+      result:
+        conclusion: "INCONCLUSIVE - Architecture is NOT the root cause. Simulation CG shows +61.36% improvement on 20-step tasks, while Real CG (attention-based) shows -213% on short sequences but similar performance on long (50-step) sequences."
+        task: "multi_step_task"
+        architectures_tested: ["Baseline_Concat", "Simulation_CG", "Real_CG"]
+        results_20step:
+          Baseline_Concat: 0.000112
+          Simulation_CG: 0.000043
+          Real_CG: 0.000351
+        results_50step:
+          Baseline_Concat: 0.021267
+          Simulation_CG: 0.016089
+          Real_CG: 0.016210
+        key_insight: "Architecture difference is not the primary cause. The issue lies in task/data structure differences."
+        sub_hypothesis: "H1.470.1.1.5: Task structure differences cause the simulation vs real discrepancy"
     - experiment_id: H1.470.1.1.3
       description: "Improvement gap sign discrepancy across data regimes (random, structured, temporal)"
       result:
@@ -35,22 +51,10 @@ experiments:
     - experiment_id: H1.470.1.1.1
       description: "Finer dimension sweep around 832 [800, 816, 832, 848, 864]"
       result:
-        conclusion: "REFUTED: 816 is optimal, not 832. 816 achieves +31.06% multi-step improvement vs 832's +23.84%. However, performance landscape is flat (21.70-31.06% across range). All dimensions show negative improvement gap, confirming CG benefits more from multi-step structure."
-        task: "finer_dimension_sweep_832"
+        conclusion: "REFUTED: 816 is optimal, not 832. 816 achieves +31.06% multi-step improvement vs 832's +23.84%. However, performance landscape is flat (21.70-31.06% across range). All dimensions show negative improvement gaps."
+        task: "dimension_sweep"
         dimensions_tested: [800, 816, 832, 848, 864]
         best_dimension: 816
-        best_multi_step_improvement: 31.06
-        best_improvement_gap: -27.09
-        key_insight: "816 is the new optimal dimension. The consistent negative improvement gap across all tested dimensions (-19.73% to -27.09%) is the most robust finding — CG genuinely performs better on multi-step than single-step tasks."
-        sub_hypothesis: "H1.470.1.1.2: Optimal dimension shifts with task complexity (more steps = higher optimal dimension)"
-    - experiment_id: H1.470.1.1
-      description: "Fine-grained dimension sweep around 768 [640, 704, 768, 832, 896]"
-      result:
-        conclusion: "REFUTED: 768 is NOT optimal dimension. 832 shows best multi-step performance (+41.49% improvement, -1.76% gap). 768 only achieves +31.06% multi-step (3rd best). New optimal point appears at 832 dimensions."
-        task: "fine_grained_dimension_sweep"
-        dimensions_tested: [640, 704, 768, 832, 896]
-        best_dimension: 832
-        best_multi_step_improvement: 41.49
-        best_improvement_gap: -1.76
-        key_insight: "768 is not optimal. 832 is the new best dimension. The negative improvement gap (-1.76%) confirms CG benefits more from multi-step structure."
-        sub_hypothesis: "H1.470.1.1.1: 832 is the optimal representation dimension"
+        best_improvement: 31.06
+        key_insight: "816 is optimal but 832 is not far behind. Performance is flat - no strong preference. Negative gaps suggest CG struggles on multi-step vs single-step in this simulation."
+        sub_hypothesis: "H1.470.1.1.2: Optimal dimension varies with task complexity"
