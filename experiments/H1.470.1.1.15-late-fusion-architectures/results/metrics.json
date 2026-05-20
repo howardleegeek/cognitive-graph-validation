@@ -1,0 +1,154 @@
+{
+  "hypothesis": "H1.470.1.1.15: Late-fusion (separate temporal processing per modality) outperforms early fusion",
+  "prediction": "Late-fusion architectures will match or exceed early fusion on all task types",
+  "task_types": [
+    "temporal_only",
+    "crossmodal_only",
+    "combined"
+  ],
+  "architectures": [
+    "baseline",
+    "lstm_early",
+    "lstm_late",
+    "tempconv_early",
+    "tempconv_late",
+    "cognitive_graph"
+  ],
+  "detailed_results": {
+    "temporal_only": {
+      "baseline": {
+        "loss": 0.10426483303308487,
+        "params": 11655
+      },
+      "lstm_early": {
+        "loss": 0.006004724385482925,
+        "params": 53063
+      },
+      "lstm_late": {
+        "loss": 0.004422990804804223,
+        "params": 78215
+      },
+      "tempconv_early": {
+        "loss": 0.014121576212346554,
+        "params": 28039
+      },
+      "tempconv_late": {
+        "loss": 0.004603096816156592,
+        "params": 36359
+      },
+      "cognitive_graph": {
+        "loss": 0.1158833418573652,
+        "params": 37383
+      }
+    },
+    "crossmodal_only": {
+      "baseline": {
+        "loss": 0.22025480014937265,
+        "params": 11655
+      },
+      "lstm_early": {
+        "loss": 0.21474379088197434,
+        "params": 53063
+      },
+      "lstm_late": {
+        "loss": 0.07615159984145846,
+        "params": 78215
+      },
+      "tempconv_early": {
+        "loss": 0.2179018897669656,
+        "params": 28039
+      },
+      "tempconv_late": {
+        "loss": 0.19205959567001887,
+        "params": 36359
+      },
+      "cognitive_graph": {
+        "loss": 0.23796352744102478,
+        "params": 37383
+      }
+    },
+    "combined": {
+      "baseline": {
+        "loss": 0.05280890156115804,
+        "params": 11655
+      },
+      "lstm_early": {
+        "loss": 0.012075280238475119,
+        "params": 53063
+      },
+      "lstm_late": {
+        "loss": 0.010616952952529703,
+        "params": 78215
+      },
+      "tempconv_early": {
+        "loss": 0.012988561365221227,
+        "params": 28039
+      },
+      "tempconv_late": {
+        "loss": 0.010123607968645436,
+        "params": 36359
+      },
+      "cognitive_graph": {
+        "loss": 0.06291966566017695,
+        "params": 37383
+      }
+    }
+  },
+  "parameter_counts": {
+    "baseline": 11655,
+    "lstm_early": 53063,
+    "lstm_late": 78215,
+    "tempconv_early": 28039,
+    "tempconv_late": 36359,
+    "cognitive_graph": 37383
+  },
+  "improvements_vs_baseline": {
+    "baseline": {
+      "temporal_only": 0.0,
+      "crossmodal_only": 0.0,
+      "combined": 0.0
+    },
+    "lstm_early": {
+      "temporal_only": 94.24089195675637,
+      "crossmodal_only": 2.5021063167117568,
+      "combined": 77.13400604538096
+    },
+    "lstm_late": {
+      "temporal_only": 95.75792654518447,
+      "crossmodal_only": 65.42567980819764,
+      "combined": 79.89552397670268
+    },
+    "tempconv_early": {
+      "temporal_only": 86.45605061500883,
+      "crossmodal_only": 1.0682674705892288,
+      "combined": 75.40459850281272
+    },
+    "tempconv_late": {
+      "temporal_only": 95.58518756300512,
+      "crossmodal_only": 12.80117593815541,
+      "combined": 80.82973197819449
+    },
+    "cognitive_graph": {
+      "temporal_only": -11.143267088524075,
+      "crossmodal_only": -8.04010958201247,
+      "combined": -19.145946611500005
+    }
+  },
+  "analysis": {
+    "lstm_late_vs_early": {
+      "temporal_only": 1.5170345884281033,
+      "crossmodal_only": 62.92357349148588,
+      "combined": 2.7615179313217197
+    },
+    "tempconv_late_vs_early": {
+      "temporal_only": 9.129136947996287,
+      "crossmodal_only": 11.732908467566181,
+      "combined": 5.42513347538177
+    },
+    "best_architecture_per_task": {
+      "temporal_only": "lstm_late",
+      "crossmodal_only": "lstm_late",
+      "combined": "tempconv_late"
+    }
+  }
+}
