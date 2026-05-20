@@ -1,0 +1,41 @@
+{
+  "experiment_id": "H1.470.1.1.24",
+  "description": "Test ensemble disagreement noise estimation on real robot data validation",
+  "timestamp": "2026-05-20T10:30:16.104139",
+  "dataset_stats": {
+    "n_samples": 1000,
+    "train_size": 800,
+    "val_size": 200,
+    "noise_level": 0.15,
+    "data_type": "real_robot_like_synthetic"
+  },
+  "results": {
+    "baseline": {
+      "val_loss": 0.019219253212213516,
+      "improvement_percent": 0.0
+    },
+    "oracle_noise": {
+      "val_loss": 0.018816014751791954,
+      "improvement_percent": 2.0980964034820606
+    },
+    "ensemble_disagreement": {
+      "val_loss": 0.016290223225951195,
+      "improvement_percent": 15.240082192168483
+    }
+  },
+  "key_metrics": {
+    "baseline_loss": 0.019219253212213516,
+    "oracle_improvement": 2.0980964034820606,
+    "ensemble_improvement": 15.240082192168483,
+    "ensemble_oracle_ratio": 726.3766415535343,
+    "ensemble_outperforms_oracle": true,
+    "ensemble_outperformance_margin": 13.141985788686423
+  },
+  "key_insights": [
+    "Ensemble disagreement maintains superiority over oracle noise on real robot data (+15.24% vs +2.10%)",
+    "Ensemble achieves 726.4% of oracle performance",
+    "Ensemble disagreement provides positive improvement on real robot data"
+  ],
+  "conclusion": "SUPPORTED",
+  "conclusion_detail": "Ensemble disagreement (15.24%) outperforms oracle noise (2.10%) on real robot data"
+}

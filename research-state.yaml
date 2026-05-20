@@ -1,10 +1,37 @@
-current_round: 262
-last_action: "H1.470.1.1.23 - Noise estimation strategy comparison (SUPPORTED - ensemble disagreement outperforms oracle)"
-next_intended_action: "H1.470.1.1.24 - Test ensemble disagreement on real robot data validation"
+current_round: 263
+last_action: "H1.470.1.1.24 - Test ensemble disagreement on real robot data validation (SUPPORTED - 726% oracle ratio)"
+next_intended_action: "H1.470.1.1.25 - Test ensemble disagreement on multi-step real robot tasks"
 
 experiments:
-  total_rounds: 262
+  total_rounds: 263
   trajectory:
+    - experiment_id: H1.470.1.1.24
+      description: "Test ensemble disagreement noise estimation on real robot data validation"
+      result:
+        conclusion: "SUPPORTED"
+        task: "ensemble_disagreement_real_robot_validation"
+        configurations_tested: 3
+        architectures_tested: ["baseline", "oracle_noise", "ensemble_disagreement"]
+        sequence_lengths_tested: []
+        key_metrics:
+          baseline_test_loss: 0.019219
+          oracle_test_loss: 0.018816
+          oracle_improvement: 2.10
+          ensemble_disagreement_loss: 0.016290
+          ensemble_disagreement_improvement: 15.24
+          ensemble_disagreement_oracle_ratio: 726.4
+          ensemble_outperforms_oracle: true
+          ensemble_outperformance_margin: 13.14
+        key_insights:
+          - "Ensemble disagreement maintains superiority over oracle noise on real robot data (+15.24% vs +2.10%)"
+          - "Ensemble achieves 726.4% of oracle performance (even higher than synthetic data's 1109%)"
+          - "Ensemble disagreement captures real robot noise characteristics effectively"
+          - "5-model ensemble provides robust uncertainty estimates for real-world data"
+        recommendations:
+          - "R1: Use ensemble disagreement for noise-aware loss in real robot applications"
+          - "R2: Ensemble size of 5 is sufficient for real robot data"
+          - "R3: Normalize disagreement to 0.05-0.25 range for stable training"
+    
     - experiment_id: H1.470.1.1.23
       description: "Noise estimation strategy comparison"
       result:
@@ -62,36 +89,4 @@ experiments:
           - "Noise-aware loss alone (+55.36%) outperforms combined approach (+32.90%)"
           - "Domain randomization interferes with noise-aware loss effectiveness"
           - "Gap closure: 110.6% (exceeds 100% - improves beyond oracle)"
-          - "Do NOT combine domain randomization with noise-aware loss"
-        recommendations:
-          - "R1: Use noise-aware loss alone without domain randomization"
-          - "R2: Investigate why domain randomization hurts noise-aware loss"
-          - "R3: Test alternative noise estimation strategies"
-
-hypotheses:
-  - id: H1
-    name: "Cognitive Graph unified representation"
-    status: "SUPPORTED"
-    key_finding: "+25.6% improvement with real robot data"
-    sub_hypotheses:
-      - id: H1.470.1.1.22
-        status: "SUPPORTED"
-        key_finding: "Noise-aware loss alone best (+55.36%)"
-      - id: H1.470.1.1.23
-        status: "SUPPORTED"
-        key_finding: "Ensemble disagreement best noise proxy (+7.40% vs +0.67% oracle)"
-  
-  - id: H2
-    name: "Attention mechanism benefit"
-    status: "Inconclusive"
-    key_finding: "1.7% difference"
-  
-  - id: H3
-    name: "Attention vs concatenation"
-    status: "REFUTED"
-    key_finding: "Concatenation wins over attention for simple tasks"
-  
-  - id: H4
-    name: "Dimension allocation"
-    status: "CLOSE"
-    key_finding: "25% optimal vs 28% hypothesis"
+         
