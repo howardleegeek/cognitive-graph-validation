@@ -1,0 +1,161 @@
+{
+  "hypothesis": "H1.470.1.1.14: LSTM dominance comes from separated encoding + temporal recurrence",
+  "prediction": "Ablating either component will significantly reduce performance",
+  "task_types": [
+    "temporal_only",
+    "crossmodal_only",
+    "combined"
+  ],
+  "architectures": [
+    "baseline",
+    "lstm_full",
+    "lstm_no_recurrence",
+    "lstm_unified_encoder",
+    "lstm_unified_no_recurrence",
+    "temporal_conv",
+    "gru"
+  ],
+  "detailed_results": {
+    "temporal_only": {
+      "baseline": {
+        "loss": 0.09386653985295977,
+        "params": 36487
+      },
+      "lstm_full": {
+        "loss": 0.0032520869613758157,
+        "params": 343815
+      },
+      "lstm_no_recurrence": {
+        "loss": 0.09429077059030533,
+        "params": 113031
+      },
+      "lstm_unified_encoder": {
+        "loss": 0.009174783181931292,
+        "params": 316551
+      },
+      "lstm_unified_no_recurrence": {
+        "loss": 0.0968337037733623,
+        "params": 64007
+      },
+      "temporal_conv": {
+        "loss": 0.0007157058571465313,
+        "params": 260103
+      },
+      "gru": {
+        "loss": 0.002224089461378753,
+        "params": 261383
+      }
+    },
+    "crossmodal_only": {
+      "baseline": {
+        "loss": 0.18840808740683965,
+        "params": 36487
+      },
+      "lstm_full": {
+        "loss": 0.12464636032070432,
+        "params": 343815
+      },
+      "lstm_no_recurrence": {
+        "loss": 0.18369766856942857,
+        "params": 113031
+      },
+      "lstm_unified_encoder": {
+        "loss": 0.14543214227472032,
+        "params": 316551
+      },
+      "lstm_unified_no_recurrence": {
+        "loss": 0.18698849848338536,
+        "params": 64007
+      },
+      "temporal_conv": {
+        "loss": 0.0588177176458495,
+        "params": 260103
+      },
+      "gru": {
+        "loss": 0.10192415969712394,
+        "params": 261383
+      }
+    },
+    "combined": {
+      "baseline": {
+        "loss": 0.044777478490556986,
+        "params": 36487
+      },
+      "lstm_full": {
+        "loss": 0.0023457337270623873,
+        "params": 343815
+      },
+      "lstm_no_recurrence": {
+        "loss": 0.04294073155948094,
+        "params": 113031
+      },
+      "lstm_unified_encoder": {
+        "loss": 0.005790722489889179,
+        "params": 316551
+      },
+      "lstm_unified_no_recurrence": {
+        "loss": 0.0436034867806094,
+        "params": 64007
+      },
+      "temporal_conv": {
+        "loss": 0.000672120218431311,
+        "params": 260103
+      },
+      "gru": {
+        "loss": 0.0018658644819099987,
+        "params": 261383
+      }
+    }
+  },
+  "parameter_counts": {
+    "baseline": 36487,
+    "lstm_full": 343815,
+    "lstm_no_recurrence": 113031,
+    "lstm_unified_encoder": 316551,
+    "lstm_unified_no_recurrence": 64007,
+    "temporal_conv": 260103,
+    "gru": 261383
+  },
+  "analysis": {
+    "lstm_full_avg_improvement": 75.0463730555024,
+    "lstm_no_recurrence_avg": 2.0500358869759676,
+    "lstm_unified_encoder_avg": 66.70117532160107,
+    "lstm_unified_no_recurrence_avg": 0.0714182736986128,
+    "temporal_conv_avg": 88.83941668668628,
+    "gru_avg": 79.78868741018282,
+    "recurrence_effect": 72.99633716852644,
+    "separation_effect": 8.34519773390133,
+    "dominant_factor": "temporal_recurrence",
+    "key_insight": "Temporal recurrence is the dominant factor (effect: 73.00%) vs separated encoding (effect: 8.35%). LSTM's advantage comes primarily from its ability to process sequences step-by-step, not from keeping modalities separate. One factor is clearly dominant. Removing recurrence drops to 2.05%, removing separation drops to 66.70%.",
+    "hypothesis_supported": false
+  },
+  "improvements": {
+    "temporal_only": {
+      "baseline": 0.0,
+      "lstm_full": 96.53541403947547,
+      "lstm_no_recurrence": -0.4519509699730138,
+      "lstm_unified_encoder": 90.22571493920685,
+      "lstm_unified_no_recurrence": -3.1610453789503,
+      "temporal_conv": 99.23752824140777,
+      "gru": 97.63058331023733
+    },
+    "crossmodal_only": {
+      "baseline": 0.0,
+      "lstm_full": 33.8423514424045,
+      "lstm_no_recurrence": 2.5001149909449585,
+      "lstm_unified_encoder": 22.81003205521591,
+      "lstm_unified_no_recurrence": 0.7534649616122319,
+      "temporal_conv": 68.78174474599848,
+      "gru": 45.90244978336113
+    },
+    "combined": {
+      "baseline": 0.0,
+      "lstm_full": 94.76135368462725,
+      "lstm_no_recurrence": 4.101943639955959,
+      "lstm_unified_encoder": 87.06777897038046,
+      "lstm_unified_no_recurrence": 2.6218352384339068,
+      "temporal_conv": 98.4989770726526,
+      "gru": 95.83302913694997
+    }
+  }
+}

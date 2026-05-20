@@ -1,0 +1,116 @@
+{
+  "experiment_id": "H1.470.1.1.14",
+  "description": "LSTM dominance ablation study - isolating temporal vs encoding factors",
+  "configurations": {},
+  "task_results": {
+    "temporal_only": {
+      "baseline": {
+        "val_loss": 1.9839441776275635,
+        "n_params": 61447
+      },
+      "lstm": {
+        "val_loss": 0.12194541415997914,
+        "n_params": 300935
+      },
+      "lstm_feedforward": {
+        "val_loss": 2.2206878321511403,
+        "n_params": 69767
+      },
+      "separated_temporal": {
+        "val_loss": 0.16842855513095856,
+        "n_params": 135303
+      },
+      "unified_temporal": {
+        "val_loss": 0.5537914293152946,
+        "n_params": 294919
+      },
+      "unified_feedforward": {
+        "val_loss": 2.745338065283639,
+        "n_params": 30727
+      },
+      "improvements": {
+        "baseline": 0.0,
+        "lstm": 93.85338481116925,
+        "lstm_feedforward": -11.932979626809823,
+        "separated_temporal": 91.51041863827196,
+        "unified_temporal": 72.08634015209398,
+        "unified_feedforward": -38.37778785522909
+      }
+    },
+    "crossmodal_only": {
+      "baseline": {
+        "val_loss": 2.397352252687727,
+        "n_params": 61447
+      },
+      "lstm": {
+        "val_loss": 13.928960118974958,
+        "n_params": 300935
+      },
+      "lstm_feedforward": {
+        "val_loss": 14.400076729910714,
+        "n_params": 69767
+      },
+      "separated_temporal": {
+        "val_loss": 12.15516539982387,
+        "n_params": 135303
+      },
+      "unified_temporal": {
+        "val_loss": 14.373706545148577,
+        "n_params": 294919
+      },
+      "unified_feedforward": {
+        "val_loss": 8.147480760301862,
+        "n_params": 30727
+      },
+      "improvements": {
+        "baseline": 0.0,
+        "lstm": -481.01432959461346,
+        "lstm_feedforward": -500.66586851249986,
+        "separated_temporal": -407.02458873936587,
+        "unified_temporal": -499.56589729497966,
+        "unified_feedforward": -239.85330070570706
+      }
+    },
+    "combined": {
+      "baseline": {
+        "val_loss": 2.1258277893066406,
+        "n_params": 61447
+      },
+      "lstm": {
+        "val_loss": 3.3496596132005965,
+        "n_params": 300935
+      },
+      "lstm_feedforward": {
+        "val_loss": 3.5716546263013567,
+        "n_params": 69767
+      },
+      "separated_temporal": {
+        "val_loss": 3.529064893722534,
+        "n_params": 135303
+      },
+      "unified_temporal": {
+        "val_loss": 3.5359270572662354,
+        "n_params": 294919
+      },
+      "unified_feedforward": {
+        "val_loss": 3.5642498901912143,
+        "n_params": 30727
+      },
+      "improvements": {
+        "baseline": 0.0,
+        "lstm": -57.5696596897494,
+        "lstm_feedforward": -68.01241588182863,
+        "separated_temporal": -66.00897360898519,
+        "unified_temporal": -66.33177320631002,
+        "unified_feedforward": -67.66409340023394
+      }
+    }
+  },
+  "key_insights": [
+    "Temporal processing gain on temporal-only tasks: 105.79%",
+    "Separated vs unified encoding advantage (with temporal): 19.42%",
+    "LSTM vs separated+temporal gap: 2.34%",
+    "LSTM on crossmodal tasks: -481.01% improvement",
+    "Unified vs separated on combined tasks: -0.32%"
+  ]
+}
