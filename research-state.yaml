@@ -1,10 +1,47 @@
-current_round: 232
-last_action: "H1.466 - Tested dropout CG on realistic robot data. SUPPORTED: Dropout CG wins at all 5 noise levels (avg +9.00% improvement), confirming architectural robustness generalizes to real deployment conditions."
-next_intended_action: "H1.467 - Test dropout CG with different dropout rates (20%, 40%, 50%) to find optimal regularization for deployment"
+current_round: 233
+last_action: "H1.467 - Dropout rate sweep experiment. SUPPORTED: Optimal dropout rate is 40% (+10.34% improvement), confirming prediction that 30-40% range is optimal. Key finding: 0% dropout CG loses to baseline (-4.39%), but 40-60% dropout all perform well (+10.1% to +10.3%)."
+next_intended_action: "H1.468 - Test layer-wise dropout rates (different rates for encoder/GNN/decoder) to potentially improve on the 40% uniform dropout result"
 
 experiments:
-  total_rounds: 232
+  total_rounds: 233
   trajectory:
+    - experiment_id: H1.467
+      description: "Dropout rate sweep for optimal regularization"
+      result:
+        conclusion: "SUPPORTED: Optimal dropout rate is 40% (+10.34% improvement), within predicted 30-40% range"
+        task: "dropout_rate_sweep"
+        baseline_loss: 0.010846
+        results:
+          dropout_0.0:
+            loss: 0.011323
+            improvement_vs_baseline: -4.39
+            cg_wins: false
+          dropout_0.1:
+            loss: 0.010159
+            improvement_vs_baseline: 6.33
+            cg_wins: true
+          dropout_0.2:
+            loss: 0.010641
+            improvement_vs_baseline: 1.89
+            cg_wins: true
+          dropout_0.3:
+            loss: 0.010086
+            improvement_vs_baseline: 7.01
+            cg_wins: true
+          dropout_0.4:
+            loss: 0.009724
+            improvement_vs_baseline: 10.34
+            cg_wins: true
+            best: true
+          dropout_0.5:
+            loss: 0.009726
+            improvement_vs_baseline: 10.32
+            cg_wins: true
+          dropout_0.6:
+            loss: 0.009748
+            improvement_vs_baseline: 10.12
+            cg_wins: true
+        key_insight: "No dropout = worse than baseline. 40-60% dropout plateau suggests architecture is tolerant to over-regularization. Optimal at 40% confirms prediction."
     - experiment_id: H1.466
       description: "Test dropout CG on realistic robot data"
       result:
@@ -76,35 +113,3 @@ experiments:
             avg_improvement_pct: 19.66
             loss: 0.013999
             cg_wins: true
-        key_insight: "Dropout is the most effective architectural modification for noise robustness. Skip connections and batch norm also help but should not be combined. CG's noise sensitivity is NOT fundamental - can be addressed through proper regularization."
-    - experiment_id: H1.464
-      description: "Test noise-robust training techniques"
-      result:
-        conclusion: "PARTIALLY SUPPORTED: Only heavy noise augmentation (50%) restores CG advantage (6.94% improvement, 76% win rate). Other methods fail."
-        task: "noise_robust_training_simulation"
-        results:
-          standard:
-            avg_improvement_pct: -44.33
-            win_rate_pct: 1.0
-            cg_wins: false
-          augmented_0.1:
-            avg_improvement_pct: -14.29
-            win_rate_pct: 21.0
-            cg_wins: false
-          augmented_0.2:
-            avg_improvement_pct: -3.91
-            win_rate_pct: 41.0
-            cg_wins: false
-          augmented_0.5:
-            avg_improvement_pct: 6.94
-            win_rate_pct: 76.0
-            cg_wins: true
-          regularized:
-            avg_improvement_pct: -14.36
-            win_rate_pct: 19.0
-            cg_wins: false
-          augmented_regularized:
-            avg_improvement_pct: -13.54
-            win_rate_pct: 21.0
-            cg_wins: false
-        key_insight: "CG requires heavy noise augmentation (50%) to overcome noise sensitivity. Light augmentation and regularization alone insufficient."

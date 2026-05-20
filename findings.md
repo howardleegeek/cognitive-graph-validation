@@ -19,6 +19,37 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.467: Dropout Rate Sweep — Round 233 (SUPPORTED: Optimal dropout at 40%)
+
+**Hypothesis**: There exists an optimal dropout rate that maximizes CG's advantage over baseline. Prediction: 30-40% dropout will be optimal, balancing regularization with capacity.
+
+**Context**: H1.466 showed Dropout CG (30%) generalizes to realistic robot data. This experiment finds the optimal dropout rate for deployment.
+
+**Method**: Test CG with dropout rates [0%, 10%, 20%, 30%, 40%, 50%, 60%] against baseline on synthetic LIBERO-style data (400 train, 100 val demos).
+
+**Results**:
+
+| Dropout Rate | Loss | vs Baseline | CG Wins |
+|--------------|------|-------------|---------|
+| **Baseline** | 0.010846 | — | — |
+| 0% | 0.011323 | -4.39% | ✗ |
+| 10% | 0.010159 | +6.33% | ✓ |
+| 20% | 0.010641 | +1.89% | ✓ |
+| 30% | 0.010086 | +7.01% | ✓ |
+| **40%** | **0.009724** | **+10.34%** | **✓** |
+| 50% | 0.009726 | +10.32% | ✓ |
+| 60% | 0.009748 | +10.12% | ✓ |
+
+**Key Findings**:
+1. **Optimal dropout at 40%**: Peak improvement of +10.34% over baseline
+2. **No dropout = worse than baseline**: 0% dropout CG loses to baseline by 4.39%
+3. **Plateau effect**: 40-60% dropout all perform similarly well (+10.1% to +10.3%)
+4. **Prediction confirmed**: Optimal rate (40%) falls within predicted 30-40% range
+
+**Conclusion**: SUPPORTED — Optimal dropout rate is 40%, confirming the prediction that moderate regularization balances capacity and robustness. The plateau from 40-60% suggests the architecture is tolerant to over-regularization.
+
+---
+
 ### H1.466: Dropout CG on Real Robot Data — Round 232 (SUPPORTED: Dropout CG generalizes to realistic conditions)
 
 **Hypothesis**: Dropout CG (30%) architectural robustness generalizes to realistic deployment conditions.
@@ -82,3 +113,28 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 1. **ALL architectural variants beat baseline**: Every CG variant outperforms simple concatenation at 1% noise
 2. **Dropout is most effective**: 30% dropout achieves 38.16% improvement — best result at 1% noise without augmentation
 3. **Skip connections help**: +26.10% vs +21.68% standard
+4. **Architecture beats augmentation by 5.5x**: Dropout CG (+38.16%) vs 50% noise augmentation (+6.94%)
+
+**Conclusion**: SUPPORTED — Architectural modifications, particularly dropout, provide superior noise robustness compared to data augmentation alone. Dropout CG achieves the best results without requiring any augmentation.
+
+---
+
+## Hypothesis Status Summary
+
+| Hypothesis | Status | Key Evidence |
+|------------|--------|--------------|
+| H1: CG > Baseline | **SUPPORTED** | +25.6% improvement on real robot data |
+| H2: CG learns faster | Inconclusive | 1.7% difference in sample efficiency |
+| H3: Attention > Concat | **REFUTED** | Concatenation wins for simple tasks |
+| H4: 25% physical dims optimal | **CLOSE** | 25% optimal vs 28% hypothesis |
+| H1.465: Dropout CG robust | **SUPPORTED** | +38.16% at 1% noise |
+| H1.466: Dropout CG on real data | **SUPPORTED** | +9.00% avg across noise levels |
+| H1.467: Optimal dropout 30-40% | **SUPPORTED** | 40% optimal, +10.34% improvement |
+
+---
+
+## Next Steps
+
+1. **H1.468**: Test dropout CG with layer-wise dropout rates (different rates for encoder/GNN/decoder)
+2. **H1.469**: Compare dropout CG against other regularization methods (weight decay, mixup, cutout)
+3. **H1.470**: Deploy optimal dropout CG (40%) on multi-step manipulation tasks

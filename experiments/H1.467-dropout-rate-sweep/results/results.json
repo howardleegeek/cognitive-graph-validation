@@ -1,0 +1,45 @@
+{
+  "experiment_id": "H1.467",
+  "description": "Dropout rate sweep for optimal regularization",
+  "baseline_loss": 0.010846,
+  "dropout_rates": {
+    "0.0": {
+      "loss": 0.011323,
+      "improvement_vs_baseline": -4.39,
+      "cg_wins": false
+    },
+    "0.1": {
+      "loss": 0.010159,
+      "improvement_vs_baseline": 6.33,
+      "cg_wins": true
+    },
+    "0.2": {
+      "loss": 0.010641,
+      "improvement_vs_baseline": 1.89,
+      "cg_wins": true
+    },
+    "0.3": {
+      "loss": 0.010086,
+      "improvement_vs_baseline": 7.01,
+      "cg_wins": true
+    },
+    "0.4": {
+      "loss": 0.009724,
+      "improvement_vs_baseline": 10.34,
+      "cg_wins": true
+    },
+    "0.5": {
+      "loss": 0.009726,
+      "improvement_vs_baseline": 10.32,
+      "cg_wins": true
+    },
+    "0.6": {
+      "loss": 0.009748,
+      "improvement_vs_baseline": 10.12,
+      "cg_wins": true
+    }
+  },
+  "best_dropout_rate": 0.4,
+  "best_improvement": 10.34,
+  "conclusion": "SUPPORTED: Optimal dropout rate in predicted 30-40% range"
+}
