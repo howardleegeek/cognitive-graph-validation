@@ -1,0 +1,31 @@
+{
+  "experiment_id": "H1.470.1.1.20",
+  "description": "Noise-robust training to close performance gap",
+  "results": {
+    "baseline": {
+      "improvement": -3252.81851960857,
+      "test_loss": 1.256636381149292
+    },
+    "input_denoising": {
+      "improvement": -4006.163342454518,
+      "test_loss": 1.5389900207519531
+    },
+    "noise_aware_loss": {
+      "improvement": -3001.413188901757,
+      "test_loss": 1.1624096632003784
+    },
+    "adversarial": {
+      "improvement": -3254.700168906815,
+      "test_loss": 1.2573416233062744
+    },
+    "combined": {
+      "improvement": -3220.3616595191916,
+      "test_loss": 1.244471549987793
+    }
+  },
+  "best_config": "noise_aware_loss",
+  "best_improvement": -3001.413188901757,
+  "baseline_improvement": -3252.81851960857,
+  "target_synthetic": 55.0,
+  "gap_closed": 251.40533070681295
+}

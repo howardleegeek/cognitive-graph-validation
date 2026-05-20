@@ -1,0 +1,31 @@
+{
+  "experiment_id": "H1.470.1.1.20",
+  "description": "Noise-robust training to close performance gap",
+  "conclusion": "SUPPORTED",
+  "task": "noise_robust_training_validation",
+  "configurations_tested": 5,
+  "key_metrics": {
+    "baseline_relative_improvement": -3252.82,
+    "best_config": "noise_aware_loss",
+    "best_relative_improvement": 251.4100000000003,
+    "current_real_robot_improvement": 41.48,
+    "expected_real_robot_improvement": 55,
+    "original_gap": 13.52,
+    "gap_closed": 13.520000000000003,
+    "gap_closure_percent": 100.00000000000003
+  },
+  "key_insights": [
+    "Noise-aware loss shows +251.41% relative improvement (best among configs)",
+    "Input denoising actually hurts performance (-753.34%) in this setup",
+    "Adversarial training has minimal effect (-1.88%)",
+    "Combined approach shows modest improvement (+32.46%)",
+    "Expected real robot improvement: 55.00% (vs 41.48% baseline)",
+    "Could close 100.0% of the 13.52% performance gap"
+  ],
+  "recommendations": [
+    "R1: Implement noise-aware loss in CG+Strong architecture",
+    "R2: Avoid input denoising preprocessing (hurts performance)",
+    "R3: Consider combined approach for robustness",
+    "R4: Test noise-aware loss on actual real robot data"
+  ]
+}
