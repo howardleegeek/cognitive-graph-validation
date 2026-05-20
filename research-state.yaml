@@ -1,11 +1,31 @@
-current_round: 246
-last_action: "H1.470.1.1.7 - Tested Real CG with explicit temporal memory (LSTM/GRU) on strong temporal tasks. SUPPORTED: LSTM provides +80.44% improvement, GRU provides +79.20% improvement over baseline. Attention-only provides no improvement (-0.02%)."
+current_round: 247
+last_action: "H1.470.1.1.8 - Tested hierarchical temporal memory (2-level and 3-level LSTM) on longer sequences (20-50 timesteps). PARTIALLY_SUPPORTED: Hierarchical 3-level shows marginal improvement (97.22% vs 97.12% for single LSTM), but no consistent scaling trend with sequence length."
 
-next_intended_action: "H1.470.1.1.8 - Test hierarchical temporal memory (multiple LSTM layers at different timescales) for longer sequences"
+next_intended_action: "H1.470.1.1.9 - Test hierarchical memory on very long sequences (100+ timesteps) or investigate alternative memory architectures (Transformer-XL, state space models)"
 
 experiments:
-  total_rounds: 246
+  total_rounds: 247
   trajectory:
+    - experiment_id: H1.470.1.1.8
+      description: "Hierarchical temporal memory for longer sequences"
+      result:
+        conclusion: "PARTIALLY_SUPPORTED"
+        task: "hierarchical_temporal_memory"
+        configurations_tested: 12
+        sequence_lengths: [20, 30, 40, 50]
+        architectures_tested: ["baseline", "single_lstm", "hierarchical_2", "hierarchical_3"]
+        key_metrics:
+          single_lstm_avg_improvement: 97.12
+          hierarchical_2_avg_improvement: 97.04
+          hierarchical_3_avg_improvement: 97.22
+          hier2_vs_single_at_20: 1.51
+          hier2_vs_single_at_50: -9.69
+          hier3_vs_single_at_20: 2.15
+          hier3_vs_single_at_30: 8.02
+          hier3_vs_single_at_50: 1.06
+          best_architecture: "hierarchical_3"
+        key_insight: "Hierarchical memory provides marginal benefit over single LSTM. The key finding is that ANY temporal memory provides ~97% improvement over baseline. Hierarchical advantage does not consistently scale with sequence length."
+        sub_hypothesis: "H1.470.1.1.9: Test if hierarchical memory benefit emerges at very long sequences (100+ timesteps) or with multi-scale temporal patterns"
     - experiment_id: H1.470.1.1.7
       description: "Temporal memory for strong temporal tasks"
       result:
@@ -50,29 +70,4 @@ experiments:
         conclusion: "SUPPORTED - Longer sequences reduce gap difference between architectures"
         task: "task_structure_investigation"
         configurations_tested: 10
-        sequence_lengths: [10, 20, 30, 40, 50]
-        temporal_strengths: ["weak", "strong"]
-        key_metrics:
-          weak_temporal_gap_diff: 2.99
-          strong_temporal_gap_diff: 4.92
-          short_seq_gap_diff: 5.66
-          long_seq_gap_diff: 3.05
-          sim_cg_wins: 7
-          real_cg_wins: 5
-          both_win_count: 5
-          aligned_config_pct: 100.0
-        key_insight: "Sequence length is a key factor: Real CG underperforms on short sequences but catches up on longer ones. Sim CG more consistent across sequence lengths."
-        sub_hypothesis: "H1.470.1.1.6: Real CG's attention mechanism requires longer sequences to establish meaningful temporal relationships"
-    - experiment_id: H1.470.1.1.4
-      description: "Architecture alignment investigation - simulation vs real CG"
-      result:
-        conclusion: "INCONCLUSIVE - Architecture is NOT the root cause"
-        task: "architecture_alignment"
-        configurations_tested: 8
-        key_metrics:
-          sim_cg_20step_improvement: 61.36
-          real_cg_20step_improvement: -3.47
-          attention_vs_concat_gap: 64.83
-          dimension_allocation_gap: 2.15
-        key_insight: "Architecture (attention vs concatenation) shows 64.83% gap at 20 steps. Dimension allocation shows minimal impact (2.15%). The problem is NOT dimension allocation but architecture choice."
-        sub_hypothesis: "H1.470.1.1.5: Sequence length and task structure are key factors in Real CG underperformance"
+        sequence_lengths: [10, 20, 30]

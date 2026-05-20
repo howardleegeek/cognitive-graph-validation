@@ -1,0 +1,77 @@
+{
+  "experiment_id": "H1.470.1.1.8",
+  "hypothesis": "Hierarchical temporal memory (multiple LSTM layers at different timescales) will further improve performance on longer sequences",
+  "configurations": [
+    {
+      "seq_len": 20,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.16480745375156403,
+      "single_lstm_loss": 0.004638867103494704,
+      "single_lstm_improvement_pct": 97.18528076376481,
+      "hierarchical_2_loss": 0.004568604636006057,
+      "hierarchical_2_improvement_pct": 97.2279138279189,
+      "hierarchical_3_loss": 0.00453934830147773,
+      "hierarchical_3_improvement_pct": 97.24566565519514,
+      "hier2_vs_single": 1.5146471308849112,
+      "hier3_vs_single": 2.145325567572322
+    },
+    {
+      "seq_len": 30,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.16445819288492203,
+      "single_lstm_loss": 0.004655948141589761,
+      "single_lstm_improvement_pct": 97.16891687795226,
+      "hierarchical_2_loss": 0.004641970561351627,
+      "hierarchical_2_improvement_pct": 97.1774160472505,
+      "hierarchical_3_loss": 0.004282332258298993,
+      "hierarchical_3_improvement_pct": 97.39609673244098,
+      "hier2_vs_single": 0.3002091048497173,
+      "hier3_vs_single": 8.024485495304456
+    },
+    {
+      "seq_len": 40,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.15752437710762024,
+      "single_lstm_loss": 0.0043953388230875134,
+      "single_lstm_improvement_pct": 97.20974054696015,
+      "hierarchical_2_loss": 0.004527473938651383,
+      "hierarchical_2_improvement_pct": 97.12585821840246,
+      "hierarchical_3_loss": 0.004258765606209636,
+      "hierarchical_3_improvement_pct": 97.29644028155715,
+      "hier2_vs_single": -3.006255510264643,
+      "hier3_vs_single": 3.1072284157138452
+    },
+    {
+      "seq_len": 50,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.14702388644218445,
+      "single_lstm_loss": 0.004541677539236844,
+      "single_lstm_improvement_pct": 96.91092539509026,
+      "hierarchical_2_loss": 0.004981792182661593,
+      "hierarchical_2_improvement_pct": 96.61157632054528,
+      "hierarchical_3_loss": 0.004493582178838551,
+      "hierarchical_3_improvement_pct": 96.9436380117692,
+      "hier2_vs_single": -9.690574454537423,
+      "hier3_vs_single": 1.0589778772883598
+    }
+  ],
+  "summary": {
+    "avg_single_lstm_improvement": 97.11871589594186,
+    "avg_hierarchical_2_improvement": 97.03569110352929,
+    "avg_hierarchical_3_improvement": 97.22046017024061,
+    "hier2_vs_single_trend": [
+      1.5146471308849112,
+      0.3002091048497173,
+      -3.006255510264643,
+      -9.690574454537423
+    ],
+    "hier3_vs_single_trend": [
+      2.145325567572322,
+      8.024485495304456,
+      3.1072284157138452,
+      1.0589778772883598
+    ],
+    "best_architecture": "hierarchical_3",
+    "conclusion": "PARTIALLY_SUPPORTED"
+  }
+}
