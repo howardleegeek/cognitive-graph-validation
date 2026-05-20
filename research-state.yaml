@@ -1,11 +1,31 @@
-current_round: 247
-last_action: "H1.470.1.1.8 - Tested hierarchical temporal memory (2-level and 3-level LSTM) on longer sequences (20-50 timesteps). PARTIALLY_SUPPORTED: Hierarchical 3-level shows marginal improvement (97.22% vs 97.12% for single LSTM), but no consistent scaling trend with sequence length."
+current_round: 248
+last_action: "H1.470.1.1.9 - Tested hierarchical temporal memory on very long sequences (60-150 timesteps). PARTIALLY_SUPPORTED: Hierarchical 3-level shows consistent improvement over single LSTM (77.63% vs 73.53% average), but advantage DECREASES with sequence length (negative correlation -0.984)."
 
-next_intended_action: "H1.470.1.1.9 - Test hierarchical memory on very long sequences (100+ timesteps) or investigate alternative memory architectures (Transformer-XL, state space models)"
+next_intended_action: "H1.470.1.1.10 - Investigate alternative memory architectures (Transformer-XL, state space models) for very long sequences, or test hierarchical memory on multi-scale temporal patterns"
 
 experiments:
-  total_rounds: 247
+  total_rounds: 248
   trajectory:
+    - experiment_id: H1.470.1.1.9
+      description: "Hierarchical temporal memory for very long sequences"
+      result:
+        conclusion: "PARTIALLY_SUPPORTED"
+        task: "hierarchical_temporal_memory_very_long"
+        configurations_tested: 15
+        sequence_lengths: [60, 80, 100, 120, 150]
+        architectures_tested: ["baseline", "single_lstm", "hierarchical_2", "hierarchical_3"]
+        key_metrics:
+          single_lstm_avg_improvement: 73.53
+          hierarchical_2_avg_improvement: 76.45
+          hierarchical_3_avg_improvement: 77.63
+          hier2_vs_single_at_60: 19.62
+          hier2_vs_single_at_150: 6.60
+          hier3_vs_single_at_60: 21.24
+          hier3_vs_single_at_150: 11.38
+          correlation_seq_len_vs_hier3_improvement: -0.984
+          best_architecture: "hierarchical_3"
+        key_insight: "Hierarchical memory provides consistent improvement over single LSTM (77.63% vs 73.53%), but the advantage DECREASES with sequence length (negative correlation -0.984). All models show decreasing performance as sequence length increases from 60 to 150 timesteps."
+        sub_hypothesis: "H1.470.1.1.10: Alternative memory architectures (Transformer-XL, state space models) may better handle very long sequences, or hierarchical memory may need different multi-scale patterns"
     - experiment_id: H1.470.1.1.8
       description: "Hierarchical temporal memory for longer sequences"
       result:
@@ -50,24 +70,4 @@ experiments:
       result:
         conclusion: "PARTIALLY_SUPPORTED"
         task: "sequence_length_sensitivity"
-        configurations_tested: 16
-        sequence_lengths: [5, 10, 15, 20, 25, 30, 40, 50]
-        temporal_strengths: ["weak", "strong"]
-        key_metrics:
-          weak_temporal_short_seq_gap: 35.44
-          weak_temporal_long_seq_gap: 4.83
-          weak_temporal_gap_reduction: 30.61
-          strong_temporal_short_seq_gap: 36.48
-          strong_temporal_long_seq_gap: 46.61
-          strong_temporal_gap_reduction: -10.13
-          crossover_seq_len: 20
-          real_cg_outperforms_at_50: true
-        key_insight: "Attention mechanism benefits from longer sequences on weak temporal tasks (30.61% gap reduction), but strong temporal dependencies remain challenging for both architectures. At seq_len=50, Real CG (+38.28%) actually outperforms Sim CG (+32.59%) on weak temporal tasks."
-        sub_hypothesis: "H1.470.1.1.7: Adding explicit temporal memory to Real CG will improve performance on strong temporal tasks"
-    - experiment_id: H1.470.1.1.5
-      description: "Task structure investigation - sequence length and temporal dependency effects"
-      result:
-        conclusion: "SUPPORTED - Longer sequences reduce gap difference between architectures"
-        task: "task_structure_investigation"
-        configurations_tested: 10
-        sequence_lengths: [10, 20, 30]
+        configurations_te

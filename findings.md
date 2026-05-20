@@ -19,6 +19,59 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.470.1.1.9: Hierarchical Temporal Memory on Very Long Sequences — Round 248 (PARTIALLY_SUPPORTED)
+
+**Hypothesis**: Hierarchical temporal memory with multiple LSTM layers at different timescales will show clearer benefits on very long sequences (100+ timesteps) where multi-scale temporal patterns are more pronounced.
+
+**Previous Finding (H1.470.1.1.8)**: Hierarchical 3-level shows marginal improvement over single LSTM (97.22% vs 97.12%) on sequences 20-50 timesteps.
+
+**Experiment**: Tested three architectures on strong temporal tasks with sequence lengths 60-150:
+1. Single LSTM (baseline comparison)
+2. Hierarchical LSTM (2 levels: fast + slow timescales)
+3. Hierarchical LSTM (3 levels: fast + medium + slow timescales)
+
+**Results Summary**:
+
+| Seq Len | Baseline Loss | Single LSTM | Hierarchical 2 | Hierarchical 3 |
+|---------|---------------|-------------|----------------|----------------|
+| 60      | 0.0908        | 0.0134 (85.30%) | 0.0107 (88.19%) | 0.0105 (88.42%) |
+| 80      | 0.0942        | 0.0195 (79.32%) | 0.0167 (82.30%) | 0.0156 (83.45%) |
+| 100     | 0.0879        | 0.0226 (74.34%) | 0.0199 (77.42%) | 0.0186 (78.79%) |
+| 120     | 0.0863        | 0.0276 (68.03%) | 0.0250 (71.08%) | 0.0239 (72.32%) |
+| 150     | 0.0847        | 0.0333 (60.68%) | 0.0311 (63.27%) | 0.0295 (65.15%) |
+
+**Average Improvement over Baseline**:
+- Single LSTM: **73.53%**
+- Hierarchical 2-level: **76.45%**
+- Hierarchical 3-level: **77.63%**
+
+**Hierarchical vs Single LSTM (relative improvement)**:
+
+| Seq Len | Hier 2 vs Single | Hier 3 vs Single |
+|---------|------------------|------------------|
+| 60      | +19.62%          | +21.24%          |
+| 80      | +14.42%          | +20.00%          |
+| 100     | +12.00%          | +17.34%          |
+| 120     | +9.53%           | +13.41%          |
+| 150     | +6.60%           | +11.38%          |
+
+**Correlation Analysis**:
+- Sequence length vs Hierarchical 3 improvement: **-0.984** (strong negative correlation)
+- As sequence length increases, hierarchical advantage decreases
+
+**Key Findings**:
+1. **PARTIALLY_SUPPORTED** — Hierarchical 3-level shows consistent improvement over single LSTM (77.63% vs 73.53%)
+2. **Hierarchical advantage DECREASES with sequence length** — negative correlation of -0.984
+3. **All models degrade with longer sequences** — performance drops from ~88% at seq_len=60 to ~65% at seq_len=150
+4. **Hierarchical 3-level maintains best performance** across all sequence lengths
+5. **The hypothesis is REFUTED regarding scaling** — hierarchical advantage does NOT increase with sequence length
+
+**Conclusion**: PARTIALLY_SUPPORTED - Hierarchical temporal memory provides consistent improvement over single LSTM, but contrary to the hypothesis, the advantage DECREASES with sequence length (negative correlation -0.984). All architectures struggle with very long sequences (150 timesteps), suggesting LSTM-based memory may not be optimal for extremely long temporal dependencies.
+
+**Sub-hypothesis H1.470.1.1.10**: Alternative memory architectures (Transformer-XL, state space models) may better handle very long sequences, or hierarchical memory may need different multi-scale patterns.
+
+---
+
 ### H1.470.1.1.8: Hierarchical Temporal Memory — Round 247 (PARTIALLY_SUPPORTED)
 
 **Hypothesis**: Hierarchical temporal memory (multiple LSTM layers at different timescales) will further improve performance on longer sequences compared to single-layer LSTM.
@@ -119,12 +172,12 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 1. **Temporal memory is essential**: LSTM/GRU provides +80-97% improvement on strong temporal tasks
 2. **Attention alone is insufficient**: Attention-only provides ~0% improvement on strong temporal dependencies
-3. **Hierarchical memory provides marginal benefit**: 3-level hierarchy shows ~0.1% additional improvement over single LSTM
-4. **Sequence length matters for weak temporal tasks**: Longer sequences help attention mechanisms
-5. **Strong temporal dependencies require explicit memory**: Regardless of sequence length or architecture complexity
+3. **Hierarchical memory provides consistent but decreasing benefit**: 3-level hierarchy shows improvement over single LSTM, but advantage decreases with sequence length
+4. **Very long sequences challenge all LSTM variants**: Performance degrades from ~88% at 60 timesteps to ~65% at 150 timesteps
+5. **Alternative memory architectures needed**: LSTM-based memory may not be optimal for extremely long sequences
 
 ## Next Steps
 
-- H1.470.1.1.9: Test hierarchical memory on very long sequences (100+ timesteps)
-- H1.470.1.1.10: Investigate if hierarchical memory helps with multi-scale temporal patterns
-- Consider alternative memory architectures (Transformer-XL, Compressive Transformer)
+- H1.470.1.1.10: Investigate alternative memory architectures (Transformer-XL, state space models) for very long sequences
+- Test if different multi-scale patterns would benefit hierarchical memory
+- Consider attention-based memory mechanisms for longer sequences

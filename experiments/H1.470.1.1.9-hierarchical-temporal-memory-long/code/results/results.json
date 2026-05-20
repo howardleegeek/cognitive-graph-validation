@@ -1,0 +1,93 @@
+{
+  "experiment_id": "H1.470.1.1.9",
+  "hypothesis": "Hierarchical temporal memory shows clearer benefits on very long sequences (100+ timesteps)",
+  "configurations": [
+    {
+      "seq_len": 60,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.09084225073456764,
+      "single_lstm_loss": 0.013351957313716412,
+      "single_lstm_improvement_pct": 85.30204039887832,
+      "hierarchical_2_loss": 0.010732149705290794,
+      "hierarchical_2_improvement_pct": 88.1859491387448,
+      "hier2_vs_single": 19.621150269363874,
+      "hierarchical_3_loss": 0.010515737812966108,
+      "hierarchical_3_improvement_pct": 88.42417737568823,
+      "hier3_vs_single": 21.241975495507813
+    },
+    {
+      "seq_len": 80,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.09422272443771362,
+      "single_lstm_loss": 0.01948775164783001,
+      "single_lstm_improvement_pct": 79.31735495431096,
+      "hierarchical_2_loss": 0.016677921637892723,
+      "hierarchical_2_improvement_pct": 82.29946996606138,
+      "hier2_vs_single": 14.418441186621777,
+      "hierarchical_3_loss": 0.015589418821036816,
+      "hierarchical_3_improvement_pct": 83.45471443956997,
+      "hier3_vs_single": 20.004015328403877
+    },
+    {
+      "seq_len": 100,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.0879005677998066,
+      "single_lstm_loss": 0.022557660937309265,
+      "single_lstm_improvement_pct": 74.3372978105394,
+      "hierarchical_2_loss": 0.019851327873766422,
+      "hierarchical_2_improvement_pct": 77.41615512771455,
+      "hier2_vs_single": 11.997401109379654,
+      "hierarchical_3_loss": 0.018646289594471455,
+      "hierarchical_3_improvement_pct": 78.78706581630013,
+      "hier3_vs_single": 17.339436716014266
+    },
+    {
+      "seq_len": 120,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.08628329634666443,
+      "single_lstm_loss": 0.027583446353673935,
+      "single_lstm_improvement_pct": 68.03153388710297,
+      "hierarchical_2_loss": 0.0249542323872447,
+      "hierarchical_2_improvement_pct": 71.0787215558097,
+      "hier2_vs_single": 9.5318544779269,
+      "hierarchical_3_loss": 0.023883240297436714,
+      "hierarchical_3_improvement_pct": 72.31997233684733,
+      "hier3_vs_single": 13.414589347514138
+    },
+    {
+      "seq_len": 150,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.08469393849372864,
+      "single_lstm_loss": 0.03330454230308533,
+      "single_lstm_improvement_pct": 60.67659280533819,
+      "hierarchical_2_loss": 0.031106081791222095,
+      "hierarchical_2_improvement_pct": 63.27236359007509,
+      "hier2_vs_single": 6.601083095081497,
+      "hierarchical_3_loss": 0.029513416811823845,
+      "hierarchical_3_improvement_pct": 65.1528582367093,
+      "hier3_vs_single": 11.383208502794146
+    }
+  ],
+  "summary": {
+    "avg_single_lstm_improvement": 73.53296397123397,
+    "avg_hierarchical_2_improvement": 76.4505318756811,
+    "avg_hierarchical_3_improvement": 77.62775764102301,
+    "hier2_vs_single_trend": [
+      19.621150269363874,
+      14.418441186621777,
+      11.997401109379654,
+      9.5318544779269,
+      6.601083095081497
+    ],
+    "hier3_vs_single_trend": [
+      21.241975495507813,
+      20.004015328403877,
+      17.339436716014266,
+      13.414589347514138,
+      11.383208502794146
+    ],
+    "correlation_seq_len_vs_hier3_improvement": -0.9836726583926824,
+    "best_architecture": "hierarchical_3",
+    "conclusion": "PARTIALLY_SUPPORTED"
+  }
+}
