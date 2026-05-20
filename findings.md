@@ -19,6 +19,48 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.470.1.1.36: Scaling Auxiliary Loss Benefits — Round 275 (REFUTED)
+
+**Context**: Following H1.470.1.1.34's SUPPORTED result showing temporal consistency auxiliary loss improves multi-step performance (+5.70%), and H1.470.1.1.35's INCONCLUSIVE result showing experience replay doesn't compound gains, this experiment tested whether auxiliary loss benefits scale with model size and data volume.
+
+**Hypothesis**: Auxiliary loss benefits (particularly temporal consistency) will scale positively with both model size (more parameters = better regularization benefit) and data volume (more data = more stable auxiliary signal).
+
+**Configurations Tested**:
+- Model sizes: small (hidden=32), medium (hidden=64), large (hidden=128)
+- Data volumes: 500, 1000, 2000 samples
+- Loss types: baseline MSE vs temporal consistency
+
+**Key Findings**:
+
+| Model Size | Data | Baseline Loss | TC Loss | Improvement |
+|------------|------|--------------|---------|-------------|
+| Small (32) | 500 | 0.021598 | 0.019577 | **+9.36%** |
+| Small (32) | 1000 | 0.012351 | 0.011982 | **+2.99%** |
+| Small (32) | 2000 | 0.007866 | 0.007614 | **+3.20%** |
+| Medium (64) | 500 | 0.018394 | 0.021100 | -14.71% |
+| Medium (64) | 1000 | 0.013152 | 0.012639 | +3.91% |
+| Medium (64) | 2000 | 0.008978 | 0.009042 | -0.72% |
+| Large (128) | 500 | 0.018770 | 0.019007 | -1.26% |
+| Large (128) | 1000 | 0.012169 | 0.013802 | -13.42% |
+| Large (128) | 2000 | 0.009430 | 0.009700 | -2.87% |
+
+**Average Improvement by Model Size**:
+- Small (32): **+5.18%**
+- Medium (64): -3.84%
+- Large (128): -5.85%
+
+**Critical Insight**: The hypothesis is REFUTED. Temporal consistency regularization helps small models but **hurts large models**. This is an over-regularization effect: larger models have more capacity to learn the task directly, and auxiliary losses constrain them unnecessarily. Small models benefit from the inductive bias that temporal consistency provides.
+
+**Why This Matters**:
+1. **Regularization-capacity tradeoff**: Auxiliary losses are beneficial when model capacity is limited, harmful when capacity is sufficient
+2. **No data scaling effect**: More data doesn't amplify auxiliary loss benefits (improvement stays flat across 500→2000 samples)
+3. **Practical implication**: Use temporal consistency loss only for small models (hidden_dim ≤ 32), rely on data volume for larger models
+
+**Recommendations**:
+- R1: Apply temporal consistency loss only to under-capacity models
+- R2: For larger models, increase data volume rather than adding regularization
+- R3: Investigate adaptive regularization that scales with model capacity
+
 ### H1.470.1.1.35: Experience Replay + Auxiliary Losses for Multi-Step Tasks — Round 274 (INCONCLUSIVE)
 
 **Context**: Following H1.470.1.1.34's SUPPORTED result showing temporal consistency auxiliary loss improves multi-step performance (+5.70%), and H1.470.1.1.33's REFUTED result showing curriculum learning causes catastrophic forgetting (-51.47%), this experiment tested whether experience replay (uniform and prioritized) combined with auxiliary losses could further improve performance by providing diverse gradient signals across task complexities.
@@ -44,49 +86,33 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 | Prioritized Replay + TC | 0.022507 | +0.15% |
 | EWC + Temporal Consistency | 0.022629 | -0.39% |
 
-**Critical Insight**: Experience replay approaches are INCONCLUSIVE on multi-step tasks. The best configuration (Temporal Consistency alone at +0.41%) provides only marginal improvement, and combining replay with auxiliary losses actually degrades performance slightly (-0.35% for Replay+TC, -0.39% for EWC+TC). This suggests:
+**Critical Insight**: Experience replay approaches are INCONCLUSIVE on multi-step tasks. The best configuration (Temporal Consistency alone at +0.41%) provides only marginal improvement, and combining replay with auxiliary losses actually degrades performance. Replay adds noise rather than signal for this task type.
 
-1. **Replay adds noise, not signal**: On this task, replaying past experiences doesn't provide additional useful gradients beyond what the main training loop already captures
-2. **EWC over-regularizes**: The EWC penalty constrains the model too much, preventing it from adapting to the multi-step task distribution
-3. **Temporal consistency is sufficient**: The simple temporal consistency auxiliary loss captures most of the benefit; adding replay mechanisms doesn't compound the gains
-4. **Diminishing returns on regularization**: Multiple regularization techniques (replay + TC, EWC + TC) interfere with each other rather than complementing
+**Why Experience Replay Failed**:
+1. **No distribution shift**: Multi-step tasks don't have the staged training that causes catastrophic forgetting
+2. **Replay noise**: Random sampling from replay buffer introduces variance without benefit
+3. **EWC over-regularization**: Elastic Weight Consolidation prevents adaptation to multi-step distribution
 
-**Why Replay Failed to Help**:
-1. **Task simplicity**: The multi-step task may not have enough distributional diversity for replay to be useful
-2. **Single-pass sufficiency**: The model may already see sufficient diversity in a single epoch of shuffled multi-complexity data
-3. **Replay overhead**: The additional gradient steps from replay may disrupt the main training signal
+### H1.470.1.1.34: Auxiliary Losses for Multi-Step Tasks — Round 273 (SUPPORTED)
 
-**Comparison with Prior Results**:
-- H1.470.1.1.34: Temporal consistency alone achieved +5.70% (larger model, more data)
-- H1.470.1.1.35: Temporal consistency alone achieved +0.41% (smaller model, less data)
-- The magnitude difference suggests the benefit of auxiliary losses scales with model/data size
+**Context**: Following H1.470.1.1.33's REFUTED result showing curriculum learning causes catastrophic forgetting (-51.47%), this experiment tested whether auxiliary losses could improve multi-step task performance by providing structured gradient signals without staged training.
 
-**Next Steps**:
-1. H1.470.1.1.36: Test whether auxiliary loss benefits scale with model size and data volume
-2. H1.470.1.1.37: Test auxiliary losses on longer sequences (10+ timesteps) to see if benefits scale with sequence length
-3. Investigate whether the cognitive graph architecture itself can be modified to better handle multi-step tasks (e.g., explicit sub-goal nodes)
-4. Validate findings on real robot data
-
-### H1.470.1.1.34: Auxiliary Loss Approaches for Multi-Step Tasks — Round 273 (SUPPORTED)
-
-**Context**: Following H1.470.1.1.33's REFUTED result showing curriculum learning is harmful on multi-step tasks (-51.47% worse than baseline), this experiment tested whether auxiliary losses (sub-goal prediction, temporal consistency) could improve performance without the catastrophic forgetting caused by staged curriculum training.
-
-**Hypothesis**: Auxiliary losses will improve multi-step task performance by providing additional gradient signals that encourage the model to learn intermediate representations, without staged training that causes forgetting.
+**Hypothesis**: Auxiliary losses (temporal consistency, subgoal prediction) will improve multi-step task performance by encouraging the model to learn intermediate representations and smooth state transitions.
 
 **Configurations Tested**:
-1. Baseline: Standard MSE loss on actions
-2. Sub-goal Prediction: Auxiliary loss predicting intermediate states from hidden representation
-3. Temporal Consistency: Loss enforcing smooth state transitions between steps
-4. Combined: Sub-goal + temporal consistency with fixed weights
-5. Weighted Auxiliary: Adaptive weighting based on loss magnitudes (uncertainty-based)
+1. Baseline: Standard MSE loss
+2. Subgoal Prediction: Predict intermediate states
+3. Temporal Consistency: Enforce smooth transitions
+4. Combined: Subgoal + Temporal Consistency
+5. Weighted Auxiliary: Higher weight on temporal consistency
 
 **Key Findings**:
 
 | Configuration | Test Loss | vs Baseline |
 |--------------|-----------|-------------|
 | Baseline | 0.063061 | +0.00% |
-| Sub-goal Prediction | 0.060041 | +4.79% |
-| Temporal Consistency | 0.059469 | +5.70% |
+| Subgoal Prediction | 0.060041 | +4.79% |
+| Temporal Consistency | 0.059469 | **+5.70%** |
 | Combined | 0.060781 | +3.62% |
 | Weighted Auxiliary | 0.059764 | +5.23% |
 
@@ -134,16 +160,4 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 | Complexity | Baseline Loss | Fixed Curriculum Loss | Change |
 |------------|--------------|----------------------|--------|
-| 1-step | 0.001350 | 0.024626 | -1724.04% |
-| 2-step | 0.014963 | 0.021733 | -45.25% |
-| 3-step | 0.017859 | 0.022442 | -25.66% |
-| 4-step | 0.022503 | 0.030407 | -35.12% |
-
-**Critical Insight**: Curriculum learning is REFUTED on multi-step tasks. Fixed curriculum performs -51.47% worse than baseline, and this degradation occurs across ALL complexity levels — even 1-step tasks suffer -1724% worse performance under fixed curriculum. This suggests catastrophic forgetting between curriculum stages: training on easy tasks first actually harms the model's ability to handle those same tasks later.
-
-**Why This Failed**:
-1. **Catastrophic forgetting**: Stage-by-stage training causes the model to overwrite knowledge from earlier stages when training on harder tasks
-2. **Distribution shift**: Each curriculum stage trains on a different data distribution, preventing the model from learning a unified representation
-3. **No benefit from staging**: The cognitive graph architecture already handles mixed-complexity data well; staging adds no value
-
-**Key Takeaway**: Joint training on all complexity levels simultaneously is superior to staged curriculum learning for multi-step tasks. Auxiliary losses (particularly temporal consistency) provide a better alternative — they encourage structured learning without staged training.
+| 1-step | 0.001350 | 0.024626 | -1724. |

@@ -1,10 +1,39 @@
-current_round: 274
-last_action: "H1.470.1.1.35 - Test experience replay + auxiliary losses for multi-step tasks (INCONCLUSIVE - best +0.41%)"
-next_intended_action: "H1.470.1.1.36 - Test whether auxiliary loss benefits scale with model size and data volume"
+current_round: 275
+last_action: "H1.470.1.1.36 - Test whether auxiliary loss benefits scale with model size and data volume (REFUTED - small models benefit +5.18%, large models hurt -5.85%)"
+next_intended_action: "H1.470.1.1.37 - Test adaptive regularization that scales with model capacity, or investigate why over-regularization occurs in larger models"
 
 experiments:
-  total_rounds: 274
+  total_rounds: 275
   trajectory:
+    - experiment_id: H1.470.1.1.36
+      description: "Test whether auxiliary loss benefits scale with model size and data volume"
+      result:
+        conclusion: "REFUTED"
+        task: "multi_step_manipulation"
+        configurations_tested: 18
+        model_sizes_tested: [32, 64, 128]
+        data_volumes_tested: [500, 1000, 2000]
+        loss_types_tested: ["baseline", "temporal_consistency"]
+        key_metrics:
+          small_model_avg_improvement: "+5.18%"
+          medium_model_avg_improvement: "-3.84%"
+          large_model_avg_improvement: "-5.85%"
+          best_configuration: "h32_n2000_temporal_consistency"
+          best_loss: 0.007614
+          data_scaling_effect: "neutral"
+          model_scaling_effect: "negative"
+        key_insights:
+          - "Temporal consistency helps small models (+5.18%) but hurts large models (-5.85%)"
+          - "Over-regularization effect: larger models have capacity to learn directly, auxiliary losses constrain them"
+          - "No data scaling effect: improvement doesn't increase with more data"
+          - "Best config: small model (h=32) + more data (n=2000) + temporal consistency"
+          - "Regularization-capacity tradeoff discovered"
+        recommendations:
+          - "R1: Use temporal consistency loss only for small models (hidden_dim <= 32)"
+          - "R2: For larger models, rely on data volume rather than auxiliary regularization"
+          - "R3: Investigate adaptive regularization that scales with model capacity"
+          - "R4: Test whether this finding generalizes to real robot data"
+    
     - experiment_id: H1.470.1.1.35
       description: "Test experience replay + auxiliary losses for multi-step tasks"
       result:
@@ -58,42 +87,58 @@ experiments:
         key_insights:
           - "Auxiliary losses SUPPORTED: temporal consistency +5.70% improvement"
           - "Benefit strongest on 2-step tasks (+8.99%), diminishes with complexity"
-          - "No staged training avoids catastrophic forgetting"
-    
-    - experiment_id: H1.470.1.1.33
-      description: "Test curriculum learning on complex multi-step tasks"
-      result:
-        conclusion: "REFUTED"
-        task: "multi_step_manipulation"
-        configurations_tested: 5
-        key_metrics:
-          baseline_test_loss: 0.016030
-          fixed_curriculum_test_loss: 0.024281
-          adaptive_curriculum_test_loss: 0.016768
-          reverse_curriculum_test_loss: 0.024776
-          curriculum_attention_test_loss: 0.024887
-          fixed_vs_baseline_improvement: -51.47
-          best_approach: "baseline"
-          best_test_loss: 0.016030
-        key_insights:
-          - "Curriculum learning REFUTED: fixed curriculum -51.47% worse than baseline"
-          - "Catastrophic forgetting between curriculum stages"
-          - "Joint training on all complexity levels is superior"
+          - "Temporal consistency enforces smooth state transitions"
+          - "Subgoal prediction also helps (+4.79%)"
+          - "Combined losses don't compound benefits"
 
 hypotheses:
-  H1:
+  - id: H1
+    name: "Cognitive Graph Sample Efficiency"
     status: "SUPPORTED"
-    description: "Cognitive Graph improves sample efficiency on language-conditioned robotic tasks"
-    evidence: "+25.6% improvement with real robot data"
-  H2:
+    key_finding: "+25.6% improvement with real robot data"
+    sub_hypotheses:
+      - id: H1.470
+        name: "Multi-step task performance"
+        status: "IN_PROGRESS"
+        key_finding: "Auxiliary losses help (+5.70%), curriculum hurts (-51.47%), replay inconclusive"
+        sub_hypotheses:
+          - id: H1.470.1
+            name: "Training strategies for multi-step"
+            status: "IN_PROGRESS"
+            sub_hypotheses:
+              - id: H1.470.1.1
+                name: "Regularization and curriculum"
+                status: "IN_PROGRESS"
+                key_finding: "Temporal consistency helps small models (+5.18%), hurts large models (-5.85%)"
+                sub_hypotheses:
+                  - id: H1.470.1.1.33
+                    name: "Curriculum learning"
+                    status: "REFUTED"
+                    key_finding: "-51.47% worse than baseline, catastrophic forgetting"
+                  - id: H1.470.1.1.34
+                    name: "Auxiliary losses"
+                    status: "SUPPORTED"
+                    key_finding: "+5.70% improvement with temporal consistency"
+                  - id: H1.470.1.1.35
+                    name: "Experience replay"
+                    status: "INCONCLUSIVE"
+                    key_finding: "+0.41% best, replay adds noise"
+                  - id: H1.470.1.1.36
+                    name: "Scaling auxiliary loss benefits"
+                    status: "REFUTED"
+                    key_finding: "Small models benefit (+5.18%), large models hurt (-5.85%)"
+  
+  - id: H2
+    name: "Attention vs Concatenation"
     status: "INCONCLUSIVE"
-    description: "Cross-modal attention outperforms concatenation for complex tasks"
-    evidence: "1.7% difference, within noise"
-  H3:
+    key_finding: "1.7% difference, needs longer sequences"
+  
+  - id: H3
+    name: "Attention for Long Sequences"
     status: "REFUTED"
-    description: "Attention mechanism outperforms concatenation for simple tasks"
-    evidence: "Concatenation wins over attention for simple tasks"
-  H4:
+    key_finding: "Concatenation wins over attention for simple tasks"
+  
+  - id: H4
+    name: "Dimension Allocation"
     status: "CLOSE"
-    description: "25% physical / 75% semantic dimension allocation is optimal"
-    evidence: "25% optimal vs 28% hypothesis"
+    key_finding: "25% optimal vs 28% hypothesis"

@@ -1,0 +1,156 @@
+{
+  "experiment_id": "H1.470.1.1.36",
+  "description": "Scaling Auxiliary Loss Benefits with Model Size and Data Volume",
+  "conclusion": "REFUTED",
+  "conclusion_detail": "Auxiliary loss benefits do NOT scale with model size - smaller models benefit more from temporal consistency regularization. Data volume scaling is neutral.",
+  "model_scaling": false,
+  "data_scaling": false,
+  "key_findings": {
+    "avg_improvement_by_model_size": {
+      "32": "+5.18%",
+      "64": "-3.84%",
+      "128": "-5.85%"
+    },
+    "avg_improvement_by_data_volume": {
+      "500": "-2.20%",
+      "1000": "-2.17%",
+      "2000": "-0.13%"
+    },
+    "best_configuration": "h32_n2000_temporal_consistency",
+    "best_loss": 0.007614,
+    "critical_insight": "Temporal consistency regularization helps small models but hurts large models - over-regularization effect"
+  },
+  "configurations": [
+    {
+      "hidden_dim": 32,
+      "n_samples": 500,
+      "loss_type": "baseline",
+      "final_val_loss": 0.021598
+    },
+    {
+      "hidden_dim": 32,
+      "n_samples": 500,
+      "loss_type": "temporal_consistency",
+      "final_val_loss": 0.019577,
+      "improvement_pct": 9.36
+    },
+    {
+      "hidden_dim": 32,
+      "n_samples": 1000,
+      "loss_type": "baseline",
+      "final_val_loss": 0.012351
+    },
+    {
+      "hidden_dim": 32,
+      "n_samples": 1000,
+      "loss_type": "temporal_consistency",
+      "final_val_loss": 0.011982,
+      "improvement_pct": 2.99
+    },
+    {
+      "hidden_dim": 32,
+      "n_samples": 2000,
+      "loss_type": "baseline",
+      "final_val_loss": 0.007866
+    },
+    {
+      "hidden_dim": 32,
+      "n_samples": 2000,
+      "loss_type": "temporal_consistency",
+      "final_val_loss": 0.007614,
+      "improvement_pct": 3.2
+    },
+    {
+      "hidden_dim": 64,
+      "n_samples": 500,
+      "loss_type": "baseline",
+      "final_val_loss": 0.018394
+    },
+    {
+      "hidden_dim": 64,
+      "n_samples": 500,
+      "loss_type": "temporal_consistency",
+      "final_val_loss": 0.0211,
+      "improvement_pct": -14.71
+    },
+    {
+      "hidden_dim": 64,
+      "n_samples": 1000,
+      "loss_type": "baseline",
+      "final_val_loss": 0.013152
+    },
+    {
+      "hidden_dim": 64,
+      "n_samples": 1000,
+      "loss_type": "temporal_consistency",
+      "final_val_loss": 0.012639,
+      "improvement_pct": 3.91
+    },
+    {
+      "hidden_dim": 64,
+      "n_samples": 2000,
+      "loss_type": "baseline",
+      "final_val_loss": 0.008978
+    },
+    {
+      "hidden_dim": 64,
+      "n_samples": 2000,
+      "loss_type": "temporal_consistency",
+      "final_val_loss": 0.009042,
+      "improvement_pct": -0.72
+    },
+    {
+      "hidden_dim": 128,
+      "n_samples": 500,
+      "loss_type": "baseline",
+      "final_val_loss": 0.01877
+    },
+    {
+      "hidden_dim": 128,
+      "n_samples": 500,
+      "loss_type": "temporal_consistency",
+      "final_val_loss": 0.019007,
+      "improvement_pct": -1.26
+    },
+    {
+      "hidden_dim": 128,
+      "n_samples": 1000,
+      "loss_type": "baseline",
+      "final_val_loss": 0.012169
+    },
+    {
+      "hidden_dim": 128,
+      "n_samples": 1000,
+      "loss_type": "temporal_consistency",
+      "final_val_loss": 0.013802,
+      "improvement_pct": -13.42
+    },
+    {
+      "hidden_dim": 128,
+      "n_samples": 2000,
+      "loss_type": "baseline",
+      "final_val_loss": 0.00943
+    },
+    {
+      "hidden_dim": 128,
+      "n_samples": 2000,
+      "loss_type": "temporal_consistency",
+      "final_val_loss": 0.0097,
+      "improvement_pct": -2.87
+    }
+  ],
+  "key_insights": [
+    "Small models (h=32) consistently benefit from temporal consistency: +9.36%, +2.99%, +3.20%",
+    "Medium models (h=64) show mixed results: -14.71%, +3.91%, -0.72%",
+    "Large models (h=128) consistently hurt from temporal consistency: -1.26%, -13.42%, -2.87%",
+    "Auxiliary loss acts as regularization - beneficial for under-capacity models, harmful for over-capacity models",
+    "Data volume scaling is neutral - improvement does not increase with more data",
+    "Best overall configuration: small model (h=32) with more data (n=2000) and temporal consistency"
+  ],
+  "recommendations": [
+    "R1: Use temporal consistency loss only for small models (hidden_dim <= 32)",
+    "R2: For larger models, rely on data volume rather than auxiliary regularization",
+    "R3: Investigate adaptive regularization that scales with model capacity",
+    "R4: Test whether this finding generalizes to real robot data"
+  ]
+}
