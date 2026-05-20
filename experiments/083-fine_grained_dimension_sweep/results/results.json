@@ -1,0 +1,105 @@
+{
+  "experiment_id": "H1.470.1.1",
+  "description": "Fine-grained dimension sweep around 768 [640, 704, 768, 832, 896]",
+  "hypothesis": "Optimal representation dimension (~768) exists for CG on multi-step tasks",
+  "dimensions_tested": [
+    640,
+    704,
+    768,
+    832,
+    896
+  ],
+  "timestamp": "2026-05-19T18:52:18.179654",
+  "results": {
+    "640": {
+      "dimension": 640,
+      "single_step": {
+        "baseline": 0.0959722101688385,
+        "cg": 0.06260353397755396,
+        "improvement": 35.17865546607585,
+        "std": 9.052767887002851
+      },
+      "multi_step": {
+        "baseline": 0.11922264666784377,
+        "cg": 0.08457489258476665,
+        "improvement": 28.944326346015334,
+        "std": 3.3224894774055356
+      },
+      "improvement_gap": 6.234329120060519,
+      "single_to_multi_baseline_change": 24.226217629147108,
+      "single_to_multi_cg_change": 35.09603565685344
+    },
+    "704": {
+      "dimension": 704,
+      "single_step": {
+        "baseline": 0.07570456748916989,
+        "cg": 0.045644581938783325,
+        "improvement": 39.28524601252798,
+        "std": 2.774174745406242
+      },
+      "multi_step": {
+        "baseline": 0.09201784165842193,
+        "cg": 0.06043817883446103,
+        "improvement": 33.759583831778905,
+        "std": 2.7751164965731503
+      },
+      "improvement_gap": 5.525662180749073,
+      "single_to_multi_baseline_change": 21.548599655609664,
+      "single_to_multi_cg_change": 32.41041163553274
+    },
+    "768": {
+      "dimension": 768,
+      "single_step": {
+        "baseline": 0.12474520930222104,
+        "cg": 0.08875970577909832,
+        "improvement": 29.872263308216702,
+        "std": 9.363755991447505
+      },
+      "multi_step": {
+        "baseline": 0.09824355354621296,
+        "cg": 0.0652343114571912,
+        "improvement": 31.058357552605344,
+        "std": 8.791401923937856
+      },
+      "improvement_gap": -1.1860942443886415,
+      "single_to_multi_baseline_change": -21.24462807369407,
+      "single_to_multi_cg_change": -26.504587994530084
+    },
+    "832": {
+      "dimension": 832,
+      "single_step": {
+        "baseline": 0.1063903265056156,
+        "cg": 0.06431066067445847,
+        "improvement": 39.727494596508365,
+        "std": 5.681917444103486
+      },
+      "multi_step": {
+        "baseline": 0.10113687848760967,
+        "cg": 0.058404882039342604,
+        "improvement": 41.48681109841241,
+        "std": 4.458766033732602
+      },
+      "improvement_gap": -1.7593165019040455,
+      "single_to_multi_baseline_change": -4.937900080350474,
+      "single_to_multi_cg_change": -9.183203178413923
+    },
+    "896": {
+      "dimension": 896,
+      "single_step": {
+        "baseline": 0.09547721434916769,
+        "cg": 0.06321204631101517,
+        "improvement": 34.47525545906365,
+        "std": 7.607166761966441
+      },
+      "multi_step": {
+        "baseline": 0.10029683404025579,
+        "cg": 0.07135809106486185,
+        "improvement": 28.884574210361304,
+        "std": 8.027773380260584
+      },
+      "improvement_gap": 5.590681248702349,
+      "single_to_multi_baseline_change": 5.047926590591942,
+      "single_to_multi_cg_change": 12.886855005083383
+    }
+  }
+}

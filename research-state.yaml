@@ -1,10 +1,21 @@
-current_round: 237
-last_action: "H1.470.1 - Representation Bottleneck Dimension Sweep. REFUTED: Not simple bigger-is-better. Non-monotonic relationship found — 768 is optimal dimension for multi-step (+8.45% CG improvement, +4.00% gap), while 1024 overfits single-step (+18.11% vs +8.52% multi, -9.59% gap). New sub-hypothesis H1.470.1.1: optimal dimension exists."
-next_intended_action: "H1.470.1.1 - Fine-grained dimension sweep around 768 [640, 704, 768, 832, 896] to confirm optimal dimension hypothesis for multi-step tasks"
+current_round: 238
+last_action: "H1.470.1.1 - Fine-grained dimension sweep around 768 [640, 704, 768, 832, 896]. REFUTED: 768 is NOT optimal dimension. 832 shows best multi-step performance (+41.49% improvement, -1.76% gap). New optimal point appears at 832 dimensions."
+next_intended_action: "H1.470.1.1.1 - Even finer sweep around 832 [800, 816, 832, 848, 864] to confirm new optimal dimension hypothesis"
 
 experiments:
-  total_rounds: 237
+  total_rounds: 238
   trajectory:
+    - experiment_id: H1.470.1.1
+      description: "Fine-grained dimension sweep around 768 [640, 704, 768, 832, 896]"
+      result:
+        conclusion: "REFUTED: 768 is NOT optimal dimension. 832 shows best multi-step performance (+41.49% improvement, -1.76% gap). 768 only achieves +31.06% multi-step (3rd best). New optimal point appears at 832 dimensions."
+        task: "fine_grained_dimension_sweep"
+        dimensions_tested: [640, 704, 768, 832, 896]
+        best_dimension: 832
+        best_multi_step_improvement: 41.49
+        best_improvement_gap: -1.76
+        key_insight: "Optimal dimension appears to be 832, not 768. At 832, CG performs BETTER on multi-step than single-step (negative gap). High variance at 768 suggests instability."
+        sub_hypothesis: "H1.470.1.1.1: Optimal representation dimension is ~832 for CG on multi-step tasks"
     - experiment_id: H1.470.1
       description: "Representation Bottleneck - Dimension Sweep [256, 512, 768, 1024]"
       result:
@@ -49,4 +60,4 @@ experiments:
           cg_wins: true
         improvement_difference: -5.99
         hypothesis_supported: false
-        key_insight: "CG advantage does NOT increase with task complexity. Actually performs worse on multi-step tasks compared to single-step."
+        key_insight: "CG advantage do
