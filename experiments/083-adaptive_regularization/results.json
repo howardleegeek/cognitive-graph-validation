@@ -1,0 +1,210 @@
+{
+  "experiment_id": "H1.470.1.1.37",
+  "description": "Test adaptive regularization that scales with model capacity",
+  "conclusion": "REFUTED",
+  "task": "multi_step_manipulation",
+  "configurations_tested": 30,
+  "model_sizes_tested": [
+    32,
+    64,
+    128
+  ],
+  "data_volumes_tested": [
+    500,
+    2000
+  ],
+  "strategies_tested": [
+    "baseline",
+    "fixed",
+    "adaptive_linear",
+    "adaptive_inverse_sqrt",
+    "adaptive_exponential"
+  ],
+  "base_regularization_weight": 0.1,
+  "n_runs_per_config": 2,
+  "detailed_results": {
+    "h32": {
+      "n500_baseline": {
+        "avg_val_loss": 0.2408127337694168,
+        "reg_weight": 0.0
+      },
+      "n500_fixed": {
+        "avg_val_loss": 0.24065449088811874,
+        "reg_weight": 0.1
+      },
+      "n500_adaptive_linear": {
+        "avg_val_loss": 0.24065449088811874,
+        "reg_weight": 0.1
+      },
+      "n500_adaptive_inverse_sqrt": {
+        "avg_val_loss": 0.24065449088811874,
+        "reg_weight": 0.1
+      },
+      "n500_adaptive_exponential": {
+        "avg_val_loss": 0.24068104475736618,
+        "reg_weight": 0.06065306597126335
+      },
+      "n2000_baseline": {
+        "avg_val_loss": 0.2455059140920639,
+        "reg_weight": 0.0
+      },
+      "n2000_fixed": {
+        "avg_val_loss": 0.2454661875963211,
+        "reg_weight": 0.1
+      },
+      "n2000_adaptive_linear": {
+        "avg_val_loss": 0.2454661875963211,
+        "reg_weight": 0.1
+      },
+      "n2000_adaptive_inverse_sqrt": {
+        "avg_val_loss": 0.2454661875963211,
+        "reg_weight": 0.1
+      },
+      "n2000_adaptive_exponential": {
+        "avg_val_loss": 0.24548329412937164,
+        "reg_weight": 0.06065306597126335
+      }
+    },
+    "h64": {
+      "n500_baseline": {
+        "avg_val_loss": 0.24030685424804688,
+        "reg_weight": 0.0
+      },
+      "n500_fixed": {
+        "avg_val_loss": 0.2399483174085617,
+        "reg_weight": 0.1
+      },
+      "n500_adaptive_linear": {
+        "avg_val_loss": 0.24010498076677322,
+        "reg_weight": 0.05
+      },
+      "n500_adaptive_inverse_sqrt": {
+        "avg_val_loss": 0.24002638459205627,
+        "reg_weight": 0.07071067811865475
+      },
+      "n500_adaptive_exponential": {
+        "avg_val_loss": 0.24015506356954575,
+        "reg_weight": 0.036787944117144235
+      },
+      "n2000_baseline": {
+        "avg_val_loss": 0.2456919327378273,
+        "reg_weight": 0.0
+      },
+      "n2000_fixed": {
+        "avg_val_loss": 0.24556688219308853,
+        "reg_weight": 0.1
+      },
+      "n2000_adaptive_linear": {
+        "avg_val_loss": 0.245589941740036,
+        "reg_weight": 0.05
+      },
+      "n2000_adaptive_inverse_sqrt": {
+        "avg_val_loss": 0.2455744966864586,
+        "reg_weight": 0.07071067811865475
+      },
+      "n2000_adaptive_exponential": {
+        "avg_val_loss": 0.24559614062309265,
+        "reg_weight": 0.036787944117144235
+      }
+    },
+    "h128": {
+      "n500_baseline": {
+        "avg_val_loss": 0.24145280569791794,
+        "reg_weight": 0.0
+      },
+      "n500_fixed": {
+        "avg_val_loss": 0.24109728634357452,
+        "reg_weight": 0.1
+      },
+      "n500_adaptive_linear": {
+        "avg_val_loss": 0.2413378283381462,
+        "reg_weight": 0.025
+      },
+      "n500_adaptive_inverse_sqrt": {
+        "avg_val_loss": 0.24127214401960373,
+        "reg_weight": 0.05
+      },
+      "n500_adaptive_exponential": {
+        "avg_val_loss": 0.24137859046459198,
+        "reg_weight": 0.013533528323661271
+      },
+      "n2000_baseline": {
+        "avg_val_loss": 0.24616173654794693,
+        "reg_weight": 0.0
+      },
+      "n2000_fixed": {
+        "avg_val_loss": 0.2459966540336609,
+        "reg_weight": 0.1
+      },
+      "n2000_adaptive_linear": {
+        "avg_val_loss": 0.2461002916097641,
+        "reg_weight": 0.025
+      },
+      "n2000_adaptive_inverse_sqrt": {
+        "avg_val_loss": 0.2460659220814705,
+        "reg_weight": 0.05
+      },
+      "n2000_adaptive_exponential": {
+        "avg_val_loss": 0.2461288720369339,
+        "reg_weight": 0.013533528323661271
+      }
+    }
+  },
+  "summary_statistics": {
+    "h32_fixed": {
+      "avg_improvement_percent": 0.04070774952007422
+    },
+    "h32_adaptive_linear": {
+      "avg_improvement_percent": 0.04070774952007422
+    },
+    "h32_adaptive_inverse_sqrt": {
+      "avg_improvement_percent": 0.04070774952007422
+    },
+    "h32_adaptive_exponential": {
+      "avg_improvement_percent": 0.03173001393663233
+    },
+    "h64_fixed": {
+      "avg_improvement_percent": 0.0995038253537851
+    },
+    "h64_adaptive_linear": {
+      "avg_improvement_percent": 0.06252371141695334
+    },
+    "h64_adaptive_inverse_sqrt": {
+      "avg_improvement_percent": 0.08187380668727451
+    },
+    "h64_adaptive_exponential": {
+      "avg_improvement_percent": 0.05094308872070796
+    },
+    "h128_fixed": {
+      "avg_improvement_percent": 0.10676504154934702
+    },
+    "h128_adaptive_linear": {
+      "avg_improvement_percent": 0.0361806883654433
+    },
+    "h128_adaptive_inverse_sqrt": {
+      "avg_improvement_percent": 0.05669973326005617
+    },
+    "h128_adaptive_exponential": {
+      "avg_improvement_percent": 0.021959916093929333
+    }
+  },
+  "best_strategies": {
+    "32": {
+      "strategy": "fixed",
+      "improvement": 0.04070774952007422
+    },
+    "64": {
+      "strategy": "fixed",
+      "improvement": 0.0995038253537851
+    },
+    "128": {
+      "strategy": "fixed",
+      "improvement": 0.10676504154934702
+    }
+  },
+  "key_insights": [
+    "Adaptive does not consistently outperform fixed",
+    "Capacity-regularization relationship is more complex"
+  ],
+  "timestamp": "2026-05-20T16:13:32.886358"
+}

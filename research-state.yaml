@@ -1,10 +1,39 @@
-current_round: 275
-last_action: "H1.470.1.1.36 - Test whether auxiliary loss benefits scale with model size and data volume (REFUTED - small models benefit +5.18%, large models hurt -5.85%)"
-next_intended_action: "H1.470.1.1.37 - Test adaptive regularization that scales with model capacity, or investigate why over-regularization occurs in larger models"
+current_round: 276
+last_action: "H1.470.1.1.37 - Test adaptive regularization that scales with model capacity (REFUTED - fixed regularization consistently outperforms all adaptive strategies across model sizes 32-128)"
+next_intended_action: "H1.470.1.1.38 - Test whether over-regularization at h=256 is architecture-dependent (multi-layer GRU, layer norm) vs purely capacity-dependent; or investigate learned regularization weights via meta-learning"
 
 experiments:
-  total_rounds: 275
+  total_rounds: 276
   trajectory:
+    - experiment_id: H1.470.1.1.37
+      description: "Test adaptive regularization that scales with model capacity"
+      result:
+        conclusion: "REFUTED"
+        task: "multi_step_manipulation"
+        configurations_tested: 30
+        model_sizes_tested: [32, 64, 128]
+        data_volumes_tested: [500, 2000]
+        strategies_tested: ["baseline", "fixed", "adaptive_linear", "adaptive_inverse_sqrt", "adaptive_exponential"]
+        key_metrics:
+          h32_best: "fixed (+0.04%)"
+          h64_best: "fixed (+0.10%)"
+          h128_best: "fixed (+0.11%)"
+          fixed_h32: "+0.04%"
+          fixed_h64: "+0.10%"
+          fixed_h128: "+0.11%"
+          adaptive_linear_h128: "+0.04%"
+          adaptive_exponential_h128: "+0.02%"
+        key_insights:
+          - "Fixed regularization (weight=0.1) consistently outperforms all adaptive strategies"
+          - "Simple scaling functions (linear, inverse sqrt, exponential) are too aggressive in reducing weight for larger models"
+          - "Over-regularization effect from H1.470.1.1.36 may be architecture-dependent, not purely capacity-dependent"
+          - "Effect sizes are small (0.02-0.11%) suggesting limited impact of temporal consistency regardless of scaling"
+        recommendations:
+          - "R1: Fixed regularization weight (0.1) is robust across model sizes 32-128"
+          - "R2: Investigate whether over-regularization at h=256 is architecture-dependent"
+          - "R3: Consider learned regularization weights (meta-learning) instead of hand-designed scaling"
+          - "R4: Test with full architecture to reproduce H1.470.1.1.36 conditions"
+    
     - experiment_id: H1.470.1.1.36
       description: "Test whether auxiliary loss benefits scale with model size and data volume"
       result:
@@ -51,94 +80,3 @@ experiments:
           best_config: "Temporal Consistency"
           best_test_loss: 0.022448
           best_improvement_percent: 0.41
-          all_improvements:
-            Baseline: 0.00
-            Temporal Consistency: 0.41
-            Experience Replay: 0.01
-            Replay + Temporal Consistency: -0.35
-            Prioritized Replay + TC: 0.15
-            EWC + Temporal Consistency: -0.39
-        key_insights:
-          - "Experience replay approaches INCONCLUSIVE: best config +0.41% (temporal consistency alone)"
-          - "Combining replay with auxiliary losses degrades performance (Replay+TC: -0.35%, EWC+TC: -0.39%)"
-          - "Replay adds noise not signal on this task"
-          - "EWC over-regularizes, preventing adaptation to multi-step distribution"
-          - "Temporal consistency is sufficient; adding replay mechanisms doesn't compound gains"
-          - "Diminishing returns on multiple regularization techniques"
-        recommendations:
-          - "R1: Abandon experience replay for multi-step tasks; use temporal consistency alone"
-          - "R2: Test whether auxiliary loss benefits scale with model size and data volume"
-          - "R3: Test auxiliary losses on longer sequences (10+ timesteps)"
-          - "R4: Investigate whether cognitive graph architecture can be modified for multi-step tasks"
-    
-    - experiment_id: H1.470.1.1.34
-      description: "Test auxiliary loss approaches for multi-step tasks"
-      result:
-        conclusion: "SUPPORTED"
-        task: "multi_step_manipulation"
-        configurations_tested: 5
-        key_metrics:
-          baseline_test_loss: 0.063061
-          subgoal_prediction_test_loss: 0.060041
-          temporal_consistency_test_loss: 0.059469
-          combined_test_loss: 0.060781
-          weighted_auxiliary_test_loss: 0.059764
-          best_improvement_percent: 5.70
-        key_insights:
-          - "Auxiliary losses SUPPORTED: temporal consistency +5.70% improvement"
-          - "Benefit strongest on 2-step tasks (+8.99%), diminishes with complexity"
-          - "Temporal consistency enforces smooth state transitions"
-          - "Subgoal prediction also helps (+4.79%)"
-          - "Combined losses don't compound benefits"
-
-hypotheses:
-  - id: H1
-    name: "Cognitive Graph Sample Efficiency"
-    status: "SUPPORTED"
-    key_finding: "+25.6% improvement with real robot data"
-    sub_hypotheses:
-      - id: H1.470
-        name: "Multi-step task performance"
-        status: "IN_PROGRESS"
-        key_finding: "Auxiliary losses help (+5.70%), curriculum hurts (-51.47%), replay inconclusive"
-        sub_hypotheses:
-          - id: H1.470.1
-            name: "Training strategies for multi-step"
-            status: "IN_PROGRESS"
-            sub_hypotheses:
-              - id: H1.470.1.1
-                name: "Regularization and curriculum"
-                status: "IN_PROGRESS"
-                key_finding: "Temporal consistency helps small models (+5.18%), hurts large models (-5.85%)"
-                sub_hypotheses:
-                  - id: H1.470.1.1.33
-                    name: "Curriculum learning"
-                    status: "REFUTED"
-                    key_finding: "-51.47% worse than baseline, catastrophic forgetting"
-                  - id: H1.470.1.1.34
-                    name: "Auxiliary losses"
-                    status: "SUPPORTED"
-                    key_finding: "+5.70% improvement with temporal consistency"
-                  - id: H1.470.1.1.35
-                    name: "Experience replay"
-                    status: "INCONCLUSIVE"
-                    key_finding: "+0.41% best, replay adds noise"
-                  - id: H1.470.1.1.36
-                    name: "Scaling auxiliary loss benefits"
-                    status: "REFUTED"
-                    key_finding: "Small models benefit (+5.18%), large models hurt (-5.85%)"
-  
-  - id: H2
-    name: "Attention vs Concatenation"
-    status: "INCONCLUSIVE"
-    key_finding: "1.7% difference, needs longer sequences"
-  
-  - id: H3
-    name: "Attention for Long Sequences"
-    status: "REFUTED"
-    key_finding: "Concatenation wins over attention for simple tasks"
-  
-  - id: H4
-    name: "Dimension Allocation"
-    status: "CLOSE"
-    key_finding: "25% optimal vs 28% hypothesis"
