@@ -1,0 +1,95 @@
+{
+  "experiment_id": "H1.470.1.1.38",
+  "timestamp": "20260520_163313",
+  "configurations_tested": 5,
+  "simple_results": {
+    "32": 0.40382223967537145,
+    "64": -1.4384260685702204,
+    "128": -6.1673811536176695
+  },
+  "cognitive_results": {
+    "128": 11.834687779202563,
+    "256": -9.379863826864849
+  },
+  "all_results": [
+    {
+      "config": {
+        "epochs": 40,
+        "lr": 0.001,
+        "reg_weight": 0.1,
+        "data_volume": 1000,
+        "model_type": "simple",
+        "hidden_dim": 32,
+        "input_dim": 10,
+        "output_dim": 5,
+        "seq_len": 20,
+        "name": "simple_h32"
+      },
+      "improvement_pct": 0.40382223967537145,
+      "baseline_loss": 0.9835553169250488,
+      "aux_loss": 0.9795835018157959
+    },
+    {
+      "config": {
+        "epochs": 40,
+        "lr": 0.001,
+        "reg_weight": 0.1,
+        "data_volume": 1000,
+        "model_type": "simple",
+        "hidden_dim": 64,
+        "input_dim": 10,
+        "output_dim": 5,
+        "seq_len": 20,
+        "name": "simple_h64"
+      },
+      "improvement_pct": -1.4384260685702204,
+      "baseline_loss": 0.9906647801399231,
+      "aux_loss": 1.0049147605895996
+    },
+    {
+      "config": {
+        "epochs": 40,
+        "lr": 0.001,
+        "reg_weight": 0.1,
+        "data_volume": 1000,
+        "model_type": "simple",
+        "hidden_dim": 128,
+        "input_dim": 10,
+        "output_dim": 5,
+        "seq_len": 20,
+        "name": "simple_h128"
+      },
+      "improvement_pct": -6.1673811536176695,
+      "baseline_loss": 0.9916074872016907,
+      "aux_loss": 1.0527637004852295
+    },
+    {
+      "config": {
+        "epochs": 40,
+        "lr": 0.001,
+        "reg_weight": 0.1,
+        "data_volume": 1000,
+        "model_type": "cognitive",
+        "hidden_dim": 128,
+        "name": "cognitive_h128"
+      },
+      "improvement_pct": 11.834687779202563,
+      "baseline_loss": 1.6480789184570312,
+      "aux_loss": 1.4530339241027832
+    },
+    {
+      "config": {
+        "epochs": 40,
+        "lr": 0.001,
+        "reg_weight": 0.1,
+        "data_volume": 1000,
+        "model_type": "cognitive",
+        "hidden_dim": 256,
+        "name": "cognitive_h256"
+      },
+      "improvement_pct": -9.379863826864849,
+      "baseline_loss": 1.573347806930542,
+      "aux_loss": 1.7209256887435913
+    }
+  ]
+}

@@ -1,10 +1,41 @@
-current_round: 277
-last_action: "H1.470.1.1.38 - Test whether over-regularization at h=256 is architecture-dependent (multi-layer GRU, layer norm) vs purely capacity-dependent (INCONCLUSIVE - both architectures show over-regularization but at different capacity thresholds)"
-next_intended_action: "H1.470.1.1.39 - Investigate task-dependent regularization scaling based on task complexity metrics"
+current_round: 278
+last_action: "H1.470.1.1.39 - Test task-dependent regularization scaling based on task complexity metrics (INCONCLUSIVE - no regularization needed across all complexities; key finding: overfitting only emerges at high complexity)"
+next_intended_action: "H1.470.1.1.40 - Investigate why models underfit on low/medium complexity tasks and explore data augmentation or reduced model capacity for simple tasks"
 
 experiments:
-  total_rounds: 277
+  total_rounds: 278
   trajectory:
+    - experiment_id: H1.470.1.1.39
+      description: "Test task-dependent regularization scaling based on task complexity metrics"
+      result:
+        conclusion: "INCONCLUSIVE"
+        task: "synthetic_manipulation_varying_complexity"
+        configurations_tested: 54
+        task_complexities: ["low", "medium", "high"]
+        model_sizes_tested: [32, 64, 128]
+        regularization_weights: [0.0, 0.01, 0.1]
+        model_types_tested: ["simple_gru", "cognitive_graph"]
+        key_metrics:
+          optimal_reg_low: "0.0 (all models)"
+          optimal_reg_medium: "0.0 (all models)"
+          optimal_reg_high: "0.0 (all models)"
+          correlation_complexity_reg_benefit: "0.000"
+          overfitting_low_complexity: "0/6 configs"
+          overfitting_medium_complexity: "0/6 configs"
+          overfitting_high_complexity: "6/6 configs"
+        key_insights:
+          - "CRITICAL: L2 regularization HURTS performance across ALL task complexities"
+          - "Models are UNDERFITTING on low/medium complexity tasks (negative train-val gap)"
+          - "Overfitting ONLY emerges at high complexity tasks (positive train-val gap)"
+          - "Cognitive graph consistently outperforms simple GRU across all conditions"
+          - "Task complexity affects overfitting propensity, not optimal regularization weight"
+          - "The hypothesis that regularization should scale with task complexity is NOT supported"
+        recommendations:
+          - "R1: Focus on data augmentation for high-complexity tasks instead of regularization"
+          - "R2: Consider smaller model capacity for low-complexity tasks to reduce underfitting"
+          - "R3: Explore early stopping as alternative to L2 regularization"
+          - "R4: Investigate task-aware model selection (capacity scaling with complexity)"
+    
     - experiment_id: H1.470.1.1.38
       description: "Test whether over-regularization at h=256 is architecture-dependent"
       result:
@@ -53,29 +84,3 @@ experiments:
           - "Fixed regularization (weight=0.1) consistently outperforms all adaptive strategies"
           - "Simple scaling functions (linear, inverse sqrt, exponential) are too aggressive in reducing weight for larger models"
           - "Over-regularization effect from H1.470.1.1.36 may be architecture-dependent, not purely capacity-dependent"
-          - "Effect sizes are small (0.02-0.11%) suggesting limited impact of temporal consistency regardless of scaling"
-        recommendations:
-          - "R1: Fixed regularization weight (0.1) is robust across model sizes 32-128"
-          - "R2: Investigate whether over-regularization at h=256 is architecture-dependent"
-          - "R3: Consider learned regularization weights (meta-learning) instead of hand-designed scaling"
-          - "R4: Test with full architecture to reproduce H1.470.1.1.36 conditions"
-    
-    - experiment_id: H1.470.1.1.36
-      description: "Test whether auxiliary loss benefits scale with model size and data volume"
-      result:
-        conclusion: "REFUTED"
-        task: "multi_step_manipulation"
-        configurations_tested: 18
-        model_sizes_tested: [32, 64, 128]
-        data_volumes_tested: [500, 1000, 2000]
-        loss_types_tested: ["baseline", "temporal_consistency"]
-        key_metrics:
-          small_model_avg_improvement: "+5.18%"
-          medium_model_avg_improvement: "-3.84%"
-          large_model_avg_improvement: "-5.85%"
-          best_configuration: "h32_n2000_temporal_consistency"
-          best_loss: 0.007614
-          data_scaling_effect: "neutral"
-          model_scaling_effect: "negative"
-        key_insights:
-          - "Temporal consistency helps small models (+5.18%) but hurts large models (-5.85%)"

@@ -19,16 +19,104 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
-### H1.470.1.1.24: Ensemble Disagreement on Real Robot Data — Round 263 (SUPPORTED)
+### H1.470.1.1.39: Task-Dependent Regularization Scaling — Round 278 (INCONCLUSIVE)
 
-**Context**: H1.470.1.1.23 showed ensemble disagreement outperforms oracle noise estimation by 10x (1109% vs 100% oracle ratio) on synthetic data. This experiment tests whether this advantage holds on realistic real robot data.
+**Context**: H1.470.1.1.38 showed over-regularization occurs at different capacity thresholds for different architectures. This experiment tests whether regularization should scale with task complexity (trajectory variance, temporal dependencies, state space coverage).
 
-**Hypothesis**: Ensemble disagreement noise estimation will maintain its superiority over oracle noise estimation when applied to real robot data, achieving at least 80% of the improvement seen in synthetic data.
+**Hypothesis**: Regularization weight should increase with task complexity to prevent overfitting on more complex tasks.
 
 **Configurations Tested**:
-1. Baseline: Standard training without noise-aware loss
-2. Oracle noise: Ground truth noise levels (upper bound)
-3. Ensemble disagreement: 5-model ensemble variance as noise estimate
+- Task complexities: low (linear reach), medium (waypoint navigation), high (pick-and-place)
+- Model sizes: h=32, 64, 128
+- Regularization weights: 0.0, 0.01, 0.1
+- Model types: Simple GRU, Cognitive Graph
+- Total configurations: 54
+
+**Key Findings**:
+
+1. **CRITICAL: L2 Regularization HURTS Performance Across ALL Task Complexities**
+   | Task Complexity | Optimal Reg Weight | Overfitting Detected |
+   |-----------------|-------------------|---------------------|
+   | Low | 0.0 | 0/6 configs |
+   | Medium | 0.0 | 0/6 configs |
+   | High | 0.0 | 6/6 configs |
+
+2. **Train-Val Gap Analysis Reveals Underfitting**:
+   - Low complexity: All models show NEGATIVE train-val gap (underfitting)
+   - Medium complexity: All models show NEGATIVE train-val gap (underfitting)
+   - High complexity: All models show POSITIVE train-val gap (overfitting)
+
+3. **Cognitive Graph Consistently Outperforms Simple GRU**:
+   | Task | GRU h=64 | CG h=64 | CG Improvement |
+   |------|----------|---------|----------------|
+   | Low | 0.0339 | 0.0219 | +35.5% |
+   | Medium | 0.0522 | 0.0342 | +34.5% |
+   | High | 0.1120 | 0.0634 | +43.4% |
+
+4. **Correlation Analysis**:
+   - Correlation between task complexity and regularization benefit: 0.000
+   - No evidence that regularization should scale with task complexity
+
+**Conclusion**: The hypothesis is NOT supported. Regularization does not help at any task complexity level. The key insight is that overfitting only emerges at high task complexity, but even then, zero regularization is optimal. This suggests the models are capacity-limited rather than overfitting-prone.
+
+**Implications**:
+- Focus on data augmentation for high-complexity tasks, not regularization
+- Consider smaller model capacity for low-complexity tasks to reduce underfitting
+- Task-aware model selection (capacity scaling with complexity) may be more effective than task-aware regularization
+
+---
+
+### H1.470.1.1.38: Architecture-Dependent Over-Regularization — Round 277 (INCONCLUSIVE)
+
+**Context**: H1.470.1.1.36 showed temporal consistency regularization helps small models but hurts large models. This experiment tests whether this is architecture-dependent.
+
+**Hypothesis**: Over-regularization at larger model sizes is architecture-dependent (different architectures have different optimal capacity thresholds).
+
+**Key Findings**:
+
+1. **Both Architectures Show Over-Regularization**:
+   | Model | h=32 | h=64 | h=128 | h=256 |
+   |-------|------|------|-------|-------|
+   | Simple GRU | +0.40% | -1.44% | -6.17% | N/A |
+   | Cognitive Graph | N/A | N/A | +11.83% | -9.38% |
+
+2. **Over-Regularization Threshold Differs by Architecture**:
+   - Simple GRU: Over-regularizes at h=64+
+   - Cognitive Graph: Over-regularizes at h=256+
+
+3. **Cognitive Graph Benefits More at Moderate Sizes**:
+   - At h=128: CG shows +11.83% improvement vs GRU's -6.17%
+
+**Conclusion**: INCONCLUSIVE. Both architectures exhibit over-regularization but at different capacity thresholds. The effect is NOT purely architecture-dependent.
+
+---
+
+### H1.470.1.1.37: Adaptive Regularization Scaling — Round 276 (REFUTED)
+
+**Context**: H1.470.1.1.36 suggested regularization should scale with model capacity. This experiment tests adaptive regularization strategies.
+
+**Hypothesis**: Adaptive regularization that scales with model capacity will outperform fixed regularization.
+
+**Key Findings**:
+
+1. **Fixed Regularization Outperforms All Adaptive Strategies**:
+   | Strategy | h=32 | h=64 | h=128 |
+   |----------|------|------|-------|
+   | Fixed (0.1) | +0.04% | +0.10% | +0.11% |
+   | Adaptive Linear | +0.04% | +0.05% | +0.04% |
+   | Adaptive Exp | +0.02% | +0.02% | +0.02% |
+
+2. **Simple Scaling Functions Are Too Aggressive**:
+   - Linear, inverse sqrt, and exponential all reduce weight too much for larger models
+   - The optimal regularization weight is relatively constant across model sizes
+
+**Conclusion**: REFUTED. Fixed regularization consistently outperforms adaptive strategies.
+
+---
+
+### H1.470.1.1.24: Ensemble Disagreement on Real Robot Data — Round 263 (SUPPORTED)
+
+**Context**: H1.470.1.1.23 showed ensemble disagreement outperforms oracle noise estimation by 10x on synthetic data. This experiment validates on real robot data.
 
 **Key Findings**:
 
@@ -39,93 +127,32 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
    | Oracle noise | 0.018816 | +2.10% | 100% |
    | **Ensemble disagreement** | **0.016290** | **+15.24%** | **726.4%** |
 
-2. **Critical Result**: **Ensemble disagreement maintains 7.3x superiority over oracle noise on real robot data!** The advantage is even more pronounced than on synthetic data (726% vs 1109% oracle ratio).
-
-3. **Why Ensemble Disagreement Excels on Real Robot Data**:
-   - Real robot data has complex noise characteristics (correlated, heteroscedastic, non-Gaussian)
-   - Ensemble disagreement captures model uncertainty on ambiguous samples
-   - Real robot labels have inherent noise that oracle doesn't account for
-   - Ensemble effectively downweights samples where models disagree (high uncertainty)
-
-4. **Real Robot Data Characteristics Modeled**:
-   - Correlated noise (AR(1) process with φ=0.7)
-   - Heterosce
-
-### H1.470.1.1.38: Architecture-Dependent Regularization Investigation — Round 277 (INCONCLUSIVE)
-
-**Context**: H1.470.1.1.36 found temporal consistency helps small models (+5.18%) but hurts large models (-5.85%), while H1.470.1.1.37 found fixed regularization helps all model sizes (+0.04-0.11%). This experiment tests whether the over-regularization effect is architecture-dependent by comparing simple GRU vs full cognitive graph architectures.
-
-**Hypothesis**: The over-regularization effect observed in H1.470.1.1.36 is specific to the cognitive graph architecture (multi-layer, layer norm, attention) rather than being purely capacity-dependent.
-
-**Predictions**:
-- P1: Simple GRU models will show consistent benefits from temporal consistency across all sizes
-- P2: Cognitive graph architecture will show over-regularization for larger models (h=256)
-- P3: The architecture complexity (layers, normalization, attention) contributes to over-regularization
-
-**Configurations Tested**:
-- Model types:
-  1. Simple GRU (single-layer, no layer norm)
-  2. Cognitive Graph (multi-layer, layer norm, attention)
-- Model sizes: h=[32, 64, 128] for GRU, h=[128, 256] for cognitive graph
-- Data volume: 1000 samples
-- Regularization: Fixed temporal consistency (weight=0.1)
-- 40 epochs per configuration
-
-**Key Findings**:
-
-1. **Improvement with Temporal Consistency**:
-
-   | Model Type | h=32 | h=64 | h=128 | h=256 |
-   |------------|------|------|-------|-------|
-   | Simple GRU | +0.40% | -1.44% | -6.17% | N/A |
-   | Cognitive Graph | N/A | N/A | +11.83% | -9.38% |
-
-2. **Critical Result**: **Both architectures show over-regularization for larger models, but at different scales.** The hypothesis is INCONCLUSIVE.
-
-3. **Key Insights**:
-   - Simple GRU shows over-regularization starting at h=64 (-1.44%) and worsening at h=128 (-6.17%)
-   - Cognitive graph shows strong benefit at h=128 (+11.83%) but over-regularization at h=256 (-9.38%)
-   - The effect is NOT purely architecture-dependent — both architectures exhibit over-regularization
-   - The threshold for over-regularization differs: GRU at h=64+, cognitive graph at h=256+
-   - Cognitive graph benefits more at moderate sizes (+11.83% vs +0.40% for GRU at h=128)
-
-4. **Reconciliation with Previous Experiments**:
-   - H1.470.1.1.36: Cognitive graph showed -5.85% at h=128
-   - H1.470.1.1.37: Simple GRU showed +0.11% at h=128
-   - Current: Simple GRU shows -6.17% at h=128, cognitive graph shows +11.83% at h=128
-   - The discrepancy suggests task/data differences are significant factors
-
-5. **Pattern Analysis**:
-   - Over-regularization occurs when model capacity exceeds some threshold relative to task complexity
-   - The threshold is lower for simpler architectures (GRU: h=64+) vs more complex (cognitive graph: h=256+)
-   - Temporal consistency regularization appears to have a "sweet spot" where it helps, beyond which it hurts
-
-**Recommendations**:
-- R1: Over-regularization is not purely architecture-dependent — both simple and complex architectures exhibit it
-- R2: The effect depends on the ratio of model capacity to task complexity/data volume
-- R3: Need adaptive regularization that considers both architecture complexity and task difficulty
-- R4: Investigate task-dependent regularization scaling
+2. **Ensemble disagreement maintains 7.3x superiority over oracle noise on real robot data!**
 
 ---
 
-## Summary of Key Hypotheses
+## Summary of Hypotheses Status
 
 | Hypothesis | Status | Key Finding |
-|------------|--------|-------------|
-| H1 | SUPPORTED | +25.6% improvement with real robot data |
-| H1.470.1.1.22 | SUPPORTED | Noise-aware loss alone best (+55.36%) |
-| H1.470.1.1.23 | SUPPORTED | Ensemble disagreement best noise proxy (+7.40% vs +0.67% oracle) |
-| H1.470.1.1.24 | SUPPORTED | Ensemble disagreement maintains 7.3x superiority on real robot data (+15.24% vs +2.10% oracle) |
-| H1.470.1.1.36 | REFUTED | Temporal consistency helps small models (+5.18%) but hurts large models (-5.85%) |
-| H1.470.1.1.37 | REFUTED | Fixed regularization best across sizes (+0.04-0.11%), adaptive strategies underperform |
-| H1.470.1.1.38 | INCONCLUSIVE | Over-regularization occurs in both architectures but at different capacity thresholds |
-| H2 | Inconclusive | 1.7% difference |
-| H3 | REFUTED | Concatenation wins over attention for simple tasks |
-| H4 | CLOSE | 25% optimal vs 28% hypothesis |
+|-----------|--------|-------------|
+| H1: Cognitive Graph Sample Efficiency | SUPPORTED | +25.6% improvement with real robot data |
+| H2: Statistical Significance | INCONCLUSIVE | 1.7% difference, needs more data |
+| H3: Attention vs Concatenation | REFUTED | Concatenation wins for simple tasks |
+| H4: Dimension Allocation | CLOSE | 25% optimal vs 28% hypothesis |
+| H1.470.1.1.36: Scaling Auxiliary Loss | REFUTED | Small models benefit, large models hurt |
+| H1.470.1.1.37: Adaptive Regularization | REFUTED | Fixed regularization wins |
+| H1.470.1.1.38: Architecture-Dependent Over-Reg | INCONCLUSIVE | Both architectures over-regularize at different thresholds |
+| H1.470.1.1.39: Task-Dependent Regularization | INCONCLUSIVE | No regularization needed; overfitting only at high complexity |
 
-## Next Steps
+## Research Direction
 
-1. **H1.470.1.1.39**: Investigate task-dependent regularization scaling
-2. **H1.470.1.1.40**: Test adaptive regularization based on task complexity metrics
-3. **H1.470.1.1.41**: Explore meta-learning for regularization weight adaptation
-4. **H1.470.1.1.42**: Validate findings on actual multi-step manipulation tasks
+The regularization experiments (H1.470.1.1.36-39) reveal a consistent pattern:
+1. L2 regularization generally hurts performance
+2. Models tend to underfit rather than overfit
+3. Overfitting only emerges at high task complexity
+4. Cognitive Graph consistently outperforms Simple GRU
+
+**Next Steps**:
+- H1.470.1.1.40: Investigate task-aware model capacity scaling
+- Explore data augmentation for high-complexity tasks
+- Consider early stopping as alternative to regularization
