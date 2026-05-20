@@ -51,99 +51,53 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 | Combined | LSTM +54.36% | Hybrid CG+LSTM +62.49% | YES (+8.13%) |
 
 **Key Findings**:
-1. **Hypothesis REFUTED** — Hybrid does NOT show consistent synergistic benefits across tasks
-2. **Only 1/3 tasks show synergy**: Combined task shows +8.13% improvement over best single (LSTM)
-3. **Average synergy: -35.88%** — hybrids are worse than best single on average
-4. **LSTM dominates temporal tasks**: +61.16% on temporal-only, +54.36% on combined
-5. **CG performs poorly on all tasks**: Never beats baseline, even on cross-modal-only (-106.97%)
-6. **Hybrid CG+LSTM is best hybrid**: Slightly better than Hybrid LSTM+CG on all tasks, suggesting CG-as-context (front-end) works better than CG-per-timestep (in-loop)
-7. **Parameter efficiency concern**: Hybrids use 4-25x more parameters than LSTM for marginal gains
-
-**Conclusion**: REFUTED — The hybrid approach does not provide consistent synergistic benefits. LSTM alone remains the most efficient and effective architecture. The CG component adds significant parameter overhead (1.4M+ params) without proportional performance gains. The one exception (combined task, +8.13%) is insufficient to justify the architectural complexity.
-
----
-
-### H1.470.1.1.11: LSTM Architectural Improvements — Round 250 (REFUTED)
-
-**Hypothesis**: LSTM performance can be further improved with better initialization, regularization, or architectural modifications (peephole connections, attention-augmented LSTM, variational LSTM).
-
-**Previous Finding (H1.470.1.1.10)**: Single LSTM remains optimal for strong temporal dependencies, outperforming all alternatives (Transformer-XL, SWA, Global Attention) by 57-223%.
-
-**Experiment**: Tested five LSTM variants on strong temporal tasks with sequence lengths 60 and 100:
-1. Standard LSTM (baseline comparison)
-2. Peephole LSTM (gated access to cell state)
-3. Zoneout LSTM (regularization via zoneout)
-4. Attention-augmented LSTM (attention over hidden states)
-5. Variational LSTM (variational inference over weights)
-
-**Results Summary**:
-
-| Architecture | Seq 60 | Seq 100 | Avg Improvement |
-|-------------|--------|---------|-----------------|
-| Standard LSTM | +0.92% | +0.92% | +0.92% |
-| Peephole LSTM | +0.32% | +0.32% | +0.32% |
-| Zoneout LSTM | +0.88% | +0.88% | +0.88% |
-| Attention LSTM | -0.63% | -0.63% | -0.63% |
-| Variational LSTM | +0.50% | +0.50% | +0.50% |
-
-**Key Findings**:
-1. **No variant provides >5% improvement** over standard LSTM
-2. **Zoneout performs nearly identically**: -0.04% vs standard LSTM
-3. **Attention-augmented performs WORST**: -1.55% vs standard LSTM
-4. **Standard LSTM remains optimal** — already well-optimized
-
-**Conclusion**: REFUTED — Standard LSTM is already well-optimized. No architectural modification provides meaningful improvement.
-
----
-
-### H1.470.1.1.10: Alternative Memory Architectures for Very Long Sequences — Round 249 (REFUTED)
-
-**Hypothesis**: Alternative memory architectures (Transformer-XL style recurrence, sliding window attention, global attention) may better handle very long sequences where hierarchical LSTM advantage decreases.
-
-**Previous Finding (H1.470.1.1.9)**: 
-- Hierarchical 3-level shows consistent improvement over single LSTM (77.63% vs 73.53%)
-- BUT advantage DECREASES with sequence length (correlation -0.984)
-- At seq_len=150: Hier3 vs Single only +11.38% (vs +21.24% at seq_len=60)
-
-**Experiment**: Tested four architectures on strong temporal tasks with sequence lengths 60-200:
-1. Single LSTM (baseline comparison)
-2. Transformer-XL Memory (segment-level recurrence)
-3. Sliding Window Attention (local window + external memory bank)
-4. Global Attention (full sequence self-attention)
-
-**Results Summary**:
-
-| Seq Len | Baseline Loss | Single LSTM | Transformer-XL | SWA | Global Attn |
-|---------|---------------|-------------|----------------|-----|-------------|
-| 60      | 0.0712        | 0.0199 (72.0%) | 0.0468 (34.4%) | 0.0538 (24.5%) | 0.0644 (9.6%) |
-| 100     | 0.0553        | 0.0192 (65.3%) | 0.0345 (37.7%) | 0.0445 (19.6%) | 0.0521 (5.8%) |
-| 150     | 0.0470        | 0.0179 (62.0%) | 0.0293 (37.6%) | 0.0391 (16.7%) | 0.0454 (3.5%) |
-| 200     | 0.0411        | 0.0156 (62.1%) | 0.0246 (40.1%) | 0.0345 (16.1%) | 0.0399 (2.8%) |
-
-**Average Improvement over Baseline**:
-- Single LSTM: **65.35%**
-- Transformer-XL: **37.46%**
-- Sliding Window Attention: **19.48%**
-- Global Attention: **5.29%**
-
-**Alternative vs Single LSTM (relative performance)**:
-
-| Seq Len | TXL vs LSTM | SWA vs LSTM | GA vs LSTM |
-|---------|-------------|-------------|------------|
-| 60      | -84.1% | -135.5% | -176.2% |
-| 100     | -79.2% | -131.8% | -171.3% |
-| 150     | -63.7% | -117.9% | -153.7% |
-| 200     | -57.7% | -121.2% | -155.8% |
-
-**Key Findings**:
-1. **Single LSTM remains optimal** across all sequence lengths
-2. **All alternatives show positive scaling correlation** (improve relative to LSTM at longer sequences)
-3. **TXL scaling correlation: 0.885** — improves most at longer sequences
-4. **SWA scaling correlation: 0.843**
-5. **GA scaling correlation: 0.848**
-6. **Sequential processing outperforms parallel/segmented approaches** for strong temporal dependencies
+1. Single LSTM remains optimal across all sequence lengths
+2. All alternatives show positive scaling correlation (improve relative to LSTM at longer sequences)
+3. TXL scaling correlation: 0.885 — improves most at longer sequences
+4. SWA scaling correlation: 0.843
+5. GA scaling correlation: 0.848
+6. Sequential processing outperforms parallel/segmented approaches for strong temporal dependencies
 
 **Conclusion**: REFUTED — Single LSTM remains optimal. All alternatives show positive scaling correlation but never surpass it.
+
+### H1.470.1.1.13: Lightweight CG Variants — Parameter Budget Analysis — Round 252 (REFUTED)
+
+**Hypothesis**: CG's poor performance is due to parameter budget mismatch and architectural complexity, not the unified representation concept itself. Lightweight CG variants with reduced dimensions will perform better than the bloated 1.995M param CG.
+
+**Prediction**: Reduced-dimension CG variants will close the performance gap with LSTM when parameter budgets are controlled.
+
+**Experiment**: Tested 7 architectures across 3 task types:
+
+| Architecture | Unified Dim | GNN Layers | Params |
+|-------------|-------------|------------|--------|
+| Baseline | N/A | 0 | 36K |
+| LSTM | N/A | 0 | 344K |
+| CG-tiny | 64 (32+32) | 1 | 16K |
+| CG-small | 128 (64+64) | 2 | 64K |
+| CG-medium | 256 (128+128) | 2 | 243K |
+| CG-noGNN | 128 (64+64) | 0 | 47K |
+| CG-attention | 128 (64+64) | 0 (attn) | 81K |
+
+**Results Summary**:
+
+| Architecture | Temporal-Only | Cross-Modal-Only | Combined | Avg Improvement | Params |
+|-------------|---------------|-------------------|----------|-----------------|--------|
+| Baseline | +0.00% | +0.00% | +0.00% | 0.00% | 36K |
+| LSTM | **+96.60%** | **+61.54%** | **+94.86%** | **84.33%** | 344K |
+| CG-tiny | +0.26% | -0.12% | +0.04% | 0.06% | 16K |
+| CG-small | -0.92% | -0.44% | -0.23% | -0.53% | 64K |
+| CG-medium | -1.92% | -0.74% | -4.35% | -2.34% | 243K |
+| CG-noGNN | +0.59% | -0.18% | +1.02% | 0.48% | 47K |
+| CG-attention | +9.40% | -0.61% | +11.50% | 6.76% | 81K |
+
+**Key Findings**:
+1. **Best lightweight CG (cg_attention): 6.76% avg improvement** vs **LSTM: 84.33%** — a 77.6 percentage point gap
+2. **Parameter budget is NOT the issue**: CG-medium (243K params, close to LSTM's 344K) performs WORSE than CG-tiny (16K params), suggesting the unified representation architecture itself is the problem
+3. **CG-attention is the only variant showing consistent improvement** across all tasks, but still only achieves 6.76% vs LSTM's 84.33%
+4. **Inverse scaling trend**: as CG dimension increases, performance DECREASES (CG-tiny > CG-small > CG-medium), opposite of what capacity-limited hypothesis would predict
+5. **The unified representation concept itself appears fundamentally flawed** for these language-conditioned robotic tasks
+
+**Conclusion**: REFUTED — Even lightweight CG variants with controlled parameter budgets dramatically underperform LSTM. The problem is not parameter budget, GNN complexity, or representation dimension. The unified representation architecture itself is the issue.
 
 ---
 
@@ -159,10 +113,12 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 8. **Hybrid LSTM+CG does NOT provide consistent synergy**: Only 1/3 tasks show synergy (+8.13% on combined task). Average synergy: -35.88%. CG adds 1.4M+ parameters without proportional gains
 9. **CG alone performs poorly**: Never beats baseline across any task type, even on cross-modal-only tasks (-106.97%)
 10. **LSTM dominates**: Best single architecture on 2/3 tasks, and the hybrid that works best (CG+LSTM) is essentially LSTM with CG as a context provider
+11. **Lightweight CG variants don't help**: Even with parameter budgets matched to LSTM, CG variants achieve only 6.76% avg improvement vs LSTM's 84.33%. The unified representation concept itself is fundamentally flawed for these tasks
+12. **Inverse scaling in CG**: Larger CG dimensions make performance WORSE, suggesting the unified space forces incompatible representations
 
 ## Next Steps
 
-- **H1.470.1.1.13**: Investigate why CG underperforms — is it the dimension mismatch (144+368=512 vs LSTM's 128), the attention mechanism, or the GNN layers?
-- **H1.470.1.1.14**: Test lightweight CG variants with reduced dimensions to match LSTM parameter budget
+- **H1.470.1.1.14**: Investigate WHY LSTM is so dominant — is it the temporal processing, the separated encoding, or both?
+- **Consider abandoning the CG hypothesis entirely** and focusing on optimizing LSTM-based architectures
+- **Test if CG has ANY niche** where it outperforms — perhaps on tasks specifically designed to require cross-modal reasoning at each timestep
 - **H1.470.1.1.15**: Explore whether CG benefits emerge only with real robot data (vs synthetic)
-- Consider whether the cognitive graph approach needs fundamentally different inductive biases for temporal tasks

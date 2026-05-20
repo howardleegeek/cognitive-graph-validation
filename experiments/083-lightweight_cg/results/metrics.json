@@ -1,0 +1,157 @@
+{
+  "hypothesis": "H1.470.1.1.13: Lightweight CG variants match LSTM performance",
+  "prediction": "Reduced-dimension CG variants will perform better than bloated CG",
+  "task_types": [
+    "temporal_only",
+    "crossmodal_only",
+    "combined"
+  ],
+  "architectures": [
+    "baseline",
+    "lstm",
+    "cg_tiny",
+    "cg_small",
+    "cg_medium",
+    "cg_noGNN",
+    "cg_attention"
+  ],
+  "detailed_results": {
+    "temporal_only": {
+      "baseline": {
+        "loss": 0.09250577539205551,
+        "params": 36487
+      },
+      "lstm": {
+        "loss": 0.0031477965281478,
+        "params": 343815
+      },
+      "cg_tiny": {
+        "loss": 0.09226199558803014,
+        "params": 15879
+      },
+      "cg_small": {
+        "loss": 0.09335986844130925,
+        "params": 64391
+      },
+      "cg_medium": {
+        "loss": 0.09428460683141436,
+        "params": 243463
+      },
+      "cg_noGNN": {
+        "loss": 0.09196206501552037,
+        "params": 47367
+      },
+      "cg_attention": {
+        "loss": 0.08381315640040807,
+        "params": 80647
+      }
+    },
+    "crossmodal_only": {
+      "baseline": {
+        "loss": 0.22714017118726457,
+        "params": 36487
+      },
+      "lstm": {
+        "loss": 0.08736541122198105,
+        "params": 343815
+      },
+      "cg_tiny": {
+        "loss": 0.22740725534302847,
+        "params": 15879
+      },
+      "cg_small": {
+        "loss": 0.22813302278518677,
+        "params": 64391
+      },
+      "cg_medium": {
+        "loss": 0.22882116905280522,
+        "params": 243463
+      },
+      "cg_noGNN": {
+        "loss": 0.22755633081708634,
+        "params": 47367
+      },
+      "cg_attention": {
+        "loss": 0.22852362266608647,
+        "params": 80647
+      }
+    },
+    "combined": {
+      "baseline": {
+        "loss": 0.04523026091711862,
+        "params": 36487
+      },
+      "lstm": {
+        "loss": 0.002325397417215364,
+        "params": 343815
+      },
+      "cg_tiny": {
+        "loss": 0.045214320932115824,
+        "params": 15879
+      },
+      "cg_small": {
+        "loss": 0.04533553708876882,
+        "params": 64391
+      },
+      "cg_medium": {
+        "loss": 0.04719846376350948,
+        "params": 243463
+      },
+      "cg_noGNN": {
+        "loss": 0.04476826691201755,
+        "params": 47367
+      },
+      "cg_attention": {
+        "loss": 0.040026896234069555,
+        "params": 80647
+      }
+    }
+  },
+  "parameter_counts": {
+    "baseline": 36487,
+    "lstm": 343815,
+    "cg_tiny": 15879,
+    "cg_small": 64391,
+    "cg_medium": 243463,
+    "cg_noGNN": 47367,
+    "cg_attention": 80647
+  },
+  "analysis": {
+    "best_lightweight_cg": "cg_attention",
+    "best_lightweight_avg_improvement": 6.763977396498469,
+    "lstm_avg_improvement": 84.33091071952913,
+    "lightweight_vs_lstm_gap": -77.56693332303065,
+    "lstm_params": 343815,
+    "key_insight": "Even lightweight CG variants underperform LSTM significantly. Best lightweight CG (cg_attention): 6.76%, LSTM: 84.33%. The unified representation concept itself may be fundamentally flawed for these tasks.",
+    "hypothesis_supported": false
+  },
+  "improvements": {
+    "temporal_only": {
+      "baseline": 0.0,
+      "lstm": 96.5971891865055,
+      "cg_tiny": 0.263529280190553,
+      "cg_small": -0.923286190115099,
+      "cg_medium": -1.9229409534916642,
+      "cg_noGNN": 0.5877583039878325,
+      "cg_attention": 9.396839229557957
+    },
+    "crossmodal_only": {
+      "baseline": 0.0,
+      "lstm": 61.53678551648485,
+      "cg_tiny": -0.11758560996403686,
+      "cg_small": -0.4371096458775006,
+      "cg_medium": -0.7400707046904381,
+      "cg_noGNN": -0.18321709790324875,
+      "cg_attention": -0.6090738910649701
+    },
+    "combined": {
+      "baseline": 0.0,
+      "lstm": 94.85875745559704,
+      "cg_tiny": 0.035241859497567536,
+      "cg_small": -0.23275605648862782,
+      "cg_medium": -4.351517781419525,
+      "cg_noGNN": 1.021426796426486,
+      "cg_attention": 11.504166851002422
+    }
+  }
+}
