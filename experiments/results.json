@@ -1,0 +1,128 @@
+{
+  "experiment_id": "H1.470.1.1.5",
+  "timestamp": "2026-05-19T21:07:48.701384",
+  "configurations": [
+    {
+      "seq_len": 10,
+      "temporal_strength": "weak",
+      "baseline_loss": 1.019777774810791,
+      "simulation_cg_loss": 0.9943677186965942,
+      "real_cg_loss": 0.932211697101593,
+      "sim_cg_gap": 2.4917248386700077,
+      "real_cg_gap": 8.586780362559377,
+      "gap_difference": 6.0950555238893696
+    },
+    {
+      "seq_len": 10,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.10622844099998474,
+      "simulation_cg_loss": 0.10341225564479828,
+      "real_cg_loss": 0.1131848618388176,
+      "sim_cg_gap": 2.651065316101991,
+      "real_cg_gap": -6.548548367413068,
+      "gap_difference": 9.199613683515059
+    },
+    {
+      "seq_len": 20,
+      "temporal_strength": "weak",
+      "baseline_loss": 0.97800213098526,
+      "simulation_cg_loss": 0.9707638621330261,
+      "real_cg_loss": 0.9372870922088623,
+      "sim_cg_gap": 0.7401076769579124,
+      "real_cg_gap": 4.163082828396346,
+      "gap_difference": 3.422975151438434
+    },
+    {
+      "seq_len": 20,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.09660197794437408,
+      "simulation_cg_loss": 0.09689372032880783,
+      "real_cg_loss": 0.10068322718143463,
+      "sim_cg_gap": -0.3020045662022978,
+      "real_cg_gap": -4.224809184974075,
+      "gap_difference": 3.922804618771777
+    },
+    {
+      "seq_len": 30,
+      "temporal_strength": "weak",
+      "baseline_loss": 0.992173433303833,
+      "simulation_cg_loss": 0.9887875318527222,
+      "real_cg_loss": 0.9635281562805176,
+      "sim_cg_gap": 0.34126104745983216,
+      "real_cg_gap": 2.8871239706479215,
+      "gap_difference": 2.545862923188089
+    },
+    {
+      "seq_len": 30,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.09684602916240692,
+      "simulation_cg_loss": 0.09897022694349289,
+      "real_cg_loss": 0.09685783833265305,
+      "sim_cg_gap": -2.193376227665228,
+      "real_cg_gap": -0.012193757811505892,
+      "gap_difference": 2.1811824698537223
+    },
+    {
+      "seq_len": 40,
+      "temporal_strength": "weak",
+      "baseline_loss": 1.0169438123703003,
+      "simulation_cg_loss": 1.0141456127166748,
+      "real_cg_loss": 1.0006873607635498,
+      "sim_cg_gap": 0.27515774417304567,
+      "real_cg_gap": 1.5985594689700535,
+      "gap_difference": 1.3234017247970078
+    },
+    {
+      "seq_len": 40,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.0968286395072937,
+      "simulation_cg_loss": 0.09591636061668396,
+      "real_cg_loss": 0.0975881889462471,
+      "sim_cg_gap": 0.9421581210392025,
+      "real_cg_gap": -0.7844264288110605,
+      "gap_difference": 1.726584549850263
+    },
+    {
+      "seq_len": 50,
+      "temporal_strength": "weak",
+      "baseline_loss": 1.018670678138733,
+      "simulation_cg_loss": 1.0174373388290405,
+      "real_cg_loss": 1.0013370513916016,
+      "sim_cg_gap": 0.12107340833112841,
+      "real_cg_gap": 1.7015927835286802,
+      "gap_difference": 1.5805193751975517
+    },
+    {
+      "seq_len": 50,
+      "temporal_strength": "strong",
+      "baseline_loss": 0.09527777880430222,
+      "simulation_cg_loss": 0.09639974683523178,
+      "real_cg_loss": 0.1036003828048706,
+      "sim_cg_gap": -1.177575763215529,
+      "real_cg_gap": -8.735094483743975,
+      "gap_difference": 7.557518720528446
+    }
+  ],
+  "summary": {
+    "weak_temporal_avg_gap_diff": 2.9935629397020906,
+    "strong_temporal_avg_gap_diff": 4.917540808503853,
+    "short_seq_avg_gap_diff": 5.66011224440366,
+    "long_seq_avg_gap_diff": 3.047006092593317,
+    "sim_cg_wins": 7,
+    "real_cg_wins": 5,
+    "total_configs": 10,
+    "aligned_config_count": 10,
+    "aligned_config_pct": 100.0,
+    "both_win_count": 5,
+    "both_win_pct": 50.0,
+    "weak_temporal_sim_gap": 0.7938649431183853,
+    "weak_temporal_real_gap": 3.787427882820476,
+    "strong_temporal_sim_gap": -0.01594662398837232,
+    "strong_temporal_real_gap": -4.061014444550738,
+    "short_seq_sim_gap": 1.3952233163819032,
+    "short_seq_real_gap": 0.49412640964214516,
+    "long_seq_sim_gap": 0.04020337758196191,
+    "long_seq_real_gap": -1.5548421650140754
+  },
+  "conclusion": "SUPPORTED: Longer sequences reduce gap difference. Sequence length matters."
+}

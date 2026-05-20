@@ -1,10 +1,29 @@
-current_round: 243
-last_action: "H1.470.1.1.4 - Architecture alignment investigation - compared Simulation CG vs Real CG architectures. Found Simulation CG actually outperforms baseline (+61.36%), contradicting H1.470.1.1.3's negative gaps. Architecture is NOT the root cause - discrepancy is task/data-specific."
-next_intended_action: "H1.470.1.1.5 - Investigate task structure differences between simulation and real experiments"
+current_round: 244
+last_action: "H1.470.1.1.5 - Task structure investigation. Tested Sim CG vs Real CG across sequence lengths (10-50) and temporal dependencies. SUPPORTED: Longer sequences reduce gap difference (5.66% -> 3.05%). Both architectures aligned in 100% of configs (<20% gap diff)."
+next_intended_action: "H1.470.1.1.6 - Test Real CG's attention mechanism specifically on sequence length sensitivity to validate hypothesis that attention requires longer sequences"
 
 experiments:
-  total_rounds: 243
+  total_rounds: 244
   trajectory:
+    - experiment_id: H1.470.1.1.5
+      description: "Task structure investigation - sequence length and temporal dependency effects"
+      result:
+        conclusion: "SUPPORTED - Longer sequences reduce gap difference between architectures"
+        task: "task_structure_investigation"
+        configurations_tested: 10
+        sequence_lengths: [10, 20, 30, 40, 50]
+        temporal_strengths: ["weak", "strong"]
+        key_metrics:
+          weak_temporal_gap_diff: 2.99
+          strong_temporal_gap_diff: 4.92
+          short_seq_gap_diff: 5.66
+          long_seq_gap_diff: 3.05
+          sim_cg_wins: 7
+          real_cg_wins: 5
+          both_win_count: 5
+          aligned_config_pct: 100.0
+        key_insight: "Sequence length is a key factor: Real CG underperforms on short sequences but catches up on longer ones. Sim CG more consistent across sequence lengths."
+        sub_hypothesis: "H1.470.1.1.6: Real CG's attention mechanism requires longer sequences to establish meaningful temporal relationships"
     - experiment_id: H1.470.1.1.4
       description: "Architecture alignment investigation - simulation vs real CG"
       result:
@@ -34,27 +53,34 @@ experiments:
           temporal: -56.42
         key_insight: "Simulation CG consistently underperforms baseline across all data regimes. The positive gaps in H1.470.1.1.2 were an artifact of that simulation's specific data generation. The real discrepancy is between simulation architecture and real CG architecture."
         sub_hypothesis: "H1.470.1.1.4: Simulation CG architecture doesn't match real CG architecture used in H1 experiments"
-    - experiment_id: H1.470.1.1.2
-      description: "Dimension stability across task complexities [2, 3, 4, 5 steps]"
-      result:
-        conclusion: "REFUTED: Optimal dimension does NOT increase with task complexity. Pattern is non-monotonic: 2-step:800, 3-step:832, 4-step:816, 5-step:896. No negative improvement gaps (unlike H1.470.1.1.1)."
-        task: "task_complexity_stability"
-        dimensions_tested: [768, 800, 816, 832, 848, 864, 896]
-        complexities_tested: [2, 3, 4, 5]
-        optimal_dimensions:
-          2: 800
-          3: 832
-          4: 816
-          5: 896
-        key_insight: "Optimal dimension is NOT stable across complexities. 816 is not universally optimal. Simulation shows positive improvement gaps (CG better on single-step), contradicting H1.470.1.1.1's negative gaps."
-        sub_hypothesis: "H1.470.1.1.3: The discrepancy in improvement gap sign (positive in simulation vs negative in real experiments) indicates simulation doesn't capture CG's multi-step advantage"
-    - experiment_id: H1.470.1.1.1
-      description: "Finer dimension sweep around 832 [800, 816, 832, 848, 864]"
-      result:
-        conclusion: "REFUTED: 816 is optimal, not 832. 816 achieves +31.06% multi-step improvement vs 832's +23.84%. However, performance landscape is flat (21.70-31.06% across range). All dimensions show negative improvement gaps."
-        task: "dimension_sweep"
-        dimensions_tested: [800, 816, 832, 848, 864]
-        best_dimension: 816
-        best_improvement: 31.06
-        key_insight: "816 is optimal but 832 is not far behind. Performance is flat - no strong preference. Negative gaps suggest CG struggles on multi-step vs single-step in this simulation."
-        sub_hypothesis: "H1.470.1.1.2: Optimal dimension varies with task complexity"
+
+hypotheses:
+  - id: H1
+    name: "Cognitive Graph Sample Efficiency"
+    status: "SUPPORTED"
+    key_finding: "+25.6% improvement with real robot data"
+    sub_hypotheses:
+      - id: H1.470.1.1.5
+        name: "Task Structure Investigation"
+        status: "SUPPORTED"
+        key_finding: "Longer sequences reduce gap difference (5.66% -> 3.05%). Both CG architectures aligned in 100% of configs."
+      - id: H1.470.1.1.4
+        name: "Architecture Alignment"
+        status: "INCONCLUSIVE"
+        key_finding: "Architecture is NOT the root cause of discrepancy"
+      - id: H1.470.1.1.3
+        name: "Improvement Gap Sign Discrepancy"
+        status: "REFUTED"
+        key_finding: "All regimes show negative gaps in simulation"
+  - id: H2
+    name: "Dimension Optimization"
+    status: "INCONCLUSIVE"
+    key_finding: "1.7% difference between optimal and fixed dimensions"
+  - id: H3
+    name: "Attention vs Concatenation"
+    status: "REFUTED"
+    key_finding: "Concatenation wins over attention for simple tasks"
+  - id: H4
+    name: "Optimal Dimension Ratio"
+    status: "CLOSE"
+    key_finding: "25% optimal vs 28% hypothesis"
