@@ -1,0 +1,52 @@
+{
+  "hypothesis": "H1.470: Error Accumulation",
+  "prediction": "Residual correction reduces the single-to-multi performance gap for CG",
+  "task_types": [
+    "single_step",
+    "multi_step"
+  ],
+  "models": [
+    "baseline",
+    "cg_standard",
+    "cg_residual"
+  ],
+  "detailed_results": {
+    "single_step": {
+      "baseline": {
+        "loss": 4.144623756408691
+      },
+      "cg_standard": {
+        "loss": 9.165788650512695,
+        "improvement_vs_baseline": -121.15
+      },
+      "cg_residual": {
+        "loss": 8.403874397277832,
+        "improvement_vs_baseline": -102.77
+      }
+    },
+    "multi_step": {
+      "baseline": {
+        "loss": 1.897512674331665
+      },
+      "cg_standard": {
+        "loss": 2.849534273147583,
+        "improvement_vs_baseline": -50.17
+      },
+      "cg_residual": {
+        "loss": 3.255246162414551,
+        "improvement_vs_baseline": -71.55
+      }
+    }
+  },
+  "analysis": {
+    "cg_standard_single_step_improvement": -121.15,
+    "cg_standard_multi_step_improvement": -50.17,
+    "cg_standard_improvement_drop": 70.98,
+    "cg_residual_single_step_improvement": -102.77,
+    "cg_residual_multi_step_improvement": -71.55,
+    "cg_residual_improvement_drop": 31.22,
+    "error_accumulation_evidence": false,
+    "hypothesis_supported": false,
+    "key_insight": "Residual correction changes improvement drop from 70.98% to 31.22%. Does not support error accumulation hypothesis"
+  }
+}

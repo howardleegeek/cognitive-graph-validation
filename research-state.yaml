@@ -1,10 +1,26 @@
-current_round: 235
-last_action: "H1.469 - Multi-step tasks experiment. REFUTED: CG improvement decreases from 8.07% (single-step) to 2.08% (3-step), difference of -5.99%. Hypothesis that CG advantage increases with task complexity is not supported."
-next_intended_action: "H3 re-test: attention on longer sequences (20+ timesteps) - based on priority order after H1 deepening attempt"
+current_round: 236
+last_action: "H1.470 - Error Accumulation analysis. ANALYSIS: CG advantage drops from +8.07% (single) to +2.08% (3-step) because baseline improves MORE on multi-step (5.59% better) while CG gets slightly worse (0.57% worse). Sub-hypothesis H1.470.1: representation bottleneck - increasing unified dim should reduce gap."
+next_intended_action: "H1.470.1 - Test CG with varying representation dimensions [256, 512, 768, 1024, 2048] on single-step vs 3-step tasks to test representation bottleneck hypothesis"
 
 experiments:
-  total_rounds: 235
+  total_rounds: 236
   trajectory:
+    - experiment_id: H1.470
+      description: "Error Accumulation in Unified Representations - deep analysis of H1.469"
+      result:
+        conclusion: "ANALYSIS: CG advantage drops from +8.07% (single) to +2.08% (3-step). Baseline improves 5.59% on multi-step while CG gets 0.57% worse. Mechanism: representation bottleneck in 512-dim unified space."
+        task: "error_accumulation_analysis"
+        single_step:
+          baseline_loss: 0.011058
+          cg_loss: 0.010166
+          improvement_percent: 8.07
+        multi_step:
+          baseline_loss: 0.010440
+          cg_loss: 0.010224
+          improvement_percent: 2.08
+        improvement_difference: -5.99
+        key_insight: "Baseline improves MORE on multi-step than CG. Unified representation becomes bottleneck when encoding state + history."
+        sub_hypothesis: "H1.470.1: Increasing representation dimension (512->1024+) will reduce single-to-multi performance gap"
     - experiment_id: H1.469
       description: "Multi-step tasks (3-step) vs single-step comparison"
       result:
@@ -36,64 +52,3 @@ experiments:
           decoder: 0.5
         best_loss: 0.010503
         best_improvement: 34.69
-        results:
-          uniform_40:
-            loss: 0.010509
-            improvement_vs_baseline: 34.65
-            cg_wins: true
-          high_encoder_50:
-            loss: 0.010525
-            improvement_vs_baseline: 34.55
-            cg_wins: true
-          high_encoder_60:
-            loss: 0.010625
-            improvement_vs_baseline: 33.93
-            cg_wins: true
-          high_gnn_50:
-            loss: 0.010757
-            improvement_vs_baseline: 33.11
-            cg_wins: true
-          high_gnn_60:
-            loss: 0.011154
-            improvement_vs_baseline: 30.64
-            cg_wins: true
-          high_decoder_50:
-            loss: 0.010506
-            improvement_vs_baseline: 34.67
-            cg_wins: true
-          high_decoder_60:
-            loss: 0.010511
-            improvement_vs_baseline: 34.64
-            cg_wins: true
-          ends_high_40:
-            loss: 0.010521
-            improvement_vs_baseline: 34.58
-            cg_wins: true
-          ends_high_50:
-            loss: 0.010509
-            improvement_vs_baseline: 34.65
-            cg_wins: true
-          gnn_centered:
-            loss: 0.010757
-            improvement_vs_baseline: 33.11
-            cg_wins: true
-          progressive_20_40:
-            loss: 0.010516
-            improvement_vs_baseline: 34.61
-            cg_wins: true
-          progressive_30_50:
-            loss: 0.010503
-            improvement_vs_baseline: 34.69
-            cg_wins: true
-            best: true
-        key_insight: "Progressive dropout marginally better than uniform. GNN dropout hurts performance significantly. Decoder dropout helps slightly. Uniform 40% remains recommended."
-    - experiment_id: H1.467
-      description: "Dropout rate sweep for optimal regularization"
-      result:
-        conclusion: "SUPPORTED: Optimal dropout rate is 40% (+10.34% improvement), within predicted 30-40% range"
-        task: "dropout_rate_sweep"
-        baseline_loss: 0.010846
-        results:
-          dropout_0.0:
-            loss: 0.011323
-            improvem
