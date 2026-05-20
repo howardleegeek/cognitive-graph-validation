@@ -1,10 +1,37 @@
-current_round: 268
-last_action: "H1.470.1.1.29 - Test phase-aware + ensemble disagreement on mixed tasks (REFUTED - no consistent improvement)"
-next_intended_action: "H1.470.1.1.30 - Test phase-aware training on real robot LIBERO data with clear hierarchical structure"
+current_round: 269
+last_action: "H1.470.1.1.30 - Test phase-aware training on LIBERO-style robot manipulation data (REFUTED - all phase-aware configs performed worse than baseline)"
+next_intended_action: "H1.470.1.1.31 - Investigate why phase-aware training fails on smooth trajectories; test alternative loss weighting strategies for real robot data"
 
 experiments:
-  total_rounds: 268
+  total_rounds: 269
   trajectory:
+    - experiment_id: H1.470.1.1.30
+      description: "Test phase-aware training on LIBERO-style robot manipulation data"
+      result:
+        conclusion: "REFUTED"
+        task: "libero_manipulation"
+        configurations_tested: 6
+        loss_types_tested: ["baseline", "oracle_phase_aware", "detected_phase_aware", "oracle_phase_weight_2.0", "oracle_phase_weight_5.0", "oracle_phase_weight_10.0"]
+        key_metrics:
+          baseline_test_loss: 0.000146
+          oracle_phase_aware_loss: 0.000214
+          detected_phase_aware_loss: 0.000462
+          best_phase_aware_loss: 0.000207
+          oracle_improvement: -47.15
+          detected_improvement: -217.15
+          best_improvement: -42.42
+        key_insights:
+          - "Phase-aware training performs WORSE on LIBERO-style data (-42.42% to -217.15%)"
+          - "H1.470.1.1.28's dramatic improvements (+99%+) do NOT generalize to realistic robot data"
+          - "Synthetic hierarchical tasks had sharp phase boundaries; real robot trajectories are smooth"
+          - "Upweighting phase transitions distorts loss landscape for continuous trajectories"
+          - "Phase-aware training is NOT a general technique for robot learning"
+        recommendations:
+          - "R1: Do NOT use phase-aware training for smooth robot manipulation trajectories"
+          - "R2: Re-examine H1.470.1.1.28 results as potentially synthetic task artifacts"
+          - "R3: Explore alternative approaches: curriculum learning, data augmentation, trajectory smoothing"
+          - "R4: Focus on techniques that work with continuous, smooth dynamics"
+    
     - experiment_id: H1.470.1.1.29
       description: "Test hybrid phase-aware + ensemble disagreement on mixed tasks"
       result:
@@ -24,11 +51,6 @@ experiments:
           - "Hybrid approach performs worse than either individual approach"
           - "Benefits of phase-aware training are task-specific to hierarchical structure"
           - "Clear phase transitions required for phase-aware training to work"
-        recommendations:
-          - "R1: Use phase-aware training ONLY for tasks with clear hierarchical structure"
-          - "R2: Use ensemble disagreement for tasks with genuine sensor noise"
-          - "R3: Do NOT combine both - they interfere with each other"
-          - "R4: Test phase-aware on real robot data with known phase boundaries"
     
     - experiment_id: H1.470.1.1.28
       description: "Test phase-aware training for hierarchical tasks"
@@ -59,11 +81,4 @@ experiments:
         key_insights:
           - "Phase-aware training dramatically improves hierarchical task learning (+99.05% to +99.82%)"
           - "Automatic phase detection from velocity changes works nearly as well as oracle labels"
-          - "Phase transitions should be modeled, not downweighted as 'uncertainty'"
-          - "Structured uncertainty (phase transitions) vs random uncertainty (sensor noise) distinction is critical"
-          - "Complete reversal from ensemble disagreement which degraded performance on hierarchical tasks"
-        recommendations:
-          - "R1: Use phase-aware training for hierarchical/structured tasks"
-          - "R2: Use ensemble disagreement for tasks with genuine noise/uncertainty"
-          - "R3: Develop hybrid approach for mixed task types"
-          - "R4: Test phase-aware training on real robot manipulation data"
+          - "CAVEAT: Results do NOT generalize to realistic robot data (see H1.470.1.1.30)"

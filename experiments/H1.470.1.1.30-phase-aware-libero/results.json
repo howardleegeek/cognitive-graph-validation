@@ -1,0 +1,63 @@
+{
+  "experiment_id": "H1.470.1.1.30",
+  "description": "Phase-aware training on LIBERO-style robot manipulation data",
+  "timestamp": "2026-05-20T13:05:01.730553",
+  "configurations": [
+    {
+      "name": "baseline",
+      "train_loss": 0.00016083262889878824,
+      "test_loss": 0.00014566559184459038
+    },
+    {
+      "name": "oracle_phase_aware",
+      "train_loss": 0.0002761283190920949,
+      "test_loss": 0.00021434612062876113,
+      "improvement_vs_baseline": -47.14945232738664
+    },
+    {
+      "name": "detected_phase_aware",
+      "train_loss": 0.006993474019691348,
+      "test_loss": 0.00046197293704608455,
+      "improvement_vs_baseline": -217.14623281726017
+    },
+    {
+      "name": "oracle_phase_weight_2.0",
+      "phase_weight": 2.0,
+      "train_loss": 0.00024218023609137162,
+      "test_loss": 0.0002074526928481646,
+      "improvement_vs_baseline": -42.41708712479914
+    },
+    {
+      "name": "oracle_phase_weight_5.0",
+      "phase_weight": 5.0,
+      "train_loss": 0.0003328010265249759,
+      "test_loss": 0.00021249197016004473,
+      "improvement_vs_baseline": -45.87657075993001
+    },
+    {
+      "name": "oracle_phase_weight_10.0",
+      "phase_weight": 10.0,
+      "train_loss": 0.0004943403357174248,
+      "test_loss": 0.00022560718934983015,
+      "improvement_vs_baseline": -54.88022016244503
+    }
+  ],
+  "conclusion": "REFUTED",
+  "key_metrics": {
+    "baseline_test_loss": 0.00014566559184459038,
+    "oracle_test_loss": 0.00021434612062876113,
+    "detected_test_loss": 0.00046197293704608455,
+    "oracle_improvement_percent": -47.14945232738664,
+    "detected_improvement_percent": -217.14623281726017,
+    "best_config": "oracle_phase_weight_2.0",
+    "best_test_loss": 0.0002074526928481646,
+    "best_improvement_percent": -42.41708712479914
+  },
+  "key_insights": [
+    "Phase-aware training on LIBERO-style data: REFUTED",
+    "Oracle phase improvement: -47.15%",
+    "Detected phase improvement: -217.15%",
+    "Best phase weight: 2.0",
+    "Phase transitions in robot manipulation are valuable learning signals"
+  ]
+}
