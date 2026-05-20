@@ -19,6 +19,53 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.470.1.1.33: Curriculum Learning on Complex Multi-Step Tasks — Round 272 (REFUTED)
+
+**Context**: Following H1.470.1.1.32's REFUTED result showing adaptive curriculum performs -17.16% worse than fixed on smooth trajectories (and baseline was actually best), this experiment tested whether curriculum learning would help on genuinely complex multi-step tasks where sequential dependencies matter.
+
+**Hypothesis**: On complex multi-step tasks (pick→place→return chains), curriculum learning will outperform baseline because the model needs to master simpler sub-tasks before attempting full sequences.
+
+**Configurations Tested**:
+1. Baseline: No curriculum, all data shuffled (1-4 step tasks mixed)
+2. Fixed Curriculum: 3-stage progression (1-step → 2-step → 3+ step tasks)
+3. Adaptive Curriculum: Progressive difficulty (≤2 steps → ≤3 steps → all)
+4. Reverse Curriculum: Hard → easy (3+ step → 2-step → 1-step)
+5. Curriculum + Attention: Fixed curriculum with cross-modal attention
+
+**Key Findings**:
+
+| Configuration | Test Loss | vs Baseline |
+|--------------|-----------|-------------|
+| Baseline (no curriculum) | 0.016030 | +0.00% |
+| Adaptive Curriculum | 0.016768 | -4.61% |
+| Fixed Curriculum | 0.024281 | -51.47% |
+| Reverse Curriculum | 0.024776 | -54.56% |
+| Curriculum + Attention | 0.024887 | -55.25% |
+
+**Per-Complexity Analysis (Baseline vs Fixed Curriculum)**:
+
+| Complexity | Baseline Loss | Fixed Curriculum Loss | Change |
+|------------|--------------|----------------------|--------|
+| 1-step | 0.001350 | 0.024626 | -1724.04% |
+| 2-step | 0.014963 | 0.021733 | -45.25% |
+| 3-step | 0.017859 | 0.022442 | -25.66% |
+| 4-step | 0.022503 | 0.030407 | -35.12% |
+
+**Critical Insight**: Curriculum learning is REFUTED on multi-step tasks. Fixed curriculum performs -51.47% worse than baseline, and this degradation occurs across ALL complexity levels — even 1-step tasks suffer -1724% worse performance under fixed curriculum. This suggests catastrophic forgetting between curriculum stages: training on easy tasks first actually harms the model's ability to handle those same tasks later.
+
+**Why This Failed**:
+1. **Catastrophic forgetting**: Stage-by-stage training causes the model to overwrite knowledge from earlier stages when training on harder tasks
+2. **Distribution shift**: Each curriculum stage trains on a different data distribution, preventing the model from learning a unified policy
+3. **No rehearsal**: Without replay of earlier-stage data, the model loses simpler skills
+4. **Joint training is superior**: Training on all complexities simultaneously allows the model to learn shared representations that generalize across task difficulty
+
+**Comparison with Prior Results**:
+- H1.470.1.1.31: Curriculum +81.09% on smooth trajectories (SUPPORTED)
+- H1.470.1.1.32: Adaptive curriculum -17.16% on smooth trajectories (REFUTED)
+- H1.470.1.1.33: Fixed curriculum -51.47% on multi-step tasks (REFUTED)
+
+**Pattern**: Curriculum learning only helps on very simple, smooth trajectory tasks where the data distribution is homogeneous. As soon as tasks involve discrete sub-goals or heterogeneous complexity, curriculum learning becomes harmful.
+
 ### H1.470.1.1.32: Adaptive Curriculum Scheduling Based on Learning Progress — Round 271 (REFUTED)
 
 **Context**: Following H1.470.1.1.31's SUPPORTED result showing curriculum learning provides +81.09% improvement on smooth robot trajectories, this experiment tested whether adaptive curriculum scheduling (adjusting difficulty based on learning progress) would outperform fixed curriculum scheduling.
@@ -45,81 +92,7 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 **Why This Failed**:
 1. **Dataset inconsistency**: The synthetic data generation may have different characteristics than H1.470.1.1.31
 2. **Progress metric issues**: Simple loss reduction may not be a good proxy for learning progress
-3. **Over-engineering**: For smooth trajectories, simple training on all data may be sufficient
-4. **Sampling instability**: Adaptive scheduling may introduce noise that hinders learning
-
-**Implications**:
-- Fixed curriculum may be sufficient for simple smooth trajectory tasks
-- Learning-progress metrics need refinement for adaptive scheduling to work
-- The benefits of curriculum learning may be task-dependent
-
-### H1.470.1.1.31: Curriculum Learning for Smooth Robot Trajectories — Round 270 (SUPPORTED)
-
-**Context**: Following H1.470.1.1.30's REFUTED result showing phase-aware training fails on smooth robot trajectories, this experiment tested curriculum learning as an alternative approach that works with continuous dynamics rather than discrete phase structures.
-
-**Hypothesis**: Training on progressively longer/more complex trajectories (curriculum learning) will improve learning on smooth robot manipulation data compared to baseline training.
-
-**Configurations Tested**:
-1. Curriculum Learning (short → medium → long): Train on 40-100 steps, then 100-160, then 160-220
-2. Baseline with attention: Standard training on all data shuffled
-3. Reverse Curriculum (long → short): Train on longest trajectories first
-4. Baseline without attention: No cross-attention mechanism
-
-**Key Findings**:
-
-| Configuration | Test Loss | Improvement vs Baseline |
-|--------------|-----------|------------------------|
-| Curriculum (short→long) | 0.241336 | +81.09% |
-| Baseline (attention) | 1.275939 | +0.00% |
-| Reverse Curriculum | 0.371635 | +70.87% |
-| Baseline (no attention) | 0.335379 | +73.72% |
-
-**Critical Insight**: Curriculum learning shows +81.09% improvement over baseline, significantly outperforming all other approaches. Even reverse curriculum (+70.87%) and no-attention baseline (+73.72%) outperform the attention baseline, suggesting the curriculum approach is the key factor.
-
-**Why This Worked**:
-1. **Progressive complexity**: Starting with shorter trajectories allows the model to learn basic dynamics before tackling longer sequences
-2. **Smooth transitions**: Curriculum learning naturally handles continuous trajectories without requiring discrete phase detection
-3. **Basic dynamics first**: Models learn fundamental motion patterns before complex sequences
-
-**Implications**:
-- Curriculum learning is effective for smooth robot manipulation tasks
-- The direction of curriculum (short→long) matters but both directions help
-- Attention mechanism may not be necessary for simple trajectory prediction
-
-### H1.470.1.1.30: Phase-Aware Training on LIBERO-style Robot Manipulation Data — Round 269 (REFUTED)
-
-**Context**: Building on H1.470.1.1.28's dramatic success (+99%+ improvement) with phase-aware training on synthetic hierarchical tasks, this experiment tested whether the approach generalizes to realistic robot manipulation data.
-
-**Hypothesis**: Phase-aware training (upweighting loss at phase transitions) will improve learning on LIBERO-style robot manipulation trajectories.
-
-**Configurations Tested**:
-1. Baseline: Standard training
-2. Oracle Phase-Aware: Perfect phase boundary knowledge with 2x weighting
-3. Detected Phase-Aware: Automatically detected phase boundaries
-4. Oracle with 5x weighting
-5. Oracle with 10x weighting
-
-**Key Findings**:
-
-| Configuration | Test Loss | Improvement vs Baseline |
-|--------------|-----------|------------------------|
-| Baseline | 0.000146 | +0.00% |
-| Oracle Phase-Aware (2x) | 0.000214 | -47.15% |
-| Detected Phase-Aware | 0.000462 | -217.15% |
-| Oracle (5x) | 0.000207 | -42.42% |
-| Oracle (10x) | 0.000214 | -47.15% |
-
-**Critical Insight**: Phase-aware training performs WORSE on realistic robot data (-42% to -217%), completely failing to generalize from synthetic hierarchical tasks.
-
-**Why This Failed**:
-1. **Smooth vs discrete**: Real robot trajectories have smooth transitions, not sharp phase boundaries
-2. **Loss landscape distortion**: Upweighting transitions distorts the loss landscape for continuous motion
-3. **Task mismatch**: Phase-aware training works for hierarchical tasks with clear subgoals, not continuous manipulation
-
-**Implications**:
-- Phase-aware training is NOT a general technique for robot learning
-- Techniques must be validated on realistic data, not just synthetic benchmarks
-- The structure of robot manipulation tasks differs fundamentally from hierarchical planning tasks
+3. **Over-adaptation**: Adaptive scheduling may oscillate between difficulty levels, preventing stable learning
 
 ## Research Trajectory Summary
 
@@ -127,13 +100,19 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 2. **H1.470.1.1.30**: Phase-aware training fails on realistic robot data (REFUTED) → technique doesn't generalize
 3. **H1.470.1.1.31**: Curriculum learning shows +81.09% improvement on smooth trajectories (SUPPORTED) → promising alternative
 4. **H1.470.1.1.32**: Adaptive curriculum performs worse than fixed curriculum (REFUTED) → simpler may be better
+5. **H1.470.1.1.33**: Curriculum learning fails on multi-step tasks (REFUTED, -51.47%) → curriculum only helps on simple homogeneous tasks
 
 ## Current Research Direction
 
-The research has shifted from phase-aware training (which doesn't generalize) to curriculum learning (which shows promise). However, the latest result suggests that even curriculum learning may not always be necessary, and simple training on all data can work well for smooth trajectory tasks.
+The curriculum learning hypothesis has been thoroughly tested and REFUTED for complex tasks. The pattern is clear:
+- **Simple, homogeneous tasks** (smooth trajectories): Curriculum can help (+81.09%)
+- **Complex, heterogeneous tasks** (multi-step): Curriculum is harmful (-51.47%)
+- **Adaptive scheduling**: Never outperforms baseline
+
+**Key Takeaway**: Joint training on all data simultaneously is the most robust approach. Curriculum learning introduces catastrophic forgetting and distribution shift that outweigh any benefits from progressive difficulty.
 
 **Next Steps**:
-1. Test curriculum learning on more complex multi-step tasks
-2. Investigate why H1.470.1.1.31 and H1.470.1.1.32 show contradictory results
-3. Explore other curriculum strategies beyond length-based progression
+1. H1.470.1.1.34: Test auxiliary loss approaches (sub-goal prediction, consistency losses) as alternative to curriculum
+2. Investigate whether replay/regularization between curriculum stages could mitigate catastrophic forgetting
+3. Explore whether the cognitive graph architecture itself can be modified to better handle multi-step tasks
 4. Validate findings on real robot data

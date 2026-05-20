@@ -1,0 +1,48 @@
+{
+  "experiment_id": "H1.470.1.1.33",
+  "description": "Test curriculum learning on complex multi-step tasks",
+  "conclusion": "REFUTED",
+  "task": "multi_step_manipulation",
+  "configurations_tested": 5,
+  "key_metrics": {
+    "baseline_test_loss": 0.016029846388846636,
+    "fixed_curriculum_test_loss": 0.024280769284814596,
+    "adaptive_curriculum_test_loss": 0.016768301837146282,
+    "reverse_curriculum_test_loss": 0.024775702506303787,
+    "curriculum_attention_test_loss": 0.024886860977858305,
+    "fixed_vs_baseline_improvement": -51.47,
+    "adaptive_vs_baseline_improvement": -4.61,
+    "reverse_vs_baseline_improvement": -54.56,
+    "attention_vs_baseline_improvement": -55.25,
+    "best_config": "baseline",
+    "best_test_loss": 0.016029846388846636,
+    "test_loss_by_complexity_baseline": {
+      "1": 0.0013500996615870722,
+      "2": 0.014962525236316852,
+      "3": 0.017859399405329726,
+      "4": 0.022502926005809394
+    },
+    "test_loss_by_complexity_fixed": {
+      "1": 0.024626345240644047,
+      "2": 0.021733324302153453,
+      "3": 0.022441807354605475,
+      "4": 0.030406782334601437
+    }
+  },
+  "key_insights": [
+    "Fixed curriculum: -51.47% vs baseline on multi-step tasks",
+    "Adaptive curriculum: -4.61% vs baseline",
+    "Reverse curriculum: -54.56% vs baseline",
+    "Curriculum + attention: -55.25% vs baseline",
+    "Best config: baseline (loss=0.016030)",
+    "Complexity-1: baseline=0.001350, fixed=0.024626 (-1724.04%)",
+    "Complexity-2: baseline=0.014963, fixed=0.021733 (-45.25%)",
+    "Complexity-3: baseline=0.017859, fixed=0.022442 (-25.66%)",
+    "Complexity-4: baseline=0.022503, fixed=0.030407 (-35.12%)"
+  ],
+  "recommendations": [
+    "R1: Curriculum learning does not help on multi-step tasks",
+    "R2: Consider alternative strategies (auxiliary losses, better architectures)"
+  ],
+  "timestamp": "2026-05-20T14:08:33.538067"
+}

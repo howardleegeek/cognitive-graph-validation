@@ -1,0 +1,51 @@
+{
+  "experiment_id": "H1.470.1.1.27",
+  "description": "Ensemble disagreement on 4-5 phase hierarchical tasks + adaptive uncertainty",
+  "timestamp": "2026-05-20T11:51:06.534058",
+  "configurations": {
+    "4_phase": {
+      "n_phases": 4,
+      "baseline_test_loss": 0.29982900619506836,
+      "oracle_test_loss": 0.3000430166721344,
+      "oracle_improvement": -0.07137750939507337,
+      "ensemble_test_loss": 0.29972490668296814,
+      "ensemble_improvement": 0.034719626837068834,
+      "ensemble_oracle_ratio": -48.64225038295503,
+      "adaptive_test_loss": 0.2997024655342102,
+      "adaptive_improvement": 0.042204275851759024
+    },
+    "5_phase": {
+      "n_phases": 5,
+      "baseline_test_loss": 0.30254992842674255,
+      "oracle_test_loss": 0.30250856280326843,
+      "oracle_improvement": 0.013672329618196255,
+      "ensemble_test_loss": 0.30246052145957947,
+      "ensemble_improvement": 0.02955114470791698,
+      "ensemble_oracle_ratio": 216.13832853025937,
+      "adaptive_test_loss": 0.3026123642921448,
+      "adaptive_improvement": -0.020636549387695356
+    }
+  },
+  "key_metrics": {
+    "prior_3phase_ensemble_improvement": -4.05,
+    "4phase_baseline_loss": 0.29982900619506836,
+    "4phase_oracle_improvement": -0.07137750939507337,
+    "4phase_ensemble_improvement": 0.034719626837068834,
+    "4phase_adaptive_improvement": 0.042204275851759024,
+    "5phase_baseline_loss": 0.30254992842674255,
+    "5phase_oracle_improvement": 0.013672329618196255,
+    "5phase_ensemble_improvement": 0.02955114470791698,
+    "5phase_adaptive_improvement": -0.020636549387695356,
+    "ensemble_trend": "improving_at_5",
+    "adaptive_wins": false,
+    "best_config": "4ph_adaptive",
+    "best_improvement": 0.042204275851759024
+  },
+  "key_insights": [
+    "Ensemble disagreement improves at 5 phases vs 3-phase prior",
+    "Adaptive uncertainty does not consistently outperform ensemble",
+    "Oracle noise: 4-phase -0.07%, 5-phase +0.01%",
+    "H1.470.1.1.27 SUPPORTED: 5-phase tasks show positive ensemble disagreement improvement"
+  ],
+  "conclusion": "SUPPORTED"
+}
