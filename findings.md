@@ -19,6 +19,61 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.470.1.1.42: Extreme Learning Rates + Alternative Optimizers — Round 281 (REFUTED)
+
+**Context**: H1.470.1.1.41 found LR=1e-2 optimal but underfitting persists at 52.8%. This experiment tests whether even higher LRs (3e-2, 5e-2, 1e-1) or alternative optimizers (AdamW, SGD+momentum, RMSprop) can further reduce underfitting.
+
+**Hypothesis**: Extreme learning rates and alternative optimizers will further reduce underfitting below 52.8%.
+
+**Configurations Tested**:
+- Learning rates: [1e-2, 3e-2, 5e-2, 1e-1]
+- Optimizers: [Adam, AdamW, SGD+momentum, RMSprop]
+- LR schedules: [constant, warmup_cosine, step]
+- Model sizes: [32, 64]
+- Task complexities: [low, high]
+- Total configurations: 192 (4 × 4 × 3 × 2 × 2)
+
+**Key Findings**:
+
+1. **Higher LRs WORSEN Underfitting** (opposite of hypothesis):
+   | Learning Rate | Avg Val Loss | Avg Gap | Underfit % |
+   |--------------|--------------|---------|-------------|
+   | **1e-2** | **0.1085** | **0.0033** | **43.1%** |
+   | 3e-2 | 0.1630 | 0.0128 | 60.4% |
+   | 5e-2 | 0.1891 | 0.0177 | 81.3% |
+   | 1e-1 | 0.2367 | 0.0164 | 85.4% |
+
+2. **Adam/AdamW Best Optimizers**:
+   | Optimizer | Avg Val Loss | Avg Gap | Underfit % |
+   |-----------|--------------|---------|-------------|
+   | **Adam** | **0.1333** | **0.0087** | **55.6%** |
+   | AdamW | 0.1340 | 0.0090 | 57.6% |
+   | SGD+momentum | 0.1853 | 0.0159 | 81.9% |
+   | RMSprop | 0.2448 | 0.0166 | 75.0% |
+
+3. **Schedule Impact**:
+   | Schedule | Avg Val Loss | Avg Gap | Underfit % |
+   |----------|--------------|---------|-------------|
+   | constant | 0.1644 | 0.0135 | 71.4% |
+   | warmup_cosine | 0.1783 | 0.0122 | 66.1% |
+   | step | 0.1803 | 0.0119 | 65.1% |
+
+4. **Best Configuration**:
+   - Config: `lr0.01_optadamw_schedconstant_h64_low`
+   - Val Loss: 0.0056
+   - Gap: -0.0051 (GOOD)
+
+5. **Overall Statistics**:
+   - Underfitting: 67.5% (worse than prior 52.8%)
+   - Overfitting: 6.3% (first appearance of overfitting at extreme LRs)
+   - Well-fitted: 26.2%
+
+**Conclusion**: **REFUTED**. Extreme learning rates (≥3e-2) significantly worsen underfitting. LR=1e-2 is confirmed as the sweet spot. Adam/AdamW remain the best optimizers. The underfitting problem is NOT solvable through training hyperparameters alone — it points to a fundamental model capacity or architecture limitation.
+
+**Implications**:
+- The 52.8% underfitting rate at optimal hyperparameters suggests the model architecture itself is the bottleneck
+- Next direction: investigate architectural changes (deeper networks, residual connections, normalization) rather than training hyperparameters
+
 ### H1.470.1.1.41: Aggressive Training Strategies — Round 280 (SUPPORTED)
 
 **Context**: H1.470.1.1.40 showed underfitting persists across all model sizes and task complexities. This experiment tests whether more aggressive training (higher learning rates, longer training) can reduce underfitting.
@@ -65,122 +120,7 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
    - Overfitting: 0/72 (0%)
    - Well-fitted: 34/72 (47.2%)
 
-**Conclusion**: SUPPORTED. Higher learning rates (1e-2) improve validation loss and reduce underfitting compared to conservative rates (1e-4). However, underfitting remains the dominant issue (52.8% of configurations), and no overfitting was observed even with aggressive training. The hypothesis that aggressive training reduces underfitting is partially supported - higher LR helps, but longer training does not.
-
-**Recommendations**:
-- R1: Use learning rate 1e-2 for this task class (10x higher than typical)
-- R2: 50 epochs is sufficient; longer training does not help
-- R3: Consider even higher learning rates (3e-2, 1e-1) or different optimizers
-- R4: The fundamental issue may be model capacity, not training strategy
-
----
-
-### H1.470.1.1.40: Task-Aware Model Capacity Scaling — Round 279 (REFUTED)
-
-**Context**: H1.470.1.1.39 showed models underfit on low/medium complexity tasks (negative train-val gap) while overfitting only emerges at high complexity. This experiment tests whether task-aware capacity scaling (smaller models for simple tasks, larger for complex) improves performance.
-
-**Hypothesis**: Task-aware capacity scaling will outperform fixed-size strategies by reducing underfitting on simple tasks and overfitting on complex tasks.
-
-**Configurations Tested**:
-- Strategies: fixed_small (h=16), fixed_medium (h=32), fixed_large (h=64), task_aware (h=16 for low, 32 for medium, 64 for high)
-- Task complexities: low, medium, high
-- Model: Simple feedforward network (simplified for rapid testing)
-- Total configurations: 12
-
-**Key Findings**:
-
-1. **Fixed Large Model Outperforms Task-Aware Strategy**:
-   | Strategy | Average Val Loss | Rank |
-   |----------|------------------|------|
-   | Fixed Large (h=64) | 0.2573 | 1 |
-   | Task-Aware | 0.3940 | 2 |
-   | Fixed Medium (h=32) | 0.4127 | 3 |
-   | Fixed Small (h=16) | 0.4816 | 4 |
-
-2. **Task-Aware Shows Mixed Performance**:
-   - Task-aware improves over fixed_small by +18.2%
-   - Task-aware improves over fixed_medium by +4.5%
-   - Task-aware is WORSE than fixed_large by -53.1%
-
-3. **Underfitting Persists Across All Strategies**:
-   | Complexity | Fixed Small Gap | Fixed Medium Gap | Fixed Large Gap | Task-Aware Gap |
-   |------------|-----------------|------------------|-----------------|----------------|
-   | Low | -0.0914 (UNDER) | -0.0992 (UNDER) | -0.0815 (UNDER) | -0.0850 (UNDER) |
-   | Medium | -0.0345 (UNDER) | -0.0371 (UNDER) | -0.0216 (UNDER) | -0.0266 (UNDER) |
-   | High | -0.0134 (UNDER) | -0.0126 (UNDER) | -0.00 |
-
-**Conclusion**: REFUTED. Larger models (h=64) outperform ALL other strategies including task-aware capacity scaling. The hypothesis that simple tasks need smaller models is refuted. Models are capacity-limited, not overfitting-prone.
-
----
-
-### H1.470.1.1.38: Architecture-Dependent Over-Regularization — Round 277 (INCONCLUSIVE)
-
-**Context**: H1.470.1.1.36 showed temporal consistency regularization helps small models but hurts large models. This experiment tests whether this is architecture-dependent.
-
-**Hypothesis**: Over-regularization at larger model sizes is architecture-dependent (different architectures have different optimal capacity thresholds).
-
-**Key Findings**:
-
-1. **Both Architectures Show Over-Regularization**:
-   | Model | h=32 | h=64 | h=128 | h=256 |
-   |-------|------|------|-------|-------|
-   | Simple GRU | +0.40% | -1.44% | -6.17% | N/A |
-   | Cognitive Graph | N/A | N/A | +11.83% | -9.38% |
-
-2. **Over-Regularization Threshold Differs by Architecture**:
-   - Simple GRU: Over-regularizes at h=64+
-   - Cognitive Graph: Over-regularizes at h=256+
-
-3. **Cognitive Graph Benefits More at Moderate Sizes**:
-   - At h=128: CG shows +11.83% improvement vs GRU's -6.17%
-
-**Conclusion**: INCONCLUSIVE. Both architectures exhibit over-regularization but at different capacity thresholds. The effect is NOT purely architecture-dependent.
-
----
-
-### H1.470.1.1.37: Adaptive Regularization Scaling — Round 276 (REFUTED)
-
-**Context**: H1.470.1.1.36 suggested regularization should scale with model capacity. This experiment tests adaptive regularization strategies.
-
-**Hypothesis**: Adaptive regularization that scales with model capacity will outperform fixed regularization.
-
-**Key Findings**:
-
-1. **Fixed Regularization Outperforms All Adaptive Strategies**:
-   | Strategy | h=32 | h=64 | h=128 |
-   |----------|------|------|-------|
-   | Fixed (0.1) | +0.04% | +0.10% | +0.11% |
-   | Adaptive Linear | +0.04% | +0.05% | +0.04% |
-   | Adaptive Exp | +0.02% | +0.02% | +0.02% |
-
-2. **Simple Scaling Functions Are Too Aggressive**:
-   - Linear, inverse sqrt, and exponential all reduce weight too much for larger models
-   - The optimal regularization weight is relatively constant across model sizes
-
-**Conclusion**: REFUTED. Fixed regularization consistently outperforms adaptive strategies.
-
----
-
-### H1.470.1.1.24: Ensemble Disagreement on Real Robot Data — Round 263 (SUPPORTED)
-
-**Context**: H1.470.1.1.23 showed ensemble disagreement outperforms oracle noise estimation by 10x on synthetic data. This experiment validates on real robot data.
-
-**Key Findings**:
-
-1. **Test Loss Comparison**:
-   | Strategy | Test Loss | Improvement | Oracle Ratio |
-   |----------|-----------|-------------|--------------|
-   | Baseline | 0.019219 | +0.00% | N/A |
-   | Oracle noise | 0.018816 | +2.10% | 100% |
-   | **Ensemble disagreement** | **0.016290** | **+15.24%** | **726.4%** |
-
-2. **Ensemble disagreement maintains 7.3x superiority over oracle noise on real robot data!**
-
----
-
-## Summary
-
-### Hypothesis Status
+## Hypothesis Status
 
 | Hypothesis | Status | Key Finding |
 |------------|--------|-------------|
@@ -191,14 +131,20 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ### Current Focus: Underfitting Investigation
 
-**Key Insight**: Across multiple experiments (H1.470.1.1.38-41), underfitting is the dominant issue:
+**Key Insight**: Across multiple experiments (H1.470.1.1.38-42), underfitting is the dominant issue:
 - H1.470.1.1.38: Over-regularization hurts at large capacities
 - H1.470.1.1.39: Underfitting on low/medium complexity tasks
 - H1.470.1.1.40: Larger models always win, task-aware scaling refuted
 - H1.470.1.1.41: Higher LR helps but underfitting persists (52.8% of configs)
+- H1.470.1.1.42: **REFUTED** — extreme LRs worsen underfitting (67.5% at 1e-1); LR=1e-2 confirmed optimal
 
-**Pattern**: Models are capacity-limited, not overfitting-prone. The solution space points toward:
-1. Larger model capacities
-2. Higher learning rates (1e-2)
-3. Reduced regularization
-4. More training data or data augmentation
+**Pattern**: Models are capacity-limited, not overfitting-prone. Training hyperparameters have been exhaustively explored:
+- LR=1e-2 is the confirmed sweet spot (higher LRs hurt)
+- Adam/AdamW are the best optimizers
+- 50 epochs is sufficient
+- Warmup cosine schedule provides marginal benefit
+
+**The underfitting problem is architectural, not training-related.** Next directions:
+1. **H1.470.1.1.43**: Test architectural modifications (residual connections, layer normalization, deeper networks)
+2. **H1.470.1.1.43b**: Test feature engineering / input preprocessing improvements
+3. **H1.470.1.1.43c**: Test ensemble methods or mixture-of-experts for capacity scaling

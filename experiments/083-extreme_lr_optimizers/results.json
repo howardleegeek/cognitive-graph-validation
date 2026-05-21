@@ -1,0 +1,1836 @@
+{
+  "experiment_id": "H1.470.1.1.42",
+  "description": "Test extreme learning rates (3e-2, 5e-2, 1e-1) and alternative optimizers (AdamW, SGD+momentum, RMSprop) to further reduce underfitting",
+  "conclusion": "REFUTED",
+  "task": "extreme_lr_optimizer_sweep",
+  "configurations_tested": 192,
+  "learning_rates_tested": [
+    0.01,
+    0.03,
+    0.05,
+    0.1
+  ],
+  "optimizers_tested": [
+    "adam",
+    "adamw",
+    "sgd_momentum",
+    "rmsprop"
+  ],
+  "schedules_tested": [
+    "constant",
+    "warmup_cosine",
+    "step"
+  ],
+  "model_sizes_tested": [
+    32,
+    64
+  ],
+  "task_complexities_tested": [
+    "low",
+    "high"
+  ],
+  "key_metrics": {
+    "by_learning_rate": {
+      "0.01": {
+        "avg_val_loss": 0.10854060979585888,
+        "avg_gap": 0.0033339112815156113,
+        "underfit_pct": 43.05555555555555
+      },
+      "0.03": {
+        "avg_val_loss": 0.1629722668116705,
+        "avg_gap": 0.012755225697118377,
+        "underfit_pct": 60.416666666666664
+      },
+      "0.05": {
+        "avg_val_loss": 0.1891284417361021,
+        "avg_gap": 0.01768435796515809,
+        "underfit_pct": 81.25
+      },
+      "0.1": {
+        "avg_val_loss": 0.2367360278343161,
+        "avg_gap": 0.01641006374524699,
+        "underfit_pct": 85.41666666666667
+      }
+    },
+    "by_optimizer": {
+      "adam": {
+        "avg_val_loss": 0.13328237230113396,
+        "avg_gap": 0.008673391294602576,
+        "underfit_pct": 55.55555555555555
+      },
+      "adamw": {
+        "avg_val_loss": 0.13401360027880097,
+        "avg_gap": 0.0090467300342425,
+        "underfit_pct": 57.638888888888886
+      },
+      "sgd_momentum": {
+        "avg_val_loss": 0.1852684903682934,
+        "avg_gap": 0.015850602235231135,
+        "underfit_pct": 81.94444444444444
+      },
+      "rmsprop": {
+        "avg_val_loss": 0.24481288322971925,
+        "avg_gap": 0.016612835124962862,
+        "underfit_pct": 74.99999999999999
+      }
+    },
+    "by_schedule": {
+      "constant": {
+        "avg_val_loss": 0.1644479084958827,
+        "avg_gap": 0.013474330183271377,
+        "underfit_pct": 71.35416666666666
+      },
+      "warmup_cosine": {
+        "avg_val_loss": 0.17832752723188605,
+        "avg_gap": 0.012217487984647352,
+        "underfit_pct": 66.14583333333333
+      },
+      "step": {
+        "avg_val_loss": 0.18025757390569197,
+        "avg_gap": 0.011945850848860573,
+        "underfit_pct": 65.10416666666666
+      }
+    },
+    "total_underfit_pct": 67.53472222222221,
+    "total_overfit_pct": 6.25,
+    "total_good_pct": 26.21527777777778,
+    "best_config": "lr0.01_optadamw_schedconstant_h64_low",
+    "best_val_loss": 0.005582060820112626,
+    "best_gap": -0.0050535718037281185,
+    "prior_underfit_pct": 52.8,
+    "prior_best_lr": 0.01
+  },
+  "all_results": [
+    {
+      "config_name": "lr0.01_optadam_schedconstant_h32_low",
+      "avg_train_loss": 0.018688772494594257,
+      "avg_val_loss": 0.0230515884856383,
+      "avg_gap": -0.0043628159910440445,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.01_optadam_schedconstant_h32_high",
+      "avg_train_loss": 0.021902990837891895,
+      "avg_val_loss": 0.03801510979731878,
+      "avg_gap": -0.01611211895942688,
+      "underfit_pct": 0.0,
+      "overfit_pct": 100.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optadam_schedconstant_h64_low",
+      "avg_train_loss": 0.0005422679338759432,
+      "avg_val_loss": 0.005609752610325813,
+      "avg_gap": -0.00506748467644987,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.01_optadam_schedconstant_h64_high",
+      "avg_train_loss": 0.0012478162340509396,
+      "avg_val_loss": 0.022182762001951534,
+      "avg_gap": -0.020934945767900597,
+      "underfit_pct": 0.0,
+      "overfit_pct": 100.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optadam_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.02900479423503081,
+      "avg_val_loss": 0.0306098572909832,
+      "avg_gap": -0.00160506305595239,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.01_optadam_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.057642711947361626,
+      "avg_val_loss": 0.06988925983508427,
+      "avg_gap": -0.01224654788772265,
+      "underfit_pct": 0.0,
+      "overfit_pct": 66.66666666666666,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.01_optadam_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.0031832202027241388,
+      "avg_val_loss": 0.007908951801558336,
+      "avg_gap": -0.004725731598834197,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.01_optadam_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.004257737969358762,
+      "avg_val_loss": 0.0244311410933733,
+      "avg_gap": -0.020173403124014538,
+      "underfit_pct": 0.0,
+      "overfit_pct": 100.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optadam_schedstep_h32_low",
+      "avg_train_loss": 0.02185027953237295,
+      "avg_val_loss": 0.02395674337943395,
+      "avg_gap": -0.0021064638470609984,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.01_optadam_schedstep_h32_high",
+      "avg_train_loss": 0.05522738335033258,
+      "avg_val_loss": 0.06398826589186986,
+      "avg_gap": -0.008760882541537285,
+      "underfit_pct": 0.0,
+      "overfit_pct": 33.33333333333333,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.01_optadam_schedstep_h64_low",
+      "avg_train_loss": 0.0019046435481868684,
+      "avg_val_loss": 0.006587795602778594,
+      "avg_gap": -0.0046831520545917256,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.01_optadam_schedstep_h64_high",
+      "avg_train_loss": 0.0026713331462815404,
+      "avg_val_loss": 0.02329614261786143,
+      "avg_gap": -0.02062480947157989,
+      "underfit_pct": 0.0,
+      "overfit_pct": 100.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optadamw_schedconstant_h32_low",
+      "avg_train_loss": 0.02057441013554732,
+      "avg_val_loss": 0.02427413749198119,
+      "avg_gap": -0.0036997273564338684,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.01_optadamw_schedconstant_h32_high",
+      "avg_train_loss": 0.021359939749042194,
+      "avg_val_loss": 0.03978856777151426,
+      "avg_gap": -0.018428628022472065,
+      "underfit_pct": 0.0,
+      "overfit_pct": 100.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optadamw_schedconstant_h64_low",
+      "avg_train_loss": 0.0005284890163845072,
+      "avg_val_loss": 0.005582060820112626,
+      "avg_gap": -0.0050535718037281185,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.01_optadamw_schedconstant_h64_high",
+      "avg_train_loss": 0.0016705717231767874,
+      "avg_val_loss": 0.022455052783091862,
+      "avg_gap": -0.020784481059915077,
+      "underfit_pct": 0.0,
+      "overfit_pct": 100.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optadamw_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.04394874349236488,
+      "avg_val_loss": 0.04626130064328512,
+      "avg_gap": -0.0023125571509202323,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.01_optadamw_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.0619037834306558,
+      "avg_val_loss": 0.07380507389704387,
+      "avg_gap": -0.011901290466388067,
+      "underfit_pct": 0.0,
+      "overfit_pct": 66.66666666666666,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.01_optadamw_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.0032770048516492047,
+      "avg_val_loss": 0.008751239627599716,
+      "avg_gap": -0.005474234775950511,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.01_optadamw_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.0035626327929397426,
+      "avg_val_loss": 0.024127384647727013,
+      "avg_gap": -0.02056475185478727,
+      "underfit_pct": 0.0,
+      "overfit_pct": 100.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optadamw_schedstep_h32_low",
+      "avg_train_loss": 0.033597235878308616,
+      "avg_val_loss": 0.03839817146460215,
+      "avg_gap": -0.004800935586293538,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.01_optadamw_schedstep_h32_high",
+      "avg_train_loss": 0.05561242873469988,
+      "avg_val_loss": 0.06665884082516034,
+      "avg_gap": -0.011046412090460459,
+      "underfit_pct": 0.0,
+      "overfit_pct": 66.66666666666666,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.01_optadamw_schedstep_h64_low",
+      "avg_train_loss": 0.0012203074099185567,
+      "avg_val_loss": 0.006209155699859063,
+      "avg_gap": -0.004988848289940506,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.01_optadamw_schedstep_h64_high",
+      "avg_train_loss": 0.0025136790548761687,
+      "avg_val_loss": 0.02372768645485242,
+      "avg_gap": -0.021214007399976254,
+      "underfit_pct": 0.0,
+      "overfit_pct": 100.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optsgd_momentum_schedconstant_h32_low",
+      "avg_train_loss": 0.16621783872445425,
+      "avg_val_loss": 0.15562744935353598,
+      "avg_gap": 0.010590389370918274,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optsgd_momentum_schedconstant_h32_high",
+      "avg_train_loss": 0.23778297007083893,
+      "avg_val_loss": 0.217574675877889,
+      "avg_gap": 0.020208294192949932,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optsgd_momentum_schedconstant_h64_low",
+      "avg_train_loss": 0.1676628440618515,
+      "avg_val_loss": 0.15464270611604056,
+      "avg_gap": 0.013020137945810953,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.01_optsgd_momentum_schedconstant_h64_high",
+      "avg_train_loss": 0.23879210154215494,
+      "avg_val_loss": 0.21785066028436026,
+      "avg_gap": 0.020941441257794697,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optsgd_momentum_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.170747309923172,
+      "avg_val_loss": 0.15267157554626465,
+      "avg_gap": 0.01807573437690735,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optsgd_momentum_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.24280174573262533,
+      "avg_val_loss": 0.22296189268430075,
+      "avg_gap": 0.019839853048324585,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optsgd_momentum_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.16797962288061777,
+      "avg_val_loss": 0.15611512959003448,
+      "avg_gap": 0.011864493290583292,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.01_optsgd_momentum_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.2422755559285482,
+      "avg_val_loss": 0.22117134431997934,
+      "avg_gap": 0.02110421160856883,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optsgd_momentum_schedstep_h32_low",
+      "avg_train_loss": 0.17084506154060364,
+      "avg_val_loss": 0.15436042348543802,
+      "avg_gap": 0.016484638055165608,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optsgd_momentum_schedstep_h32_high",
+      "avg_train_loss": 0.24292530119419098,
+      "avg_val_loss": 0.2243777165810267,
+      "avg_gap": 0.018547584613164265,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optsgd_momentum_schedstep_h64_low",
+      "avg_train_loss": 0.16777912278970084,
+      "avg_val_loss": 0.1578480303287506,
+      "avg_gap": 0.009931092460950216,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.01_optsgd_momentum_schedstep_h64_high",
+      "avg_train_loss": 0.2406023144721985,
+      "avg_val_loss": 0.22016012171904245,
+      "avg_gap": 0.020442192753156025,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optrmsprop_schedconstant_h32_low",
+      "avg_train_loss": 0.1624844173590342,
+      "avg_val_loss": 0.14957110583782196,
+      "avg_gap": 0.01291331152121226,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.01_optrmsprop_schedconstant_h32_high",
+      "avg_train_loss": 0.23918206989765167,
+      "avg_val_loss": 0.21902749935785928,
+      "avg_gap": 0.020154570539792378,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optrmsprop_schedconstant_h64_low",
+      "avg_train_loss": 0.16703871389230093,
+      "avg_val_loss": 0.15612420439720154,
+      "avg_gap": 0.010914509495099386,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.01_optrmsprop_schedconstant_h64_high",
+      "avg_train_loss": 0.24129251639048258,
+      "avg_val_loss": 0.21807804703712463,
+      "avg_gap": 0.023214469353357952,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optrmsprop_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.16591361661752066,
+      "avg_val_loss": 0.1516148547331492,
+      "avg_gap": 0.014298761884371439,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optrmsprop_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.2419335494438807,
+      "avg_val_loss": 0.21832544108231863,
+      "avg_gap": 0.023608108361562092,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optrmsprop_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.1760257681210836,
+      "avg_val_loss": 0.15570361415545145,
+      "avg_gap": 0.020322153965632122,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.01_optrmsprop_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.24040286242961884,
+      "avg_val_loss": 0.22025945782661438,
+      "avg_gap": 0.020143404603004456,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optrmsprop_schedstep_h32_low",
+      "avg_train_loss": 0.16682051618893942,
+      "avg_val_loss": 0.15526698529720306,
+      "avg_gap": 0.011553530891736349,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.01_optrmsprop_schedstep_h32_high",
+      "avg_train_loss": 0.2387297401825587,
+      "avg_val_loss": 0.21618008613586426,
+      "avg_gap": 0.02254965404669444,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.01_optrmsprop_schedstep_h64_low",
+      "avg_train_loss": 0.1663929522037506,
+      "avg_val_loss": 0.15626023213068643,
+      "avg_gap": 0.010132720073064169,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.01_optrmsprop_schedstep_h64_high",
+      "avg_train_loss": 0.2394553224245707,
+      "avg_val_loss": 0.2186099737882614,
+      "avg_gap": 0.020845348636309307,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optadam_schedconstant_h32_low",
+      "avg_train_loss": 0.11186292519172032,
+      "avg_val_loss": 0.10515402505795161,
+      "avg_gap": 0.006708900133768718,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.03_optadam_schedconstant_h32_high",
+      "avg_train_loss": 0.17338132858276367,
+      "avg_val_loss": 0.1562899947166443,
+      "avg_gap": 0.017091333866119385,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optadam_schedconstant_h64_low",
+      "avg_train_loss": 0.13847350577513376,
+      "avg_val_loss": 0.1284737860163053,
+      "avg_gap": 0.009999719758828482,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.03_optadam_schedconstant_h64_high",
+      "avg_train_loss": 0.206564595301946,
+      "avg_val_loss": 0.18327484528223673,
+      "avg_gap": 0.02328975001970927,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optadam_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.10071437060832977,
+      "avg_val_loss": 0.1035371075073878,
+      "avg_gap": -0.002822736899058024,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.03_optadam_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.14281942943731943,
+      "avg_val_loss": 0.14774594704310098,
+      "avg_gap": -0.004926517605781555,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.03_optadam_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.1290881484746933,
+      "avg_val_loss": 0.12283245225747426,
+      "avg_gap": 0.006255696217219035,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.03_optadam_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.20193272829055786,
+      "avg_val_loss": 0.19085511565208435,
+      "avg_gap": 0.01107761263847351,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.03_optadam_schedstep_h32_low",
+      "avg_train_loss": 0.08823122332493465,
+      "avg_val_loss": 0.08281301458676656,
+      "avg_gap": 0.00541820873816808,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.03_optadam_schedstep_h32_high",
+      "avg_train_loss": 0.15622089803218842,
+      "avg_val_loss": 0.1407497525215149,
+      "avg_gap": 0.015471145510673523,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optadam_schedstep_h64_low",
+      "avg_train_loss": 0.1439198354880015,
+      "avg_val_loss": 0.1391152615348498,
+      "avg_gap": 0.004804573953151703,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.03_optadam_schedstep_h64_high",
+      "avg_train_loss": 0.1772101769844691,
+      "avg_val_loss": 0.1660851240158081,
+      "avg_gap": 0.01112505296866099,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.03_optadamw_schedconstant_h32_low",
+      "avg_train_loss": 0.0984400783975919,
+      "avg_val_loss": 0.08845266948143642,
+      "avg_gap": 0.009987408916155497,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.03_optadamw_schedconstant_h32_high",
+      "avg_train_loss": 0.177790234486262,
+      "avg_val_loss": 0.15436563889185587,
+      "avg_gap": 0.023424595594406128,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optadamw_schedconstant_h64_low",
+      "avg_train_loss": 0.14723158379395804,
+      "avg_val_loss": 0.1383179873228073,
+      "avg_gap": 0.008913596471150717,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.03_optadamw_schedconstant_h64_high",
+      "avg_train_loss": 0.20764346420764923,
+      "avg_val_loss": 0.18279650310675302,
+      "avg_gap": 0.0248469611008962,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optadamw_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.10759731630484264,
+      "avg_val_loss": 0.10549526164929073,
+      "avg_gap": 0.0021020546555519104,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.03_optadamw_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.15371411542097727,
+      "avg_val_loss": 0.1522426704565684,
+      "avg_gap": 0.0014714449644088745,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.03_optadamw_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.14040581385294595,
+      "avg_val_loss": 0.13447988530000052,
+      "avg_gap": 0.005925928552945455,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.03_optadamw_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.20383488138516745,
+      "avg_val_loss": 0.18556128442287445,
+      "avg_gap": 0.018273596962292988,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optadamw_schedstep_h32_low",
+      "avg_train_loss": 0.0693351998925209,
+      "avg_val_loss": 0.06301091487209003,
+      "avg_gap": 0.0063242850204308825,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.03_optadamw_schedstep_h32_high",
+      "avg_train_loss": 0.15152629713217416,
+      "avg_val_loss": 0.1431955322623253,
+      "avg_gap": 0.008330764869848887,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.03_optadamw_schedstep_h64_low",
+      "avg_train_loss": 0.1133772482474645,
+      "avg_val_loss": 0.11105939994255702,
+      "avg_gap": 0.0023178483049074807,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.03_optadamw_schedstep_h64_high",
+      "avg_train_loss": 0.20700099567572275,
+      "avg_val_loss": 0.18598182002703348,
+      "avg_gap": 0.02101917564868927,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optsgd_momentum_schedconstant_h32_low",
+      "avg_train_loss": 0.16503735880057016,
+      "avg_val_loss": 0.1551075428724289,
+      "avg_gap": 0.009929815928141275,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.03_optsgd_momentum_schedconstant_h32_high",
+      "avg_train_loss": 0.23540039857228598,
+      "avg_val_loss": 0.2151406854391098,
+      "avg_gap": 0.020259713133176167,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optsgd_momentum_schedconstant_h64_low",
+      "avg_train_loss": 0.16633245845635733,
+      "avg_val_loss": 0.15504277249177298,
+      "avg_gap": 0.01128968596458435,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optsgd_momentum_schedconstant_h64_high",
+      "avg_train_loss": 0.23576389253139496,
+      "avg_val_loss": 0.21623370051383972,
+      "avg_gap": 0.019530192017555237,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optsgd_momentum_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.16565097868442535,
+      "avg_val_loss": 0.15570995211601257,
+      "avg_gap": 0.00994102656841278,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.03_optsgd_momentum_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.23714358111222586,
+      "avg_val_loss": 0.2171263794104258,
+      "avg_gap": 0.02001720170180003,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optsgd_momentum_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.16639721393585205,
+      "avg_val_loss": 0.15554685393969217,
+      "avg_gap": 0.010850359996159872,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.03_optsgd_momentum_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.23936861753463745,
+      "avg_val_loss": 0.21694921950499216,
+      "avg_gap": 0.022419398029645283,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optsgd_momentum_schedstep_h32_low",
+      "avg_train_loss": 0.16633316377798715,
+      "avg_val_loss": 0.1558439830938975,
+      "avg_gap": 0.01048918068408966,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.03_optsgd_momentum_schedstep_h32_high",
+      "avg_train_loss": 0.2376444141070048,
+      "avg_val_loss": 0.21774225930372873,
+      "avg_gap": 0.019902154803276062,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optsgd_momentum_schedstep_h64_low",
+      "avg_train_loss": 0.1676225165526072,
+      "avg_val_loss": 0.15410248438517252,
+      "avg_gap": 0.013520032167434692,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.03_optsgd_momentum_schedstep_h64_high",
+      "avg_train_loss": 0.23863917589187622,
+      "avg_val_loss": 0.21761193374792734,
+      "avg_gap": 0.02102724214394887,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optrmsprop_schedconstant_h32_low",
+      "avg_train_loss": 0.1667419672012329,
+      "avg_val_loss": 0.15542577703793845,
+      "avg_gap": 0.011316190163294474,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optrmsprop_schedconstant_h32_high",
+      "avg_train_loss": 0.23704960942268372,
+      "avg_val_loss": 0.21705109377702078,
+      "avg_gap": 0.019998515645662945,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optrmsprop_schedconstant_h64_low",
+      "avg_train_loss": 0.16594046850999197,
+      "avg_val_loss": 0.1560649424791336,
+      "avg_gap": 0.009875526030858358,
+      "underfit_pct": 0.0,
+      "overfit_pct": 0.0,
+      "good_pct": 100.0
+    },
+    {
+      "config_name": "lr0.03_optrmsprop_schedconstant_h64_high",
+      "avg_train_loss": 0.24076017240683237,
+      "avg_val_loss": 0.21967324117819467,
+      "avg_gap": 0.021086931228637695,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optrmsprop_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.16749273240566254,
+      "avg_val_loss": 0.15639208257198334,
+      "avg_gap": 0.0111006498336792,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.03_optrmsprop_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.24012975891431174,
+      "avg_val_loss": 0.2195009042819341,
+      "avg_gap": 0.020628854632377625,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optrmsprop_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.18377333879470825,
+      "avg_val_loss": 0.16965804000695547,
+      "avg_gap": 0.014115298787752787,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.03_optrmsprop_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.241526131828626,
+      "avg_val_loss": 0.21811497708161673,
+      "avg_gap": 0.023411154747009277,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optrmsprop_schedstep_h32_low",
+      "avg_train_loss": 0.16635257999102274,
+      "avg_val_loss": 0.15606157978375754,
+      "avg_gap": 0.010291000207265219,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.03_optrmsprop_schedstep_h32_high",
+      "avg_train_loss": 0.23721905052661896,
+      "avg_val_loss": 0.21665841341018677,
+      "avg_gap": 0.02056063711643219,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.03_optrmsprop_schedstep_h64_low",
+      "avg_train_loss": 0.17230195303757986,
+      "avg_val_loss": 0.16323734819889069,
+      "avg_gap": 0.009064604838689169,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.03_optrmsprop_schedstep_h64_high",
+      "avg_train_loss": 0.2459817131360372,
+      "avg_val_loss": 0.2307866464058558,
+      "avg_gap": 0.015195066730181376,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadam_schedconstant_h32_low",
+      "avg_train_loss": 0.15744448701540628,
+      "avg_val_loss": 0.1454103241364161,
+      "avg_gap": 0.012034162878990173,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.05_optadam_schedconstant_h32_high",
+      "avg_train_loss": 0.23542932172616324,
+      "avg_val_loss": 0.20926760137081146,
+      "avg_gap": 0.026161720355351765,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadam_schedconstant_h64_low",
+      "avg_train_loss": 0.16190655529499054,
+      "avg_val_loss": 0.14970665673414865,
+      "avg_gap": 0.012199898560841879,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadam_schedconstant_h64_high",
+      "avg_train_loss": 0.24663944045702615,
+      "avg_val_loss": 0.21692348023255667,
+      "avg_gap": 0.0297159602244695,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadam_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.15037027994791666,
+      "avg_val_loss": 0.14019890626271567,
+      "avg_gap": 0.01017137368520101,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.05_optadam_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.22622870405515036,
+      "avg_val_loss": 0.20548659563064575,
+      "avg_gap": 0.020742108424504597,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadam_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.1665144662062327,
+      "avg_val_loss": 0.15486581126848856,
+      "avg_gap": 0.01164865493774414,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.05_optadam_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.23487486441930136,
+      "avg_val_loss": 0.21371806661287943,
+      "avg_gap": 0.021156797806421917,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadam_schedstep_h32_low",
+      "avg_train_loss": 0.15476695199807486,
+      "avg_val_loss": 0.14461632072925568,
+      "avg_gap": 0.010150631268819174,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.05_optadam_schedstep_h32_high",
+      "avg_train_loss": 0.22811305026213327,
+      "avg_val_loss": 0.2073975751797358,
+      "avg_gap": 0.02071547508239746,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadam_schedstep_h64_low",
+      "avg_train_loss": 0.16641443967819214,
+      "avg_val_loss": 0.15450498461723328,
+      "avg_gap": 0.011909455060958862,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadam_schedstep_h64_high",
+      "avg_train_loss": 0.23977166414260864,
+      "avg_val_loss": 0.21736168364683786,
+      "avg_gap": 0.02240998049577077,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadamw_schedconstant_h32_low",
+      "avg_train_loss": 0.16163292030493417,
+      "avg_val_loss": 0.15058684349060059,
+      "avg_gap": 0.011046076814333597,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.05_optadamw_schedconstant_h32_high",
+      "avg_train_loss": 0.22807076076666513,
+      "avg_val_loss": 0.20452910661697388,
+      "avg_gap": 0.023541654149691265,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadamw_schedconstant_h64_low",
+      "avg_train_loss": 0.16695507367451987,
+      "avg_val_loss": 0.15417984127998352,
+      "avg_gap": 0.012775232394536337,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadamw_schedconstant_h64_high",
+      "avg_train_loss": 0.24422687292099,
+      "avg_val_loss": 0.21705297629038492,
+      "avg_gap": 0.02717389663060506,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadamw_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.14819775521755219,
+      "avg_val_loss": 0.13617053627967834,
+      "avg_gap": 0.01202721893787384,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.05_optadamw_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.23393376668294272,
+      "avg_val_loss": 0.2138171593348185,
+      "avg_gap": 0.020116607348124187,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadamw_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.16393354535102844,
+      "avg_val_loss": 0.15109893679618835,
+      "avg_gap": 0.012834608554840088,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadamw_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.2395562877257665,
+      "avg_val_loss": 0.21793142954508463,
+      "avg_gap": 0.021624858180681866,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadamw_schedstep_h32_low",
+      "avg_train_loss": 0.1614376405874888,
+      "avg_val_loss": 0.14985716342926025,
+      "avg_gap": 0.011580477158228556,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.05_optadamw_schedstep_h32_high",
+      "avg_train_loss": 0.2323949933052063,
+      "avg_val_loss": 0.20701285203297934,
+      "avg_gap": 0.02538214127222697,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadamw_schedstep_h64_low",
+      "avg_train_loss": 0.17037650446097055,
+      "avg_val_loss": 0.15388664603233337,
+      "avg_gap": 0.016489858428637188,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optadamw_schedstep_h64_high",
+      "avg_train_loss": 0.237168421347936,
+      "avg_val_loss": 0.21678059796492258,
+      "avg_gap": 0.02038782338301341,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optsgd_momentum_schedconstant_h32_low",
+      "avg_train_loss": 0.1673411230246226,
+      "avg_val_loss": 0.1542263627052307,
+      "avg_gap": 0.013114760319391886,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optsgd_momentum_schedconstant_h32_high",
+      "avg_train_loss": 0.23065887888272604,
+      "avg_val_loss": 0.2123248279094696,
+      "avg_gap": 0.018334050973256428,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optsgd_momentum_schedconstant_h64_low",
+      "avg_train_loss": 0.166368638475736,
+      "avg_val_loss": 0.1545406679312388,
+      "avg_gap": 0.011827970544497171,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.05_optsgd_momentum_schedconstant_h64_high",
+      "avg_train_loss": 0.2344876080751419,
+      "avg_val_loss": 0.21511986354986826,
+      "avg_gap": 0.01936774452527364,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optsgd_momentum_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.16627108554045358,
+      "avg_val_loss": 0.1551925092935562,
+      "avg_gap": 0.011078576246897379,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optsgd_momentum_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.23523246745268503,
+      "avg_val_loss": 0.21560794115066528,
+      "avg_gap": 0.019624526302019756,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optsgd_momentum_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.16752964754899344,
+      "avg_val_loss": 0.15428066750367483,
+      "avg_gap": 0.013248980045318604,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.05_optsgd_momentum_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.23992225031057993,
+      "avg_val_loss": 0.21687682469685873,
+      "avg_gap": 0.02304542561372121,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optsgd_momentum_schedstep_h32_low",
+      "avg_train_loss": 0.1651819795370102,
+      "avg_val_loss": 0.15537278850873312,
+      "avg_gap": 0.009809191028277079,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.05_optsgd_momentum_schedstep_h32_high",
+      "avg_train_loss": 0.2375126282374064,
+      "avg_val_loss": 0.2166953831911087,
+      "avg_gap": 0.02081724504629771,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optsgd_momentum_schedstep_h64_low",
+      "avg_train_loss": 0.16550305982430777,
+      "avg_val_loss": 0.15551447868347168,
+      "avg_gap": 0.00998858114083608,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.05_optsgd_momentum_schedstep_h64_high",
+      "avg_train_loss": 0.23703889548778534,
+      "avg_val_loss": 0.21735441188017526,
+      "avg_gap": 0.019684483607610066,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optrmsprop_schedconstant_h32_low",
+      "avg_train_loss": 0.16626709699630737,
+      "avg_val_loss": 0.1564442664384842,
+      "avg_gap": 0.009822830557823181,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.05_optrmsprop_schedconstant_h32_high",
+      "avg_train_loss": 0.24852479000886282,
+      "avg_val_loss": 0.22536456088225046,
+      "avg_gap": 0.023160229126612347,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optrmsprop_schedconstant_h64_low",
+      "avg_train_loss": 0.1704551229874293,
+      "avg_val_loss": 0.16110462447007498,
+      "avg_gap": 0.00935049851735433,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.05_optrmsprop_schedconstant_h64_high",
+      "avg_train_loss": 0.35090168317159015,
+      "avg_val_loss": 0.30232761800289154,
+      "avg_gap": 0.04857406516869863,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optrmsprop_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.17424687246481577,
+      "avg_val_loss": 0.16640534003575644,
+      "avg_gap": 0.007841532429059347,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.05_optrmsprop_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.24087855219841003,
+      "avg_val_loss": 0.2221398651599884,
+      "avg_gap": 0.01873868703842163,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optrmsprop_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.22294011215368906,
+      "avg_val_loss": 0.17675748964150748,
+      "avg_gap": 0.0461826225121816,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optrmsprop_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.26080070932706195,
+      "avg_val_loss": 0.2409492830435435,
+      "avg_gap": 0.019851426283518474,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.05_optrmsprop_schedstep_h32_low",
+      "avg_train_loss": 0.17608742912610373,
+      "avg_val_loss": 0.16218609114487967,
+      "avg_gap": 0.01390133798122406,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.05_optrmsprop_schedstep_h32_high",
+      "avg_train_loss": 0.24574376145998636,
+      "avg_val_loss": 0.22284832100073496,
+      "avg_gap": 0.022895440459251404,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optrmsprop_schedstep_h64_low",
+      "avg_train_loss": 0.22253418465455374,
+      "avg_val_loss": 0.21716918051242828,
+      "avg_gap": 0.005365004142125447,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 33.33333333333333,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.05_optrmsprop_schedstep_h64_high",
+      "avg_train_loss": 0.278227041165034,
+      "avg_val_loss": 0.26899974048137665,
+      "avg_gap": 0.009227300683657328,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 33.33333333333333,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.1_optadam_schedconstant_h32_low",
+      "avg_train_loss": 0.16875693698724112,
+      "avg_val_loss": 0.15400336186091104,
+      "avg_gap": 0.014753575126330057,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadam_schedconstant_h32_high",
+      "avg_train_loss": 0.2401422212521235,
+      "avg_val_loss": 0.21784169971942902,
+      "avg_gap": 0.0223005215326945,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadam_schedconstant_h64_low",
+      "avg_train_loss": 0.17405739426612854,
+      "avg_val_loss": 0.15561496218045553,
+      "avg_gap": 0.018442432085673015,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadam_schedconstant_h64_high",
+      "avg_train_loss": 0.24166836341222128,
+      "avg_val_loss": 0.21756077309449515,
+      "avg_gap": 0.024107590317726135,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadam_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.16546777387460074,
+      "avg_val_loss": 0.15457861622174582,
+      "avg_gap": 0.01088915765285492,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.1_optadam_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.24264908333619437,
+      "avg_val_loss": 0.21796363592147827,
+      "avg_gap": 0.024685447414716084,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadam_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.17224860191345215,
+      "avg_val_loss": 0.15908260643482208,
+      "avg_gap": 0.013165995478630066,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadam_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.23972228666146597,
+      "avg_val_loss": 0.21767987807591757,
+      "avg_gap": 0.0220424085855484,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadam_schedstep_h32_low",
+      "avg_train_loss": 0.16650726397832236,
+      "avg_val_loss": 0.1535496562719345,
+      "avg_gap": 0.012957607706387838,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadam_schedstep_h32_high",
+      "avg_train_loss": 0.23554622133572897,
+      "avg_val_loss": 0.21289566655953726,
+      "avg_gap": 0.02265055477619171,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadam_schedstep_h64_low",
+      "avg_train_loss": 0.1671290248632431,
+      "avg_val_loss": 0.15404616792996725,
+      "avg_gap": 0.013082856933275858,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadam_schedstep_h64_high",
+      "avg_train_loss": 0.2429641385873159,
+      "avg_val_loss": 0.2168250431617101,
+      "avg_gap": 0.026139095425605774,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadamw_schedconstant_h32_low",
+      "avg_train_loss": 0.16501614451408386,
+      "avg_val_loss": 0.15358459452788034,
+      "avg_gap": 0.011431549986203512,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadamw_schedconstant_h32_high",
+      "avg_train_loss": 0.23947931826114655,
+      "avg_val_loss": 0.21813360850016275,
+      "avg_gap": 0.021345709760983784,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadamw_schedconstant_h64_low",
+      "avg_train_loss": 0.1672077625989914,
+      "avg_val_loss": 0.15485746661822,
+      "avg_gap": 0.012350295980771383,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadamw_schedconstant_h64_high",
+      "avg_train_loss": 0.24042879541714987,
+      "avg_val_loss": 0.21761169036229452,
+      "avg_gap": 0.022817105054855347,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadamw_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.16662023961544037,
+      "avg_val_loss": 0.1558203399181366,
+      "avg_gap": 0.010799899697303772,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.1_optadamw_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.24339698751767477,
+      "avg_val_loss": 0.2180269459883372,
+      "avg_gap": 0.025370041529337566,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadamw_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.16833501557509103,
+      "avg_val_loss": 0.1554584801197052,
+      "avg_gap": 0.012876535455385843,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadamw_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.24009367326895395,
+      "avg_val_loss": 0.21748765309651694,
+      "avg_gap": 0.02260602017243703,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadamw_schedstep_h32_low",
+      "avg_train_loss": 0.1670201768477758,
+      "avg_val_loss": 0.15464531381924948,
+      "avg_gap": 0.012374863028526306,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadamw_schedstep_h32_high",
+      "avg_train_loss": 0.241040567557017,
+      "avg_val_loss": 0.2173243761062622,
+      "avg_gap": 0.023716191450754803,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadamw_schedstep_h64_low",
+      "avg_train_loss": 0.17264351745446524,
+      "avg_val_loss": 0.15421083072821298,
+      "avg_gap": 0.01843268672625224,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optadamw_schedstep_h64_high",
+      "avg_train_loss": 0.24006265898545584,
+      "avg_val_loss": 0.21758918464183807,
+      "avg_gap": 0.022473474343617756,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optsgd_momentum_schedconstant_h32_low",
+      "avg_train_loss": 0.1624609430631002,
+      "avg_val_loss": 0.15266726414362589,
+      "avg_gap": 0.009793678919474283,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.1_optsgd_momentum_schedconstant_h32_high",
+      "avg_train_loss": 0.21285693844159445,
+      "avg_val_loss": 0.19395868480205536,
+      "avg_gap": 0.01889825363953908,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optsgd_momentum_schedconstant_h64_low",
+      "avg_train_loss": 0.16493255893389383,
+      "avg_val_loss": 0.15453899403413138,
+      "avg_gap": 0.010393564899762472,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.1_optsgd_momentum_schedconstant_h64_high",
+      "avg_train_loss": 0.22946500778198242,
+      "avg_val_loss": 0.21035862465699515,
+      "avg_gap": 0.019106383124987285,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optsgd_momentum_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.1648959219455719,
+      "avg_val_loss": 0.1537345896164576,
+      "avg_gap": 0.011161332329114279,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.1_optsgd_momentum_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.23374480505784354,
+      "avg_val_loss": 0.21410627663135529,
+      "avg_gap": 0.01963852842648824,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optsgd_momentum_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.1667823443810145,
+      "avg_val_loss": 0.15496313571929932,
+      "avg_gap": 0.011819208661715189,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.1_optsgd_momentum_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.23374953866004944,
+      "avg_val_loss": 0.21476050714651743,
+      "avg_gap": 0.018989031513532,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optsgd_momentum_schedstep_h32_low",
+      "avg_train_loss": 0.16559188067913055,
+      "avg_val_loss": 0.15409964819749197,
+      "avg_gap": 0.01149223248163859,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.1_optsgd_momentum_schedstep_h32_high",
+      "avg_train_loss": 0.22909083465735117,
+      "avg_val_loss": 0.21009602646032968,
+      "avg_gap": 0.018994808197021484,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optsgd_momentum_schedstep_h64_low",
+      "avg_train_loss": 0.1661463975906372,
+      "avg_val_loss": 0.15472586949666342,
+      "avg_gap": 0.011420528093973795,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.1_optsgd_momentum_schedstep_h64_high",
+      "avg_train_loss": 0.23320545256137848,
+      "avg_val_loss": 0.21425169706344604,
+      "avg_gap": 0.018953755497932434,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optrmsprop_schedconstant_h32_low",
+      "avg_train_loss": 0.19097542266050974,
+      "avg_val_loss": 0.16988805929819742,
+      "avg_gap": 0.021087363362312317,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optrmsprop_schedconstant_h32_high",
+      "avg_train_loss": 0.24178817371527353,
+      "avg_val_loss": 0.22173826893170676,
+      "avg_gap": 0.02004990478356679,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optrmsprop_schedconstant_h64_low",
+      "avg_train_loss": 0.3325606832901637,
+      "avg_val_loss": 0.32744017243385315,
+      "avg_gap": 0.005120510856310527,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.1_optrmsprop_schedconstant_h64_high",
+      "avg_train_loss": 0.296533465385437,
+      "avg_val_loss": 0.27943771084149677,
+      "avg_gap": 0.017095754543940227,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.1_optrmsprop_schedwarmup_cosine_h32_low",
+      "avg_train_loss": 0.22856188813845316,
+      "avg_val_loss": 0.20457578698794046,
+      "avg_gap": 0.023986101150512695,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optrmsprop_schedwarmup_cosine_h32_high",
+      "avg_train_loss": 0.26033168534437817,
+      "avg_val_loss": 0.24693978329499564,
+      "avg_gap": 0.013391902049382528,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 0.0,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.1_optrmsprop_schedwarmup_cosine_h64_low",
+      "avg_train_loss": 0.35826562345027924,
+      "avg_val_loss": 0.32081441084543866,
+      "avg_gap": 0.0374512126048406,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optrmsprop_schedwarmup_cosine_h64_high",
+      "avg_train_loss": 0.96213432153066,
+      "avg_val_loss": 0.9891160825888315,
+      "avg_gap": -0.02698176105817159,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 33.33333333333333,
+      "good_pct": 33.33333333333333
+    },
+    {
+      "config_name": "lr0.1_optrmsprop_schedstep_h32_low",
+      "avg_train_loss": 0.2571115394433339,
+      "avg_val_loss": 0.2576663742462794,
+      "avg_gap": -0.000554834802945455,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 33.33333333333333,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optrmsprop_schedstep_h32_high",
+      "avg_train_loss": 0.2888974944750468,
+      "avg_val_loss": 0.2595889667669932,
+      "avg_gap": 0.02930852770805359,
+      "underfit_pct": 100.0,
+      "overfit_pct": 0.0,
+      "good_pct": 0.0
+    },
+    {
+      "config_name": "lr0.1_optrmsprop_schedstep_h64_low",
+      "avg_train_loss": 0.3477421949307124,
+      "avg_val_loss": 0.34603392084439594,
+      "avg_gap": 0.0017082740863164265,
+      "underfit_pct": 33.33333333333333,
+      "overfit_pct": 0.0,
+      "good_pct": 66.66666666666666
+    },
+    {
+      "config_name": "lr0.1_optrmsprop_schedstep_h64_high",
+      "avg_train_loss": 1.1149831116199493,
+      "avg_val_loss": 1.091435929139455,
+      "avg_gap": 0.023547182480494182,
+      "underfit_pct": 66.66666666666666,
+      "overfit_pct": 33.33333333333333,
+      "good_pct": 0.0
+    }
+  ],
+  "key_insights": [
+    "Extreme LRs/optimizers worsen or don't improve underfitting (52.8% -> 67.5%)"
+  ]
+}

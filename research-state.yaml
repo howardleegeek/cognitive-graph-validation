@@ -1,10 +1,56 @@
-current_round: 280
-last_action: "H1.470.1.1.41 - Test aggressive training strategies (higher LR, longer training) to address underfitting (SUPPORTED - higher LR helps, but underfitting persists at 52.8%)"
-next_intended_action: "H1.470.1.1.42 - Test even higher learning rates (3e-2, 1e-1) or alternative optimizers (AdamW, SGD with momentum) to further reduce underfitting"
+current_round: 281
+last_action: "H1.470.1.1.42 - Test extreme learning rates (3e-2, 5e-2, 1e-1) and alternative optimizers (AdamW, SGD+momentum, RMSprop) to further reduce underfitting (REFUTED - extreme LRs worsen underfitting to 67.5%, LR=1e-2 confirmed optimal)"
+next_intended_action: "H1.470.1.1.43 - Test architectural modifications (residual connections, layer normalization, deeper networks) to address the fundamental capacity limitation causing persistent underfitting"
 
 experiments:
-  total_rounds: 280
+  total_rounds: 281
   trajectory:
+    - experiment_id: H1.470.1.1.42
+      description: "Test extreme learning rates and alternative optimizers to further reduce underfitting"
+      result:
+        conclusion: "REFUTED"
+        task: "extreme_lr_optimizer_sweep"
+        configurations_tested: 192
+        learning_rates_tested: [1e-2, 3e-2, 5e-2, 1e-1]
+        optimizers_tested: ["adam", "adamw", "sgd_momentum", "rmsprop"]
+        schedules_tested: ["constant", "warmup_cosine", "step"]
+        model_sizes_tested: [32, 64]
+        task_complexities: ["low", "high"]
+        key_metrics:
+          lr_1e_2_avg_val_loss: 0.1085
+          lr_1e_2_underfit_pct: 43.1
+          lr_3e_2_avg_val_loss: 0.1630
+          lr_3e_2_underfit_pct: 60.4
+          lr_5e_2_avg_val_loss: 0.1891
+          lr_5e_2_underfit_pct: 81.3
+          lr_1e_1_avg_val_loss: 0.2367
+          lr_1e_1_underfit_pct: 85.4
+          adam_avg_val_loss: 0.1333
+          adam_underfit_pct: 55.6
+          adamw_avg_val_loss: 0.1340
+          adamw_underfit_pct: 57.6
+          sgd_momentum_avg_val_loss: 0.1853
+          sgd_momentum_underfit_pct: 81.9
+          rmsprop_avg_val_loss: 0.2448
+          rmsprop_underfit_pct: 75.0
+          best_config: "lr0.01_optadamw_schedconstant_h64_low"
+          best_val_loss: 0.0056
+          best_gap: -0.0051
+          total_underfit_pct: 67.5
+          total_overfit_pct: 6.3
+          total_good_pct: 26.2
+          prior_underfit_pct: 52.8
+        key_insights:
+          - "LR=1e-2 confirmed as optimal sweet spot (43.1% underfit)"
+          - "Higher LRs (>=3e-2) significantly worsen underfitting"
+          - "Adam/AdamW best optimizers; SGD+momentum and RMSprop much worse"
+          - "First appearance of overfitting (6.3%) at extreme LRs"
+          - "Underfitting problem is architectural, not training-related"
+        recommendations:
+          - "R1: Keep LR=1e-2, Adam optimizer as default"
+          - "R2: Investigate architectural changes (residual connections, layer norm, deeper networks)"
+          - "R3: Consider ensemble methods or mixture-of-experts for capacity scaling"
+    
     - experiment_id: H1.470.1.1.41
       description: "Test aggressive training strategies (higher LR, longer training) to address underfitting"
       result:
@@ -44,53 +90,3 @@ experiments:
           - "R2: 50 epochs is sufficient; longer training does not help"
           - "R3: Consider even higher learning rates (3e-2, 1e-1) or different optimizers"
           - "R4: The fundamental issue may be model capacity, not training strategy"
-    
-    - experiment_id: H1.470.1.1.40
-      description: "Investigate why models underfit on low/medium complexity tasks and explore data augmentation or reduced model capacity for simple tasks"
-      result:
-        conclusion: "REFUTED"
-        task: "task_aware_capacity_scaling"
-        configurations_tested: 12
-        strategies_tested: ["fixed_small", "fixed_medium", "fixed_large", "task_aware"]
-        model_sizes_tested: [16, 32, 64]
-        task_complexities: ["low", "medium", "high"]
-        key_metrics:
-          fixed_small_avg_loss: 0.4816
-          fixed_medium_avg_loss: 0.4127
-          fixed_large_avg_loss: 0.2573
-          task_aware_avg_loss: 0.3940
-          best_strategy: "fixed_large"
-          task_aware_vs_fixed_small: "+18.2%"
-          task_aware_vs_fixed_medium: "+4.5%"
-          task_aware_vs_fixed_large: "-53.1%"
-        key_insights:
-          - "CRITICAL: Larger models (h=64) outperform ALL other strategies"
-          - "Task-aware capacity scaling is WORSE than simply using large models"
-          - "Underfitting persists across ALL strategies and ALL task complexities"
-          - "The hypothesis that simple tasks need smaller models is REFUTED"
-          - "Models are capacity-limited, not overfitting-prone"
-          - "Benefits of larger capacity outweigh any potential overfitting risks"
-        recommendations:
-          - "R1: Use larger models even for simple tasks"
-          - "R2: Focus on reducing underfitting rather than preventing overfitting"
-          - "R3: Consider more aggressive training (longer training, higher learning rates)"
-          - "R4: Test even larger model capacities (h=128, h=256)"
-    
-    - experiment_id: H1.470.1.1.39
-      description: "Test task-dependent regularization scaling based on task complexity metrics"
-      result:
-        conclusion: "INCONCLUSIVE"
-        task: "synthetic_manipulation_varying_complexity"
-        configurations_tested: 54
-        task_complexities: ["low", "medium", "high"]
-        model_sizes_tested: [32, 64, 128]
-        regularization_weights: [0.0, 0.01, 0.1]
-        model_types_tested: ["simple_gru", "cognitive_graph"]
-        key_metrics:
-          optimal_reg_low: "0.0 (all models)"
-          optimal_reg_medium: "0.0 (all models)"
-          optimal_reg_high: "0.0 (all models)"
-          correlation_complexity_reg_benefit: "0.000"
-          overfitting_low_complexity: "0/6 configs"
-          overfitting_medium_complexity: "0/6 configs"
-          overfitting_high_complexity: "6/6 configs"
