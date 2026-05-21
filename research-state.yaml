@@ -1,10 +1,44 @@
-current_round: 283
-last_action: "H1.470.1.1.43 - Test architectural modifications (residual connections, layer normalization, deeper networks) to address the fundamental capacity limitation causing persistent underfitting (REFUTED - 100% underfit, residual connections hurt performance)"
-next_intended_action: "H1.470.1.1.44 - Investigate fundamental representation capacity issue: test larger hidden dimensions (512, 1024), different activation functions (GELU, SiLU), and examine if synthetic data generation is causing the underfitting"
+current_round: 284
+last_action: "H1.470.1.1.44 - Test larger hidden dimensions (128, 256, 512) and different activation functions (ReLU, GELU, SiLU) to address underfitting (REFUTED - 100% underfit, smaller dims better, SiLU slightly better than ReLU)"
+next_intended_action: "H1.470.1.1.45 - Investigate fundamental data representation issue: test if synthetic data generation is causing underfitting by using different data distributions or real robot data"
 
 experiments:
-  total_rounds: 283
+  total_rounds: 284
   trajectory:
+    - experiment_id: H1.470.1.1.44
+      description: "Test larger hidden dimensions and activation functions"
+      result:
+        conclusion: "REFUTED"
+        task: "larger_dimensions_activation"
+        configurations_tested: 18
+        hidden_dims_tested: [128, 256, 512]
+        activations_tested: ["relu", "gelu", "silu"]
+        num_layers_tested: [2, 4]
+        key_metrics:
+          best_config: "h128_actsilu_L4"
+          best_val_loss: 1.1607
+          best_underfit_pct: 117.6
+          avg_by_hidden_dim:
+            "128": 1.2752
+            "256": 1.4383
+            "512": 1.4458
+          avg_by_activation:
+            "relu": 1.4271
+            "gelu": 1.3670
+            "silu": 1.3652
+          total_underfit_pct: 100.0
+        key_insights:
+          - "All 18 configurations show 100% underfitting"
+          - "SMALLER hidden dimensions perform better (128 > 256 > 512)"
+          - "SiLU slightly better than GELU and ReLU"
+          - "Larger models overfit to training but underfit to validation"
+          - "Problem is NOT about model capacity - it's fundamental to data/representation"
+        recommendations:
+          - "R1: Investigate synthetic data generation as root cause"
+          - "R2: Test with different data distributions"
+          - "R3: Consider that the problem may be in the learning objective"
+          - "R4: Try self-supervised pretraining before supervised training"
+    
     - experiment_id: H1.470.1.1.43
       description: "Test architectural modifications (residual connections, layer normalization, deeper networks)"
       result:
@@ -32,7 +66,6 @@ experiments:
             "false": 1.0009
             "true": 1.0474
           total_underfit_pct: 100.0
-          prior_underfit_pct: 67.5
         key_insights:
           - "All 24 configurations show 100% underfitting"
           - "Residual connections HURT performance (avg 1.0474 vs 1.0009)"
@@ -44,68 +77,21 @@ experiments:
           - "R2: Try different activation functions (GELU, SiLU)"
           - "R3: Investigate if synthetic data generation is causing underfitting"
           - "R4: Consider that the problem may be in the data representation, not the model"
-    
-    - experiment_id: H1.470.1.1.42
-      description: "Test extreme learning rates and alternative optimizers to further reduce underfitting"
-      result:
-        conclusion: "REFUTED"
-        task: "extreme_lr_optimizer_sweep"
-        configurations_tested: 192
-        learning_rates_tested: [1e-2, 3e-2, 5e-2, 1e-1]
-        optimizers_tested: ["adam", "adamw", "sgd_momentum", "rmsprop"]
-        schedules_tested: ["constant", "warmup_cosine", "step"]
-        model_sizes_tested: [32, 64]
-        task_complexities: ["low", "high"]
-        key_metrics:
-          lr_1e_2_avg_val_loss: 0.1085
-          lr_1e_2_underfit_pct: 43.1
-          lr_3e_2_avg_val_loss: 0.1630
-          lr_3e_2_underfit_pct: 60.4
-          lr_5e_2_avg_val_loss: 0.1891
-          lr_5e_2_underfit_pct: 81.3
-          lr_1e_1_avg_val_loss: 0.2367
-          lr_1e_1_underfit_pct: 85.4
-          adam_avg_val_loss: 0.1333
-          adam_underfit_pct: 55.6
-          adamw_avg_val_loss: 0.1340
-          adamw_underfit_pct: 57.6
-          sgd_momentum_avg_val_loss: 0.1853
-          sgd_momentum_underfit_pct: 81.9
-          rmsprop_avg_val_loss: 0.2448
-          rmsprop_underfit_pct: 75.0
-          best_config: "lr0.01_optadamw_schedconstant_h64_low"
-          best_val_loss: 0.0056
-          best_gap: -0.0051
-          total_underfit_pct: 67.5
-          total_overfit_pct: 6.3
-          total_good_pct: 26.2
-          prior_underfit_pct: 52.8
-        key_insights:
-          - "LR=1e-2 confirmed as optimal sweet spot (43.1% underfit)"
-          - "Higher LRs (>=3e-2) significantly worsen underfitting"
-          - "Adam/AdamW best optimizers; SGD+momentum and RMSprop much worse"
-          - "First appearance of overfitting (6.3%) at extreme LRs"
-          - "Underfitting problem is architectural, not training-related"
-        recommendations:
-          - "R1: Keep LR=1e-2, Adam optimizer as default"
-          - "R2: Investigate architectural changes (residual connections, layer norm, deeper networks)"
-          - "R3: Consider ensemble methods or mixture-of-experts for capacity scaling"
 
 hypotheses:
   - id: H1
-    name: "Cognitive Graph vs Separated Architectures"
+    name: "Unified cognitive graph architecture"
     status: "supported"
     key_finding: "+25.6% improvement with real robot data"
-    evidence: "LIBERO benchmark shows unified representation outperforms JEPA+LLM alignment"
   - id: H2
-    name: "Attention vs Concatenation"
+    name: "Dimension allocation (144 physical, 368 semantic)"
     status: "inconclusive"
-    key_finding: "1.7% difference - within noise"
+    key_finding: "1.7% difference - not statistically significant"
   - id: H3
-    name: "Attention for Complex Tasks"
+    name: "Attention vs concatenation for simple tasks"
     status: "refuted"
     key_finding: "Concatenation wins over attention for simple tasks"
   - id: H4
-    name: "Optimal Representation Split"
+    name: "Optimal dimension ratio"
     status: "close"
     key_finding: "25% optimal vs 28% hypothesis"

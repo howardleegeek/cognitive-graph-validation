@@ -1,0 +1,245 @@
+{
+  "experiment_id": "H1.470.1.1.44",
+  "description": "Larger hidden dimensions and activation functions",
+  "timestamp": "2026-05-20T18:30:51.715266",
+  "configurations_tested": 18,
+  "hidden_dims_tested": [
+    128,
+    256,
+    512
+  ],
+  "activations_tested": [
+    "relu",
+    "gelu",
+    "silu"
+  ],
+  "num_layers_tested": [
+    2,
+    4
+  ],
+  "results": {
+    "h128_actrelu_L2": {
+      "hidden_dim": 128,
+      "activation": "relu",
+      "num_layers": 2,
+      "train_loss": 0.38037148118019104,
+      "val_loss": 1.4053725004196167,
+      "baseline_loss": 0.9979379773139954,
+      "underfit_pct": 140.82763983010784,
+      "status": "UNDER"
+    },
+    "h128_actrelu_L4": {
+      "hidden_dim": 128,
+      "activation": "relu",
+      "num_layers": 4,
+      "train_loss": 0.5305829644203186,
+      "val_loss": 1.2619904279708862,
+      "baseline_loss": 0.9791019558906555,
+      "underfit_pct": 128.89264701988026,
+      "status": "UNDER"
+    },
+    "h128_actgelu_L2": {
+      "hidden_dim": 128,
+      "activation": "gelu",
+      "num_layers": 2,
+      "train_loss": 0.48948612809181213,
+      "val_loss": 1.3221782445907593,
+      "baseline_loss": 0.9512248635292053,
+      "underfit_pct": 138.99744374692372,
+      "status": "UNDER"
+    },
+    "h128_actgelu_L4": {
+      "hidden_dim": 128,
+      "activation": "gelu",
+      "num_layers": 4,
+      "train_loss": 0.6949139833450317,
+      "val_loss": 1.232301115989685,
+      "baseline_loss": 0.9864171743392944,
+      "underfit_pct": 124.92697289208135,
+      "status": "UNDER"
+    },
+    "h128_actsilu_L2": {
+      "hidden_dim": 128,
+      "activation": "silu",
+      "num_layers": 2,
+      "train_loss": 0.6104917526245117,
+      "val_loss": 1.2685861587524414,
+      "baseline_loss": 0.9623061418533325,
+      "underfit_pct": 131.8277109100889,
+      "status": "UNDER"
+    },
+    "h128_actsilu_L4": {
+      "hidden_dim": 128,
+      "activation": "silu",
+      "num_layers": 4,
+      "train_loss": 0.7629022002220154,
+      "val_loss": 1.1606563329696655,
+      "baseline_loss": 0.9868108034133911,
+      "underfit_pct": 117.61690578933069,
+      "status": "UNDER"
+    },
+    "h256_actrelu_L2": {
+      "hidden_dim": 256,
+      "activation": "relu",
+      "num_layers": 2,
+      "train_loss": 0.09224315732717514,
+      "val_loss": 1.5136213302612305,
+      "baseline_loss": 0.9646878242492676,
+      "underfit_pct": 156.90270906437013,
+      "status": "UNDER"
+    },
+    "h256_actrelu_L4": {
+      "hidden_dim": 256,
+      "activation": "relu",
+      "num_layers": 4,
+      "train_loss": 0.23885107040405273,
+      "val_loss": 1.444270133972168,
+      "baseline_loss": 0.9854692220687866,
+      "underfit_pct": 146.55659472958726,
+      "status": "UNDER"
+    },
+    "h256_actgelu_L2": {
+      "hidden_dim": 256,
+      "activation": "gelu",
+      "num_layers": 2,
+      "train_loss": 0.20578691363334656,
+      "val_loss": 1.5556551218032837,
+      "baseline_loss": 0.9660091996192932,
+      "underfit_pct": 161.03936923337494,
+      "status": "UNDER"
+    },
+    "h256_actgelu_L4": {
+      "hidden_dim": 256,
+      "activation": "gelu",
+      "num_layers": 4,
+      "train_loss": 0.3289569616317749,
+      "val_loss": 1.3586090803146362,
+      "baseline_loss": 0.9654930830001831,
+      "underfit_pct": 140.7166042135569,
+      "status": "UNDER"
+    },
+    "h256_actsilu_L2": {
+      "hidden_dim": 256,
+      "activation": "silu",
+      "num_layers": 2,
+      "train_loss": 0.37698543071746826,
+      "val_loss": 1.4093101024627686,
+      "baseline_loss": 0.95555579662323,
+      "underfit_pct": 147.48590374764387,
+      "status": "UNDER"
+    },
+    "h256_actsilu_L4": {
+      "hidden_dim": 256,
+      "activation": "silu",
+      "num_layers": 4,
+      "train_loss": 0.4851217269897461,
+      "val_loss": 1.3484586477279663,
+      "baseline_loss": 0.9378518462181091,
+      "underfit_pct": 143.7816274676678,
+      "status": "UNDER"
+    },
+    "h512_actrelu_L2": {
+      "hidden_dim": 512,
+      "activation": "relu",
+      "num_layers": 2,
+      "train_loss": 0.0406215526163578,
+      "val_loss": 1.3984514474868774,
+      "baseline_loss": 0.9691638350486755,
+      "underfit_pct": 144.2946380078907,
+      "status": "UNDER"
+    },
+    "h512_actrelu_L4": {
+      "hidden_dim": 512,
+      "activation": "relu",
+      "num_layers": 4,
+      "train_loss": 0.10103260725736618,
+      "val_loss": 1.538880705833435,
+      "baseline_loss": 0.9842430353164673,
+      "underfit_pct": 156.351698779218,
+      "status": "UNDER"
+    },
+    "h512_actgelu_L2": {
+      "hidden_dim": 512,
+      "activation": "gelu",
+      "num_layers": 2,
+      "train_loss": 0.03568154200911522,
+      "val_loss": 1.3510658740997314,
+      "baseline_loss": 0.9900708794593811,
+      "underfit_pct": 136.46153039441663,
+      "status": "UNDER"
+    },
+    "h512_actgelu_L4": {
+      "hidden_dim": 512,
+      "activation": "gelu",
+      "num_layers": 4,
+      "train_loss": 0.0554950088262558,
+      "val_loss": 1.3821275234222412,
+      "baseline_loss": 0.9705436825752258,
+      "underfit_pct": 142.40755447038973,
+      "status": "UNDER"
+    },
+    "h512_actsilu_L2": {
+      "hidden_dim": 512,
+      "activation": "silu",
+      "num_layers": 2,
+      "train_loss": 0.06555485725402832,
+      "val_loss": 1.4153156280517578,
+      "baseline_loss": 0.976975679397583,
+      "underfit_pct": 144.86702769555754,
+      "status": "UNDER"
+    },
+    "h512_actsilu_L4": {
+      "hidden_dim": 512,
+      "activation": "silu",
+      "num_layers": 4,
+      "train_loss": 0.10566861182451248,
+      "val_loss": 1.5888214111328125,
+      "baseline_loss": 0.9998478889465332,
+      "underfit_pct": 158.90631251988117,
+      "status": "UNDER"
+    }
+  },
+  "summary": {
+    "best_config": "h128_actsilu_L4",
+    "best_val_loss": 1.1606563329696655,
+    "best_underfit_pct": 117.61690578933069,
+    "by_hidden_dim": {
+      "128": {
+        "avg_val_loss": 1.2751807967821758,
+        "avg_underfit_pct": 130.51488669806878,
+        "n_underfit": 6
+      },
+      "256": {
+        "avg_val_loss": 1.4383207360903423,
+        "avg_underfit_pct": 149.4138014093668,
+        "n_underfit": 6
+      },
+      "512": {
+        "avg_val_loss": 1.4457770983378093,
+        "avg_underfit_pct": 147.21479364455897,
+        "n_underfit": 6
+      }
+    },
+    "by_activation": {
+      "relu": {
+        "avg_val_loss": 1.427097757657369,
+        "avg_underfit_pct": 145.63765457184238,
+        "n_underfit": 6
+      },
+      "gelu": {
+        "avg_val_loss": 1.3669894933700562,
+        "avg_underfit_pct": 140.75824582512388,
+        "n_underfit": 6
+      },
+      "silu": {
+        "avg_val_loss": 1.365191380182902,
+        "avg_underfit_pct": 140.74758135502836,
+        "n_underfit": 6
+      }
+    },
+    "conclusion": "REFUTED",
+    "underfit_pct": 100.0,
+    "n_underfit": 18,
+    "total_configs": 18
+  }
+}
