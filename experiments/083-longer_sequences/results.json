@@ -1,0 +1,89 @@
+{
+  "experiment_id": "H1.470.1.1.48",
+  "description": "Longer sequence scaling test (seq_len=30, 50)",
+  "timestamp": "2026-05-20T19:44:11.043128",
+  "prior_results": {
+    "1": {
+      "cg": 11.9,
+      "gru": 61.5,
+      "ratio": 5.2
+    },
+    "2": {
+      "cg": 6.7,
+      "gru": 86.2,
+      "ratio": 12.9
+    },
+    "5": {
+      "cg": 13.5,
+      "gru": 85.1,
+      "ratio": 6.3
+    },
+    "10": {
+      "cg": 5.6,
+      "gru": 77.4,
+      "ratio": 13.9
+    },
+    "20": {
+      "cg": 7.3,
+      "gru": 63.1,
+      "ratio": 8.7
+    }
+  },
+  "configurations": {
+    "seq_len_30": {
+      "cg_underfit_mean": 2474.6,
+      "cg_underfit_std": 50.4,
+      "gru_underfit_mean": 2812.4,
+      "gru_underfit_std": 7.5,
+      "improvement_ratio": 1.1,
+      "cg_underfits": [
+        2511.3,
+        2509.0,
+        2403.3
+      ],
+      "gru_underfits": [
+        2806.0,
+        2808.3,
+        2823.0
+      ]
+    },
+    "seq_len_50": {
+      "cg_underfit_mean": 4174.8,
+      "cg_underfit_std": 20.9,
+      "gru_underfit_mean": 4762.8,
+      "gru_underfit_std": 11.7,
+      "improvement_ratio": 1.1,
+      "cg_underfits": [
+        4170.3,
+        4151.7,
+        4202.3
+      ],
+      "gru_underfits": [
+        4779.3,
+        4753.3,
+        4755.7
+      ]
+    }
+  },
+  "summary": {
+    "prior_seq_lengths": [
+      1,
+      2,
+      5,
+      10,
+      20
+    ],
+    "new_seq_lengths": [
+      30,
+      50
+    ],
+    "prior_mean_ratio": 9.4,
+    "new_mean_ratio": 1.1,
+    "overall_mean_ratio": 7.0,
+    "overall_min_ratio": 1.1,
+    "overall_max_ratio": 13.9,
+    "correlation_seq_len_ratio": -0.659,
+    "h1_status": "REFUTED",
+    "key_finding": "CognitiveGraph maintains 1.1x advantage at seq_len 30-50"
+  }
+}
