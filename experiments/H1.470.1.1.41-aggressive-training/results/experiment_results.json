@@ -1,0 +1,877 @@
+{
+  "experiment_id": "H1.470.1.1.41",
+  "description": "Aggressive training strategies for underfitting mitigation",
+  "timestamp": "2026-05-20T17:34:47.572067",
+  "configurations_tested": 72,
+  "learning_rates_tested": [
+    0.0001,
+    0.001,
+    0.01
+  ],
+  "epochs_tested": [
+    50,
+    100,
+    200
+  ],
+  "schedules_tested": [
+    "constant",
+    "warmup_cosine"
+  ],
+  "hidden_dims_tested": [
+    32,
+    64
+  ],
+  "complexities_tested": [
+    "low",
+    "high"
+  ],
+  "results": {
+    "lr0.0001_epochs50_constant_h32_low": {
+      "learning_rate": 0.0001,
+      "n_epochs": 50,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.0949,
+      "final_val_loss": 0.1029,
+      "train_val_gap": -0.008,
+      "status": "GOOD"
+    },
+    "lr0.0001_epochs50_constant_h32_high": {
+      "learning_rate": 0.0001,
+      "n_epochs": 50,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.2527,
+      "final_val_loss": 0.2744,
+      "train_val_gap": -0.0217,
+      "status": "UNDER"
+    },
+    "lr0.0001_epochs50_constant_h64_low": {
+      "learning_rate": 0.0001,
+      "n_epochs": 50,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0381,
+      "final_val_loss": 0.0597,
+      "train_val_gap": -0.0217,
+      "status": "UNDER"
+    },
+    "lr0.0001_epochs50_constant_h64_high": {
+      "learning_rate": 0.0001,
+      "n_epochs": 50,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.199,
+      "final_val_loss": 0.2298,
+      "train_val_gap": -0.0308,
+      "status": "UNDER"
+    },
+    "lr0.0001_epochs50_warmup_cosine_h32_low": {
+      "learning_rate": 0.0001,
+      "n_epochs": 50,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.1103,
+      "final_val_loss": 0.1107,
+      "train_val_gap": -0.0004,
+      "status": "GOOD"
+    },
+    "lr0.0001_epochs50_warmup_cosine_h32_high": {
+      "learning_rate": 0.0001,
+      "n_epochs": 50,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.2604,
+      "final_val_loss": 0.2691,
+      "train_val_gap": -0.0087,
+      "status": "GOOD"
+    },
+    "lr0.0001_epochs50_warmup_cosine_h64_low": {
+      "learning_rate": 0.0001,
+      "n_epochs": 50,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0826,
+      "final_val_loss": 0.0883,
+      "train_val_gap": -0.0057,
+      "status": "GOOD"
+    },
+    "lr0.0001_epochs50_warmup_cosine_h64_high": {
+      "learning_rate": 0.0001,
+      "n_epochs": 50,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.2518,
+      "final_val_loss": 0.2679,
+      "train_val_gap": -0.0161,
+      "status": "UNDER"
+    },
+    "lr0.0001_epochs100_constant_h32_low": {
+      "learning_rate": 0.0001,
+      "n_epochs": 100,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.0363,
+      "final_val_loss": 0.0467,
+      "train_val_gap": -0.0104,
+      "status": "UNDER"
+    },
+    "lr0.0001_epochs100_constant_h32_high": {
+      "learning_rate": 0.0001,
+      "n_epochs": 100,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.1819,
+      "final_val_loss": 0.21,
+      "train_val_gap": -0.0281,
+      "status": "UNDER"
+    },
+    "lr0.0001_epochs100_constant_h64_low": {
+      "learning_rate": 0.0001,
+      "n_epochs": 100,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0056,
+      "final_val_loss": 0.0089,
+      "train_val_gap": -0.0032,
+      "status": "GOOD"
+    },
+    "lr0.0001_epochs100_constant_h64_high": {
+      "learning_rate": 0.0001,
+      "n_epochs": 100,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.117,
+      "final_val_loss": 0.1607,
+      "train_val_gap": -0.0437,
+      "status": "UNDER"
+    },
+    "lr0.0001_epochs100_warmup_cosine_h32_low": {
+      "learning_rate": 0.0001,
+      "n_epochs": 100,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.0786,
+      "final_val_loss": 0.0875,
+      "train_val_gap": -0.0089,
+      "status": "GOOD"
+    },
+    "lr0.0001_epochs100_warmup_cosine_h32_high": {
+      "learning_rate": 0.0001,
+      "n_epochs": 100,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.2467,
+      "final_val_loss": 0.2465,
+      "train_val_gap": 0.0002,
+      "status": "GOOD"
+    },
+    "lr0.0001_epochs100_warmup_cosine_h64_low": {
+      "learning_rate": 0.0001,
+      "n_epochs": 100,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0289,
+      "final_val_loss": 0.0459,
+      "train_val_gap": -0.0169,
+      "status": "UNDER"
+    },
+    "lr0.0001_epochs100_warmup_cosine_h64_high": {
+      "learning_rate": 0.0001,
+      "n_epochs": 100,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.1911,
+      "final_val_loss": 0.219,
+      "train_val_gap": -0.0279,
+      "status": "UNDER"
+    },
+    "lr0.0001_epochs200_constant_h32_low": {
+      "learning_rate": 0.0001,
+      "n_epochs": 200,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.0067,
+      "final_val_loss": 0.0166,
+      "train_val_gap": -0.0099,
+      "status": "GOOD"
+    },
+    "lr0.0001_epochs200_constant_h32_high": {
+      "learning_rate": 0.0001,
+      "n_epochs": 200,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.115,
+      "final_val_loss": 0.1594,
+      "train_val_gap": -0.0443,
+      "status": "UNDER"
+    },
+    "lr0.0001_epochs200_constant_h64_low": {
+      "learning_rate": 0.0001,
+      "n_epochs": 200,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0039,
+      "final_val_loss": 0.0067,
+      "train_val_gap": -0.0028,
+      "status": "GOOD"
+    },
+    "lr0.0001_epochs200_constant_h64_high": {
+      "learning_rate": 0.0001,
+      "n_epochs": 200,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.0971,
+      "final_val_loss": 0.1589,
+      "train_val_gap": -0.0617,
+      "status": "UNDER"
+    },
+    "lr0.0001_epochs200_warmup_cosine_h32_low": {
+      "learning_rate": 0.0001,
+      "n_epochs": 200,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.0425,
+      "final_val_loss": 0.0651,
+      "train_val_gap": -0.0226,
+      "status": "UNDER"
+    },
+    "lr0.0001_epochs200_warmup_cosine_h32_high": {
+      "learning_rate": 0.0001,
+      "n_epochs": 200,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.1745,
+      "final_val_loss": 0.2151,
+      "train_val_gap": -0.0405,
+      "status": "UNDER"
+    },
+    "lr0.0001_epochs200_warmup_cosine_h64_low": {
+      "learning_rate": 0.0001,
+      "n_epochs": 200,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0073,
+      "final_val_loss": 0.0111,
+      "train_val_gap": -0.0038,
+      "status": "GOOD"
+    },
+    "lr0.0001_epochs200_warmup_cosine_h64_high": {
+      "learning_rate": 0.0001,
+      "n_epochs": 200,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.117,
+      "final_val_loss": 0.1597,
+      "train_val_gap": -0.0427,
+      "status": "UNDER"
+    },
+    "lr0.001_epochs50_constant_h32_low": {
+      "learning_rate": 0.001,
+      "n_epochs": 50,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.0035,
+      "final_val_loss": 0.0073,
+      "train_val_gap": -0.0038,
+      "status": "GOOD"
+    },
+    "lr0.001_epochs50_constant_h32_high": {
+      "learning_rate": 0.001,
+      "n_epochs": 50,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.0891,
+      "final_val_loss": 0.1857,
+      "train_val_gap": -0.0966,
+      "status": "UNDER"
+    },
+    "lr0.001_epochs50_constant_h64_low": {
+      "learning_rate": 0.001,
+      "n_epochs": 50,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0027,
+      "final_val_loss": 0.0059,
+      "train_val_gap": -0.0031,
+      "status": "GOOD"
+    },
+    "lr0.001_epochs50_constant_h64_high": {
+      "learning_rate": 0.001,
+      "n_epochs": 50,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.0596,
+      "final_val_loss": 0.2447,
+      "train_val_gap": -0.1851,
+      "status": "UNDER"
+    },
+    "lr0.001_epochs50_warmup_cosine_h32_low": {
+      "learning_rate": 0.001,
+      "n_epochs": 50,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.006,
+      "final_val_loss": 0.0117,
+      "train_val_gap": -0.0057,
+      "status": "GOOD"
+    },
+    "lr0.001_epochs50_warmup_cosine_h32_high": {
+      "learning_rate": 0.001,
+      "n_epochs": 50,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.1153,
+      "final_val_loss": 0.1992,
+      "train_val_gap": -0.0838,
+      "status": "UNDER"
+    },
+    "lr0.001_epochs50_warmup_cosine_h64_low": {
+      "learning_rate": 0.001,
+      "n_epochs": 50,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0043,
+      "final_val_loss": 0.0082,
+      "train_val_gap": -0.0039,
+      "status": "GOOD"
+    },
+    "lr0.001_epochs50_warmup_cosine_h64_high": {
+      "learning_rate": 0.001,
+      "n_epochs": 50,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.0918,
+      "final_val_loss": 0.1552,
+      "train_val_gap": -0.0634,
+      "status": "UNDER"
+    },
+    "lr0.001_epochs100_constant_h32_low": {
+      "learning_rate": 0.001,
+      "n_epochs": 100,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.0024,
+      "final_val_loss": 0.005,
+      "train_val_gap": -0.0026,
+      "status": "GOOD"
+    },
+    "lr0.001_epochs100_constant_h32_high": {
+      "learning_rate": 0.001,
+      "n_epochs": 100,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.0579,
+      "final_val_loss": 0.2576,
+      "train_val_gap": -0.1996,
+      "status": "UNDER"
+    },
+    "lr0.001_epochs100_constant_h64_low": {
+      "learning_rate": 0.001,
+      "n_epochs": 100,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0019,
+      "final_val_loss": 0.0051,
+      "train_val_gap": -0.0032,
+      "status": "GOOD"
+    },
+    "lr0.001_epochs100_constant_h64_high": {
+      "learning_rate": 0.001,
+      "n_epochs": 100,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.0163,
+      "final_val_loss": 0.2765,
+      "train_val_gap": -0.2602,
+      "status": "UNDER"
+    },
+    "lr0.001_epochs100_warmup_cosine_h32_low": {
+      "learning_rate": 0.001,
+      "n_epochs": 100,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.0034,
+      "final_val_loss": 0.0076,
+      "train_val_gap": -0.0042,
+      "status": "GOOD"
+    },
+    "lr0.001_epochs100_warmup_cosine_h32_high": {
+      "learning_rate": 0.001,
+      "n_epochs": 100,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.082,
+      "final_val_loss": 0.232,
+      "train_val_gap": -0.15,
+      "status": "UNDER"
+    },
+    "lr0.001_epochs100_warmup_cosine_h64_low": {
+      "learning_rate": 0.001,
+      "n_epochs": 100,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0024,
+      "final_val_loss": 0.0055,
+      "train_val_gap": -0.0031,
+      "status": "GOOD"
+    },
+    "lr0.001_epochs100_warmup_cosine_h64_high": {
+      "learning_rate": 0.001,
+      "n_epochs": 100,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.0506,
+      "final_val_loss": 0.2418,
+      "train_val_gap": -0.1912,
+      "status": "UNDER"
+    },
+    "lr0.001_epochs200_constant_h32_low": {
+      "learning_rate": 0.001,
+      "n_epochs": 200,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.002,
+      "final_val_loss": 0.0055,
+      "train_val_gap": -0.0035,
+      "status": "GOOD"
+    },
+    "lr0.001_epochs200_constant_h32_high": {
+      "learning_rate": 0.001,
+      "n_epochs": 200,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.0355,
+      "final_val_loss": 0.3807,
+      "train_val_gap": -0.3452,
+      "status": "UNDER"
+    },
+    "lr0.001_epochs200_constant_h64_low": {
+      "learning_rate": 0.001,
+      "n_epochs": 200,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0011,
+      "final_val_loss": 0.0063,
+      "train_val_gap": -0.0052,
+      "status": "GOOD"
+    },
+    "lr0.001_epochs200_constant_h64_high": {
+      "learning_rate": 0.001,
+      "n_epochs": 200,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.0014,
+      "final_val_loss": 0.3359,
+      "train_val_gap": -0.3345,
+      "status": "UNDER"
+    },
+    "lr0.001_epochs200_warmup_cosine_h32_low": {
+      "learning_rate": 0.001,
+      "n_epochs": 200,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.0023,
+      "final_val_loss": 0.0048,
+      "train_val_gap": -0.0025,
+      "status": "GOOD"
+    },
+    "lr0.001_epochs200_warmup_cosine_h32_high": {
+      "learning_rate": 0.001,
+      "n_epochs": 200,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.0573,
+      "final_val_loss": 0.3969,
+      "train_val_gap": -0.3396,
+      "status": "UNDER"
+    },
+    "lr0.001_epochs200_warmup_cosine_h64_low": {
+      "learning_rate": 0.001,
+      "n_epochs": 200,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0018,
+      "final_val_loss": 0.0055,
+      "train_val_gap": -0.0038,
+      "status": "GOOD"
+    },
+    "lr0.001_epochs200_warmup_cosine_h64_high": {
+      "learning_rate": 0.001,
+      "n_epochs": 200,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.0177,
+      "final_val_loss": 0.2909,
+      "train_val_gap": -0.2732,
+      "status": "UNDER"
+    },
+    "lr0.01_epochs50_constant_h32_low": {
+      "learning_rate": 0.01,
+      "n_epochs": 50,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.002,
+      "final_val_loss": 0.0034,
+      "train_val_gap": -0.0014,
+      "status": "GOOD"
+    },
+    "lr0.01_epochs50_constant_h32_high": {
+      "learning_rate": 0.01,
+      "n_epochs": 50,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.0284,
+      "final_val_loss": 0.233,
+      "train_val_gap": -0.2047,
+      "status": "UNDER"
+    },
+    "lr0.01_epochs50_constant_h64_low": {
+      "learning_rate": 0.01,
+      "n_epochs": 50,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0017,
+      "final_val_loss": 0.0044,
+      "train_val_gap": -0.0027,
+      "status": "GOOD"
+    },
+    "lr0.01_epochs50_constant_h64_high": {
+      "learning_rate": 0.01,
+      "n_epochs": 50,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.0045,
+      "final_val_loss": 0.1907,
+      "train_val_gap": -0.1862,
+      "status": "UNDER"
+    },
+    "lr0.01_epochs50_warmup_cosine_h32_low": {
+      "learning_rate": 0.01,
+      "n_epochs": 50,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.0022,
+      "final_val_loss": 0.0042,
+      "train_val_gap": -0.0021,
+      "status": "GOOD"
+    },
+    "lr0.01_epochs50_warmup_cosine_h32_high": {
+      "learning_rate": 0.01,
+      "n_epochs": 50,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.0436,
+      "final_val_loss": 0.2433,
+      "train_val_gap": -0.1997,
+      "status": "UNDER"
+    },
+    "lr0.01_epochs50_warmup_cosine_h64_low": {
+      "learning_rate": 0.01,
+      "n_epochs": 50,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0018,
+      "final_val_loss": 0.0032,
+      "train_val_gap": -0.0014,
+      "status": "GOOD"
+    },
+    "lr0.01_epochs50_warmup_cosine_h64_high": {
+      "learning_rate": 0.01,
+      "n_epochs": 50,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.0085,
+      "final_val_loss": 0.2096,
+      "train_val_gap": -0.2012,
+      "status": "UNDER"
+    },
+    "lr0.01_epochs100_constant_h32_low": {
+      "learning_rate": 0.01,
+      "n_epochs": 100,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.0017,
+      "final_val_loss": 0.005,
+      "train_val_gap": -0.0033,
+      "status": "GOOD"
+    },
+    "lr0.01_epochs100_constant_h32_high": {
+      "learning_rate": 0.01,
+      "n_epochs": 100,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.0107,
+      "final_val_loss": 0.2938,
+      "train_val_gap": -0.2831,
+      "status": "UNDER"
+    },
+    "lr0.01_epochs100_constant_h64_low": {
+      "learning_rate": 0.01,
+      "n_epochs": 100,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0004,
+      "final_val_loss": 0.0071,
+      "train_val_gap": -0.0067,
+      "status": "GOOD"
+    },
+    "lr0.01_epochs100_constant_h64_high": {
+      "learning_rate": 0.01,
+      "n_epochs": 100,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.0048,
+      "final_val_loss": 0.2189,
+      "train_val_gap": -0.2141,
+      "status": "UNDER"
+    },
+    "lr0.01_epochs100_warmup_cosine_h32_low": {
+      "learning_rate": 0.01,
+      "n_epochs": 100,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.0017,
+      "final_val_loss": 0.004,
+      "train_val_gap": -0.0023,
+      "status": "GOOD"
+    },
+    "lr0.01_epochs100_warmup_cosine_h32_high": {
+      "learning_rate": 0.01,
+      "n_epochs": 100,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.0142,
+      "final_val_loss": 0.2536,
+      "train_val_gap": -0.2394,
+      "status": "UNDER"
+    },
+    "lr0.01_epochs100_warmup_cosine_h64_low": {
+      "learning_rate": 0.01,
+      "n_epochs": 100,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0009,
+      "final_val_loss": 0.0047,
+      "train_val_gap": -0.0038,
+      "status": "GOOD"
+    },
+    "lr0.01_epochs100_warmup_cosine_h64_high": {
+      "learning_rate": 0.01,
+      "n_epochs": 100,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.0002,
+      "final_val_loss": 0.2329,
+      "train_val_gap": -0.2327,
+      "status": "UNDER"
+    },
+    "lr0.01_epochs200_constant_h32_low": {
+      "learning_rate": 0.01,
+      "n_epochs": 200,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.0006,
+      "final_val_loss": 0.0071,
+      "train_val_gap": -0.0065,
+      "status": "GOOD"
+    },
+    "lr0.01_epochs200_constant_h32_high": {
+      "learning_rate": 0.01,
+      "n_epochs": 200,
+      "schedule": "constant",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.0067,
+      "final_val_loss": 0.2669,
+      "train_val_gap": -0.2602,
+      "status": "UNDER"
+    },
+    "lr0.01_epochs200_constant_h64_low": {
+      "learning_rate": 0.01,
+      "n_epochs": 200,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0021,
+      "final_val_loss": 0.0033,
+      "train_val_gap": -0.0013,
+      "status": "GOOD"
+    },
+    "lr0.01_epochs200_constant_h64_high": {
+      "learning_rate": 0.01,
+      "n_epochs": 200,
+      "schedule": "constant",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.0036,
+      "final_val_loss": 0.1807,
+      "train_val_gap": -0.1771,
+      "status": "UNDER"
+    },
+    "lr0.01_epochs200_warmup_cosine_h32_low": {
+      "learning_rate": 0.01,
+      "n_epochs": 200,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "low",
+      "final_train_loss": 0.0012,
+      "final_val_loss": 0.0053,
+      "train_val_gap": -0.0041,
+      "status": "GOOD"
+    },
+    "lr0.01_epochs200_warmup_cosine_h32_high": {
+      "learning_rate": 0.01,
+      "n_epochs": 200,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 32,
+      "complexity": "high",
+      "final_train_loss": 0.0037,
+      "final_val_loss": 0.3801,
+      "train_val_gap": -0.3764,
+      "status": "UNDER"
+    },
+    "lr0.01_epochs200_warmup_cosine_h64_low": {
+      "learning_rate": 0.01,
+      "n_epochs": 200,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "low",
+      "final_train_loss": 0.0001,
+      "final_val_loss": 0.0073,
+      "train_val_gap": -0.0072,
+      "status": "GOOD"
+    },
+    "lr0.01_epochs200_warmup_cosine_h64_high": {
+      "learning_rate": 0.01,
+      "n_epochs": 200,
+      "schedule": "warmup_cosine",
+      "hidden_dim": 64,
+      "complexity": "high",
+      "final_train_loss": 0.0,
+      "final_val_loss": 0.1886,
+      "train_val_gap": -0.1886,
+      "status": "UNDER"
+    }
+  },
+  "summary": {
+    "best_config": "lr0.01_epochs50_warmup_cosine_h64_low",
+    "best_val_loss": 0.0032,
+    "best_gap": -0.0014,
+    "lr_analysis": {
+      "0.0001": {
+        "avg_val_loss": 0.1342,
+        "avg_gap": -0.02,
+        "underfit_pct": 58.3
+      },
+      "0.001": {
+        "avg_val_loss": 0.1365,
+        "avg_gap": -0.107,
+        "underfit_pct": 50.0
+      },
+      "0.01": {
+        "avg_val_loss": 0.123,
+        "avg_gap": -0.1169,
+        "underfit_pct": 50.0
+      }
+    },
+    "epoch_analysis": {
+      "50": {
+        "avg_val_loss": 0.1297,
+        "avg_gap": -0.0566,
+        "underfit_pct": 50.0
+      },
+      "100": {
+        "avg_val_loss": 0.1282,
+        "avg_gap": -0.0808,
+        "underfit_pct": 54.2
+      },
+      "200": {
+        "avg_val_loss": 0.1358,
+        "avg_gap": -0.1066,
+        "underfit_pct": 54.2
+      }
+    },
+    "schedule_analysis": {
+      "constant": {
+        "avg_val_loss": 0.1268,
+        "avg_gap": -0.0854,
+        "underfit_pct": 55.6
+      },
+      "warmup_cosine": {
+        "avg_val_loss": 0.1356,
+        "avg_gap": -0.0771,
+        "underfit_pct": 50.0
+      }
+    },
+    "underfit_count": 38,
+    "overfit_count": 0,
+    "good_count": 34,
+    "total_configs": 72
+  }
+}
