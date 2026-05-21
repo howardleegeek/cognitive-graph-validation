@@ -1,6 +1,6 @@
-current_round: 289
-last_action: "H1.470.1.1.49 - Hierarchical memory test on seq_len 30, 50: COMPLETED. Key finding: hm_underfit=12.8% (30) and 11.9% (50), CG_underfit=7.2% (30) and 8.1% (50). hm maintains 1.47-1.78x advantage over CG at long sequences. H1 PARTIALLY SUPPORTED for long-horizon with hierarchical memory."
-next_intended_action: "Draft sub-hypothesis H1.1: Hierarchical memory maintains CognitiveGraph advantage at seq_len >= 30. Concrete test: compare hm underfit vs GRU underfit at seq_len=30,50."
+current_round: 290
+last_action: "H1.1 - Drafted sub-hypothesis: Hierarchical memory maintains CognitiveGraph advantage at seq_len >= 30. Concrete test: compare hm underfit vs GRU underfit at seq_len=30,50."
+next_intended_action: "H1.1 - Implement hierarchical memory variant and test on seq_len=30,50"
 
 experiments:
   total_rounds: 289

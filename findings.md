@@ -1,4 +1,19 @@
 # Research Findings — Cognitive Graph Architecture
+## H1.1: Hierarchical Memory maintains CognitiveGraph advantage at seq_len >= 30
+
+**Prediction**: When hierarchical memory is added to the CognitiveGraph, the underfit ratio advantage over GRU will remain >1.5x for sequence lengths of 30 and 50, despite the collapse observed without memory.
+
+**Concrete Test Plan**:
+1. Train a new CognitiveGraph variant that incorporates a hierarchical memory module (e.g., a two‑level GRU stack or a transformer‑style memory buffer) on the same synthetic LIBERO‑style dataset used in H1.470.1.1.48.
+2. Use identical hyperparameters to the baseline CG and GRU models.
+3. Evaluate underfit rates at seq_len=30 and 50.
+4. Compute the underfit ratio (GRU / CG). A ratio >1.5x will support H1.1; a ratio ≤1.5x will refute it.
+
+**Expected Outcome**: The hierarchical memory will help CG retain its advantage at long horizons, yielding an underfit ratio of ~2.0x at seq_len=30 and ~1.8x at seq_len=50.
+
+**Implication**: Confirmation would suggest that hierarchical memory is a key component for scaling CognitiveGraph to long‑horizon tasks.
+
+
 
 ## Research Question
 Does a unified cognitive graph architecture (early fusion of physical and semantic representations) achieve higher sample efficiency than separated architectures (JEPA + LLM alignment) on language-conditioned robotic tasks?
