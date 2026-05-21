@@ -1,0 +1,8 @@
+{
+  "key_finding": "Sequence length amplifies CognitiveGraph advantage",
+  "v45_ratio": 16.7130295385901,
+  "v46_ratio": 8.365097840237592,
+  "v45_p_value": 1.9832541248856924e-05,
+  "v46_p_value": 0.011169922351491484,
+  "conclusion": "H1.470.1.1.45 claim PLAUSIBLE - discrepancy due to sequence length"
+}

@@ -1,0 +1,150 @@
+{
+  "experiment_id": "H1.470.1.1.47",
+  "description": "Discrepancy investigation between H1.470.1.1.45 and H1.470.1.1.46",
+  "timestamp": "2026-05-20T19:24:00.717507",
+  "tests": [
+    {
+      "data_version": "v45",
+      "seed": 42,
+      "model": "SimpleGRU h64",
+      "patience": 5,
+      "best_epoch": 17,
+      "best_val_loss": 0.012368566356599331,
+      "final_train_loss": 0.007126147393137217,
+      "underfit_pct": 73.56596312491077,
+      "epochs_trained": 22
+    },
+    {
+      "data_version": "v45",
+      "seed": 42,
+      "model": "CognitiveGraph h64",
+      "patience": 5,
+      "best_epoch": 5,
+      "best_val_loss": 0.010641857981681824,
+      "final_train_loss": 0.009878084994852543,
+      "underfit_pct": 7.731994483012472,
+      "epochs_trained": 10
+    },
+    {
+      "data_version": "v45",
+      "seed": 123,
+      "model": "SimpleGRU h64",
+      "patience": 5,
+      "best_epoch": 17,
+      "best_val_loss": 0.011844893917441368,
+      "final_train_loss": 0.007064140867441893,
+      "underfit_pct": 67.6763549837124,
+      "epochs_trained": 22
+    },
+    {
+      "data_version": "v45",
+      "seed": 123,
+      "model": "CognitiveGraph h64",
+      "patience": 5,
+      "best_epoch": 8,
+      "best_val_loss": 0.010104510933160782,
+      "final_train_loss": 0.009622075594961643,
+      "underfit_pct": 5.01383857815203,
+      "epochs_trained": 13
+    },
+    {
+      "data_version": "v45",
+      "seed": 456,
+      "model": "SimpleGRU h64",
+      "patience": 5,
+      "best_epoch": 20,
+      "best_val_loss": 0.01198542769998312,
+      "final_train_loss": 0.007003253325819969,
+      "underfit_pct": 71.14085614745085,
+      "epochs_trained": 25
+    },
+    {
+      "data_version": "v45",
+      "seed": 456,
+      "model": "CognitiveGraph h64",
+      "patience": 5,
+      "best_epoch": 7,
+      "best_val_loss": 0.009859982877969742,
+      "final_train_loss": 0.009863750077784061,
+      "underfit_pct": -0.03819236887200317,
+      "epochs_trained": 12
+    },
+    {
+      "data_version": "v46",
+      "seed": 42,
+      "model": "SimpleGRU h64",
+      "patience": 5,
+      "best_epoch": 19,
+      "best_val_loss": 0.007453158963471651,
+      "final_train_loss": 0.004978954326361418,
+      "underfit_pct": 49.693258361708324,
+      "epochs_trained": 24
+    },
+    {
+      "data_version": "v46",
+      "seed": 42,
+      "model": "CognitiveGraph h64",
+      "patience": 5,
+      "best_epoch": 17,
+      "best_val_loss": 0.006167847663164139,
+      "final_train_loss": 0.005916283931583166,
+      "underfit_pct": 4.25205643424309,
+      "epochs_trained": 22
+    },
+    {
+      "data_version": "v46",
+      "seed": 123,
+      "model": "SimpleGRU h64",
+      "patience": 5,
+      "best_epoch": 18,
+      "best_val_loss": 0.006229893304407597,
+      "final_train_loss": 0.004896847065538168,
+      "underfit_pct": 27.222541791243906,
+      "epochs_trained": 23
+    },
+    {
+      "data_version": "v46",
+      "seed": 123,
+      "model": "CognitiveGraph h64",
+      "patience": 5,
+      "best_epoch": 15,
+      "best_val_loss": 0.0056170192547142506,
+      "final_train_loss": 0.005631274078041315,
+      "underfit_pct": -0.2531367347693103,
+      "epochs_trained": 20
+    },
+    {
+      "data_version": "v46",
+      "seed": 456,
+      "model": "SimpleGRU h64",
+      "patience": 5,
+      "best_epoch": 20,
+      "best_val_loss": 0.007099705282598734,
+      "final_train_loss": 0.0047010816633701324,
+      "underfit_pct": 51.02280264387209,
+      "epochs_trained": 25
+    },
+    {
+      "data_version": "v46",
+      "seed": 456,
+      "model": "CognitiveGraph h64",
+      "patience": 5,
+      "best_epoch": 15,
+      "best_val_loss": 0.006266458425670862,
+      "final_train_loss": 0.005630473140627146,
+      "underfit_pct": 11.295414597659859,
+      "epochs_trained": 20
+    }
+  ],
+  "v45_summary": {
+    "cg_underfit": 4.235880230764166,
+    "gru_underfit": 70.79439141869135,
+    "ratio": 16.7130295385901
+  },
+  "v46_summary": {
+    "cg_underfit": 5.09811143237788,
+    "gru_underfit": 42.64620093227477,
+    "ratio": 8.365097840237592
+  },
+  "claim_validation": "PLAUSIBLE"
+}

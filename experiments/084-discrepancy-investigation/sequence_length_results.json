@@ -1,0 +1,305 @@
+{
+  "experiment_id": "H1.470.1.1.47b",
+  "description": "Sequence length impact on CognitiveGraph advantage",
+  "timestamp": "2026-05-20T19:26:06.802864",
+  "tests": [
+    {
+      "seq_len": 1,
+      "seed": 42,
+      "model": "CognitiveGraph",
+      "best_epoch": 17,
+      "best_val_loss": 0.007183020934462547,
+      "final_train_loss": 0.006462547462433577,
+      "underfit_pct": 11.148443802030727
+    },
+    {
+      "seq_len": 1,
+      "seed": 42,
+      "model": "SimpleGRU",
+      "best_epoch": 18,
+      "best_val_loss": 0.008817866444587708,
+      "final_train_loss": 0.005361612420529127,
+      "underfit_pct": 64.46295914312824
+    },
+    {
+      "seq_len": 1,
+      "seed": 123,
+      "model": "CognitiveGraph",
+      "best_epoch": 15,
+      "best_val_loss": 0.0064478181302547455,
+      "final_train_loss": 0.006263253279030323,
+      "underfit_pct": 2.9467888811451237
+    },
+    {
+      "seq_len": 1,
+      "seed": 123,
+      "model": "SimpleGRU",
+      "best_epoch": 20,
+      "best_val_loss": 0.007147763855755329,
+      "final_train_loss": 0.004709972068667412,
+      "underfit_pct": 51.758094348479645
+    },
+    {
+      "seq_len": 1,
+      "seed": 456,
+      "model": "CognitiveGraph",
+      "best_epoch": 20,
+      "best_val_loss": 0.006943413056433201,
+      "final_train_loss": 0.0057072327472269535,
+      "underfit_pct": 21.65988954641611
+    },
+    {
+      "seq_len": 1,
+      "seed": 456,
+      "model": "SimpleGRU",
+      "best_epoch": 21,
+      "best_val_loss": 0.007748621050268412,
+      "final_train_loss": 0.004607389215379953,
+      "underfit_pct": 68.17813056476092
+    },
+    {
+      "seq_len": 2,
+      "seed": 42,
+      "model": "CognitiveGraph",
+      "best_epoch": 7,
+      "best_val_loss": 0.006942910607904196,
+      "final_train_loss": 0.006768094375729561,
+      "underfit_pct": 2.5829461362348427
+    },
+    {
+      "seq_len": 2,
+      "seed": 42,
+      "model": "SimpleGRU",
+      "best_epoch": 23,
+      "best_val_loss": 0.008714604191482067,
+      "final_train_loss": 0.003952463157474995,
+      "underfit_pct": 120.48539971842102
+    },
+    {
+      "seq_len": 2,
+      "seed": 123,
+      "model": "CognitiveGraph",
+      "best_epoch": 10,
+      "best_val_loss": 0.0067384918220341206,
+      "final_train_loss": 0.0061604296788573265,
+      "underfit_pct": 9.383471175082336
+    },
+    {
+      "seq_len": 2,
+      "seed": 123,
+      "model": "SimpleGRU",
+      "best_epoch": 18,
+      "best_val_loss": 0.007641761563718319,
+      "final_train_loss": 0.004573298152536154,
+      "underfit_pct": 67.09519713864552
+    },
+    {
+      "seq_len": 2,
+      "seed": 456,
+      "model": "CognitiveGraph",
+      "best_epoch": 10,
+      "best_val_loss": 0.007032979745417833,
+      "final_train_loss": 0.006508715450763702,
+      "underfit_pct": 8.054804340733867
+    },
+    {
+      "seq_len": 2,
+      "seed": 456,
+      "model": "SimpleGRU",
+      "best_epoch": 22,
+      "best_val_loss": 0.007755012717097998,
+      "final_train_loss": 0.004531273618340492,
+      "underfit_pct": 71.14421618039806
+    },
+    {
+      "seq_len": 5,
+      "seed": 42,
+      "model": "CognitiveGraph",
+      "best_epoch": 12,
+      "best_val_loss": 0.005839427001774311,
+      "final_train_loss": 0.00570291792973876,
+      "underfit_pct": 2.3936706387392093
+    },
+    {
+      "seq_len": 5,
+      "seed": 42,
+      "model": "SimpleGRU",
+      "best_epoch": 20,
+      "best_val_loss": 0.007302799262106419,
+      "final_train_loss": 0.004258671309798956,
+      "underfit_pct": 71.48069740210052
+    },
+    {
+      "seq_len": 5,
+      "seed": 123,
+      "model": "CognitiveGraph",
+      "best_epoch": 14,
+      "best_val_loss": 0.00662908423691988,
+      "final_train_loss": 0.004946114495396614,
+      "underfit_pct": 34.02609751734656
+    },
+    {
+      "seq_len": 5,
+      "seed": 123,
+      "model": "SimpleGRU",
+      "best_epoch": 21,
+      "best_val_loss": 0.007908889092504978,
+      "final_train_loss": 0.003966073505580425,
+      "underfit_pct": 99.4135782248325
+    },
+    {
+      "seq_len": 5,
+      "seed": 456,
+      "model": "CognitiveGraph",
+      "best_epoch": 8,
+      "best_val_loss": 0.006251807324588299,
+      "final_train_loss": 0.005998480599373579,
+      "underfit_pct": 4.223181537690968
+    },
+    {
+      "seq_len": 5,
+      "seed": 456,
+      "model": "SimpleGRU",
+      "best_epoch": 23,
+      "best_val_loss": 0.007626676466315985,
+      "final_train_loss": 0.0041366699151694775,
+      "underfit_pct": 84.367537722756
+    },
+    {
+      "seq_len": 10,
+      "seed": 42,
+      "model": "CognitiveGraph",
+      "best_epoch": 10,
+      "best_val_loss": 0.0063726650550961494,
+      "final_train_loss": 0.005660173017531633,
+      "underfit_pct": 12.587813753354649
+    },
+    {
+      "seq_len": 10,
+      "seed": 42,
+      "model": "SimpleGRU",
+      "best_epoch": 20,
+      "best_val_loss": 0.00757379038259387,
+      "final_train_loss": 0.0040631843730807304,
+      "underfit_pct": 86.40036206014882
+    },
+    {
+      "seq_len": 10,
+      "seed": 123,
+      "model": "CognitiveGraph",
+      "best_epoch": 12,
+      "best_val_loss": 0.005981678143143654,
+      "final_train_loss": 0.005348436534404755,
+      "underfit_pct": 11.839751760453021
+    },
+    {
+      "seq_len": 10,
+      "seed": 123,
+      "model": "SimpleGRU",
+      "best_epoch": 18,
+      "best_val_loss": 0.007322703953832388,
+      "final_train_loss": 0.00414985092356801,
+      "underfit_pct": 76.4570363779811
+    },
+    {
+      "seq_len": 10,
+      "seed": 456,
+      "model": "CognitiveGraph",
+      "best_epoch": 7,
+      "best_val_loss": 0.005756571423262358,
+      "final_train_loss": 0.006236017215996981,
+      "underfit_pct": -7.688333372536594
+    },
+    {
+      "seq_len": 10,
+      "seed": 456,
+      "model": "SimpleGRU",
+      "best_epoch": 21,
+      "best_val_loss": 0.007154630031436682,
+      "final_train_loss": 0.00422534067183733,
+      "underfit_pct": 69.32670255734888
+    },
+    {
+      "seq_len": 20,
+      "seed": 42,
+      "model": "CognitiveGraph",
+      "best_epoch": 11,
+      "best_val_loss": 0.005988674703985453,
+      "final_train_loss": 0.005687595810741186,
+      "underfit_pct": 5.293605651014621
+    },
+    {
+      "seq_len": 20,
+      "seed": 42,
+      "model": "SimpleGRU",
+      "best_epoch": 18,
+      "best_val_loss": 0.007483591325581074,
+      "final_train_loss": 0.004375438671559095,
+      "underfit_pct": 71.03636657566163
+    },
+    {
+      "seq_len": 20,
+      "seed": 123,
+      "model": "CognitiveGraph",
+      "best_epoch": 13,
+      "best_val_loss": 0.0058626439422369,
+      "final_train_loss": 0.005030456464737654,
+      "underfit_pct": 16.542981404027458
+    },
+    {
+      "seq_len": 20,
+      "seed": 123,
+      "model": "SimpleGRU",
+      "best_epoch": 17,
+      "best_val_loss": 0.006778344977647066,
+      "final_train_loss": 0.004282847046852112,
+      "underfit_pct": 58.267267158866744
+    },
+    {
+      "seq_len": 20,
+      "seed": 456,
+      "model": "CognitiveGraph",
+      "best_epoch": 8,
+      "best_val_loss": 0.005826214328408241,
+      "final_train_loss": 0.00582790095359087,
+      "underfit_pct": -0.028940525861020916
+    },
+    {
+      "seq_len": 20,
+      "seed": 456,
+      "model": "SimpleGRU",
+      "best_epoch": 17,
+      "best_val_loss": 0.007549585774540901,
+      "final_train_loss": 0.004722325596958399,
+      "underfit_pct": 59.870081372692965
+    }
+  ],
+  "seq_len_1": {
+    "cg_underfit": 11.918374076530654,
+    "gru_underfit": 61.46639468545627,
+    "ratio": 5.157280203722944
+  },
+  "seq_len_2": {
+    "cg_underfit": 6.673740550683682,
+    "gru_underfit": 86.24160434582154,
+    "ratio": 12.922528781402304
+  },
+  "seq_len_5": {
+    "cg_underfit": 13.547649897925579,
+    "gru_underfit": 85.087271116563,
+    "ratio": 6.280592704834482
+  },
+  "seq_len_10": {
+    "cg_underfit": 5.579744047090359,
+    "gru_underfit": 77.39470033182626,
+    "ratio": 13.870654223321388
+  },
+  "seq_len_20": {
+    "cg_underfit": 7.26921550972702,
+    "gru_underfit": 63.05790503574045,
+    "ratio": 8.67465064852761
+  },
+  "hypothesis_confirmed": false,
+  "correlation": 0.149826045453879,
+  "correlation_p_value": 0.8099516851757074
+}
