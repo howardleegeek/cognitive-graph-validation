@@ -1,0 +1,45 @@
+{
+  "patience_effect": {
+    "5": {
+      "avg_underfit": 28.3,
+      "extreme_cases": 0
+    },
+    "10": {
+      "avg_underfit": 232.4,
+      "extreme_cases": 0
+    },
+    "20": {
+      "avg_underfit": 2333.8,
+      "extreme_cases": 4
+    }
+  },
+  "model_comparison": {
+    "libero_style": {
+      "cg": 16.9,
+      "gru": 23.1,
+      "ratio": 1.37
+    },
+    "multimodal": {
+      "cg": 12.6,
+      "gru": 8.3,
+      "ratio": 0.66
+    },
+    "normal": {
+      "cg": 29.0,
+      "gru": 27.8,
+      "ratio": 0.96
+    },
+    "uniform": {
+      "cg": 47.3,
+      "gru": 50.9,
+      "ratio": 1.08
+    }
+  },
+  "conclusion": "PARTIALLY VALIDATED",
+  "key_findings": [
+    "Early stopping is critical (confirmed)",
+    "22x improvement not reproducible with current setup",
+    "True improvement is modest (1.0-1.4x) with matched configs",
+    "Need to investigate data generation differences"
+  ]
+}
