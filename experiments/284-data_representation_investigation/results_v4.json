@@ -1,0 +1,101 @@
+{
+  "experiment_id": "H1.470.1.1.45-v4",
+  "description": "Apply early stopping to LIBERO-style data",
+  "timestamp": "2026-05-20T18:49:16.969157",
+  "tests": [
+    {
+      "data_type": "original_libero",
+      "model": "SimpleGRU h64",
+      "train_loss": 0.007438291795551777,
+      "val_loss": 0.012007798068225384,
+      "underfit_pct": 61.432199734436985,
+      "best_epoch": 15
+    },
+    {
+      "data_type": "original_libero",
+      "model": "SimpleGRU h64 + wd 1e-4",
+      "train_loss": 0.007969779893755913,
+      "val_loss": 0.011697765439748764,
+      "underfit_pct": 46.77651824379262,
+      "best_epoch": 15
+    },
+    {
+      "data_type": "original_libero",
+      "model": "SimpleGRU h32",
+      "train_loss": 0.002941798884421587,
+      "val_loss": 0.027959058061242104,
+      "underfit_pct": 850.406848316532,
+      "best_epoch": 67
+    },
+    {
+      "data_type": "original_libero",
+      "model": "CognitiveGraph h64",
+      "train_loss": 0.01020399946719408,
+      "val_loss": 0.010421830229461193,
+      "underfit_pct": 2.134758659753364,
+      "best_epoch": 5
+    },
+    {
+      "data_type": "original_libero",
+      "model": "CognitiveGraph h64 + wd 1e-4",
+      "train_loss": 0.009067272767424583,
+      "val_loss": 0.010070597752928734,
+      "underfit_pct": 11.06534468786174,
+      "best_epoch": 30
+    },
+    {
+      "data_type": "structured_libero",
+      "model": "SimpleGRU h64",
+      "train_loss": 0.0018966681091114879,
+      "val_loss": 0.007284223102033138,
+      "underfit_pct": 284.053650031871,
+      "best_epoch": 44
+    },
+    {
+      "data_type": "structured_libero",
+      "model": "SimpleGRU h64 + wd 1e-4",
+      "train_loss": 0.0014706342481076717,
+      "val_loss": 0.006815880537033081,
+      "underfit_pct": 363.46537528303634,
+      "best_epoch": 74
+    },
+    {
+      "data_type": "structured_libero",
+      "model": "CognitiveGraph h64",
+      "train_loss": 0.001218824414536357,
+      "val_loss": 0.0063079181127250195,
+      "underfit_pct": 417.5411681529668,
+      "best_epoch": 44
+    },
+    {
+      "data_type": "structured_libero",
+      "model": "CognitiveGraph h64 + wd 1e-4",
+      "train_loss": 0.0022808024659752846,
+      "val_loss": 0.006093007978051901,
+      "underfit_pct": 167.14316864115168,
+      "best_epoch": 41
+    }
+  ],
+  "conclusion": "PARTIALLY SUPPORTED - Early stopping helps but data quality matters",
+  "key_insight": "Early stopping reduces overfitting but data structure still important",
+  "summary": {
+    "original_avg_underfit": 194.36313392847535,
+    "structured_avg_underfit": 308.05084052725647,
+    "best_original": {
+      "data_type": "original_libero",
+      "model": "CognitiveGraph h64",
+      "train_loss": 0.01020399946719408,
+      "val_loss": 0.010421830229461193,
+      "underfit_pct": 2.134758659753364,
+      "best_epoch": 5
+    },
+    "best_structured": {
+      "data_type": "structured_libero",
+      "model": "CognitiveGraph h64 + wd 1e-4",
+      "train_loss": 0.0022808024659752846,
+      "val_loss": 0.006093007978051901,
+      "underfit_pct": 167.14316864115168,
+      "best_epoch": 41
+    }
+  }
+}

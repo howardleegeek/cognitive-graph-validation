@@ -1,0 +1,51 @@
+{
+  "experiment_id": "H1.470.1.1.45-v2",
+  "description": "Train/val split distribution shift investigation",
+  "timestamp": "2026-05-20T18:46:15.511539",
+  "tests": [
+    {
+      "name": "identity_random_split",
+      "train_loss": 0.0005065256264060736,
+      "val_loss": 1.4627583026885986,
+      "underfit_pct": 288682.68471177574
+    },
+    {
+      "name": "identity_sequential_split",
+      "train_loss": 0.0006446184706874192,
+      "val_loss": 1.3627164363861084,
+      "underfit_pct": 211298.9124346548
+    },
+    {
+      "name": "identity_same_distribution",
+      "train_loss": 0.0006043958710506558,
+      "val_loss": 1.4302470684051514,
+      "underfit_pct": 236540.77418644028
+    },
+    {
+      "name": "deterministic_random_split",
+      "train_loss": 7.548864232376218e-05,
+      "val_loss": 0.8469971418380737,
+      "underfit_pct": 1121919.3074944965
+    },
+    {
+      "name": "deterministic_sequential_split",
+      "train_loss": 6.45188192720525e-05,
+      "val_loss": 0.8404902815818787,
+      "underfit_pct": 1302605.6152993678
+    },
+    {
+      "name": "deterministic_same_distribution",
+      "train_loss": 8.192096720449626e-05,
+      "val_loss": 0.8979216814041138,
+      "underfit_pct": 1095982.861378657
+    },
+    {
+      "name": "linear_transformation_gru",
+      "train_loss": 0.1008438766002655,
+      "val_loss": 7.0182061195373535,
+      "underfit_pct": 6859.476723962906
+    }
+  ],
+  "key_insight": "Distribution shift not the primary cause",
+  "conclusion": "INCONCLUSIVE - Split strategy doesn't explain underfitting"
+}

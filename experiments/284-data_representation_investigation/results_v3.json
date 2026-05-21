@@ -1,0 +1,113 @@
+{
+  "experiment_id": "H1.470.1.1.45-v3",
+  "description": "Overfitting root cause analysis",
+  "timestamp": "2026-05-20T18:47:47.550357",
+  "tests": [
+    {
+      "name": "Linear (baseline)",
+      "train_loss": 0.7804073691368103,
+      "val_loss": 1.2661430835723877,
+      "underfit_pct": 62.2413028945175,
+      "best_epoch": 20,
+      "total_epochs": 41
+    },
+    {
+      "name": "MLP h64",
+      "train_loss": 0.5074447393417358,
+      "val_loss": 1.059414267539978,
+      "underfit_pct": 108.77431282749419,
+      "best_epoch": 20,
+      "total_epochs": 41
+    },
+    {
+      "name": "MLP h64 + dropout 0.3",
+      "train_loss": 0.15144212543964386,
+      "val_loss": 0.8577628135681152,
+      "underfit_pct": 466.39644423768357,
+      "best_epoch": 199,
+      "total_epochs": 200
+    },
+    {
+      "name": "MLP h16",
+      "train_loss": 0.6579798460006714,
+      "val_loss": 1.0895403623580933,
+      "underfit_pct": 65.58871354199222,
+      "best_epoch": 31,
+      "total_epochs": 52
+    },
+    {
+      "name": "TinyGRU h16",
+      "train_loss": 0.7441837787628174,
+      "val_loss": 1.2133597135543823,
+      "underfit_pct": 63.04570835601327,
+      "best_epoch": 43,
+      "total_epochs": 64
+    },
+    {
+      "name": "GRU h16",
+      "train_loss": 0.8018563389778137,
+      "val_loss": 1.182735562324524,
+      "underfit_pct": 47.499683525885125,
+      "best_epoch": 33,
+      "total_epochs": 54
+    },
+    {
+      "name": "GRU h32",
+      "train_loss": 0.6231099963188171,
+      "val_loss": 1.1464327573776245,
+      "underfit_pct": 83.9856147631191,
+      "best_epoch": 30,
+      "total_epochs": 51
+    },
+    {
+      "name": "GRU h64",
+      "train_loss": 0.9206525683403015,
+      "val_loss": 1.076521873474121,
+      "underfit_pct": 16.930306881651525,
+      "best_epoch": 6,
+      "total_epochs": 27
+    },
+    {
+      "name": "GRU h64 + dropout 0.3",
+      "train_loss": 0.923710823059082,
+      "val_loss": 1.074557900428772,
+      "underfit_pct": 16.330552116962856,
+      "best_epoch": 9,
+      "total_epochs": 30
+    },
+    {
+      "name": "GRU h64 + wd 1e-4",
+      "train_loss": 0.9332115054130554,
+      "val_loss": 1.0728222131729126,
+      "underfit_pct": 14.960242876352353,
+      "best_epoch": 5,
+      "total_epochs": 26
+    },
+    {
+      "name": "GRU h64 + wd 1e-3",
+      "train_loss": 0.8857461810112,
+      "val_loss": 1.089444875717163,
+      "underfit_pct": 22.997411569239095,
+      "best_epoch": 9,
+      "total_epochs": 30
+    },
+    {
+      "name": "GRU h64 + wd 1e-2",
+      "train_loss": 0.6850669980049133,
+      "val_loss": 1.0458984375,
+      "underfit_pct": 52.67097094823108,
+      "best_epoch": 38,
+      "total_epochs": 59
+    }
+  ],
+  "conclusion": "INCONCLUSIVE",
+  "key_insight": "No clear pattern found",
+  "best_config": {
+    "name": "GRU h64 + wd 1e-4",
+    "train_loss": 0.9332115054130554,
+    "val_loss": 1.0728222131729126,
+    "underfit_pct": 14.960242876352353,
+    "best_epoch": 5,
+    "total_epochs": 26
+  }
+}
