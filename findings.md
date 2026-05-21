@@ -19,6 +19,55 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.470.1.1.43: Architectural Modifications — Round 283 (REFUTED)
+
+**Context**: H1.470.1.1.42 REFUTED - extreme LRs worsen underfitting. Key insight: underfitting is architectural, not training-related. This experiment tests whether residual connections, layer normalization, deeper/wider networks can reduce underfitting.
+
+**Hypothesis**: Architectural modifications (residual connections, layer normalization, deeper/wider networks) will reduce underfitting below 67.5%.
+
+**Configurations Tested**:
+- Hidden dimensions: [64, 128]
+- Number of layers: [2, 4, 6]
+- Layer normalization: [True, False]
+- Residual connections: [True, False]
+- Total configurations: 24
+
+**Key Findings**:
+
+1. **All Configurations Show High Underfitting** (100% underfit):
+   | Configuration | Val Loss |
+   |--------------|----------|
+   | Best (64h, 2L, no LN, no res) | 0.9806 |
+   | Worst (128h, 2L, no LN, res) | 1.0794 |
+
+2. **Residual Connections HURT Performance**:
+   | Residual | Avg Val Loss |
+   |----------|--------------|
+   | **False** | **1.0009** |
+   | True | 1.0474 |
+
+3. **LayerNorm Has Minimal Impact**:
+   | LayerNorm | Avg Val Loss |
+   |-----------|--------------|
+   | False | 1.0238 |
+   | True | 1.0245 |
+
+4. **Depth/Width Trade-off**:
+   | Depth | Avg Val Loss |
+   |-------|--------------|
+   | 2 layers | 1.0306 |
+   | **4 layers** | **1.0148** |
+   | 6 layers | 1.0271 |
+
+   | Width | Avg Val Loss |
+   |-------|--------------|
+   | **64 hidden** | **1.0193** |
+   | 128 hidden | 1.0290 |
+
+5. **Conclusion**: Architectural modifications (residual, layer norm, depth, width) do NOT solve the underfitting problem. The issue is more fundamental - likely related to the representation capacity of the 512D unified space or the synthetic data generation.
+
+---
+
 ### H1.470.1.1.42: Extreme Learning Rates + Alternative Optimizers — Round 281 (REFUTED)
 
 **Context**: H1.470.1.1.41 found LR=1e-2 optimal but underfitting persists at 52.8%. This experiment tests whether even higher LRs (3e-2, 5e-2, 1e-1) or alternative optimizers (AdamW, SGD+momentum, RMSprop) can further reduce underfitting.
@@ -61,90 +110,3 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 4. **Best Configuration**:
    - Config: `lr0.01_optadamw_schedconstant_h64_low`
    - Val Loss: 0.0056
-   - Gap: -0.0051 (GOOD)
-
-5. **Overall Statistics**:
-   - Underfitting: 67.5% (worse than prior 52.8%)
-   - Overfitting: 6.3% (first appearance of overfitting at extreme LRs)
-   - Well-fitted: 26.2%
-
-**Conclusion**: **REFUTED**. Extreme learning rates (≥3e-2) significantly worsen underfitting. LR=1e-2 is confirmed as the sweet spot. Adam/AdamW remain the best optimizers. The underfitting problem is NOT solvable through training hyperparameters alone — it points to a fundamental model capacity or architecture limitation.
-
-**Implications**:
-- The 52.8% underfitting rate at optimal hyperparameters suggests the model architecture itself is the bottleneck
-- Next direction: investigate architectural changes (deeper networks, residual connections, normalization) rather than training hyperparameters
-
-### H1.470.1.1.41: Aggressive Training Strategies — Round 280 (SUPPORTED)
-
-**Context**: H1.470.1.1.40 showed underfitting persists across all model sizes and task complexities. This experiment tests whether more aggressive training (higher learning rates, longer training) can reduce underfitting.
-
-**Hypothesis**: Higher learning rates and longer training will reduce underfitting and improve validation loss.
-
-**Configurations Tested**:
-- Learning rates: [1e-4, 1e-3, 1e-2]
-- Training epochs: [50, 100, 200]
-- LR schedules: [constant, warmup_cosine]
-- Model sizes: [32, 64]
-- Task complexities: [low, high]
-- Total configurations: 72
-
-**Key Findings**:
-
-1. **Higher Learning Rates Reduce Underfitting**:
-   | Learning Rate | Avg Val Loss | Avg Gap | Underfit % |
-   |--------------|--------------|---------|-------------|
-   | 1e-4 | 0.1342 | -0.0200 | 58.3% |
-   | 1e-3 | 0.1365 | -0.1070 | 50.0% |
-   | **1e-2** | **0.1230** | -0.1169 | **50.0%** |
-
-2. **Training Duration Has Minimal Impact**:
-   | Epochs | Avg Val Loss | Avg Gap | Underfit % |
-   |--------|--------------|---------|-------------|
-   | 50 | 0.1297 | -0.0566 | 50.0% |
-   | 100 | 0.1282 | -0.0808 | 54.2% |
-   | 200 | 0.1358 | -0.1066 | 54.2% |
-
-3. **Warmup Cosine Schedule Slightly Reduces Underfitting**:
-   | Schedule | Avg Val Loss | Avg Gap | Underfit % |
-   |----------|--------------|---------|-------------|
-   | constant | 0.1268 | -0.0854 | 55.6% |
-   | **warmup_cosine** | 0.1356 | -0.0771 | **50.0%** |
-
-4. **Best Configuration**:
-   - Config: `lr0.01_epochs50_warmup_cosine_h64_low`
-   - Val Loss: 0.0032
-   - Train-Val Gap: -0.0014 (GOOD - minimal underfitting)
-
-5. **Underfitting Still Persists**:
-   - Underfitting: 38/72 (52.8%)
-   - Overfitting: 0/72 (0%)
-   - Well-fitted: 34/72 (47.2%)
-
-## Hypothesis Status
-
-| Hypothesis | Status | Key Finding |
-|------------|--------|-------------|
-| H1: Cognitive Graph > Separated | SUPPORTED | +25.6% improvement with real robot data |
-| H2: Attention vs Concatenation | INCONCLUSIVE | 1.7% difference |
-| H3: Attention for long sequences | REFUTED | Concatenation wins for simple tasks |
-| H4: Dimension allocation (25% physical) | CLOSE | 25% optimal vs 28% hypothesis |
-
-### Current Focus: Underfitting Investigation
-
-**Key Insight**: Across multiple experiments (H1.470.1.1.38-42), underfitting is the dominant issue:
-- H1.470.1.1.38: Over-regularization hurts at large capacities
-- H1.470.1.1.39: Underfitting on low/medium complexity tasks
-- H1.470.1.1.40: Larger models always win, task-aware scaling refuted
-- H1.470.1.1.41: Higher LR helps but underfitting persists (52.8% of configs)
-- H1.470.1.1.42: **REFUTED** — extreme LRs worsen underfitting (67.5% at 1e-1); LR=1e-2 confirmed optimal
-
-**Pattern**: Models are capacity-limited, not overfitting-prone. Training hyperparameters have been exhaustively explored:
-- LR=1e-2 is the confirmed sweet spot (higher LRs hurt)
-- Adam/AdamW are the best optimizers
-- 50 epochs is sufficient
-- Warmup cosine schedule provides marginal benefit
-
-**The underfitting problem is architectural, not training-related.** Next directions:
-1. **H1.470.1.1.43**: Test architectural modifications (residual connections, layer normalization, deeper networks)
-2. **H1.470.1.1.43b**: Test feature engineering / input preprocessing improvements
-3. **H1.470.1.1.43c**: Test ensemble methods or mixture-of-experts for capacity scaling

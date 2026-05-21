@@ -1,0 +1,39 @@
+{
+  "experiment_id": "H1.470.1.1.43",
+  "conclusion": "REFUTED",
+  "task": "architectural_modifications",
+  "configurations_tested": 24,
+  "key_metrics": {
+    "best_config": {
+      "hidden_dim": 64,
+      "num_layers": 2,
+      "use_layernorm": false,
+      "use_residual": false,
+      "seed": 4
+    },
+    "best_val_loss": 0.9806214034557342,
+    "total_underfit_pct": 100.0,
+    "prior_underfit_pct": 67.5,
+    "avg_by_layers": {
+      "2": 1.0305927999317648,
+      "6": 1.027091559767723,
+      "4": 1.0147806495428087
+    },
+    "avg_by_width": {
+      "64": 1.0192745973666508,
+      "128": 1.0290354087948799
+    },
+    "avg_by_layernorm": {
+      "False": 1.0237712924679123,
+      "True": 1.0245387136936188
+    },
+    "avg_by_residual": {
+      "False": 1.0009010056654613,
+      "True": 1.0474090004960697
+    }
+  },
+  "key_insights": [
+    "Best architecture: 2 layers, 64 hidden, LayerNorm=False, Residual=False",
+    "Underfit remains at 100.0% (no improvement)"
+  ]
+}

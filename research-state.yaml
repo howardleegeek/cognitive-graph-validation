@@ -1,10 +1,50 @@
-current_round: 281
-last_action: "H1.470.1.1.42 - Test extreme learning rates (3e-2, 5e-2, 1e-1) and alternative optimizers (AdamW, SGD+momentum, RMSprop) to further reduce underfitting (REFUTED - extreme LRs worsen underfitting to 67.5%, LR=1e-2 confirmed optimal)"
-next_intended_action: "H1.470.1.1.43 - Test architectural modifications (residual connections, layer normalization, deeper networks) to address the fundamental capacity limitation causing persistent underfitting"
+current_round: 283
+last_action: "H1.470.1.1.43 - Test architectural modifications (residual connections, layer normalization, deeper networks) to address the fundamental capacity limitation causing persistent underfitting (REFUTED - 100% underfit, residual connections hurt performance)"
+next_intended_action: "H1.470.1.1.44 - Investigate fundamental representation capacity issue: test larger hidden dimensions (512, 1024), different activation functions (GELU, SiLU), and examine if synthetic data generation is causing the underfitting"
 
 experiments:
-  total_rounds: 281
+  total_rounds: 283
   trajectory:
+    - experiment_id: H1.470.1.1.43
+      description: "Test architectural modifications (residual connections, layer normalization, deeper networks)"
+      result:
+        conclusion: "REFUTED"
+        task: "architectural_modifications"
+        configurations_tested: 24
+        hidden_dims_tested: [64, 128]
+        num_layers_tested: [2, 4, 6]
+        layernorm_tested: [true, false]
+        residual_tested: [true, false]
+        key_metrics:
+          best_config: "hidden_dim64_numlayers2_layernormFalse_residualFalse"
+          best_val_loss: 0.9806
+          avg_by_layers:
+            "2": 1.0306
+            "4": 1.0148
+            "6": 1.0271
+          avg_by_width:
+            "64": 1.0193
+            "128": 1.0290
+          avg_by_layernorm:
+            "false": 1.0238
+            "true": 1.0245
+          avg_by_residual:
+            "false": 1.0009
+            "true": 1.0474
+          total_underfit_pct: 100.0
+          prior_underfit_pct: 67.5
+        key_insights:
+          - "All 24 configurations show 100% underfitting"
+          - "Residual connections HURT performance (avg 1.0474 vs 1.0009)"
+          - "Layer normalization has minimal impact"
+          - "4 layers, 64 hidden is optimal depth/width trade-off"
+          - "Underfitting is fundamental - not solved by architectural tweaks"
+        recommendations:
+          - "R1: Test much larger hidden dimensions (512, 1024)"
+          - "R2: Try different activation functions (GELU, SiLU)"
+          - "R3: Investigate if synthetic data generation is causing underfitting"
+          - "R4: Consider that the problem may be in the data representation, not the model"
+    
     - experiment_id: H1.470.1.1.42
       description: "Test extreme learning rates and alternative optimizers to further reduce underfitting"
       result:
@@ -50,43 +90,22 @@ experiments:
           - "R1: Keep LR=1e-2, Adam optimizer as default"
           - "R2: Investigate architectural changes (residual connections, layer norm, deeper networks)"
           - "R3: Consider ensemble methods or mixture-of-experts for capacity scaling"
-    
-    - experiment_id: H1.470.1.1.41
-      description: "Test aggressive training strategies (higher LR, longer training) to address underfitting"
-      result:
-        conclusion: "SUPPORTED"
-        task: "aggressive_training_strategies"
-        configurations_tested: 72
-        learning_rates_tested: [1e-4, 1e-3, 1e-2]
-        epochs_tested: [50, 100, 200]
-        schedules_tested: ["constant", "warmup_cosine"]
-        model_sizes_tested: [32, 64]
-        task_complexities: ["low", "high"]
-        key_metrics:
-          lr_1e_4_avg_val_loss: 0.1342
-          lr_1e_3_avg_val_loss: 0.1365
-          lr_1e_2_avg_val_loss: 0.1230
-          lr_1e_4_underfit_pct: 58.3
-          lr_1e_3_underfit_pct: 50.0
-          lr_1e_2_underfit_pct: 50.0
-          epochs_50_avg_val_loss: 0.1297
-          epochs_100_avg_val_loss: 0.1282
-          epochs_200_avg_val_loss: 0.1358
-          best_config: "lr0.01_epochs50_warmup_cosine_h64_low"
-          best_val_loss: 0.0032
-          best_gap: -0.0014
-          total_underfit_pct: 52.8
-          total_overfit_pct: 0.0
-          total_good_pct: 47.2
-        key_insights:
-          - "Higher learning rates (1e-2) improve validation loss and reduce underfitting"
-          - "Training duration (50 vs 200 epochs) has minimal impact"
-          - "Warmup cosine schedule slightly reduces underfitting (50% vs 55.6%)"
-          - "Underfitting remains dominant issue (52.8% of configurations)"
-          - "NO overfitting observed even with aggressive training"
-          - "Best config achieves near-zero gap with LR=1e-2"
-        recommendations:
-          - "R1: Use learning rate 1e-2 for this task class (10x higher than typical)"
-          - "R2: 50 epochs is sufficient; longer training does not help"
-          - "R3: Consider even higher learning rates (3e-2, 1e-1) or different optimizers"
-          - "R4: The fundamental issue may be model capacity, not training strategy"
+
+hypotheses:
+  - id: H1
+    name: "Cognitive Graph vs Separated Architectures"
+    status: "supported"
+    key_finding: "+25.6% improvement with real robot data"
+    evidence: "LIBERO benchmark shows unified representation outperforms JEPA+LLM alignment"
+  - id: H2
+    name: "Attention vs Concatenation"
+    status: "inconclusive"
+    key_finding: "1.7% difference - within noise"
+  - id: H3
+    name: "Attention for Complex Tasks"
+    status: "refuted"
+    key_finding: "Concatenation wins over attention for simple tasks"
+  - id: H4
+    name: "Optimal Representation Split"
+    status: "close"
+    key_finding: "25% optimal vs 28% hypothesis"
