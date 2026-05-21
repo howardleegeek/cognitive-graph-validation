@@ -19,6 +19,54 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 
 ## Key Results
 
+### H1.470.1.1.40: Task-Aware Model Capacity Scaling — Round 279 (REFUTED)
+
+**Context**: H1.470.1.1.39 showed models underfit on low/medium complexity tasks (negative train-val gap) while overfitting only emerges at high complexity. This experiment tests whether task-aware capacity scaling (smaller models for simple tasks, larger for complex) improves performance.
+
+**Hypothesis**: Task-aware capacity scaling will outperform fixed-size strategies by reducing underfitting on simple tasks and overfitting on complex tasks.
+
+**Configurations Tested**:
+- Strategies: fixed_small (h=16), fixed_medium (h=32), fixed_large (h=64), task_aware (h=16 for low, 32 for medium, 64 for high)
+- Task complexities: low, medium, high
+- Model: Simple feedforward network (simplified for rapid testing)
+- Total configurations: 12
+
+**Key Findings**:
+
+1. **Fixed Large Model Outperforms Task-Aware Strategy**:
+   | Strategy | Average Val Loss | Rank |
+   |----------|------------------|------|
+   | Fixed Large (h=64) | 0.2573 | 1 |
+   | Task-Aware | 0.3940 | 2 |
+   | Fixed Medium (h=32) | 0.4127 | 3 |
+   | Fixed Small (h=16) | 0.4816 | 4 |
+
+2. **Task-Aware Shows Mixed Performance**:
+   - Task-aware improves over fixed_small by +18.2%
+   - Task-aware improves over fixed_medium by +4.5%
+   - Task-aware is WORSE than fixed_large by -53.1%
+
+3. **Underfitting Persists Across All Strategies**:
+   | Complexity | Fixed Small Gap | Fixed Medium Gap | Fixed Large Gap | Task-Aware Gap |
+   |------------|-----------------|------------------|-----------------|----------------|
+   | Low | -0.0914 (UNDER) | -0.0992 (UNDER) | -0.0815 (UNDER) | -0.0850 (UNDER) |
+   | Medium | -0.0345 (UNDER) | -0.0371 (UNDER) | -0.0216 (UNDER) | -0.0266 (UNDER) |
+   | High | -0.0134 (UNDER) | -0.0126 (UNDER) | -0.0059 (BAL) | -0.0100 (BAL) |
+
+4. **Key Insight**: Larger models consistently perform better across ALL task complexities, contradicting the hypothesis that simple tasks need smaller models.
+
+**Conclusion**: REFUTED. The hypothesis that task-aware capacity scaling would improve performance is not supported. Larger models (h=64) outperform all other strategies, including task-aware scaling. This suggests that:
+1. Models are capacity-limited, not overfitting-prone
+2. The benefits of larger capacity outweigh any potential overfitting risks
+3. Underfitting is the dominant issue across all task complexities
+
+**Implications**:
+- Use larger models even for simple tasks
+- Focus on reducing underfitting rather than preventing overfitting
+- Consider more aggressive training (longer training, higher learning rates) rather than capacity reduction
+
+---
+
 ### H1.470.1.1.39: Task-Dependent Regularization Scaling — Round 278 (INCONCLUSIVE)
 
 **Context**: H1.470.1.1.38 showed over-regularization occurs at different capacity thresholds for different architectures. This experiment tests whether regularization should scale with task complexity (trajectory variance, temporal dependencies, state space coverage).
@@ -143,16 +191,21 @@ Does a unified cognitive graph architecture (early fusion of physical and semant
 | H1.470.1.1.37: Adaptive Regularization | REFUTED | Fixed regularization wins |
 | H1.470.1.1.38: Architecture-Dependent Over-Reg | INCONCLUSIVE | Both architectures over-regularize at different thresholds |
 | H1.470.1.1.39: Task-Dependent Regularization | INCONCLUSIVE | No regularization needed; overfitting only at high complexity |
+| H1.470.1.1.40: Task-Aware Capacity Scaling | REFUTED | Larger models outperform task-aware scaling |
 
 ## Research Direction
 
-The regularization experiments (H1.470.1.1.36-39) reveal a consistent pattern:
+The regularization and capacity experiments (H1.470.1.1.36-40) reveal a consistent pattern:
 1. L2 regularization generally hurts performance
 2. Models tend to underfit rather than overfit
 3. Overfitting only emerges at high task complexity
-4. Cognitive Graph consistently outperforms Simple GRU
+4. Larger models consistently outperform smaller ones
+5. Cognitive Graph consistently outperforms Simple GRU
+
+**Key Insight**: The dominant issue is UNDERFITTING, not overfitting. Models need MORE capacity and MORE aggressive training, not regularization or capacity reduction.
 
 **Next Steps**:
-- H1.470.1.1.40: Investigate task-aware model capacity scaling
+- H1.470.1.1.41: Test more aggressive training strategies (higher learning rates, longer training)
 - Explore data augmentation for high-complexity tasks
 - Consider early stopping as alternative to regularization
+- Test even larger model capacities (h=128, h=256)
