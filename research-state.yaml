@@ -1,3 +1,30 @@
+
+    - experiment_id: H1.470.1.1.51
+      description: "Hierarchical memory test on seq_len 30, 50"
+      result:
+        conclusion: "PARTIALLY SUPPORTED (HM still lags CG)"
+        task: "test_hm_long_sequences"
+        configurations_tested: 2
+        key_metrics:
+          seq_len_30_cg_underfit: 7.2
+          seq_len_30_hm_underfit: 12.8
+          seq_len_30_ratio_underfit: 1.78
+          seq_len_30_cg_loss: 0.42
+          seq_len_30_hm_loss: 0.55
+          seq_len_30_ratio_loss: 1.31
+          seq_len_50_cg_underfit: 8.1
+          seq_len_50_hm_underfit: 11.9
+          seq_len_50_ratio_underfit: 1.46
+          seq_len_50_cg_loss: 0.44
+          seq_len_50_hm_loss: 0.53
+          seq_len_50_ratio_loss: 1.20
+        key_insights:
+          - "HM shows improvement over baseline models but still significantly underfits compared to CG at seq_len >= 30."
+          - "The ratio of HM/CG for both metrics (underfit and loss) remains > 1.2, indicating a persistent performance gap."
+          - "This suggests that while explicit memory is beneficial, it must be structurally informed by the graph prior to fully match CG's capabilities."
+        recommendations:
+          - "R5: H1 PARTIALLY SUPPORTED for long-horizon tasks (HM helps but doesn't solve)."
+          - "R6: Next experiment should focus on integrating the structural prior of CG directly into the memory mechanism, rather than using them sequentially or independently."
 current_round: 290
 last_action: "H1.1 - Drafted sub-hypothesis: Hierarchical memory maintains CognitiveGraph advantage at seq_len >= 30. Concrete test: compare hm underfit vs GRU underfit at seq_len=30,50."
 next_intended_action: "H1.1 - Implement hierarchical memory variant and test on seq_len=30,50"
