@@ -1,0 +1,46 @@
+{
+  "seq_len_30": {
+    "CG": {
+      "loss": 0.4052,
+      "underfit": 6.93
+    },
+    "HM": {
+      "loss": 0.532,
+      "underfit": 12.34
+    },
+    "SPM": {
+      "loss": 0.4336,
+      "underfit": 8.38
+    },
+    "GRU": {
+      "loss": 0.8965,
+      "underfit": 15.98
+    },
+    "ratio_spm_cg_underfit": 1.21,
+    "ratio_spm_cg_loss": 1.07,
+    "ratio_hm_cg_underfit": 1.78,
+    "ratio_gru_cg_underfit": 2.31
+  },
+  "seq_len_50": {
+    "CG": {
+      "loss": 0.4249,
+      "underfit": 7.79
+    },
+    "HM": {
+      "loss": 0.5134,
+      "underfit": 11.52
+    },
+    "SPM": {
+      "loss": 0.4417,
+      "underfit": 8.75
+    },
+    "GRU": {
+      "loss": 0.4844,
+      "underfit": 9.16
+    },
+    "ratio_spm_cg_underfit": 1.12,
+    "ratio_spm_cg_loss": 1.04,
+    "ratio_hm_cg_underfit": 1.48,
+    "ratio_gru_cg_underfit": 1.18
+  }
+}
